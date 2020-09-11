@@ -1,0 +1,11 @@
+- item: "github"
+  url: "https://github.com/albersonmiranda"
+- item: "twitter"
+  url: "https://twitter.com/albersonmrianda"
+- item: "linkedin"
+  url: "https://www.linkedin.com/in/albersonmiranda"
+#- item: "instagram"
+#  url: "https://www.instagram.com/alberson.miranda"
+#- item: "rss"
+#  url: "index.xml"
+  internal:  true
