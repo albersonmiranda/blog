@@ -1,3 +1,3 @@
-# BLOG PESSOAL DO ALBERSON
+# DATAMARES & DREAMSCAPES
 
-Repositório do meu blog pessoal.
+Repositório do blog Datamares & Dreamscapes, hospedado [aqui](http://datamares.netlify.app/).
