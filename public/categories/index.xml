@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Datamares &amp; Dreamscapes</title>
+    <link>https://datamares.netlify.app/categories/</link>
+    <description>Recent content in Categories on Datamares &amp; Dreamscapes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 11 Sep 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://datamares.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Chat</title>
+      <link>https://datamares.netlify.app/categories/chat/</link>
+      <pubDate>Fri, 11 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://datamares.netlify.app/categories/chat/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
