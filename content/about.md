@@ -14,6 +14,6 @@ Meu primeiro contato com o R foi durante a disciplina de séries temporais no PP
 
 Depois da primeira política institucional mudada a partir dos resultados de um estudo realizado com um simples modelo glm, foi ladeira abaixo em direção às drogas mais pesadas. Entrei no mundo do *machine learning* de vez, aplicando diferentes frameworks, algoritmos e combinações dos mais variados métodos de aprendizagem. Me aprofundei nas técnicas de EDA, dataviz e *features engineering*, que são as tarefas em que passo a maior parte do tempo atualmente.
 
-Em 2018 ingressei no curso de matemática do IFES com o objetivo de adquirir maior rigor matemático e metodológico, e acredito tem me ajudado bastante nesse sentido. Além disso, contribuiu para o meu desenvolvimento em ensinar e colaborar com membros de equipe.
+Em 2018 ingressei no curso de matemática do IFES com o objetivo de adquirir maior rigor matemático e metodológico, e acredito que tem me ajudado bastante nesse sentido. Além disso, contribuiu para o meu desenvolvimento em ensinar e colaborar com membros de equipe.
 
 Recentemente tenho trabalhado com validação e interpretação agnóstica de modelos de machine learning, inferência causal e resolução de problemas matemáticos com R.
