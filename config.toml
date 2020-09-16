@@ -29,7 +29,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 author = "Alberson Miranda"
 twitter = "@albersonmiranda"
 largeTwitterCard = false # set to true if you want to show a large twitter card image. The default is a small twitter card image
-introDescription = "business analytics no @Banestes_SA, economista (UFES) e estudante de matemática (IFES). #rstats é minha 3ª língua."
+introDescription = "coordenador no @Banestes_SA, economista e graduando matemática. #rstats é minha 3ª língua."
 
 # Google analytics Id
 #ga_analytics = "XXXXXXXXXX"
