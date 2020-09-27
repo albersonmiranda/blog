@@ -4,7 +4,7 @@ author: Alberson Miranda
 date: '2020-09-11'
 slug: hello-world
 categories: ["Chat"]
-tags: ["Eu", "PT-BR"]
+tags: ["Eu"]
 featured: yes
 ---
 

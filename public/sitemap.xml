@@ -4,12 +4,42 @@
   
   <url>
     <loc>https://datamares.netlify.app/</loc>
-    <lastmod>2020-09-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-09-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://datamares.netlify.app/categories/</loc>
-    <lastmod>2020-09-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datamares.netlify.app/post/configurando-git-em-um-servidor-proxy/</loc>
+    <lastmod>2020-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datamares.netlify.app/categories/configura%C3%A7%C3%B5es/</loc>
+    <lastmod>2020-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datamares.netlify.app/tags/git/</loc>
+    <lastmod>2020-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datamares.netlify.app/post/</loc>
+    <lastmod>2020-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datamares.netlify.app/tags/</loc>
+    <lastmod>2020-09-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://datamares.netlify.app/about/</loc>
+    <lastmod>2020-09-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -24,21 +54,6 @@
   
   <url>
     <loc>https://datamares.netlify.app/post/hello-world/</loc>
-    <lastmod>2020-09-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://datamares.netlify.app/post/</loc>
-    <lastmod>2020-09-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://datamares.netlify.app/tags/pt-br/</loc>
-    <lastmod>2020-09-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://datamares.netlify.app/tags/</loc>
     <lastmod>2020-09-11T00:00:00+00:00</lastmod>
   </url>
   

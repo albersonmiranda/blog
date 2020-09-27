@@ -1,0 +1,71 @@
+---
+title: Configurando git em um servidor proxy
+author: Alberson Miranda
+date: '2020-09-25'
+slug: configurando-git-em-um-servidor-proxy
+categories:
+  - Configurações
+tags:
+  - Git
+featured: yes
+---
+
+
+
+<p>Se você estiver trabalhando em uma organização que leva a sério a segurança da informação, então, provavelmente, você está atrás de um servidor proxy e com dificuldades para usar o Git. Para resolvermos isso, precisaremos de passar por 3 etapas:</p>
+<ol style="list-style-type: decimal">
+<li>descobrir o endereço do servidor proxy</li>
+<li>escolher um método de autenticação</li>
+<li>atualizar as configurações do git</li>
+</ol>
+<div id="endereço-proxy" class="section level1">
+<h1>ENDEREÇO PROXY</h1>
+<p>O endereço do servidor proxy fica salvo em um arquivo de configuração que pode ser obtido via navegador. Se você estiver no Windows, terá de acessar o famigerado Internet Explorer, ir em <code>Opções da Internet</code>, <code>Conexões</code> e <code>Configurações da Lan</code>.</p>
+<div class="figure">
+<img src="/post/2020-09-25-configurando-git-em-um-servidor-proxy_files/1.png" alt="" />
+<p class="caption">localização do arquivo de configuração</p>
+</div>
+<p>Copie e cole o caminho exibido no campo <code>Endereço</code> no navegador e você irá baixar um arquivo .dat com as configurações de proxy. Abra o arquivo em algum leitor<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. No arquivo, busque por “PROXY”, essa variável conterá o endereço do servidor proxy no formato <code>dominio.com:porta</code>.</p>
+</div>
+<div id="escolher-o-método-de-autenticação" class="section level1">
+<h1>ESCOLHER O MÉTODO DE AUTENTICAÇÃO</h1>
+<p>Com o endereço proxy em mãos, precisamos escolher como vamos nos autenticar:<br />
+<br />
+1. Digitar a senha a cada push/pull<br />
+2. Salvar a senha no .gitconfig<br />
+</p>
+<p>O primeiro método se aplica quando temos preocupação com nossa senha, ou seja, quando o computador é compartilhado ou a configuração é salva em rede, por exemplo.</p>
+<p>Quando esse não é o caso, pode-se simplesmente salvar o usuário e senha no arquivo de configuração e o push/pull ocorrerá diretamente.</p>
+<div id="gitconfig-sem-salvar-senha" class="section level2">
+<h2>.gitconfig sem salvar senha</h2>
+<p>Recomendo usar o pacote {usethis} para alterar qualquer arquivo de configuração no R. Para a primeira opção, faríamos da seguinte maneira:</p>
+<pre class="r"><code># abrir o arquivo de configuração
+
+usethis::edit_git_config()</code></pre>
+<p>Na janela do .gitconfig que será aberta, adicione as seguintes linhas:</p>
+<pre><code>[http]
+    proxy = http[s]://dominio.com:porta
+
+[credential]
+    helper = wincred
+
+[credential &quot;helperselector&quot;]
+    selected = manager
+</code></pre>
+<p>Em que “domínio.com” é o endereço proxy que você achou no arquivo .dat e as demais configurações definem a forma como você será solicitado a incluir usuário e senha, nesse caso através de uma janela pop up a cada push/pull.</p>
+</div>
+<div id="gitconfig-com-senha-gravada" class="section level2">
+<h2>.gitconfig com senha gravada</h2>
+<p>A outra alternativa é gravar o usuário e senha no próprio .gitconfig. Novamente, se o arquivo ficar em rede ou se outras pessoas tiverem acesso à máquina, evite essa opção. Para deixar seu usuário e senha salvas no .gitconfig, basta adicioná-los antes do domínio. A vantagem desse método a não ter de inserir as informações a cada push/pull.</p>
+<pre><code>[http]
+    proxy = http[s]://usuario:senha@dominio.com:porta
+</code></pre>
+<p>Lembre-se de atualizar a senha no .gitconfig sempre que ela for alterada!</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Evite o bloco de notas para exibir corretamente as quebras de linha. Sugiro o Wordpad.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

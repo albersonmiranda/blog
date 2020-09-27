@@ -5,10 +5,19 @@
     <link>https://datamares.netlify.app/categories/</link>
     <description>Recent content in Categories on Datamares &amp; Dreamscapes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 11 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://datamares.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Configurações</title>
+      <link>https://datamares.netlify.app/categories/configura%C3%A7%C3%B5es/</link>
+      <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://datamares.netlify.app/categories/configura%C3%A7%C3%B5es/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Chat</title>

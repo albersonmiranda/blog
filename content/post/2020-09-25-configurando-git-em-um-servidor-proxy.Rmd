@@ -1,0 +1,75 @@
+---
+title: Configurando git em um servidor proxy
+author: Alberson Miranda
+date: '2020-09-25'
+slug: configurando-git-em-um-servidor-proxy
+categories:
+  - Configurações
+tags:
+  - Git
+featured: yes
+---
+
+Se você estiver trabalhando em uma organização que leva a sério a segurança da informação, então, provavelmente, você está atrás de um servidor proxy e com dificuldades para usar o Git. Para resolvermos isso, precisaremos de passar por 3 etapas:
+
+1. descobrir o endereço do servidor proxy
+2. escolher um método de autenticação
+3. atualizar as configurações do git
+
+# ENDEREÇO PROXY
+
+O endereço do servidor proxy fica salvo em um arquivo de configuração que pode ser obtido via navegador. Se você estiver no Windows, terá de acessar o famigerado Internet Explorer, ir em `Opções da Internet`, `Conexões` e `Configurações da Lan`.
+
+![localização do arquivo de configuração](/post/2020-09-25-configurando-git-em-um-servidor-proxy_files/1.png)
+
+Copie e cole o caminho exibido no campo `Endereço` no navegador e você irá baixar um arquivo .dat com as configurações de proxy. Abra o arquivo em algum leitor^[Evite o bloco de notas para exibir corretamente as quebras de linha. Sugiro o Wordpad.]. No arquivo, busque por "PROXY", essa variável conterá o endereço do servidor proxy no formato `dominio.com:porta`.
+
+# ESCOLHER O MÉTODO DE AUTENTICAÇÃO
+
+Com o endereço proxy em mãos, precisamos escolher como vamos nos autenticar:\
+\
+1. Digitar a senha a cada push/pull\
+2. Salvar a senha no .gitconfig\
+
+O primeiro método se aplica quando temos preocupação com nossa senha, ou seja, quando o computador é compartilhado ou a configuração é salva em rede, por exemplo.
+
+Quando esse não é o caso, pode-se simplesmente salvar o usuário e senha no arquivo de configuração e o push/pull ocorrerá diretamente.
+
+## .gitconfig sem salvar senha
+
+Recomendo usar o pacote {usethis} para alterar qualquer arquivo de configuração no R. Para a primeira opção, faríamos da seguinte maneira:
+
+```{r, message=FALSE}
+
+# abrir o arquivo de configuração
+
+usethis::edit_git_config()
+```
+
+Na janela do .gitconfig que será aberta, adicione as seguintes linhas:
+
+```
+[http]
+	proxy = http[s]://dominio.com:porta
+
+[credential]
+	helper = wincred
+
+[credential "helperselector"]
+	selected = manager
+
+```
+
+Em que "domínio.com" é o endereço proxy que você achou no arquivo .dat e as demais configurações definem a forma como você será solicitado a incluir usuário e senha, nesse caso através de uma janela pop up a cada push/pull.
+
+## .gitconfig com senha gravada
+
+A outra alternativa é gravar o usuário e senha no próprio .gitconfig. Novamente, se o arquivo ficar em rede ou se outras pessoas tiverem acesso à máquina, evite essa opção. Para deixar seu usuário e senha salvas no .gitconfig, basta adicioná-los antes do domínio. A vantagem desse método a não ter de inserir as informações a cada push/pull.
+
+```
+[http]
+	proxy = http[s]://usuario:senha@dominio.com:porta
+
+```
+
+Lembre-se de atualizar a senha no .gitconfig sempre que ela for alterada!
