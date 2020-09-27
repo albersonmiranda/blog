@@ -1,44 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Datamares &amp; Dreamscapes</title>
-    <link>https://datamares.netlify.app/</link>
-    <description>Recent content on Datamares &amp; Dreamscapes</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 25 Sep 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://datamares.netlify.app/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Configurando git em um servidor proxy</title>
-      <link>https://datamares.netlify.app/post/configurando-git-em-um-servidor-proxy/</link>
-      <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://datamares.netlify.app/post/configurando-git-em-um-servidor-proxy/</guid>
-      <description>Se você estiver trabalhando em uma organização que leva a sério a segurança da informação, então, provavelmente, você está atrás de um servidor proxy e com dificuldades para usar o Git. Para resolvermos isso, precisaremos de passar por 3 etapas:
-descobrir o endereço do servidor proxyescolher um método de autenticaçãoatualizar as configurações do gitENDEREÇO PROXYO endereço do servidor proxy fica salvo em um arquivo de configuração que pode ser obtido via navegador.</description>
-    </item>
-    
-    <item>
-      <title>quem eu sou?</title>
-      <link>https://datamares.netlify.app/about/</link>
-      <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://datamares.netlify.app/about/</guid>
-      <description>Atuo desde 2008 no segmento bancário como concursado no @Banestes_SA onde passei 6 anos contribuindo com o desenvolvimento regional através de repasses de créditos do BNDES em projetos estruturantes. Lá, pude aplicar os conhecimentos de matemática financeira que comecei a adquirir um ano antes quando entrei no curso de economia da UFES.
-Durante esse período, comecei a trabalhar os conteúdos de econometria no ambiente profissional, ainda com o Eviews, que era a ferramenta com a qual o curso era ministrado, principalmente forecasting.</description>
-    </item>
-    
-    <item>
-      <title>Hello World!</title>
-      <link>https://datamares.netlify.app/post/hello-world/</link>
-      <pubDate>Fri, 11 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://datamares.netlify.app/post/hello-world/</guid>
-      <description>Depois de uma ou outra postagem no LinkedIn e Kaggle, já era hora de eu montar meu próprio blog para ciência de dados, não é mesmo?
-First things first, que nome é esse? Datamares &amp;amp; Dreamscapes faz referência ao título de uma coletânea de contos do Stephen King Nightmares &amp;amp; Dreamscapes (Pesadelos e Paisagens Noturnas, no Brasil) e faz bastante jus à minha relação com esse mundo. Vindo de um background de business não muito intensivo em matemática, estatística e dados (vou abordar isso em uma postagem), o aprendizado autodidata envolve certos sacrifícios e noites perdidas ou mal dormidas.</description>
-    </item>
-    
-  </channel>
-</rss>
