@@ -17,7 +17,10 @@ featured: yes
 <p>Se você já plotou um gráfico de linhas no R e, quando viu o plot no painel do RStudio pensou “uau, que qualidade terrível!”, você não está só. Mas não se preocupe, a solução é bem simples!</p>
 <p>Primeiramente, vamos plotar um gráfico na configuração padrão do RStudio:</p>
 <p><code>plot(mtcars$mpg, type = "l")</code></p>
-<p><img src="/2020-10-19-qualidade-grafica-no-painel-do-rstudio/index_files/Rplot.png" /></p>
+<div class="figure">
+<img src="/2020-10-19-qualidade-grafica-no-painel-do-rstudio/index_files/Rplot.png" alt="" />
+<p class="caption">plot</p>
+</div>
 <p>Wow, imagine usando algo assim em um banner! Vamos tentar de novo, agora com o Cairo como dispositivo gráfico e usando anti-aliasing:</p>
 <pre class="r"><code># Adicionando anti-aliasing
 trace(grDevices::png, quote({

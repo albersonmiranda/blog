@@ -18,7 +18,7 @@ Primeiramente, vamos plotar um gráfico na configuração padrão do RStudio:
 
 `plot(mtcars$mpg, type = "l")`
 
-![](/2020-10-19-qualidade-grafica-no-painel-do-rstudio/index_files/Rplot.png)
+![plot](/2020-10-19-qualidade-grafica-no-painel-do-rstudio/index_files/Rplot.png)
 
 Wow, imagine usando algo assim em um banner! Vamos tentar de novo, agora com o Cairo como dispositivo gráfico e usando anti-aliasing:
 
