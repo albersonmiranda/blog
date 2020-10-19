@@ -18,7 +18,7 @@ Primeiramente, vamos plotar um gráfico na configuração padrão do RStudio:
 
 `plot(mtcars$mpg, type = "l")`
 
-![plot](/2020-10-19-qualidade-grafica-no-painel-do-rstudio/index_files/Rplot.png)
+![plot](/2020-10-19-qualidade-grafica-no-painel-do-rstudio/index_files/plot.png)
 
 Wow, imagine usando algo assim em um banner! Vamos tentar de novo, agora com o Cairo como dispositivo gráfico e usando anti-aliasing:
 
@@ -37,7 +37,7 @@ plot(mtcars$mpg, type = "l")
 
 ```
 
-Santo anti-aliasing, não é?
+Santo anti-aliasing, não é? (Dê zoom nos dois para ver bem a diferença)
 
 Bom, preciso fazer isso toda vez que for plotar um gráfico ou iniciar uma sessão no R? De forma alguma, basta adicionar essas linhas ao seu .Rprofile. Eu recomendo sempre usar o {usethis} para alterar os arquivos de configuração, pois você pode acabar se perdendo dentre os caminhos possíveis onde o R irá consultar. Usando o {usethis} você garante que estará criando ou editando o arquivo correto.
 
