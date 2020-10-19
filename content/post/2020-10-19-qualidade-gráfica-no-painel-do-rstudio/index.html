@@ -1,0 +1,36 @@
+---
+title: Qualidade gráfica no painel do RStudio
+author: Alberson Miranda
+date: '2020-10-19'
+slug: []
+categories:
+  - Configurações
+tags:
+  - Gráfico
+  - DataViz
+  - usethis
+featured: yes
+---
+
+
+
+<p>Se você já plotou um gráfico de linhas no R e, quando viu o plot no painel do RStudio pensou “uau, que qualidade terrível!”, você não está só. Mas não se preocupe, a solução é bem simples!</p>
+<p>Primeiramente, vamos plotar um gráfico na configuração padrão do RStudio:</p>
+<pre class="r"><code>plot(mtcars$mpg, type = &quot;l&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+Wow, imagine usando algo assim em um banner! Vamos tentar de novo, agora com o Cairo como dispositivo gráfico e usando anti-aliasing:</p>
+<pre class="r"><code># Adicionando anti-aliasing
+trace(grDevices::png, quote({
+  if (missing(type) &amp;&amp; missing(antialias)) {
+    type = &quot;cairo-png&quot;
+    antialias = &quot;subpixel&quot;
+  }
+}), print = FALSE)</code></pre>
+<pre><code>## Tracing function &quot;png&quot; in package &quot;grDevices&quot;</code></pre>
+<pre><code>## [1] &quot;png&quot;</code></pre>
+<pre class="r"><code># Plotando novamente
+plot(mtcars$mpg, type = &quot;l&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Santo anti-aliasing, não é?</p>
+<p>Bom, preciso fazer isso toda vez que for plotar um gráfico ou iniciar uma sessão no R? De forma alguma, basta adicionar essas linhas ao seu .Rprofile. Eu recomendo sempre usar o {usethis} para alterar os arquivos de configuração, pois você pode acabar se perdendo dentre os caminhos possíveis onde o R irá consultar. Usando o {usethis} você garante que estará criando ou editando o arquivo correto.</p>
+<p><code>usethis::edit_r_profile()</code> irá abrir uma janela com o arquivo para edição. Então, cole a chamada acima (retirando a linha do plot, claro), certifique-se que o .Rprofile acabe com uma linha vazia, salve e reinicie a sessão. Pronto! Agora o anti-aliasing sempre será aplicado aos seus plots no R, independente do pacote utilizado, seja o base ou o {ggplot}, por exemplo.</p>
