@@ -33,7 +33,7 @@ introDescription = "coordenador no @Banestes_SA, economista e graduando matemát
 math = true
 
 # Google analytics Id
-#ga_analytics = "XXXXXXXXXX"
+ga_analytics = "G-B65R9LH9ES"
 
 # limit the number of taxonomies links shown on the sidebar of each page by default.
 numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g categories, brands see https://gohugo.io/content-management/taxonomies#what-is-a-taxonomy
