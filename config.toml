@@ -30,6 +30,7 @@ author = "Alberson Miranda"
 twitter = "@albersonmiranda"
 largeTwitterCard = false # set to true if you want to show a large twitter card image. The default is a small twitter card image
 introDescription = "coordenador no @Banestes_SA, economista e graduando matemática. #rstats é minha 3ª língua."
+math = true
 
 # Google analytics Id
 #ga_analytics = "XXXXXXXXXX"
