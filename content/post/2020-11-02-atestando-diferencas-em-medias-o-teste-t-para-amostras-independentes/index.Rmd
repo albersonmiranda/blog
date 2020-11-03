@@ -6,9 +6,12 @@ slug: atestando-diferencas-em-medias-o-teste-t-para-amostras-independentes
 categories:
   - estatistica
 tags:
-  - teste de hipoteses
+  - inferencia
 description: Article description.
 featured: yes
+thumbnail: 'images/r.png'
+shareImage: 'images/statistics.png'
+featureImage: 'images/statistics.png'
 ---
 
 Suponha que você tenha duas amostras (i.e. as rendas da população negra e branca de sua cidade) e você queira comprovar que suas médias sejam *significantemente* diferentes, ou seja, que sejam diferentes mesmo considerando a variância e o tamanho das amostras. Isso é possível com um teste t de Student, um dos mais populares testes na estatística.
