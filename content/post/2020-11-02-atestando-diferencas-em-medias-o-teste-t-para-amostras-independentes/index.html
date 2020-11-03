@@ -41,7 +41,7 @@ boxplot(mpg ~ cyl, data = data)</code></pre>
 h_0: \bar{X_1} - \bar{X_2} = 0 \\
 h_1: \bar{X_1} - \bar{X_2} \neq 0
 \]</span>
-A estatística t para esse teste é calculado da maneira abaixo. Note que se tomarmos o limite de <span class="math inline">\(t\)</span> em função de <span class="math inline">\(n\)</span>, com $n $, $ t$, causando a rejeição de <span class="math inline">\(h_0\)</span>. Dessa forma, em último caso, <strong>o teste t é um teste de tamanho de amostra</strong>, ou seja, se sua amostra for suficientemente grande e as médias divergirem, elas tenderão a ser também significantemente diferentes.</p>
+A estatística t para esse teste é calculada da maneira abaixo. Note que se tomarmos o limite de <span class="math inline">\(t(n)\)</span>, com <span class="math inline">\(n \rightarrow \infty\)</span>, <span class="math inline">\(t\rightarrow \infty\)</span>, causando a rejeição de <span class="math inline">\(h_0\)</span>. Dessa forma, em último caso, <strong>o teste t é um teste de tamanho de amostra</strong>, ou seja, se sua amostra for suficientemente grande e as médias divergirem, elas tenderão a ser também significantemente diferentes.</p>
 <p><span class="math display">\[ t = \frac{\bar{X_1} - \bar{X_2}}{s_p . \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} \]</span></p>
 <p>Como primeiro caso, vamos comparar as médias de consumo dos veículos com 6 e 8 cilindros. Como estamos considerando que suas variâncias são iguais, temos de usar o argumento <code>var.equal = TRUE</code>:</p>
 <pre class="r"><code># teste t para 6 e 8 cilindros

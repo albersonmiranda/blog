@@ -48,7 +48,7 @@ $$
 h_0: \bar{X_1} - \bar{X_2} = 0 \\
 h_1: \bar{X_1} - \bar{X_2} \neq 0
 $$
-A estatística t para esse teste é calculado da maneira abaixo. Note que se tomarmos o limite de $t$ em função de $n$, com $n \rightarrow \infty $, $ t\rightarrow \infty$, causando a rejeição de $h_0$. Dessa forma, em último caso, **o teste t é um teste de tamanho de amostra**, ou seja, se sua amostra for suficientemente grande e as médias divergirem, elas tenderão a ser também significantemente diferentes.
+A estatística t para esse teste é calculada da maneira abaixo. Note que se tomarmos o limite de $t(n)$, com $n \rightarrow \infty$, $t\rightarrow \infty$, causando a rejeição de $h_0$. Dessa forma, em último caso, **o teste t é um teste de tamanho de amostra**, ou seja, se sua amostra for suficientemente grande e as médias divergirem, elas tenderão a ser também significantemente diferentes.
 
 $$ t = \frac{\bar{X_1} - \bar{X_2}}{s_p . \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} $$
 
