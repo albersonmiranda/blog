@@ -22,7 +22,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\
     tabWidth = 2
   [markup.goldmark.renderer]
     hardWraps = false
-    unsafe = false # change to true to enable inclusion of rawHTML and math functions
+    unsafe = true # change to true to enable inclusion of rawHTML and math functions
     xhtml = false
 
 [params]
