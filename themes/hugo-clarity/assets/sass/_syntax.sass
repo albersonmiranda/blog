@@ -14,8 +14,8 @@ code
   font-family: 'Monaco', monospace
   word-break: break-all
   &.noClass
-    color: var(--inlineColor)
-    background: var(--code-bg) // código
+    color: var(--stack-col)
+    background: var(--stack-bg) // código
     padding: 0rem 0.1rem 0rem 0.1rem
     margin: 0rem
     display: inline
@@ -36,7 +36,7 @@ code
   //     overflow-x: auto
   position: relative
   &_wrap
-    background: var(--code-bg) !important // block
+    background: var(--stack-bg) !important // block
     border-radius: 0.5rem
     position: relative
     padding: 0 1rem
@@ -62,10 +62,11 @@ code
     margin: 0
   pre
     color: var(--light) !important
+    background: var(--stack-bg)
     border-radius: 4px
     font-family: 'Monaco', monospace
-    padding-top: 1.5rem
-    padding-bottom: 2rem
+    padding-top: 1rem
+    padding-bottom: 1rem
 
   table
     display: grid
@@ -170,7 +171,15 @@ code
 
 .hljs
   &-string
-    color: #6ab825
+    color: var(--stack-color)
+  &-number
+    color: var(--stack-color)
+  &-literal
+    color: var(--stack-color)
+  &-comment
+    color: var(--stack-color)
+  &-meta
+    color: var(--stack-color)
   &-attr
     color: #ed9d13
   .p &-attr

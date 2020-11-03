@@ -31,6 +31,8 @@ twitter = "@albersonmiranda"
 largeTwitterCard = false # set to true if you want to show a large twitter card image. The default is a small twitter card image
 introDescription = "coordenador no @Banestes_SA, economista e graduando matemática. #rstats é minha 3ª língua."
 math = true
+numberOfRecentPosts = 3
+numberOfFeaturedPosts = 2
 
 # Google analytics Id
 ga_analytics = "G-B65R9LH9ES"
