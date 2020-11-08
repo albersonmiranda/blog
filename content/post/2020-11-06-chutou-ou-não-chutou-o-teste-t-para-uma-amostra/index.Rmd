@@ -31,7 +31,7 @@ ao acaso (ou seja, se todos adivinhassem por pura sorte a resposta correta).
 >Realize o teste de hipóteses (seguindo os 5 passos), sabendo-se que de 400 alunos, 125
 responderam corretamente a questão. Use α = 2%.
 
-Acredito que o maior desafio aqui para os alunos iniciantes seja entender o problema e estruturá-lo de uma forma que possa ser respondido com assertividade.A chave está no seguinte trecho:
+Acredito que o maior desafio aqui para os alunos iniciantes seja entender o problema e estruturá-lo de uma forma que possa ser respondido com assertividade. A chave está no seguinte trecho:
 
 >do que seria esperado apenas devido
 ao acaso (ou seja, se todos adivinhassem por pura sorte a resposta correta).
@@ -72,7 +72,7 @@ barplot(table(data), col = c("lightblue", "salmon"))
 
 A intuição do teste t é dizer se essa diferença entre os acertos e erros ocorre por mero acaso no processo de amostragem ou não. Mas o que isso significa? Neste caso, a média amostral foi de 31.25% com 400 estudantes. As características da distribuição, o desvio padrão e o tamanho da amostra permitem atestar que a diferença entre a média amostral e a média esperada é significante? 
 
-Para ilustrar o raciocínio, vamos tomar 10 amostras de 10 estudantes aleatoriamente e observar o comportamento das médias. Essas amostras de 10 estudantes pode ter uma média de acertos (linha vermelha) muito próxima dos 25% esperados (linha azul) e longe da média dos 400 alunos (linha verde).
+Para ilustrar o raciocínio, vamos tomar 10 amostras de 10 estudantes aleatoriamente e observar o comportamento das médias. Essas amostras de 10 estudantes podem ter média de acertos (linha vermelha) muito próxima dos 25% esperados (linha azul) e longe da média dos 400 alunos (linha verde).
 
 ```{r}
 
@@ -86,7 +86,7 @@ for (i in 1:n){
 }
 
 hist(medias,
-     main = "1ªs 10 amostras de 10 alunos",
+     main = "1ª tiragem: 10 amostras de 10 alunos",
      xlab = "média",
      sub = "seed = 3")
 abline(v = mean(medias, na.rm = TRUE), col = "red")
@@ -101,7 +101,7 @@ legend("topright", legend = c(
 
 ```
 
-Mas também é podemos realizar outra tiragem de 10 amostras com 10 alunos diferentes e encontrarmos uma média completamente diferente, próxima dos 45%:
+Mas também é possível realizar outra tiragem de 10 amostras com 10 alunos diferentes e encontrarmos uma média completamente diferente, próxima dos 45%:
 
 ```{r}
 
@@ -115,7 +115,7 @@ for (i in 1:n){
 }
 
 hist(medias,
-     main = "2ªs 10 amostras de 10 alunos",
+     main = "2ª tiragem: 10 amostras de 10 alunos",
      xlab = "média",
      sub = "seed = 4")
 abline(v = mean(medias, na.rm = TRUE), col = "red")
@@ -130,7 +130,7 @@ legend("topright", legend = c(
 
 ```
 
-Conforme vamos aumentando a quantidade de amostras, o desvio padrão se estabiliza e a média amostral vai se aproximando da média populacional:
+Conforme vamos aumentando a quantidade de amostras, o desvio padrão se estabiliza e a média amostral vai se aproximando da média populacional. Veja as médias de 50 amostras de 10 alunos, cada:
 
 ```{r, fig.show="hold", out.width="80%"}
 
@@ -149,7 +149,7 @@ par(mfrow = c(1,2))
 
 # primeira amostra
 hist(medias,
-     main = "1ªs 50 amostras de 10 alunos",
+     main = "1ª tiragem: 50 amostras de 10 alunos",
      xlab = "média",
      sub = "seed = 3")
 abline(v = mean(medias, na.rm = TRUE), col = "red")
@@ -167,7 +167,7 @@ for (i in 1:n){
 }
 
 hist(medias,
-     main = "2ªs 50 amostras de 10 alunos",
+     main = "2ª tiragem: 50 amostras de 10 alunos",
      xlab = "média",
      sub = "seed = 4")
 abline(v = mean(medias, na.rm = TRUE), col = "red")
@@ -204,7 +204,7 @@ par(mfrow = c(1,2))
 
 # plot com seed = 3
 hist(medias,
-     main = "1ªs 100 amostras de 10 alunos",
+     main = "1ª tiragem: 100 amostras de 10 alunos",
      xlab = "média",
      sub = "seed = 3")
 abline(v = mean(medias, na.rm = TRUE), col = "red")
@@ -221,7 +221,7 @@ for (i in 1:n){
 }
 
 hist(medias,
-     main = "2ªs 100 amostras de 10 alunos",
+     main = "2ª tiragem: 100 amostras de 10 alunos",
      xlab = "média",
      sub = "seed = 4")
 abline(v = mean(medias, na.rm = TRUE), col = "red")
@@ -252,12 +252,12 @@ $$\begin{cases}
       H_1: \mu \neq 0.25 \\
     \end{cases}$$
     
-A hipótese nula é que não se pode afirmar que a média de acerto observada é significantemente diferente da média esperada. Já a hipótese alternativa é elas são significativamente distintas.
+A hipótese nula é que não se pode afirmar que a média de acerto observada é significativamente diferente da média esperada. Já a hipótese alternativa é que elas são significativamente distintas.
 
 ## DECLARAR O NÍVEL DE SIGNIFICÂNCIA
 
 $$\alpha = 0.02$$
-O $\alpha = 0.02$ é o que dá sentido ao termo **significantemente diferente**. É a probabilidade de se cometer o erro do tipo II, ou seja, rejeitar a hipótese nula quando não deveria ser rejeitada. Quanto menor o $\alpha$ maior deverá ser a diferença entre as médias para que ela seja considerada significante.
+O $\alpha = 0.02$ é o que dá sentido ao termo **significantemente diferente**. É a probabilidade de se cometer o erro do tipo II, ou seja, rejeitar a hipótese nula quando não deveria ser rejeitada. Quanto menor o $\alpha$, maior deverá ser a diferença entre as médias para que ela seja considerada significante.
 
 ## CALCULAR A ESTATÍSTICA DO TESTE
 
@@ -270,7 +270,7 @@ $$z = \frac{0.3125 - 0.25}{\frac{0.464}{\sqrt{400}}} = 2.693$$
 
 ## DECIDIR SE REJEITAMOS A HIPÓTESE NULA
 
-Como o valor de 2.693 excede o valor de z a 98% de significância (2.33), pode-se rejeitar a hipótese nula. A diferença é estatisticamente significativa e não pode ser atribuída ao acaso de amostragem.
+Como o valor de 2.693 excede o valor de $z$ a 98% de significância (2.33), pode-se rejeitar a hipótese nula. A diferença é significativa e não pode ser atribuída ao acaso de amostragem.
 
 # OK, MAS E NO R?
 
@@ -302,4 +302,4 @@ Bem mais fácil do que fazer na mão, não é mesmo?
 
 # CONCLUSÃO
 
-Agora que temos todo o instrumental, podemos responder a pergunta do rapaz do fórum. O professor pode ficar orgulhoso, pois podemos rejeitar a hipótese de que a média de acerto de seus alunos foi mero chute. Parabéns à turma! :p
+Agora que temos todo o instrumental, podemos responder a pergunta do rapaz do fórum. O professor, sim, pode ficar orgulhoso, pois podemos rejeitar a hipótese de que a média de acerto de seus alunos foi mero chute. Parabéns à turma! :p
