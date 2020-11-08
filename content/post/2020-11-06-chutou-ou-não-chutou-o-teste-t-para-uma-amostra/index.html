@@ -95,7 +95,7 @@ legend(&quot;topright&quot;, legend = c(
   col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
   lty = 1)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>Mas também é possível extrair outras 10 amostras de 10 alunos diferentes aleatoriamente de forma que a média seja próxima de 45%:</p>
+<p>Mas também é podemos realizar outra tiragem de 10 amostras com 10 alunos diferentes e encontrarmos uma média completamente diferente, próxima dos 45%:</p>
 <pre class="r"><code>set.seed(4)
 n = 10
 medias = rep(NA, n)
@@ -119,7 +119,7 @@ legend(&quot;topright&quot;, legend = c(
   col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
   lty = 1)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>Mas, conforme vamos aumentando a quantidade de amostras de 10 alunos tomados aleatoriamente, o desvio padrão se estabiliza e a média amostral vai se aproximando da média populacional:</p>
+<p>Conforme vamos aumentando a quantidade de amostras, o desvio padrão se estabiliza e a média amostral vai se aproximando da média populacional:</p>
 <pre class="r"><code># plot com seed = 3 e 50 amostras
 set.seed(3)
 n = 50
@@ -237,7 +237,8 @@ O <span class="math inline">\(\alpha = 0.02\)</span> é o que dá sentido ao ter
 <div id="calcular-a-estatística-do-teste" class="section level2">
 <h2>CALCULAR A ESTATÍSTICA DO TESTE</h2>
 <p><span class="math display">\[z = \frac{\bar{x} - \mu_0}{\frac{\sigma}{\sqrt{n}}}\]</span>
-Note que <span class="math display">\[\lim_{n \to \infty}z(n) = \infty\]</span>, demonstrando matematicamente o que intuitivamente verificamos.</p>
+Note que: <span class="math display">\[\lim_{n \to \infty}z(n) = \infty\]</span>
+Podemos rejeitar a hipótese nula se <span class="math inline">\(z\)</span> crítico for maior que o <span class="math inline">\(z\)</span> tabelado. Conforme <span class="math inline">\(n\)</span> aumenta, eventualmente a diferença será significativa, demonstrando matematicamente o que verificamos intuitivamente.</p>
 </div>
 <div id="calcular-o-valor-crítico" class="section level2">
 <h2>CALCULAR O VALOR CRÍTICO</h2>
@@ -289,5 +290,9 @@ Note que <span class="math display">\[\lim_{n \to \infty}z(n) = \infty\]</span>,
 ## sample estimates:
 ## mean of x 
 ##    0.3125</code></pre>
-<p>Bem mais fácil do que fazer na mão, não é mesmo? :p</p>
+<p>Bem mais fácil do que fazer na mão, não é mesmo?</p>
+</div>
+<div id="conclusão" class="section level1">
+<h1>CONCLUSÃO</h1>
+<p>Agora que temos todo o instrumental, podemos responder a pergunta do rapaz do fórum. O professor pode ficar orgulhoso, pois podemos rejeitar a hipótese de que a média de acerto de seus alunos foi mero chute. Parabéns à turma! :p</p>
 </div>

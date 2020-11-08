@@ -101,7 +101,7 @@ legend("topright", legend = c(
 
 ```
 
-Mas também é possível extrair outras 10 amostras de 10 alunos diferentes aleatoriamente de forma que a média seja próxima de 45%:
+Mas também é podemos realizar outra tiragem de 10 amostras com 10 alunos diferentes e encontrarmos uma média completamente diferente, próxima dos 45%:
 
 ```{r}
 
@@ -130,7 +130,7 @@ legend("topright", legend = c(
 
 ```
 
-Mas, conforme vamos aumentando a quantidade de amostras de 10 alunos tomados aleatoriamente, o desvio padrão se estabiliza e a média amostral vai se aproximando da média populacional:
+Conforme vamos aumentando a quantidade de amostras, o desvio padrão se estabiliza e a média amostral vai se aproximando da média populacional:
 
 ```{r, fig.show="hold", out.width="80%"}
 
@@ -262,7 +262,8 @@ O $\alpha = 0.02$ é o que dá sentido ao termo **significantemente diferente**.
 ## CALCULAR A ESTATÍSTICA DO TESTE
 
 $$z = \frac{\bar{x} - \mu_0}{\frac{\sigma}{\sqrt{n}}}$$
-Note que $$\lim_{n \to \infty}z(n) = \infty$$, demonstrando matematicamente o que intuitivamente verificamos.
+Note que: $$\lim_{n \to \infty}z(n) = \infty$$
+Podemos rejeitar a hipótese nula se $z$ crítico for maior que o $z$ tabelado. Conforme $n$ aumenta, eventualmente a diferença será significativa, demonstrando matematicamente o que verificamos intuitivamente.
 
 ## CALCULAR O VALOR CRÍTICO
 $$z = \frac{0.3125 - 0.25}{\frac{0.464}{\sqrt{400}}} = 2.693$$
@@ -297,4 +298,8 @@ t.test(data, mu = 0.2583, conf.level = 0.98)
 
 ```
 
-Bem mais fácil do que fazer na mão, não é mesmo? :p
+Bem mais fácil do que fazer na mão, não é mesmo?
+
+# CONCLUSÃO
+
+Agora que temos todo o instrumental, podemos responder a pergunta do rapaz do fórum. O professor pode ficar orgulhoso, pois podemos rejeitar a hipótese de que a média de acerto de seus alunos foi mero chute. Parabéns à turma! :p
