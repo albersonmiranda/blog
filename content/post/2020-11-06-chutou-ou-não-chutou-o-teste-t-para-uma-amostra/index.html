@@ -1,0 +1,293 @@
+---
+title: Chutou ou não chutou? O teste t para uma amostra
+author: Alberson Miranda
+date: '2020-11-06'
+slug: []
+categories:
+  - estatistica
+tags:
+  - inferencia
+  - R
+description: Teste t para uma amostra.
+featured: yes
+featureImage: "t-test.png"
+thumbnail: "images/r.png"
+shareImage: "t-test.png"
+codeMaxLines: 10
+codeLineNumbers: no
+figurePositionShow: yes
+---
+
+
+
+<p>No <a href="https://datamares.netlify.app/post/atestando-diferencas-em-medias-o-teste-t-para-amostras-independentes/">post anterior</a>, falei sobre o teste t para duas amostras independentes. Coincidentemente, no dia seguinte apareceu <a href="https://forumdematematica.org/viewtopic.php?f=69&amp;t=14319&amp;sid=88c3f5cb4248d2096eb36656bbb95c45">essa dúvida</a> no <a href="https://forumdematematica.org/">fórum de matemática</a> do qual sou contribuidor. Não podemos perder essa oportunidade, não é mesmo?</p>
+<div id="o-problema" class="section level1">
+<h1>O PROBLEMA</h1>
+<blockquote>
+<p>Considere uma questão de múltipla escolha com quatro respostas possíveis. A pergunta
+foi formulada para ser muito difícil, sendo que nenhuma das quatro respostas são consideradas erradas,
+mas com apenas uma única resposta correta. Foi feito um teste com 400 alunos. O teste tem objetivo
+de verificar se mais pessoas respondem à pergunta corretamente do que seria esperado apenas devido
+ao acaso (ou seja, se todos adivinhassem por pura sorte a resposta correta).</p>
+<p>Realize o teste de hipóteses (seguindo os 5 passos), sabendo-se que de 400 alunos, 125
+responderam corretamente a questão. Use α = 2%.</p>
+</blockquote>
+<p>Acredito que o maior desafio aqui para os alunos iniciantes seja entender o problema e estruturá-lo de uma forma que possa ser respondido com assertividade.A chave está no seguinte trecho:</p>
+<blockquote>
+<p>do que seria esperado apenas devido
+ao acaso (ou seja, se todos adivinhassem por pura sorte a resposta correta).</p>
+</blockquote>
+<p>A probabilidade de se escolher a resposta certa dentre 4 opções ao acaso é de 25%. Entretanto, 125 dos 400 alunos acertaram a questão, ou seja, 31.25%. O problema então consiste em inferir se a média de 31.25% é significantemente diferente da média esperada, 25%, dado o tamanho da amostra e sua variância. Isso pode ser alcançado com o <em>teste t para uma amostra</em>.</p>
+</div>
+<div id="um-pouco-de-simulação" class="section level1">
+<h1>UM POUCO DE SIMULAÇÃO</h1>
+<p>Antes de entrarmos no teste em si, sabemos que ele é bem simples de calcular mas nem sempre seu conceito é tão facilmente assimilado. Para auxiliar, vamos simular os dados e tentar colocar de maneira visual o que vamos fazer.</p>
+<p>Como são dados binários (acertos ou erros) vamos utilizar 1 para acertos e 0 para erros.</p>
+<pre class="r"><code># criando amostra
+data = c(rep(1, 125), rep(0, 275))
+
+# para que você chegue nos mesmos números aleatórios do exemplo
+set.seed(1)
+
+# randomizando
+data = sample(data)
+
+# checando
+data</code></pre>
+<pre><code>##   [1] 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 1 0 0 0 0 0 1 0 0 0 0 1 1 1 1 0 1 1 1 0 1
+##  [38] 0 0 1 0 0 0 1 0 1 1 0 0 0 1 0 0 0 0 1 0 1 0 0 0 0 1 1 1 0 0 0 1 0 1 0 0 0
+##  [75] 1 0 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 1 1 0 1 0 1 0 1 1
+## [112] 0 1 0 0 0 0 0 0 0 0 0 1 0 1 0 1 1 0 1 0 1 1 0 0 1 1 0 1 1 0 0 0 0 0 0 0 0
+## [149] 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 1 0 0 0 1 1 1 0 0 0 0 0 0 0 0 1 0 1 0
+## [186] 0 0 0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1 0 0 0 1 1 0 0 1 1 1 0 0 1 0
+## [223] 0 0 1 0 0 0 0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 0 0 1 0 1 0 0 1
+## [260] 0 0 0 0 0 0 0 1 1 0 0 0 1 0 0 0 0 0 1 0 0 0 1 0 0 0 0 1 1 1 0 1 0 0 0 0 1
+## [297] 0 0 0 1 0 0 0 1 1 0 0 0 1 1 0 1 0 0 0 1 0 1 1 0 0 0 0 0 0 0 0 1 0 0 0 0 1
+## [334] 1 1 0 0 1 1 0 0 1 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 1 0 1 1 0 1 1 0 1
+## [371] 0 0 0 1 0 0 0 0 0 1 0 0 0 0 1 1 0 0 1 0 0 1 0 0 1 0 0 1 1 0</code></pre>
+<p>Agora que já temos nosso vetor com os dados aleatórios dos alunos que acertaram e erraram as questões, vamos visualizá-lo:</p>
+<pre class="r"><code># gráfico de barras
+par(mar = c(2,2,0,0))
+barplot(table(data), col = c(&quot;lightblue&quot;, &quot;salmon&quot;))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>A intuição do teste t é dizer se essa diferença entre os acertos e erros ocorre por mero acaso no processo de amostragem ou não. Mas o que isso significa? Neste caso, a média amostral foi de 31.25% com 400 estudantes. As características da distribuição, o desvio padrão e o tamanho da amostra permitem atestar que a diferença entre a média amostral e a média esperada é significante?</p>
+<p>Para ilustrar o raciocínio, vamos tomar 10 amostras de 10 estudantes aleatoriamente e observar o comportamento das médias. Essas amostras de 10 estudantes pode ter uma média de acertos (linha vermelha) muito próxima dos 25% esperados (linha azul) e longe da média dos 400 alunos (linha verde).</p>
+<pre class="r"><code>set.seed(3)
+n = 10
+medias = rep(NA, n)
+
+for (i in 1:n){
+  medias[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+hist(medias,
+     main = &quot;1ªs 10 amostras de 10 alunos&quot;,
+     xlab = &quot;média&quot;,
+     sub = &quot;seed = 3&quot;)
+abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
+abline(v = 0.25, col = &quot;blue&quot;)
+abline(v = 0.3125, col = &quot;green&quot;)
+legend(&quot;topright&quot;, legend = c(
+  expression(hat(mu)),
+  expression(paste(mu, &quot;= 0.25&quot;)),
+  expression(paste(mu, &quot;= 0.3325&quot;))),
+  col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
+  lty = 1)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Mas também é possível extrair outras 10 amostras de 10 alunos diferentes aleatoriamente de forma que a média seja próxima de 45%:</p>
+<pre class="r"><code>set.seed(4)
+n = 10
+medias = rep(NA, n)
+
+for (i in 1:n){
+  medias[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+hist(medias,
+     main = &quot;2ªs 10 amostras de 10 alunos&quot;,
+     xlab = &quot;média&quot;,
+     sub = &quot;seed = 4&quot;)
+abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
+abline(v = 0.25, col = &quot;blue&quot;)
+abline(v = 0.3125, col = &quot;green&quot;)
+legend(&quot;topright&quot;, legend = c(
+  expression(hat(mu)),
+  expression(paste(mu, &quot;= 0.25&quot;)),
+  expression(paste(mu, &quot;= 0.3325&quot;))),
+  col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
+  lty = 1)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Mas, conforme vamos aumentando a quantidade de amostras de 10 alunos tomados aleatoriamente, o desvio padrão se estabiliza e a média amostral vai se aproximando da média populacional:</p>
+<pre class="r"><code># plot com seed = 3 e 50 amostras
+set.seed(3)
+n = 50
+medias = rep(NA, n)
+
+for (i in 1:n){
+  medias[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+# separando o grid em 2 colunas
+par(mfrow = c(1,2))
+
+# primeira amostra
+hist(medias,
+     main = &quot;1ªs 50 amostras de 10 alunos&quot;,
+     xlab = &quot;média&quot;,
+     sub = &quot;seed = 3&quot;)
+abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
+abline(v = 0.25, col = &quot;blue&quot;)
+abline(v = 0.3125, col = &quot;green&quot;)
+
+# plot com seed = 4 e 50 alunos
+set.seed(4)
+n = 50
+medias = rep(NA, n)
+
+for (i in 1:n){
+  medias[i] = mean(
+    sample(data, size = runif(1, min = 0, max = n), replace = TRUE))
+}
+
+hist(medias,
+     main = &quot;2ªs 50 amostras de 10 alunos&quot;,
+     xlab = &quot;média&quot;,
+     sub = &quot;seed = 4&quot;)
+abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
+abline(v = 0.25, col = &quot;blue&quot;)
+abline(v = 0.3125, col = &quot;green&quot;)
+legend(&quot;topright&quot;, legend = c(
+  expression(hat(mu)),
+  expression(paste(mu, &quot;= 0.25&quot;)),
+  expression(paste(mu, &quot;= 0.3325&quot;))),
+  col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
+  lty = 1,
+  cex = .7)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="80%" /></p>
+<p>Pode-se observar que tomando duas tiragens de 50 amostras de 10 alunos aleatoriamente cada, as médias começam a convergir para a média observado no total dos 400 alunos.</p>
+<p>E se aumentarmos para 100 amostras de 10 alunos?</p>
+<pre class="r"><code># plot com seed = 3 e 100 alunos
+set.seed(3)
+n = 100
+medias = rep(NA, n)
+
+for (i in 1:n){
+  medias[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+# separando o grid em 2 colunas
+par(mfrow = c(1,2))
+
+# plot com seed = 3
+hist(medias,
+     main = &quot;1ªs 100 amostras de 10 alunos&quot;,
+     xlab = &quot;média&quot;,
+     sub = &quot;seed = 3&quot;)
+abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
+abline(v = 0.25, col = &quot;blue&quot;)
+abline(v = 0.3125, col = &quot;green&quot;)
+
+# plot com seed = 4
+set.seed(4)
+medias = rep(NA, n)
+
+for (i in 1:n){
+  medias[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+hist(medias,
+     main = &quot;2ªs 100 amostras de 10 alunos&quot;,
+     xlab = &quot;média&quot;,
+     sub = &quot;seed = 4&quot;)
+abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
+abline(v = 0.25, col = &quot;blue&quot;)
+abline(v = 0.3125, col = &quot;green&quot;)
+legend(&quot;topright&quot;, legend = c(
+  expression(hat(mu)),
+  expression(paste(mu, &quot;= 0.25&quot;)),
+  expression(paste(mu, &quot;= 0.3325&quot;))),
+  col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
+  lty = 1,
+  cex = .7)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Perceba que com 100 amostras aleatórias, as médias já ficam muito próximas dos 33.25% observados em ambas tiragens. Isso acontece porque conforme o número de observações aumenta, o desvio padrão tende a se estabilizar e a incerteza diminui. Seria muito difícil de os primeiros 400 alunos terem uma determinada média de acertos e os próximos 50 alunos todos acertassem ou errassem de forma a desequilibrar o desvio padrão e afetar a média significativamente. É por isso que, em último caso, <strong>o teste t é um teste de tamanho de amostra</strong>. A pergunta por trás de tudo é: minha amostra é grande o suficiente para que a diferença seja significativa?</p>
+<p>Agora, com a intuição do teste em mente, vamos formalizá-lo.</p>
+</div>
+<div id="o-teste" class="section level1">
+<h1>O TESTE</h1>
+<p>Para tornar o processo bem transparente e fixar bem os conceitos, é sempre recomendável utilizar o framework das 5 etapas do teste de hipótese, que são:</p>
+<div id="declarar-as-hipóteses-nula-e-alternativa" class="section level2">
+<h2>DECLARAR AS HIPÓTESES NULA E ALTERNATIVA</h2>
+<p><span class="math display">\[\begin{cases}
+      H_0: \mu = 0.25 \\
+      H_1: \mu \neq 0.25 \\
+    \end{cases}\]</span></p>
+<p>A hipótese nula é que não se pode afirmar que a média de acerto observada é significantemente diferente da média esperada. Já a hipótese alternativa é elas são significativamente distintas.</p>
+</div>
+<div id="declarar-o-nível-de-significância" class="section level2">
+<h2>DECLARAR O NÍVEL DE SIGNIFICÂNCIA</h2>
+<p><span class="math display">\[\alpha = 0.02\]</span>
+O <span class="math inline">\(\alpha = 0.02\)</span> é o que dá sentido ao termo <strong>significantemente diferente</strong>. É a probabilidade de se cometer o erro do tipo II, ou seja, rejeitar a hipótese nula quando não deveria ser rejeitada. Quanto menor o <span class="math inline">\(\alpha\)</span> maior deverá ser a diferença entre as médias para que ela seja considerada significante.</p>
+</div>
+<div id="calcular-a-estatística-do-teste" class="section level2">
+<h2>CALCULAR A ESTATÍSTICA DO TESTE</h2>
+<p><span class="math display">\[z = \frac{\bar{x} - \mu_0}{\frac{\sigma}{\sqrt{n}}}\]</span>
+Note que <span class="math display">\[\lim_{n \to \infty}z(n) = \infty\]</span>, demonstrando matematicamente o que intuitivamente verificamos.</p>
+</div>
+<div id="calcular-o-valor-crítico" class="section level2">
+<h2>CALCULAR O VALOR CRÍTICO</h2>
+<p><span class="math display">\[z = \frac{0.3125 - 0.25}{\frac{0.464}{\sqrt{400}}} = 2.693\]</span></p>
+</div>
+<div id="decidir-se-rejeitamos-a-hipótese-nula" class="section level2">
+<h2>DECIDIR SE REJEITAMOS A HIPÓTESE NULA</h2>
+<p>Como o valor de 2.693 excede o valor de z a 98% de significância (2.33), pode-se rejeitar a hipótese nula. A diferença é estatisticamente significativa e não pode ser atribuída ao acaso de amostragem.</p>
+</div>
+</div>
+<div id="ok-mas-e-no-r" class="section level1">
+<h1>OK, MAS E NO R?</h1>
+<p>No R, o teste não poderia ser mais simples:</p>
+<pre class="r"><code>t.test(data, mu = 0.25, conf.level = 0.98)</code></pre>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  data
+## t = 2.6934, df = 399, p-value = 0.00737
+## alternative hypothesis: true mean is not equal to 0.25
+## 98 percent confidence interval:
+##  0.2583002 0.3666998
+## sample estimates:
+## mean of x 
+##    0.3125</code></pre>
+<p>Note que 0.25 não está no intervalo de confiança, de forma que podemos rejeitar <span class="math inline">\(H_o\)</span>. Como ilustração, para que não pudessemos rejeitar a hipótese nula, teríamos de aumentar o nível de significância para 1 - p-valor, ou seja, para 99.263%:</p>
+<pre class="r"><code>t.test(data, mu = 0.25, conf.level = 0.99263)</code></pre>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  data
+## t = 2.6934, df = 399, p-value = 0.00737
+## alternative hypothesis: true mean is not equal to 0.25
+## 99.263 percent confidence interval:
+##  0.2499995 0.3750005
+## sample estimates:
+## mean of x 
+##    0.3125</code></pre>
+<p>Ou aumentar a média para 25.83%:</p>
+<pre class="r"><code>t.test(data, mu = 0.2583, conf.level = 0.98)</code></pre>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  data
+## t = 2.3357, df = 399, p-value = 0.02
+## alternative hypothesis: true mean is not equal to 0.2583
+## 98 percent confidence interval:
+##  0.2583002 0.3666998
+## sample estimates:
+## mean of x 
+##    0.3125</code></pre>
+<p>Bem mais fácil do que fazer na mão, não é mesmo? :p</p>
+</div>
