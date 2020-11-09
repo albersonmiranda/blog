@@ -14,8 +14,6 @@ code
   font-family: 'Monaco', monospace
   word-break: break-all
   &.noClass
-    color: var(--stack-col)
-    background: var(--stack-bg) // código
     padding: 0rem 0.1rem 0rem 0.1rem
     margin: 0rem
     display: inline
@@ -36,7 +34,7 @@ code
   //     overflow-x: auto
   position: relative
   &_wrap
-    background: var(--stack-bg) !important // block
+    background: #282b2e !important // block
     border-radius: 0.5rem
     position: relative
     padding: 0 1rem
@@ -45,7 +43,6 @@ code
       opacity: 1
     .lang
       position: absolute
-      // background-color: var(--bg)
       top: 0
       right: 0
       text-align: right
@@ -55,14 +52,11 @@ code
       text-transform: uppercase
       font-size: 67%
       opacity: 0.5
-      color: var(--light)
     &:hover .lang
       opacity: 0.1
   & &
     margin: 0
   pre
-    color: var(--light) !important
-    background: var(--stack-bg)
     border-radius: 4px
     font-family: 'Monaco', monospace
     padding-top: 1rem
@@ -168,22 +162,6 @@ code
   color: #d22323
 .w
   color: #666
-
-.hljs
-  &-string
-    color: var(--stack-color)
-  &-number
-    color: var(--stack-color)
-  &-literal
-    color: var(--stack-color)
-  &-comment
-    color: var(--stack-color)
-  &-meta
-    color: var(--stack-color)
-  &-attr
-    color: #ed9d13
-  .p &-attr
-    color: var(--light)
 
 .pre
   &_wrap
