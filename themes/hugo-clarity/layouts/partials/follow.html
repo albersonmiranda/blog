@@ -3,12 +3,10 @@
   {{- range $items }}
   {{- $url := .url }}
   {{- if .internal }}
-  {{ $url = absURL .url }}
+    {{ $url = absLangURL .url }}
   {{- end }}
-  <a href='{{ $url }}'>
-    <svg class="icon">
-      <use xlink:href="#{{ .item }}"></use>
-    </svg>
+  <a href="{{ $url }}">
+    {{ partial "sprite" (dict "icon" .item) }}
   </a>
   {{- end }}
   {{- partial "mode" . }}

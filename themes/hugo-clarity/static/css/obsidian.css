@@ -6,7 +6,7 @@
 .hljs {
   display: block;
   overflow-x: auto;
-  padding: 0.5em;
+  padding: 0em;
   background: #282b2e;
 }
 
@@ -85,4 +85,8 @@
 .hljs-name,
 .hljs-strong {
   font-weight: bold;
+}
+
+.highlight {
+  background: #282b2e;
 }

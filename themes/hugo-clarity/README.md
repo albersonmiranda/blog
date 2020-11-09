@@ -32,8 +32,12 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Tags and taxonomies](#tags-and-taxonomies)
   * [Images](#images)
   * [Code](#code)
-  * [Table of contents](#table-of-contents)
+  * [Table of contents](#table-of-contents-1)
   * [Custom CSS and JS](#custom-css-and-js)
+  * [Forcing light or dark mode](#forcing-light-or-dark-mode)
+  * [Internationalization - I18N](#i18n)
+  * [Hooks](#hooks)
+  * [Comments](#comments)
 
 ## Features
 
@@ -69,7 +73,7 @@ Read the [prerequisites](#prerequisites) above and verify you're using the exten
 ### Option 1 (recommended)
 
 Generate a new Hugo site and add this theme as a Git submodule inside your themes folder:
-  
+
 ```bash
 hugo new site yourSiteName
 cd yourSiteName
@@ -98,9 +102,32 @@ hugo server --themesDir ../..
 
 > Although, option 2 is great for quick testing, it is somewhat problematic when you want to update your theme. You would need to be careful not to overwrite your changes.
 
-Once set, jump over to the `config.toml` file and start [configuring](#configuration) your site.
+### Option 3 (The new, most fun & painless approach)
+
+This option enables you to load this theme as a hugo module. It arguably requires the least effort to run and maintain in your website.
+
+Ensure you have `go` binary [installed on your machine](https://golang.org/doc/install).
+
+```bash
+git clone https://github.com/chipzoller/hugo-clarity.git clarity
+cd clarity/exampleSite/
+hugo mod init my-site
+```
+Open config.toml file in your code editor, replace `theme = "hugo-clarity"` with `theme = ["github.com/chipzoller/hugo-clarity"]` or just `theme = "github.com/chipzoller/hugo-clarity"`.
+
+Hurray you can now run
+
+```yaml
+hugo server
+```
+
+To pull in theme updates, run `hugo mod get -u ./...` from the theme folder. If unsure, [learn how to update hugo modules](https://gohugo.io/hugo-modules/use-modules/#update-modules)
+
+> There [is more you could do with hugo modules](https://discourse.gohugo.io/t/hugo-modules-for-dummies/20758), but this will suffice for our use case here.
 
 ## Configuration
+
+If set, jump over to the `config.toml` file and start [configuring](#configuration) your site.
 
 This section will mainly cover settings that are unique to this theme. If something is not covered here (or elsewhere in this file), there's a good chance it is covered in [this Hugo docs page](https://gohugo.io/getting-started/configuration/#configuration-file).
 
@@ -114,6 +141,7 @@ These options set global values that some pages or all pages in the site use by 
 | twitter | string | no |
 | largeTwitterCard | boolean | no |
 | ga_analytics | string | no |
+| description | string | yes |
 | introDescription | string | no |
 | numberOfTagsShown | integer | no |
 | fallBackOgImage | file path (string) | no |
@@ -127,6 +155,15 @@ These options set global values that some pages or all pages in the site use by 
 | figurePositionLabel | string | no |
 | customCSS | array of file path (string) | no |
 | customJS | array of file path (string) | no |
+| enforceLightMode | boolean | N/A |
+| enforceDarkMode | boolean | N/A |
+| titleSeparator| string | no |
+| comment | boolean | no |
+| numberOfRecentPosts | integer | no |
+| numberOfFeaturedPosts | integer | no |
+| dateFormat | string | no |
+| enableMathNotation | boolean | yes |
+| customFonts | boolean | no |
 
 ### Page Parameters
 
@@ -149,6 +186,8 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | codeLineNumbers | boolean | yes |
 | figurePositionShow | boolean | yes |
 | figurePositionLabel | string | no |
+| comment | boolean | no |
+| enableMathNotation | boolean | yes |
 
 ### Modify links menu
 
@@ -197,7 +236,7 @@ The number of tags and taxonomies (including categories) that should be shown ca
 ```yaml
 [params]
 ...
-numberOfTagsShownPerArticle = 4 # Applies for categories & custom taxonomies. e.g brands
+numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g categories, brands see https://gohugo.io/content-management/taxonomies#what-is-a-taxonomy
 ...
 ```
 
@@ -224,6 +263,8 @@ In this example, `figurePositionLabel` is set to "Figure" in `config.toml` and t
 ```
 
 ![Here is my alt text for this image.](https://github.com/chipzoller/hugo-clarity/blob/master/images/image-figure.png)
+
+> NOTE: Alt text with double quotes will produce broken HTML per limitations with Markdown. It is recommended to omit any quotations from your alt text.
 
 #### Inline images
 
@@ -259,7 +300,7 @@ To align a blog image to the left, append `:left` to its alt text. Article text 
 
 #### Add classes to images
 
-To add a class image to the left, append `::<classname>` to its alt text. You can also add multiple classes to an image separated by space. `::<classname1> <classname2>`. 
+To add a class image to the left, append `::<classname>` to its alt text. You can also add multiple classes to an image separated by space. `::<classname1> <classname2>`.
 
 #### Image class example
 
@@ -271,7 +312,6 @@ To add a class image to the left, append `::<classname>` to its alt text. You ca
 
 ![some alt text::img-large img-shadow](someOtherImageUrl)
 ```
-
 
 #### Article thumbnail image
 
@@ -361,7 +401,7 @@ If `codeMaxLines` is not specified anywhere, an internal default value of `100` 
 
 Each article can optionally have a table of contents (TOC) generated for it based on top-level links. By configuring the `toc` parameter in the article frontmatter and setting it to `true`, a TOC will be generated only for that article. The TOC will then render under the featured image.
 
-### Table of contents (TOC) example
+#### Table of contents (TOC) example
 
 ![Article table of contents](https://github.com/chipzoller/hugo-clarity/blob/master/images/article-toc.png)
 
@@ -369,7 +409,31 @@ Each article can optionally have a table of contents (TOC) generated for it base
 
 To minimize HTTP requests per page, we would recommend loading CSS styles and JavaScript helpers in single bundles. That is to say, one CSS file and one JavaScript file. Using Hugo minify functions, these files will be minified to optimize the size.
 
-Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via [this custom SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass) and [custom JavaScript file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
+Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via these files:
+
+1. [`_override.sass`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_override.sass).
+    This file should only be used to override sass & css variables e.g theme colors
+2. [`_custom.sass`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass).
+    This file should only be used to except override everything else except sass & css variables.
+3. [`custom.js`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
+
+> __Pro Tip__: to ensure that your changes are git trackeable, create these files outside the theme directory. That is, at the root level of your site's directory. see tree below
+
+```
+├── yourSite
+│   ├── archetypes
+│   │   └── post.md
+│   ├── assets
+│   │   ├── js
+│   │   │   └── custom.js
+│   │   └── sass
+│   │       ├── _custom.sass
+│   │       └── _override.sass
+├── config.toml
+│   ├── configTaxo.toml
+│   ├── content
+│   │   ├── _index.md
+```
 
 However, sometimes you may need to load additional style or script files. In such cases, you can add custom `.css` and `.js` files by listing them in the `config.toml` file (see the snippet below). Similar to images, these paths should be relative to the `static` directory.
 
@@ -381,4 +445,71 @@ customJS = ["js/custom.js"] # Include custom JS files
 ...
 ```
 
-> __Pro Tip__: You can change the theme colors via the [this variable's SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_variables.sass) 
+### Forcing light or dark mode
+
+By default, sites authored using Clarity will load in the browser with the user's system-wide settings. I.e., if the underlying OS is set to dark mode, the site will automatically load in dark mode. Regardless of the default mode, a UI control switch exists to override the theme mode at the user's discretion.
+
+In order to override this behavior and force one mode or another, add either `enforceLightMode` or `enforceDarkMode` to your `config.toml` file. If neither value is present, add it.
+
+To enforce Light Mode by default, turn `enforceLightMode`  to `true`.
+
+To enforce Dark Mode by default, turn `enforceDarkMode`  to `true`
+
+```yaml
+[params]
+...
+enforceLightMode = true # Force the site to always load in light mode.
+...
+```
+
+Please note that you cannot enforce both modes at the same time. It wouldn't make sense, would it?
+
+> ⚠️ Please also note that the mode toggle UI will remain in place. That way, if a user prefers dark mode, they can have their way. The best of both worlds.
+
+### I18N
+
+This theme supports Multilingual (i18n / internationalization / translations)
+
+The `exampleSite` gives you some examples already.
+You may extend the multilingual functionality by following the [official documentation](https://gohugo.io/content-management/multilingual/).
+
+Things to consider in multilingual:
+
+* **supported languages** are configured in [config/_default/languages.toml](./exampleSite/config/_default/languages.toml)
+* **add new language support** by creating a new file inside [i18n](./i18n/) directory.
+  Check for missing translations using `hugo server --i18n-warnings`
+* **taxonomy** names (tags, categories, etc...) are translated in [i18n](./i18n/) as well (translate the key)
+* **menus** are translated manually in the config files [config/_default/menus/menu.xx.toml](./exampleSite/config/_default/menus/)
+* **menu's languages list** are semi-hardcoded. You may chose another text for the menu entry with [languageMenuName](./exampleSite/config.toml). Please, do better and create a PR for that.
+* **content** must be translated individually. Read the [official documentation](https://gohugo.io/content-management/multilingual/#translate-your-content) for information on how to do it.
+
+**note:** if you do NOT want any translations (thus removing the translations menu entry), then you must not have any translations.
+In the exampleSite that's as easy as removing the extra translations from the `config/_default/...` or executing this onliner:
+
+```
+sed '/^\[pt]$/,$d' -i config/_default/languages.toml   &&   rm config/_default/menus/menu.pt.toml
+```
+
+### Hooks
+
+Clarity provides some hooks for adding code on page.
+
+If you need to add some code(CSS import, HTML meta or similar) to the head section on every page, add a partial to your project:
+
+```
+layouts/partials/hooks/head-end.html
+```
+
+Similar, if you want to add some code right before the body end (e.g fonts' links), create your own version of the following file:
+
+```
+layouts/partials/hooks/body-end.html
+```
+
+### Comments
+
+Clarity supports Hugo built-in Disqus partial, you can enable Disqus simply by setting [`disqusShortname`](https://gohugo.io/templates/internal/#configure-disqus) in your configuration file.
+
+> ⚠️ `disqusShortname` should be placed in root level of configuration.
+
+You can also create a file named `layouts/partials/comments.html` for customizing the comments, checkout [Comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.

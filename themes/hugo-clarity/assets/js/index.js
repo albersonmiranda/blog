@@ -61,9 +61,10 @@
 function fileClosure(){
 
   (function updateDate() {
-    var date = new Date();
-    var year = date.getFullYear();
-    elem('.year').innerHTML = year;
+    const date = new Date();
+    const year = date.getFullYear();
+    const yearEl = elem('.year');
+    yearEl ? yearEl.innerHTML = year : false;
   })();
 
   (function makeExternalLinks(){
@@ -233,10 +234,12 @@ function fileClosure(){
       const modifiers = [':left', ':right'];
       const altArr = alt.split('::').map(x => x.trim())
 
-      altArr[1]?.split(' ').filter(Boolean).forEach(cls =>{
-        pushClass(image, cls);
-        alt = altArr[0]
-      })
+      if (altArr.length > 1) {
+        altArr[1].split(' ').filter(Boolean).forEach(cls =>{
+          pushClass(image, cls);
+          alt = altArr[0]
+        })
+      }
 
       modifiers.forEach(function(modifier){
         const canModify = alt.includes(modifier);
@@ -398,6 +401,10 @@ function fileClosure(){
         const hasSubNav = hasNext ? hasNext.matches(`.${navSub}`) : null;
         if (hasSubNav) {
           event.preventDefault();
+          Array.from(thisItem.parentNode.parentNode.children).forEach(function(item){
+            const targetItem = item.firstElementChild;
+             targetItem != thisItem ? deleteClass(targetItem, showSub) : false;
+          });
           modifyClass(thisItem, showSub);
         }
       }
@@ -447,6 +454,16 @@ function fileClosure(){
         })
       }
     })
+  })();
+
+  (function shareViaLinkedin() {
+    doc.addEventListener('click', function(event){
+      const linkedin = '.linkedin';
+      const target = event.target;
+      if(target.matches(linkedin) || target.closest(linkedin)) {
+        window.open('http://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(window.location.href), '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+      }
+    });
   })();
 
   // add new code above this line

@@ -14,8 +14,8 @@ code
   font-family: 'Monaco', monospace
   word-break: break-all
   &.noClass
-    padding: 0rem 0.1rem 0rem 0.1rem
-    margin: 0rem
+    --inlineColor: rgb(194, 29, 0)
+    color: var(--light)
     display: inline
     line-break: anywhere
 .windows .highlight
@@ -34,15 +34,18 @@ code
   //     overflow-x: auto
   position: relative
   &_wrap
-    background: #282b2e !important // block
+    background: #282b2e !important
     border-radius: 0.5rem
     position: relative
     padding: 0 1rem
     margin: 1.5rem auto 1rem auto
+    & + &
+      margin-top: 2.25rem
     &:hover > div
       opacity: 1
     .lang
       position: absolute
+      // background-color: var(--bg)
       top: 0
       right: 0
       text-align: right
@@ -52,15 +55,17 @@ code
       text-transform: uppercase
       font-size: 67%
       opacity: 0.5
+      color: var(--light)
     &:hover .lang
       opacity: 0.1
   & &
     margin: 0
   pre
+    color: var(--light) !important
     border-radius: 4px
     font-family: 'Monaco', monospace
-    padding-top: 1rem
-    padding-bottom: 1rem
+    padding-top: 1.5rem
+    padding-bottom: 2rem
 
   table
     display: grid
@@ -162,6 +167,14 @@ code
   color: #d22323
 .w
   color: #666
+
+.hljs
+  &-string
+    color: #6ab825
+  &-attr
+    color: #ed9d13
+  .p &-attr
+    color: var(--light)
 
 .pre
   &_wrap
