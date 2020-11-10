@@ -18,6 +18,8 @@ codeLineNumbers: no
 figurePositionShow: yes
 ---
 
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
 
 
 <p>No <a href="https://datamares.netlify.app/post/atestando-diferencas-em-medias-o-teste-t-para-amostras-independentes/">post anterior</a>, falei sobre o teste t para duas amostras independentes. Coincidentemente, no dia seguinte apareceu <a href="https://forumdematematica.org/viewtopic.php?f=69&amp;t=14319&amp;sid=88c3f5cb4248d2096eb36656bbb95c45">essa dúvida</a> no <a href="https://forumdematematica.org/">fórum de matemática</a> do qual sou contribuidor. Não podemos perder essa oportunidade, não é mesmo?</p>
@@ -32,7 +34,7 @@ ao acaso (ou seja, se todos adivinhassem por pura sorte a resposta correta).</p>
 <p>Realize o teste de hipóteses (seguindo os 5 passos), sabendo-se que de 400 alunos, 125
 responderam corretamente a questão. Use α = 2%.</p>
 </blockquote>
-<p>Acredito que o maior desafio aqui para os alunos iniciantes seja entender o problema e estruturá-lo de uma forma que possa ser respondido com assertividade.A chave está no seguinte trecho:</p>
+<p>Acredito que o maior desafio aqui para os alunos iniciantes seja entender o problema e estruturá-lo de uma forma que possa ser respondido com assertividade. A chave está no seguinte trecho:</p>
 <blockquote>
 <p>do que seria esperado apenas devido
 ao acaso (ou seja, se todos adivinhassem por pura sorte a resposta correta).</p>
@@ -71,18 +73,25 @@ par(mar = c(2,2,0,0))
 barplot(table(data), col = c(&quot;lightblue&quot;, &quot;salmon&quot;))</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>A intuição do teste t é dizer se essa diferença entre os acertos e erros ocorre por mero acaso no processo de amostragem ou não. Mas o que isso significa? Neste caso, a média amostral foi de 31.25% com 400 estudantes. As características da distribuição, o desvio padrão e o tamanho da amostra permitem atestar que a diferença entre a média amostral e a média esperada é significante?</p>
-<p>Para ilustrar o raciocínio, vamos tomar 10 amostras de 10 estudantes aleatoriamente e observar o comportamento das médias. Essas amostras de 10 estudantes pode ter uma média de acertos (linha vermelha) muito próxima dos 25% esperados (linha azul) e longe da média dos 400 alunos (linha verde).</p>
-<pre class="r"><code>set.seed(3)
+<p>Para ilustrar o raciocínio, vamos tomar 10 amostras de 10 estudantes aleatoriamente e observar o comportamento das médias. Essas amostras de 10 estudantes podem ter média de acertos (linha vermelha) muito próxima dos 25% esperados (linha azul) e longe da média dos 400 alunos (linha verde).</p>
+<pre class="r"><code># garantir reprodutibilidade
+set.seed(3)
+
+# quantidade de amostras
 n = 10
+
+# médias
 medias = rep(NA, n)
 
+# tirando amostras e calculando as médias
 for (i in 1:n){
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
 
+# visualização
 hist(medias,
-     main = &quot;1ªs 10 amostras de 10 alunos&quot;,
+     main = &quot;1ª tiragem: 10 amostras de 10 alunos&quot;,
      xlab = &quot;média&quot;,
      sub = &quot;seed = 3&quot;)
 abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
@@ -95,18 +104,25 @@ legend(&quot;topright&quot;, legend = c(
   col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
   lty = 1)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>Mas também é podemos realizar outra tiragem de 10 amostras com 10 alunos diferentes e encontrarmos uma média completamente diferente, próxima dos 45%:</p>
-<pre class="r"><code>set.seed(4)
+<p>Mas também é possível realizar outra tiragem de 10 amostras com 10 alunos diferentes e encontrarmos uma média completamente diferente, próxima dos 45%:</p>
+<pre class="r"><code># garantir reprodutibilidade
+set.seed(4)
+
+# quantidade de amostras
 n = 10
+
+# médias
 medias = rep(NA, n)
 
+# tirando amostras e calculando as médias
 for (i in 1:n){
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
 
+# visualização
 hist(medias,
-     main = &quot;2ªs 10 amostras de 10 alunos&quot;,
+     main = &quot;2ª tiragem: 10 amostras de 10 alunos&quot;,
      xlab = &quot;média&quot;,
      sub = &quot;seed = 4&quot;)
 abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
@@ -119,12 +135,17 @@ legend(&quot;topright&quot;, legend = c(
   col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
   lty = 1)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>Conforme vamos aumentando a quantidade de amostras, o desvio padrão se estabiliza e a média amostral vai se aproximando da média populacional:</p>
-<pre class="r"><code># plot com seed = 3 e 50 amostras
+<p>Conforme vamos aumentando a quantidade de amostras, o desvio padrão se estabiliza e a média amostral vai se aproximando da média populacional. Veja as médias de 50 amostras de 10 alunos, cada:</p>
+<pre class="r"><code># garantir reprodutibilidade
 set.seed(3)
+
+# quantidade de amostras
 n = 50
+
+# médias
 medias = rep(NA, n)
 
+# tirando amostras e calculando as médias
 for (i in 1:n){
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
@@ -133,27 +154,35 @@ for (i in 1:n){
 # separando o grid em 2 colunas
 par(mfrow = c(1,2))
 
-# primeira amostra
+# visualização 1ª tiragem
 hist(medias,
-     main = &quot;1ªs 50 amostras de 10 alunos&quot;,
+     main = &quot;1ª tiragem: 50 amostras de 10 alunos&quot;,
      xlab = &quot;média&quot;,
      sub = &quot;seed = 3&quot;)
 abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
 abline(v = 0.25, col = &quot;blue&quot;)
 abline(v = 0.3125, col = &quot;green&quot;)
 
-# plot com seed = 4 e 50 alunos
+################################################################################
+
+# garantir reprodutibilidade
 set.seed(4)
+
+# quantidade de amostras
 n = 50
+
+# médias
 medias = rep(NA, n)
 
+# tirando amostras e calculando as médias
 for (i in 1:n){
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = n), replace = TRUE))
 }
 
+# visualização 2ª tiragem
 hist(medias,
-     main = &quot;2ªs 50 amostras de 10 alunos&quot;,
+     main = &quot;2ª tiragem: 50 amostras de 10 alunos&quot;,
      xlab = &quot;média&quot;,
      sub = &quot;seed = 4&quot;)
 abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
@@ -167,13 +196,18 @@ legend(&quot;topright&quot;, legend = c(
   lty = 1,
   cex = .7)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="80%" /></p>
-<p>Pode-se observar que tomando duas tiragens de 50 amostras de 10 alunos aleatoriamente cada, as médias começam a convergir para a média observado no total dos 400 alunos.</p>
+<p>Pode-se observar que tomando duas tiragens de 50 amostras de 10 alunos aleatoriamente cada, as médias começam a convergir para a média observada no total dos 400 alunos.</p>
 <p>E se aumentarmos para 100 amostras de 10 alunos?</p>
-<pre class="r"><code># plot com seed = 3 e 100 alunos
+<pre class="r"><code># garantir reprodutibilidade
 set.seed(3)
+
+# quantidade de amostras
 n = 100
+
+# médias
 medias = rep(NA, n)
 
+# tirando amostras e calculando as médias
 for (i in 1:n){
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
@@ -182,26 +216,32 @@ for (i in 1:n){
 # separando o grid em 2 colunas
 par(mfrow = c(1,2))
 
-# plot com seed = 3
+# visualização 1ª tiragem
 hist(medias,
-     main = &quot;1ªs 100 amostras de 10 alunos&quot;,
+     main = &quot;1ª tiragem: 100 amostras de 10 alunos&quot;,
      xlab = &quot;média&quot;,
      sub = &quot;seed = 3&quot;)
 abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
 abline(v = 0.25, col = &quot;blue&quot;)
 abline(v = 0.3125, col = &quot;green&quot;)
 
-# plot com seed = 4
+################################################################################
+
+# garantir reprodutibilidade
 set.seed(4)
+
+# médias
 medias = rep(NA, n)
 
+# tirando amostras e calculando as médias
 for (i in 1:n){
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
 
+# visualização 2ª tiragem
 hist(medias,
-     main = &quot;2ªs 100 amostras de 10 alunos&quot;,
+     main = &quot;2ª tiragem: 100 amostras de 10 alunos&quot;,
      xlab = &quot;média&quot;,
      sub = &quot;seed = 4&quot;)
 abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
@@ -215,7 +255,7 @@ legend(&quot;topright&quot;, legend = c(
   lty = 1,
   cex = .7)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>Perceba que com 100 amostras aleatórias, as médias já ficam muito próximas dos 33.25% observados em ambas tiragens. Isso acontece porque conforme o número de observações aumenta, o desvio padrão tende a se estabilizar e a incerteza diminui. Seria muito difícil de os primeiros 400 alunos terem uma determinada média de acertos e os próximos 50 alunos todos acertassem ou errassem de forma a desequilibrar o desvio padrão e afetar a média significativamente. É por isso que, em último caso, <strong>o teste t é um teste de tamanho de amostra</strong>. A pergunta por trás de tudo é: minha amostra é grande o suficiente para que a diferença seja significativa?</p>
+<p>Perceba que com 100 amostras aleatórias, as médias já ficam muito próximas dos 33.25% observados em ambas tiragens. Isso acontece porque conforme o número de observações aumenta, o desvio padrão tende a se estabilizar e a incerteza diminui. Seria muito difícil de os primeiros 400<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> alunos terem uma determinada média de acertos e os próximos 50 alunos todos acertassem ou errassem de forma a gerar mudanças no desvio padrão e afetar a média significativamente. É por isso que, em último caso, <strong>o teste t é um teste de tamanho de amostra</strong>. A pergunta por trás de tudo é: minha amostra é grande o suficiente para que a diferença seja significativa?</p>
 <p>Agora, com a intuição do teste em mente, vamos formalizá-lo.</p>
 </div>
 <div id="o-teste" class="section level1">
@@ -227,12 +267,12 @@ legend(&quot;topright&quot;, legend = c(
       H_0: \mu = 0.25 \\
       H_1: \mu \neq 0.25 \\
     \end{cases}\]</span></p>
-<p>A hipótese nula é que não se pode afirmar que a média de acerto observada é significantemente diferente da média esperada. Já a hipótese alternativa é elas são significativamente distintas.</p>
+<p>A hipótese nula é que não se pode afirmar que a média de acerto observada é significativamente diferente da média esperada. Já a hipótese alternativa é que elas são significativamente distintas.</p>
 </div>
 <div id="declarar-o-nível-de-significância" class="section level2">
 <h2>DECLARAR O NÍVEL DE SIGNIFICÂNCIA</h2>
 <p><span class="math display">\[\alpha = 0.02\]</span>
-O <span class="math inline">\(\alpha = 0.02\)</span> é o que dá sentido ao termo <strong>significantemente diferente</strong>. É a probabilidade de se cometer o erro do tipo II, ou seja, rejeitar a hipótese nula quando não deveria ser rejeitada. Quanto menor o <span class="math inline">\(\alpha\)</span> maior deverá ser a diferença entre as médias para que ela seja considerada significante.</p>
+O <span class="math inline">\(\alpha = 0.02\)</span> é o que dá sentido ao termo <strong>significantemente diferente</strong>. É a probabilidade de se cometer o erro do tipo II, ou seja, rejeitar a hipótese nula quando não deveria ser rejeitada. Quanto menor o <span class="math inline">\(\alpha\)</span>, maior deverá ser a diferença entre as médias para que ela seja considerada significante.</p>
 </div>
 <div id="calcular-a-estatística-do-teste" class="section level2">
 <h2>CALCULAR A ESTATÍSTICA DO TESTE</h2>
@@ -246,7 +286,7 @@ Podemos rejeitar a hipótese nula se <span class="math inline">\(z\)</span> crí
 </div>
 <div id="decidir-se-rejeitamos-a-hipótese-nula" class="section level2">
 <h2>DECIDIR SE REJEITAMOS A HIPÓTESE NULA</h2>
-<p>Como o valor de 2.693 excede o valor de z a 98% de significância (2.33), pode-se rejeitar a hipótese nula. A diferença é estatisticamente significativa e não pode ser atribuída ao acaso de amostragem.</p>
+<p>Como o valor de 2.693 excede o valor de <span class="math inline">\(z\)</span> a 98% de significância (2.33), pode-se rejeitar a hipótese nula. A diferença é significativa e não pode ser atribuída ao acaso de amostragem.</p>
 </div>
 </div>
 <div id="ok-mas-e-no-r" class="section level1">
@@ -294,5 +334,11 @@ Podemos rejeitar a hipótese nula se <span class="math inline">\(z\)</span> crí
 </div>
 <div id="conclusão" class="section level1">
 <h1>CONCLUSÃO</h1>
-<p>Agora que temos todo o instrumental, podemos responder a pergunta do rapaz do fórum. O professor pode ficar orgulhoso, pois podemos rejeitar a hipótese de que a média de acerto de seus alunos foi mero chute. Parabéns à turma! :p</p>
+<p>Agora que temos todo o instrumental, podemos responder a pergunta do rapaz do fórum. O professor, sim, pode ficar orgulhoso, pois podemos rejeitar a hipótese de que a média de acerto de seus alunos foi mero chute. Parabéns à turma! :p</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Ou mil, 10 mil, 100 mil… Quanto maior for <span class="math inline">\(n\)</span>, mais difícil será causar mudanças no desvio padrão, de forma que a incerteza é cada vez menor.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>

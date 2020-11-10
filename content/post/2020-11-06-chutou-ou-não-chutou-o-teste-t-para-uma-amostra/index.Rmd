@@ -76,15 +76,22 @@ Para ilustrar o raciocínio, vamos tomar 10 amostras de 10 estudantes aleatoriam
 
 ```{r}
 
+# garantir reprodutibilidade
 set.seed(3)
+
+# quantidade de amostras
 n = 10
+
+# médias
 medias = rep(NA, n)
 
+# tirando amostras e calculando as médias
 for (i in 1:n){
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
 
+# visualização
 hist(medias,
      main = "1ª tiragem: 10 amostras de 10 alunos",
      xlab = "média",
@@ -105,15 +112,22 @@ Mas também é possível realizar outra tiragem de 10 amostras com 10 alunos dif
 
 ```{r}
 
+# garantir reprodutibilidade
 set.seed(4)
+
+# quantidade de amostras
 n = 10
+
+# médias
 medias = rep(NA, n)
 
+# tirando amostras e calculando as médias
 for (i in 1:n){
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
 
+# visualização
 hist(medias,
      main = "2ª tiragem: 10 amostras de 10 alunos",
      xlab = "média",
@@ -134,11 +148,16 @@ Conforme vamos aumentando a quantidade de amostras, o desvio padrão se estabili
 
 ```{r, fig.show="hold", out.width="80%"}
 
-# plot com seed = 3 e 50 amostras
+# garantir reprodutibilidade
 set.seed(3)
+
+# quantidade de amostras
 n = 50
+
+# médias
 medias = rep(NA, n)
 
+# tirando amostras e calculando as médias
 for (i in 1:n){
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
@@ -147,7 +166,7 @@ for (i in 1:n){
 # separando o grid em 2 colunas
 par(mfrow = c(1,2))
 
-# primeira amostra
+# visualização 1ª tiragem
 hist(medias,
      main = "1ª tiragem: 50 amostras de 10 alunos",
      xlab = "média",
@@ -156,16 +175,24 @@ abline(v = mean(medias, na.rm = TRUE), col = "red")
 abline(v = 0.25, col = "blue")
 abline(v = 0.3125, col = "green")
 
-# plot com seed = 4 e 50 alunos
+################################################################################
+
+# garantir reprodutibilidade
 set.seed(4)
+
+# quantidade de amostras
 n = 50
+
+# médias
 medias = rep(NA, n)
 
+# tirando amostras e calculando as médias
 for (i in 1:n){
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = n), replace = TRUE))
 }
 
+# visualização 2ª tiragem
 hist(medias,
      main = "2ª tiragem: 50 amostras de 10 alunos",
      xlab = "média",
@@ -183,17 +210,22 @@ legend("topright", legend = c(
 
 ```
 
-Pode-se observar que tomando duas tiragens de 50 amostras de 10 alunos aleatoriamente cada, as médias começam a convergir para a média observado no total dos 400 alunos.
+Pode-se observar que tomando duas tiragens de 50 amostras de 10 alunos aleatoriamente cada, as médias começam a convergir para a média observada no total dos 400 alunos.
 
 E se aumentarmos para 100 amostras de 10 alunos?
 
 ```{r}
 
-# plot com seed = 3 e 100 alunos
+# garantir reprodutibilidade
 set.seed(3)
+
+# quantidade de amostras
 n = 100
+
+# médias
 medias = rep(NA, n)
 
+# tirando amostras e calculando as médias
 for (i in 1:n){
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
@@ -202,7 +234,7 @@ for (i in 1:n){
 # separando o grid em 2 colunas
 par(mfrow = c(1,2))
 
-# plot com seed = 3
+# visualização 1ª tiragem
 hist(medias,
      main = "1ª tiragem: 100 amostras de 10 alunos",
      xlab = "média",
@@ -211,15 +243,21 @@ abline(v = mean(medias, na.rm = TRUE), col = "red")
 abline(v = 0.25, col = "blue")
 abline(v = 0.3125, col = "green")
 
-# plot com seed = 4
+################################################################################
+
+# garantir reprodutibilidade
 set.seed(4)
+
+# médias
 medias = rep(NA, n)
 
+# tirando amostras e calculando as médias
 for (i in 1:n){
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
 
+# visualização 2ª tiragem
 hist(medias,
      main = "2ª tiragem: 100 amostras de 10 alunos",
      xlab = "média",
@@ -237,7 +275,7 @@ legend("topright", legend = c(
 
 ```
 
-Perceba que com 100 amostras aleatórias, as médias já ficam muito próximas dos 33.25% observados em ambas tiragens. Isso acontece porque conforme o número de observações aumenta, o desvio padrão tende a se estabilizar e a incerteza diminui. Seria muito difícil de os primeiros 400 alunos terem uma determinada média de acertos e os próximos 50 alunos todos acertassem ou errassem de forma a desequilibrar o desvio padrão e afetar a média significativamente. É por isso que, em último caso, **o teste t é um teste de tamanho de amostra**. A pergunta por trás de tudo é: minha amostra é grande o suficiente para que a diferença seja significativa?
+Perceba que com 100 amostras aleatórias, as médias já ficam muito próximas dos 33.25% observados em ambas tiragens. Isso acontece porque conforme o número de observações aumenta, o desvio padrão tende a se estabilizar e a incerteza diminui. Seria muito difícil de os primeiros 400^[Ou mil, 10 mil, 100 mil... Quanto maior for $n$, mais difícil será causar mudanças no desvio padrão, de forma que a incerteza é cada vez menor.] alunos terem uma determinada média de acertos e os próximos 50 alunos todos acertassem ou errassem de forma a gerar mudanças no desvio padrão e afetar a média significativamente. É por isso que, em último caso, **o teste t é um teste de tamanho de amostra**. A pergunta por trás de tudo é: minha amostra é grande o suficiente para que a diferença seja significativa?
 
 Agora, com a intuição do teste em mente, vamos formalizá-lo.
 
