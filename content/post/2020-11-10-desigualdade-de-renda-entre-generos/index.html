@@ -1,0 +1,83 @@
+---
+title: 'Desigualdade de renda entre gêneros no ES'
+author: Alberson Miranda
+date: '2020-11-10'
+slug: []
+categories:
+  - estatistica
+tags:
+  - Python
+  - R
+description: Article description.
+featured: yes
+featureImage: "gender.jpg"
+thumbnail: "images/reticulate.jpg"
+shareImage: "gender.jpg"
+codeMaxLines: 10
+codeLineNumbers: no
+figurePositionShow: yes
+---
+
+
+
+<pre class="r"><code>library(reticulate)
+
+use_condaenv(&quot;base&quot;)</code></pre>
+<pre class="python"><code>import urllib.request as rq
+
+url = &quot;ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z&quot;
+rq.urlretrieve(url, &quot;data/rais.7z&quot;)
+
+import py7zr
+
+rais = py7zr.SevenZipFile(&#39;data/rais.7z&#39;, mode=&#39;r&#39;)
+rais.extractall(path=&quot;data/&quot;)
+rais.close()
+
+# baixe também manualmente os códigos de profissão e coloque na pasta data
+# http://www.mtecbo.gov.br/cbosite/pages/downloads.jsf</code></pre>
+<pre class="r"><code>library(tidyverse)
+
+data = readr::read_delim(&quot;data/ES2017.txt&quot;, delim = &quot;;&quot;,
+                         locale = readr::locale(encoding = &quot;LATIN1&quot;),
+                         col_names = FALSE,
+                         skip = 1)
+
+data = data %&gt;%
+  select(X8, X20, X26, X31, X35, X38) %&gt;%
+  rename(&quot;cod_profissao&quot; = X8,
+         &quot;idade&quot; = X20,
+         &quot;municipio&quot; = X26,
+         &quot;cod_raca&quot; = X31,
+         &quot;rem_media&quot; = X35,
+         &quot;sexo&quot; = X38) %&gt;%
+  mutate(rem_media = as.numeric(str_replace_all(rem_media, &quot;,&quot;, &quot;.&quot;)))
+
+cbo = readr::read_delim(&quot;data/CBO2002.csv&quot;, delim = &quot;;&quot;,
+                        locale = readr::locale(encoding = &quot;LATIN1&quot;),
+                        col_names = c(&quot;cod_profissao&quot;, &quot;profissao&quot;),
+                        col_types = c(&quot;d&quot;, &quot;c&quot;),
+                        skip = 1)
+
+data = data %&gt;%
+  inner_join(cbo, by = &quot;cod_profissao&quot;)</code></pre>
+<pre class="r"><code>data %&gt;%
+  mutate(gg = substr(cod_profissao, 1, 3)) %&gt;%
+  group_by(gg) %&gt;%
+  summarise(renda = mean(rem_media)) %&gt;%
+  arrange(desc(renda))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 191 x 2
+##    gg     renda
+##    &lt;chr&gt;  &lt;dbl&gt;
+##  1 242   21744.
+##  2 213   16596.
+##  3 201   14866.
+##  4 102   12908.
+##  5 214   10802.
+##  6 202   10666.
+##  7 122   10586.
+##  8 302   10579.
+##  9 204    9746.
+## 10 254    9709.
+## # ... with 181 more rows</code></pre>

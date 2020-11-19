@@ -1,0 +1,95 @@
+---
+title: 'Desigualdade de renda entre gêneros no ES'
+author: Alberson Miranda
+date: '2020-11-10'
+slug: []
+categories:
+  - estatistica
+tags:
+  - Python
+  - R
+  - Reticulate
+description: Article description.
+featured: yes
+featureImage: "gender.jpg"
+thumbnail: "images/reticulate.jpg"
+shareImage: "gender.jpg"
+codeMaxLines: 10
+codeLineNumbers: no
+figurePositionShow: yes
+---
+
+```{r}
+
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE
+)
+
+```
+
+```{r}
+
+library(reticulate)
+
+use_condaenv("base")
+
+```
+
+```{python, eval = FALSE}
+
+import urllib.request as rq
+
+url = "ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z"
+rq.urlretrieve(url, "data/rais.7z")
+
+import py7zr
+
+rais = py7zr.SevenZipFile('data/rais.7z', mode='r')
+rais.extractall(path="data/")
+rais.close()
+
+# baixe também manualmente os códigos de profissão e coloque na pasta data
+# http://www.mtecbo.gov.br/cbosite/pages/downloads.jsf
+
+```
+
+```{r}
+
+library(tidyverse)
+
+data = read_delim("data/ES2017.zip", delim = ";",
+                  locale = readr::locale(encoding = "LATIN1"),
+                  col_names = FALSE,
+                  skip = 1)
+
+data = data %>%
+  select(X8, X20, X26, X31, X35, X38) %>%
+  rename("cod_profissao" = X8,
+         "idade" = X20,
+         "municipio" = X26,
+         "cod_raca" = X31,
+         "rem_media" = X35,
+         "sexo" = X38) %>%
+  mutate(rem_media = as.numeric(str_replace_all(rem_media, ",", ".")))
+
+cbo = read_delim("data/CBO2002.csv", delim = ";",
+                 locale = readr::locale(encoding = "LATIN1"),
+                 col_names = c("cod_profissao", "profissao"),
+                 col_types = c("d", "c"),
+                 skip = 1)
+
+data = data %>%
+  inner_join(cbo, by = "cod_profissao")
+
+```
+
+```{r}
+
+data %>%
+  mutate(gg = substr(cod_profissao, 1, 3)) %>%
+  group_by(gg) %>%
+  summarise(renda = mean(rem_media)) %>%
+  arrange(desc(renda))
+
+```
