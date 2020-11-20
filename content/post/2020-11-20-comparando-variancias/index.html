@@ -1,0 +1,191 @@
+---
+title: 'Comparando variâncias: o teste F'
+author: Alberson Miranda
+date: '2020-11-20'
+slug: []
+categories:
+  - estatistica
+tags:
+  - inferencia
+  - R
+description: Introdução ao teste F para diferenças de desvios-padrão entre duas amostras.
+featured: yes
+toc: no
+thumbnail: "images/r.png"
+featureImage: "variancia.png"
+shareImage: "variancia.png"
+codeMaxLines: 10
+codeLineNumbers: no
+figurePositionShow: yes
+---
+
+<script src="index_files/header-attrs/header-attrs.js"></script>
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+<div id="TOC">
+no
+</div>
+
+<p>Antes de eu entrar no assunto <em>machine learning</em>, porque <del>é um buraco sem fundo</del> devo me demorar quando entrar, quero cobrir um pouco mais do básico em inferência.</p>
+<p><a href="https://datamares.netlify.app/post/atestando-diferencas-em-medias-o-teste-t-para-amostras-independentes/">Nesse post</a> eu disse que para realizar o teste t em duas amostras independentes deveríamos saber antes se as variâncias dessas amostras são iguais ou diferentes. Vamos ver como atestar isso agora. A base utilizada será a <a href="https://www.kaggle.com/uciml/german-credit">german credit data</a>.</p>
+<pre class="r"><code># importando dados
+# obs.: o -1 é para remover a primeira coluna, que é apenas o índice
+data = readr::read_csv(&quot;german_credit_data.csv&quot;)[-1]
+
+# visualizando
+print(data)</code></pre>
+<pre><code>## # A tibble: 1,000 x 9
+##      Age Sex     Job Housing `Saving account~ `Checking accou~ `Credit amount`
+##    &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;            &lt;chr&gt;                      &lt;dbl&gt;
+##  1    67 male      2 own     &lt;NA&gt;             little                      1169
+##  2    22 fema~     2 own     little           moderate                    5951
+##  3    49 male      1 own     little           &lt;NA&gt;                        2096
+##  4    45 male      2 free    little           little                      7882
+##  5    53 male      2 free    little           little                      4870
+##  6    35 male      1 free    &lt;NA&gt;             &lt;NA&gt;                        9055
+##  7    53 male      2 own     quite rich       &lt;NA&gt;                        2835
+##  8    35 male      3 rent    little           moderate                    6948
+##  9    61 male      1 own     rich             &lt;NA&gt;                        3059
+## 10    28 male      3 own     little           moderate                    5234
+## # ... with 990 more rows, and 2 more variables: Duration &lt;dbl&gt;, Purpose &lt;chr&gt;</code></pre>
+<p>Da mesma forma que o teste t, podemos testar se a medida de uma amostra é significativamente diferente de um valor escolhido ou podemos testar em relação à outra amostra — se maior, menor ou diferente. Para este exercício, vamos testar se a variância da variável <code>Credit amount</code> (limite de crédito) é o mesmo para homens e mulheres que vivem de aluguel. Primeiro, vamos calcular os desvios-padrão populacionais:</p>
+<pre class="r"><code># obtendo amostras
+homens = data[data$Sex == &quot;male&quot; &amp; data$Housing == &quot;rent&quot;,]$`Credit amount`
+mulheres = data[data$Sex == &quot;female&quot; &amp; data$Housing == &quot;rent&quot;,]$`Credit amount`
+
+# calculando desvio padrão
+sd(homens)</code></pre>
+<pre><code>## [1] 2846.647</code></pre>
+<pre class="r"><code>sd(mulheres)</code></pre>
+<pre><code>## [1] 2235.225</code></pre>
+<p>Verificamos que o limite de crédito dos homens tem um desvio-padrão de DM$ 2.846, enquanto o das mulheres é de DM$ 2235<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, o que quer dizer que o limite de crédito dos homens varia mais em torno da média do que das mulheres. O que gostaríamos de saber agora é se essa diferença é significativamente diferente. Vamos ao teste!</p>
+<div id="o-teste" class="section level1">
+<h1>O TESTE</h1>
+<p>O teste F, dentre suas várias outras aplicações, é usado em conjunto com o teste t de duas amostras — quando é preciso conhecer se as duas populações amostradas têm a mesma variância ou não.</p>
+<p>Ele também é um teste paramétrico, o que significa que ele supõe que as populações têm aproximadamente uma certa de distribuição, neste caso a normal. Portanto, temos de primeiramente garantir que essa hipótese seja atendida.</p>
+<div id="verificando-a-hipótese-de-normalidade" class="section level2">
+<h2>VERIFICANDO A HIPÓTESE DE NORMALIDADE</h2>
+<p>Primeiramente, vamos plotar as densidades para verificar se sua distribuição é plausível com a hipótese de normalidade:</p>
+<pre class="r"><code># dados de densidade
+d1 = density(homens)
+d2 = density(mulheres)
+
+# separando o grid em 2 colunas
+par(mfrow = c(1,2))
+
+# visualização
+plot(d1,
+  main = &quot;Density Plot: homens&quot;)
+polygon(d1, col = &quot;lightblue&quot;)
+
+plot(d2,
+  main = &quot;Density Plot: mulheres&quot;)
+polygon(d2, col = &quot;salmon&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Com esse formato, a normalidade é bastante implausível e não há necessidade de realizar quaisquer testes. Para contornar esse problema, podemos tentar realizar uma transformação logarítmica:</p>
+<pre class="r"><code># transformação logarítimica
+log_homens = log(homens)
+log_mulheres = log(mulheres)
+
+# calculando a variância após transformação
+var(log_homens)</code></pre>
+<pre><code>## [1] 0.5614271</code></pre>
+<pre class="r"><code>var(log_mulheres)</code></pre>
+<pre><code>## [1] 0.5229548</code></pre>
+<pre class="r"><code># dados de densidade
+d3 = density(log_homens)
+d4 = density(log_mulheres)
+
+# separando o grid em 2 colunas
+par(mfrow = c(1,2))
+
+# visualização
+plot(d3,
+  main = &quot;Density Plot: log(homens)&quot;)
+polygon(d3, col = &quot;lightblue&quot;)
+
+plot(d4,
+  main = &quot;Density Plot: log(mulheres)&quot;)
+polygon(d4, col = &quot;salmon&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Os dados agora parecem seguir uma distribuição próxima da normal. Para verificar, pode-se realizar um teste de normalidade mas, como não é esse o tema, exploraremos o assunto em outra postagem. Por hora, vamos apenas registrar que a transformação foi exitosa e os dados agora apresentam uma distribuição próxima da normal.</p>
+<pre class="r"><code># teste de normalidade
+shapiro.test(log_homens)</code></pre>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  log_homens
+## W = 0.98624, p-value = 0.5147</code></pre>
+<pre class="r"><code>shapiro.test(log_mulheres)</code></pre>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  log_mulheres
+## W = 0.98171, p-value = 0.2071</code></pre>
+</div>
+<div id="as-hipóteses" class="section level2">
+<h2>AS HIPÓTESES</h2>
+<p><span class="math display">\[
+\begin{cases}
+H_0: \sigma_1 = \sigma_2 \\
+H_1: \sigma_1 \neq \sigma_2
+\end{cases}
+\]</span></p>
+<p>A hipótese nula é de que não se pode inferir, com certo nível de significância, que as variâncias são diferentes. E a hipótese alternativa é de que elas são significamente distintas.</p>
+</div>
+<div id="nível-de-significância" class="section level2">
+<h2>NÍVEL DE SIGNIFICÂNCIA</h2>
+<p><span class="math display">\[ \alpha = 0.05 \]</span></p>
+<p>Vamos utilizar um nível de significância padrão de 5%, o que quer dizer que a probabilidade de rejeitarmos a hipótese nula quando ela não deve ser rejeitada é de apenas 5%. Quanto menor for essa probabilidade, maior deve ser a diferença entre as variâncias para que possamos atestar a diferença significativa entre elas.</p>
+</div>
+<div id="estatística-do-teste" class="section level2">
+<h2>ESTATÍSTICA DO TESTE</h2>
+<p><span class="math display">\[ F = \frac{s^2_1}{s^2_2} \]</span></p>
+<p>Como a estatística do teste é a razão entre as variâncias amostrais, o teste é para verificar se essa razão é diferente da unidade. Para verificarmos a estatística tabelada, precisamos de saber quantos graus de liberdade temos nas amostras:</p>
+<pre class="r"><code># graus de liberdade (n-1)
+table(data[data$Housing == &quot;rent&quot;,]$Sex)</code></pre>
+<pre><code>## 
+## female   male 
+##     95     84</code></pre>
+<p>E então a estatística tabelada será:</p>
+<pre class="r"><code># F-statistic para 95º percentil
+qf(.95, 83, 94)</code></pre>
+<pre><code>## [1] 1.419123</code></pre>
+</div>
+<div id="valor-crítico" class="section level2">
+<h2>VALOR CRÍTICO</h2>
+<pre class="r"><code># calculando valor crítico
+var(log_homens) / var(log_mulheres)</code></pre>
+<pre><code>## [1] 1.073567</code></pre>
+<p><span class="math display">\[ F = \frac{s^2_1}{s^2_2} = 1.07 \]</span></p>
+</div>
+<div id="decisão" class="section level2">
+<h2>DECISÃO</h2>
+<p>Como o valor de 1.07 não excede 1.42, não podemos rejeitar a hipótese nula ao nível de 5% de significância. As variâncias não são significativamente distintas.</p>
+</div>
+</div>
+<div id="o-teste-f-no-r" class="section level1">
+<h1>O TESTE F NO R</h1>
+<p>No base R, a sintaxe do teste é muito semelhante a do teste t:</p>
+<pre class="r"><code># teste F
+var.test(log_homens, log_mulheres)</code></pre>
+<pre><code>## 
+##  F test to compare two variances
+## 
+## data:  log_homens and log_mulheres
+## F = 1.0736, num df = 83, denom df = 94, p-value = 0.7362
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  0.707196 1.638814
+## sample estimates:
+## ratio of variances 
+##           1.073567</code></pre>
+<p>O sumário do teste nos diz que para que pudéssemos rejeitar a hipótese nula com <span class="math inline">\(\alpha\)</span> = 5%, a razão deveria ser na ordem de 1.64 (variância de <code>log_homens</code> maior do que <code>log_mulheres</code>) ou 0.70 (variância de <code>log_homens</code> menor do que <code>log_mulheres</code>). Alternativamente, poderíamos rejeitar a hipótese nula se aumentássemos <span class="math inline">\(\alpha\)</span> para 1-0.7362 = 26.38%, o que é uma probabilidade de incorrer no erro tipo II muito alta para ser considerada razoável.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Marcos alemães.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
