@@ -10,7 +10,6 @@ tags:
   - R
 description: Introdução ao teste F para diferenças de desvios-padrão entre duas amostras.
 featured: yes
-toc: no
 thumbnail: "images/r.png"
 featureImage: "variancia.png"
 shareImage: "variancia.png"
