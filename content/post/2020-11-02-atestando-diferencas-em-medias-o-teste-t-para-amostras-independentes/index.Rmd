@@ -8,7 +8,7 @@ categories:
 tags:
   - inferencia
   - r
-description: Article description.
+description: Introdução ao teste t para amostras independentes.
 featured: yes
 thumbnail: 'images/r.png'
 shareImage: 'statistics.png'
