@@ -1,13 +1,21 @@
 ---
+<<<<<<< HEAD
 title: 'Desigualdade de renda entre gêneros em Vitória: effect size'
 author: Alberson Miranda
 date: '2020-11-25'
 slug: [desigualdade-renda-generos]
+=======
+title: 'Desigualdade de renda entre gêneros no ES'
+author: Alberson Miranda
+date: '2020-11-10'
+slug: []
+>>>>>>> e0d51e8fd0230de132570fbcd098ba1073fd401f
 categories:
   - estatistica
 tags:
   - Python
   - R
+<<<<<<< HEAD
   - Reticulate
   - Inferencia
 description: Estudo de desigualdade de renda entre gêneros na cidade de Vitória-ES.
@@ -15,12 +23,19 @@ toc: TRUE
 featured: yes
 featureImage: "gender.jpg"
 thumbnail: "images/reticulate.png"
+=======
+description: Article description.
+featured: yes
+featureImage: "gender.jpg"
+thumbnail: "images/reticulate.jpg"
+>>>>>>> e0d51e8fd0230de132570fbcd098ba1073fd401f
 shareImage: "gender.jpg"
 codeMaxLines: 10
 codeLineNumbers: no
 figurePositionShow: yes
 ---
 
+<<<<<<< HEAD
 <script src="index_files/header-attrs/header-attrs.js"></script>
 <link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
 <script src="index_files/anchor-sections/anchor-sections.js"></script>
@@ -72,6 +87,33 @@ data = read_delim(&quot;data/ES2017.txt&quot;, delim = &quot;;&quot;,
 # escolhendo as variáveis de interesse e renomeando colunas
 # também vamos precisar substituir vírgulas por pontos
 # se preferir, realize essa etapa via encoding
+=======
+
+
+<pre class="r"><code>library(reticulate)
+
+use_condaenv(&quot;base&quot;)</code></pre>
+<pre class="python"><code>import urllib.request as rq
+
+url = &quot;ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z&quot;
+rq.urlretrieve(url, &quot;data/rais.7z&quot;)
+
+import py7zr
+
+rais = py7zr.SevenZipFile(&#39;data/rais.7z&#39;, mode=&#39;r&#39;)
+rais.extractall(path=&quot;data/&quot;)
+rais.close()
+
+# baixe também manualmente os códigos de profissão e coloque na pasta data
+# http://www.mtecbo.gov.br/cbosite/pages/downloads.jsf</code></pre>
+<pre class="r"><code>library(tidyverse)
+
+data = readr::read_delim(&quot;data/ES2017.txt&quot;, delim = &quot;;&quot;,
+                         locale = readr::locale(encoding = &quot;LATIN1&quot;),
+                         col_names = FALSE,
+                         skip = 1)
+
+>>>>>>> e0d51e8fd0230de132570fbcd098ba1073fd401f
 data = data %&gt;%
   select(X8, X20, X26, X31, X35, X38) %&gt;%
   rename(&quot;cod_profissao&quot; = X8,
@@ -80,6 +122,7 @@ data = data %&gt;%
          &quot;cod_raca&quot; = X31,
          &quot;rem_media&quot; = X35,
          &quot;sexo&quot; = X38) %&gt;%
+<<<<<<< HEAD
   mutate(rem_media = as.numeric(str_replace_all(rem_media, &quot;,&quot;, &quot;.&quot;)),
          sexo = as.integer(sexo),
          idade = as.integer(idade))
@@ -272,3 +315,35 @@ hist(medias,
 <li id="fn3"><p>Há vários estudos que tratam disso, vide <a href="https://rev-inv-ope.univ-paris1.fr/fileadmin/rev-inv-ope/files/40119/40119-10.pdf">este</a> exemplo.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
+=======
+  mutate(rem_media = as.numeric(str_replace_all(rem_media, &quot;,&quot;, &quot;.&quot;)))
+
+cbo = readr::read_delim(&quot;data/CBO2002.csv&quot;, delim = &quot;;&quot;,
+                        locale = readr::locale(encoding = &quot;LATIN1&quot;),
+                        col_names = c(&quot;cod_profissao&quot;, &quot;profissao&quot;),
+                        col_types = c(&quot;d&quot;, &quot;c&quot;),
+                        skip = 1)
+
+data = data %&gt;%
+  inner_join(cbo, by = &quot;cod_profissao&quot;)</code></pre>
+<pre class="r"><code>data %&gt;%
+  mutate(gg = substr(cod_profissao, 1, 3)) %&gt;%
+  group_by(gg) %&gt;%
+  summarise(renda = mean(rem_media)) %&gt;%
+  arrange(desc(renda))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 191 x 2
+##    gg     renda
+##    &lt;chr&gt;  &lt;dbl&gt;
+##  1 242   21744.
+##  2 213   16596.
+##  3 201   14866.
+##  4 102   12908.
+##  5 214   10802.
+##  6 202   10666.
+##  7 122   10586.
+##  8 302   10579.
+##  9 204    9746.
+## 10 254    9709.
+## # ... with 181 more rows</code></pre>
+>>>>>>> e0d51e8fd0230de132570fbcd098ba1073fd401f
