@@ -1,48 +1,77 @@
 ---
-title: 'Desigualdade de renda entre gêneros no ES'
+title: 'Desigualdade de renda entre gêneros em Vitória: effect size'
 author: Alberson Miranda
 date: '2020-11-10'
-slug: []
+slug: [desigualdade-renda-generos]
 categories:
   - estatistica
 tags:
   - Python
   - R
-description: Article description.
+  - Reticulate
+  - Inferencia
+description: Estudo de desigualdade de renda entre gêneros na cidade de Vitória-ES.
+toc: TRUE
 featured: yes
 featureImage: "gender.jpg"
-thumbnail: "images/reticulate.jpg"
+thumbnail: "images/reticulate.png"
 shareImage: "gender.jpg"
 codeMaxLines: 10
 codeLineNumbers: no
 figurePositionShow: yes
 ---
 
+<script src="index_files/header-attrs/header-attrs.js"></script>
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
 
+<div id="TOC">
+true
+</div>
 
-<pre class="r"><code>library(reticulate)
+<p>Ainda há um bocado de coisas para cobrir nessa série de “inferência 101” e para continuar os estudos trouxe a base da RAIS (Relação Anual de Informações Sociais) de 2017<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Com ela, vamos introduzir o conceito de <em>effect size</em> e de quebra analisar a desigualdade de gênero em nossa querida capital Vitorinha.</p>
+<div id="dados" class="section level1">
+<h1>DADOS</h1>
+<p>Coloco aqui duas opções para buscar esses dados:</p>
+<ol style="list-style-type: decimal">
+<li>Manualmente, navegando em <a href="ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z" class="uri">ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z</a></li>
+<li>De forma programática via Python.</li>
+</ol>
+<p>Escolhi o Python aqui porque não conheço um pacote no CRAN<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> que lide com compressão 7zip. Se escolher baixar e descompactar via script, podemos executar códigos Python através do R com o {reticulate}:</p>
+<pre class="r"><code># ativando python
+library(reticulate)
 
+# escolhendo o ambiente
 use_condaenv(&quot;base&quot;)</code></pre>
-<pre class="python"><code>import urllib.request as rq
+<p>Depois de ativar o ambiente Python, vamos baixar e descompactar a base de dados para uma pasta chamada <code>data</code> dentro do diretório do nosso projeto. Se você baixou manualmente, crie a pasta <code>data</code> e cole o arquivo lá.</p>
+<pre class="python"><code># importando módulos
+import urllib.request as rq
+import py7zr
 
+# baixando dados
 url = &quot;ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z&quot;
 rq.urlretrieve(url, &quot;data/rais.7z&quot;)
 
-import py7zr
-
+# descompactando
 rais = py7zr.SevenZipFile(&#39;data/rais.7z&#39;, mode=&#39;r&#39;)
 rais.extractall(path=&quot;data/&quot;)
-rais.close()
+rais.close()</code></pre>
+<p>Vamos precisar também da tabela do Código Brasileiro de Ocupações para entendermos as profissões das pessoas analisadas. Depois de fazer o <a href="http://www.mtecbo.gov.br/cbosite/pages/downloads.jsf">download</a>, coloque na pasta <code>data</code> junto com o arquivo da Rais.</p>
+<p>Com os dados baixados, vamos importá-los, conhecê-los e começar a extrair sentido deles.</p>
+<pre class="r"><code># pacotes
+library(tidyverse)
 
-# baixe também manualmente os códigos de profissão e coloque na pasta data
-# http://www.mtecbo.gov.br/cbosite/pages/downloads.jsf</code></pre>
-<pre class="r"><code>library(tidyverse)
+# importando a Rais
+# como os dados possuem caracteres especiais (acentos),
+# é necessário alterar o encoding para LATIN1
+data = read_delim(&quot;data/ES2017.txt&quot;, delim = &quot;;&quot;,
+                  locale = readr::locale(encoding = &quot;LATIN1&quot;),
+                  col_names = FALSE,
+                  skip = 1)
 
-data = readr::read_delim(&quot;data/ES2017.txt&quot;, delim = &quot;;&quot;,
-                         locale = readr::locale(encoding = &quot;LATIN1&quot;),
-                         col_names = FALSE,
-                         skip = 1)
-
+# escolhendo as variáveis de interesse e renomeando colunas
+# também vamos precisar substituir vírgulas por pontos
+# se preferir, realize essa etapa via encoding
 data = data %&gt;%
   select(X8, X20, X26, X31, X35, X38) %&gt;%
   rename(&quot;cod_profissao&quot; = X8,
@@ -51,33 +80,143 @@ data = data %&gt;%
          &quot;cod_raca&quot; = X31,
          &quot;rem_media&quot; = X35,
          &quot;sexo&quot; = X38) %&gt;%
-  mutate(rem_media = as.numeric(str_replace_all(rem_media, &quot;,&quot;, &quot;.&quot;)))
+  mutate(rem_media = as.numeric(str_replace_all(rem_media, &quot;,&quot;, &quot;.&quot;)),
+         sexo = as.integer(sexo),
+         idade = as.integer(idade))
 
-cbo = readr::read_delim(&quot;data/CBO2002.csv&quot;, delim = &quot;;&quot;,
-                        locale = readr::locale(encoding = &quot;LATIN1&quot;),
-                        col_names = c(&quot;cod_profissao&quot;, &quot;profissao&quot;),
-                        col_types = c(&quot;d&quot;, &quot;c&quot;),
-                        skip = 1)
+# importando tabela CBO
+cbo = read_delim(&quot;data/CBO2002.csv&quot;, delim = &quot;;&quot;,
+                 locale = readr::locale(encoding = &quot;LATIN1&quot;),
+                 col_names = c(&quot;cod_profissao&quot;, &quot;profissao&quot;),
+                 col_types = c(&quot;d&quot;, &quot;c&quot;),
+                 skip = 1)
 
+# juntando ambas tabelas e filtrando apenas Vitória
 data = data %&gt;%
-  inner_join(cbo, by = &quot;cod_profissao&quot;)</code></pre>
+  inner_join(cbo, by = &quot;cod_profissao&quot;) %&gt;%
+  filter(municipio == 320530)</code></pre>
+<p>Nossos dados agora têm essa cara:</p>
+<pre class="r"><code># visualizando dataframe
+head(data)</code></pre>
+<pre><code>## # A tibble: 6 x 7
+##   cod_profissao idade municipio cod_raca rem_media  sexo profissao              
+##           &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                  
+## 1        717020    42    320530 04            909.     1 Servente de obras      
+## 2        715210    28    320530 02           1167.     1 Pedreiro               
+## 3        717020    63    320530 02           1022.     1 Servente de obras      
+## 4        717020    59    320530 02            880.     1 Servente de obras      
+## 5        517410    29    320530 08           1880.     1 Porteiro de edifícios  
+## 6        715115    61    320530 08              0      1 Operador de escavadeira</code></pre>
+</div>
+<div id="diferenças-no-agregado" class="section level1">
+<h1>DIFERENÇAS NO AGREGADO</h1>
+<p>Primeiramente, vamos tentar entender o que temos em mãos em termos de amostra:</p>
+<pre class="r"><code># quantidade de homens e mulheres
+data %&gt;%
+  ggplot(aes(x = factor(sexo),
+             fill = factor(sexo),
+             label = scales::number(..count..))) +
+  geom_bar() +
+  geom_label(stat = &quot;count&quot;,
+             show.legend = FALSE,
+             color = &quot;grey30&quot;) +
+  scale_y_continuous(labels = scales::number) +
+  scale_fill_manual(name = &quot;sexo&quot;,
+                    labels = c(&quot;homens&quot;, &quot;mulheres&quot;),
+                    values = c(&quot;lightblue&quot;, &quot;salmon&quot;)) +
+  labs(x = &quot;&quot;,
+       y = &quot;quantidade&quot;,
+       title = &quot;QUANTIDADE DE HOMENS E MULHERES&quot;,
+       subtitle = &quot;amostra da cidade de Vitória-ES&quot;,
+       caption = &quot;fonte: Rais/2017&quot;) +
+  theme_minimal() +
+  theme(text = element_text(family = &quot;Century Gothic&quot;,
+                            color = &quot;grey30&quot;),
+        axis.text.x = element_blank())</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Temos praticamente a mesma quantidade de homens e mulheres em nossa amostra. Podemos, antes de realizar qualquer outra análise e aplicar quaisquer filtros, calcular a remuneração média:</p>
+<pre class="r"><code># remuneração média
+aggregate(data = data, rem_media ~ sexo, FUN = mean)</code></pre>
+<pre><code>##   sexo rem_media
+## 1    1  3925.187
+## 2    2  2846.727</code></pre>
+<p>No agregado, a renda média dos homens em Vitória é quase 40% maior que as das mulheres. Antes de avançarmos, é prudente verificar em qual medida essas médias são afetadas por <em>outliers</em>:</p>
+<pre class="r"><code># quartis
+boxplot_data = data %&gt;%
+  group_by(sexo) %&gt;%
+  summarise(stats = list(fivenum(rem_media))) %&gt;%
+  unnest(cols = c(stats))
+
+# boxplot
+data %&gt;%
+  ggplot(aes(
+    x = factor(sexo),
+    y = rem_media,
+    fill = factor(sexo)
+  )) +
+  geom_boxplot() +
+  geom_label(
+    data = boxplot_data,
+    aes(x = factor(sexo), y = stats, label = scales::number(stats)),
+    nudge_x = 0.25,
+    show.legend = FALSE
+  ) +
+  coord_cartesian(ylim = c(0, 5000)) +
+  scale_y_continuous(labels = scales::number) +
+  scale_fill_manual(
+    name = &quot;sexo&quot;,
+    labels = c(&quot;homens&quot;, &quot;mulheres&quot;),
+    values = c(&quot;lightblue&quot;, &quot;salmon&quot;)
+  ) +
+  labs(
+    x = &quot;&quot;,
+    y = &quot;remuneração média&quot;,
+    title = &quot;DISTRIBUIÇÃO DA REMUNERAÇÃO MÉDIA ENTRE HOMENS E MULHERES&quot;,
+    subtitle = &quot;amostra da cidade de Vitória-ES&quot;,
+    caption = &quot;fonte: Rais/2017&quot;
+  ) +
+  theme_minimal() +
+  theme(
+    text = element_text(
+      family = &quot;Century Gothic&quot;,
+      color = &quot;grey30&quot;
+    ),
+    axis.text.x = element_blank()
+  )</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Como podemos ver, a mediana da remuneração média dos homens é quase a metade de sua média, indicando que sua distribuição é bastante distorcida. Podemos confirmar o diagnóstico com o auxílio de um qqplot:</p>
+<pre class="r"><code># qqplot homens
+qqnorm(data[data$sexo == 1, ]$rem_media)
+qqline(data[data$sexo == 1, ]$rem_media)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code># qqplot mulheres
+qqnorm(data[data$sexo == 2, ]$rem_media)
+qqline(data[data$sexo == 2, ]$rem_media)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
 <pre class="r"><code>data %&gt;%
   mutate(gg = substr(cod_profissao, 1, 3)) %&gt;%
   group_by(gg) %&gt;%
   summarise(renda = mean(rem_media)) %&gt;%
   arrange(desc(renda))</code></pre>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<pre><code>## # A tibble: 191 x 2
+<pre><code>## # A tibble: 185 x 2
 ##    gg     renda
 ##    &lt;chr&gt;  &lt;dbl&gt;
-##  1 242   21744.
-##  2 213   16596.
-##  3 201   14866.
-##  4 102   12908.
-##  5 214   10802.
-##  6 202   10666.
-##  7 122   10586.
-##  8 302   10579.
-##  9 204    9746.
-## 10 254    9709.
-## # ... with 181 more rows</code></pre>
+##  1 122   30119.
+##  2 242   22401.
+##  3 213   21414.
+##  4 254   19331.
+##  5 811   16088.
+##  6 201   15142.
+##  7 750   14736.
+##  8 102   14511.
+##  9 121   14046.
+## 10 214   13220.
+## # ... with 175 more rows</code></pre>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Escolhi 2017 porque os dados mais atuais estão com agrupados com Minas Gerais e Rio de Janeiro, ficando muito pesado para uma análise casual.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Compreehensive R Archive Network<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
