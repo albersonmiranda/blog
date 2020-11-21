@@ -1,7 +1,7 @@
 ---
 title: 'Desigualdade de renda entre gêneros em Vitória: effect size'
 author: Alberson Miranda
-date: '2020-11-10'
+date: '2020-11-25'
 slug: [desigualdade-renda-generos]
 categories:
   - estatistica
@@ -172,7 +172,7 @@ aggregate(data = data, rem_media ~ sexo, FUN = mean)
 
 ```
 
-No agregado, a renda média dos homens em Vitória é quase 40% maior que as das mulheres. Antes de avançarmos, é prudente verificar em qual medida essas médias são afetadas por *outliers*:
+No agregado, a renda média dos homens em Vitória é quase 40% maior que as das mulheres e mesmo quando consideramos a mediana ainda é quase 30% maior. Podemos verificar se essa diferença é significativa com um teste t, mas antes devemos verificar se seus pré-requisitos são atendidos.
 
 ```{r}
 
@@ -219,24 +219,105 @@ data %>%
     axis.text.x = element_blank()
   )
 
-
 ```
 
-Como podemos ver, a mediana da remuneração média dos homens é quase a metade de sua média, indicando que sua distribuição é bastante distorcida. Podemos confirmar o diagnóstico com o auxílio de um qqplot:
+## VERIFICANDO A HIPÓTESE DA NORMALIDADE
+
+Sabemos que o teste t é um teste paramétrico e [já discutimos anteriormente](https://datamares.netlify.app/post/2020-11-20-comparando-variancias/) que, quando os dados não seguem uma distribuição próxima da normal, precisamos realizar transformações para alcançar a normalidade.
+
+Você pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limite garante a hipótese da normalidade. Entretanto, principalmente em dados com muitos *outliers* extremos, o tamanho da amostra necessária para convergência pode ser maior do que temos.^[Há vários estudos que tratam disso, vide [este](https://rev-inv-ope.univ-paris1.fr/fileadmin/rev-inv-ope/files/40119/40119-10.pdf) exemplo.]. Portanto, defenddo que devemos, sim, ter cuidado com essa hipótese mesmo lidando com grandes amostras.
+
+A primeira análise nesse sentido é a visual. Podemos verificar que a distribuição apresenta *fat tail* e passa longe de uma normal, tanto pelo histograma quanto pelo *Q-Q plot*.
 
 ```{r}
 
-# qqplot homens
-qqnorm(data[data$sexo == 1, ]$rem_media)
+# histograma
+data %>%
+  ggplot(aes(
+    x = rem_media,
+    fill = factor(sexo)
+  )) +
+  geom_histogram(binwidth = 500) +
+  coord_cartesian(xlim = c(0, 20000)) +
+  scale_y_continuous(labels = scales::number) +
+  scale_x_continuous(labels = scales::number) +
+  scale_fill_manual(
+    name = "sexo",
+    labels = c("homens", "mulheres"),
+    values = c("lightblue", "salmon")
+  ) +
+  labs(
+    x = "remuneração média",
+    y = "quantidade",
+    title = "DISTRIBUIÇÃO DA REMUNERAÇÃO MÉDIA ENTRE HOMENS E MULHERES",
+    subtitle = "amostra da cidade de Vitória-ES",
+    caption = "fonte: Rais/2017"
+  ) +
+  theme_minimal() +
+  theme(text = element_text(
+    family = "Century Gothic",
+    color = "grey30"
+  ))
+
+# qqplot
+par(mfrow = c(1, 2))
+
+qqnorm(data[data$sexo == 1, ]$rem_media,
+  main = "Q-Q PLOT: HOMENS")
 qqline(data[data$sexo == 1, ]$rem_media)
 
-# qqplot mulheres
-qqnorm(data[data$sexo == 2, ]$rem_media)
+qqnorm(data[data$sexo == 2, ]$rem_media,
+  main = "Q-Q PLOT: MULHERES")
 qqline(data[data$sexo == 2, ]$rem_media)
 
 ```
 
+Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada e, se ela apresentar distribuição próxima da normal, poderemos assumir a normalidade e presseguir com o trabalho. Caso contrário, precisaremos de tratar a base.
+
 ```{r}
+
+# garantir reprodutibilidade
+set.seed(1)
+
+# quantidade de amostras
+n = 1000
+
+# médias
+medias = rep(NA, n)
+
+# tirando amostras e calculando as médias
+for (i in 1:n) {
+  medias[i] = mean(
+    sample(data[data$sexo == 1, ]$rem_media,
+      size = 30, replace = TRUE
+    )
+  )
+}
+
+# qqplot
+qqnorm(medias)
+qqline(medias)
+
+# visualização
+hist(medias,
+    main = "DISTRIBUIÇÃO DAS MÉDIAS AMOSTRAIS",
+    xlab = "médias",
+    sub = "seed = 1"
+)
+
+```
+
+Ufa! O TCL se manteve em nossos dados e tanto o *Q-Q plot* quanto o histograma demonstraram distribuição próxima da normal, nos habilitando a prosseguir com os testes.
+
+## TESTE T
+
+
+
+## TAMANHO DO EFEITO
+
+[Nesse post](https://datamares.netlify.app/post/2020-11-06-chutou-ou-n%C3%A3o-chutou-o-teste-t-para-uma-amostra/) eu mostrei que o tamanho da amostra é determinante para o teste t e tenderemos a rejeitar a hipótese nula quanto maior for a amostra. Aqui, se tratando de mais de 140 mil observações para cada sexo, dificilmente essas diferenças não seriam consideradas significativas. Para complementar esse teste, podemos calcular o **tamanho do efeito* com a estatística *d de Cohen*.
+
+```{r, eval = FALSE, include = FALSE}
 data %>%
   mutate(gg = substr(cod_profissao, 1, 3)) %>%
   group_by(gg) %>%

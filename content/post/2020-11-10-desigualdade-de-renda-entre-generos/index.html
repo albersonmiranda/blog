@@ -1,7 +1,7 @@
 ---
 title: 'Desigualdade de renda entre gêneros em Vitória: effect size'
 author: Alberson Miranda
-date: '2020-11-10'
+date: '2020-11-25'
 slug: [desigualdade-renda-generos]
 categories:
   - estatistica
@@ -140,7 +140,7 @@ aggregate(data = data, rem_media ~ sexo, FUN = mean)</code></pre>
 <pre><code>##   sexo rem_media
 ## 1    1  3925.187
 ## 2    2  2846.727</code></pre>
-<p>No agregado, a renda média dos homens em Vitória é quase 40% maior que as das mulheres. Antes de avançarmos, é prudente verificar em qual medida essas médias são afetadas por <em>outliers</em>:</p>
+<p>No agregado, a renda média dos homens em Vitória é quase 40% maior que as das mulheres e mesmo quando consideramos a mediana ainda é quase 30% maior. Podemos verificar se essa diferença é significativa com um teste t, mas antes devemos verificar se seus pré-requisitos são atendidos.</p>
 <pre class="r"><code># quartis
 boxplot_data = data %&gt;%
   group_by(sexo) %&gt;%
@@ -184,39 +184,91 @@ data %&gt;%
     axis.text.x = element_blank()
   )</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>Como podemos ver, a mediana da remuneração média dos homens é quase a metade de sua média, indicando que sua distribuição é bastante distorcida. Podemos confirmar o diagnóstico com o auxílio de um qqplot:</p>
-<pre class="r"><code># qqplot homens
-qqnorm(data[data$sexo == 1, ]$rem_media)
-qqline(data[data$sexo == 1, ]$rem_media)</code></pre>
+<div id="verificando-a-hipótese-da-normalidade" class="section level2">
+<h2>VERIFICANDO A HIPÓTESE DA NORMALIDADE</h2>
+<p>Sabemos que o teste t é um teste paramétrico e <a href="https://datamares.netlify.app/post/2020-11-20-comparando-variancias/">já discutimos anteriormente</a> que, quando os dados não seguem uma distribuição próxima da normal, precisamos realizar transformações para alcançar a normalidade.</p>
+<p>Você pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limite garante a hipótese da normalidade. Entretanto, principalmente em dados com muitos <em>outliers</em> extremos, o tamanho da amostra necessária para convergência pode ser maior do que temos.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. Portanto, defenddo que devemos, sim, ter cuidado com essa hipótese mesmo lidando com grandes amostras.</p>
+<p>A primeira análise nesse sentido é a visual. Podemos verificar que a distribuição apresenta <em>fat tail</em> e passa longe de uma normal, tanto pelo histograma quanto pelo <em>Q-Q plot</em>.</p>
+<pre class="r"><code># histograma
+data %&gt;%
+  ggplot(aes(
+    x = rem_media,
+    fill = factor(sexo)
+  )) +
+  geom_histogram(binwidth = 500) +
+  coord_cartesian(xlim = c(0, 20000)) +
+  scale_y_continuous(labels = scales::number) +
+  scale_x_continuous(labels = scales::number) +
+  scale_fill_manual(
+    name = &quot;sexo&quot;,
+    labels = c(&quot;homens&quot;, &quot;mulheres&quot;),
+    values = c(&quot;lightblue&quot;, &quot;salmon&quot;)
+  ) +
+  labs(
+    x = &quot;remuneração média&quot;,
+    y = &quot;quantidade&quot;,
+    title = &quot;DISTRIBUIÇÃO DA REMUNERAÇÃO MÉDIA ENTRE HOMENS E MULHERES&quot;,
+    subtitle = &quot;amostra da cidade de Vitória-ES&quot;,
+    caption = &quot;fonte: Rais/2017&quot;
+  ) +
+  theme_minimal() +
+  theme(text = element_text(
+    family = &quot;Century Gothic&quot;,
+    color = &quot;grey30&quot;
+  ))</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<pre class="r"><code># qqplot mulheres
-qqnorm(data[data$sexo == 2, ]$rem_media)
+<pre class="r"><code># qqplot
+par(mfrow = c(1, 2))
+
+qqnorm(data[data$sexo == 1, ]$rem_media,
+  main = &quot;Q-Q PLOT: HOMENS&quot;)
+qqline(data[data$sexo == 1, ]$rem_media)
+
+qqnorm(data[data$sexo == 2, ]$rem_media,
+  main = &quot;Q-Q PLOT: MULHERES&quot;)
 qqline(data[data$sexo == 2, ]$rem_media)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
-<pre class="r"><code>data %&gt;%
-  mutate(gg = substr(cod_profissao, 1, 3)) %&gt;%
-  group_by(gg) %&gt;%
-  summarise(renda = mean(rem_media)) %&gt;%
-  arrange(desc(renda))</code></pre>
-<pre><code>## # A tibble: 185 x 2
-##    gg     renda
-##    &lt;chr&gt;  &lt;dbl&gt;
-##  1 122   30119.
-##  2 242   22401.
-##  3 213   21414.
-##  4 254   19331.
-##  5 811   16088.
-##  6 201   15142.
-##  7 750   14736.
-##  8 102   14511.
-##  9 121   14046.
-## 10 214   13220.
-## # ... with 175 more rows</code></pre>
+<p>Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada e, se ela apresentar distribuição próxima da normal, poderemos assumir a normalidade e presseguir com o trabalho. Caso contrário, precisaremos de tratar esses <em>outliers</em>.</p>
+<pre class="r"><code># garantir reprodutibilidade
+set.seed(1)
+
+# quantidade de amostras
+n = 1000
+
+# médias
+medias = rep(NA, n)
+
+# tirando amostras e calculando as médias
+for (i in 1:n) {
+  medias[i] = mean(
+    sample(data[data$sexo == 1, ]$rem_media,
+      size = 30, replace = TRUE
+    )
+  )
+}
+
+# qqplot
+qqnorm(medias)
+qqline(medias)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code># visualização
+hist(medias,
+    main = &quot;DISTRIBUIÇÃO DAS MÉDIAS AMOSTRAIS&quot;,
+    xlab = &quot;médias&quot;,
+    sub = &quot;seed = 1&quot;
+)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+</div>
+<div id="tamanho-do-efeito" class="section level2">
+<h2>TAMANHO DO EFEITO</h2>
+<p><a href="https://datamares.netlify.app/post/2020-11-06-chutou-ou-n%C3%A3o-chutou-o-teste-t-para-uma-amostra/">Nesse post</a> eu mostrei que o tamanho da amostra é determinante para o teste t e tenderemos a rejeitar a hipótese nula quanto maior for a amostra. Aqui, se tratando de mais de 140 mil observações para cada sexo, dificilmente essas diferenças não seriam consideradas significativas. Para complementar esse teste, podemos calcular o **tamanho do efeito* com a estatística <em>d de Cohen</em>.</p>
+</div>
 </div>
 <div class="footnotes">
 <hr />
 <ol>
 <li id="fn1"><p>Escolhi 2017 porque os dados mais atuais estão com agrupados com Minas Gerais e Rio de Janeiro, ficando muito pesado para uma análise casual.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p>Compreehensive R Archive Network<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Há vários estudos que tratam disso, vide <a href="https://rev-inv-ope.univ-paris1.fr/fileadmin/rev-inv-ope/files/40119/40119-10.pdf">este</a> exemplo.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
