@@ -1,5 +1,5 @@
 ---
-title: 'Desigualdade de renda entre gêneros em Vitória: effect size'
+title: 'Effect Size e a desigualdade de renda entre gêneros em Vitória'
 author: Alberson Miranda
 date: '2020-11-25'
 slug: [desigualdade-renda-generos]
@@ -39,14 +39,14 @@ data = read_rds("data/data.RDS")
 
 ```
 
-# DADOS
+# OS DADOS
 
 Coloco aqui duas opções para buscar esses dados:
 
 1. Manualmente, navegando em ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z
 2. De forma programática via Python.
 
-Escolhi o Python aqui porque não conheço um pacote no CRAN^[Compreehensive R Archive Network] que lide com compressão 7zip. Se escolher baixar e descompactar via script, podemos executar códigos Python através do R com o {reticulate}:
+Escolhi o Python aqui porque não conheço um pacote no CRAN^[Compreehensive R Archive Network.] que lide com compressão 7zip — se souber, por favor, indique nos comentários!. Se escolher baixar e descompactar via script, podemos executar códigos Python através do R com o {reticulate}:
 
 ```{r activate python, eval = FALSE}
 
@@ -225,7 +225,7 @@ data %>%
 
 Sabemos que o teste t é um teste paramétrico e [já discutimos anteriormente](https://datamares.netlify.app/post/2020-11-20-comparando-variancias/) que, quando os dados não seguem uma distribuição próxima da normal, precisamos realizar transformações para alcançar a normalidade.
 
-Você pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limite garante a hipótese da normalidade. Entretanto, principalmente em dados com muitos *outliers* extremos, o tamanho da amostra necessária para convergência pode ser maior do que temos.^[Há vários estudos que tratam disso, vide [este](https://rev-inv-ope.univ-paris1.fr/fileadmin/rev-inv-ope/files/40119/40119-10.pdf) exemplo.]. Portanto, defenddo que devemos, sim, ter cuidado com essa hipótese mesmo lidando com grandes amostras.
+Você pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limite garante a hipótese da normalidade. Entretanto, principalmente em dados com muitos *outliers* extremos, o tamanho da amostra necessária para convergência pode ser absurda, invalidando, na prática, a afirmação a partir da TCL.^[Há vários estudos que tratam disso, vide [este](https://rev-inv-ope.univ-paris1.fr/fileadmin/rev-inv-ope/files/40119/40119-10.pdf) exemplo.]. Portanto, defenddo que devemos, sim, ter cuidado com essa hipótese mesmo lidando com grandes amostras.
 
 A primeira análise nesse sentido é a visual. Podemos verificar que a distribuição apresenta *fat tail* e passa longe de uma normal, tanto pelo histograma quanto pelo *Q-Q plot*.
 
@@ -260,6 +260,7 @@ data %>%
   ))
 
 # qqplot
+# os dados estarão em cima da reta caso sejam distribuídos normalmente
 par(mfrow = c(1, 2))
 
 qqnorm(data[data$sexo == 1, ]$rem_media,
@@ -272,7 +273,7 @@ qqline(data[data$sexo == 2, ]$rem_media)
 
 ```
 
-Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada e, se ela apresentar distribuição próxima da normal, poderemos assumir a normalidade e presseguir com o trabalho. Caso contrário, precisaremos de tratar a base.
+Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos de tratar a base.
 
 ```{r}
 
@@ -311,11 +312,82 @@ Ufa! O TCL se manteve em nossos dados e tanto o *Q-Q plot* quanto o histograma d
 
 ## TESTE T
 
+Agora que garantimos os pré-requisitos, vamos testar se a diferença entre as médias é significativa. Para isso, vamos usar o pacote {infer}:
 
+```{r}
 
-## TAMANHO DO EFEITO
+# transformando variável `sexo`
+data = data %>%
+  mutate(sexo = ifelse(sexo == 1, "homem", "mulher"))
 
-[Nesse post](https://datamares.netlify.app/post/2020-11-06-chutou-ou-n%C3%A3o-chutou-o-teste-t-para-uma-amostra/) eu mostrei que o tamanho da amostra é determinante para o teste t e tenderemos a rejeitar a hipótese nula quanto maior for a amostra. Aqui, se tratando de mais de 140 mil observações para cada sexo, dificilmente essas diferenças não seriam consideradas significativas. Para complementar esse teste, podemos calcular o **tamanho do efeito* com a estatística *d de Cohen*.
+# carregando pacote
+library(infer)
+
+# calculando estatística t
+estatistica_calculada = data %>%
+  specify(rem_media ~ sexo) %>%
+  calculate(stat = "t", order = c("homem", "mulher"))
+
+# gerando distribuição nula
+distr_nula = data %>%
+  specify(rem_media ~ sexo) %>%
+  hypothesise(null = "independence") %>%
+  generate(reps = 100, type = "permute") %>%
+  calculate(stat = "t", order = c("homem", "mulher"))
+
+# visualizando distribuição nula e estatística do teste
+distr_nula %>%
+  visualize(method = "both") +
+  shade_p_value(estatistica_calculada, direction = "greater")
+
+# calculando p-valor
+distr_nula %>%
+  get_p_value(obs_stat = estatistica_calculada, direction = "greater")
+
+```
+
+Com p-valor de 0% e uma estatística calculada a *quilômetros* da distribuição nula, fica bem claro que a diferença é significativa. Entretanto, **isso não quer dizer que ela seja grande ou pequena**. É aí que entram os indicadores de tamanho de efeito.
+
+## TAMANHO DO EFEITO: *Cohen's D*
+
+[Nesse post](https://datamares.netlify.app/post/2020-11-06-chutou-ou-n%C3%A3o-chutou-o-teste-t-para-uma-amostra/) eu mostrei que o tamanho da amostra é determinante para o teste t e tenderemos a rejeitar a hipótese nula quanto maior for a amostra. Aqui, se tratando de mais de 140 mil observações para cada sexo, dificilmente essas diferenças não seriam significativas. Para complementar esse teste, podemos calcular o **tamanho do efeito** com a estatística *d de Cohen*.
+
+Muito usada no campo da saúde em experimentos com testes t pareados, quando é preciso definir o efeito de uma ação em um grupo de tratamento em relação ao grupo de controle, a estatística *d de Cohen* é um indicador de diferenças padronizadas e é particularmente valiosa para quantificar o efeito de uma intervenção, seja em políticas públicas ou em ações de marketing na sua empresa. Isso quer dizer que ele enfatiza o tamanho da diferença entre as médias, sem confundir com a questão do tamanho da amostra.
+
+Por ser padronizado (i.e. não é medido na unidade da amostra, aqui em BR$, mas sim em desvios-padrões) pode ser facilmente comparado à diferentes experimentos. Sua forma de cálculo é a seguinte:
+$$ d = \frac{\text{média do grupo experimental} - \text{média do grupo de controle}}{\text{desvio padrão agrupado}} $$
+
+No R, vamos nos utilizar do pacote {effectsize}:
+
+```{r}
+
+# carregando pacote
+library(effectsize)
+
+# calculando a diferença padronizada
+cohens_d(
+  data[data$sexo == "homem", ]$rem_media,
+  data[data$sexo == "mulher", ]$rem_media
+)
+
+# interpretando a estatística d
+interpret_d(0.26, "sawilowsky2009")
+
+```
+
+Com uma estatística $d=0.26$, a diferença é considerada pequena. Na escala de Sawilowsky (2009):
+
+```{r, echo = FALSE}
+
+rules(
+  c(0.1, 0.2, 0.5, 0.8, 1.2, 2),
+  c("minúsculo", "muito pequeno", "pequeno", "médio", "grande", "muito grande"),
+  "Sawilowsky (2009)"
+)
+
+```
+
+Um efeito de 0.26, considerado pequeno, equivale a dizer que 62% das mulheres teriam remuneração média abaixo da remuneração do homem médio em Vitória^[A tabela de interpretação de *effect sizes* pode ser consultada [neste artigo](https://www.leeds.ac.uk/educol/documents/00002182.htm).].
 
 ```{r, eval = FALSE, include = FALSE}
 data %>%
