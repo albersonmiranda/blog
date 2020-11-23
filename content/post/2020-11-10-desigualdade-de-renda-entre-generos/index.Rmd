@@ -11,7 +11,7 @@ tags:
   - Reticulate
   - Inferencia
 description: Estudo de desigualdade de renda entre gêneros na cidade de Vitória-ES.
-toc: TRUE
+toc: true
 featured: yes
 featureImage: "gender.jpg"
 thumbnail: "images/reticulate.png"
@@ -46,7 +46,7 @@ Coloco aqui duas opções para buscar esses dados:
 1. Manualmente, navegando em ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z
 2. De forma programática via Python.
 
-Escolhi o Python aqui porque não conheço um pacote no CRAN^[Compreehensive R Archive Network.] que lide com compressão 7zip — se souber, por favor, indique nos comentários!. Se escolher baixar e descompactar via script, podemos executar códigos Python através do R com o {reticulate}:
+Escolhi o Python aqui porque não conheço um pacote no CRAN^[Compreehensive R Archive Network.] que lide com compressão 7zip — se souber, por favor, indique nos comentários! Se escolher baixar e descompactar via script, podemos executar códigos Python através do R com o {reticulate}:
 
 ```{r activate python, eval = FALSE}
 
