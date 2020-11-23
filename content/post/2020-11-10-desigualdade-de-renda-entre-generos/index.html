@@ -11,7 +11,7 @@ tags:
   - Reticulate
   - Inferencia
 description: Estudo de desigualdade de renda entre gêneros na cidade de Vitória-ES.
-toc: TRUE
+toc: true
 featured: yes
 featureImage: "gender.jpg"
 thumbnail: "images/reticulate.png"
@@ -21,7 +21,6 @@ codeLineNumbers: no
 figurePositionShow: yes
 ---
 
-<script src="index_files/header-attrs/header-attrs.js"></script>
 <link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
 <script src="index_files/anchor-sections/anchor-sections.js"></script>
 
@@ -37,7 +36,7 @@ true
 <li>Manualmente, navegando em <a href="ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z" class="uri">ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z</a></li>
 <li>De forma programática via Python.</li>
 </ol>
-<p>Escolhi o Python aqui porque não conheço um pacote no CRAN<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> que lide com compressão 7zip — se souber, por favor, indique nos comentários!. Se escolher baixar e descompactar via script, podemos executar códigos Python através do R com o {reticulate}:</p>
+<p>Escolhi o Python aqui porque não conheço um pacote no CRAN<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> que lide com compressão 7zip — se souber, por favor, indique nos comentários! Se escolher baixar e descompactar via script, podemos executar códigos Python através do R com o {reticulate}:</p>
 <pre class="r"><code># ativando python
 library(reticulate)
 
@@ -229,12 +228,12 @@ qqnorm(data[data$sexo == 2, ]$rem_media,
   main = &quot;Q-Q PLOT: MULHERES&quot;)
 qqline(data[data$sexo == 2, ]$rem_media)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
-<p>Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos de tratar a base.</p>
+<p>Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de 10 mil médias de 50 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos de tratar a base.</p>
 <pre class="r"><code># garantir reprodutibilidade
 set.seed(1)
 
 # quantidade de amostras
-n = 1000
+n = 10000
 
 # médias
 medias = rep(NA, n)
@@ -243,7 +242,7 @@ medias = rep(NA, n)
 for (i in 1:n) {
   medias[i] = mean(
     sample(data[data$sexo == 1, ]$rem_media,
-      size = 30, replace = TRUE
+      size = 50, replace = TRUE
     )
   )
 }
@@ -325,8 +324,12 @@ interpret_d(0.26, &quot;sawilowsky2009&quot;)</code></pre>
 ## minúsculo | muito.pequeno | pequeno | médio | grande | muito.grande
 ## -------------------------------------------------------------------
 ##      0.10 |          0.20 |    0.50 |  0.80 |   1.20 |            2</code></pre>
-<p>Um efeito de 0.26, considerado pequeno, equivale a dizer que 62% das mulheres teriam remuneração média abaixo da remuneração do homem médio em Vitória<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<p>Um efeito de 0.26, considerado pequeno, equivale a dizer que 62% das mulheres teriam remuneração média abaixo da remuneração do homem médio em Vitória<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. Claro que analisar o agregado significa olhar para a média. Como serão essas diferenças dentre as diversas profissões?</p>
 </div>
+</div>
+<div id="diferenças-entre-profissões" class="section level1">
+<h1>DIFERENÇAS ENTRE PROFISSÕES</h1>
+<p>Podemos estender nossa análise verificando em quais profissões há maior e menor divergência na remuneração entre</p>
 </div>
 <div class="footnotes">
 <hr />

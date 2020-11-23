@@ -387,12 +387,32 @@ rules(
 
 ```
 
-Um efeito de 0.26, considerado pequeno, equivale a dizer que 62% das mulheres teriam remuneração média abaixo da remuneração do homem médio em Vitória^[A tabela de interpretação de *effect sizes* pode ser consultada [neste artigo](https://www.leeds.ac.uk/educol/documents/00002182.htm).].
+Um efeito de 0.26, considerado pequeno, equivale a dizer que 62% das mulheres teriam remuneração média abaixo da remuneração do homem médio em Vitória^[A tabela de interpretação de *effect sizes* pode ser consultada [neste artigo](https://www.leeds.ac.uk/educol/documents/00002182.htm).]. Claro que analisar o agregado significa olhar para a média. Como serão essas diferenças dentre as diversas profissões?
 
-```{r, eval = FALSE, include = FALSE}
+# DIFERENÇAS ENTRE PROFISSÕES
+
+Podemos estender nossa análise verificando em quais profissões há maior e menor divergência na remuneração.
+
+```{r}
 data %>%
-  mutate(gg = substr(cod_profissao, 1, 3)) %>%
-  group_by(gg) %>%
-  summarise(renda = mean(rem_media)) %>%
-  arrange(desc(renda))
+  mutate(profissao = case_when(
+    str_detect(profissao, "Advogado") ~ "Advogados",
+    str_detect(profissao, "Engenheiro") ~ "Engenheiros",
+    str_detect(profissao, "Médico") ~ "Médicos",
+    str_detect(profissao, "Gerente") ~ "Gerentes",
+    str_detect(profissao, "Dirigentes|Diretor") ~ "Diretores",
+    str_detect(profissao, "Economista") ~ "Economistas",
+    str_detect(profissao, "Analista") ~ "Analistas",
+    str_detect(profissao, "(Professor)(.*)(ensino superior)(.*)") ~ "Prof. Ensino Superior",
+    str_detect(profissao, "Técnico") ~ "Técnicos",
+    str_detect(profissao, "Enfermeiro") ~ "Enfermeiros",
+    TRUE ~ "Outros"
+  )) %>%
+  group_by(sexo, profissao) %>%
+  summarise(renda = mean(rem_media),
+            n = n()) %>%
+  ungroup() %>%
+  pivot_wider(names_from = sexo, values_from = c(renda, n)) %>%
+  mutate(dif = renda_homem - renda_mulher) %>%
+  arrange(desc(dif))
 ```
