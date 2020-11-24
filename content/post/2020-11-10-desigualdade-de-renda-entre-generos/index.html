@@ -1,0 +1,449 @@
+---
+title: 'Effect Size e a desigualdade de renda entre gêneros em Vitória'
+author: Alberson Miranda
+date: '2020-11-24'
+slug: [desigualdade-renda-generos]
+categories:
+  - estatistica
+tags:
+  - Python
+  - R
+  - Reticulate
+  - Inferencia
+description: Estudo de desigualdade de renda entre gêneros na cidade de Vitória-ES.
+toc: true
+draft: false
+featured: yes
+featureImage: "gender.jpg"
+thumbnail: "images/reticulate.png"
+shareImage: "gender.jpg"
+codeMaxLines: 10
+codeLineNumbers: no
+figurePositionShow: yes
+---
+
+<script src="index_files/header-attrs/header-attrs.js"></script>
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+<div id="TOC">
+true
+</div>
+
+<p>Ainda há um bocado de coisas para cobrir nessa série de “inferência 101” e para continuar os estudos trouxe a base da RAIS (Relação Anual de Informações Sociais) de 2017<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Com ela, vamos introduzir o conceito de <em>effect size</em> e de quebra analisar a desigualdade de gênero em nossa querida capital Vitorinha.</p>
+<div id="os-dados" class="section level1">
+<h1>OS DADOS</h1>
+<p>Coloco aqui duas opções para buscar esses dados:</p>
+<ol style="list-style-type: decimal">
+<li>Manualmente, navegando em <a href="ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z" class="uri">ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z</a></li>
+<li>De forma programática via Python.</li>
+</ol>
+<p>Escolhi o Python aqui porque não conheço um pacote no CRAN<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> que lide com compressão 7zip — se souber, por favor, indique nos comentários! Se escolher baixar e descompactar via script, podemos executar códigos Python através do R com o {reticulate}:</p>
+<pre class="r"><code># ativando python
+library(reticulate)
+
+# escolhendo o ambiente
+use_condaenv(&quot;base&quot;)</code></pre>
+<p>Depois de ativar o ambiente Python, vamos baixar e descompactar a base de dados para uma pasta chamada <code>data</code> dentro do diretório do nosso projeto. Se você baixou manualmente, crie a pasta <code>data</code> e cole o arquivo lá.</p>
+<pre class="python"><code># importando módulos
+import urllib.request as rq
+import py7zr
+
+# baixando dados
+url = &quot;ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z&quot;
+rq.urlretrieve(url, &quot;data/rais.7z&quot;)
+
+# descompactando
+rais = py7zr.SevenZipFile(&#39;data/rais.7z&#39;, mode=&#39;r&#39;)
+rais.extractall(path=&quot;data/&quot;)
+rais.close()</code></pre>
+<p>Vamos precisar também da tabela do Código Brasileiro de Ocupações para entendermos as profissões das pessoas analisadas. Depois de fazer o <a href="http://www.mtecbo.gov.br/cbosite/pages/downloads.jsf">download</a>, coloque na pasta <code>data</code> junto com o arquivo da Rais.</p>
+<p>Com os dados baixados, vamos importá-los, conhecê-los e começar a extrair sentido deles.</p>
+<pre class="r"><code># pacotes
+library(tidyverse)
+
+# importando a Rais
+# como os dados possuem caracteres especiais (acentos),
+# é necessário alterar o encoding para LATIN1
+data = read_delim(&quot;data/ES2017.txt&quot;, delim = &quot;;&quot;,
+                  locale = readr::locale(encoding = &quot;LATIN1&quot;),
+                  col_names = FALSE,
+                  skip = 1)
+
+# escolhendo as variáveis de interesse e renomeando colunas
+# também vamos precisar substituir vírgulas por pontos
+# se preferir, realize essa etapa via encoding
+data = data %&gt;%
+  select(X8, X20, X26, X31, X35, X38) %&gt;%
+  rename(&quot;cod_profissao&quot; = X8,
+         &quot;idade&quot; = X20,
+         &quot;municipio&quot; = X26,
+         &quot;cod_raca&quot; = X31,
+         &quot;rem_media&quot; = X35,
+         &quot;sexo&quot; = X38) %&gt;%
+  mutate(rem_media = as.numeric(str_replace_all(rem_media, &quot;,&quot;, &quot;.&quot;)),
+         sexo = as.integer(sexo),
+         idade = as.integer(idade))
+
+# importando tabela CBO
+cbo = read_delim(&quot;data/CBO2002.csv&quot;, delim = &quot;;&quot;,
+                 locale = readr::locale(encoding = &quot;LATIN1&quot;),
+                 col_names = c(&quot;cod_profissao&quot;, &quot;profissao&quot;),
+                 col_types = c(&quot;d&quot;, &quot;c&quot;),
+                 skip = 1)
+
+# juntando ambas tabelas e filtrando apenas Vitória
+data = data %&gt;%
+  inner_join(cbo, by = &quot;cod_profissao&quot;) %&gt;%
+  filter(municipio == 320530)</code></pre>
+<p>Nossos dados agora têm essa cara:</p>
+<pre class="r"><code># visualizando dataframe
+head(data)</code></pre>
+<pre><code>## # A tibble: 6 x 7
+##   cod_profissao idade municipio cod_raca rem_media  sexo profissao              
+##           &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                  
+## 1        717020    42    320530 04            909.     1 Servente de obras      
+## 2        715210    28    320530 02           1167.     1 Pedreiro               
+## 3        717020    63    320530 02           1022.     1 Servente de obras      
+## 4        717020    59    320530 02            880.     1 Servente de obras      
+## 5        517410    29    320530 08           1880.     1 Porteiro de edifícios  
+## 6        715115    61    320530 08              0      1 Operador de escavadeira</code></pre>
+</div>
+<div id="diferenças-no-agregado" class="section level1">
+<h1>DIFERENÇAS NO AGREGADO</h1>
+<p>Primeiramente, vamos tentar entender o que temos em mãos em termos de amostra:</p>
+<pre class="r"><code># quantidade de homens e mulheres
+data %&gt;%
+  ggplot(aes(x = factor(sexo),
+             fill = factor(sexo),
+             label = scales::number(..count..))) +
+  geom_bar() +
+  geom_label(stat = &quot;count&quot;,
+             show.legend = FALSE,
+             color = &quot;grey30&quot;) +
+  scale_y_continuous(labels = scales::number) +
+  scale_fill_manual(name = &quot;sexo&quot;,
+                    labels = c(&quot;homens&quot;, &quot;mulheres&quot;),
+                    values = c(&quot;lightblue&quot;, &quot;salmon&quot;)) +
+  labs(x = &quot;&quot;,
+       y = &quot;quantidade&quot;,
+       title = &quot;QUANTIDADE DE HOMENS E MULHERES&quot;,
+       subtitle = &quot;amostra da cidade de Vitória-ES&quot;,
+       caption = &quot;fonte: Rais/2017&quot;) +
+  theme_minimal() +
+  theme(text = element_text(family = &quot;Century Gothic&quot;,
+                            color = &quot;grey30&quot;),
+        axis.text.x = element_blank())</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Temos praticamente a mesma quantidade de homens e mulheres em nossa amostra. Podemos, antes de realizar qualquer outra análise e aplicar quaisquer filtros, calcular a remuneração média:</p>
+<pre class="r"><code># remuneração média
+aggregate(data = data, rem_media ~ sexo, FUN = mean)</code></pre>
+<pre><code>##   sexo rem_media
+## 1    1  3925.187
+## 2    2  2846.727</code></pre>
+<p>No agregado, a renda média dos homens em Vitória é quase 40% maior que as das mulheres e mesmo quando consideramos a mediana ainda é quase 30% maior. Podemos verificar se essa diferença é significativa com um teste t, mas antes devemos verificar se seus pré-requisitos são atendidos.</p>
+<pre class="r"><code># quartis
+boxplot_data = data %&gt;%
+  group_by(sexo) %&gt;%
+  summarise(stats = list(fivenum(rem_media))) %&gt;%
+  unnest(cols = c(stats))
+
+# boxplot
+data %&gt;%
+  ggplot(aes(
+    x = factor(sexo),
+    y = rem_media,
+    fill = factor(sexo)
+  )) +
+  geom_boxplot() +
+  geom_label(
+    data = boxplot_data,
+    aes(x = factor(sexo), y = stats, label = scales::number(stats)),
+    nudge_x = 0.25,
+    show.legend = FALSE
+  ) +
+  coord_cartesian(ylim = c(0, 5000)) +
+  scale_y_continuous(labels = scales::number) +
+  scale_fill_manual(
+    name = &quot;sexo&quot;,
+    labels = c(&quot;homens&quot;, &quot;mulheres&quot;),
+    values = c(&quot;lightblue&quot;, &quot;salmon&quot;)
+  ) +
+  labs(
+    x = &quot;&quot;,
+    y = &quot;remuneração média&quot;,
+    title = &quot;DISTRIBUIÇÃO DA REMUNERAÇÃO MÉDIA ENTRE HOMENS E MULHERES&quot;,
+    subtitle = &quot;amostra da cidade de Vitória-ES&quot;,
+    caption = &quot;fonte: Rais/2017&quot;
+  ) +
+  theme_minimal() +
+  theme(
+    text = element_text(
+      family = &quot;Century Gothic&quot;,
+      color = &quot;grey30&quot;
+    ),
+    axis.text.x = element_blank()
+  )</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div id="verificando-a-hipótese-da-normalidade" class="section level2">
+<h2>VERIFICANDO A HIPÓTESE DA NORMALIDADE</h2>
+<p>Sabemos que o teste t é um teste paramétrico e <a href="https://datamares.netlify.app/post/2020-11-20-comparando-variancias/">já discutimos anteriormente</a> que, quando os dados não seguem uma distribuição próxima da normal, precisamos realizar transformações para alcançar a normalidade.</p>
+<p>Você pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limite garante a hipótese da normalidade. Entretanto, principalmente em dados com muitos <em>outliers</em> extremos, o tamanho da amostra necessária para convergência pode ser absurda, invalidando, na prática, a afirmação a partir da TCL.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. Portanto, defenddo que devemos, sim, ter cuidado com essa hipótese mesmo lidando com grandes amostras.</p>
+<p>A primeira análise nesse sentido é a visual. Podemos verificar que a distribuição apresenta <em>fat tail</em> e passa longe de uma normal, tanto pelo histograma quanto pelo <em>Q-Q plot</em>.</p>
+<pre class="r"><code># histograma
+data %&gt;%
+  ggplot(aes(
+    x = rem_media,
+    fill = factor(sexo)
+  )) +
+  geom_histogram(binwidth = 500) +
+  coord_cartesian(xlim = c(0, 20000)) +
+  scale_y_continuous(labels = scales::number) +
+  scale_x_continuous(labels = scales::number) +
+  scale_fill_manual(
+    name = &quot;sexo&quot;,
+    labels = c(&quot;homens&quot;, &quot;mulheres&quot;),
+    values = c(&quot;lightblue&quot;, &quot;salmon&quot;)
+  ) +
+  labs(
+    x = &quot;remuneração média&quot;,
+    y = &quot;quantidade&quot;,
+    title = &quot;DISTRIBUIÇÃO DA REMUNERAÇÃO MÉDIA ENTRE HOMENS E MULHERES&quot;,
+    subtitle = &quot;amostra da cidade de Vitória-ES&quot;,
+    caption = &quot;fonte: Rais/2017&quot;
+  ) +
+  theme_minimal() +
+  theme(text = element_text(
+    family = &quot;Century Gothic&quot;,
+    color = &quot;grey30&quot;
+  ))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code># qqplot
+# os dados estarão em cima da reta caso sejam distribuídos normalmente
+par(mfrow = c(1, 2))
+
+qqnorm(data[data$sexo == 1, ]$rem_media,
+  main = &quot;Q-Q PLOT: HOMENS&quot;)
+qqline(data[data$sexo == 1, ]$rem_media)
+
+qqnorm(data[data$sexo == 2, ]$rem_media,
+  main = &quot;Q-Q PLOT: MULHERES&quot;)
+qqline(data[data$sexo == 2, ]$rem_media)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<p>Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos de tratar a base.</p>
+<pre class="r"><code># garantir reprodutibilidade
+set.seed(1)
+
+# quantidade de amostras
+n = 1000
+
+# médias
+medias = rep(NA, n)
+
+# tirando amostras e calculando as médias
+for (i in 1:n) {
+  medias[i] = mean(
+    sample(data[data$sexo == 1, ]$rem_media,
+      size = 30, replace = TRUE
+    )
+  )
+}
+
+# qqplot
+qqnorm(medias)
+qqline(medias)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code># visualização
+hist(medias,
+    main = &quot;DISTRIBUIÇÃO DAS MÉDIAS AMOSTRAIS&quot;,
+    xlab = &quot;médias&quot;,
+    sub = &quot;seed = 1&quot;
+)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<p>Ufa! O TCL se manteve em nossos dados e tanto o <em>Q-Q plot</em> quanto o histograma demonstraram distribuição próxima da normal, nos habilitando a prosseguir com os testes.</p>
+</div>
+<div id="teste-t" class="section level2">
+<h2>TESTE T</h2>
+<p>Agora que garantimos os pré-requisitos, vamos testar se a diferença entre as médias é significativa. Para isso, vamos usar o pacote {infer}:</p>
+<pre class="r"><code># transformando variável `sexo`
+data = data %&gt;%
+  mutate(sexo = ifelse(sexo == 1, &quot;homem&quot;, &quot;mulher&quot;))
+
+# carregando pacote
+library(infer)
+
+# calculando estatística t
+estatistica_calculada = data %&gt;%
+  specify(rem_media ~ sexo) %&gt;%
+  calculate(stat = &quot;t&quot;, order = c(&quot;homem&quot;, &quot;mulher&quot;))
+
+# gerando distribuição nula
+distr_nula = data %&gt;%
+  specify(rem_media ~ sexo) %&gt;%
+  hypothesise(null = &quot;independence&quot;) %&gt;%
+  generate(reps = 100, type = &quot;permute&quot;) %&gt;%
+  calculate(stat = &quot;t&quot;, order = c(&quot;homem&quot;, &quot;mulher&quot;))
+
+# visualizando distribuição nula e estatística do teste
+distr_nula %&gt;%
+  visualize(method = &quot;both&quot;) +
+  shade_p_value(estatistica_calculada, direction = &quot;greater&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code># calculando p-valor
+distr_nula %&gt;%
+  get_p_value(obs_stat = estatistica_calculada, direction = &quot;greater&quot;)</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   p_value
+##     &lt;dbl&gt;
+## 1       0</code></pre>
+<p>Com p-valor de 0% e uma estatística calculada a <em>quilômetros</em> da distribuição nula, fica bem claro que a diferença é significativa. Entretanto, <strong>isso não quer dizer que ela seja grande ou pequena</strong>. É aí que entram os indicadores de tamanho de efeito.</p>
+</div>
+<div id="tamanho-do-efeito-cohens-d" class="section level2">
+<h2>TAMANHO DO EFEITO: <em>Cohen’s D</em></h2>
+<p><a href="https://datamares.netlify.app/post/2020-11-06-chutou-ou-n%C3%A3o-chutou-o-teste-t-para-uma-amostra/">Nesse post</a> eu mostrei que o tamanho da amostra é determinante para o teste t e tenderemos a rejeitar a hipótese nula quanto maior for a amostra. Aqui, se tratando de mais de 140 mil observações para cada sexo, dificilmente essas diferenças não seriam significativas. Para complementar esse teste, podemos calcular o <strong>tamanho do efeito</strong> com a estatística <em>d de Cohen</em>.</p>
+<p>Muito usada no campo da saúde em experimentos com testes t pareados, quando é preciso definir o efeito de uma ação em um grupo de tratamento em relação ao grupo de controle, a estatística <em>d de Cohen</em> é um indicador de diferenças padronizadas e é particularmente valiosa para quantificar o efeito de uma intervenção, seja em políticas públicas ou em ações de marketing na sua empresa. Isso quer dizer que ele enfatiza o tamanho da diferença entre as médias, sem confundir com a questão do tamanho da amostra.</p>
+<p>Por ser padronizado (i.e. não é medido na unidade da amostra, aqui em BR$, mas sim em desvios-padrões) pode ser facilmente comparado à diferentes experimentos. Sua forma de cálculo é a seguinte:
+<span class="math display">\[ d = \frac{\text{média do grupo experimental} - \text{média do grupo de controle}}{\text{desvio padrão agrupado}} \]</span></p>
+<p>No R, vamos nos utilizar do pacote {effectsize}:</p>
+<pre class="r"><code># carregando pacote
+library(effectsize)
+
+# calculando a diferença padronizada
+cohens_d(
+  data[data$sexo == &quot;homem&quot;, ]$rem_media,
+  data[data$sexo == &quot;mulher&quot;, ]$rem_media
+)</code></pre>
+<pre><code>## Cohen&#39;s d |       95% CI
+## ------------------------
+##      0.26 | [0.28, 0.28]</code></pre>
+<pre class="r"><code># interpretando a estatística d
+interpret_d(0.26, &quot;sawilowsky2009&quot;)</code></pre>
+<pre><code>## [1] &quot;small&quot;
+## (Rules: sawilowsky2009)</code></pre>
+<p>Com uma estatística <span class="math inline">\(d=0.26\)</span>, a diferença é considerada pequena. Na escala de Sawilowsky (2009):</p>
+<pre><code>## # Reference values (Sawilowsky (2009))
+## 
+## minúsculo | muito.pequeno | pequeno | médio | grande | muito.grande
+## -------------------------------------------------------------------
+##      0.10 |          0.20 |    0.50 |  0.80 |   1.20 |            2</code></pre>
+<p>Um efeito de 0.26, considerado pequeno, equivale a dizer que 62% das mulheres teriam remuneração média abaixo da remuneração do homem médio em Vitória<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. Claro que analisar o agregado significa olhar para a média. Como serão essas diferenças dentre as diversas profissões?</p>
+</div>
+</div>
+<div id="diferenças-entre-profissões" class="section level1">
+<h1>DIFERENÇAS ENTRE PROFISSÕES</h1>
+<p>Podemos estender nossa análise verificando em quais profissões há maior e menor divergência na remuneração.</p>
+<pre class="r"><code># criando dataframe de diferenças na remuneração
+# profissões selecionadas
+diferencas = data %&gt;%
+  mutate(profissao = case_when(
+    str_detect(profissao, &quot;Advogado&quot;) ~ &quot;Advogados&quot;,
+    str_detect(profissao, &quot;Engenheiro&quot;) ~ &quot;Engenheiros&quot;,
+    str_detect(profissao, &quot;Médico&quot;) ~ &quot;Médicos&quot;,
+    str_detect(profissao, &quot;Gerente&quot;) ~ &quot;Gerentes&quot;,
+    str_detect(profissao, &quot;Dirigentes|Diretor&quot;) ~ &quot;Diretores&quot;,
+    str_detect(profissao, &quot;Economista&quot;) ~ &quot;Economistas&quot;,
+    str_detect(profissao, &quot;Analista&quot;) ~ &quot;Analistas&quot;,
+    str_detect(profissao, &quot;Técnico&quot;) ~ &quot;Técnicos&quot;,
+    str_detect(profissao, &quot;Enfermeiro&quot;) ~ &quot;Enfermeiros&quot;,
+    str_detect(profissao,
+      &quot;(Professor)(.*)(ensino superior)(.*)&quot;) ~ &quot;Prof. Ensino Superior&quot;,
+    TRUE ~ &quot;Outros&quot;
+  )) %&gt;%
+  group_by(sexo, profissao) %&gt;%
+  summarise(
+    renda = mean(rem_media),
+    n = n()
+  ) %&gt;%
+  ungroup() %&gt;%
+    pivot_wider(names_from = sexo, values_from = c(renda, n)) %&gt;%
+    mutate(dif = renda_homem - renda_mulher) %&gt;%
+    arrange(desc(dif))
+
+# visualizando tabela
+diferencas</code></pre>
+<pre><code>## # A tibble: 11 x 6
+##    profissao             renda_homem renda_mulher n_homem n_mulher   dif
+##    &lt;chr&gt;                       &lt;dbl&gt;        &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;
+##  1 Diretores                  13559.        6994.     393      228 6565.
+##  2 Engenheiros                13997.       10446.    1850      409 3550.
+##  3 Advogados                   8625.        5658.     244      342 2966.
+##  4 Economistas                 8251.        5576.     168      184 2675.
+##  5 Gerentes                    6599.        4463.    3659     3477 2136.
+##  6 Técnicos                    4790.        2731.   10434    10493 2060.
+##  7 Analistas                   5647.        4039.    2931     1869 1607.
+##  8 Prof. Ensino Superior       7384.        6470.    1248     1062  914.
+##  9 Outros                      3427.        2606.  121362   120682  820.
+## 10 Médicos                     8232.        7704.    1840     1984  528.
+## 11 Enfermeiros                 4166.        4439.     540     2139 -273.</code></pre>
+<p>Dentre as profissões selecionadas, apenas a de enfermagem tem salário média maior para as mulheres. Os homens levam vantagem em todos os demais. Colocando em gráfico:</p>
+<pre class="r"><code># gráfico
+diferenca_media = 3925.18 - 2846.727
+setas = tibble(
+  x1 = c(2.9, 9.6),
+  x2 = c(3.5, 9.2),
+  y1 = c(2000, 6000),
+  y2 = c(1200, 6300)
+)
+
+diferencas %&gt;%
+  ggplot(aes(x = reorder(profissao, desc(profissao)), y = dif)) +
+  geom_hline(yintercept = diferenca_media, color = &quot;grey85&quot;) +
+  geom_segment(
+    aes(y = diferenca_media, yend = dif, xend = profissao),
+    color = &quot;grey85&quot;, size = .7
+  ) +
+  geom_point(aes(size = renda_homem), color = &quot;#F06337&quot;) +
+    scale_y_continuous(labels = scales::number) +
+    scale_size_continuous(labels = scales::number, range = c(1, 10)) +
+    annotate(&quot;text&quot;,
+      x = 2.5, y = 2000, size = 3.5, color = &quot;grey85&quot;,
+      label = &quot;a diferença média é de\nR$ 1.078&quot;
+    ) +
+    annotate(&quot;text&quot;,
+    x = 10.5, y = 5500, size = 3.5, color = &quot;grey85&quot;,
+    label = &quot;posições de executivo\né onde a diferença é maior\ne é também onde estão\nos maiores salários&quot;
+  ) +
+  geom_curve(
+    data = setas, aes(x = x1, y = y1, xend = x2, yend = y2),
+    arrow = arrow(length = unit(0.1, &quot;inch&quot;)),
+    size = 0.3, color = &quot;grey85&quot;, curvature = 0.3
+  ) +
+  coord_flip() +
+  labs(
+    x = &quot;&quot;,
+    y = &quot;&quot;,
+    size = &quot;rem. média\n(homem)&quot;,
+    title = &quot;DESIGUALDADE DE GÊNERO EM VITÓRIA&quot;,
+    subtitle = &quot;As diferenças salarias evidenciam o longo caminha na superação da colocação\nda mulher como profissional de segunda categoria no mercado de trabalho&quot;,
+    caption = &quot;fonte: Rais 2017 | elaboração: Alberson Miranda&quot;
+  ) +
+  theme(
+    panel.grid = element_blank(),
+    plot.background = element_rect(fill = &quot;#002538&quot;),
+    panel.background = element_rect(fill = &quot;#002538&quot;),
+    text = element_text(
+      family = &quot;Century Gothic&quot;,
+      color = &quot;grey85&quot;
+    ),
+    axis.text = element_text(color = &quot;grey85&quot;, size = 10),
+    axis.ticks = element_line(color = &quot;grey85&quot;),
+    plot.title = element_text(size = 36, margin = margin(10, 0, 5, 10)),
+    plot.subtitle = element_text(hjust = 1, margin = margin(0, 0, 30, 0), size = 16),
+    plot.caption = element_text(hjust = 0),
+    plot.title.position = &quot;plot&quot;,
+    panel.border = element_rect(color = &quot;grey85&quot;, fill = NA),
+    legend.background = element_rect(fill = &quot;#002538&quot;),
+    legend.key = element_rect(fill = &quot;#002538&quot;)
+  )</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="1152" /></p>
+<p>Dentre essas profissões que escolhemos, vamos analisar o tamanho do efeito</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Escolhi 2017 porque os dados mais atuais estão com agrupados com Minas Gerais e Rio de Janeiro, ficando muito pesado para uma análise casual.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Compreehensive R Archive Network.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Há vários estudos que tratam disso, vide <a href="https://rev-inv-ope.univ-paris1.fr/fileadmin/rev-inv-ope/files/40119/40119-10.pdf">este</a> exemplo.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>A tabela de interpretação de <em>effect sizes</em> pode ser consultada <a href="https://www.leeds.ac.uk/educol/documents/00002182.htm">neste artigo</a>.<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
