@@ -11,8 +11,7 @@ tags:
   - Reticulate
   - Inferencia
 description: Estudo de desigualdade de renda entre gêneros na cidade de Vitória-ES.
-toc: true
-draft: false
+draft: true
 featured: yes
 featureImage: "gender.jpg"
 thumbnail: "images/reticulate.png"
@@ -126,7 +125,7 @@ data = data %>%
 
 Nossos dados agora têm essa cara:
 
-```{r}
+```{r glimpse}
 
 # visualizando dataframe
 head(data)
@@ -137,7 +136,7 @@ head(data)
 
 Primeiramente, vamos tentar entender o que temos em mãos em termos de amostra:
 
-```{r}
+```{r barplot}
 
 # quantidade de homens e mulheres
 data %>%
@@ -175,7 +174,7 @@ aggregate(data = data, rem_media ~ sexo, FUN = mean)
 
 No agregado, a renda média dos homens em Vitória é quase 40% maior que as das mulheres e mesmo quando consideramos a mediana ainda é quase 30% maior. Podemos verificar se essa diferença é significativa com um teste t, mas antes devemos verificar se seus pré-requisitos são atendidos.
 
-```{r}
+```{r boxplot}
 
 # quartis
 boxplot_data = data %>%
@@ -230,7 +229,7 @@ Você pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limit
 
 A primeira análise nesse sentido é a visual. Podemos verificar que a distribuição apresenta *fat tail* e passa longe de uma normal, tanto pelo histograma quanto pelo *Q-Q plot*.
 
-```{r}
+```{r qqplot}
 
 # histograma
 data %>%
@@ -276,7 +275,7 @@ qqline(data[data$sexo == 2, ]$rem_media)
 
 Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos de tratar a base.
 
-```{r}
+```{r simulacao}
 
 # garantir reprodutibilidade
 set.seed(1)
@@ -315,7 +314,7 @@ Ufa! O TCL se manteve em nossos dados e tanto o *Q-Q plot* quanto o histograma d
 
 Agora que garantimos os pré-requisitos, vamos testar se a diferença entre as médias é significativa. Para isso, vamos usar o pacote {infer}:
 
-```{r}
+```{r teste t agg}
 
 # transformando variável `sexo`
 data = data %>%
@@ -360,7 +359,7 @@ $$ d = \frac{\text{média do grupo experimental} - \text{média do grupo de cont
 
 No R, vamos nos utilizar do pacote {effectsize}:
 
-```{r}
+```{r effect size agg}
 
 # carregando pacote
 library(effectsize)
@@ -378,7 +377,7 @@ interpret_d(0.26, "sawilowsky2009")
 
 Com uma estatística $d=0.26$, a diferença é considerada pequena. Na escala de Sawilowsky (2009):
 
-```{r, echo = FALSE}
+```{r escala sawilowsky, echo = FALSE}
 
 rules(
   c(0.1, 0.2, 0.5, 0.8, 1.2, 2),
@@ -394,7 +393,7 @@ Um efeito de 0.26, considerado pequeno, equivale a dizer que 62% das mulheres te
 
 Podemos estender nossa análise verificando em quais profissões há maior e menor divergência na remuneração.
 
-```{r}
+```{r tabela difs}
 
 # criando dataframe de diferenças na remuneração
 # profissões selecionadas
@@ -430,7 +429,7 @@ diferencas
 
 Dentre as profissões selecionadas, apenas a de enfermagem tem salário média maior para as mulheres. Os homens levam vantagem em todos os demais. Colocando em gráfico:
 
-```{r, fig.width=12, fig.height=8}
+```{r grafico, fig.width=12, fig.height=8}
 
 # gráfico
 diferenca_media = 3925.18 - 2846.727
@@ -449,13 +448,13 @@ diferencas %>%
     color = "grey85", size = .7
   ) +
   geom_point(aes(size = renda_homem), color = "#F06337") +
-    scale_y_continuous(labels = scales::number) +
-    scale_size_continuous(labels = scales::number, range = c(1, 10)) +
-    annotate("text",
-      x = 2.5, y = 2000, size = 3.5, color = "grey85",
-      label = "a diferença média é de\nR$ 1.078"
-    ) +
-    annotate("text",
+  scale_y_continuous(labels = scales::number) +
+  scale_size_continuous(labels = scales::number, range = c(1, 10)) +
+  annotate("text",
+    x = 2.5, y = 2000, size = 3.5, color = "grey85",
+    label = "a diferença média é de\nR$ 1.078"
+  ) +
+  annotate("text",
     x = 10.5, y = 5500, size = 3.5, color = "grey85",
     label = "posições de executivo\né onde a diferença é maior\ne é também onde estão\nos maiores salários"
   ) +
@@ -484,8 +483,12 @@ diferencas %>%
     axis.text = element_text(color = "grey85", size = 10),
     axis.ticks = element_line(color = "grey85"),
     plot.title = element_text(size = 36, margin = margin(10, 0, 5, 10)),
-    plot.subtitle = element_text(hjust = 1, margin = margin(0, 0, 30, 0), size = 16),
-    plot.caption = element_text(hjust = 0),
+    plot.subtitle = element_text(
+      hjust = 0,
+      margin = margin(0, 0, 30, 0),
+      size = 16
+    ),
+    plot.caption = element_text(hjust = 1),
     plot.title.position = "plot",
     panel.border = element_rect(color = "grey85", fill = NA),
     legend.background = element_rect(fill = "#002538"),
@@ -493,4 +496,4 @@ diferencas %>%
   )
 ```
 
-Dentre essas profissões que escolhemos, vamos analisar o tamanho do efeito 
+Dentre essas profissões que escolhemos, vamos analisar o tamanho do efeito para a maior diferença — os cargos de executivo (dirigentes e diretores).
