@@ -1,7 +1,7 @@
 ---
 title: 'Effect Size e a desigualdade de renda entre gêneros em Vitória'
 author: Alberson Miranda
-date: '2020-11-25'
+date: '2020-11-24'
 slug: [desigualdade-renda-generos]
 categories:
   - estatistica
@@ -12,6 +12,7 @@ tags:
   - Inferencia
 description: Estudo de desigualdade de renda entre gêneros na cidade de Vitória-ES.
 toc: true
+draft: false
 featured: yes
 featureImage: "gender.jpg"
 thumbnail: "images/reticulate.png"
@@ -21,6 +22,7 @@ codeLineNumbers: no
 figurePositionShow: yes
 ---
 
+<script src="index_files/header-attrs/header-attrs.js"></script>
 <link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
 <script src="index_files/anchor-sections/anchor-sections.js"></script>
 
@@ -228,12 +230,12 @@ qqnorm(data[data$sexo == 2, ]$rem_media,
   main = &quot;Q-Q PLOT: MULHERES&quot;)
 qqline(data[data$sexo == 2, ]$rem_media)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
-<p>Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de 10 mil médias de 50 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos de tratar a base.</p>
+<p>Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos de tratar a base.</p>
 <pre class="r"><code># garantir reprodutibilidade
 set.seed(1)
 
 # quantidade de amostras
-n = 10000
+n = 1000
 
 # médias
 medias = rep(NA, n)
@@ -242,7 +244,7 @@ medias = rep(NA, n)
 for (i in 1:n) {
   medias[i] = mean(
     sample(data[data$sexo == 1, ]$rem_media,
-      size = 50, replace = TRUE
+      size = 30, replace = TRUE
     )
   )
 }
@@ -329,7 +331,112 @@ interpret_d(0.26, &quot;sawilowsky2009&quot;)</code></pre>
 </div>
 <div id="diferenças-entre-profissões" class="section level1">
 <h1>DIFERENÇAS ENTRE PROFISSÕES</h1>
-<p>Podemos estender nossa análise verificando em quais profissões há maior e menor divergência na remuneração entre</p>
+<p>Podemos estender nossa análise verificando em quais profissões há maior e menor divergência na remuneração.</p>
+<pre class="r"><code># criando dataframe de diferenças na remuneração
+# profissões selecionadas
+diferencas = data %&gt;%
+  mutate(profissao = case_when(
+    str_detect(profissao, &quot;Advogado&quot;) ~ &quot;Advogados&quot;,
+    str_detect(profissao, &quot;Engenheiro&quot;) ~ &quot;Engenheiros&quot;,
+    str_detect(profissao, &quot;Médico&quot;) ~ &quot;Médicos&quot;,
+    str_detect(profissao, &quot;Gerente&quot;) ~ &quot;Gerentes&quot;,
+    str_detect(profissao, &quot;Dirigentes|Diretor&quot;) ~ &quot;Diretores&quot;,
+    str_detect(profissao, &quot;Economista&quot;) ~ &quot;Economistas&quot;,
+    str_detect(profissao, &quot;Analista&quot;) ~ &quot;Analistas&quot;,
+    str_detect(profissao, &quot;Técnico&quot;) ~ &quot;Técnicos&quot;,
+    str_detect(profissao, &quot;Enfermeiro&quot;) ~ &quot;Enfermeiros&quot;,
+    str_detect(profissao,
+      &quot;(Professor)(.*)(ensino superior)(.*)&quot;) ~ &quot;Prof. Ensino Superior&quot;,
+    TRUE ~ &quot;Outros&quot;
+  )) %&gt;%
+  group_by(sexo, profissao) %&gt;%
+  summarise(
+    renda = mean(rem_media),
+    n = n()
+  ) %&gt;%
+  ungroup() %&gt;%
+    pivot_wider(names_from = sexo, values_from = c(renda, n)) %&gt;%
+    mutate(dif = renda_homem - renda_mulher) %&gt;%
+    arrange(desc(dif))
+
+# visualizando tabela
+diferencas</code></pre>
+<pre><code>## # A tibble: 11 x 6
+##    profissao             renda_homem renda_mulher n_homem n_mulher   dif
+##    &lt;chr&gt;                       &lt;dbl&gt;        &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;
+##  1 Diretores                  13559.        6994.     393      228 6565.
+##  2 Engenheiros                13997.       10446.    1850      409 3550.
+##  3 Advogados                   8625.        5658.     244      342 2966.
+##  4 Economistas                 8251.        5576.     168      184 2675.
+##  5 Gerentes                    6599.        4463.    3659     3477 2136.
+##  6 Técnicos                    4790.        2731.   10434    10493 2060.
+##  7 Analistas                   5647.        4039.    2931     1869 1607.
+##  8 Prof. Ensino Superior       7384.        6470.    1248     1062  914.
+##  9 Outros                      3427.        2606.  121362   120682  820.
+## 10 Médicos                     8232.        7704.    1840     1984  528.
+## 11 Enfermeiros                 4166.        4439.     540     2139 -273.</code></pre>
+<p>Dentre as profissões selecionadas, apenas a de enfermagem tem salário média maior para as mulheres. Os homens levam vantagem em todos os demais. Colocando em gráfico:</p>
+<pre class="r"><code># gráfico
+diferenca_media = 3925.18 - 2846.727
+setas = tibble(
+  x1 = c(2.9, 9.6),
+  x2 = c(3.5, 9.2),
+  y1 = c(2000, 6000),
+  y2 = c(1200, 6300)
+)
+
+diferencas %&gt;%
+  ggplot(aes(x = reorder(profissao, desc(profissao)), y = dif)) +
+  geom_hline(yintercept = diferenca_media, color = &quot;grey85&quot;) +
+  geom_segment(
+    aes(y = diferenca_media, yend = dif, xend = profissao),
+    color = &quot;grey85&quot;, size = .7
+  ) +
+  geom_point(aes(size = renda_homem), color = &quot;#F06337&quot;) +
+    scale_y_continuous(labels = scales::number) +
+    scale_size_continuous(labels = scales::number, range = c(1, 10)) +
+    annotate(&quot;text&quot;,
+      x = 2.5, y = 2000, size = 3.5, color = &quot;grey85&quot;,
+      label = &quot;a diferença média é de\nR$ 1.078&quot;
+    ) +
+    annotate(&quot;text&quot;,
+    x = 10.5, y = 5500, size = 3.5, color = &quot;grey85&quot;,
+    label = &quot;posições de executivo\né onde a diferença é maior\ne é também onde estão\nos maiores salários&quot;
+  ) +
+  geom_curve(
+    data = setas, aes(x = x1, y = y1, xend = x2, yend = y2),
+    arrow = arrow(length = unit(0.1, &quot;inch&quot;)),
+    size = 0.3, color = &quot;grey85&quot;, curvature = 0.3
+  ) +
+  coord_flip() +
+  labs(
+    x = &quot;&quot;,
+    y = &quot;&quot;,
+    size = &quot;rem. média\n(homem)&quot;,
+    title = &quot;DESIGUALDADE DE GÊNERO EM VITÓRIA&quot;,
+    subtitle = &quot;As diferenças salarias evidenciam o longo caminha na superação da colocação\nda mulher como profissional de segunda categoria no mercado de trabalho&quot;,
+    caption = &quot;fonte: Rais 2017 | elaboração: Alberson Miranda&quot;
+  ) +
+  theme(
+    panel.grid = element_blank(),
+    plot.background = element_rect(fill = &quot;#002538&quot;),
+    panel.background = element_rect(fill = &quot;#002538&quot;),
+    text = element_text(
+      family = &quot;Century Gothic&quot;,
+      color = &quot;grey85&quot;
+    ),
+    axis.text = element_text(color = &quot;grey85&quot;, size = 10),
+    axis.ticks = element_line(color = &quot;grey85&quot;),
+    plot.title = element_text(size = 36, margin = margin(10, 0, 5, 10)),
+    plot.subtitle = element_text(hjust = 1, margin = margin(0, 0, 30, 0), size = 16),
+    plot.caption = element_text(hjust = 0),
+    plot.title.position = &quot;plot&quot;,
+    panel.border = element_rect(color = &quot;grey85&quot;, fill = NA),
+    legend.background = element_rect(fill = &quot;#002538&quot;),
+    legend.key = element_rect(fill = &quot;#002538&quot;)
+  )</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="1152" /></p>
+<p>Dentre essas profissões que escolhemos, vamos analisar o tamanho do efeito</p>
 </div>
 <div class="footnotes">
 <hr />

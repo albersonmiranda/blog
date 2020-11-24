@@ -1,7 +1,7 @@
 ---
 title: 'Effect Size e a desigualdade de renda entre gêneros em Vitória'
 author: Alberson Miranda
-date: '2020-11-25'
+date: '2020-11-24'
 slug: [desigualdade-renda-generos]
 categories:
   - estatistica
@@ -12,6 +12,7 @@ tags:
   - Inferencia
 description: Estudo de desigualdade de renda entre gêneros na cidade de Vitória-ES.
 toc: true
+draft: false
 featured: yes
 featureImage: "gender.jpg"
 thumbnail: "images/reticulate.png"
@@ -394,7 +395,10 @@ Um efeito de 0.26, considerado pequeno, equivale a dizer que 62% das mulheres te
 Podemos estender nossa análise verificando em quais profissões há maior e menor divergência na remuneração.
 
 ```{r}
-data %>%
+
+# criando dataframe de diferenças na remuneração
+# profissões selecionadas
+diferencas = data %>%
   mutate(profissao = case_when(
     str_detect(profissao, "Advogado") ~ "Advogados",
     str_detect(profissao, "Engenheiro") ~ "Engenheiros",
@@ -403,16 +407,90 @@ data %>%
     str_detect(profissao, "Dirigentes|Diretor") ~ "Diretores",
     str_detect(profissao, "Economista") ~ "Economistas",
     str_detect(profissao, "Analista") ~ "Analistas",
-    str_detect(profissao, "(Professor)(.*)(ensino superior)(.*)") ~ "Prof. Ensino Superior",
     str_detect(profissao, "Técnico") ~ "Técnicos",
     str_detect(profissao, "Enfermeiro") ~ "Enfermeiros",
+    str_detect(profissao,
+      "(Professor)(.*)(ensino superior)(.*)") ~ "Prof. Ensino Superior",
     TRUE ~ "Outros"
   )) %>%
   group_by(sexo, profissao) %>%
-  summarise(renda = mean(rem_media),
-            n = n()) %>%
+  summarise(
+    renda = mean(rem_media),
+    n = n()
+  ) %>%
   ungroup() %>%
-  pivot_wider(names_from = sexo, values_from = c(renda, n)) %>%
-  mutate(dif = renda_homem - renda_mulher) %>%
-  arrange(desc(dif))
+    pivot_wider(names_from = sexo, values_from = c(renda, n)) %>%
+    mutate(dif = renda_homem - renda_mulher) %>%
+    arrange(desc(dif))
+
+# visualizando tabela
+diferencas
+
 ```
+
+Dentre as profissões selecionadas, apenas a de enfermagem tem salário média maior para as mulheres. Os homens levam vantagem em todos os demais. Colocando em gráfico:
+
+```{r, fig.width=12, fig.height=8}
+
+# gráfico
+diferenca_media = 3925.18 - 2846.727
+setas = tibble(
+  x1 = c(2.9, 9.6),
+  x2 = c(3.5, 9.2),
+  y1 = c(2000, 6000),
+  y2 = c(1200, 6300)
+)
+
+diferencas %>%
+  ggplot(aes(x = reorder(profissao, desc(profissao)), y = dif)) +
+  geom_hline(yintercept = diferenca_media, color = "grey85") +
+  geom_segment(
+    aes(y = diferenca_media, yend = dif, xend = profissao),
+    color = "grey85", size = .7
+  ) +
+  geom_point(aes(size = renda_homem), color = "#F06337") +
+    scale_y_continuous(labels = scales::number) +
+    scale_size_continuous(labels = scales::number, range = c(1, 10)) +
+    annotate("text",
+      x = 2.5, y = 2000, size = 3.5, color = "grey85",
+      label = "a diferença média é de\nR$ 1.078"
+    ) +
+    annotate("text",
+    x = 10.5, y = 5500, size = 3.5, color = "grey85",
+    label = "posições de executivo\né onde a diferença é maior\ne é também onde estão\nos maiores salários"
+  ) +
+  geom_curve(
+    data = setas, aes(x = x1, y = y1, xend = x2, yend = y2),
+    arrow = arrow(length = unit(0.1, "inch")),
+    size = 0.3, color = "grey85", curvature = 0.3
+  ) +
+  coord_flip() +
+  labs(
+    x = "",
+    y = "",
+    size = "rem. média\n(homem)",
+    title = "DESIGUALDADE DE GÊNERO EM VITÓRIA",
+    subtitle = "As diferenças salarias evidenciam o longo caminha na superação da colocação\nda mulher como profissional de segunda categoria no mercado de trabalho",
+    caption = "fonte: Rais 2017 | elaboração: Alberson Miranda"
+  ) +
+  theme(
+    panel.grid = element_blank(),
+    plot.background = element_rect(fill = "#002538"),
+    panel.background = element_rect(fill = "#002538"),
+    text = element_text(
+      family = "Century Gothic",
+      color = "grey85"
+    ),
+    axis.text = element_text(color = "grey85", size = 10),
+    axis.ticks = element_line(color = "grey85"),
+    plot.title = element_text(size = 36, margin = margin(10, 0, 5, 10)),
+    plot.subtitle = element_text(hjust = 1, margin = margin(0, 0, 30, 0), size = 16),
+    plot.caption = element_text(hjust = 0),
+    plot.title.position = "plot",
+    panel.border = element_rect(color = "grey85", fill = NA),
+    legend.background = element_rect(fill = "#002538"),
+    legend.key = element_rect(fill = "#002538")
+  )
+```
+
+Dentre essas profissões que escolhemos, vamos analisar o tamanho do efeito 
