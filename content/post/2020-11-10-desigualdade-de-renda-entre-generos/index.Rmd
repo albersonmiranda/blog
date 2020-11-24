@@ -11,17 +11,17 @@ tags:
   - Reticulate
   - Inferencia
 description: Estudo de desigualdade de renda entre gêneros na cidade de Vitória-ES.
-draft: true
+draft: false
 featured: yes
 featureImage: "gender.jpg"
 thumbnail: "images/reticulate.png"
-shareImage: "gender.jpg"
+shareImage: "images/posts/desigualdade.png"
 codeMaxLines: 10
 codeLineNumbers: no
 figurePositionShow: yes
 ---
 
-Ainda há um bocado de coisas para cobrir nessa série de "inferência 101" e para continuar os estudos trouxe a base da RAIS (Relação Anual de Informações Sociais) de 2017^[Escolhi 2017 porque os dados mais atuais estão com agrupados com Minas Gerais e Rio de Janeiro, ficando muito pesado para uma análise casual.]. Com ela, vamos introduzir o conceito de *effect size* e de quebra analisar a desigualdade de gênero em nossa querida capital Vitorinha.
+Ainda há um bocado de coisas para cobrir nessa série de "inferência 101" e para continuar os estudos trouxe a base da RAIS (Relação Anual de Informações Sociais) de 2017^[Escolhi 2017 porque os dados mais atuais estão com agrupados com Minas Gerais e Rio de Janeiro, ficando muito pesado para uma análise casual.]. Com ela, vamos introduzir o conceito de *effect size* e de quebra analisar a desigualdade de gênero em nossa querida capital Vitória.
 
 ```{r options, include = FALSE}
 
@@ -371,23 +371,27 @@ cohens_d(
 )
 
 # interpretando a estatística d
-interpret_d(0.26, "sawilowsky2009")
+interpret_d(0.26, "gignac2016")
 
 ```
 
-Com uma estatística $d=0.26$, a diferença é considerada pequena. Na escala de Sawilowsky (2009):
+Com uma estatística $d=0.26$, a diferença é considerada pequena. Na escala de Gignac & Szodorai (2016):
 
-```{r escala sawilowsky, echo = FALSE}
+```{r escala Gignac, echo = FALSE}
 
 rules(
-  c(0.1, 0.2, 0.5, 0.8, 1.2, 2),
-  c("minúsculo", "muito pequeno", "pequeno", "médio", "grande", "muito grande"),
-  "Sawilowsky (2009)"
+  c(0.2, 0.41, 0.63),
+  c("muito pequeno", "pequeno", "moderado", "grande"),
+  "Gignac & Szodorai (2016)"
 )
 
 ```
 
-Um efeito de 0.26, considerado pequeno, equivale a dizer que 62% das mulheres teriam remuneração média abaixo da remuneração do homem médio em Vitória^[A tabela de interpretação de *effect sizes* pode ser consultada [neste artigo](https://www.leeds.ac.uk/educol/documents/00002182.htm).]. Claro que analisar o agregado significa olhar para a média. Como serão essas diferenças dentre as diversas profissões?
+Em uma situação de equidade, 50% das mulheres teriam remuneração abaixo do que o homem médio, enquanto a outra metade teria remuneração superior.
+
+Um efeito de 0.26, equivale a dizer que 62% das mulheres teriam remuneração abaixo da remuneração do homem médio em Vitória, enquanto apenas 38% receberiam mais do que o homem médio^[A tabela de interpretação de *effect sizes* pode ser consultada [neste artigo](https://www.leeds.ac.uk/educol/documents/00002182.htm).].
+
+Claro que analisar o agregado significa olhar para a média. Como serão essas diferenças dentre as diversas profissões?
 
 # DIFERENÇAS ENTRE PROFISSÕES
 
@@ -434,10 +438,10 @@ Dentre as profissões selecionadas, apenas a de enfermagem tem salário média m
 # gráfico
 diferenca_media = 3925.18 - 2846.727
 setas = tibble(
-  x1 = c(2.9, 9.6),
-  x2 = c(3.5, 9.2),
-  y1 = c(2000, 6000),
-  y2 = c(1200, 6300)
+  x1 = c(2.9, 9.6, 8.3),
+  x2 = c(3.5, 9.2, 7.4),
+  y1 = c(2000, 6000, 0),
+  y2 = c(1200, 6300, -270)
 )
 
 diferencas %>%
@@ -458,6 +462,10 @@ diferencas %>%
     x = 10.5, y = 5500, size = 3.5, color = "grey85",
     label = "posições de executivo\né onde a diferença é maior\ne é também onde estão\nos maiores salários"
   ) +
+  annotate("text",
+  x = 9, y = 250, size = 3.5, color = "grey85",
+  label = "dentre essas profissões,\napenas as enfermeiras\nrecebem mais que homens"
+  ) +
   geom_curve(
     data = setas, aes(x = x1, y = y1, xend = x2, yend = y2),
     arrow = arrow(length = unit(0.1, "inch")),
@@ -466,11 +474,11 @@ diferencas %>%
   coord_flip() +
   labs(
     x = "",
-    y = "",
+    y = "diferença salarial em R$",
     size = "rem. média\n(homem)",
-    title = "DESIGUALDADE DE GÊNERO EM VITÓRIA",
-    subtitle = "As diferenças salarias evidenciam o longo caminha na superação da colocação\nda mulher como profissional de segunda categoria no mercado de trabalho",
-    caption = "fonte: Rais 2017 | elaboração: Alberson Miranda"
+    title = "desigualdade de gênero",
+    subtitle = "as disparidades salarias evidenciam o longo caminho na superação da colocação\nda mulher como profissional de segunda categoria no mercado de trabalho",
+    caption = "fonte: Rais 2017, Vitória/ES | elaboração: Alberson Miranda"
   ) +
   theme(
     panel.grid = element_blank(),
@@ -496,4 +504,111 @@ diferencas %>%
   )
 ```
 
-Dentre essas profissões que escolhemos, vamos analisar o tamanho do efeito para a maior diferença — os cargos de executivo (dirigentes e diretores).
+Dentre essas profissões que escolhemos, vamos analisar o tamanho do efeito para médicos e executivos (dirigentes e diretores).
+
+## DISPARIDADE SALARIAL ENTRE MÉDICOS
+
+Primeiramente, vamos verificar a significância da diferença. Como esperado, ela é significativa.
+
+```{r medicos}
+
+# calculando estatística t
+estatistica_calculada = data %>%
+  filter(str_detect(profissao, "Médico")) %>%
+  specify(rem_media ~ sexo) %>%
+  calculate(stat = "t", order = c("homem", "mulher"))
+
+# gerando distribuição nula
+distr_nula = data %>%
+  filter(str_detect(profissao, "Médico")) %>%
+  specify(rem_media ~ sexo) %>%
+  hypothesise(null = "independence") %>%
+  generate(reps = 100, type = "permute") %>%
+  calculate(stat = "t", order = c("homem", "mulher"))
+
+# calculando intervalo de confiança
+percentile_ci = get_ci(distr_nula)
+
+# visualizando distribuição nula e estatística do teste
+distr_nula %>%
+  visualize(method = "both") +
+  shade_p_value(estatistica_calculada, direction = "greater") +
+  shade_confidence_interval(endpoints = percentile_ci)
+
+# calculando p-valor
+distr_nula %>%
+  get_p_value(obs_stat = estatistica_calculada, direction = "greater")
+
+```
+
+ Em seguida, vamos calcular o tamanho do efeito. Com uma estatística *d* de 0.12, temos um efeito *muito pequeno* na escala de Gignac & Szodorai (2016). Isso significa que 54% das médicas da cidade de Vitória teriam remuneração abaixo do que o médico médio do município, enqaunto 46% receberiam mais que o médico médio.
+
+ ```{r effect medicos}
+
+ # calculando a diferença padronizada
+ cohens_d(
+   data[data$sexo == "homem" &
+     str_detect(data$profissao, "Médico"), ]$rem_media,
+   data[data$sexo == "mulher" &
+     str_detect(data$profissao, "Médico"), ]$rem_media
+ )
+
+ # interpretando a estatística d
+ interpret_d(0.12, "gignac2016")
+
+ ```
+
+## DISPARIDADE SALARIAL EM CARGOS EXECUTIVOS
+
+Repetindo o mesmo procedimento para as pessoas com cargos executivos, vemos que a diferença também é significativa.
+
+```{r executivos}
+
+# calculando estatística t
+estatistica_calculada = data %>%
+  filter(str_detect(profissao, "Dirigentes|Diretor")) %>%
+  specify(rem_media ~ sexo) %>%
+  calculate(stat = "t", order = c("homem", "mulher"))
+
+# gerando distribuição nula
+distr_nula <- data %>%
+  filter(str_detect(profissao, "Dirigentes|Diretor")) %>%
+  specify(rem_media ~ sexo) %>%
+  hypothesise(null = "independence") %>%
+  generate(reps = 100, type = "permute") %>%
+  calculate(stat = "t", order = c("homem", "mulher"))
+
+# calculando intervalo de confiança
+percentile_ci <- get_ci(distr_nula)
+
+# visualizando distribuição nula e estatística do teste
+distr_nula %>%
+  visualize(method = "both") +
+  shade_p_value(estatistica_calculada, direction = "greater") +
+  shade_confidence_interval(endpoints = percentile_ci)
+
+```
+
+ Com uma estatística *d* de 0.47, temos um efeito *moderado* na escala de Gignac & Szodorai (2016). Isso significa dizer que 69% das mulheres em posição de dirigentes e diretoras receberiam menos do que o homem médio na mesma posição.
+
+ ```{r}
+
+ # calculando a diferença padronizada
+ cohens_d(
+   data[data$sexo == "homem" &
+     str_detect(data$profissao, "Dirigentes|Diretor"), ]$rem_media,
+   data[data$sexo == "mulher" &
+     str_detect(data$profissao, "Dirigentes|Diretor"), ]$rem_media
+ )
+
+ # interpretando a estatística d
+ interpret_d(0.47, "gignac2016")
+ ```
+
+# CONSIDERAÇÕES
+
+A escala de Gignac & Szodorai é apenas uma *rule of thumb* dentre outras — além dela, duas regras muito usadas são as regras de Cohen (1988) e de Sawilowsky (2009). Pode ser que para a natureza desse problema a escala sugerida por essas regras talvez não seja razoável.
+
+De qualquer forma, a desigualdade é escancarada e ainda há várias variáveis a serem exploradas nesse contexto — e se adicionarmos raça, qual será o comportamento?
+
+**Se você chegou até aqui e tem sugestão de variáveis, escalas para interpretação ou outras profissões para analisarmos, deixe seu comentário que a gente atualiza com um edit!**

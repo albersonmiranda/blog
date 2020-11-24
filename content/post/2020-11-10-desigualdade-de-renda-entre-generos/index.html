@@ -11,11 +11,11 @@ tags:
   - Reticulate
   - Inferencia
 description: Estudo de desigualdade de renda entre gêneros na cidade de Vitória-ES.
-draft: true
+draft: false
 featured: yes
 featureImage: "gender.jpg"
 thumbnail: "images/reticulate.png"
-shareImage: "gender.jpg"
+shareImage: "images/posts/desigualdade.png"
 codeMaxLines: 10
 codeLineNumbers: no
 figurePositionShow: yes
@@ -26,7 +26,7 @@ figurePositionShow: yes
 <script src="index_files/anchor-sections/anchor-sections.js"></script>
 
 
-<p>Ainda há um bocado de coisas para cobrir nessa série de “inferência 101” e para continuar os estudos trouxe a base da RAIS (Relação Anual de Informações Sociais) de 2017<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Com ela, vamos introduzir o conceito de <em>effect size</em> e de quebra analisar a desigualdade de gênero em nossa querida capital Vitorinha.</p>
+<p>Ainda há um bocado de coisas para cobrir nessa série de “inferência 101” e para continuar os estudos trouxe a base da RAIS (Relação Anual de Informações Sociais) de 2017<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Com ela, vamos introduzir o conceito de <em>effect size</em> e de quebra analisar a desigualdade de gênero em nossa querida capital Vitória.</p>
 <div id="os-dados" class="section level1">
 <h1>OS DADOS</h1>
 <p>Coloco aqui duas opções para buscar esses dados:</p>
@@ -130,7 +130,7 @@ data %&gt;%
   theme(text = element_text(family = &quot;Century Gothic&quot;,
                             color = &quot;grey30&quot;),
         axis.text.x = element_blank())</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/barplot-1.png" width="672" /></p>
 <p>Temos praticamente a mesma quantidade de homens e mulheres em nossa amostra. Podemos, antes de realizar qualquer outra análise e aplicar quaisquer filtros, calcular a remuneração média:</p>
 <pre class="r"><code># remuneração média
 aggregate(data = data, rem_media ~ sexo, FUN = mean)</code></pre>
@@ -180,7 +180,7 @@ data %&gt;%
     ),
     axis.text.x = element_blank()
   )</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/boxplot-1.png" width="672" /></p>
 <div id="verificando-a-hipótese-da-normalidade" class="section level2">
 <h2>VERIFICANDO A HIPÓTESE DA NORMALIDADE</h2>
 <p>Sabemos que o teste t é um teste paramétrico e <a href="https://datamares.netlify.app/post/2020-11-20-comparando-variancias/">já discutimos anteriormente</a> que, quando os dados não seguem uma distribuição próxima da normal, precisamos realizar transformações para alcançar a normalidade.</p>
@@ -213,7 +213,7 @@ data %&gt;%
     family = &quot;Century Gothic&quot;,
     color = &quot;grey30&quot;
   ))</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/qqplot-1.png" width="672" /></p>
 <pre class="r"><code># qqplot
 # os dados estarão em cima da reta caso sejam distribuídos normalmente
 par(mfrow = c(1, 2))
@@ -225,7 +225,7 @@ qqline(data[data$sexo == 1, ]$rem_media)
 qqnorm(data[data$sexo == 2, ]$rem_media,
   main = &quot;Q-Q PLOT: MULHERES&quot;)
 qqline(data[data$sexo == 2, ]$rem_media)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/qqplot-2.png" width="672" /></p>
 <p>Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos de tratar a base.</p>
 <pre class="r"><code># garantir reprodutibilidade
 set.seed(1)
@@ -248,14 +248,14 @@ for (i in 1:n) {
 # qqplot
 qqnorm(medias)
 qqline(medias)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/simulacao-1.png" width="672" /></p>
 <pre class="r"><code># visualização
 hist(medias,
     main = &quot;DISTRIBUIÇÃO DAS MÉDIAS AMOSTRAIS&quot;,
     xlab = &quot;médias&quot;,
     sub = &quot;seed = 1&quot;
 )</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/simulacao-2.png" width="672" /></p>
 <p>Ufa! O TCL se manteve em nossos dados e tanto o <em>Q-Q plot</em> quanto o histograma demonstraram distribuição próxima da normal, nos habilitando a prosseguir com os testes.</p>
 </div>
 <div id="teste-t" class="section level2">
@@ -284,7 +284,7 @@ distr_nula = data %&gt;%
 distr_nula %&gt;%
   visualize(method = &quot;both&quot;) +
   shade_p_value(estatistica_calculada, direction = &quot;greater&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/teste%20t%20agg-1.png" width="672" /></p>
 <pre class="r"><code># calculando p-valor
 distr_nula %&gt;%
   get_p_value(obs_stat = estatistica_calculada, direction = &quot;greater&quot;)</code></pre>
@@ -313,16 +313,16 @@ cohens_d(
 ## ------------------------
 ##      0.26 | [0.28, 0.28]</code></pre>
 <pre class="r"><code># interpretando a estatística d
-interpret_d(0.26, &quot;sawilowsky2009&quot;)</code></pre>
+interpret_d(0.26, &quot;gignac2016&quot;)</code></pre>
 <pre><code>## [1] &quot;small&quot;
-## (Rules: sawilowsky2009)</code></pre>
-<p>Com uma estatística <span class="math inline">\(d=0.26\)</span>, a diferença é considerada pequena. Na escala de Sawilowsky (2009):</p>
-<pre><code>## # Reference values (Sawilowsky (2009))
+## (Rules: gignac2016)</code></pre>
+<p>Com uma estatística <span class="math inline">\(d=0.26\)</span>, a diferença é considerada pequena. Na escala de Gignac &amp; Szodorai (2016):</p>
+<pre><code>## # Reference thresholds (Gignac &amp; Szodorai (2016))
 ## 
-## minúsculo | muito.pequeno | pequeno | médio | grande | muito.grande
-## -------------------------------------------------------------------
-##      0.10 |          0.20 |    0.50 |  0.80 |   1.20 |            2</code></pre>
-<p>Um efeito de 0.26, considerado pequeno, equivale a dizer que 62% das mulheres teriam remuneração média abaixo da remuneração do homem médio em Vitória<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. Claro que analisar o agregado significa olhar para a média. Como serão essas diferenças dentre as diversas profissões?</p>
+## muito pequeno &lt; 0.2 &lt; pequeno &lt; 0.41 &lt; moderado &lt; 0.63 &lt; grande</code></pre>
+<p>Em uma situação de equidade, 50% das mulheres teriam remuneração abaixo do que o homem médio, enquanto a outra metade teria remuneração superior.</p>
+<p>Um efeito de 0.26, equivale a dizer que 62% das mulheres teriam remuneração abaixo da remuneração do homem médio em Vitória, enquanto apenas 38% receberiam mais do que o homem médio<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<p>Claro que analisar o agregado significa olhar para a média. Como serão essas diferenças dentre as diversas profissões?</p>
 </div>
 </div>
 <div id="diferenças-entre-profissões" class="section level1">
@@ -375,10 +375,10 @@ diferencas</code></pre>
 <pre class="r"><code># gráfico
 diferenca_media = 3925.18 - 2846.727
 setas = tibble(
-  x1 = c(2.9, 9.6),
-  x2 = c(3.5, 9.2),
-  y1 = c(2000, 6000),
-  y2 = c(1200, 6300)
+  x1 = c(2.9, 9.6, 8.3),
+  x2 = c(3.5, 9.2, 7.4),
+  y1 = c(2000, 6000, 0),
+  y2 = c(1200, 6300, -270)
 )
 
 diferencas %&gt;%
@@ -399,6 +399,10 @@ diferencas %&gt;%
     x = 10.5, y = 5500, size = 3.5, color = &quot;grey85&quot;,
     label = &quot;posições de executivo\né onde a diferença é maior\ne é também onde estão\nos maiores salários&quot;
   ) +
+  annotate(&quot;text&quot;,
+  x = 9, y = 250, size = 3.5, color = &quot;grey85&quot;,
+  label = &quot;dentre essas profissões,\napenas as enfermeiras\nrecebem mais que homens&quot;
+  ) +
   geom_curve(
     data = setas, aes(x = x1, y = y1, xend = x2, yend = y2),
     arrow = arrow(length = unit(0.1, &quot;inch&quot;)),
@@ -407,11 +411,11 @@ diferencas %&gt;%
   coord_flip() +
   labs(
     x = &quot;&quot;,
-    y = &quot;&quot;,
+    y = &quot;diferença salarial em R$&quot;,
     size = &quot;rem. média\n(homem)&quot;,
-    title = &quot;DESIGUALDADE DE GÊNERO EM VITÓRIA&quot;,
-    subtitle = &quot;As diferenças salarias evidenciam o longo caminha na superação da colocação\nda mulher como profissional de segunda categoria no mercado de trabalho&quot;,
-    caption = &quot;fonte: Rais 2017 | elaboração: Alberson Miranda&quot;
+    title = &quot;desigualdade de gênero&quot;,
+    subtitle = &quot;as disparidades salarias evidenciam o longo caminho na superação da colocação\nda mulher como profissional de segunda categoria no mercado de trabalho&quot;,
+    caption = &quot;fonte: Rais 2017, Vitória/ES | elaboração: Alberson Miranda&quot;
   ) +
   theme(
     panel.grid = element_blank(),
@@ -435,8 +439,105 @@ diferencas %&gt;%
     legend.background = element_rect(fill = &quot;#002538&quot;),
     legend.key = element_rect(fill = &quot;#002538&quot;)
   )</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="1152" /></p>
-<p>Dentre essas profissões que escolhemos, vamos analisar o tamanho do efeito para a maior diferença — os cargos de executivo (dirigentes e diretores).</p>
+<p><img src="index_files/figure-html/grafico-1.png" width="1152" /></p>
+<p>Dentre essas profissões que escolhemos, vamos analisar o tamanho do efeito para médicos e executivos (dirigentes e diretores).</p>
+<div id="disparidade-salarial-entre-médicos" class="section level2">
+<h2>DISPARIDADE SALARIAL ENTRE MÉDICOS</h2>
+<p>Primeiramente, vamos verificar a significância da diferença. Como esperado, ela é significativa.</p>
+<pre class="r"><code># calculando estatística t
+estatistica_calculada = data %&gt;%
+  filter(str_detect(profissao, &quot;Médico&quot;)) %&gt;%
+  specify(rem_media ~ sexo) %&gt;%
+  calculate(stat = &quot;t&quot;, order = c(&quot;homem&quot;, &quot;mulher&quot;))
+
+# gerando distribuição nula
+distr_nula = data %&gt;%
+  filter(str_detect(profissao, &quot;Médico&quot;)) %&gt;%
+  specify(rem_media ~ sexo) %&gt;%
+  hypothesise(null = &quot;independence&quot;) %&gt;%
+  generate(reps = 100, type = &quot;permute&quot;) %&gt;%
+  calculate(stat = &quot;t&quot;, order = c(&quot;homem&quot;, &quot;mulher&quot;))
+
+# calculando intervalo de confiança
+percentile_ci = get_ci(distr_nula)
+
+# visualizando distribuição nula e estatística do teste
+distr_nula %&gt;%
+  visualize(method = &quot;both&quot;) +
+  shade_p_value(estatistica_calculada, direction = &quot;greater&quot;) +
+  shade_confidence_interval(endpoints = percentile_ci)</code></pre>
+<p><img src="index_files/figure-html/medicos-1.png" width="672" /></p>
+<pre class="r"><code># calculando p-valor
+distr_nula %&gt;%
+  get_p_value(obs_stat = estatistica_calculada, direction = &quot;greater&quot;)</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   p_value
+##     &lt;dbl&gt;
+## 1       0</code></pre>
+<p>Em seguida, vamos calcular o tamanho do efeito. Com uma estatística <em>d</em> de 0.12, temos um efeito <em>muito pequeno</em> na escala de Gignac &amp; Szodorai (2016). Isso significa que 54% das médicas da cidade de Vitória teriam remuneração abaixo do que o médico médio do município, enqaunto 46% receberiam mais que o médico médio.</p>
+<pre class="r"><code># calculando a diferença padronizada
+cohens_d(
+  data[data$sexo == &quot;homem&quot; &amp;
+    str_detect(data$profissao, &quot;Médico&quot;), ]$rem_media,
+  data[data$sexo == &quot;mulher&quot; &amp;
+    str_detect(data$profissao, &quot;Médico&quot;), ]$rem_media
+)</code></pre>
+<pre><code>## Cohen&#39;s d |       95% CI
+## ------------------------
+##      0.12 | [0.06, 0.19]</code></pre>
+<pre class="r"><code># interpretando a estatística d
+interpret_d(0.12, &quot;gignac2016&quot;)</code></pre>
+<pre><code>## [1] &quot;very small&quot;
+## (Rules: gignac2016)</code></pre>
+</div>
+<div id="disparidade-salarial-em-cargos-executivos" class="section level2">
+<h2>DISPARIDADE SALARIAL EM CARGOS EXECUTIVOS</h2>
+<p>Repetindo o mesmo procedimento para as pessoas com cargos executivos, vemos que a diferença também é significativa.</p>
+<pre class="r"><code># calculando estatística t
+estatistica_calculada = data %&gt;%
+  filter(str_detect(profissao, &quot;Dirigentes|Diretor&quot;)) %&gt;%
+  specify(rem_media ~ sexo) %&gt;%
+  calculate(stat = &quot;t&quot;, order = c(&quot;homem&quot;, &quot;mulher&quot;))
+
+# gerando distribuição nula
+distr_nula &lt;- data %&gt;%
+  filter(str_detect(profissao, &quot;Dirigentes|Diretor&quot;)) %&gt;%
+  specify(rem_media ~ sexo) %&gt;%
+  hypothesise(null = &quot;independence&quot;) %&gt;%
+  generate(reps = 100, type = &quot;permute&quot;) %&gt;%
+  calculate(stat = &quot;t&quot;, order = c(&quot;homem&quot;, &quot;mulher&quot;))
+
+# calculando intervalo de confiança
+percentile_ci &lt;- get_ci(distr_nula)
+
+# visualizando distribuição nula e estatística do teste
+distr_nula %&gt;%
+  visualize(method = &quot;both&quot;) +
+  shade_p_value(estatistica_calculada, direction = &quot;greater&quot;) +
+  shade_confidence_interval(endpoints = percentile_ci)</code></pre>
+<p><img src="index_files/figure-html/executivos-1.png" width="672" /></p>
+<p>Com uma estatística <em>d</em> de 0.47, temos um efeito <em>moderado</em> na escala de Gignac &amp; Szodorai (2016). Isso significa dizer que 69% das mulheres em posição de dirigentes e diretoras receberiam menos do que o homem médio na mesma posição.</p>
+<pre class="r"><code># calculando a diferença padronizada
+cohens_d(
+  data[data$sexo == &quot;homem&quot; &amp;
+    str_detect(data$profissao, &quot;Dirigentes|Diretor&quot;), ]$rem_media,
+  data[data$sexo == &quot;mulher&quot; &amp;
+    str_detect(data$profissao, &quot;Dirigentes|Diretor&quot;), ]$rem_media
+)</code></pre>
+<pre><code>## Cohen&#39;s d |       95% CI
+## ------------------------
+##      0.47 | [0.30, 0.63]</code></pre>
+<pre class="r"><code># interpretando a estatística d
+interpret_d(0.47, &quot;gignac2016&quot;)</code></pre>
+<pre><code>## [1] &quot;moderate&quot;
+## (Rules: gignac2016)</code></pre>
+</div>
+</div>
+<div id="considerações" class="section level1">
+<h1>CONSIDERAÇÕES</h1>
+<p>A escala de Gignac &amp; Szodorai é apenas uma <em>rule of thumb</em> dentre outras — além dela, duas regras muito usadas são as regras de Cohen (1988) e de Sawilowsky (2009). Pode ser que para a natureza desse problema a escala sugerida por essas regras talvez não seja razoável.</p>
+<p>De qualquer forma, a desigualdade é escancarada e ainda há várias variáveis a serem exploradas nesse contexto — e se adicionarmos raça, qual será o comportamento?</p>
+<p><strong>Se você chegou até aqui e tem sugestão de variáveis, escalas para interpretação ou outras profissões para analisarmos, deixe seu comentário que a gente atualiza com um edit!</strong></p>
 </div>
 <div class="footnotes">
 <hr />
