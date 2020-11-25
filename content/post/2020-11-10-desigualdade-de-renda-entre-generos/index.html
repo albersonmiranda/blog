@@ -137,7 +137,7 @@ aggregate(data = data, rem_media ~ sexo, FUN = mean)</code></pre>
 <pre><code>##   sexo rem_media
 ## 1    1  3925.187
 ## 2    2  2846.727</code></pre>
-<p>No agregado, a renda média dos homens em Vitória é quase 40% maior que as das mulheres e mesmo quando consideramos a mediana ainda é quase 30% maior. Podemos verificar se essa diferença é significativa com um teste t, mas antes devemos verificar se seus pré-requisitos são atendidos.</p>
+<p>No agregado, a renda média dos homens em Vitória é quase 40% maior que a das mulheres e mesmo quando consideramos a mediana ainda é quase 30% maior. Podemos verificar se essa diferença é significativa com um teste t, mas antes devemos verificar se seus pré-requisitos são atendidos.</p>
 <pre class="r"><code># quartis
 boxplot_data = data %&gt;%
   group_by(sexo) %&gt;%
@@ -184,7 +184,7 @@ data %&gt;%
 <div id="verificando-a-hipótese-da-normalidade" class="section level2">
 <h2>VERIFICANDO A HIPÓTESE DA NORMALIDADE</h2>
 <p>Sabemos que o teste t é um teste paramétrico e <a href="https://datamares.netlify.app/post/2020-11-20-comparando-variancias/">já discutimos anteriormente</a> que, quando os dados não seguem uma distribuição próxima da normal, precisamos realizar transformações para alcançar a normalidade.</p>
-<p>Você pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limite garante a hipótese da normalidade. Entretanto, principalmente em dados com muitos <em>outliers</em> extremos, o tamanho da amostra necessária para convergência pode ser absurda, invalidando, na prática, a afirmação a partir da TCL.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. Portanto, defenddo que devemos, sim, ter cuidado com essa hipótese mesmo lidando com grandes amostras.</p>
+<p>Você pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limite garante a hipótese da normalidade. Entretanto, principalmente em dados com muitos <em>outliers</em> extremos, o tamanho da amostra necessária para convergência pode ser absurda, invalidando, na prática, a afirmação a partir da TCL.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. Portanto, defendo que devemos, sim, ter cuidado com essa hipótese mesmo lidando com grandes amostras.</p>
 <p>A primeira análise nesse sentido é a visual. Podemos verificar que a distribuição apresenta <em>fat tail</em> e passa longe de uma normal, tanto pelo histograma quanto pelo <em>Q-Q plot</em>.</p>
 <pre class="r"><code># histograma
 data %&gt;%
@@ -226,7 +226,7 @@ qqnorm(data[data$sexo == 2, ]$rem_media,
   main = &quot;Q-Q PLOT: MULHERES&quot;)
 qqline(data[data$sexo == 2, ]$rem_media)</code></pre>
 <p><img src="index_files/figure-html/qqplot-2.png" width="672" /></p>
-<p>Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos de tratar a base.</p>
+<p>Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos tratar a base.</p>
 <pre class="r"><code># garantir reprodutibilidade
 set.seed(1)
 
@@ -300,8 +300,8 @@ distr_nula %&gt;%
 <p>Muito usada no campo da saúde em experimentos com testes t pareados, quando é preciso definir o efeito de uma ação em um grupo de tratamento em relação ao grupo de controle, a estatística <em>d de Cohen</em> é um indicador de diferenças padronizadas e é particularmente valiosa para quantificar o efeito de uma intervenção, seja em políticas públicas ou em ações de marketing na sua empresa. Isso quer dizer que ele enfatiza o tamanho da diferença entre as médias, sem confundir com a questão do tamanho da amostra.</p>
 <p>Por ser padronizado (i.e. não é medido na unidade da amostra, aqui em BR$, mas sim em desvios-padrões) pode ser facilmente comparado à diferentes experimentos. Sua forma de cálculo é a seguinte:
 <span class="math display">\[ d = \frac{\text{média do grupo experimental} - \text{média do grupo de controle}}{\text{desvio padrão agrupado}} \]</span></p>
-<p>Para duas médias fixadas, quanto menor for o desvio padrão maior será a estatística <em>d</em>. Por outro lado, quanto maior for o desvio padrão, menor será o tamanho do efeito.</p>
-<p>No R, vamos nos utilizar do pacote {effectsize}:</p>
+<p>Para duas médias fixadas, quanto menor for o desvio padrão, maior será a estatística <em>d</em>. Por outro lado, quanto maior for o desvio padrão, menor será o tamanho do efeito.</p>
+<p>No R, vamos utilizar o pacote {effectsize}:</p>
 <pre class="r"><code># carregando pacote
 library(effectsize)
 
@@ -372,7 +372,7 @@ diferencas</code></pre>
 ##  9 Outros                      3427.        2606.  121362   120682  820.
 ## 10 Médicos                     8232.        7704.    1840     1984  528.
 ## 11 Enfermeiros                 4166.        4439.     540     2139 -273.</code></pre>
-<p>Dentre as profissões selecionadas, apenas a de enfermagem tem salário média maior para as mulheres. Os homens levam vantagem em todos os demais. Colocando em gráfico:</p>
+<p>Dentre as profissões selecionadas, apenas a de enfermagem tem remuneração média maior para as mulheres. Os homens levam vantagem em todos os demais. Colocando em gráfico:</p>
 <pre class="r"><code># gráfico
 diferenca_media = 3925.18 - 2846.727
 setas = tibble(
@@ -475,7 +475,7 @@ distr_nula %&gt;%
 ##   p_value
 ##     &lt;dbl&gt;
 ## 1       0</code></pre>
-<p>Em seguida, vamos calcular o tamanho do efeito. Com uma estatística <em>d</em> de 0.12, temos um efeito <em>muito pequeno</em> na escala de Gignac &amp; Szodorai (2016). Isso significa que 54% das médicas da cidade de Vitória teriam remuneração abaixo do que o médico médio do município, enqaunto 46% receberiam mais que o médico médio.</p>
+<p>Em seguida, vamos calcular o tamanho do efeito.</p>
 <pre class="r"><code> # calculando a diferença padronizada
  cohens_d(
    data[data$sexo == &quot;homem&quot; &amp;
@@ -490,10 +490,11 @@ distr_nula %&gt;%
  interpret_d(0.12, &quot;gignac2016&quot;)</code></pre>
 <pre><code>## [1] &quot;very small&quot;
 ## (Rules: gignac2016)</code></pre>
+<p>Com uma estatística <em>d</em> de 0.12, temos um efeito <em>muito pequeno</em> na escala de Gignac &amp; Szodorai (2016). Isso significa que 54% das médicas da cidade de Vitória teriam remuneração abaixo do que o médico médio do município, enqaunto 46% receberiam mais que o médico médio.</p>
 </div>
 <div id="disparidade-salarial-em-cargos-executivos" class="section level2">
 <h2>DISPARIDADE SALARIAL EM CARGOS EXECUTIVOS</h2>
-<p>Repetindo o mesmo procedimento para as pessoas com cargos executivos, vemos que a diferença também é significativa.</p>
+<p>Repetindo o mesmo procedimento para as pessoas em cargos executivos, vemos que a diferença também é significativa.</p>
 <pre class="r"><code># calculando estatística t
 estatistica_calculada = data %&gt;%
   filter(str_detect(profissao, &quot;Dirigentes|Diretor&quot;)) %&gt;%
@@ -517,7 +518,7 @@ distr_nula %&gt;%
   shade_p_value(estatistica_calculada, direction = &quot;greater&quot;) +
   shade_confidence_interval(endpoints = percentile_ci)</code></pre>
 <p><img src="index_files/figure-html/executivos-1.png" width="672" /></p>
-<p>Com uma estatística <em>d</em> de 0.47, temos um efeito <em>moderado</em> na escala de Gignac &amp; Szodorai (2016). Isso significa dizer que 69% das mulheres em posição de dirigentes e diretoras receberiam menos do que o homem médio na mesma posição.</p>
+<p>E calculando o tamanho do efeito:</p>
 <pre class="r"><code> # calculando a diferença padronizada
  cohens_d(
    data[data$sexo == &quot;homem&quot; &amp;
@@ -532,6 +533,7 @@ distr_nula %&gt;%
  interpret_d(0.47, &quot;gignac2016&quot;)</code></pre>
 <pre><code>## [1] &quot;moderate&quot;
 ## (Rules: gignac2016)</code></pre>
+<p>Com uma estatística <em>d</em> de 0.47, temos um efeito <em>moderado</em> na escala de Gignac &amp; Szodorai (2016). Isso significa dizer que 69% das mulheres em posição de dirigentes e diretoras receberiam menos do que o homem médio na mesma posição.</p>
 </div>
 </div>
 <div id="considerações" class="section level1">
@@ -543,7 +545,7 @@ distr_nula %&gt;%
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Escolhi 2017 porque os dados mais atuais estão com agrupados com Minas Gerais e Rio de Janeiro, ficando muito pesado para uma análise casual.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>Escolhi 2017 porque os dados mais atuais estão agrupados com Minas Gerais e Rio de Janeiro, ficando muito pesado para uma análise casual.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p>Compreehensive R Archive Network.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 <li id="fn3"><p>Há vários estudos que tratam disso, vide <a href="https://rev-inv-ope.univ-paris1.fr/fileadmin/rev-inv-ope/files/40119/40119-10.pdf">este</a> exemplo.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 <li id="fn4"><p>A tabela de interpretação de <em>effect sizes</em> pode ser consultada <a href="https://www.leeds.ac.uk/educol/documents/00002182.htm">neste artigo</a>.<a href="#fnref4" class="footnote-back">↩︎</a></p></li>

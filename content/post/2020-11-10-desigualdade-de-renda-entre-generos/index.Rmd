@@ -21,7 +21,7 @@ codeLineNumbers: no
 figurePositionShow: yes
 ---
 
-Ainda há um bocado de coisas para cobrir nessa série de "inferência 101" e para continuar os estudos trouxe a base da RAIS (Relação Anual de Informações Sociais) de 2017^[Escolhi 2017 porque os dados mais atuais estão com agrupados com Minas Gerais e Rio de Janeiro, ficando muito pesado para uma análise casual.]. Com ela, vamos introduzir o conceito de *effect size* e de quebra analisar a desigualdade de gênero em nossa querida capital Vitória.
+Ainda há um bocado de coisas para cobrir nessa série de "inferência 101" e para continuar os estudos trouxe a base da RAIS (Relação Anual de Informações Sociais) de 2017^[Escolhi 2017 porque os dados mais atuais estão agrupados com Minas Gerais e Rio de Janeiro, ficando muito pesado para uma análise casual.]. Com ela, vamos introduzir o conceito de *effect size* e de quebra analisar a desigualdade de gênero em nossa querida capital Vitória.
 
 ```{r options, include = FALSE}
 
@@ -172,7 +172,7 @@ aggregate(data = data, rem_media ~ sexo, FUN = mean)
 
 ```
 
-No agregado, a renda média dos homens em Vitória é quase 40% maior que as das mulheres e mesmo quando consideramos a mediana ainda é quase 30% maior. Podemos verificar se essa diferença é significativa com um teste t, mas antes devemos verificar se seus pré-requisitos são atendidos.
+No agregado, a renda média dos homens em Vitória é quase 40% maior que a das mulheres e mesmo quando consideramos a mediana ainda é quase 30% maior. Podemos verificar se essa diferença é significativa com um teste t, mas antes devemos verificar se seus pré-requisitos são atendidos.
 
 ```{r boxplot}
 
@@ -225,7 +225,7 @@ data %>%
 
 Sabemos que o teste t é um teste paramétrico e [já discutimos anteriormente](https://datamares.netlify.app/post/2020-11-20-comparando-variancias/) que, quando os dados não seguem uma distribuição próxima da normal, precisamos realizar transformações para alcançar a normalidade.
 
-Você pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limite garante a hipótese da normalidade. Entretanto, principalmente em dados com muitos *outliers* extremos, o tamanho da amostra necessária para convergência pode ser absurda, invalidando, na prática, a afirmação a partir da TCL.^[Há vários estudos que tratam disso, vide [este](https://rev-inv-ope.univ-paris1.fr/fileadmin/rev-inv-ope/files/40119/40119-10.pdf) exemplo.]. Portanto, defenddo que devemos, sim, ter cuidado com essa hipótese mesmo lidando com grandes amostras.
+Você pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limite garante a hipótese da normalidade. Entretanto, principalmente em dados com muitos *outliers* extremos, o tamanho da amostra necessária para convergência pode ser absurda, invalidando, na prática, a afirmação a partir da TCL.^[Há vários estudos que tratam disso, vide [este](https://rev-inv-ope.univ-paris1.fr/fileadmin/rev-inv-ope/files/40119/40119-10.pdf) exemplo.]. Portanto, defendo que devemos, sim, ter cuidado com essa hipótese mesmo lidando com grandes amostras.
 
 A primeira análise nesse sentido é a visual. Podemos verificar que a distribuição apresenta *fat tail* e passa longe de uma normal, tanto pelo histograma quanto pelo *Q-Q plot*.
 
@@ -273,7 +273,7 @@ qqline(data[data$sexo == 2, ]$rem_media)
 
 ```
 
-Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos de tratar a base.
+Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos tratar a base.
 
 ```{r simulacao}
 
@@ -357,9 +357,9 @@ Muito usada no campo da saúde em experimentos com testes t pareados, quando é 
 Por ser padronizado (i.e. não é medido na unidade da amostra, aqui em BR$, mas sim em desvios-padrões) pode ser facilmente comparado à diferentes experimentos. Sua forma de cálculo é a seguinte:
 $$ d = \frac{\text{média do grupo experimental} - \text{média do grupo de controle}}{\text{desvio padrão agrupado}} $$
 
-Para duas médias fixadas, quanto menor for o desvio padrão maior será a estatística *d*. Por outro lado, quanto maior for o desvio padrão, menor será o tamanho do efeito.
+Para duas médias fixadas, quanto menor for o desvio padrão, maior será a estatística *d*. Por outro lado, quanto maior for o desvio padrão, menor será o tamanho do efeito.
 
-No R, vamos nos utilizar do pacote {effectsize}:
+No R, vamos utilizar o pacote {effectsize}:
 
 ```{r effect size agg}
 
@@ -433,7 +433,7 @@ diferencas
 
 ```
 
-Dentre as profissões selecionadas, apenas a de enfermagem tem salário média maior para as mulheres. Os homens levam vantagem em todos os demais. Colocando em gráfico:
+Dentre as profissões selecionadas, apenas a de enfermagem tem remuneração média maior para as mulheres. Os homens levam vantagem em todos os demais. Colocando em gráfico:
 
 ```{r grafico, fig.width=12, fig.height=8}
 
@@ -543,7 +543,7 @@ distr_nula %>%
 
 ```
 
- Em seguida, vamos calcular o tamanho do efeito. Com uma estatística *d* de 0.12, temos um efeito *muito pequeno* na escala de Gignac & Szodorai (2016). Isso significa que 54% das médicas da cidade de Vitória teriam remuneração abaixo do que o médico médio do município, enqaunto 46% receberiam mais que o médico médio.
+ Em seguida, vamos calcular o tamanho do efeito.
 
 ```{r effect medicos}
 
@@ -560,9 +560,11 @@ distr_nula %>%
 
 ```
 
+Com uma estatística *d* de 0.12, temos um efeito *muito pequeno* na escala de Gignac & Szodorai (2016). Isso significa que 54% das médicas da cidade de Vitória teriam remuneração abaixo do que o médico médio do município, enqaunto 46% receberiam mais que o médico médio.
+
 ## DISPARIDADE SALARIAL EM CARGOS EXECUTIVOS
 
-Repetindo o mesmo procedimento para as pessoas com cargos executivos, vemos que a diferença também é significativa.
+Repetindo o mesmo procedimento para as pessoas em cargos executivos, vemos que a diferença também é significativa.
 
 ```{r executivos}
 
@@ -591,7 +593,7 @@ distr_nula %>%
 
 ```
 
- Com uma estatística *d* de 0.47, temos um efeito *moderado* na escala de Gignac & Szodorai (2016). Isso significa dizer que 69% das mulheres em posição de dirigentes e diretoras receberiam menos do que o homem médio na mesma posição.
+ E calculando o tamanho do efeito:
 
 ```{r effect executivos}
 
@@ -605,8 +607,9 @@ distr_nula %>%
 
  # interpretando a estatística d
  interpret_d(0.47, "gignac2016")
-
 ```
+
+Com uma estatística *d* de 0.47, temos um efeito *moderado* na escala de Gignac & Szodorai (2016). Isso significa dizer que 69% das mulheres em posição de dirigentes e diretoras receberiam menos do que o homem médio na mesma posição.
 
 # CONSIDERAÇÕES
 
