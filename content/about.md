@@ -10,4 +10,4 @@ Atuo como coordenador nos squads do \@Banestes_SA, onde sou concursado desde 200
 
 Estou realizando minha segunda graduação em matemática (IFES). Meus campos de pesquisa são econometria de séries temporais, inferência causal, economia matemática, feature engineering e dataviz.
 
-Sou fã de basquete, futebol americano e automobilismo. Quando não estou na frente do computador escrevendo códigos ou estudando, provavelmente estarei chorando na seção de comentários de algum vídeo do Ayrton Senna.
+Sou fã de basquete, futebol americano e automobilismo. Quando não estou na frente do computador escrevendo códigos ou estudando, provavelmente estarei chorando na seção de comentários de algum vídeo do Senna.

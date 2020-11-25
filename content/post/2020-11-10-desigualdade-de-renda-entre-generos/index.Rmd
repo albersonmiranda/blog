@@ -357,6 +357,8 @@ Muito usada no campo da saúde em experimentos com testes t pareados, quando é 
 Por ser padronizado (i.e. não é medido na unidade da amostra, aqui em BR$, mas sim em desvios-padrões) pode ser facilmente comparado à diferentes experimentos. Sua forma de cálculo é a seguinte:
 $$ d = \frac{\text{média do grupo experimental} - \text{média do grupo de controle}}{\text{desvio padrão agrupado}} $$
 
+Para duas médias fixas, quanto menor for o desvio padrão maior será a estatística *d*. Por outro lado, quanto maior for o desvio padrão, menor será o tamanho do efeito.
+
 No R, vamos nos utilizar do pacote {effectsize}:
 
 ```{r effect size agg}
@@ -543,7 +545,7 @@ distr_nula %>%
 
  Em seguida, vamos calcular o tamanho do efeito. Com uma estatística *d* de 0.12, temos um efeito *muito pequeno* na escala de Gignac & Szodorai (2016). Isso significa que 54% das médicas da cidade de Vitória teriam remuneração abaixo do que o médico médio do município, enqaunto 46% receberiam mais que o médico médio.
 
- ```{r effect medicos}
+```{r effect medicos}
 
  # calculando a diferença padronizada
  cohens_d(
@@ -556,7 +558,7 @@ distr_nula %>%
  # interpretando a estatística d
  interpret_d(0.12, "gignac2016")
 
- ```
+```
 
 ## DISPARIDADE SALARIAL EM CARGOS EXECUTIVOS
 
@@ -591,7 +593,7 @@ distr_nula %>%
 
  Com uma estatística *d* de 0.47, temos um efeito *moderado* na escala de Gignac & Szodorai (2016). Isso significa dizer que 69% das mulheres em posição de dirigentes e diretoras receberiam menos do que o homem médio na mesma posição.
 
- ```{r}
+```{r effect executivos}
 
  # calculando a diferença padronizada
  cohens_d(
@@ -603,7 +605,8 @@ distr_nula %>%
 
  # interpretando a estatística d
  interpret_d(0.47, "gignac2016")
- ```
+
+```
 
 # CONSIDERAÇÕES
 
