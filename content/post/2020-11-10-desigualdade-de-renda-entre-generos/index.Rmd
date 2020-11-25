@@ -613,8 +613,8 @@ Com uma estatística *d* de 0.47, temos um efeito *moderado* na escala de Gignac
 
 # CONSIDERAÇÕES
 
-A escala de Gignac & Szodorai é apenas uma *rule of thumb* dentre outras — além dela, duas regras muito usadas são as regras de Cohen (1988) e de Sawilowsky (2009). Pode ser que para a natureza desse problema a escala sugerida por essas regras talvez não seja razoável.
+A escala de Gignac & Szodorai é apenas uma *rule of thumb* dentre outras — além dela, duas regras muito usadas são as regras de Cohen (1988) e de Sawilowsky (2009). Pode ser que para a natureza desse problema a interpretação sugerida por essas regras não seja razoável. Nelas, uma estatística *d* de 0.47 é considerada pequena ou moderada. No entanto, se tratando de disparidades salariais entre gêneros, podemos argumentar que uma taxa de 69% das mulheres com remuneração menor que a do homem médio seja um resultado expressivo, justificando uma escala específica.
 
 De qualquer forma, a desigualdade é escancarada e ainda há várias variáveis a serem exploradas nesse contexto — e se adicionarmos raça, qual será o comportamento?
 
-**Se você chegou até aqui e tem sugestão de variáveis, escalas para interpretação ou outras profissões para analisarmos, deixe seu comentário que a gente atualiza com um edit!**
+*Se você chegou até aqui e tem sugestão de variáveis, escalas para interpretação ou outras profissões para analisarmos, deixe seu comentário que a gente atualiza com um edit!*
