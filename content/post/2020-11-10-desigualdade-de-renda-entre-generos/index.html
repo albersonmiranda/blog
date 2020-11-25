@@ -300,6 +300,7 @@ distr_nula %&gt;%
 <p>Muito usada no campo da saúde em experimentos com testes t pareados, quando é preciso definir o efeito de uma ação em um grupo de tratamento em relação ao grupo de controle, a estatística <em>d de Cohen</em> é um indicador de diferenças padronizadas e é particularmente valiosa para quantificar o efeito de uma intervenção, seja em políticas públicas ou em ações de marketing na sua empresa. Isso quer dizer que ele enfatiza o tamanho da diferença entre as médias, sem confundir com a questão do tamanho da amostra.</p>
 <p>Por ser padronizado (i.e. não é medido na unidade da amostra, aqui em BR$, mas sim em desvios-padrões) pode ser facilmente comparado à diferentes experimentos. Sua forma de cálculo é a seguinte:
 <span class="math display">\[ d = \frac{\text{média do grupo experimental} - \text{média do grupo de controle}}{\text{desvio padrão agrupado}} \]</span></p>
+<p>Para duas médias fixadas, quanto menor for o desvio padrão maior será a estatística <em>d</em>. Por outro lado, quanto maior for o desvio padrão, menor será o tamanho do efeito.</p>
 <p>No R, vamos nos utilizar do pacote {effectsize}:</p>
 <pre class="r"><code># carregando pacote
 library(effectsize)
@@ -475,18 +476,18 @@ distr_nula %&gt;%
 ##     &lt;dbl&gt;
 ## 1       0</code></pre>
 <p>Em seguida, vamos calcular o tamanho do efeito. Com uma estatística <em>d</em> de 0.12, temos um efeito <em>muito pequeno</em> na escala de Gignac &amp; Szodorai (2016). Isso significa que 54% das médicas da cidade de Vitória teriam remuneração abaixo do que o médico médio do município, enqaunto 46% receberiam mais que o médico médio.</p>
-<pre class="r"><code># calculando a diferença padronizada
-cohens_d(
-  data[data$sexo == &quot;homem&quot; &amp;
-    str_detect(data$profissao, &quot;Médico&quot;), ]$rem_media,
-  data[data$sexo == &quot;mulher&quot; &amp;
-    str_detect(data$profissao, &quot;Médico&quot;), ]$rem_media
-)</code></pre>
+<pre class="r"><code> # calculando a diferença padronizada
+ cohens_d(
+   data[data$sexo == &quot;homem&quot; &amp;
+     str_detect(data$profissao, &quot;Médico&quot;), ]$rem_media,
+   data[data$sexo == &quot;mulher&quot; &amp;
+     str_detect(data$profissao, &quot;Médico&quot;), ]$rem_media
+ )</code></pre>
 <pre><code>## Cohen&#39;s d |       95% CI
 ## ------------------------
 ##      0.12 | [0.06, 0.19]</code></pre>
-<pre class="r"><code># interpretando a estatística d
-interpret_d(0.12, &quot;gignac2016&quot;)</code></pre>
+<pre class="r"><code> # interpretando a estatística d
+ interpret_d(0.12, &quot;gignac2016&quot;)</code></pre>
 <pre><code>## [1] &quot;very small&quot;
 ## (Rules: gignac2016)</code></pre>
 </div>
@@ -517,18 +518,18 @@ distr_nula %&gt;%
   shade_confidence_interval(endpoints = percentile_ci)</code></pre>
 <p><img src="index_files/figure-html/executivos-1.png" width="672" /></p>
 <p>Com uma estatística <em>d</em> de 0.47, temos um efeito <em>moderado</em> na escala de Gignac &amp; Szodorai (2016). Isso significa dizer que 69% das mulheres em posição de dirigentes e diretoras receberiam menos do que o homem médio na mesma posição.</p>
-<pre class="r"><code># calculando a diferença padronizada
-cohens_d(
-  data[data$sexo == &quot;homem&quot; &amp;
-    str_detect(data$profissao, &quot;Dirigentes|Diretor&quot;), ]$rem_media,
-  data[data$sexo == &quot;mulher&quot; &amp;
-    str_detect(data$profissao, &quot;Dirigentes|Diretor&quot;), ]$rem_media
-)</code></pre>
+<pre class="r"><code> # calculando a diferença padronizada
+ cohens_d(
+   data[data$sexo == &quot;homem&quot; &amp;
+     str_detect(data$profissao, &quot;Dirigentes|Diretor&quot;), ]$rem_media,
+   data[data$sexo == &quot;mulher&quot; &amp;
+     str_detect(data$profissao, &quot;Dirigentes|Diretor&quot;), ]$rem_media
+ )</code></pre>
 <pre><code>## Cohen&#39;s d |       95% CI
 ## ------------------------
 ##      0.47 | [0.30, 0.63]</code></pre>
-<pre class="r"><code># interpretando a estatística d
-interpret_d(0.47, &quot;gignac2016&quot;)</code></pre>
+<pre class="r"><code> # interpretando a estatística d
+ interpret_d(0.47, &quot;gignac2016&quot;)</code></pre>
 <pre><code>## [1] &quot;moderate&quot;
 ## (Rules: gignac2016)</code></pre>
 </div>
