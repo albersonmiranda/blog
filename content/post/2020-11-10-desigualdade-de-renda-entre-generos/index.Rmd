@@ -460,13 +460,21 @@ diferencas %>%
     x = 2.5, y = 2000, size = 3.5, color = "grey85",
     label = "a diferença média é de\nR$ 1.078"
   ) +
-  annotate("text",
+  annotate ("text",
     x = 10.5, y = 5500, size = 3.5, color = "grey85",
-    label = "posições de executivo\né onde a diferença é maior\ne é também onde estão\nos maiores salários"
+    label = paste("posições de executivo",
+    "é onde a diferença é maior",
+    "e é também onde estão\nos maiores salários",
+    sep = "\n"
   ) +
   annotate("text",
   x = 9, y = 250, size = 3.5, color = "grey85",
-  label = "dentre essas profissões,\napenas as enfermeiras\nrecebem mais que homens"
+  label = paste(
+    "dentre essas profissões,",
+    "apenas as enfermeiras",
+    "recebem mais que homens",
+    sep = "\n"
+  ),
   ) +
   geom_curve(
     data = setas, aes(x = x1, y = y1, xend = x2, yend = y2),
@@ -479,7 +487,9 @@ diferencas %>%
     y = "diferença salarial em R$",
     size = "rem. média\n(homem)",
     title = "desigualdade de gênero",
-    subtitle = "as disparidades salarias evidenciam o longo caminho na superação da colocação\nda mulher como profissional de segunda categoria no mercado de trabalho",
+    subtitle = paste("as disparidades salarias evidenciam o longo caminho na superação da colocação",
+    "da mulher como profissional de segunda categoria no mercado de trabalho",
+    sep = "\n"),
     caption = "fonte: Rais 2017, Vitória/ES | elaboração: Alberson Miranda"
   ) +
   theme(

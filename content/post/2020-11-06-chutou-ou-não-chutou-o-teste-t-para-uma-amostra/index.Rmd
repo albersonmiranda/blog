@@ -65,7 +65,7 @@ Agora que já temos nosso vetor com os dados aleatórios dos alunos que acertara
 ```{r}
 
 # gráfico de barras
-par(mar = c(2,2,0,0))
+par(mar = c(2, 2, 0, 0))
 barplot(table(data), col = c("lightblue", "salmon"))
 
 ```
@@ -86,7 +86,7 @@ n = 10
 medias = rep(NA, n)
 
 # tirando amostras e calculando as médias
-for (i in 1:n){
+for (i in 1:n) {
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
@@ -122,7 +122,7 @@ n = 10
 medias = rep(NA, n)
 
 # tirando amostras e calculando as médias
-for (i in 1:n){
+for (i in 1:n) {
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
@@ -158,13 +158,13 @@ n = 50
 medias = rep(NA, n)
 
 # tirando amostras e calculando as médias
-for (i in 1:n){
+for (i in 1:n) {
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
 
 # separando o grid em 2 colunas
-par(mfrow = c(1,2))
+par(mfrow = c(1, 2))
 
 # visualização 1ª tiragem
 hist(medias,
@@ -187,7 +187,7 @@ n = 50
 medias = rep(NA, n)
 
 # tirando amostras e calculando as médias
-for (i in 1:n){
+for (i in 1:n) {
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = n), replace = TRUE))
 }
@@ -226,13 +226,13 @@ n = 100
 medias = rep(NA, n)
 
 # tirando amostras e calculando as médias
-for (i in 1:n){
+for (i in 1:n) {
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
 
 # separando o grid em 2 colunas
-par(mfrow = c(1,2))
+par(mfrow = c(1, 2))
 
 # visualização 1ª tiragem
 hist(medias,
@@ -252,7 +252,7 @@ set.seed(4)
 medias = rep(NA, n)
 
 # tirando amostras e calculando as médias
-for (i in 1:n){
+for (i in 1:n) {
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
@@ -333,7 +333,6 @@ Ou aumentar a média para 25.83%:
 ```{r}
 
 t.test(data, mu = 0.2583, conf.level = 0.98)
-
 ```
 
 Bem mais fácil do que fazer na mão, não é mesmo?
