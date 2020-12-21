@@ -1,0 +1,200 @@
+---
+title: Introdução ao {mlr3} framework
+author: Alberson Miranda
+date: '2020-12-21'
+slug: [introducao-ao-mlr3]
+categories:
+  - Machine Learning
+tags:
+  - mlr3
+  - R
+description: Uma introdução ao framework de machine learning mlr3, um pacote de R.
+featured: yes
+draft: true
+featureImage: img/mlr3verse.svg
+thumbnail: images/mlr3.png
+shareImage: images/posts/2020-12-20 - intro-mlr3.jpeg
+codeMaxLines: 10
+codeLineNumbers: no
+figurePositionShow: yes
+---
+
+Esse é o primeiro post de uma série que irá tratar sobre o ecossistema {mlr3}. Ele é mais completo mas também muito mais complexo do que seu predecessor, o {mlr}, que teve sua versão inicial publicada no CRAN em 2013. O ecossistema permite um framework agnóstico (i.e. não depende dos algoritmos escolhidos), extensível e orientado a objeto, e, atualmente, permite vários tipos de tarefas, como classificação, regressão, análise de sobrevivência, forecasting, clustering, dentre outros. O {mlr3} tem diversas vantagens e elas ficarão claras ao longo dessas postagens.
+
+# INTRODUÇÃO
+
+O workflow padrão de machine learning consiste em
+
+1. dividir sua amostra em treino e teste (*split*)
+2. escolher o algoritmo^[No {mlr3} é chamado de *learner*.] apropriado para o tipo de tarefa
+3. passar a amostra de treino ao algoritmo para criar um modelo do relacionamento entre a variável de resposta (*output features*)e as explicativas (*input features*)
+4. passar os dados de testes no modelo treinado para produzir predições
+5. comparar as predições com os dados da amostra
+6. mensurar a performance do modelo através de medidas de acurácia estabelecidas
+
+![](img/basics.svg)
+
+O processo de repetir esse workflow várias vezes, separando a amostra treino em várias partes diferentes e usando outras como *fake test samples* é chamado de *resampling* e é um processo vital para a etapa de calibragem do modelo e para evitar o *overfitting* (será abordado em futuros posts).
+
+Dependendo dos dados, do tipo de tarefa e algoritmo escolhido, podem ser necessários vários filtros, como normalização, *feature selection* e tratamento de *outliers* e dados faltantes. Para esses casos, o {mlr3} tem novas soluções que se destacam com muita vantagem em relação não só ao seu predecessor {mlr} como também a outros *frameworks* de *machine learning* em R, como o {caret} e o {tidymodels}. Abordaremos esses *pipelines* nos próximos posts.
+
+# DIRETO AO PONTO
+
+Nesse post serão trabalhadas as funcionalidades básicas do pacote. Para isso, usaremos um dos *datasets* inclusos no R, o `swiss`. Esse *dataset* consiste na medição padronizada da fertilidade e indicadores socioeconômicos de 47 províncias da Suíça em 1888.
+
+```{r data}
+
+# criando dataframe
+data = swiss
+
+# overview
+skimr::skim(data)
+```
+
+Dentre as varáveis disponíveis, podemos escolher modelar a mortalidade infantil `Infant.Mortality` baseada nas demais features, que são:
+
+- `Fertility`: Medida de fertilidade. Assim como a mortalidade infantil, está escalonada entre 0-100.
+- `Agriculture`: Percentual de homens envolvidos em agricultura como ocupação.
+- `Examination`: Percentual de alistados bem avaliados nos exames do exército.
+- `Education`: Percentual dos alistados com educação superior ao primário.
+- `Catholic`: Percentual de católicos (em oposto a protestantes).
+
+Começamos pela criação da *task*. Como queremos realizar predições para uma variável numérica contínua, é uma tarefa de regressão. O {mlr3} trabalha com a classe R6, o que torna seu manuseio mais parecido com outras linguagens orientadas a objeto, como o Python.
+
+```{r task, message = FALSE}
+
+# importando pacote
+library(mlr3verse)
+
+# criando task
+task_swiss = TaskRegr$new(
+  id = "swiss",
+  backend = data,
+  target = "Infant.Mortality"
+)
+
+# verificando
+task_swiss
+
+# visualizando
+autoplot(task_swiss, type = "pairs")
+```
+
+Podemos verificar que apenas a fertilidade é linearmente correlacionada com a mortalidade infantil — quanto maior a fertilidade, maior a mortalidade —, e podemos esperar que tenha maior peso nas predições. As demais variáveis não apresentam correlação linear significativa com a variável de resposta. Entretanto, apresentam correlação moderada ou forte entre si, mas não a ponto de apresentar colinearidade, o que demandaria tratamento.
+
+Agora selecionamos o algoritmo^[Aqui trabalharemos apenas com um, mas em posts futuros utilizaremos de diversas formas — pipelines com diferentes *features*, *stacking* etc.] que será usado para treinar o modelo. Escolhi aqui o *XGBoost*. A lista completa pode ser acessada [por essa lista estática](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html), [por essa lista dinâmica](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html) ou pela função `mlr3extralearners::list_mlr3learners()`. É importante deixar claro que os algoritmos não são implementados pelo ecossistema do {mlr3}, mas apenas o *workflow*. Isso significa que o algoritmo *XGBoost*, por exemplo, não está incluído nos pacotes do ecossistema, sendo necessário sua instalação^[Tanto no objeto criado quanto nas listas citadas constam os pacotes onde os algoritmos foram implementados.].
+
+```{r learner}
+
+# definindo o learner
+l_xgboost = lrn("regr.xgboost")
+
+# checando
+l_xgboost
+```
+
+Vamos etender o que o objeto `l_xgboost` nos diz.
+
+1. **Model**: Vazio, pois ainda não há um modelo treinado
+2. **Parameters**: Os hiperparâmetros a serem escolhidos e tunados para performance do modelo
+3. **Packages**: O pacote onde o algorítmo foi implementado e de onde será importado pelo {mlr3}
+4. **Predict Type**: Se "response" a predição é retornada ou como 0 ou 1, no caso de classificação, ou num valor para variável de resposta, no caso de regressão — neste caso, será a mortalidade infantil escalonada no intervalo [1, 100]. Se "prob", para classificação, a predição retorna a probabilidade entre 0 e 1.
+5. **Feature Type**: Os tipos de variáveis que o algoritmo é capaz de manipular. No caso do *XGBoost*, por exemplo, apenas variáveis numéricas podem ser utilizadas. Isso quer dizer que os fatores devem ser convertidos em valores binários (i.e. 0 ou 1), ou seja, deve-se tornar a matriz esparsa.
+6. **Properties**: Propriedades e capacidades adicionais do algoritmo. Neste caso, o **XGBoost** possui a capacidade de computar e retornar os valores da importâncias das *features* para o modelo; a capacidade de trabalhar com dados faltantes (*missings*); a capacidade de computar e retornar os pesos associados às *features*.
+
+Como pode ver em *parameters*, não há nenhum hiperparâmetro configurado. Podemos acessá-los da seguinte maneira:
+
+```{r hyperparameters}
+
+# acessando hiperparâmetros
+head(as.data.table(l_xgboost$param_set))
+```
+
+Como o *tunning* de hiperparâmetros não é o assunto, vamos apenas configurar algumas coisas básicas:
+
+```{r hiper_set}
+
+# hiperparâmetros
+l_xgboost$param_set$values = list(
+  # mandando o algoritmo parar depois de 10 iterações sem melhora no score
+  early_stopping_rounds = 10,
+  # mandando o algoritmo treinar mais lentamente
+  eta = 0.1,
+  # limitando profundidade da árvore
+  max_depth = 5,
+  # quantidade máxima de iterações
+  nrounds = 100
+)
+
+# verificando
+l_xgboost
+```
+
+# TREINO E PREDIÇÃO
+
+As próximas etapas são o treino e a predição — trataremos de *tunning* e *resampling* nos próximos posts. Primeiramente, o *split* do dataset em treino e teste. Para isso, usaremos a função `sample()` associada a dois métodos do objeto `task_swiss`, o `row_ids` e `nrow`. O primeiro enumera os índices de cada linha:
+
+```{r row_ids}
+
+# método row_ids
+task_swiss$row_ids
+```
+
+Enquanto o segundo retorna a quantidade de linhas do dataset:
+
+```{r nrow}
+
+# método row_ids
+task_swiss$nrow
+```
+
+Assim, podemos selecionar os índice do dataset em duas amostras aleatórias:
+```{r indexes}
+
+# garantindo reprodutibilidade
+set.seed(1)
+
+# índices para amostra treino
+train_set = sample(task_swiss$row_ids, 0.8 * task_swiss$nrow)
+
+# índices para amostra teste
+test_set = setdiff(task_swiss$row_ids, train_set)
+
+# verificando
+head(train_set)
+```
+
+Com os índices selecionados, podemos realizar nosso treino apenas nos 80% escolhidos aleatoriamente da amostra. :
+
+```{r treino, warning = FALSE}
+
+# treino
+l_xgboost$train(task_swiss, row_ids = train_set)
+
+# verificando
+l_xgboost$model
+```
+
+Como podemos ver, na primeira iteração o modelo obteve *rmse*^[Raiz do Erro Médio Quadrático]. de 17.5, o que é alto considerando a escala [1-100] da mortalidade infantil. O modelo foi aumentando sua precisão no treino até 0.03, o não significa que sua performance seja essa, mas é um bom sinal. O esperado é que a performance real do modelo, após ser aplicado à amostra teste, fique entre a iteração inicial e final. Se ficar *melhor* do que a performance do teste, alguma coisa está errada.
+
+Vamos verificar qual a performance real após realizarmos as predições na amostra teste:
+
+```{r predictions}
+
+# predições
+preds = l_xgboost$predict(task_swiss, row_ids = test_set)
+
+# verificando
+preds
+
+# acurácia
+preds$score(list(
+  msr("regr.rmse"),
+  msr("regr.mae")
+))
+
+# visualizando
+autoplot(preds)
+```
+
+A *rmse* do modelo na amostra teste ficou em apenas 2.79 unidades, o que é uma performance muito boa!
