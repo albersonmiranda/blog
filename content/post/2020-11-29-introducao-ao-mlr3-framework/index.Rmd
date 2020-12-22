@@ -10,7 +10,7 @@ tags:
   - R
 description: Uma introdução ao framework de machine learning mlr3, um pacote de R.
 featured: yes
-draft: true
+draft: false
 featureImage: img/mlr3verse.svg
 thumbnail: images/mlr3.png
 shareImage: images/posts/2020-12-20 - intro-mlr3.jpeg
@@ -175,7 +175,7 @@ l_xgboost$train(task_swiss, row_ids = train_set)
 l_xgboost$model
 ```
 
-Como podemos ver, na primeira iteração o modelo obteve *rmse*^[Raiz do Erro Médio Quadrático]. de 17.5, o que é alto considerando a escala [1-100] da mortalidade infantil. O modelo foi aumentando sua precisão no treino até 0.03, o não significa que sua performance seja essa, mas é um bom sinal. O esperado é que a performance real do modelo, após ser aplicado à amostra teste, fique entre a iteração inicial e final. Se ficar *melhor* do que a performance do teste, alguma coisa está errada.
+Como podemos ver, na primeira iteração o modelo obteve *rmse*^[Raiz do Erro Médio Quadrático]. de 17.5, o que é alto considerando a escala [1-100] da mortalidade infantil. O modelo foi aumentando sua precisão no treino até 0.03, o que não significa que sua performance permaneça nesse nível quando extrapolado para a amostra teste ou novos dados, mas é um bom sinal. O esperado é que a performance real do modelo, após ser aplicado à amostra teste, fique entre a iteração inicial e final. Se ficar *melhor* do que a performance do teste, alguma coisa certamente está errada.
 
 Vamos verificar qual a performance real após realizarmos as predições na amostra teste:
 
@@ -198,3 +198,4 @@ autoplot(preds)
 ```
 
 A *rmse* do modelo na amostra teste ficou em apenas 2.79 unidades, o que é uma performance muito boa!
+
