@@ -10,7 +10,7 @@ tags:
   - R
 description: Uma introdução ao framework de machine learning mlr3, um pacote de R.
 featured: yes
-draft: true
+draft: false
 featureImage: img/mlr3verse.svg
 thumbnail: images/mlr3.png
 shareImage: images/posts/2020-12-20 - intro-mlr3.jpeg
