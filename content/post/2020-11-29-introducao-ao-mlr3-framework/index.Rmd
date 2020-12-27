@@ -21,7 +21,7 @@ bibliography: [bib.bib]
 link-citations: true
 ---
 
-Esse é o primeiro post de uma série que irá tratar sobre o ecossistema {mlr3} [@mlr3]. Ele é mais completo mas também muito mais complexo do que seu predecessor, o {mlr}, que teve sua versão inicial publicada no CRAN em 2013. O ecossistema permite um framework agnóstico (i.e. não depende dos algoritmos escolhidos), extensível e orientado a objeto, e, atualmente, permite vários tipos de tarefas, como classificação, regressão, análise de sobrevivência, forecasting, clustering, dentre outros. O {mlr3} tem diversas vantagens que o faz, IMHO, o *framework* mais completo para se trabalhar *machine learning* em R [@R] e elas ficarão claras ao longo dessas postagens.
+Esse é o primeiro post de uma série que irá tratar sobre o ecossistema {mlr3} [@mlr3]. Ele é mais completo e também muito mais complexo do que seu predecessor, o {mlr}, que teve sua versão inicial publicada no CRAN em 2013. O ecossistema permite um framework agnóstico (i.e. não depende dos algoritmos escolhidos), extensível e orientado a objeto, e, atualmente, permite vários tipos de tarefas, como classificação, regressão, análise de sobrevivência, forecasting, clustering, dentre outros. O {mlr3} tem diversas vantagens que o faz, IMHO, o *framework* mais completo para se trabalhar *machine learning* em R [@R] e elas ficarão claras ao longo dos próximos posts.
 
 # INTRODUÇÃO
 
@@ -36,7 +36,7 @@ O workflow padrão de um projeto de machine learning consiste em:
 
 ![](img/basics.svg)
 
-O processo de repetir esse workflow várias vezes, separando a amostra treino em várias partes diferentes e usando outras como *fake test samples* é chamado de *resampling* e é um processo vital para a etapa de calibragem do modelo e para evitar o *overfitting*.
+O processo de repetir esse workflow várias vezes, separando a amostra treino em várias partes diferentes e usando outras como *fake test samples* é chamado de *resampling*, um processo vital para a etapa de calibragem e para evitar o *overfitting*.
 
 Dependendo dos dados, do tipo de tarefa e algoritmo escolhido, podem ser necessários vários filtros, como normalização, *feature selection* e tratamento de *outliers* ou dados faltantes. Para esses casos, o {mlr3} tem novas soluções que se destacam com muita vantagem em relação não só ao seu predecessor {mlr} como também a outros *frameworks* de *machine learning* em R, como o {caret} e o {tidymodels}.
 
@@ -69,7 +69,7 @@ data = swiss
 skimr::skim(data)
 ```
 
-Dentre as varáveis disponíveis, podemos escolher modelar a mortalidade infantil `Infant.Mortality` baseada nas demais features, que são:
+Dentre as vari]]áveis disponíveis, podemos escolher modelar a mortalidade infantil `Infant.Mortality` baseada nas demais features, que são:
 
 - `Fertility`: Medida de fertilidade. Assim como a mortalidade infantil, está escalonada entre 0-100.
 - `Agriculture`: Percentual de homens envolvidos em agricultura como ocupação.
@@ -129,9 +129,9 @@ Vamos entender o que o objeto `l_xgboost` nos diz.
 1. **Model**: Vazio, pois ainda não há um modelo treinado;
 2. **Parameters**: Os hiperparâmetros a serem escolhidos e tunados para performance do modelo;
 3. **Packages**: O pacote onde o algorítmo foi implementado e de onde será importado pelo {mlr3};
-4. **Predict Type**: Se "response" a predição é retornada como 0 ou 1, no caso de classificação, ou num valor para variável de resposta, no caso de regressão — neste caso, será a mortalidade infantil escalonada no intervalo [1, 100]. Se "prob", para classificação, a predição retorna a probabilidade entre 0 e 1;
+4. **Predict Type**: Se `response` a predição é retornada como 0 ou 1, no caso de classificação, ou num valor para variável de resposta, no caso de regressão — neste caso, será a mortalidade infantil escalonada no intervalo [1, 100]. Se "prob", para classificação, a predição retorna a probabilidade entre 0 e 1;
 5. **Feature Type**: Os tipos de variáveis que o algoritmo é capaz de manipular. No caso do *XGBoost*, por exemplo, apenas variáveis numéricas podem ser utilizadas. Isso quer dizer que os fatores devem ser convertidos em valores binários (i.e. 0 ou 1), ou seja, deve-se tornar a matriz esparsa — no caso de um fator `sexo`, por exemplo, na fase de pre-processamento seriam criadas as colunas `sexo.masculino`, com valores de 1 ou 0, e `sexo.feminino`, também com 1 ou 0;
-6. **Properties**: Propriedades e capacidades adicionais do algoritmo. Neste caso, o **XGBoost** possui a capacidade de computar e retornar os valores da importâncias das *features* para o modelo; a capacidade de trabalhar com dados faltantes (*missings*); a capacidade de computar e retornar os pesos associados às *features*.
+6. **Properties**: Propriedades e capacidades adicionais do algoritmo. Neste caso, o **XGBoost** possui a capacidade de computar e retornar os valores da importância das *features* para o modelo; a capacidade de trabalhar com dados faltantes (*missings*); a capacidade de computar e retornar os pesos associados às *features*.
 
 Como pode ver em *parameters*, não há nenhum hiperparâmetro configurado. Podemos acessá-los da seguinte maneira:
 
@@ -206,7 +206,7 @@ l_xgboost$train(task_swiss, row_ids = train_set)
 l_xgboost$model
 ```
 
-Como podemos ver, na primeira iteração o modelo obteve *rmse*^[Raiz do Erro Médio Quadrático]. de 17.7, o que é alto considerando a escala [1-100] da mortalidade infantil. O modelo foi aumentando sua precisão no treino até 0.03, o que não significa que sua performance permaneça nesse nível quando extrapolado para a amostra teste ou novos dados, mas é um bom sinal. O esperado é que a performance real do modelo, após ser aplicado à amostra teste, fique entre a iteração inicial e final. Se ficar *melhor* do que a performance do teste, alguma coisa certamente está errada.
+Como podemos ver, na primeira iteração o modelo obteve *rmse*^[Raiz do Erro Médio Quadrático]. de 17.7, o que é alto considerando a escala [1-100] da mortalidade infantil. Ao longo do treino, o erro foi reduzido até 0.03, o que não significa que sua performance permaneça nesse nível quando extrapolado para a amostra teste ou novos dados, mas é um bom sinal. O esperado é que a performance real do modelo, após ser aplicado à amostra teste, fique entre a iteração inicial e final. Se ficar *melhor* do que a performance do teste, alguma coisa certamente está errada.
 
 Vamos verificar qual a performance real após realizarmos as predições na amostra teste. Primeiro, passamos os índices de teste ao objeto do *learner* com o modelo e chamamos o método `predict()` para obter as predições.
 
@@ -219,7 +219,7 @@ preds = l_xgboost$predict(task_swiss, row_ids = test_set)
 preds
 ```
 
-No objeto com as predições são armazenados tanto os valores preditos pelo modelo (`response`) quanto os valores da amostra (`truth`). Esses valores então podem ser comparados para calcular a acurácia do modelo através do método `score()`:
+No objeto com as predições, são armazenados tanto os valores preditos pelo modelo `response` quanto os valores da amostra `truth`. Esses valores então podem ser comparados para calcular a acurácia do modelo através do método `score()`:
 
 ```{r accuracy}
 # acurácia
