@@ -24,7 +24,7 @@ link-citations: true
 <script src="index_files/header-attrs/header-attrs.js"></script>
 
 
-<p>Esse é o primeiro post de uma série que irá tratar sobre o ecossistema {mlr3} <span class="citation">(<a href="#ref-mlr3" role="doc-biblioref">Lang et al. 2019</a>)</span>. Ele é mais completo mas também muito mais complexo do que seu predecessor, o {mlr}, que teve sua versão inicial publicada no CRAN em 2013. O ecossistema permite um framework agnóstico (i.e. não depende dos algoritmos escolhidos), extensível e orientado a objeto, e, atualmente, permite vários tipos de tarefas, como classificação, regressão, análise de sobrevivência, forecasting, clustering, dentre outros. O {mlr3} tem diversas vantagens que o faz, IMHO, o <em>framework</em> mais completo para se trabalhar <em>machine learning</em> em R <span class="citation">(<a href="#ref-R" role="doc-biblioref">R Core Team 2020</a>)</span> e elas ficarão claras ao longo dessas postagens.</p>
+<p>Esse é o primeiro post de uma série que irá tratar sobre o ecossistema {mlr3} <span class="citation">(<a href="#ref-mlr3" role="doc-biblioref">Lang et al. 2019</a>)</span>. Ele é mais completo e também muito mais complexo do que seu predecessor, o {mlr}, que teve sua versão inicial publicada no CRAN em 2013. O ecossistema permite um framework agnóstico (i.e. não depende dos algoritmos escolhidos), extensível e orientado a objeto, e, atualmente, permite vários tipos de tarefas, como classificação, regressão, análise de sobrevivência, forecasting, clustering, dentre outros. O {mlr3} tem diversas vantagens que o faz, IMHO, o <em>framework</em> mais completo para se trabalhar <em>machine learning</em> em R <span class="citation">(<a href="#ref-R" role="doc-biblioref">R Core Team 2020</a>)</span> e elas ficarão claras ao longo dos próximos posts.</p>
 <div id="introdução" class="section level1">
 <h1>INTRODUÇÃO</h1>
 <p>O workflow padrão de um projeto de machine learning consiste em:</p>
@@ -37,7 +37,7 @@ link-citations: true
 <li>mensurar a performance do modelo através de medidas de acurácia estabelecidas.</li>
 </ol>
 <p><img src="img/basics.svg" /></p>
-<p>O processo de repetir esse workflow várias vezes, separando a amostra treino em várias partes diferentes e usando outras como <em>fake test samples</em> é chamado de <em>resampling</em> e é um processo vital para a etapa de calibragem do modelo e para evitar o <em>overfitting</em>.</p>
+<p>O processo de repetir esse workflow várias vezes, separando a amostra treino em várias partes diferentes e usando outras como <em>fake test samples</em> é chamado de <em>resampling</em>, um processo vital para a etapa de calibragem e para evitar o <em>overfitting</em>.</p>
 <p>Dependendo dos dados, do tipo de tarefa e algoritmo escolhido, podem ser necessários vários filtros, como normalização, <em>feature selection</em> e tratamento de <em>outliers</em> ou dados faltantes. Para esses casos, o {mlr3} tem novas soluções que se destacam com muita vantagem em relação não só ao seu predecessor {mlr} como também a outros <em>frameworks</em> de <em>machine learning</em> em R, como o {caret} e o {tidymodels}.</p>
 <div id="características-de-design" class="section level2">
 <h2>CARACTERÍSTICAS DE DESIGN</h2>
@@ -197,7 +197,7 @@ skimr::skim(data)</code></pre>
 </tr>
 </tbody>
 </table>
-<p>Dentre as varáveis disponíveis, podemos escolher modelar a mortalidade infantil <code>Infant.Mortality</code> baseada nas demais features, que são:</p>
+<p>Dentre as vari]]áveis disponíveis, podemos escolher modelar a mortalidade infantil <code>Infant.Mortality</code> baseada nas demais features, que são:</p>
 <ul>
 <li><code>Fertility</code>: Medida de fertilidade. Assim como a mortalidade infantil, está escalonada entre 0-100.</li>
 <li><code>Agriculture</code>: Percentual de homens envolvidos em agricultura como ocupação.</li>
@@ -252,9 +252,9 @@ l_xgboost</code></pre>
 <li><strong>Model</strong>: Vazio, pois ainda não há um modelo treinado;</li>
 <li><strong>Parameters</strong>: Os hiperparâmetros a serem escolhidos e tunados para performance do modelo;</li>
 <li><strong>Packages</strong>: O pacote onde o algorítmo foi implementado e de onde será importado pelo {mlr3};</li>
-<li><strong>Predict Type</strong>: Se “response” a predição é retornada como 0 ou 1, no caso de classificação, ou num valor para variável de resposta, no caso de regressão — neste caso, será a mortalidade infantil escalonada no intervalo [1, 100]. Se “prob,” para classificação, a predição retorna a probabilidade entre 0 e 1;</li>
+<li><strong>Predict Type</strong>: Se <code>response</code> a predição é retornada como 0 ou 1, no caso de classificação, ou num valor para variável de resposta, no caso de regressão — neste caso, será a mortalidade infantil escalonada no intervalo [1, 100]. Se “prob,” para classificação, a predição retorna a probabilidade entre 0 e 1;</li>
 <li><strong>Feature Type</strong>: Os tipos de variáveis que o algoritmo é capaz de manipular. No caso do <em>XGBoost</em>, por exemplo, apenas variáveis numéricas podem ser utilizadas. Isso quer dizer que os fatores devem ser convertidos em valores binários (i.e. 0 ou 1), ou seja, deve-se tornar a matriz esparsa — no caso de um fator <code>sexo</code>, por exemplo, na fase de pre-processamento seriam criadas as colunas <code>sexo.masculino</code>, com valores de 1 ou 0, e <code>sexo.feminino</code>, também com 1 ou 0;</li>
-<li><strong>Properties</strong>: Propriedades e capacidades adicionais do algoritmo. Neste caso, o <strong>XGBoost</strong> possui a capacidade de computar e retornar os valores da importâncias das <em>features</em> para o modelo; a capacidade de trabalhar com dados faltantes (<em>missings</em>); a capacidade de computar e retornar os pesos associados às <em>features</em>.</li>
+<li><strong>Properties</strong>: Propriedades e capacidades adicionais do algoritmo. Neste caso, o <strong>XGBoost</strong> possui a capacidade de computar e retornar os valores da importância das <em>features</em> para o modelo; a capacidade de trabalhar com dados faltantes (<em>missings</em>); a capacidade de computar e retornar os pesos associados às <em>features</em>.</li>
 </ol>
 <p>Como pode ver em <em>parameters</em>, não há nenhum hiperparâmetro configurado. Podemos acessá-los da seguinte maneira:</p>
 <pre class="r"><code># acessando hiperparâmetros
@@ -324,13 +324,13 @@ head(train_set)</code></pre>
 <p>Com os índices selecionados, podemos realizar nosso treino apenas nos 70% escolhidos aleatoriamente da amostra, sem copiar os dados e alocar memória desnecessariamente:</p>
 <pre class="r"><code># treino
 l_xgboost$train(task_swiss, row_ids = train_set)</code></pre>
-<pre><code>## [03:29:11] WARNING: amalgamation/../src/objective/regression_obj.cu:174: reg:linear is now deprecated in favor of reg:squarederror.
+<pre><code>## [14:17:16] WARNING: amalgamation/../src/objective/regression_obj.cu:174: reg:linear is now deprecated in favor of reg:squarederror.
 ## [1]  train-rmse:17.686886 
 ## Will train until train_rmse hasn&#39;t improved in 10 rounds.
 ## 
 ## [2]  train-rmse:16.014397 
 ## [3]  train-rmse:14.506416 
-## [4]  train-rmse:13.147319 
+## [4]  train-rmse:13.147320 
 ## [5]  train-rmse:11.924172 
 ## [6]  train-rmse:10.822335 
 ## [7]  train-rmse:9.832130 
@@ -402,7 +402,7 @@ l_xgboost$train(task_swiss, row_ids = train_set)</code></pre>
 ## [73] train-rmse:0.130172 
 ## [74] train-rmse:0.123807 
 ## [75] train-rmse:0.117861 
-## [76] train-rmse:0.112244 
+## [76] train-rmse:0.112243 
 ## [77] train-rmse:0.106818 
 ## [78] train-rmse:0.101794 
 ## [79] train-rmse:0.096382 
@@ -433,7 +433,7 @@ l_xgboost$model</code></pre>
 ## raw: 97.5 Kb 
 ## call:
 ##   xgboost::xgb.train(data = data, nrounds = 100L, watchlist = list(
-##     train = &lt;pointer: 0x0000000023a97b80&gt;), early_stopping_rounds = 10L, 
+##     train = &lt;pointer: 0x0000000026bff8e0&gt;), early_stopping_rounds = 10L, 
 ##     eta = 0.1, max_depth = 5L, objective = &quot;reg:linear&quot;)
 ## params (as set within xgb.train):
 ##   eta = &quot;0.1&quot;, max_depth = &quot;5&quot;, objective = &quot;reg:linear&quot;, validate_parameters = &quot;TRUE&quot;
@@ -458,7 +458,7 @@ l_xgboost$model</code></pre>
 ## ---                
 ##       99   0.035096
 ##      100   0.033438</code></pre>
-<p>Como podemos ver, na primeira iteração o modelo obteve <em>rmse</em><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. de 17.7, o que é alto considerando a escala [1-100] da mortalidade infantil. O modelo foi aumentando sua precisão no treino até 0.03, o que não significa que sua performance permaneça nesse nível quando extrapolado para a amostra teste ou novos dados, mas é um bom sinal. O esperado é que a performance real do modelo, após ser aplicado à amostra teste, fique entre a iteração inicial e final. Se ficar <em>melhor</em> do que a performance do teste, alguma coisa certamente está errada.</p>
+<p>Como podemos ver, na primeira iteração o modelo obteve <em>rmse</em><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. de 17.7, o que é alto considerando a escala [1-100] da mortalidade infantil. Ao longo do treino, o erro foi reduzido até 0.03, o que não significa que sua performance permaneça nesse nível quando extrapolado para a amostra teste ou novos dados, mas é um bom sinal. O esperado é que a performance real do modelo, após ser aplicado à amostra teste, fique entre a iteração inicial e final. Se ficar <em>melhor</em> do que a performance do teste, alguma coisa certamente está errada.</p>
 <p>Vamos verificar qual a performance real após realizarmos as predições na amostra teste. Primeiro, passamos os índices de teste ao objeto do <em>learner</em> com o modelo e chamamos o método <code>predict()</code> para obter as predições.</p>
 <pre class="r"><code># predições
 preds = l_xgboost$predict(task_swiss, row_ids = test_set)
@@ -474,7 +474,7 @@ preds</code></pre>
 ##         40  20.5 19.55373
 ##         43  20.0 21.27585
 ##         47  19.3 21.82051</code></pre>
-<p>No objeto com as predições são armazenados tanto os valores preditos pelo modelo (<code>response</code>) quanto os valores da amostra (<code>truth</code>). Esses valores então podem ser comparados para calcular a acurácia do modelo através do método <code>score()</code>:</p>
+<p>No objeto com as predições, são armazenados tanto os valores preditos pelo modelo <code>response</code> quanto os valores da amostra <code>truth</code>. Esses valores então podem ser comparados para calcular a acurácia do modelo através do método <code>score()</code>:</p>
 <pre class="r"><code># acurácia
 preds$score(list(
   msr(&quot;regr.rmse&quot;),
