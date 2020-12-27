@@ -16,6 +16,8 @@ categories:
 tags:
   - Tag_name1
   - Tag_name2
+bibliography: [bib.bib]
+link-citations: true
 ---
 
 **Insert Lead paragraph here.**

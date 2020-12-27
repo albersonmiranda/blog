@@ -1,7 +1,7 @@
 ---
-title: Introdução ao {mlr3} framework
+title: Introdução ao framework {mlr3}
 author: Alberson Miranda
-date: '2020-12-21'
+date: '2020-12-27'
 slug: [introducao-ao-mlr3]
 categories:
   - Machine Learning
@@ -17,30 +17,46 @@ shareImage: images/posts/2020-12-20 - intro-mlr3.jpeg
 codeMaxLines: 10
 codeLineNumbers: no
 figurePositionShow: yes
+bibliography: [bib.bib]
+link-citations: true
 ---
 
 <script src="index_files/header-attrs/header-attrs.js"></script>
 
 
-<p>Esse é o primeiro post de uma série que irá tratar sobre o ecossistema {mlr3}. Ele é mais completo mas também muito mais complexo do que seu predecessor, o {mlr}, que teve sua versão inicial publicada no CRAN em 2013. O ecossistema permite um framework agnóstico (i.e. não depende dos algoritmos escolhidos), extensível e orientado a objeto, e, atualmente, permite vários tipos de tarefas, como classificação, regressão, análise de sobrevivência, forecasting, clustering, dentre outros. O {mlr3} tem diversas vantagens e elas ficarão claras ao longo dessas postagens.</p>
+<p>Esse é o primeiro post de uma série que irá tratar sobre o ecossistema {mlr3} <span class="citation">(<a href="#ref-mlr3" role="doc-biblioref">Lang et al. 2019</a>)</span>. Ele é mais completo mas também muito mais complexo do que seu predecessor, o {mlr}, que teve sua versão inicial publicada no CRAN em 2013. O ecossistema permite um framework agnóstico (i.e. não depende dos algoritmos escolhidos), extensível e orientado a objeto, e, atualmente, permite vários tipos de tarefas, como classificação, regressão, análise de sobrevivência, forecasting, clustering, dentre outros. O {mlr3} tem diversas vantagens que o faz, IMHO, o <em>framework</em> mais completo para se trabalhar <em>machine learning</em> em R <span class="citation">(<a href="#ref-R" role="doc-biblioref">R Core Team 2020</a>)</span> e elas ficarão claras ao longo dessas postagens.</p>
 <div id="introdução" class="section level1">
 <h1>INTRODUÇÃO</h1>
-<p>O workflow padrão de machine learning consiste em</p>
+<p>O workflow padrão de um projeto de machine learning consiste em:</p>
 <ol style="list-style-type: decimal">
-<li>dividir sua amostra em treino e teste (<em>split</em>)</li>
-<li>escolher o algoritmo<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> apropriado para o tipo de tarefa</li>
-<li>passar a amostra de treino ao algoritmo para criar um modelo do relacionamento entre a variável de resposta (<em>output features</em>)e as explicativas (<em>input features</em>)</li>
-<li>passar os dados de testes no modelo treinado para produzir predições</li>
-<li>comparar as predições com os dados da amostra</li>
-<li>mensurar a performance do modelo através de medidas de acurácia estabelecidas</li>
+<li>dividir sua amostra em treino e teste (<em>split</em>);</li>
+<li>escolher o algoritmo<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> apropriado para o tipo de tarefa;</li>
+<li>passar a amostra de treino ao algoritmo para criar um modelo do relacionamento entre a variável de resposta (<em>output features</em>) e as explicativas (<em>input features</em>);</li>
+<li>passar os dados de testes ao modelo treinado para produzir predições;</li>
+<li>comparar as predições com os dados da amostra;</li>
+<li>mensurar a performance do modelo através de medidas de acurácia estabelecidas.</li>
 </ol>
 <p><img src="img/basics.svg" /></p>
-<p>O processo de repetir esse workflow várias vezes, separando a amostra treino em várias partes diferentes e usando outras como <em>fake test samples</em> é chamado de <em>resampling</em> e é um processo vital para a etapa de calibragem do modelo e para evitar o <em>overfitting</em> (será abordado em futuros posts).</p>
-<p>Dependendo dos dados, do tipo de tarefa e algoritmo escolhido, podem ser necessários vários filtros, como normalização, <em>feature selection</em> e tratamento de <em>outliers</em> e dados faltantes. Para esses casos, o {mlr3} tem novas soluções que se destacam com muita vantagem em relação não só ao seu predecessor {mlr} como também a outros <em>frameworks</em> de <em>machine learning</em> em R, como o {caret} e o {tidymodels}. Abordaremos esses <em>pipelines</em> nos próximos posts.</p>
+<p>O processo de repetir esse workflow várias vezes, separando a amostra treino em várias partes diferentes e usando outras como <em>fake test samples</em> é chamado de <em>resampling</em> e é um processo vital para a etapa de calibragem do modelo e para evitar o <em>overfitting</em>.</p>
+<p>Dependendo dos dados, do tipo de tarefa e algoritmo escolhido, podem ser necessários vários filtros, como normalização, <em>feature selection</em> e tratamento de <em>outliers</em> ou dados faltantes. Para esses casos, o {mlr3} tem novas soluções que se destacam com muita vantagem em relação não só ao seu predecessor {mlr} como também a outros <em>frameworks</em> de <em>machine learning</em> em R, como o {caret} e o {tidymodels}.</p>
+<div id="características-de-design" class="section level2">
+<h2>CARACTERÍSTICAS DE DESIGN</h2>
+<p>Alguns princípios gerais que norteiam o desenvolvimento do pacote e afetam muito seu uso são:</p>
+<ul>
+<li><p>Foco no <em>backend</em>. A maioria dos pacotes do ecossistema tem objetivo de processar e transformar dados, aplicar algoritmos e computar resultados. Visualizações são providenciadas em pacotes externos;</p></li>
+<li><p>Adoção da classe R6 <span class="citation">(<a href="#ref-R-R6" role="doc-biblioref">Chang 2020</a>)</span> para design orientado a objeto, <em>modify-in-place</em> e semântica de referência (falaremos um pouco sobre esses conceitos adiante);</p></li>
+<li><p>Adoção do {data.table} <span class="citation">(<a href="#ref-R-data.table" role="doc-biblioref">Dowle and Srinivasan 2020</a>)</span> para manipulações de <em>data frames</em>. A combinação {R6} + {data.table} torna a performance um dos pontos fortes do ecossistema.</p></li>
+<li><p>Baixa dependência. Entretanto, os algortimos não são implementados no ecossistema, como no scikit-learn em Python. Para executar o XGBoost <span class="citation">(<a href="#ref-xgboost" role="doc-biblioref">Chen et al. 2020</a>)</span>, por exemplo, deve-se ter instalado o pacote que o implementa.</p></li>
+</ul>
+</div>
+<div id="fora-do-escopo" class="section level2">
+<h2>FORA DO ESCOPO</h2>
+<p>Como se trata de uma introdução, as etapas de <em>tunning</em> e <em>resampling</em>, assim como funcionalidades como os <em>pipelines</em>, serão abordadas em postagens futuras. Neste post trataremos apenas os conceitos básicos do <em>workflow</em>.</p>
+</div>
 </div>
 <div id="direto-ao-ponto" class="section level1">
 <h1>DIRETO AO PONTO</h1>
-<p>Nesse post serão trabalhadas as funcionalidades básicas do pacote. Para isso, usaremos um dos <em>datasets</em> inclusos no R, o <code>swiss</code>. Esse <em>dataset</em> consiste na medição padronizada da fertilidade e indicadores socioeconômicos de 47 províncias da Suíça em 1888.</p>
+<p>Para conhecer as funcionalidades básicas do pacote, usaremos um dos <em>datasets</em> inclusos no R, o <code>swiss</code>. Esse <em>dataset</em> consiste na medição padronizada da fertilidade e indicadores socioeconômicos de 47 províncias da Suíça em 1888.</p>
 <pre class="r"><code># criando dataframe
 data = swiss
 
@@ -189,7 +205,7 @@ skimr::skim(data)</code></pre>
 <li><code>Education</code>: Percentual dos alistados com educação superior ao primário.</li>
 <li><code>Catholic</code>: Percentual de católicos (em oposto a protestantes).</li>
 </ul>
-<p>Começamos pela criação da <em>task</em>. Como queremos realizar predições para uma variável numérica contínua, é uma tarefa de regressão. O {mlr3} trabalha com a classe R6, o que torna seu manuseio mais parecido com outras linguagens orientadas a objeto, como o Python.</p>
+<p>O <em>workflow</em> começa pela criação da <code>task</code>, que é um objeto que contém os dados e informações sobre a tarefa a ser executada, como a variável de resposta<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> e as demais <em>features</em>, além de seus tipos. Como queremos realizar predições para uma variável numérica contínua, é uma tarefa de regressão.</p>
 <pre class="r"><code># importando pacote
 library(mlr3verse)
 
@@ -198,9 +214,15 @@ task_swiss = TaskRegr$new(
   id = &quot;swiss&quot;,
   backend = data,
   target = &quot;Infant.Mortality&quot;
-)
-
-# verificando
+)</code></pre>
+<p>Notou algo estranho? Como o {mlr3} trabalha com a classe R6, seu manuseio é mais parecido com outras linguagens orientadas a objeto, como o Python. Essa classe tem duas propriedades especiais:</p>
+<ul>
+<li><p>Métodos pertencem a objetos e são chamados na forma <code>objeto$metodo()</code> e não como funções genéricas como <code>foo()</code>. Esse é o paradigma OOP (programação orientada à objetos). No caso acima, não há uma função para criar uma <em>task</em> como <code>task_regr_new()</code>, mas um método <code>new()</code> associado ao objeto <code>TaskRegr</code>;</p></li>
+<li><p>Os objetos da classe R6 são mutáveis, ou seja, eles são modificados no local (<em>modify-in-place</em>) e, portanto, têm semântica de referência. Isso significa que eles não são copiados a cada modificação, como os <em>data frames</em> comuns (classe S3), o que é um fator de alocação de memória e, consequentemente, lentidão.</p></li>
+</ul>
+<p>O efeito colateral é que isso não é muito familiar para pessoas que não conhecem outras linguagens de programação além do R e no início pode parecer pouco natural e confuso.</p>
+<p>Criado o objeto, podemos acessá-lo para verificar e visualizar as informações ali contidas:</p>
+<pre class="r"><code># verificando
 task_swiss</code></pre>
 <pre><code>## &lt;TaskRegr:swiss&gt; (47 x 6)
 ## * Target: Infant.Mortality
@@ -210,9 +232,9 @@ task_swiss</code></pre>
 ##   - int (2): Education, Examination</code></pre>
 <pre class="r"><code># visualizando
 autoplot(task_swiss, type = &quot;pairs&quot;)</code></pre>
-<p><img src="index_files/figure-html/task-1.png" width="672" /></p>
-<p>Podemos verificar que apenas a fertilidade é linearmente correlacionada com a mortalidade infantil — quanto maior a fertilidade, maior a mortalidade —, e podemos esperar que tenha maior peso nas predições. As demais variáveis não apresentam correlação linear significativa com a variável de resposta. Entretanto, apresentam correlação moderada ou forte entre si, mas não a ponto de apresentar colinearidade, o que demandaria tratamento.</p>
-<p>Agora selecionamos o algoritmo<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> que será usado para treinar o modelo. Escolhi aqui o <em>XGBoost</em>. A lista completa pode ser acessada <a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html">por essa lista estática</a>, <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">por essa lista dinâmica</a> ou pela função <code>mlr3extralearners::list_mlr3learners()</code>. É importante deixar claro que os algoritmos não são implementados pelo ecossistema do {mlr3}, mas apenas o <em>workflow</em>. Isso significa que o algoritmo <em>XGBoost</em>, por exemplo, não está incluído nos pacotes do ecossistema, sendo necessário sua instalação<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
+<p><img src="index_files/figure-html/task_cont-1.png" width="672" /></p>
+<p>Podemos ver que apenas a fertilidade é linearmente correlacionada com a mortalidade infantil — quanto maior a fertilidade, maior a mortalidade —, e podemos esperar que tenha maior peso nas predições. As demais variáveis não apresentam correlação linear significativa com a variável de resposta. Entretanto, apresentam correlação moderada ou forte entre si, mas não a ponto de apresentar colinearidade, o que demandaria tratamento.</p>
+<p>Agora selecionamos o algoritmo<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> que será usado para treinar o modelo. Escolhi aqui o <em>XGBoost</em>. A lista completa pode ser acessada <a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html">por essa lista estática</a>, <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">por essa lista dinâmica</a> ou pela função <code>mlr3extralearners::list_mlr3learners()</code>. Como mencionado anteriormente, os algoritmos não são implementados pelo ecossistema do {mlr3} e nas listas citadas constam os pacotes onde os algoritmos foram implementados e que devem ser baixados para o seu uso.</p>
 <pre class="r"><code># definindo o learner
 l_xgboost = lrn(&quot;regr.xgboost&quot;)
 
@@ -225,13 +247,13 @@ l_xgboost</code></pre>
 ## * Predict Type: response
 ## * Feature types: logical, integer, numeric
 ## * Properties: importance, missings, weights</code></pre>
-<p>Vamos etender o que o objeto <code>l_xgboost</code> nos diz.</p>
+<p>Vamos entender o que o objeto <code>l_xgboost</code> nos diz.</p>
 <ol style="list-style-type: decimal">
-<li><strong>Model</strong>: Vazio, pois ainda não há um modelo treinado</li>
-<li><strong>Parameters</strong>: Os hiperparâmetros a serem escolhidos e tunados para performance do modelo</li>
-<li><strong>Packages</strong>: O pacote onde o algorítmo foi implementado e de onde será importado pelo {mlr3}</li>
-<li><strong>Predict Type</strong>: Se “response” a predição é retornada ou como 0 ou 1, no caso de classificação, ou num valor para variável de resposta, no caso de regressão — neste caso, será a mortalidade infantil escalonada no intervalo [1, 100]. Se “prob”, para classificação, a predição retorna a probabilidade entre 0 e 1.</li>
-<li><strong>Feature Type</strong>: Os tipos de variáveis que o algoritmo é capaz de manipular. No caso do <em>XGBoost</em>, por exemplo, apenas variáveis numéricas podem ser utilizadas. Isso quer dizer que os fatores devem ser convertidos em valores binários (i.e. 0 ou 1), ou seja, deve-se tornar a matriz esparsa.</li>
+<li><strong>Model</strong>: Vazio, pois ainda não há um modelo treinado;</li>
+<li><strong>Parameters</strong>: Os hiperparâmetros a serem escolhidos e tunados para performance do modelo;</li>
+<li><strong>Packages</strong>: O pacote onde o algorítmo foi implementado e de onde será importado pelo {mlr3};</li>
+<li><strong>Predict Type</strong>: Se “response” a predição é retornada como 0 ou 1, no caso de classificação, ou num valor para variável de resposta, no caso de regressão — neste caso, será a mortalidade infantil escalonada no intervalo [1, 100]. Se “prob,” para classificação, a predição retorna a probabilidade entre 0 e 1;</li>
+<li><strong>Feature Type</strong>: Os tipos de variáveis que o algoritmo é capaz de manipular. No caso do <em>XGBoost</em>, por exemplo, apenas variáveis numéricas podem ser utilizadas. Isso quer dizer que os fatores devem ser convertidos em valores binários (i.e. 0 ou 1), ou seja, deve-se tornar a matriz esparsa — no caso de um fator <code>sexo</code>, por exemplo, na fase de pre-processamento seriam criadas as colunas <code>sexo.masculino</code>, com valores de 1 ou 0, e <code>sexo.feminino</code>, também com 1 ou 0;</li>
 <li><strong>Properties</strong>: Propriedades e capacidades adicionais do algoritmo. Neste caso, o <strong>XGBoost</strong> possui a capacidade de computar e retornar os valores da importâncias das <em>features</em> para o modelo; a capacidade de trabalhar com dados faltantes (<em>missings</em>); a capacidade de computar e retornar os pesos associados às <em>features</em>.</li>
 </ol>
 <p>Como pode ver em <em>parameters</em>, não há nenhum hiperparâmetro configurado. Podemos acessá-los da seguinte maneira:</p>
@@ -251,7 +273,7 @@ head(as.data.table(l_xgboost$param_set))</code></pre>
 ## 4:      FALSE    &lt;list[0]&gt;       0      numeric train
 ## 5:      FALSE    &lt;list[0]&gt;       6      integer train
 ## 6:      FALSE    &lt;list[0]&gt;       1      numeric train</code></pre>
-<p>Como o <em>tunning</em> de hiperparâmetros não é o assunto, vamos apenas configurar algumas coisas básicas:</p>
+<p>Como o <em>tunning</em> de hiperparâmetros não é o assunto, vamos apenas configurar algumas coisas básicas para demonstrar como essas informações são acessadas e modificadas. O método para isso é o <code>param_set$values</code>:</p>
 <pre class="r"><code># hiperparâmetros
 l_xgboost$param_set$values = list(
   # mandando o algoritmo parar depois de 10 iterações sem melhora no score
@@ -277,7 +299,7 @@ l_xgboost</code></pre>
 </div>
 <div id="treino-e-predição" class="section level1">
 <h1>TREINO E PREDIÇÃO</h1>
-<p>As próximas etapas são o treino e a predição — trataremos de <em>tunning</em> e <em>resampling</em> nos próximos posts. Primeiramente, o <em>split</em> do dataset em treino e teste. Para isso, usaremos a função <code>sample()</code> associada a dois métodos do objeto <code>task_swiss</code>, o <code>row_ids</code> e <code>nrow</code>. O primeiro enumera os índices de cada linha:</p>
+<p>As próximas etapas são o treino e a predição — trataremos de <em>tunning</em> e <em>resampling</em> nos próximos posts. Primeiramente, o <em>split</em> do dataset em treino e teste. Para isso, usaremos a função <code>sample()</code> em dois métodos do objeto <code>task_swiss</code>, o <code>row_ids</code> e <code>nrow</code>. O primeiro enumera os índices de cada linha:</p>
 <pre class="r"><code># método row_ids
 task_swiss$row_ids</code></pre>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
@@ -291,7 +313,7 @@ task_swiss$nrow</code></pre>
 set.seed(1)
 
 # índices para amostra treino
-train_set = sample(task_swiss$row_ids, 0.8 * task_swiss$nrow)
+train_set = sample(task_swiss$row_ids, 0.7 * task_swiss$nrow)
 
 # índices para amostra teste
 test_set = setdiff(task_swiss$row_ids, train_set)
@@ -299,119 +321,119 @@ test_set = setdiff(task_swiss$row_ids, train_set)
 # verificando
 head(train_set)</code></pre>
 <pre><code>## [1]  4 39  1 34 23 14</code></pre>
-<p>Com os índices selecionados, podemos realizar nosso treino apenas nos 80% escolhidos aleatoriamente da amostra. :</p>
+<p>Com os índices selecionados, podemos realizar nosso treino apenas nos 70% escolhidos aleatoriamente da amostra, sem copiar os dados e alocar memória desnecessariamente:</p>
 <pre class="r"><code># treino
 l_xgboost$train(task_swiss, row_ids = train_set)</code></pre>
-<pre><code>## [22:32:34] WARNING: amalgamation/../src/objective/regression_obj.cu:174: reg:linear is now deprecated in favor of reg:squarederror.
-## [1]  train-rmse:17.576906 
+<pre><code>## [03:08:51] WARNING: amalgamation/../src/objective/regression_obj.cu:174: reg:linear is now deprecated in favor of reg:squarederror.
+## [1]  train-rmse:17.686886 
 ## Will train until train_rmse hasn&#39;t improved in 10 rounds.
 ## 
-## [2]  train-rmse:15.906290 
-## [3]  train-rmse:14.400700 
-## [4]  train-rmse:13.044603 
-## [5]  train-rmse:11.824566 
-## [6]  train-rmse:10.726380 
-## [7]  train-rmse:9.739924 
-## [8]  train-rmse:8.854416 
-## [9]  train-rmse:8.054627 
-## [10] train-rmse:7.335248 
-## [11] train-rmse:6.688681 
-## [12] train-rmse:6.109197 
-## [13] train-rmse:5.587444 
-## [14] train-rmse:5.119703 
-## [15] train-rmse:4.699141 
-## [16] train-rmse:4.312882 
-## [17] train-rmse:3.971956 
-## [18] train-rmse:3.657235 
-## [19] train-rmse:3.366412 
-## [20] train-rmse:3.103006 
-## [21] train-rmse:2.865532 
-## [22] train-rmse:2.647503 
-## [23] train-rmse:2.448978 
-## [24] train-rmse:2.268339 
-## [25] train-rmse:2.106096 
-## [26] train-rmse:1.954928 
-## [27] train-rmse:1.814957 
-## [28] train-rmse:1.688345 
-## [29] train-rmse:1.572037 
-## [30] train-rmse:1.467292 
-## [31] train-rmse:1.374028 
-## [32] train-rmse:1.281157 
-## [33] train-rmse:1.196213 
-## [34] train-rmse:1.116619 
-## [35] train-rmse:1.040653 
-## [36] train-rmse:0.975037 
-## [37] train-rmse:0.909925 
-## [38] train-rmse:0.852961 
-## [39] train-rmse:0.803740 
-## [40] train-rmse:0.757104 
-## [41] train-rmse:0.713849 
-## [42] train-rmse:0.672327 
-## [43] train-rmse:0.634015 
-## [44] train-rmse:0.595590 
-## [45] train-rmse:0.560054 
-## [46] train-rmse:0.527118 
-## [47] train-rmse:0.498028 
-## [48] train-rmse:0.469220 
-## [49] train-rmse:0.441418 
-## [50] train-rmse:0.417214 
-## [51] train-rmse:0.394707 
-## [52] train-rmse:0.373728 
-## [53] train-rmse:0.353631 
-## [54] train-rmse:0.334691 
-## [55] train-rmse:0.317351 
-## [56] train-rmse:0.301512 
-## [57] train-rmse:0.286208 
-## [58] train-rmse:0.270775 
-## [59] train-rmse:0.256299 
-## [60] train-rmse:0.243574 
-## [61] train-rmse:0.230665 
-## [62] train-rmse:0.218585 
-## [63] train-rmse:0.208203 
-## [64] train-rmse:0.197173 
-## [65] train-rmse:0.186830 
-## [66] train-rmse:0.177357 
-## [67] train-rmse:0.168414 
-## [68] train-rmse:0.160592 
-## [69] train-rmse:0.152636 
-## [70] train-rmse:0.144257 
-## [71] train-rmse:0.137330 
-## [72] train-rmse:0.130671 
-## [73] train-rmse:0.123992 
-## [74] train-rmse:0.117501 
-## [75] train-rmse:0.111853 
-## [76] train-rmse:0.106568 
-## [77] train-rmse:0.101401 
-## [78] train-rmse:0.096543 
-## [79] train-rmse:0.091538 
-## [80] train-rmse:0.087073 
-## [81] train-rmse:0.082596 
-## [82] train-rmse:0.078167 
-## [83] train-rmse:0.074190 
-## [84] train-rmse:0.070875 
-## [85] train-rmse:0.067654 
-## [86] train-rmse:0.064362 
-## [87] train-rmse:0.061019 
-## [88] train-rmse:0.058160 
-## [89] train-rmse:0.055346 
-## [90] train-rmse:0.052694 
-## [91] train-rmse:0.050063 
-## [92] train-rmse:0.047896 
-## [93] train-rmse:0.045524 
-## [94] train-rmse:0.043504 
-## [95] train-rmse:0.041372 
-## [96] train-rmse:0.039341 
-## [97] train-rmse:0.037627 
-## [98] train-rmse:0.035837 
-## [99] train-rmse:0.034289 
-## [100]    train-rmse:0.032903</code></pre>
+## [2]  train-rmse:16.014397 
+## [3]  train-rmse:14.506416 
+## [4]  train-rmse:13.147320 
+## [5]  train-rmse:11.924172 
+## [6]  train-rmse:10.822335 
+## [7]  train-rmse:9.832130 
+## [8]  train-rmse:8.940679 
+## [9]  train-rmse:8.136598 
+## [10] train-rmse:7.413038 
+## [11] train-rmse:6.760063 
+## [12] train-rmse:6.173677 
+## [13] train-rmse:5.647888 
+## [14] train-rmse:5.177068 
+## [15] train-rmse:4.751255 
+## [16] train-rmse:4.367561 
+## [17] train-rmse:4.022047 
+## [18] train-rmse:3.705541 
+## [19] train-rmse:3.421478 
+## [20] train-rmse:3.165364 
+## [21] train-rmse:2.923110 
+## [22] train-rmse:2.709536 
+## [23] train-rmse:2.511684 
+## [24] train-rmse:2.330560 
+## [25] train-rmse:2.162180 
+## [26] train-rmse:2.002988 
+## [27] train-rmse:1.861695 
+## [28] train-rmse:1.730979 
+## [29] train-rmse:1.614930 
+## [30] train-rmse:1.510077 
+## [31] train-rmse:1.405107 
+## [32] train-rmse:1.316820 
+## [33] train-rmse:1.227178 
+## [34] train-rmse:1.148336 
+## [35] train-rmse:1.074920 
+## [36] train-rmse:1.004666 
+## [37] train-rmse:0.940519 
+## [38] train-rmse:0.886334 
+## [39] train-rmse:0.832195 
+## [40] train-rmse:0.782907 
+## [41] train-rmse:0.737985 
+## [42] train-rmse:0.695803 
+## [43] train-rmse:0.658468 
+## [44] train-rmse:0.620991 
+## [45] train-rmse:0.584939 
+## [46] train-rmse:0.551442 
+## [47] train-rmse:0.520346 
+## [48] train-rmse:0.491411 
+## [49] train-rmse:0.464267 
+## [50] train-rmse:0.438681 
+## [51] train-rmse:0.414958 
+## [52] train-rmse:0.391905 
+## [53] train-rmse:0.369801 
+## [54] train-rmse:0.350035 
+## [55] train-rmse:0.330991 
+## [56] train-rmse:0.313710 
+## [57] train-rmse:0.296662 
+## [58] train-rmse:0.280962 
+## [59] train-rmse:0.266252 
+## [60] train-rmse:0.253146 
+## [61] train-rmse:0.240702 
+## [62] train-rmse:0.229117 
+## [63] train-rmse:0.217732 
+## [64] train-rmse:0.205889 
+## [65] train-rmse:0.195538 
+## [66] train-rmse:0.186375 
+## [67] train-rmse:0.176608 
+## [68] train-rmse:0.168004 
+## [69] train-rmse:0.160256 
+## [70] train-rmse:0.151921 
+## [71] train-rmse:0.144080 
+## [72] train-rmse:0.136428 
+## [73] train-rmse:0.130172 
+## [74] train-rmse:0.123807 
+## [75] train-rmse:0.117861 
+## [76] train-rmse:0.112243 
+## [77] train-rmse:0.106818 
+## [78] train-rmse:0.101794 
+## [79] train-rmse:0.096382 
+## [80] train-rmse:0.091913 
+## [81] train-rmse:0.087061 
+## [82] train-rmse:0.082908 
+## [83] train-rmse:0.079150 
+## [84] train-rmse:0.075045 
+## [85] train-rmse:0.071658 
+## [86] train-rmse:0.067890 
+## [87] train-rmse:0.064352 
+## [88] train-rmse:0.061335 
+## [89] train-rmse:0.058158 
+## [90] train-rmse:0.055464 
+## [91] train-rmse:0.052609 
+## [92] train-rmse:0.049872 
+## [93] train-rmse:0.047326 
+## [94] train-rmse:0.045157 
+## [95] train-rmse:0.042823 
+## [96] train-rmse:0.040716 
+## [97] train-rmse:0.038909 
+## [98] train-rmse:0.036942 
+## [99] train-rmse:0.035096 
+## [100]    train-rmse:0.033438</code></pre>
 <pre class="r"><code># verificando
 l_xgboost$model</code></pre>
 <pre><code>## ##### xgb.Booster
-## raw: 106.3 Kb 
+## raw: 97.5 Kb 
 ## call:
 ##   xgboost::xgb.train(data = data, nrounds = 100L, watchlist = list(
-##     train = &lt;pointer: 0x0000000027a7cad0&gt;), early_stopping_rounds = 10L, 
+##     train = &lt;pointer: 0x0000000027a14fe0&gt;), early_stopping_rounds = 10L, 
 ##     eta = 0.1, max_depth = 5L, objective = &quot;reg:linear&quot;)
 ## params (as set within xgb.train):
 ##   eta = &quot;0.1&quot;, max_depth = &quot;5&quot;, objective = &quot;reg:linear&quot;, validate_parameters = &quot;TRUE&quot;
@@ -426,51 +448,84 @@ l_xgboost$model</code></pre>
 ## niter: 100
 ## best_iteration : 100 
 ## best_ntreelimit : 100 
-## best_score : 0.032903 
-## best_msg : [100] train-rmse:0.032903 
+## best_score : 0.033438 
+## best_msg : [100] train-rmse:0.033438 
 ## nfeatures : 5 
 ## evaluation_log:
 ##     iter train_rmse
-##        1  17.576906
-##        2  15.906290
+##        1  17.686886
+##        2  16.014397
 ## ---                
-##       99   0.034289
-##      100   0.032903</code></pre>
-<p>Como podemos ver, na primeira iteração o modelo obteve <em>rmse</em><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. de 17.5, o que é alto considerando a escala [1-100] da mortalidade infantil. O modelo foi aumentando sua precisão no treino até 0.03, o que não significa que sua performance permaneça nesse nível quando extrapolado para a amostra teste ou novos dados, mas é um bom sinal. O esperado é que a performance real do modelo, após ser aplicado à amostra teste, fique entre a iteração inicial e final. Se ficar <em>melhor</em> do que a performance do teste, alguma coisa certamente está errada.</p>
-<p>Vamos verificar qual a performance real após realizarmos as predições na amostra teste:</p>
+##       99   0.035096
+##      100   0.033438</code></pre>
+<p>Como podemos ver, na primeira iteração o modelo obteve <em>rmse</em><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. de 17.7, o que é alto considerando a escala [1-100] da mortalidade infantil. O modelo foi aumentando sua precisão no treino até 0.03, o que não significa que sua performance permaneça nesse nível quando extrapolado para a amostra teste ou novos dados, mas é um bom sinal. O esperado é que a performance real do modelo, após ser aplicado à amostra teste, fique entre a iteração inicial e final. Se ficar <em>melhor</em> do que a performance do teste, alguma coisa certamente está errada.</p>
+<p>Vamos verificar qual a performance real após realizarmos as predições na amostra teste. Primeiro, passamos os índices de teste ao objeto do <em>learner</em> com o modelo e chamamos o método <code>predict()</code> para obter as predições.</p>
 <pre class="r"><code># predições
 preds = l_xgboost$predict(task_swiss, row_ids = test_set)
 
 # verificando
 preds</code></pre>
-<pre><code>## &lt;PredictionRegr&gt; for 10 observations:
+<pre><code>## &lt;PredictionRegr&gt; for 15 observations:
 ##     row_id truth response
-##          8  24.9 20.18500
-##         11  24.5 20.37197
-##         13  19.1 15.56200
+##          8  24.9 20.69299
+##         11  24.5 20.65381
+##         13  19.1 15.63718
 ## ---                      
-##         31  15.1 16.39225
-##         36  17.8 19.43584
-##         40  20.5 19.21186</code></pre>
+##         40  20.5 19.55373
+##         43  20.0 21.27585
+##         47  19.3 21.82051</code></pre>
+<p>No objeto com as predições são armazenados tanto os valores preditos pelo modelo (<code>respose</code>) quanto os valores da amostra (<code>truth</code>). Esses valores então podem ser comparados para calcular a acurácia do modelo através do método <code>score()</code>:</p>
 <pre class="r"><code># acurácia
 preds$score(list(
   msr(&quot;regr.rmse&quot;),
   msr(&quot;regr.mae&quot;)
 ))</code></pre>
 <pre><code>## regr.rmse  regr.mae 
-##  2.787566  2.414017</code></pre>
+##  2.587082  2.214176</code></pre>
 <pre class="r"><code># visualizando
 autoplot(preds)</code></pre>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="index_files/figure-html/predictions-1.png" width="672" /></p>
-<p>A <em>rmse</em> do modelo na amostra teste ficou em apenas 2.79 unidades, o que é uma performance muito boa!</p>
+<p><img src="index_files/figure-html/accuracy-1.png" width="672" /></p>
+<p>A <em>rmse</em> do modelo na amostra teste ficou em apenas 2.59 unidades, o que é uma performance muito boa!</p>
+</div>
+<div id="interpretação" class="section level1">
+<h1>INTERPRETAÇÃO</h1>
+<p>Como o XGBoost possui a propriedade de <em>feature importance</em>, podemos extraí-la com o método <code>importance()</code>:</p>
+<pre class="r"><code># feature importance
+l_xgboost$importance()</code></pre>
+<pre><code>##    Catholic Agriculture   Fertility Examination   Education 
+##  0.39696784  0.24723198  0.20219343  0.10340228  0.05020448</code></pre>
+<pre class="r"><code># visualizando
+barplot(l_xgboost$importance())</code></pre>
+<p><img src="index_files/figure-html/importance-1.png" width="672" /></p>
+<p>Entretanto, somente a importância não nos descreve o relacionamento da <em>feature</em> com a variável de resposta, nem mesmo sua direção, sendo uma medida muito pobre de interpretação. Discutiremos técnicas de interpretação em outras postagens.</p>
+</div>
+<div id="referências" class="section level1 unnumbered">
+<h1>REFERÊNCIAS</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-R6" class="csl-entry">
+Chang, Winston. 2020. <em>R6: Encapsulated Classes with Reference Semantics</em>. <a href="https://CRAN.R-project.org/package=R6">https://CRAN.R-project.org/package=R6</a>.
+</div>
+<div id="ref-xgboost" class="csl-entry">
+Chen, Tianqi, Tong He, Michael Benesty, Vadim Khotilovich, Yuan Tang, Hyunsu Cho, Kailong Chen, et al. 2020. <em>Xgboost: Extreme Gradient Boosting</em>. <a href="https://CRAN.R-project.org/package=xgboost">https://CRAN.R-project.org/package=xgboost</a>.
+</div>
+<div id="ref-R-data.table" class="csl-entry">
+Dowle, Matt, and Arun Srinivasan. 2020. <em>Data.table: Extension of ‘Data.frame‘</em>. <a href="https://CRAN.R-project.org/package=data.table">https://CRAN.R-project.org/package=data.table</a>.
+</div>
+<div id="ref-mlr3" class="csl-entry">
+Lang, Michel, Martin Binder, Jakob Richter, Patrick Schratz, Florian Pfisterer, Stefan Coors, Quay Au, Giuseppe Casalicchio, Lars Kotthoff, and Bernd Bischl. 2019. <span>“<span class="nocase">mlr3</span>: A Modern Object-Oriented Machine Learning Framework in <span>R</span>.”</span> <em>Journal of Open Source Software</em>, December. <a href="https://doi.org/10.21105/joss.01903">https://doi.org/10.21105/joss.01903</a>.
+</div>
+<div id="ref-R" class="csl-entry">
+R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+</div>
 </div>
 <div class="footnotes">
 <hr />
 <ol>
 <li id="fn1"><p>No {mlr3} é chamado de <em>learner</em>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Aqui trabalharemos apenas com um, mas em posts futuros utilizaremos de diversas formas — pipelines com diferentes <em>features</em>, <em>stacking</em> etc.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>Tanto no objeto criado quanto nas listas citadas constam os pacotes onde os algoritmos foram implementados.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Também chamada de <em>output feature</em> ou <em>label</em>.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Aqui trabalharemos apenas com um, mas em posts futuros utilizaremos de diversas formas — pipelines com diferentes <em>features</em>, <em>stacking</em> etc.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 <li id="fn4"><p>Raiz do Erro Médio Quadrático<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
