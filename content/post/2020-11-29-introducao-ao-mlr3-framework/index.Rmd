@@ -219,7 +219,7 @@ preds = l_xgboost$predict(task_swiss, row_ids = test_set)
 preds
 ```
 
-No objeto com as predições são armazenados tanto os valores preditos pelo modelo (`respose`) quanto os valores da amostra (`truth`). Esses valores então podem ser comparados para calcular a acurácia do modelo através do método `score()`:
+No objeto com as predições são armazenados tanto os valores preditos pelo modelo (`response`) quanto os valores da amostra (`truth`). Esses valores então podem ser comparados para calcular a acurácia do modelo através do método `score()`:
 
 ```{r accuracy}
 # acurácia
