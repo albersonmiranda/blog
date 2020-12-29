@@ -31,8 +31,9 @@ largeTwitterCard = false # set to true if you want to show a large twitter card 
 introDescription = "coordenador no @Banestes_SA, economista (UFES) e graduando em matemática (IFES). #rstats & #python."
 enableMathNotation = true
 highlightjsLang = ["r", "yaml"]
+enforceLightMode = true
 numberOfRecentPosts = 3
-numberOfFeaturedPosts = 2
+numberOfFeaturedPosts = 3
 customCSS = ["css/obsidian.css"] # Include custom CSS files
 
 # Google analytics Id
@@ -42,7 +43,7 @@ ga_analytics = "G-B65R9LH9ES"
 numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g categories, brands see https://gohugo.io/content-management/taxonomies#what-is-a-taxonomy
 
 # will be used on share >> twitter, facebook, linkedin
-fallBackOgImage = "images/statistics.png" 
+fallBackOgImage = "images/statistics.jpg" 
 
 # sets the maximum number of lines per codeblock. The codeblock will however be scrollable and expandable.
 codeMaxLines = 7
