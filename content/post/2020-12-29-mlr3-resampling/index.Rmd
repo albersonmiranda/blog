@@ -1,0 +1,28 @@
+---
+title: 'Introdução ao framework {mlr3} parte II: resampling'
+author: Alberson Miranda
+date: '2020-12-29'
+slug: mlr3-resampling
+categories:
+  - Machine Learning
+tags:
+  - mlr3
+  - r
+  - resampling
+description: Article description.
+featured: yes
+draft: true
+featureImage: img/cross-validation.jpg
+thumbnail: images/mlr3.png
+shareImage: images/posts/2020-12-20 - intro-mlr3.jpeg
+codeMaxLines: 10
+codeLineNumbers: no
+figurePositionShow: yes
+bibliography:
+  - bib.bib
+link-citations: yes
+---
+
+Este é o segundo post da série sobre o ecossistema {mlr3} [@mlr3]. Se você não está familiarizado com o {mlr3}, sugiro a leitura do [primeiro post](https://datamares.netlify.app/post/2020-11-29-introducao-ao-mlr3-framework/) antes de prosseguir.
+
+No post anterior mostramos as funcionalidades mais básicas do 
