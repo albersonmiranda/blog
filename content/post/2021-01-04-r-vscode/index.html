@@ -1,0 +1,188 @@
+---
+title: 'R em 2021 com o VSCode'
+author: Alberson Miranda
+date: '2021-01-01'
+slug: r-vscode
+categories:
+  - Configurações
+tags:
+  - R
+  - VSCode
+description: Instalação e configuração do R no VSCode.
+featured: yes
+draft: true
+featureImage: img/vscode.jpg
+thumbnail: images/vscode.png
+shareImage: 
+codeMaxLines: 10
+codeLineNumbers: no
+figurePositionShow: yes
+bibliography:
+  - bib.bib
+link-citations: yes
+---
+
+<script src="index_files/header-attrs/header-attrs.js"></script>
+
+
+<p><strong>Hoje eu trabalho exclusivamente no VSCode e sempre que abro o RStudio tenho a sensação de que estou numa IDE do século passado.</strong></p>
+<p>Comecei a usar o VSCode em outubro do ano passado quando comecei a estudar Python. Pesquisando sobre o setup ideal, li que a IDE de menor impacto para usuários de R <span class="citation">(<a href="#ref-R" role="doc-biblioref">R Core Team 2020</a>)</span> seria o Spyder, mas que a experiência de um usuário Python nativo seria com o VSCode, então foi pra lá que eu fui, mesmo sendo uma experiência mais complicada.
+{{% tweet 1312504411956998144 %}}</p>
+<p>Rapidamente me apaixonei por sua capacidade e maturidade. Há extensões da comunidade para tudo, o que torna a experiência muito agradável! Entretanto, o ecossistema do R ainda era muito voltado ao RStudio e eu ainda me via preso naquela IDE no meu dia-a-dia com o R. Claro que isso mudou quando vi esse tweet do <a href="https://twitter.com/MilesMcBain">Miles McBain</a>:
+{{% tweet 1319242982814408704 %}}</p>
+<p>Passando a considerar o VSCode como uma possibilidade real para R, dei uma pesquisada e achei esse <a href="https://renkun.me/2019/12/11/writing-r-in-vscode-a-fresh-start/">post</a> do <a href="https://twitter.com/renkun_ken">Kun Ren</a> que oferece um setup para trabalhar em R no VSCode. Neste post falo das funcionalidades e de como configurar.</p>
+<div id="qual-a-boa-do-vscode" class="section level1">
+<h1>QUAL A BOA DO VSCODE?</h1>
+<p>Se liga nessa, mané:</p>
+<ul>
+<li>Code completion com o help:</li>
+</ul>
+</div>
+<div id="instalação" class="section level1">
+<h1>INSTALAÇÃO</h1>
+<p>Os softwares necessários são:</p>
+<ol style="list-style-type: decimal">
+<li>Visual Studio Code e suas extensões:</li>
+</ol>
+<ul>
+<li><a href="https://code.visualstudio.com/download">VSCode</a>: a IDE</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=Ikuyadeu.r">vscode-R</a>: extensão para suporte à linguagem R</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=REditorSupport.r-lsp">vscode-r-lsp</a>: R Language Server Protocol Client para VSCode</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Pacotes:</li>
+</ol>
+<ul>
+<li><a href="https://github.com/REditorSupport/languageserver">languageserver</a> <span class="citation">(<a href="#ref-lsp" role="doc-biblioref">Lai 2020</a>)</span>: implementação de Language Server Protocol para R</li>
+<li><a href="https://github.com/nx10/httpgd">httpgd</a> (recomendado): dispositivo gráfico de servidor http assíncrono para R</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Python &amp; Radian:</li>
+</ol>
+<ul>
+<li><a href="https://www.python.org/downloads/">Python</a> (recomendado): requisito para instalação do Radian, implementado em Python</li>
+<li><a href="https://github.com/randy3k/radian">Radian</a> (recomendado): console alternativo para R, com edição multilinha e <em>rich syntax highlighting</em></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><a href="https://pandoc.org/installing.html">Pandoc</a>: conversor universal de documentos, responsável por converter arquivos em R Markdown (.Rmd) para html</li>
+</ol>
+</div>
+<div id="primeiros-passos" class="section level1">
+<h1>PRIMEIROS PASSOS</h1>
+<p>Com o VSCode instalado, você verá a tela de boas vindas, que se parece com isso:</p>
+<p><img src="img/welcome.png" /></p>
+<p>A primeira coisa a se notar é que o conceito de projeto (.Rproj) não existe no VSCode. Você tem uma pasta e pronto, todos os caminhos relativos apontam para ela.</p>
+<p>Na barra lateral, o <em>explorer</em> te dará a opção de abrir uma pasta (um projeto) ou clonar um repositório. Abrindo minha pasta do <strong>Advent of Code 2020</strong>, você verá meus diretórios e arquivos à esquerda. Há códigos em Python e em R. Posso abrí-los e organizá-los da forma que eu quiser. Os terminais ficam logo abaixo e também podem ser movidos para qualquer outra parte.</p>
+<p><img src="img/organizacao.gif" /></p>
+<p>As extensões podem ser instaladas pelo menu à esquerda. O próprio VSCode irá recomendar a instalação de extensões quando você abrir algum tipo de arquivo que não tenha interpretador ou <em>formatter</em> instalado, por exemplo.</p>
+<p><img src="img/extensoes.gif" /></p>
+<p><strong>Importante: não instale a extensão RTools junto com as extensões citadas acima, pois não são complementares e irá causar conflitos.</strong></p>
+<p>Com as extensões instaladas, vamos às configurações. Primeiro, abra a <em>command palette</em> com ctrl+shift+p. Através dela você poderá acessar diversos comandos e atalhos no VSCode, como:</p>
+<ul>
+<li>criação de novo terminal (R, Python etc)</li>
+<li>lançar os <em>RStudio addins</em></li>
+<li>compilar arquivos RMarkdown (knit .Rmd)</li>
+<li>acessar configurações e teclas de atalho</li>
+<li>instalar pacotes</li>
+<li>formatar arquivos e MUITOS outros</li>
+</ul>
+<p>Acessando as configurações do VSCode, podemos configurar tanto o editor quanto suas extensões:</p>
+<p><img src="img/preferencias.gif" /></p>
+<p>Aqui estão as que utilizo atualmente. Altere conforme necessário e sua preferência.</p>
+<pre class="js"><code>{
+    // VSCode setup
+    &quot;terminal.integrated.shell.windows&quot;: &quot;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe&quot;,
+    &quot;editor.formatOnPaste&quot;: true, // recomendado
+    &quot;editor.formatOnType&quot;: true, // recomendado
+    &quot;diffEditor.ignoreTrimWhitespace&quot;: false,
+    &quot;files.autoSave&quot;: &quot;off&quot;,
+
+    // Python setup
+    &quot;python.pythonPath&quot;: &quot;C:\\Users\\alber\\AppData\\Local\\Programs\\anaconda3\\python.exe&quot;,
+    &quot;jupyter.alwaysTrustNotebooks&quot;: true,
+
+    // R setup
+    &quot;[r]&quot;: { // obrigatório
+        &quot;editor.defaultFormatter&quot;: &quot;REditorSupport.r-lsp&quot;
+    },
+    &quot;files.associations&quot;: { // obrigatório
+        &quot;*.rmd&quot;: &quot;markdown&quot;,
+        &quot;*.Rmd&quot;: &quot;rmd&quot;
+    },
+    &quot;r.sessionWatcher&quot;: true, // obrigatório
+    &quot;r.bracketedPaste&quot;: true, // obrigatório
+    &quot;r.rterm.windows&quot;: &quot;C:\\Users\\alber\\AppData\\Local\\Programs\\anaconda3\\Scripts\\radian.exe&quot;, // caso tenha instalado o Radian
+    &quot;r.rpath.windows&quot;: &quot;C:\\Program Files\\R\\R-4.0.3\\bin\\R.exe&quot;, // obrigatório
+    &quot;r.lsp.debug&quot;: true, // obrigatório
+    &quot;r.alwaysUseActiveTerminal&quot;: true, // obrigatório
+    &quot;r.rtermSendDelay&quot;: 0,
+}</code></pre>
+<script type="text/javascript">
+{
+    // VSCode setup
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "editor.formatOnPaste": true, // recomendado
+    "editor.formatOnType": true, // recomendado
+    "diffEditor.ignoreTrimWhitespace": false,
+    "files.autoSave": "off",
+
+    // Python setup
+    "python.pythonPath": "C:\\Users\\alber\\AppData\\Local\\Programs\\anaconda3\\python.exe",
+    "jupyter.alwaysTrustNotebooks": true,
+
+    // R setup
+    "[r]": { // obrigatório
+        "editor.defaultFormatter": "REditorSupport.r-lsp"
+    },
+    "files.associations": { // obrigatório
+        "*.rmd": "markdown",
+        "*.Rmd": "rmd"
+    },
+    "r.sessionWatcher": true, // obrigatório
+    "r.bracketedPaste": true, // obrigatório
+    "r.rterm.windows": "C:\\Users\\alber\\AppData\\Local\\Programs\\anaconda3\\Scripts\\radian.exe", // caso tenha instalado o Radian
+    "r.rpath.windows": "C:\\Program Files\\R\\R-4.0.3\\bin\\R.exe", // obrigatório
+    "r.lsp.debug": true, // obrigatório
+    "r.alwaysUseActiveTerminal": true, // obrigatório
+    "r.rtermSendDelay": 0,
+}
+</script>
+<p>Também são necessárias algumas configurações no .Rprofile:</p>
+<pre class="r"><code># opções
+options(
+  # permitir RStudio Addins no VSCode
+  vsc.rstudioapi = TRUE,
+  # alterar o schema de highlight no console Radian
+  radian.color_scheme = &quot;native&quot;,
+  # adicionar code completion após $
+  languageserver.server_capabilities = list(
+    signatureHelpProvider = list(triggerCharacters = list(&quot;(&quot;, &quot;,&quot;, &quot;$&quot;)),
+    completionProvider = list(
+      resolveProvider = TRUE, triggerCharacters = list(&quot;.&quot;, &quot;:&quot;, &quot;$&quot;)
+    )
+  )
+)
+
+# gráficos interativos no VSCode com o {httpgd}
+if (interactive() &amp;&amp; Sys.getenv(&quot;TERM_PROGRAM&quot;) == &quot;vscode&quot;) {
+  if (&quot;httpgd&quot; %in% .packages(all.available = TRUE)) {
+    options(vsc.plot = FALSE)
+    options(device = function(...) {
+      httpgd::httpgd()
+      .vsc.browser(httpgd::httpgdURL(), viewer = &quot;Beside&quot;)
+    })
+  }
+}</code></pre>
+<p><strong>Importante: não instalar o {httpgd} ou deixar de incluir essa configuração no .Rprofile vai fazer com que seus gráficos sejam plotados numa janela com tamanho fixo, sem a possibilidade de manuipular o tamanho do plot interativamente.</strong></p>
+</div>
+<div id="referências" class="section level1 unnumbered">
+<h1>REFERÊNCIAS</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-lsp" class="csl-entry">
+Lai, Randy. 2020. <em>Languageserver: Language Server Protocol</em>. <a href="https://CRAN.R-project.org/package=languageserver">https://CRAN.R-project.org/package=languageserver</a>.
+</div>
+<div id="ref-R" class="csl-entry">
+R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+</div>
+</div>
