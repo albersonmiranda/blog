@@ -34,10 +34,11 @@ Passando a considerar o VSCode como uma possibilidade real para R, dei uma pesqu
 
 # QUAL A BOA DO VSCODE?
 
-Se liga nessa, mané:
+- Code completion:
 
-- Code completion com o help:
 
+
+Depois de conhecer e trabalhar com todas essas *features*, eu olho para trás e lembro o *fuzuê* que foi quando anunciaram os *rainbow parenthesis* no RStudio - que por sinal ainda está em beta. Eu não consigo entender como a comunidade vibra por tão pouco!
 
 # INSTALAÇÃO
 

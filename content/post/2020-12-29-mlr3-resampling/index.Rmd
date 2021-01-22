@@ -23,6 +23,17 @@ bibliography:
 link-citations: yes
 ---
 
-Este é o segundo post da série sobre o ecossistema {mlr3} [@mlr3]. Se você não está familiarizado com o {mlr3}, sugiro a leitura do [primeiro post](https://datamares.netlify.app/post/2020-11-29-introducao-ao-mlr3-framework/) antes de prosseguir.
+Este é o segundo post sobre o ecossistema {mlr3} [@mlr3]. Se você não está familiarizado com o {mlr3}, sugiro a leitura do [primeiro post](https://datamares.netlify.app/post/2020-11-29-introducao-ao-mlr3-framework/) antes de prosseguir.
 
-No post anterior mostramos as funcionalidades mais básicas do 
+# INTRODUÇÃO
+
+Os métodos de *resampling* (reamostragem) tem vários objetivos na estatística. No contexto de *machine learning* estamos focados nos métodos para verificar a performance dos algoritmos de aprendizagem, que chamamos de *learners* no {mlr3}, seja para verificar sua acurácia antes de queimar uma amostra teste, para comparação com outros modelos (*model selection*) ou para calibragem de seus hiperparâmetros [@resampling]. O pacote implementa os seguintes métodos^[Além da possibilidade do usuário implementar seu próprio método de reamostragem (*custom resampling*).]:
+
+- *cross-validation*;
+- *leave-one-out cross-validation*;
+- *repeated cross validation*;
+- *bootstrapping*;
+- *subsampling*;
+- *holdout*;
+- *in-sample resampling*
+

@@ -1,0 +1,37 @@
+---
+title: 'Um mergulho nos conceitos: overfitting & resampling'
+author: Alberson Miranda
+date: '2021-01-10'
+slug: overfitting-resampling
+categories:
+  - Machine Learning
+tags:
+  - resampling
+  - overfitting
+description: Conceitos e teoria acerca de resampling e overfitting.
+featured: yes
+draft: true
+featureImage: img/overfitting.png
+codeMaxLines: 10
+codeLineNumbers: no
+figurePositionShow: yes
+bibliography:
+  - bib.bib
+link-citations: yes
+---
+
+Apesar de serem termos recorrentes em *machine learning*, *resampling* e *overfitting* são frequentemente discutidos de forma rasa, muitas vezes sem a sua compreensão. Neste post tentarei introduzir os conceitos e a teoria que os sustenta.
+
+# O PROCESSO DE AJUSTE
+
+Considere uma função de ajuste $f$, um conjunto de pontos $D = {d_1, ..., d_n}$ com $d_i = (x_i y_i)´$, variáveis de decisão ou parâmetros $x_i \in \R^m$ e imagem $y_i = f(x_i) \in \R$. Diferentemente da abordagem clássica, em que, no caso do modelo clássico de regressão linear, há um modelo teórico de coeficientes estimados por mínimos quadrados ordinários (MQO) que é garantido pelo teorema de Gauss-Markov ser o melhor estimador linear não viesado (BLUE), em *machine learning* o objetivo é encontrar, de forma iterativa, um meta-modelo que melhor aproxima a função $f$ usando a informação contida em $D$, ou seja, queremos ajustar uma função de regressão $\hat{f}_D$ aos nossos dados $D$ de forma que $\hat{y} = \hat{f}_D(x, \varepsilon)$ tenha o menor erro de aproximação $\varepsilon$.
+
+Para verificar o quão bem o modelo $\hat{f}_D$ se aproxima da função real $f$, é necessário uma função de perda $L(y, \hat{f}(x))$ que, no caso de regressão, será a perda quadrática $(y - \hat{f}(y))^2$ ou a perda absoluta $|y - \hat{f}(y)|$. Esses valores são agregados pela média para formar as funções de custo erro médio quadrático (MSE) e erro médio absoluto (MAE).
+
+Dada a função de perda, pode-se definir o risco associado ao modelo de função de ajuste
+$$R(f, p) = \int_{\R}{}\int_{\R^m}{} L(y, f(x))p(x, y)dxdy$$
+em que $p(x, y)$ é a função densidade de probabilidade conjunta. Como não temos a função real mas procuramos uma função estimada que se aproxime dela, temos
+$$GE(\hat{f}_D, p) = \int_{\R}{}\int_{\R^m}{} L(y, \hat{f}_D(x))p(x, y)dxdy$$
+que é o erro de generalização ou risco condicional associado ao preditor.
+
+Primeiramente, o erro de generalização do modelo

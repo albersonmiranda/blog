@@ -1,0 +1,37 @@
+---
+title: 'Um mergulho nos conceitos: overfitting & resampling'
+author: Alberson Miranda
+date: '2021-01-10'
+slug: overfitting-resampling
+categories:
+  - Machine Learning
+tags:
+  - resampling
+  - overfitting
+description: Conceitos e teoria acerca de resampling e overfitting.
+featured: yes
+draft: true
+featureImage: img/overfitting.png
+codeMaxLines: 10
+codeLineNumbers: no
+figurePositionShow: yes
+bibliography:
+  - bib.bib
+link-citations: yes
+---
+
+<script src="index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Apesar de serem termos recorrentes em <em>machine learning</em>, <em>resampling</em> e <em>overfitting</em> são frequentemente discutidos de forma rasa, muitas vezes sem a sua compreensão. Neste post tentarei introduzir os conceitos e a teoria que os sustenta.</p>
+<div id="o-processo-de-ajuste" class="section level1">
+<h1>O PROCESSO DE AJUSTE</h1>
+<p>Considere uma função de ajuste <span class="math inline">\(f\)</span>, um conjunto de pontos <span class="math inline">\(D = {d_1, ..., d_n}\)</span> com <span class="math inline">\(d_i = (x_i y_i)´\)</span>, variáveis de decisão ou parâmetros <span class="math inline">\(x_i \in \R^m\)</span> e imagem <span class="math inline">\(y_i = f(x_i) \in \R\)</span>. Diferentemente da abordagem clássica, em que, no caso do modelo clássico de regressão linear, há um modelo teórico de coeficientes estimados por mínimos quadrados ordinários (MQO) que é garantido pelo teorema de Gauss-Markov ser o melhor estimador linear não viesado (BLUE), em <em>machine learning</em> o objetivo é encontrar, de forma iterativa, um meta-modelo que melhor aproxima a função <span class="math inline">\(f\)</span> usando a informação contida em <span class="math inline">\(D\)</span>, ou seja, queremos ajustar uma função de regressão <span class="math inline">\(\hat{f}_D\)</span> aos nossos dados <span class="math inline">\(D\)</span> de forma que <span class="math inline">\(\hat{y} = \hat{f}_D(x, \varepsilon)\)</span> tenha o menor erro de aproximação <span class="math inline">\(\varepsilon\)</span>.</p>
+<p>Para verificar o quão bem o modelo <span class="math inline">\(\hat{f}_D\)</span> se aproxima da função real <span class="math inline">\(f\)</span>, é necessário uma função de perda <span class="math inline">\(L(y, \hat{f}(x))\)</span> que, no caso de regressão, será a perda quadrática <span class="math inline">\((y - \hat{f}(y))^2\)</span> ou a perda absoluta <span class="math inline">\(|y - \hat{f}(y)|\)</span>. Esses valores são agregados pela média para formar as funções de custo erro médio quadrático (MSE) e erro médio absoluto (MAE).</p>
+<p>Dada a função de perda, pode-se definir o risco associado ao modelo de função de ajuste
+<span class="math display">\[R(f, p) = \int_{\R}{}\int_{\R^m}{} L(y, f(x))p(x, y)dxdy\]</span>
+em que <span class="math inline">\(p(x, y)\)</span> é a função densidade de probabilidade conjunta. Como não temos a função real mas procuramos uma função estimada que se aproxime dela, temos
+<span class="math display">\[GE(\hat{f}_D, p) = \int_{\R}{}\int_{\R^m}{} L(y, \hat{f}_D(x))p(x, y)dxdy\]</span>
+que é o erro de generalização ou risco condicional associado ao preditor.</p>
+<p>Primeiramente, o erro de generalização do modelo</p>
+</div>

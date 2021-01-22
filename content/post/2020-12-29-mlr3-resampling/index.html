@@ -26,10 +26,31 @@ link-citations: yes
 <script src="index_files/header-attrs/header-attrs.js"></script>
 
 
-<p>Este é o segundo post da série sobre o ecossistema {mlr3} <span class="citation">(<a href="#ref-mlr3" role="doc-biblioref">Lang et al. 2019</a>)</span>. Se você não está familiarizado com o {mlr3}, sugiro a leitura do <a href="https://datamares.netlify.app/post/2020-11-29-introducao-ao-mlr3-framework/">primeiro post</a> antes de prosseguir.</p>
-<p>No post anterior mostramos as funcionalidades mais básicas do</p>
+<p>Este é o segundo post sobre o ecossistema {mlr3} <span class="citation">(<a href="#ref-mlr3" role="doc-biblioref">Lang et al. 2019</a>)</span>. Se você não está familiarizado com o {mlr3}, sugiro a leitura do <a href="https://datamares.netlify.app/post/2020-11-29-introducao-ao-mlr3-framework/">primeiro post</a> antes de prosseguir.</p>
+<div id="introdução" class="section level1">
+<h1>INTRODUÇÃO</h1>
+<p>Os métodos de <em>resampling</em> (reamostragem) tem vários objetivos na estatística. No contexto de <em>machine learning</em> estamos focados nos métodos para verificar a performance dos algoritmos de aprendizagem, que chamamos de <em>learners</em> no {mlr3}, seja para verificar sua acurácia antes de queimar uma amostra teste, para comparação com outros modelos (<em>model selection</em>) ou para calibragem de seus hiperparâmetros <span class="citation">(<a href="#ref-resampling" role="doc-biblioref">Bischl B 2012</a>)</span>. O pacote implementa os seguintes métodos<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
+<ul>
+<li><em>cross-validation</em>;</li>
+<li><em>leave-one-out cross-validation</em>;</li>
+<li><em>repeated cross validation</em>;</li>
+<li><em>bootstrapping</em>;</li>
+<li><em>subsampling</em>;</li>
+<li><em>holdout</em>;</li>
+<li><em>in-sample resampling</em></li>
+</ul>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-resampling" class="csl-entry">
+Bischl B, Trautmann H, Mersmann O. 2012. <span>“Resampling Methods for Meta-Model Validation with Recommendations for Evolutionary Computation.”</span> <em>Evolutionary Computation</em>, May. <a href="https://doi.org/10.1162/EVCO_a_00069">https://doi.org/10.1162/EVCO_a_00069</a>.
+</div>
 <div id="ref-mlr3" class="csl-entry">
 Lang, Michel, Martin Binder, Jakob Richter, Patrick Schratz, Florian Pfisterer, Stefan Coors, Quay Au, Giuseppe Casalicchio, Lars Kotthoff, and Bernd Bischl. 2019. <span>“<span class="nocase">mlr3</span>: A Modern Object-Oriented Machine Learning Framework in <span>R</span>.”</span> <em>Journal of Open Source Software</em>, December. <a href="https://doi.org/10.21105/joss.01903">https://doi.org/10.21105/joss.01903</a>.
 </div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Além da possibilidade do usuário implementar seu próprio método de reamostragem (<em>custom resampling</em>).<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
