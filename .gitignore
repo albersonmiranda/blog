@@ -1,5 +1,8 @@
 .Rhistory
 .RData
 .Rproj.user
-blogdown
-public
+.DS_Store
+Thumbs.db
+/public
+/public/
+/resources/
