@@ -18,8 +18,7 @@ codeLineNumbers: no
 figurePositionShow: yes
 ---
 
-<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
-<script src="index_files/anchor-sections/anchor-sections.js"></script>
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
 <p>No <a href="https://datamares.netlify.app/post/atestando-diferencas-em-medias-o-teste-t-para-amostras-independentes/">post anterior</a>, falei sobre o teste t para duas amostras independentes. Coincidentemente, no dia seguinte apareceu <a href="https://forumdematematica.org/viewtopic.php?f=69&amp;t=14319&amp;sid=88c3f5cb4248d2096eb36656bbb95c45">essa dúvida</a> no <a href="https://forumdematematica.org/">fórum de matemática</a> do qual sou contribuidor. Não podemos perder essa oportunidade, não é mesmo?</p>
@@ -69,9 +68,9 @@ data</code></pre>
 ## [371] 0 0 0 1 0 0 0 0 0 1 0 0 0 0 1 1 0 0 1 0 0 1 0 0 1 0 0 1 1 0</code></pre>
 <p>Agora que já temos nosso vetor com os dados aleatórios dos alunos que acertaram e erraram as questões, vamos visualizá-lo:</p>
 <pre class="r"><code># gráfico de barras
-par(mar = c(2,2,0,0))
+par(mar = c(2, 2, 0, 0))
 barplot(table(data), col = c(&quot;lightblue&quot;, &quot;salmon&quot;))</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>A intuição do teste t é dizer se essa diferença entre os acertos e erros ocorre por mero acaso no processo de amostragem ou não. Mas o que isso significa? Neste caso, a média amostral foi de 31.25% com 400 estudantes. As características da distribuição, o desvio padrão e o tamanho da amostra permitem atestar que a diferença entre a média amostral e a média esperada é significante?</p>
 <p>Para ilustrar o raciocínio, vamos tomar 10 amostras de 10 estudantes aleatoriamente e observar o comportamento das médias. Essas amostras de 10 estudantes podem ter média de acertos (linha vermelha) muito próxima dos 25% esperados (linha azul) e longe da média dos 400 alunos (linha verde).</p>
 <pre class="r"><code># garantir reprodutibilidade
@@ -84,7 +83,7 @@ n = 10
 medias = rep(NA, n)
 
 # tirando amostras e calculando as médias
-for (i in 1:n){
+for (i in 1:n) {
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
@@ -103,7 +102,7 @@ legend(&quot;topright&quot;, legend = c(
   expression(paste(mu, &quot;= 0.3325&quot;))),
   col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
   lty = 1)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Mas também é possível realizar outra tiragem de 10 amostras com 10 alunos diferentes e encontrarmos uma média completamente diferente, próxima dos 45%:</p>
 <pre class="r"><code># garantir reprodutibilidade
 set.seed(4)
@@ -115,7 +114,7 @@ n = 10
 medias = rep(NA, n)
 
 # tirando amostras e calculando as médias
-for (i in 1:n){
+for (i in 1:n) {
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
@@ -134,7 +133,7 @@ legend(&quot;topright&quot;, legend = c(
   expression(paste(mu, &quot;= 0.3325&quot;))),
   col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
   lty = 1)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Conforme vamos aumentando a quantidade de amostras, o desvio padrão se estabiliza e a média amostral vai se aproximando da média populacional. Veja as médias de 50 amostras de 10 alunos, cada:</p>
 <pre class="r"><code># garantir reprodutibilidade
 set.seed(3)
@@ -146,13 +145,13 @@ n = 50
 medias = rep(NA, n)
 
 # tirando amostras e calculando as médias
-for (i in 1:n){
+for (i in 1:n) {
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
 
 # separando o grid em 2 colunas
-par(mfrow = c(1,2))
+par(mfrow = c(1, 2))
 
 # visualização 1ª tiragem
 hist(medias,
@@ -175,7 +174,7 @@ n = 50
 medias = rep(NA, n)
 
 # tirando amostras e calculando as médias
-for (i in 1:n){
+for (i in 1:n) {
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = n), replace = TRUE))
 }
@@ -195,7 +194,7 @@ legend(&quot;topright&quot;, legend = c(
   col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
   lty = 1,
   cex = .7)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="80%" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="80%" /></p>
 <p>Pode-se observar que tomando duas tiragens de 50 amostras de 10 alunos aleatoriamente cada, as médias começam a convergir para a média observada no total dos 400 alunos.</p>
 <p>E se aumentarmos para 100 amostras de 10 alunos?</p>
 <pre class="r"><code># garantir reprodutibilidade
@@ -208,13 +207,13 @@ n = 100
 medias = rep(NA, n)
 
 # tirando amostras e calculando as médias
-for (i in 1:n){
+for (i in 1:n) {
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
 
 # separando o grid em 2 colunas
-par(mfrow = c(1,2))
+par(mfrow = c(1, 2))
 
 # visualização 1ª tiragem
 hist(medias,
@@ -234,7 +233,7 @@ set.seed(4)
 medias = rep(NA, n)
 
 # tirando amostras e calculando as médias
-for (i in 1:n){
+for (i in 1:n) {
   medias[i] = mean(
     sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
 }
@@ -254,7 +253,7 @@ legend(&quot;topright&quot;, legend = c(
   col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
   lty = 1,
   cex = .7)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Perceba que com 100 amostras aleatórias, as médias já ficam muito próximas dos 33.25% observados em ambas tiragens. Isso acontece porque conforme o número de observações aumenta, o desvio padrão tende a se estabilizar e a incerteza diminui. Seria muito difícil de os primeiros 400<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> alunos terem uma determinada média de acertos e os próximos 50 alunos todos acertassem ou errassem de forma a gerar mudanças no desvio padrão e afetar a média significativamente. É por isso que, em último caso, <strong>o teste t é um teste de tamanho de amostra</strong>. A pergunta por trás de tudo é: minha amostra é grande o suficiente para que a diferença seja significativa?</p>
 <p>Agora, com a intuição do teste em mente, vamos formalizá-lo.</p>
 </div>
