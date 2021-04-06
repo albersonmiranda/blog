@@ -1,7 +1,7 @@
 ---
 title: 'R em 2021 com o VSCode'
 author: Alberson Miranda
-date: '2021-01-01'
+date: '2021-04-06'
 slug: r-vscode
 categories:
   - Configurações
@@ -48,17 +48,47 @@ As extensões [GitHub Pull Requests and Issues ](https://marketplace.visualstudi
 
 ![criando issue](img/issue.gif)
 
+Clicando na issue, o VSCode já abre um novo branch e faz o checkout para você trabalhar nela (e ainda deixa engatilhada uma commit message personalizada!).
+
+![criando um novo branch via issue](img/branch.gif)
+
+E, ao final do trabalho basta, clicar em criar um novo PR que a própria IDE envia o branch pra origem e traz a interface do PR. Tudo sem abrir o navegador ou o terminal.
+
 ![criando pull request](img/pr.gif)
 
-## Múltiplos terminais
+## Múltiplos Terminais
 
 Enquanto seu blog ou Shiny app está renderizando e, consequentemente, ocupando um terminal, você pode simplesmente abrir outro e continuar trabalhando normalmente!
 
-![](img/terminais.gif)
+![pode-se abrir quantos terminais quiser!](img/terminais.gif)
 
-# INSTALAÇÃO
+## Draw.io
 
-Os softwares necessários são:
+Este é um exemplo de uma das inúmeras extensões úteis que a comunidade disponibiliza no VSCode. A [extensão draw.io](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) integra o [diagrams.net](https://app.diagrams.net/) ao VSCode. Com ela, podemos fazer diagramas de forma muito rápida e sem precisar de sair da IDE!
+
+![para criar um diagrama, basta criar um arquivo com a extensão .drawio](img/draw.gif)
+
+![diagrama que fiz para o [esse post](https://datamares.netlify.app/post/2020-11-29-introducao-ao-mlr3-framework/) usando a extensão](img/diagrama.png)
+
+## Live Share
+
+Já sonhou em trabalhar no mesmo script com sua galera ao vivasso? A extensão [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) permite isso, além de fornecer canais de chat e de áudio, o que torna desnecessário abrir uma chamada de áudio em outro app enquanto trabalha!
+
+Além disso, você não precisa ter o interpretador da linguagem instalado para participar da sessão. Isso significa que mesmo que você esteja em outra máquina, que não tenha o R ou Python (ou qualquer outra) instalados, você pode entrar na sessão e colaborar nos scripts de seus colegas, inclusive usando os terminais deles para executar o código!
+
+![visão de duas máquinas visualizando uma a outra durante uma sessão de Live Share no VSCode](img/liveshare.gif)
+
+## Windows Subsystem for Linux
+
+Está em uma máquina Windows e já precisou de depurar alguma treta em ambiente Linux? Então você já teve o desprazer de instalar máquinas virtuais ou dual boot (╯°□°）╯︵ ┻━┻
+
+Boa notícia: com a extensão [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) sua pasta (projeto) é copiada e reaberta em um ambiente Linux, com o terminal bonitinho e pronto para o uso. Tudo isso a um clique de distância!
+
+![iniciando uma sessão em ambiente Linux](img/wsl.gif)
+
+# CONFIGURAÇÃO
+
+Para começar você só precisa do VSCode e das extensões R e R-LSP. Mas compartilho aqui o setup que considero fornecer a melhor experiência:
 
 1. Visual Studio Code e suas extensões:
 - [VSCode](https://code.visualstudio.com/download): a IDE
@@ -73,23 +103,23 @@ Os softwares necessários são:
 - [Python](https://www.python.org/downloads/)  (recomendado): requisito para instalação do Radian, implementado em Python
 - [Radian](https://github.com/randy3k/radian)  (recomendado): console alternativo para R, com edição multilinha e *rich syntax highlighting*
 
-4. [Pandoc](https://pandoc.org/installing.html): conversor universal de documentos, responsável por converter arquivos em R Markdown (.Rmd) para html
+4. [Pandoc](https://pandoc.org/installing.html): conversor universal de documentos, responsável por converter arquivos em R Markdown (.Rmd) para html. Você não precisou de instalar antes porque o instalador do RStudio já vem com uma versão do Pandoc incluído.
 
 # PRIMEIROS PASSOS
 
 Com o VSCode instalado, você verá a tela de boas vindas, que se parece com isso:
 
-![](img/welcome.png)
+![tela de boas vindas](img/welcome.png)
 
 A primeira coisa a se notar é que o conceito de projeto do RStudio (.Rproj) não existe no VSCode. Você tem uma pasta e pronto, todos os caminhos relativos apontam para ela. Configurações específicas para a pasta podem ser definidas em um arquivo .json no diretório.
 
 Na barra lateral, o *explorer* te dará a opção de abrir uma pasta (um projeto) ou clonar um repositório. Abrindo minha pasta do **Advent of Code 2020**, você verá meus diretórios e arquivos à esquerda. Há códigos em Python e em R. Posso abrí-los e organizá-los da forma que eu quiser. Os terminais ficam logo abaixo e também podem ser movidos para qualquer outra parte.
 
-![](img/organizacao.gif)
+![editor totalmente flexível](img/organizacao.gif)
 
  As extensões podem ser instaladas pelo menu à esquerda. O próprio VSCode irá recomendar a instalação de extensões quando você abrir algum tipo de arquivo que não tenha interpretador ou *formatter* instalado, por exemplo.
 
- ![](img/extensoes.gif)
+ ![extensões da comunidade](img/extensoes.gif)
 
  **Importante: não instale a extensão RTools junto com as extensões citadas acima, pois não são complementares e irá causar conflitos.**
 
@@ -104,7 +134,7 @@ Com as extensões instaladas, vamos às configurações. Primeiro, abra a *comma
 
 Acessando as configurações do VSCode, podemos configurar tanto o editor quanto suas extensões:
 
-![](img/preferencias.gif)
+![settings.json](img/preferencias.gif)
 
 Aqui estão as que utilizo atualmente. Altere conforme necessário e sua preferência.
 
@@ -118,7 +148,7 @@ Aqui estão as que utilizo atualmente. Altere conforme necessário e sua prefer�
     "files.autoSave": "off",
 
     // Python setup
-    "python.pythonPath": "C:\\caminho para o\\anaconda3\\python.exe",
+    "python.pythonPath": "C:\\...\\anaconda3\\python.exe",
     "jupyter.alwaysTrustNotebooks": true,
 
     // R setup
@@ -145,7 +175,7 @@ Também são necessárias algumas configurações no .Rprofile:
 
 # opções
 options(
-  # permitir RStudio Addins no VSCode
+  # permitir RStudio Addins no command pallet
   vsc.rstudioapi = TRUE,
   # alterar o schema de highlight no console Radian
   radian.color_scheme = "native",
@@ -172,6 +202,8 @@ if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
 
 **Importante: não instalar o {httpgd} ou deixar de incluir essa configuração no .Rprofile vai fazer com que seus gráficos sejam plotados numa janela com tamanho fixo, sem a possibilidade de manuipular o tamanho do plot interativamente.**
 
+# POR FIM
 
+E é isso! Tem ainda um monte de coisas para explorar mas já dá pra ter uma ideia do potencial da ferramenta. Pra quem fica empolgado com anúncio de *rainbow parenthesis*, eu acho que vale a pena fazer um teste :p
 
 # REFERÊNCIAS
