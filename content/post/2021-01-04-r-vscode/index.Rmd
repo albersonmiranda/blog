@@ -86,6 +86,12 @@ Boa notícia: com a extensão [Remote - WSL](https://marketplace.visualstudio.co
 
 ![iniciando uma sessão em ambiente Linux](img/wsl.gif)
 
+## Linter integrado
+
+A extensão do R no VSCode integra o pacote {lintr} à IDE, de forma que você tem as informações de ajustes de estilo a se fazer em seu código em tempo real.
+
+![verificação de estilo em tempo real](img/linter.gif)
+
 # CONFIGURAÇÃO
 
 Para começar você só precisa do VSCode e das extensões R e R-LSP. Mas compartilho aqui o setup que considero fornecer a melhor experiência:
