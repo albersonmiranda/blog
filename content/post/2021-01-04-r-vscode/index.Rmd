@@ -52,7 +52,7 @@ Clicando na issue, o VSCode já abre um novo branch e faz o checkout para você 
 
 ![criando um novo branch via issue](img/branch.gif)
 
-E, ao final do trabalho basta, clicar em criar um novo PR que a própria IDE envia o branch pra origem e traz a interface do PR. Tudo sem abrir o navegador ou o terminal.
+E, ao final do trabalho, basta clicar em criar um novo PR que a própria IDE envia o branch pra origem e traz a interface do PR. Tudo sem abrir o navegador ou o terminal.
 
 ![criando pull request](img/pr.gif)
 
