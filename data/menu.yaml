@@ -8,7 +8,7 @@
       link: https://www.linkedin.com/in/albersonmiranda/
     - name: Twitter
       link: https://twitter.com/albersonmiranda/
-    - item: Curriculum Vitae
+    - name: Curriculum Vitae
       link: files/cv.pdf
 - name: Sobre
   link: about/
