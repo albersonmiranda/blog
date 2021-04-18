@@ -1,14 +1,14 @@
 - name: Home
   link: /
 - name: Arquivo
-  link: post/ #rich-content/
-# - name: Mus
-#   link: /categories/music/
+  link: post/
 - name: Social
   submenu:
     - name: LinkedIn
       link: https://www.linkedin.com/in/albersonmiranda/
     - name: Twitter
       link: https://twitter.com/albersonmiranda/
-- name: About
+    - item: "CV"
+      link: "files/cv.pdf"
+- name: Sobre
   link: about/
