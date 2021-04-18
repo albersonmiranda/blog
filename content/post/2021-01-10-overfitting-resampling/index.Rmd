@@ -59,7 +59,7 @@ $$\widehat{GE}_\text{samp} = \frac{1}{k}\sum_{i=1}^{k}\widehat{GE}(\hat{f}_{D_{\
 O erro de generalização dado na equação (1) depende tanto do tamanho da amostra usada para treinar quanto para testar o modelo ajustado. Portanto, devemos garantir que o tamanho da amostra usado para verificar o erro de generalização de um modelo estimado a partir de $n$ *data points* seja próximo de *n*. Se, por exemplo, o conjunto de treino for muito menor que a amostra total o erro será superestimado, uma vez que muito menos informação foi usada para calcular o estimador.
 
 Da mesma forma, a qualidade do estimador do erro de generalização obtido em (2) a partir de uma estratégia de reamostragem também depende muito do tamanho dos conjuntos $D^{(i)}$ em relação à amostra original, da quantidade $k$ de subconjuntos utilizados e da estrutura de dependência entre os subconjuntos $D^{(i)}$ — novamente, modelos mais complexos são mais sensíveis a alterações no dataset e a variância entre os subconjuntos tende a ser maior. O erro do estimador é geralmente medido pelo erro médio quadrático (MSE):
-$$\text{MSE}(\widehat{GE}_\text{samp}) = \mathbb{E}[(\widehat{GE}_\text{samp} - GE(\hat{f}_D, p))^2]$$
+$$\text{MSE}(\widehat{GE}_\text{samp}) = \mathbb{E}[(\widehat{GE}_\text{samp} - GE(\hat{f}_D, P))^2]$$
 Esse estimador também pode ser representado como a soma do quadrado do viés e a variância:
 $$\text{MSE}(\widehat{GE}_\text{samp}) = \text{Bias}(\widehat{GE}_\text{samp})^2 + \text{Variância}(\widehat{GE}_\text{samp})$$
 Sendo que o viés expressa a diferença média entre um estimador e o valor real, enquanto a variância mede a dispersão média do estimador. Essas quantidades são definidas da seguinte forma:
