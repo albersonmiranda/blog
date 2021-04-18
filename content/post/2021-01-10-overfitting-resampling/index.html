@@ -1,7 +1,7 @@
 ---
-title: 'Um mergulho nos conceitos: overfitting & resampling'
+title: 'Um pouco de conceitos: overfitting & resampling'
 author: Alberson Miranda
-date: '2021-01-10'
+date: '2021-04-17'
 slug: overfitting-resampling
 categories:
   - Machine Learning
@@ -10,7 +10,7 @@ tags:
   - overfitting
 description: Conceitos e teoria acerca de resampling e overfitting.
 featured: yes
-draft: true
+draft: false
 featureImage: img/overfitting.png
 codeMaxLines: 10
 codeLineNumbers: no
@@ -20,18 +20,63 @@ bibliography:
 link-citations: yes
 ---
 
-<script src="index_files/header-attrs/header-attrs.js"></script>
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
-<p>Apesar de serem termos recorrentes em <em>machine learning</em>, <em>resampling</em> e <em>overfitting</em> são frequentemente discutidos de forma rasa, muitas vezes sem a sua compreensão. Neste post tentarei introduzir os conceitos e a teoria que os sustenta.</p>
-<div id="o-processo-de-ajuste" class="section level1">
-<h1>O PROCESSO DE AJUSTE</h1>
+<p>Apesar de serem termos recorrentes em <em>machine learning</em>, <em>resampling</em> e <em>overfitting</em> são frequentemente discutidos apenas na prática, muitas vezes sem a sua compreensão. Neste post<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, tentarei introduzir os conceitos de forma genérica.</p>
+<div id="o-processo-de-ajuste-e-o-sobreajuste" class="section level1">
+<h1>O PROCESSO DE AJUSTE E O SOBREAJUSTE</h1>
 <p>Considere uma função de ajuste <span class="math inline">\(f\)</span>, um conjunto de pontos <span class="math inline">\(D = {d_1, ..., d_n}\)</span> com <span class="math inline">\(d_i = (x_i y_i)´\)</span>, variáveis de decisão ou parâmetros <span class="math inline">\(x_i \in \R^m\)</span> e imagem <span class="math inline">\(y_i = f(x_i) \in \R\)</span>. Diferentemente da abordagem clássica, em que, no caso do modelo clássico de regressão linear, há um modelo teórico de coeficientes estimados por mínimos quadrados ordinários (MQO) que é garantido pelo teorema de Gauss-Markov ser o melhor estimador linear não viesado (BLUE), em <em>machine learning</em> o objetivo é encontrar, de forma iterativa, um meta-modelo que melhor aproxima a função <span class="math inline">\(f\)</span> usando a informação contida em <span class="math inline">\(D\)</span>, ou seja, queremos ajustar uma função de regressão <span class="math inline">\(\hat{f}_D\)</span> aos nossos dados <span class="math inline">\(D\)</span> de forma que <span class="math inline">\(\hat{y} = \hat{f}_D(x, \varepsilon)\)</span> tenha o menor erro de aproximação <span class="math inline">\(\varepsilon\)</span>.</p>
 <p>Para verificar o quão bem o modelo <span class="math inline">\(\hat{f}_D\)</span> se aproxima da função real <span class="math inline">\(f\)</span>, é necessário uma função de perda <span class="math inline">\(L(y, \hat{f}(x))\)</span> que, no caso de regressão, será a perda quadrática <span class="math inline">\((y - \hat{f}(y))^2\)</span> ou a perda absoluta <span class="math inline">\(|y - \hat{f}(y)|\)</span>. Esses valores são agregados pela média para formar as funções de custo erro médio quadrático (MSE) e erro médio absoluto (MAE).</p>
 <p>Dada a função de perda, pode-se definir o risco associado ao modelo de função de ajuste
 <span class="math display">\[R(f, p) = \int_{\R}{}\int_{\R^m}{} L(y, f(x))p(x, y)dxdy\]</span>
 em que <span class="math inline">\(p(x, y)\)</span> é a função densidade de probabilidade conjunta. Como não temos a função real mas procuramos uma função estimada que se aproxime dela, temos
-<span class="math display">\[GE(\hat{f}_D, p) = \int_{\R}{}\int_{\R^m}{} L(y, \hat{f}_D(x))p(x, y)dxdy\]</span>
+<span class="math display">\[GE(\hat{f}_D, p) = \int_{\R}{}\int_{\R^m}{} L(y, \hat{f}_D(x))p(x, y)dxdy \tag{1}\]</span>
 que é o erro de generalização ou risco condicional associado ao preditor.</p>
-<p>Primeiramente, o erro de generalização do modelo</p>
+<p>Então, podemos estimar o erro de generalização do modelo. Como não conhecemos a distribuição <span class="math inline">\(P\)</span>, a substituímos pela amostra de teste <span class="math inline">\(D^*\)</span> e ficamos com
+<span class="math display">\[\widehat{GE}(\hat{f}_D, D^*) = \sum_{(xy)´ \in D^*} \frac{L(y, \hat{f}_D(x))}{|D^*|}\]</span>
+Se substituirmos a amostra teste pela amostra treino <span class="math inline">\(D\)</span> usada para ajustar o modelo, teremos o chamado erro de resubstituição
+<span class="math display">\[\widehat{GE}_\text{resub} = \widehat{GE}(\hat{f}_D, D)\]</span>
+Naturalmente, nesse caso estaríamos usando os dados de treino tanto para treinar o preditor quanto para estimar o erro de generalização, o que nos levaria a uma estimativa enviesada do erro de generalização. Caso usássemos essa estimativa para seleção de modelos, esse viés favoreceria modelos mais adaptados à amostra.</p>
+<p>O problema é que nesses modelos, dadas suficientes iterações, o erro de resubstituição tende a zero. Isso acontece porque conforme o preditor se adapta cada vez mais aos dados de treinamento ele irá memorizar a relação entre o conjunto de pontos <span class="math inline">\(D\)</span> e a imagem <span class="math inline">\(f(x_i)\)</span>, ou seja, irá se ajustar perfeitamente ao formato da função a ser modelada. E não necessariamente um modelo perfeitamente ajustado se traduz na capacidade de predição de dados futuros (fora da amostra).</p>
+<p>De forma geral, espera-se que o preditor reduza seu viés durante o treino apenas o suficiente para que seja capaz de generalizar sua predição para fora da amostra em um nível ótimo de acurácia. A partir desse ponto, a redução no viés é penalizada com o aumento da variância, ou seja, com a redução de sua capacidade de prever dados futuros. A esse processo se dá o nome de <em>overfitting</em> ou <strong>sobreajuste</strong>. Isso quer dizer que não podemos considerar a performance do preditor em <span class="math inline">\(D\)</span> se desejamos estimar honestamente a performance real do modelo.</p>
+</div>
+<div id="reamostragem" class="section level1">
+<h1>REAMOSTRAGEM</h1>
+<p>Uma forma de se corrigir esse problema é dividindo a amostra em um conjunto para treino <span class="math inline">\(D_\text{treino}\)</span> e outro conjunto para teste <span class="math inline">\(D_\text{teste}\)</span> de forma que <span class="math inline">\(D_\text{treino} \cup D_\text{teste} = D\)</span> e <span class="math inline">\(D_\text{treino} \cap D_\text{teste} = \empty\)</span>. Assim, pode-se treinar o modelo em <span class="math inline">\(D_\text{treino}\)</span> para se obter <span class="math inline">\(\hat{f}_{D_{\text{treino}}}\)</span> e calcular seu erro de generalização usando os dados de <span class="math inline">\(D_\text{teste}\)</span>. Essa abordagem é chamada de <em>hold-out</em> e ela é de simples implementação e utilização, uma vez que as observações do conjunto teste são completamente independentes das observações com as quais o modelo foi treinado. A estimativa do erro de generalização então se torna
+<span class="math display">\[\widehat{GE}_\text{hold-out} = \widehat{GE}(\hat{f}_{D_{\text{treino}}}, D_{\text{teste}})\]</span>
+Dois problemas permanecem:</p>
+<ol style="list-style-type: decimal">
+<li><p>É necessária uma amostra grande, uma vez que deve-se ter dados suficientes tanto na amostra treino para ajustar um modelo adequado, quanto na amostra teste para realizar uma avaliação de performance estatisticamente válida.</p></li>
+<li><p>Esse método não é suficiente para detectar variância e instabilidades na amostra treino. Modelos mais complexos, especialmente não lineares, podem produzir resultados muito diferentes com mudanças pequenas nos dados de treino.</p></li>
+</ol>
+<p>É exatamente para lidar com essas situações que foram desenvolvidas as técnicas de reamostragem. Todas essas tecnicas geram repetidamente <span class="math inline">\(i\)</span> subconjuntos de treino <span class="math inline">\(D_{\text{treino}}^{(i)}\)</span> e teste <span class="math inline">\(D_{\text{teste}}^{(i)}\)</span> com o dataset disponível, ajustam um modelo com cada conjunto de treino e atestam sua qualidade no conjunto de teste correspondente. A estimativa do erro de generalização então se torna
+<span class="math display">\[\widehat{GE}_\text{samp} = \frac{1}{k}\sum_{i=1}^{k}\widehat{GE}(\hat{f}_{D_{\text{treino}}^{(i)}}, D_{\text{teste}}^{(i)}) \tag{2}\]</span>
+O erro de generalização dado na equação (1) depende tanto do tamanho da amostra usada para treinar quanto para testar o modelo ajustado. Portanto, devemos garantir que o tamanho da amostra usado para verificar o erro de generalização de um modelo estimado a partir de <span class="math inline">\(n\)</span> <em>data points</em> seja próximo de <em>n</em>. Se, por exemplo, o conjunto de treino for muito menor que a amostra total o erro será superestimado, uma vez que muito menos informação foi usada para calcular o estimador.</p>
+<p>Da mesma forma, a qualidade do estimador do erro de generalização obtido em (2) a partir de uma estratégia de reamostragem também depende muito do tamanho dos conjuntos <span class="math inline">\(D^{(i)}\)</span> em relação à amostra original, da quantidade <span class="math inline">\(k\)</span> de subconjuntos utilizados e da estrutura de dependência entre os subconjuntos <span class="math inline">\(D^{(i)}\)</span> — novamente, modelos mais complexos são mais sensíveis a alterações no dataset e a variância entre os subconjuntos tende a ser maior. O erro do estimador é geralmente medido pelo erro médio quadrático (MSE):
+<span class="math display">\[\text{MSE}(\widehat{GE}_\text{samp}) = \mathbb{E}[(\widehat{GE}_\text{samp} - GE(\hat{f}_D, p))^2]\]</span>
+Esse estimador também pode ser representado como a soma do quadrado do viés e a variância:
+<span class="math display">\[\text{MSE}(\widehat{GE}_\text{samp}) = \text{Bias}(\widehat{GE}_\text{samp})^2 + \text{Variância}(\widehat{GE}_\text{samp})\]</span>
+Sendo que o viés expressa a diferença média entre um estimador e o valor real, enquanto a variância mede a dispersão média do estimador. Essas quantidades são definidas da seguinte forma:
+<span class="math display">\[\text{Bias}(\widehat{GE}_\text{samp}) = \mathbb{E}[\widehat{GE}_\text{samp}] - \mathbb{E}[GE(\hat{f}_D, p)]\]</span>
+e
+<span class="math display">\[\text{Variância}(\widehat{GE}_\text{samp}) = \mathbb{E}[(\widehat{GE}_\text{samp} - \mathbb{E}[\widehat{GE}_\text{samp}])^2]\]</span></p>
+</div>
+<div id="por-fim" class="section level1">
+<h1>POR FIM</h1>
+<p>Com essa introdução, espero que os conceitos tenham ficado mais claros e que tenha ajudado um pouco na compreensão da meta modelagem. Tenho certeza que eu não verei os resultados da mesma forma na próxima que vez que aplicar técnicas de reamostragem para seleção e <em>tuning</em> de meus modelos!</p>
+</div>
+<div id="referências" class="section level1 unnumbered">
+<h1>REFERÊNCIAS</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-resampling" class="csl-entry">
+Bischl B., Trautmann H., Mersmann O. 2012. <span>“Resampling Methods for Meta-Model Validation with Recommendations for Evolutionary Computation.”</span> <em>Evolutionary Computation</em>, May. <a href="https://doi.org/10.1162/EVCO_a_00069">https://doi.org/10.1162/EVCO_a_00069</a>.
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Totalmente apoiado em <span class="citation">(<a href="#ref-resampling" role="doc-biblioref">Bischl B. 2012</a>)</span>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
