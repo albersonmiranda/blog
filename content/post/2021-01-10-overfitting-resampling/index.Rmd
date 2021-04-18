@@ -9,7 +9,7 @@ tags:
   - resampling
   - overfitting
 description: Conceitos e teoria acerca de resampling e overfitting.
-featured: yes
+featured: no
 draft: false
 featureImage: img/overfitting.png
 codeMaxLines: 10
