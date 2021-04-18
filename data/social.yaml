@@ -4,6 +4,8 @@
   url: "https://twitter.com/albersonmiranda"
 - item: "linkedin"
   url: "https://www.linkedin.com/in/albersonmiranda"
+- item: "CV"
+  url: "files/cv.pdf"
 #- item: "rss"
 #  url: "index.xml"
   internal:  true
