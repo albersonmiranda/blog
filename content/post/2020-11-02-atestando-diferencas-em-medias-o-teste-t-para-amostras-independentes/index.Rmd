@@ -2,7 +2,8 @@
 title: 'Atestando diferenças em médias: o teste t para amostras independentes'
 author: Alberson Miranda
 date: '2020-11-02'
-slug: atestando-diferencas-em-medias-o-teste-t-para-amostras-independentes
+slug: atestando - diferencas - em - medias - o - teste - t - para - amostras - independentes
+series: inferência
 categories:
   - estatistica
 tags:

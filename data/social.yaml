@@ -1,9 +1,0 @@
-- item: "github"
-  url: "https://github.com/albersonmiranda"
-- item: "twitter"
-  url: "https://twitter.com/albersonmiranda"
-- item: "linkedin"
-  url: "https://www.linkedin.com/in/albersonmiranda"
-#- item: "rss"
-#  url: "index.xml"
-  internal:  true

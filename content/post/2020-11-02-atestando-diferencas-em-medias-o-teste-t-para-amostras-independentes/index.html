@@ -2,7 +2,8 @@
 title: 'Atestando diferenças em médias: o teste t para amostras independentes'
 author: Alberson Miranda
 date: '2020-11-02'
-slug: atestando-diferencas-em-medias-o-teste-t-para-amostras-independentes
+slug: atestando - diferencas - em - medias - o - teste - t - para - amostras - independentes
+series: inferência
 categories:
   - estatistica
 tags:
@@ -15,9 +16,7 @@ shareImage: 'statistics.png'
 featureImage: 'statistics.png'
 ---
 
-<script src="index_files/header-attrs/header-attrs.js"></script>
-<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
-<script src="index_files/anchor-sections/anchor-sections.js"></script>
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
 <p>Suponha que você tenha duas amostras (i.e. as rendas da população negra e branca de sua cidade) e você queira comprovar que suas médias sejam <em>significantemente</em> diferentes, ou seja, que sejam diferentes mesmo considerando a variância e o tamanho das amostras. Isso é possível com um teste t de Student, um dos mais populares testes na estatística.</p>
@@ -41,7 +40,7 @@ aggregate(mpg ~ cyl, data = data, FUN = mean)</code></pre>
 <p>Verificamos que as médias amostrais são diferentes. Resta saber se são <em>significantemente</em> diferentes. Plotar um boxplot pode nos ajudar a ter uma intuição. Podemos ver que, exceto pelo grupo de 4 cilindros que possui uma variância maior, os grupos são bem concentrados, de forma que podemos suspeitar que as diferenças sejam significantes.</p>
 <pre class="r"><code># Boxplot
 boxplot(mpg ~ cyl, data = data)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>O teste t possui diversas variações — uma amostra, duas amostras pareadas, duas amostras independentes —, e correções para tratar diferenças na variância. Para este caso, temos três amostras independentes e, por hora, vamos supor que as variâncias do grupo 4 difere das demais e que a dos grupos 6 e 8 são iguais — deixaremos a análise de variâncias para outra postagem. Isso nos deixa com o <strong>teste t para duas amostras independentes</strong>.</p>
 <p>A hipótese nula do teste é que as médias são significativamente iguais. Já a hipótese alternativa pode ser formulada como a não nulidade da diferença entre as médias ou <span class="math inline">\(\bar{X_1}\)</span> maior ou menor que <span class="math inline">\(\bar{X_2}\)</span>. Aqui vamos usar a primeira opção:</p>
 <p><span class="math display">\[

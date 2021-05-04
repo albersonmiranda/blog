@@ -3,6 +3,7 @@ title: 'Effect Size e a desigualdade de renda entre gêneros em Vitória'
 author: Alberson Miranda
 date: '2020-11-24'
 slug: [desigualdade-renda-generos]
+series: inferência
 categories:
   - estatistica
 tags:
@@ -21,9 +22,7 @@ codeLineNumbers: no
 figurePositionShow: yes
 ---
 
-<script src="index_files/header-attrs/header-attrs.js"></script>
-<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
-<script src="index_files/anchor-sections/anchor-sections.js"></script>
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
 <p>Ainda há um bocado de coisas para cobrir nessa série de “inferência 101” e para continuar os estudos trouxe a base da RAIS (Relação Anual de Informações Sociais) de 2017<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Com ela, vamos introduzir o conceito de <em>effect size</em> e de quebra analisar a desigualdade de gênero em nossa querida capital Vitória.</p>
@@ -130,7 +129,7 @@ data %&gt;%
   theme(text = element_text(family = &quot;Century Gothic&quot;,
                             color = &quot;grey30&quot;),
         axis.text.x = element_blank())</code></pre>
-<p><img src="index_files/figure-html/barplot-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/barplot-1.png" width="672" /></p>
 <p>Temos praticamente a mesma quantidade de homens e mulheres em nossa amostra. Podemos, antes de realizar qualquer outra análise e aplicar quaisquer filtros, calcular a remuneração média:</p>
 <pre class="r"><code># remuneração média
 aggregate(data = data, rem_media ~ sexo, FUN = mean)</code></pre>
@@ -180,7 +179,7 @@ data %&gt;%
     ),
     axis.text.x = element_blank()
   )</code></pre>
-<p><img src="index_files/figure-html/boxplot-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/boxplot-1.png" width="672" /></p>
 <div id="verificando-a-hipótese-da-normalidade" class="section level2">
 <h2>VERIFICANDO A HIPÓTESE DA NORMALIDADE</h2>
 <p>Sabemos que o teste t é um teste paramétrico e <a href="https://datamares.netlify.app/post/2020-11-20-comparando-variancias/">já discutimos anteriormente</a> que, quando os dados não seguem uma distribuição próxima da normal, precisamos realizar transformações para alcançar a normalidade.</p>
@@ -213,7 +212,7 @@ data %&gt;%
     family = &quot;Century Gothic&quot;,
     color = &quot;grey30&quot;
   ))</code></pre>
-<p><img src="index_files/figure-html/qqplot-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/qqplot-1.png" width="672" /></p>
 <pre class="r"><code># qqplot
 # os dados estarão em cima da reta caso sejam distribuídos normalmente
 par(mfrow = c(1, 2))
@@ -225,7 +224,7 @@ qqline(data[data$sexo == 1, ]$rem_media)
 qqnorm(data[data$sexo == 2, ]$rem_media,
   main = &quot;Q-Q PLOT: MULHERES&quot;)
 qqline(data[data$sexo == 2, ]$rem_media)</code></pre>
-<p><img src="index_files/figure-html/qqplot-2.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/qqplot-2.png" width="672" /></p>
 <p>Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos tratar a base.</p>
 <pre class="r"><code># garantir reprodutibilidade
 set.seed(1)
@@ -248,14 +247,14 @@ for (i in 1:n) {
 # qqplot
 qqnorm(medias)
 qqline(medias)</code></pre>
-<p><img src="index_files/figure-html/simulacao-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/simulacao-1.png" width="672" /></p>
 <pre class="r"><code># visualização
 hist(medias,
     main = &quot;DISTRIBUIÇÃO DAS MÉDIAS AMOSTRAIS&quot;,
     xlab = &quot;médias&quot;,
     sub = &quot;seed = 1&quot;
 )</code></pre>
-<p><img src="index_files/figure-html/simulacao-2.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/simulacao-2.png" width="672" /></p>
 <p>Ufa! O TCL se manteve em nossos dados e tanto o <em>Q-Q plot</em> quanto o histograma demonstraram distribuição próxima da normal, nos habilitando a prosseguir com os testes.</p>
 </div>
 <div id="teste-t" class="section level2">
@@ -284,7 +283,7 @@ distr_nula = data %&gt;%
 distr_nula %&gt;%
   visualize(method = &quot;both&quot;) +
   shade_p_value(estatistica_calculada, direction = &quot;greater&quot;)</code></pre>
-<p><img src="index_files/figure-html/teste%20t%20agg-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/teste%20t%20agg-1.png" width="672" /></p>
 <pre class="r"><code># calculando p-valor
 distr_nula %&gt;%
   get_p_value(obs_stat = estatistica_calculada, direction = &quot;greater&quot;)</code></pre>
@@ -312,7 +311,9 @@ cohens_d(
 )</code></pre>
 <pre><code>## Cohen&#39;s d |       95% CI
 ## ------------------------
-##      0.26 | [0.28, 0.28]</code></pre>
+## 0.26      | [0.28, 0.28]
+## 
+## - Estimated using pooled SD.</code></pre>
 <pre class="r"><code># interpretando a estatística d
 interpret_d(0.26, &quot;gignac2016&quot;)</code></pre>
 <pre><code>## [1] &quot;small&quot;
@@ -320,7 +321,7 @@ interpret_d(0.26, &quot;gignac2016&quot;)</code></pre>
 <p>Com uma estatística <span class="math inline">\(d=0.26\)</span>, a diferença é considerada pequena. Na escala de Gignac &amp; Szodorai (2016):</p>
 <pre><code>## # Reference thresholds (Gignac &amp; Szodorai (2016))
 ## 
-## muito pequeno &lt; 0.2 &lt; pequeno &lt; 0.41 &lt; moderado &lt; 0.63 &lt; grande</code></pre>
+## muito pequeno &lt;= 0.2 &lt; pequeno &lt;= 0.41 &lt; moderado &lt;= 0.63 &lt; grande</code></pre>
 <p>Em uma situação de equidade, 50% das mulheres teriam remuneração abaixo do que o homem médio, enquanto a outra metade teria remuneração superior.</p>
 <p>Um efeito de 0.26, equivale a dizer que 62% das mulheres teriam remuneração abaixo da remuneração do homem médio em Vitória, enquanto apenas 38% receberiam mais do que o homem médio<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
 <p>Claro que analisar o agregado significa olhar para a média. Como serão essas diferenças dentre as diversas profissões?</p>
@@ -396,13 +397,20 @@ diferencas %&gt;%
     x = 2.5, y = 2000, size = 3.5, color = &quot;grey85&quot;,
     label = &quot;a diferença média é de\nR$ 1.078&quot;
   ) +
-  annotate(&quot;text&quot;,
+  annotate (&quot;text&quot;,
     x = 10.5, y = 5500, size = 3.5, color = &quot;grey85&quot;,
-    label = &quot;posições de executivo\né onde a diferença é maior\ne é também onde estão\nos maiores salários&quot;
-  ) +
+    label = paste(&quot;posições de executivo&quot;,
+    &quot;é onde a diferença é maior&quot;,
+    &quot;e é também onde estão\nos maiores salários&quot;,
+    sep = &quot;\n&quot;
+  )) +
   annotate(&quot;text&quot;,
   x = 9, y = 250, size = 3.5, color = &quot;grey85&quot;,
-  label = &quot;dentre essas profissões,\napenas as enfermeiras\nrecebem mais que homens&quot;
+  label = paste(
+    &quot;dentre essas profissões,&quot;,
+    &quot;apenas as enfermeiras&quot;,
+    &quot;recebem mais que homens&quot;,
+    sep = &quot;\n&quot;),
   ) +
   geom_curve(
     data = setas, aes(x = x1, y = y1, xend = x2, yend = y2),
@@ -415,7 +423,9 @@ diferencas %&gt;%
     y = &quot;diferença salarial em R$&quot;,
     size = &quot;rem. média\n(homem)&quot;,
     title = &quot;desigualdade de gênero&quot;,
-    subtitle = &quot;as disparidades salarias evidenciam o longo caminho na superação da colocação\nda mulher como profissional de segunda categoria no mercado de trabalho&quot;,
+    subtitle = paste(&quot;as disparidades salarias evidenciam o longo caminho na superação da colocação&quot;,
+    &quot;da mulher como profissional de segunda categoria no mercado de trabalho&quot;,
+    sep = &quot;\n&quot;),
     caption = &quot;fonte: Rais 2017, Vitória/ES | elaboração: Alberson Miranda&quot;
   ) +
   theme(
@@ -440,7 +450,7 @@ diferencas %&gt;%
     legend.background = element_rect(fill = &quot;#002538&quot;),
     legend.key = element_rect(fill = &quot;#002538&quot;)
   )</code></pre>
-<p><img src="index_files/figure-html/grafico-1.png" width="1152" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/grafico-1.png" width="1152" /></p>
 <p>Dentre essas profissões que escolhemos, vamos analisar o tamanho do efeito para médicos e executivos (dirigentes e diretores).</p>
 <div id="disparidade-salarial-entre-médicos" class="section level2">
 <h2>DISPARIDADE SALARIAL ENTRE MÉDICOS</h2>
@@ -467,7 +477,7 @@ distr_nula %&gt;%
   visualize(method = &quot;both&quot;) +
   shade_p_value(estatistica_calculada, direction = &quot;greater&quot;) +
   shade_confidence_interval(endpoints = percentile_ci)</code></pre>
-<p><img src="index_files/figure-html/medicos-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/medicos-1.png" width="672" /></p>
 <pre class="r"><code># calculando p-valor
 distr_nula %&gt;%
   get_p_value(obs_stat = estatistica_calculada, direction = &quot;greater&quot;)</code></pre>
@@ -485,7 +495,9 @@ distr_nula %&gt;%
  )</code></pre>
 <pre><code>## Cohen&#39;s d |       95% CI
 ## ------------------------
-##      0.12 | [0.06, 0.19]</code></pre>
+## 0.12      | [0.06, 0.19]
+## 
+## - Estimated using pooled SD.</code></pre>
 <pre class="r"><code> # interpretando a estatística d
  interpret_d(0.12, &quot;gignac2016&quot;)</code></pre>
 <pre><code>## [1] &quot;very small&quot;
@@ -517,7 +529,7 @@ distr_nula %&gt;%
   visualize(method = &quot;both&quot;) +
   shade_p_value(estatistica_calculada, direction = &quot;greater&quot;) +
   shade_confidence_interval(endpoints = percentile_ci)</code></pre>
-<p><img src="index_files/figure-html/executivos-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/executivos-1.png" width="672" /></p>
 <p>E calculando o tamanho do efeito:</p>
 <pre class="r"><code> # calculando a diferença padronizada
  cohens_d(
@@ -528,7 +540,9 @@ distr_nula %&gt;%
  )</code></pre>
 <pre><code>## Cohen&#39;s d |       95% CI
 ## ------------------------
-##      0.47 | [0.30, 0.63]</code></pre>
+## 0.47      | [0.30, 0.63]
+## 
+## - Estimated using pooled SD.</code></pre>
 <pre class="r"><code> # interpretando a estatística d
  interpret_d(0.47, &quot;gignac2016&quot;)</code></pre>
 <pre><code>## [1] &quot;moderate&quot;

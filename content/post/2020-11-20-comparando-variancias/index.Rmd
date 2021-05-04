@@ -3,6 +3,7 @@ title: 'Comparando variâncias: o teste F'
 author: Alberson Miranda
 date: '2020-11-20'
 slug: []
+series: inferência
 categories:
   - estatistica
 tags:

@@ -3,6 +3,7 @@ title: 'Introdução ao framework {mlr3} parte II: resampling'
 author: Alberson Miranda
 date: '2020-12-29'
 slug: mlr3-resampling
+series: mlr3
 categories:
   - Machine Learning
 tags:

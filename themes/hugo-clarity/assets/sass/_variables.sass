@@ -1,11 +1,13 @@
 $font-path: '../fonts'
-$icons: '../icons/'
+// $icons: '{{ printf "../%s" (default "icons/" .Site.Params.iconsDir) }}'
 $images: '../images/'
 $light: #fff
 $haze: #fafafa
 $xhaze: darken($haze, 11%)
 $bg: #002538
 $theme: #0077b8
+$mobile-menu-breakpoint: 769px
+$single-column-breakpoint: 42rem
 
 @mixin  content()
   --maxWidth: 1440px
@@ -33,8 +35,7 @@ html
   --accent: var(--gray)
   --text: #575757
   --header-text: var(--dark)
-  --font: Montserrat, Raleway, Metropolis, sans-serif
-  --code-font: 'Fira Code', 'IBM Plex Mono', 'Source Code Pro', Inconsolata, 'Monaco', monospace
+  --font: Metropolis, sans-serif
   --theme: #0077b8
   --ease: cubic-bezier(.19,1,.22,1)
   --code-bg: var(--bg)
@@ -52,6 +53,7 @@ html
   &.page
     --choice-bg: var(--light)
   @mixin darkmode
+    --light: hsla(0,0%,100%,0.87)
     --color-mode: 'dim'
     --text: var(--light)
     --accent: var(--bubble)

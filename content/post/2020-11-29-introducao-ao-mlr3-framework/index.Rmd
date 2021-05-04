@@ -3,6 +3,7 @@ title: Introdução ao framework {mlr3}
 author: Alberson Miranda
 date: '2020-12-27'
 slug: [introducao-ao-mlr3]
+series: mlr3
 categories:
   - Machine Learning
 tags:

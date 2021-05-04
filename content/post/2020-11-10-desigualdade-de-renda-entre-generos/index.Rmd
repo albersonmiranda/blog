@@ -3,6 +3,7 @@ title: 'Effect Size e a desigualdade de renda entre gêneros em Vitória'
 author: Alberson Miranda
 date: '2020-11-24'
 slug: [desigualdade-renda-generos]
+series: inferência
 categories:
   - estatistica
 tags:
@@ -466,15 +467,14 @@ diferencas %>%
     "é onde a diferença é maior",
     "e é também onde estão\nos maiores salários",
     sep = "\n"
-  ) +
+  )) +
   annotate("text",
   x = 9, y = 250, size = 3.5, color = "grey85",
   label = paste(
     "dentre essas profissões,",
     "apenas as enfermeiras",
     "recebem mais que homens",
-    sep = "\n"
-  ),
+    sep = "\n"),
   ) +
   geom_curve(
     data = setas, aes(x = x1, y = y1, xend = x2, yend = y2),

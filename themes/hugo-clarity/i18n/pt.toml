@@ -1,5 +1,5 @@
 [read_more]
-other = "Ler Mais"
+other = "Leia Mais"
 
 [copyright]
 other = "Copyright"
@@ -8,13 +8,13 @@ other = "Copyright"
 other = "Todos os Direitos Reservados"
 
 [share_on]
-other = "Partilhar"
+other = "Compartilhar"
 
 [featured_posts]
-other = "Principais Artigos"
+other = "Principais Posts"
 
 [recent_posts]
-other = "Artigos Mais Recentes"
+other = "Posts Recentes"
 
 [404_title]
 other = "Ooops"
@@ -32,7 +32,7 @@ other = "Traduções"
 other = "Categorias"
 
 [tags]
-other = "Etiquetas"
+other = "Tags"
 
 [series]
 other = "Séries"
@@ -41,7 +41,13 @@ other = "Séries"
 other = "Todas as Categorias"
 
 [all_tags]
-other = "Todas as Etiquetas"
+other = "Todas as Tags"
 
 [all_series]
 other = "Todas as Séries"
+
+[overview]
+other = "Sumário"
+
+[reading_time]
+other = "{{ .ReadingTime }} minutos de leitura"

@@ -24,8 +24,9 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 * [Configuration](#configuration)
   * [Global Parameters](#global-parameters)
   * [Page Parameters](#page-parameters)
-  * [Modify links](#modify-links-menu)
-  * [Social media](#social-media)
+  * [Menus](#modify-menus)
+    * [Main Menu](#main-menu)
+    * [Social media](#social-media)
   * [Search Engine](#search-engine)
   * [Blog directory](#blog-directory)
   * [Mobile menu positioning](#mobile-menu-positioning)
@@ -38,6 +39,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Internationalization - I18N](#i18n)
   * [Hooks](#hooks)
   * [Comments](#comments)
+  * [Math notation](#math-notation)
 
 ## Features
 
@@ -104,15 +106,18 @@ hugo server --themesDir ../..
 
 ### Option 3 (The new, most fun & painless approach)
 
-This option enables you to load this theme as a hugo module. It arguably requires the least effort to run and maintain in your website.
+This option enables you to load this theme as a hugo module. It arguably requires the least effort to run and maintain your website.
 
-Ensure you have `go` binary [installed on your machine](https://golang.org/doc/install).
+Ensure you have `go` binary [installed on your machine](https://golang.org/doc/install) Note: Mac users: ```brew install go```.
 
 ```bash
 git clone https://github.com/chipzoller/hugo-clarity.git clarity
 cd clarity/exampleSite/
 hugo mod init my-site
+cd ..
+cp -a exampleSite/* .
 ```
+
 Open config.toml file in your code editor, replace `theme = "hugo-clarity"` with `theme = ["github.com/chipzoller/hugo-clarity"]` or just `theme = "github.com/chipzoller/hugo-clarity"`.
 
 Hurray you can now run
@@ -135,14 +140,17 @@ This section will mainly cover settings that are unique to this theme. If someth
 
 These options set global values that some pages or all pages in the site use by default.
 
-| Parameter | Value Type | Overidable on Page |
+| Parameter | Value Type | Overridable on Page |
 |:---- | ---- | ---- |
-| author | string | no |
+| author | map / string | no |
 | twitter | string | no |
 | largeTwitterCard | boolean | no |
 | ga_analytics | string | no |
+| baidu_analytics | string | no |
+| plausible_analytics | boolean | no |
 | description | string | yes |
 | introDescription | string | no |
+| introURL | string/false | no |
 | numberOfTagsShown | integer | no |
 | fallBackOgImage | file path (string) | no |
 | codeMaxLines | integer | yes |
@@ -150,6 +158,7 @@ These options set global values that some pages or all pages in the site use by 
 | mainSections | array/string | no |
 | centerLogo | boolean | no |
 | logo | file path (string) | no |
+| iconsDir | dir path (string) | no |
 | mobileNavigation | string | no |
 | figurePositionShow | boolean | yes |
 | figurePositionLabel | string | no |
@@ -158,12 +167,17 @@ These options set global values that some pages or all pages in the site use by 
 | enforceLightMode | boolean | N/A |
 | enforceDarkMode | boolean | N/A |
 | titleSeparator| string | no |
-| comment | boolean | no |
+| showShare | boolean | yes |
+| comments | boolean | yes |
 | numberOfRecentPosts | integer | no |
 | numberOfFeaturedPosts | integer | no |
 | dateFormat | string | no |
 | enableMathNotation | boolean | yes |
 | customFonts | boolean | no |
+| since | integer | N/A |
+| rss_summary | boolean | N/A |
+| rss_summary_read_more_link | boolean | N/A |
+| footerLogo | string | N/A |
 
 ### Page Parameters
 
@@ -186,26 +200,47 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | codeLineNumbers | boolean | yes |
 | figurePositionShow | boolean | yes |
 | figurePositionLabel | string | no |
-| comment | boolean | no |
+| comments | boolean | yes |
 | enableMathNotation | boolean | yes |
+| showDate | boolean | N/A |
+| showShare | boolean | N/A |
+| showReadTime | boolean | N/A |
+| sidebar | boolean | N/A |
+| singleColumn | boolean | N/A |
 
-### Modify links menu
+### Modify Menus
 
-To add, remove, or reorganize top menu items, [edit this YAML file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/menu.yaml). These menu items also display any categories (taxonomies) that might be configured for articles.
+#### Main Menu
 
-### Social media
+To add, remove, or reorganize top menu items, [edit the files here](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite/config/_default/menus). Specifically look for items with `[[main]]`.
 
-To edit your social media profile links, [edit this YAML file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/social.yaml).
+If you prefer the more [traditional approach](https://gohugo.io/content-management/menus/#readout), delete `content\config` folder and enter a [main menu entry](https://gohugo.io/content-management/menus/#add-non-content-entries-to-a-menut) inside the `config.toml` file
+
+#### Social media
+
+To edit your social media profile links, edit the files referenced above. Specifically, look for items with `[[social]]`
 
 If you wish to globally use a [large Twitter summary card](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image) when sharing posts, set the global parameter `largeTwitterCard` to `true`.
 
-### Search engine
+### Web site analytics
 
 If using Google Analytics, configure the `ga_analytics` global parameter in your site with your ID.
 
+If using Baidu Analytics, configure the `baidu_analytics` global parameter in your site with your ID.
+
+If using Plausible Analytics, configure the `plausible_analytics` global parameters in your site with following.
+
+`enable` To enable plausible analytics change to `true`.
+
+`websiteDomain` Set domain name of your website, most cases same as your base URL this is required.
+
+`plausibleDomain`  Default is set to plausible.io, this parameter is only required if plausible is self-hosted.
+
+`scriptName`  Default is set to plausible, this parameter is only required if using a custom name for script.
+
 ### Blog directory
 
-Edit the `config.toml` file and change the `mainSections` key. Values will be directories where the blogs reside.
+Edit `config.toml` and change the `mainSections` key. Values will be directories where the blogs reside.
 
 ```yaml
 [params]
@@ -298,6 +333,27 @@ To align a blog image to the left, append `:left` to its alt text. Article text 
 ![some alt text:left](someOtherImageUrl)
 ```
 
+#### Round borders for images
+
+To make the image borders round, append `::round` to its alt text. This is a
+pre-defined image class commonly used to display portrait images. Note that round
+is just another class and it can be mixed with other classes separated by space.
+
+#### Round borders for images example
+
+```markdown
+<!-- some image without alt text and round borders-->
+![::round](someImageUrl)
+
+<!-- some image with alt text and round borders-->
+
+![some alt text::round](someOtherImageUrl)
+
+<!-- some left floating image with round borders-->
+
+![:left::round](someOtherImageUrl)
+```
+
 #### Add classes to images
 
 To add a class image to the left, append `::<classname>` to its alt text. You can also add multiple classes to an image separated by space. `::<classname1> <classname2>`.
@@ -327,7 +383,7 @@ The thumbnail image will take precedence on opengraph share tags if the [shareIm
 
 #### Article featured image
 
-Each article can specify an image that appears at the top of the content. When sharing the blog article on social media, if a thumnail is not specified, the featured image will be used as a fallback on opengraph share tags.
+Each article can specify an image that appears at the top of the content. When sharing the blog article on social media, if a thumbnail is not specified, the featured image will be used as a fallback on opengraph share tags.
 
 ```yaml
 ...
@@ -414,10 +470,10 @@ Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via th
 1. [`_override.sass`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_override.sass).
     This file should only be used to override sass & css variables e.g theme colors
 2. [`_custom.sass`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass).
-    This file should only be used to except override everything else except sass & css variables.
+    This file should only be used to override everything else except sass & css variables.
 3. [`custom.js`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
 
-> __Pro Tip__: to ensure that your changes are git trackeable, create these files outside the theme directory. That is, at the root level of your site's directory. see tree below
+> __Pro Tip__: Ensure that your changes are git trackable by creating these files outside the theme directory. That is, at the root level of your site's directory. See tree below.
 
 ```
 ├── yourSite
@@ -429,8 +485,16 @@ Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via th
 │   │   └── sass
 │   │       ├── _custom.sass
 │   │       └── _override.sass
-├── config.toml
-│   ├── configTaxo.toml
+│   ├── config
+│   │   └── _default
+│   │       ├── config.toml
+│   │       ├── configTaxo.toml
+│   │       ├── languages.toml
+│   │       ├── markup.toml
+│   │       ├── menus
+│   │       │   ├── menu.en.toml
+│   │       │   └── menu.pt.toml
+│   │       └── params.toml
 │   ├── content
 │   │   ├── _index.md
 ```
@@ -480,21 +544,23 @@ Things to consider in multilingual:
   Check for missing translations using `hugo server --i18n-warnings`
 * **taxonomy** names (tags, categories, etc...) are translated in [i18n](./i18n/) as well (translate the key)
 * **menus** are translated manually in the config files [config/_default/menus/menu.xx.toml](./exampleSite/config/_default/menus/)
-* **menu's languages list** are semi-hardcoded. You may chose another text for the menu entry with [languageMenuName](./exampleSite/config.toml). Please, do better and create a PR for that.
+* **menu's languages list** are semi-hardcoded. You may chose another text for the menu entry with [languageMenuName](./exampleSite/config/config.toml). Please, do better and create a PR for that.
 * **content** must be translated individually. Read the [official documentation](https://gohugo.io/content-management/multilingual/#translate-your-content) for information on how to do it.
 
 **note:** if you do NOT want any translations (thus removing the translations menu entry), then you must not have any translations.
-In the exampleSite that's as easy as removing the extra translations from the `config/_default/...` or executing this onliner:
+In the exampleSite that's as easy as removing the extra translations from the `config/_default/...` or executing this one-liner:
 
+```sh
+sed '/^\[pt]$/,$d' -i config/_default/languages.toml && rm config/_default/menus/menu.pt.toml
 ```
-sed '/^\[pt]$/,$d' -i config/_default/languages.toml   &&   rm config/_default/menus/menu.pt.toml
-```
+
+To change the values of translatable text, such as `read_more` or `copyright`, edit the values in the language file you are using in the [`i18n`](i18n) directory. If you have no such directory, copy the one inside the theme to your root Hugo directory.
 
 ### Hooks
 
-Clarity provides some hooks for adding code on page.
+Clarity provides some hooks for adding code on a page.
 
-If you need to add some code(CSS import, HTML meta or similar) to the head section on every page, add a partial to your project:
+If you need to add some code (CSS import, HTML meta or similar) to the head section on every page, add a partial to your project:
 
 ```
 layouts/partials/hooks/head-end.html
@@ -508,8 +574,55 @@ layouts/partials/hooks/body-end.html
 
 ### Comments
 
-Clarity supports Hugo built-in Disqus partial, you can enable Disqus simply by setting [`disqusShortname`](https://gohugo.io/templates/internal/#configure-disqus) in your configuration file.
+Clarity supports Hugo built-in Disqus partial. You can enable Disqus simply by setting [`disqusShortname`](https://gohugo.io/templates/internal/#configure-disqus) in your [configuration file](https://github.com/chipzoller/hugo-clarity/blob/88f6cf4ac37c12990983b92d19842524555c23d3/exampleSite/config/config.toml#L11).
 
-> ⚠️ `disqusShortname` should be placed in root level of configuration.
+You can also override [layouts/partials/comments.html](https://github.com/chipzoller/hugo-clarity/blob/master/layouts/partials/comments.html) to take advantage of [disqus comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.
 
-You can also create a file named `layouts/partials/comments.html` for customizing the comments, checkout [Comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.
+> Please leave `#disqusShortname = ""` commented out if you decide to use other comments tools
+
+You can disable them site-wide by setting `comments = false` under `[params]` from config.toml file and vice versa. Omitting that setting will default to comments will be enabled.
+
+You can override these setting from each post individually. For example, you may want to disable/enable comments on specific posts. Use the same syntax used on the config.toml file.
+
+> please use `comments` and not `comment`
+
+### Math notation
+
+Clarity uses [KaTeX](https://katex.org/) for math type setting if `enableMathNotation` is set to `true` in global or page parameters (the latter takes precedence).
+
+Also see [supported TeX commands in KaTeX](https://katex.org/docs/supported.html).
+
+If you want chemical typesetting provided by the [`mhchem`](https://mhchem.github.io/MathJax-mhchem/) extension, first copy `[site]/themes/clarity/layouts/partials/math.html` to `[site]/layouts/partials/math.html`:
+
+```bash
+# cd /path/to/site
+mkdir -p layouts/partials && cp themes/clarity/layouts/partials/math.html layouts/partials/math.html
+```
+
+Then add the corresponding line as its [README](https://github.com/KaTeX/KaTeX/tree/master/contrib/mhchem) suggested (without the `+` sign):
+
+```diff
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+
++ <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/mhchem.min.js" integrity="sha384-5gCAXJ0ZgozlShOzzT0OWArn7yCPGWVIvgo+BAd8NUKbCmulrJiQuCVR9cHlPHeG" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+```
+
+The added line should be _before_ `auto-render.min.js` and _after_ `katex.min.js`.
+
+#### MathJax
+
+The new version of MathJax has [comparable performance](https://www.intmath.com/cg5/katex-mathjax-comparison.php?processor=MathJax3) to KaTeX and better support for TeX commands.
+
+If you prefer MathJax, create a blank `[site]/layouts/partials/math.html` and add the following two lines:
+
+```html
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+```
+
+This file will [take precedence over](https://gohugobrasil.netlify.app/themes/customizing/) the one Clarity provides and the site will load MathJax instead of KaTeX.

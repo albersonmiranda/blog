@@ -3,6 +3,7 @@ title: Introdução ao framework {mlr3}
 author: Alberson Miranda
 date: '2020-12-27'
 slug: [introducao-ao-mlr3]
+series: mlr3
 categories:
   - Machine Learning
 tags:
@@ -21,7 +22,7 @@ bibliography: [bib.bib]
 link-citations: true
 ---
 
-<script src="index_files/header-attrs/header-attrs.js"></script>
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
 <p>Esse é o primeiro post de uma série que irá tratar sobre o ecossistema {mlr3} <span class="citation">(<a href="#ref-mlr3" role="doc-biblioref">Lang et al. 2019</a>)</span>. Ele é mais completo e também muito mais complexo do que seu predecessor, o {mlr}, que teve sua versão inicial publicada no CRAN em 2013. O ecossistema permite um framework agnóstico (i.e. não depende dos algoritmos escolhidos), extensível e orientado a objeto, e, atualmente, permite vários tipos de tarefas, como classificação, regressão, análise de sobrevivência, forecasting, clustering, dentre outros. O {mlr3} tem diversas vantagens que o faz, IMHO, o <em>framework</em> mais completo para se trabalhar <em>machine learning</em> em R <span class="citation">(<a href="#ref-R" role="doc-biblioref">R Core Team 2020</a>)</span> e elas ficarão claras ao longo dos próximos posts.</p>
@@ -207,9 +208,9 @@ skimr::skim(data)</code></pre>
 </ul>
 <p>O <em>workflow</em> começa pela criação da <code>task</code>, que é um objeto que contém os dados e informações sobre a tarefa a ser executada, como a variável de resposta<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> e as demais <em>features</em>, além de seus tipos. Como queremos realizar predições para uma variável numérica contínua, é uma tarefa de regressão.</p>
 <pre class="r"><code># importando pacote
-library(mlr3verse)
-
-# criando task
+library(mlr3verse)</code></pre>
+<pre><code>## Warning: package &#39;mlr3verse&#39; was built under R version 4.0.4</code></pre>
+<pre class="r"><code># criando task
 task_swiss = TaskRegr$new(
   id = &quot;swiss&quot;,
   backend = data,
@@ -232,7 +233,7 @@ task_swiss</code></pre>
 ##   - int (2): Education, Examination</code></pre>
 <pre class="r"><code># visualizando
 autoplot(task_swiss, type = &quot;pairs&quot;)</code></pre>
-<p><img src="index_files/figure-html/task_cont-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/task_cont-1.png" width="672" /></p>
 <p>Podemos ver que apenas a fertilidade é linearmente correlacionada com a mortalidade infantil — quanto maior a fertilidade, maior a mortalidade —, e podemos esperar que tenha maior peso nas predições. As demais variáveis não apresentam correlação linear significativa com a variável de resposta. Entretanto, apresentam correlação moderada ou forte entre si, mas não a ponto de apresentar colinearidade, o que demandaria tratamento.</p>
 <p>Agora selecionamos o algoritmo<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> que será usado para treinar o modelo. Escolhi aqui o <em>XGBoost</em>. A lista completa pode ser acessada <a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html">por essa lista estática</a>, <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">por essa lista dinâmica</a> ou pela função <code>mlr3extralearners::list_mlr3learners()</code>. Como mencionado anteriormente, os algoritmos não são implementados pelo ecossistema do {mlr3} e nas listas citadas constam os pacotes onde os algoritmos foram implementados e que devem ser baixados para o seu uso.</p>
 <pre class="r"><code># definindo o learner
@@ -242,7 +243,7 @@ l_xgboost = lrn(&quot;regr.xgboost&quot;)
 l_xgboost</code></pre>
 <pre><code>## &lt;LearnerRegrXgboost:regr.xgboost&gt;
 ## * Model: -
-## * Parameters: nrounds=1, verbose=0
+## * Parameters: nrounds=1, nthread=1, verbose=0
 ## * Packages: xgboost
 ## * Predict Type: response
 ## * Feature types: logical, integer, numeric
@@ -324,19 +325,19 @@ head(train_set)</code></pre>
 <p>Com os índices selecionados, podemos realizar nosso treino apenas nos 70% escolhidos aleatoriamente da amostra, sem copiar os dados e alocar memória desnecessariamente:</p>
 <pre class="r"><code># treino
 l_xgboost$train(task_swiss, row_ids = train_set)</code></pre>
-<pre><code>## [17:52:27] WARNING: amalgamation/../src/objective/regression_obj.cu:174: reg:linear is now deprecated in favor of reg:squarederror.
+<pre><code>## [05:18:17] WARNING: amalgamation/../src/objective/regression_obj.cu:170: reg:linear is now deprecated in favor of reg:squarederror.
 ## [1]  train-rmse:17.686886 
 ## Will train until train_rmse hasn&#39;t improved in 10 rounds.
 ## 
-## [2]  train-rmse:16.014399 
+## [2]  train-rmse:16.014397 
 ## [3]  train-rmse:14.506416 
-## [4]  train-rmse:13.147320 
+## [4]  train-rmse:13.147319 
 ## [5]  train-rmse:11.924172 
 ## [6]  train-rmse:10.822335 
 ## [7]  train-rmse:9.832130 
 ## [8]  train-rmse:8.940679 
 ## [9]  train-rmse:8.136598 
-## [10] train-rmse:7.413037 
+## [10] train-rmse:7.413038 
 ## [11] train-rmse:6.760063 
 ## [12] train-rmse:6.173677 
 ## [13] train-rmse:5.647888 
@@ -430,10 +431,10 @@ l_xgboost$train(task_swiss, row_ids = train_set)</code></pre>
 <pre class="r"><code># verificando
 l_xgboost$model</code></pre>
 <pre><code>## ##### xgb.Booster
-## raw: 97.5 Kb 
+## raw: 156.2 Kb 
 ## call:
 ##   xgboost::xgb.train(data = data, nrounds = 100L, watchlist = list(
-##     train = &lt;pointer: 0x0000000027ab8700&gt;), early_stopping_rounds = 10L, 
+##     train = &lt;pointer: 0x00000000263f9980&gt;), early_stopping_rounds = 10L, 
 ##     eta = 0.1, max_depth = 5L, objective = &quot;reg:linear&quot;)
 ## params (as set within xgb.train):
 ##   eta = &quot;0.1&quot;, max_depth = &quot;5&quot;, objective = &quot;reg:linear&quot;, validate_parameters = &quot;TRUE&quot;
@@ -454,7 +455,7 @@ l_xgboost$model</code></pre>
 ## evaluation_log:
 ##     iter train_rmse
 ##        1  17.686886
-##        2  16.014399
+##        2  16.014397
 ## ---                
 ##       99   0.035096
 ##      100   0.033438</code></pre>
@@ -466,14 +467,14 @@ preds = l_xgboost$predict(task_swiss, row_ids = test_set)
 # verificando
 preds</code></pre>
 <pre><code>## &lt;PredictionRegr&gt; for 15 observations:
-##     row_id truth response
-##          8  24.9 20.69299
-##         11  24.5 20.65381
-##         13  19.1 15.63718
-## ---                      
-##         40  20.5 19.55373
-##         43  20.0 21.27585
-##         47  19.3 21.82051</code></pre>
+##     row_ids truth response
+##           8  24.9 20.69299
+##          11  24.5 20.65381
+##          13  19.1 15.63718
+## ---                       
+##          40  20.5 19.55373
+##          43  20.0 21.27585
+##          47  19.3 21.82050</code></pre>
 <p>No objeto com as predições, são armazenados tanto os valores preditos pelo modelo <code>response</code> quanto os valores da amostra <code>truth</code>. Esses valores então podem ser comparados para calcular a acurácia do modelo através do método <code>score()</code>:</p>
 <pre class="r"><code># acurácia
 preds$score(list(
@@ -481,11 +482,11 @@ preds$score(list(
   msr(&quot;regr.mae&quot;)
 ))</code></pre>
 <pre><code>## regr.rmse  regr.mae 
-##  2.587082  2.214176</code></pre>
+##  2.587082  2.214177</code></pre>
 <pre class="r"><code># visualizando
 autoplot(preds)</code></pre>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="index_files/figure-html/accuracy-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/accuracy-1.png" width="672" /></p>
 <p>A <em>rmse</em> do modelo na amostra teste ficou em apenas 2.59 unidades, o que é uma performance muito boa!</p>
 </div>
 <div id="interpretação" class="section level1">
@@ -497,7 +498,7 @@ l_xgboost$importance()</code></pre>
 ##  0.39696784  0.24723198  0.20219343  0.10340228  0.05020448</code></pre>
 <pre class="r"><code># visualizando
 barplot(l_xgboost$importance())</code></pre>
-<p><img src="index_files/figure-html/importance-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/importance-1.png" width="672" /></p>
 <p>Entretanto, somente a importância não nos descreve o relacionamento da <em>feature</em> com a variável de resposta, nem mesmo sua direção, sendo uma medida muito pobre de interpretação. Discutiremos técnicas de interpretação em outras postagens.</p>
 </div>
 <div id="referências" class="section level1 unnumbered">
