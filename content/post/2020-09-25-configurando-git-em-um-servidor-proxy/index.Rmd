@@ -22,7 +22,7 @@ Se você estiver trabalhando em uma organização que leva a sério a segurança
 
 O endereço do servidor proxy fica salvo em um arquivo de configuração que pode ser obtido via navegador. Se você estiver no Windows, terá de acessar o famigerado Internet Explorer, ir em `Opções da Internet`, `Conexões` e `Configurações da Lan`.
 
-![localização do arquivo de configuração](/post/2020-09-25-configurando-git-em-um-servidor-proxy_files/1.png)
+![localização do arquivo de configuração](images/1.png)
 
 Copie e cole o caminho exibido no campo `Endereço` no navegador e você irá baixar um arquivo .dat com as configurações de proxy. Abra o arquivo em algum leitor^[Evite o bloco de notas para exibir corretamente as quebras de linha. Sugiro o Wordpad.]. No arquivo, busque por "PROXY", essa variável conterá o endereço do servidor proxy no formato `dominio.com:porta`.
 
@@ -37,7 +37,7 @@ O primeiro método se aplica quando temos preocupação com nossa senha, ou seja
 
 Quando esse não é o caso, pode-se simplesmente salvar o usuário e senha no arquivo de configuração e o push/pull ocorrerá diretamente.
 
-## .gitconfig sem salvar senha
+## 1º .gitconfig sem salvar senha
 
 Recomendo usar o pacote {usethis} para alterar qualquer arquivo de configuração no R. Para a primeira opção, faríamos da seguinte maneira:
 
@@ -64,7 +64,7 @@ Na janela do .gitconfig que será aberta, adicione as seguintes linhas:
 
 Em que "domínio.com" é o endereço proxy que você achou no arquivo .dat e as demais configurações definem a forma como você será solicitado a incluir usuário e senha, nesse caso através de uma janela pop up a cada push/pull.
 
-## .gitconfig com senha gravada
+## 2º .gitconfig com senha gravada
 
 A outra alternativa é gravar o usuário e senha no próprio .gitconfig. Novamente, se o arquivo ficar em rede ou se outras pessoas tiverem acesso à máquina, evite essa opção. Para deixar seu usuário e senha salvas no .gitconfig, basta adicioná-los antes do domínio. A vantagem desse método a não ter de inserir as informações a cada push/pull.
 

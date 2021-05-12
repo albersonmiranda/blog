@@ -208,9 +208,9 @@ skimr::skim(data)</code></pre>
 </ul>
 <p>O <em>workflow</em> começa pela criação da <code>task</code>, que é um objeto que contém os dados e informações sobre a tarefa a ser executada, como a variável de resposta<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> e as demais <em>features</em>, além de seus tipos. Como queremos realizar predições para uma variável numérica contínua, é uma tarefa de regressão.</p>
 <pre class="r"><code># importando pacote
-library(mlr3verse)</code></pre>
-<pre><code>## Warning: package &#39;mlr3verse&#39; was built under R version 4.0.4</code></pre>
-<pre class="r"><code># criando task
+library(mlr3verse)
+
+# criando task
 task_swiss = TaskRegr$new(
   id = &quot;swiss&quot;,
   backend = data,
@@ -325,13 +325,13 @@ head(train_set)</code></pre>
 <p>Com os índices selecionados, podemos realizar nosso treino apenas nos 70% escolhidos aleatoriamente da amostra, sem copiar os dados e alocar memória desnecessariamente:</p>
 <pre class="r"><code># treino
 l_xgboost$train(task_swiss, row_ids = train_set)</code></pre>
-<pre><code>## [05:18:17] WARNING: amalgamation/../src/objective/regression_obj.cu:170: reg:linear is now deprecated in favor of reg:squarederror.
+<pre><code>## [09:48:24] WARNING: amalgamation/../src/objective/regression_obj.cu:170: reg:linear is now deprecated in favor of reg:squarederror.
 ## [1]  train-rmse:17.686886 
 ## Will train until train_rmse hasn&#39;t improved in 10 rounds.
 ## 
 ## [2]  train-rmse:16.014397 
 ## [3]  train-rmse:14.506416 
-## [4]  train-rmse:13.147319 
+## [4]  train-rmse:13.147320 
 ## [5]  train-rmse:11.924172 
 ## [6]  train-rmse:10.822335 
 ## [7]  train-rmse:9.832130 
@@ -360,7 +360,7 @@ l_xgboost$train(task_swiss, row_ids = train_set)</code></pre>
 ## [30] train-rmse:1.510077 
 ## [31] train-rmse:1.405107 
 ## [32] train-rmse:1.316820 
-## [33] train-rmse:1.227178 
+## [33] train-rmse:1.227179 
 ## [34] train-rmse:1.148336 
 ## [35] train-rmse:1.074920 
 ## [36] train-rmse:1.004666 
@@ -434,7 +434,7 @@ l_xgboost$model</code></pre>
 ## raw: 156.2 Kb 
 ## call:
 ##   xgboost::xgb.train(data = data, nrounds = 100L, watchlist = list(
-##     train = &lt;pointer: 0x00000000263f9980&gt;), early_stopping_rounds = 10L, 
+##     train = &lt;pointer: 0x00000000263cdbf0&gt;), early_stopping_rounds = 10L, 
 ##     eta = 0.1, max_depth = 5L, objective = &quot;reg:linear&quot;)
 ## params (as set within xgb.train):
 ##   eta = &quot;0.1&quot;, max_depth = &quot;5&quot;, objective = &quot;reg:linear&quot;, validate_parameters = &quot;TRUE&quot;

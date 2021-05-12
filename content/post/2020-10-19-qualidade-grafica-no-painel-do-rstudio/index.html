@@ -19,8 +19,8 @@ thumbnail: "images/rstudio.png"
 <p>Primeiramente, vamos plotar um gráfico na configuração padrão do RStudio:</p>
 <p><code>plot(mtcars$mpg, type = "l")</code></p>
 <div class="figure">
-<img src="/post/2020-10-19-qualidade-grafica-no-painel-do-rstudio_files/Rplot.png" alt="" />
-<p class="caption">plot</p>
+<img src="images/Rplot.png" alt="" />
+<p class="caption">plot no dispositivo padrão</p>
 </div>
 <p>Wow, imagine usando algo assim em um banner! Vamos tentar de novo, agora com o Cairo como dispositivo gráfico e usando anti-aliasing:</p>
 <pre class="r"><code># Adicionando anti-aliasing
@@ -29,10 +29,9 @@ trace(grDevices::png, quote({
     type = &quot;cairo-png&quot;
     antialias = &quot;subpixel&quot;
   }
-}), print = FALSE)</code></pre>
-<pre><code>## Tracing function &quot;png&quot; in package &quot;grDevices&quot;</code></pre>
-<pre><code>## [1] &quot;png&quot;</code></pre>
-<pre class="r"><code># Plotando novamente
+}), print = FALSE)
+
+# Plotando novamente
 plot(mtcars$mpg, type = &quot;l&quot;)</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>Santo anti-aliasing, não é? (Dê zoom nos dois para ver bem a diferença)</p>

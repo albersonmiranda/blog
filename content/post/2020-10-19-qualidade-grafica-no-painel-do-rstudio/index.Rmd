@@ -18,11 +18,11 @@ Primeiramente, vamos plotar um gráfico na configuração padrão do RStudio:
 
 `plot(mtcars$mpg, type = "l")`
 
-![plot](/post/2020-10-19-qualidade-grafica-no-painel-do-rstudio_files/Rplot.png)
+![plot no dispositivo padrão](images/Rplot.png)
 
 Wow, imagine usando algo assim em um banner! Vamos tentar de novo, agora com o Cairo como dispositivo gráfico e usando anti-aliasing:
 
-```{r}
+```{r, message = FALSE, results = "hide"}
 
 # Adicionando anti-aliasing
 trace(grDevices::png, quote({
@@ -34,7 +34,6 @@ trace(grDevices::png, quote({
 
 # Plotando novamente
 plot(mtcars$mpg, type = "l")
-
 ```
 
 Santo anti-aliasing, não é? (Dê zoom nos dois para ver bem a diferença)

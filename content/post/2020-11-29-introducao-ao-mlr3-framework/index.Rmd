@@ -80,7 +80,7 @@ Dentre as vari]]áveis disponíveis, podemos escolher modelar a mortalidade infa
 
 O *workflow* começa pela criação da `task`, que é um objeto que contém os dados e informações sobre a tarefa a ser executada, como a variável de resposta^[Também chamada de *output feature* ou *label*.] e as demais *features*, além de seus tipos. Como queremos realizar predições para uma variável numérica contínua, é uma tarefa de regressão.
 
-```{r task, message = FALSE}
+```{r task, message = FALSE, warning = FALSE}
 
 # importando pacote
 library(mlr3verse)
