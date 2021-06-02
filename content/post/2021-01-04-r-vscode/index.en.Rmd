@@ -144,7 +144,7 @@ Accessing the VSCode settings, we can configure both the editor and its extensio
 
 ![settings.json](img/preferencias.gif)
 
-Here are the ones I currently use. Change as needed and your preference. Obs.: by the time you're reading it they may be changed, since R support is on active development.
+Here are the ones I currently use. Change as needed and according to your preference. Obs.: by the time you're reading this they may be changed, since R support is on active development.
 
 ```{js settings.json}
 {
