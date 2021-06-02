@@ -1,0 +1,283 @@
+---
+title: R in 2021 with VSCode
+author: Alberson Miranda
+date: '2021-05-12'
+slug: r-vscode
+categories:
+  - Config
+tags:
+  - R
+  - VSCode
+description: R setup in VSCode
+featured: yes
+draft: false
+featureImage: img/vscode.jpg
+thumbnail: images/vscode.png
+shareImage: 
+codeMaxLines: 10
+codeLineNumbers: no
+figurePositionShow: yes
+bibliography:
+  - bib.bib
+link-citations: yes
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+
+
+<p>I first installed VSCode in october 2020 when I’ve decided to learn Python. Looking for the ideal setup, I’ve read somewhere that Spyder would be the best IDE for R <span class="citation">(<a href="#ref-R" role="doc-biblioref">R Core Team 2020</a>)</span> users due to similarities with RStudio, but I wanted the same experience as a native Python user so I’ve decided to go with VSCode (even if that meant a tougher xp at the time).
+{{% tweet 1312504411956998144 %}}</p>
+<p>I quickly fell in love with it’s flexibility and maturity. There are community extensions for about everything, which makes ux delightful! However, R ecosystem was still very much geared towards RStudio and I still found myself stuck with that IDE in my day-to-day life with R. That changed, of course, when I saw this tweet from <a href="https://twitter.com/MilesMcBain">Miles McBain</a>:
+{{% tweet 1319242982814408704 %}}</p>
+<p>Moving on to consider VSCode as a real possibility for R, I found this <a href="https://renkun.me/2019/12/11/writing-r-in-vscode-a-fresh-start/">post</a> from <a href="https://twitter.com/renkun_ken">Kun Ren</a> that offers a setup for R with VSCode. In this post I write about my favorite features and what settings that I use.</p>
+<div id="whats-so-good-about-it-tho" class="section level1">
+<h1>WHAT’S SO GOOD ABOUT IT THO 🤔?</h1>
+<p>Most features implemented by R and Language Server extensions are detailed in <a href="https://renkun.me/2019/12/11/writing-r-in-vscode-a-fresh-start/">Kun Ren’s post</a>, so, if you didn’t read that yet, just GO! Here’s some stuff I like about it.</p>
+<div id="intellisense" class="section level2">
+<h2>Intellisense</h2>
+<p>That’s what is called VSCode’s code editing features, like <strong>quick info</strong> (docs for functions, datasets etc) and <strong>parameter info</strong> (args definition), just by hovering over it. It also includes <strong>code completion</strong>, <strong>member list</strong> and more.</p>
+<div class="figure">
+<img src="img/intellisense.gif" alt="" />
+<p class="caption">code completion, hover, quick info, parameter info</p>
+</div>
+<div class="figure">
+<img src="img/color.gif" alt="" />
+<p class="caption">color selection via IDE (｡◕‿◕｡)</p>
+</div>
+</div>
+<div id="git-github-integration" class="section level2">
+<h2>Git &amp; GitHub integration</h2>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github">GitHub Pull Requests and Issues</a> and <a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">Git Lens</a> extensions provide a very useful GitHub integration, so you don’t have to leave your IDE for nothing. You can open, comment and close issues and PRs; submit, view and edit commits; execute most common bash commands via command pallet (push, pull, checkout, prune, rebase etc) and other stuff.</p>
+<div class="figure">
+<img src="img/issue.gif" alt="" />
+<p class="caption">new issue</p>
+</div>
+<p>Clicking on the issue, VSCode opens a new branch and checks it out for you to work on (and still triggers a personalized commit message!).</p>
+<div class="figure">
+<img src="img/branch.gif" alt="" />
+<p class="caption">new branch via issue</p>
+</div>
+<p>And, at the end of the work, just click on create new PR to push the branch to origin and bring the PR interface. All without opening the browser or a terminal.</p>
+<div class="figure">
+<img src="img/pr.gif" alt="" />
+<p class="caption">new pull request</p>
+</div>
+</div>
+<div id="multiple-terminals" class="section level2">
+<h2>Multiple terminals</h2>
+<p>While your blog or Shiny app is rendering and consequently occupying one terminal, you can simply open another one and continue working normally!</p>
+<div class="figure">
+<img src="img/terminais.gif" alt="" />
+<p class="caption">you can open as many terminals as you wish!</p>
+</div>
+</div>
+<div id="draw.io" class="section level2">
+<h2>Draw.io</h2>
+<p>This is an example of one of the many useful extensions that the community makes available on VSCode. The <a href="https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio">draw.io extension</a> integrates <a href="https://app.diagrams.net/">diagrams.net</a> into VSCode. With it, you can make diagrams very quickly and without having to leave your IDE!</p>
+<div class="figure">
+<img src="img/draw.gif" alt="" />
+<p class="caption">to bring the extension interface, just create a .drawio file</p>
+</div>
+<div class="figure">
+<img src="img/diagrama.png" alt="" />
+<p class="caption">diagram I made for <a href="https://datamares.netlify.app/post/2020-11-29-introducao-ao-mlr3-framework/">this post</a> using it</p>
+</div>
+</div>
+<div id="live-share" class="section level2">
+<h2>Live Share</h2>
+<p>Ever dreamed of working on the same script with your boys live? The <a href="#live-share">Live Share</a> extension (<a href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare" class="uri">https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare</a>) allows it and also provides chat and audio channels, which makes it unnecessary to open an audio call on another app while you work!</p>
+<div class="figure">
+<img src="img/me_and_the_boys.png" alt="" />
+<p class="caption">pretty much everyone right now</p>
+</div>
+<p>Also, you don’t need to have the language interpreter installed to join the session. That means that even if you’re on another machine that doesn’t have R or Python (or else) installed, you can log in and collaborate on your colleagues’ scripts, even running the code through their terminals!</p>
+<div class="figure">
+<img src="img/liveshare.gif" alt="" />
+<p class="caption">two machines visualizing each other during a VSCode Live Share session</p>
+</div>
+</div>
+<div id="windows-subsystem-for-linux" class="section level2">
+<h2>Windows Subsystem for Linux</h2>
+<p>Are you in a Windows machine and and ever needed to debug some stuff in a Linux environment? Then you had the displeasure of installing virtual machines or dual boot (╯°□°）╯︵ ┻━┻</p>
+<p>Good news: with the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl">Remote - WSL</a> extension you’re just one click away from happiness. It copies your folder (project) and reopens it in a Linux environment, with a terminal ready for business!</p>
+<div class="figure">
+<img src="img/wsl.gif" alt="" />
+<p class="caption">starting a Linux session</p>
+</div>
+</div>
+<div id="linter" class="section level2">
+<h2>Linter</h2>
+<p>R extension integrates the {lintr} package into the IDE, so you have real time styling updates.</p>
+<div class="figure">
+<img src="img/linter.gif" alt="" />
+<p class="caption">real time checks</p>
+</div>
+</div>
+</div>
+<div id="settings" class="section level1">
+<h1>SETTINGS</h1>
+<p>To get started you only need VSCode and R and R-LSP extensions. But here I share the setup that I think provides the best experience:</p>
+<ol style="list-style-type: decimal">
+<li>Visual Studio Code and extensions:</li>
+</ol>
+<ul>
+<li><a href="https://code.visualstudio.com/download">VSCode</a>: the IDE</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=Ikuyadeu.r">vscode-R</a>: R language support</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=REditorSupport.r-lsp">vscode-r-lsp</a>: R Language Server Protocol Client for VSCode</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Packages:</li>
+</ol>
+<ul>
+<li><a href="https://github.com/REditorSupport/languageserver">languageserver</a> <span class="citation">(<a href="#ref-lsp" role="doc-biblioref">Lai 2020</a>)</span>: R Language Server Protocol implementation</li>
+<li><a href="https://github.com/nx10/httpgd">httpgd</a> <span class="citation">(<a href="#ref-httpgd" role="doc-biblioref">Rupprecht 2021</a>)</span> (recommended): asynchronous http server graphic device for R</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Python &amp; Radian:</li>
+</ol>
+<ul>
+<li><a href="https://www.python.org/downloads/">Python</a> (recommended): requirement for Radian, implemented in Python</li>
+<li><a href="https://github.com/randy3k/radian">Radian</a> (recommended): alternative R console, with multi line editing and rich syntax highlighting</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><a href="https://pandoc.org/installing.html">Pandoc</a>: Universal document converter, responsible for converting R Markdown (.Rmd) files to html. You didn’t need to install it before because the RStudio installer comes with a version of Pandoc included.</li>
+</ol>
+</div>
+<div id="first-steps" class="section level1">
+<h1>FIRST STEPS</h1>
+<p>With VSCode installed, you’ll see the welcome screen, which looks like this:</p>
+<div class="figure">
+<img src="img/welcome.png" alt="" />
+<p class="caption">welcome screen</p>
+</div>
+<p>The first thing to note is that the RStudio project concept (.Rproj) does not exist in VSCode. You have a folder and that’s it, all relative paths point to it. Folder-specific settings can be defined in a .json file in the directory.</p>
+<p>In the sidebar, the explorer tab will give you the option to open a folder (a project) or clone a repository. Opening my <strong>Advent of Code 2020</strong> folder, you will see my directories and files on the left. There is code in Python and in R. I can open it and organize it any way I want. The terminals are below and they can also be moved elsewhere.</p>
+<div class="figure">
+<img src="img/organizacao.gif" alt="" />
+<p class="caption">fully flexible editor</p>
+</div>
+<p>Extensions can be installed from the tab on the left. VSCode itself will recommend installing extensions when you open some kind of file that doesn’t have an interpreter or formatter installed, for example.</p>
+<div class="figure">
+<img src="img/extensoes.gif" alt="" />
+<p class="caption">community extensions</p>
+</div>
+<p><strong>Important: do not install the RTools extension together with the extensions mentioned above, as they are not complementary and will cause conflicts.</strong></p>
+<p>With the extensions installed, let’s go to settings. First, open the command palette with ctrl+shift+p. There you’ll be able to access several commands and shortcuts in VSCode, such as:</p>
+<ul>
+<li>new terminal (R, Python etc)</li>
+<li>launch <em>RStudio addins</em></li>
+<li>compile RMarkdown files (knit .Rmd)</li>
+<li>access settings and shortcut keys</li>
+<li>install packages</li>
+<li>format files and MANY others</li>
+</ul>
+<p>Accessing the VSCode settings, we can configure both the editor and its extensions:</p>
+<div class="figure">
+<img src="img/preferencias.gif" alt="" />
+<p class="caption">settings.json</p>
+</div>
+<p>Here are the ones I currently use. Change as needed and your preference. Obs.: by the time you’re reading it they may be changed, since R support is on active development.</p>
+<pre class="js"><code>{
+    // VSCode setup
+    &quot;terminal.integrated.shell.windows&quot;: &quot;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe&quot;,
+    &quot;editor.formatOnPaste&quot;: true, // recommended
+    &quot;editor.formatOnType&quot;: true, // recommended
+    &quot;diffEditor.ignoreTrimWhitespace&quot;: false,
+    &quot;files.autoSave&quot;: &quot;off&quot;,
+
+    // Python setup
+    &quot;python.pythonPath&quot;: &quot;C:\\...\\anaconda3\\python.exe&quot;,
+    &quot;jupyter.alwaysTrustNotebooks&quot;: true,
+
+    // R setup
+    &quot;[r]&quot;: { // required
+        &quot;editor.defaultFormatter&quot;: &quot;REditorSupport.r-lsp&quot;
+    },
+    &quot;files.associations&quot;: { // required
+        &quot;*.rmd&quot;: &quot;markdown&quot;,
+        &quot;*.Rmd&quot;: &quot;rmd&quot;
+    },
+    &quot;r.sessionWatcher&quot;: true, // required
+    &quot;r.bracketedPaste&quot;: true, // required
+    &quot;r.rterm.windows&quot;: &quot;C:\\...\\anaconda3\\Scripts\\radian.exe&quot;, // for Radian
+    &quot;r.rpath.windows&quot;: &quot;C:\\...\\R\\R-4.0.3\\bin\\R.exe&quot;, // required
+    &quot;r.lsp.debug&quot;: true, // required
+    &quot;r.alwaysUseActiveTerminal&quot;: true, // required
+    &quot;r.rtermSendDelay&quot;: 0,
+}</code></pre>
+<script type="text/javascript">
+{
+    // VSCode setup
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "editor.formatOnPaste": true, // recommended
+    "editor.formatOnType": true, // recommended
+    "diffEditor.ignoreTrimWhitespace": false,
+    "files.autoSave": "off",
+
+    // Python setup
+    "python.pythonPath": "C:\\...\\anaconda3\\python.exe",
+    "jupyter.alwaysTrustNotebooks": true,
+
+    // R setup
+    "[r]": { // required
+        "editor.defaultFormatter": "REditorSupport.r-lsp"
+    },
+    "files.associations": { // required
+        "*.rmd": "markdown",
+        "*.Rmd": "rmd"
+    },
+    "r.sessionWatcher": true, // required
+    "r.bracketedPaste": true, // required
+    "r.rterm.windows": "C:\\...\\anaconda3\\Scripts\\radian.exe", // for Radian
+    "r.rpath.windows": "C:\\...\\R\\R-4.0.3\\bin\\R.exe", // required
+    "r.lsp.debug": true, // required
+    "r.alwaysUseActiveTerminal": true, // required
+    "r.rtermSendDelay": 0,
+}
+</script>
+<p>And a few tweaks on your .Rprofile:</p>
+<pre class="r"><code># options
+options(
+  # activate RStudio Addins on command pallet
+  vsc.rstudioapi = TRUE,
+  # radian highlight scheme (choose what suits you)
+  radian.color_scheme = &quot;native&quot;,
+  # code completion triggers
+  languageserver.server_capabilities = list(
+    signatureHelpProvider = list(triggerCharacters = list(&quot;(&quot;, &quot;,&quot;, &quot;$&quot;)),
+    completionProvider = list(
+      resolveProvider = TRUE, triggerCharacters = list(&quot;.&quot;, &quot;:&quot;, &quot;$&quot;)
+    )
+  )
+)
+
+# interactive plots with {httpgd}
+if (interactive() &amp;&amp; Sys.getenv(&quot;TERM_PROGRAM&quot;) == &quot;vscode&quot;) {
+  if (&quot;httpgd&quot; %in% .packages(all.available = TRUE)) {
+    options(vsc.plot = FALSE)
+    options(device = function(...) {
+      httpgd::httpgd()
+      .vsc.browser(httpgd::hgd_url(), viewer = &quot;Beside&quot;)
+    })
+  }
+}</code></pre>
+<p><strong>Important: not installing {httpgd} or not including this setting in .Rprofile will cause your graphics to be plotted in a fixed-size window, without the possibility of manipulating the plot size interactively.</strong></p>
+</div>
+<div id="at-last" class="section level1">
+<h1>AT LAST</h1>
+<p>And that’s it for the basics! There’s still a lot of things to explore but you can already get an idea of the tool’s potential :p</p>
+</div>
+<div id="referências" class="section level1 unnumbered">
+<h1>REFERÊNCIAS</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-lsp" class="csl-entry">
+Lai, Randy. 2020. <em>Languageserver: Language Server Protocol</em>. <a href="https://CRAN.R-project.org/package=languageserver">https://CRAN.R-project.org/package=languageserver</a>.
+</div>
+<div id="ref-R" class="csl-entry">
+R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-httpgd" class="csl-entry">
+Rupprecht, Florian. 2021. <em>Httpgd: A ’HTTP’ Server Graphics Device</em>. <a href="https://CRAN.R-project.org/package=httpgd">https://CRAN.R-project.org/package=httpgd</a>.
+</div>
+</div>
+</div>
