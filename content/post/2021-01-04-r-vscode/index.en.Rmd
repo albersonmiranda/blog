@@ -72,7 +72,7 @@ This is an example of one of the many useful extensions that the community makes
 
 ## Live Share
 
-Ever dreamed of working on the same script with your boys live? The [Live Share] extension (https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) allows it and also provides chat and audio channels, which makes it unnecessary to open an audio call on another app while you work!
+Ever dreamed of working on the same script with your boys live? The [Live Share extension](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) allows it and also provides chat and audio channels, which makes it unnecessary to open an audio call on another app while you work!
 
 ![pretty much everyone right now](img/me_and_the_boys.png)
 
