@@ -214,4 +214,4 @@ if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
 
 And that's it for the basics! There's still a lot of things to explore but you can already get an idea of the tool's potential :p 
 
-# REFERÊNCIAS
+# REFERENCES
