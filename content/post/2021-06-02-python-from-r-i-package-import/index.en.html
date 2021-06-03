@@ -1,0 +1,67 @@
+---
+title: 'Python from R I: package importing'
+author: Alberson Miranda
+date: '2021-06-02'
+slug: [package-importing]
+categories:
+  - languages
+tags:
+  - Python
+  - R
+series: Python from R
+description: Comparing package importing in R and Python.
+featured: yes
+draft: yes
+featureImage: img/r-python.jpg
+thumbnail: images/python.jpg
+shareImage: images/python.jpg
+codeMaxLines: 10
+codeLineNumbers: yes
+figurePositionShow: yes
+bibliography: [bib.bib]
+link-citations: true
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Python from R is a collaborative initiative to write a book to help experienced R users learn Python. In the words of my boi <a href="https://twitter.com/BenjaminWolfe">Benjamin Wolfe</a> in the Python from R Slack channel:</p>
+<blockquote>
+<ul>
+<li>We’re a group of people who either learned Python from R, are R users currently learning Python, or have yet to learn Python, but are comfortable with R.</li>
+<li>What we hope to do is write some collaborative resources for others like ourselves to find their way more easily.</li>
+<li>We will work in the open, for anyone “out there” to find and benefit from (and collaborate on!) along the way.</li>
+<li>In the end, we envision this looking like a book — whether that means a literal, physical, published print book, or an online one.</li>
+</ul>
+</blockquote>
+<div id="motivation" class="section level1">
+<h1>MOTIVATION</h1>
+<p>When I was writing my concept map for the book (we’ll write about it eventually), it crossed my mind an analogy about learning a foreign language: <em>it’s impossible to learn a new language by translating word by word</em>. It’s not only a matter of vocabulary. I mean, each language has it’s own grammar, phrasal verbs, diction, expressions, pace etc. That kind of issue also appears when learning a new <em>programming language</em> and I think importing packages is a good, yet very simple, example of that.</p>
+</div>
+<div id="calling-a-function-from-a-package" class="section level1">
+<h1>CALLING A FUNCTION FROM A PACKAGE</h1>
+<p>In R, every package installed in the active library site is listed whenever a R terminal is open. Those listed packages are available for users at all times. For example:</p>
+{{% highlight "r" %}}
+
+# search for machine learning measures that contais "AUC" in the {mlr3} package
+mlr3::mlr_measures$keys("auc")
+{{% /highlight %}}
+<p>But that way of calling functions usually take place only if that particular package won’t be required very often. Otherwise, a <code>library()</code> call is expected.</p>
+{{% highlight "r" %}}
+
+mtcars |>
+  ggplot2::ggplot(ggplot2::aes(x = hp, y = mpg, color = factor(cyl))) +
+  ggplot2::geom_point()
+
+
+{{% /highlight %}}
+<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="packages-location" class="section level1">
+<h1>PACKAGES LOCATION</h1>
+<p>In R, users usually have one or maybe two (default and a custom one) library sites. Those can be accessed via <code>.LibPaths()</code>. In my case:</p>
+<pre class="r"><code># packages site locations
+.libPaths()</code></pre>
+<pre><code>## [1] &quot;C:/Users/alber/Documents/R/win-library/4.0&quot;
+## [2] &quot;C:/Program Files/R/R-4.1.0/library&quot;</code></pre>
+</div>
