@@ -20,16 +20,24 @@ Suponha que você tenha duas amostras (i.e. as rendas da população negra e bra
 
 Vamos utilizar um dos datasets nativos do R para aplicar esse conceito, o `mtcars`. Primeiramente, vamos dar uma olhada em nossos dados.
 
-```{r}
+```{r, echo = FALSE}
+
+blogdown::shortcode("highlight", "r", .content = "
+data = mtcars
+head(data)
+")
 
 data = mtcars
 head(data)
-
 ```
 
 Uma boa forma de ilustrar o teste é verificar se as médias de consumo dos carros (`mpg`, miles per gallon) com 4, 6 e 8 cilindros (`cyl`) diferem significantemente entre si.
 
-```{r}
+```{r, echo=FALSE}
+blogdown::shortcode("highlight", "r", .content = "
+# Médias amostrais
+aggregate(mpg ~ cyl, data = data, FUN = mean)
+")
 
 # Médias amostrais
 aggregate(mpg ~ cyl, data = data, FUN = mean)
@@ -38,7 +46,12 @@ aggregate(mpg ~ cyl, data = data, FUN = mean)
 
 Verificamos que as médias amostrais são diferentes. Resta saber se são *significantemente* diferentes. Plotar um boxplot pode nos ajudar a ter uma intuição. Podemos ver que, exceto pelo grupo de 4 cilindros que possui uma variância maior, os grupos são bem concentrados, de forma que podemos suspeitar que as diferenças sejam significantes.
 
-```{r}
+```{r, echo = FALSE}
+
+blogdown::shortcode("highlight", "r", .content = "
+# Boxplot
+boxplot(mpg ~ cyl, data = data)
+")
 
 # Boxplot
 boxplot(mpg ~ cyl, data = data)
@@ -59,25 +72,35 @@ $$ t = \frac{\bar{X_1} - \bar{X_2}}{s_p . \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} $$
 
 Como primeiro caso, vamos comparar as médias de consumo dos veículos com 6 e 8 cilindros. Como estamos considerando que suas variâncias são iguais, temos de usar o argumento `var.equal = TRUE`:
 
-```{r}
+```{r, echo = FALSE}
 
+blogdown::shortcode("highlight", "r", .content = "
 # teste t para 6 e 8 cilindros
 t.test(mpg ~ cyl, data = data[which(data$cyl != 4),], var.equal = TRUE)
+")
 
+t.test(mpg ~ cyl, data = data[which(data$cyl != 4),], var.equal = TRUE)
 ```
 
 Com p-valor de zero, podemos rejeitar a hipótese nula e considerar que as médias de consumo entre os veículos de 6 e 8 cilindros diferem.
 
 Para as demais comparações, vamos usar o default para `var.equal` que é `FALSE`. Isso significa aplicar a correção de Welch para amostras independentes e de variância diferentes. Como esperado, também podemos rejeitar a hipótese nula e confirmar a diferença nas médias de consumo entre os veículos de 4 e 6 cilindros e 4 e 8 cilindros.
 
-```{r}
+```{r echo = FALSE}
+
+blogdown::shortcode("highlight", "r", .content = "
+# teste t para 4 e 8 cilindros
+t.test(mpg ~ cyl, data = data[which(data$cyl != 6),])
+
+# teste t para 4 e 6 cilindros
+t.test(mpg ~ cyl, data = data[which(data$cyl != 8),])
+")
 
 # teste t para 4 e 8 cilindros
 t.test(mpg ~ cyl, data = data[which(data$cyl != 6),])
 
 # teste t para 4 e 6 cilindros
 t.test(mpg ~ cyl, data = data[which(data$cyl != 8),])
-
 ```
 
 *Easy peasy lemon squeezy*, não é? 

@@ -34,66 +34,82 @@ figurePositionShow: yes
 <li>De forma programática via Python.</li>
 </ol>
 <p>Escolhi o Python aqui porque não conheço um pacote no CRAN<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> que lide com compressão 7zip — se souber, por favor, indique nos comentários! Se escolher baixar e descompactar via script, podemos executar códigos Python através do R com o {reticulate}:</p>
-<pre class="r"><code># ativando python
+{{% highlight "r" %}}
+
+# ativando python
 library(reticulate)
 
 # escolhendo o ambiente
-use_condaenv(&quot;base&quot;)</code></pre>
+use_condaenv("base")
+
+{{% /highlight %}}
 <p>Depois de ativar o ambiente Python, vamos baixar e descompactar a base de dados para uma pasta chamada <code>data</code> dentro do diretório do nosso projeto. Se você baixou manualmente, crie a pasta <code>data</code> e cole o arquivo lá.</p>
-<pre class="python"><code># importando módulos
+{{% highlight "python" %}}
+
+# importando módulos
 import urllib.request as rq
 import py7zr
 
 # baixando dados
-url = &quot;ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z&quot;
-rq.urlretrieve(url, &quot;data/rais.7z&quot;)
+url = "ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z"
+rq.urlretrieve(url, "data/rais.7z")
 
 # descompactando
-rais = py7zr.SevenZipFile(&#39;data/rais.7z&#39;, mode=&#39;r&#39;)
-rais.extractall(path=&quot;data/&quot;)
-rais.close()</code></pre>
+rais = py7zr.SevenZipFile("data/rais.7z", mode="r")
+rais.extractall(path="data/")
+rais.close()
+
+{{% /highlight %}}
 <p>Vamos precisar também da tabela do Código Brasileiro de Ocupações para entendermos as profissões das pessoas analisadas. Depois de fazer o <a href="http://www.mtecbo.gov.br/cbosite/pages/downloads.jsf">download</a>, coloque na pasta <code>data</code> junto com o arquivo da Rais.</p>
 <p>Com os dados baixados, vamos importá-los, conhecê-los e começar a extrair sentido deles.</p>
-<pre class="r"><code># pacotes
+{{% highlight "r" %}}
+
+# pacotes
 library(tidyverse)
 
 # importando a Rais
 # como os dados possuem caracteres especiais (acentos),
 # é necessário alterar o encoding para LATIN1
-data = read_delim(&quot;data/ES2017.txt&quot;, delim = &quot;;&quot;,
-                  locale = readr::locale(encoding = &quot;LATIN1&quot;),
+data = read_delim("data/ES2017.txt", delim = ";",
+                  locale = readr::locale(encoding = "LATIN1"),
                   col_names = FALSE,
                   skip = 1)
 
 # escolhendo as variáveis de interesse e renomeando colunas
 # também vamos precisar substituir vírgulas por pontos
 # se preferir, realize essa etapa via encoding
-data = data %&gt;%
-  select(X8, X20, X26, X31, X35, X38) %&gt;%
-  rename(&quot;cod_profissao&quot; = X8,
-         &quot;idade&quot; = X20,
-         &quot;municipio&quot; = X26,
-         &quot;cod_raca&quot; = X31,
-         &quot;rem_media&quot; = X35,
-         &quot;sexo&quot; = X38) %&gt;%
-  mutate(rem_media = as.numeric(str_replace_all(rem_media, &quot;,&quot;, &quot;.&quot;)),
+data = data %>%
+  select(X8, X20, X26, X31, X35, X38) %>%
+  rename("cod_profissao" = X8,
+         "idade" = X20,
+         "municipio" = X26,
+         "cod_raca" = X31,
+         "rem_media" = X35,
+         "sexo" = X38) %>%
+  mutate(rem_media = as.numeric(str_replace_all(rem_media, ",", ".")),
          sexo = as.integer(sexo),
          idade = as.integer(idade))
 
 # importando tabela CBO
-cbo = read_delim(&quot;data/CBO2002.csv&quot;, delim = &quot;;&quot;,
-                 locale = readr::locale(encoding = &quot;LATIN1&quot;),
-                 col_names = c(&quot;cod_profissao&quot;, &quot;profissao&quot;),
-                 col_types = c(&quot;d&quot;, &quot;c&quot;),
+cbo = read_delim("data/CBO2002.csv", delim = ";",
+                 locale = readr::locale(encoding = "LATIN1"),
+                 col_names = c("cod_profissao", "profissao"),
+                 col_types = c("d", "c"),
                  skip = 1)
 
 # juntando ambas tabelas e filtrando apenas Vitória
-data = data %&gt;%
-  inner_join(cbo, by = &quot;cod_profissao&quot;) %&gt;%
-  filter(municipio == 320530)</code></pre>
+data = data %>%
+  inner_join(cbo, by = "cod_profissao") %>%
+  filter(municipio == 320530)
+
+{{% /highlight %}}
 <p>Nossos dados agora têm essa cara:</p>
-<pre class="r"><code># visualizando dataframe
-head(data)</code></pre>
+{{% highlight "r" %}}
+
+# visualizando dataframe
+head(data)
+
+{{% /highlight %}}
 <pre><code>## # A tibble: 6 x 7
 ##   cod_profissao idade municipio cod_raca rem_media  sexo profissao              
 ##           &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                  
@@ -107,44 +123,54 @@ head(data)</code></pre>
 <div id="diferenças-no-agregado" class="section level1">
 <h1>DIFERENÇAS NO AGREGADO</h1>
 <p>Primeiramente, vamos tentar entender o que temos em mãos em termos de amostra:</p>
-<pre class="r"><code># quantidade de homens e mulheres
-data %&gt;%
+{{% highlight "r" %}}
+
+# quantidade de homens e mulheres
+data %>%
   ggplot(aes(x = factor(sexo),
              fill = factor(sexo),
              label = scales::number(..count..))) +
   geom_bar() +
-  geom_label(stat = &quot;count&quot;,
+  geom_label(stat = "count",
              show.legend = FALSE,
-             color = &quot;grey30&quot;) +
+             color = "grey30") +
   scale_y_continuous(labels = scales::number) +
-  scale_fill_manual(name = &quot;sexo&quot;,
-                    labels = c(&quot;homens&quot;, &quot;mulheres&quot;),
-                    values = c(&quot;lightblue&quot;, &quot;salmon&quot;)) +
-  labs(x = &quot;&quot;,
-       y = &quot;quantidade&quot;,
-       title = &quot;QUANTIDADE DE HOMENS E MULHERES&quot;,
-       subtitle = &quot;amostra da cidade de Vitória-ES&quot;,
-       caption = &quot;fonte: Rais/2017&quot;) +
+  scale_fill_manual(name = "sexo",
+                    labels = c("homens", "mulheres"),
+                    values = c("lightblue", "salmon")) +
+  labs(x = "",
+       y = "quantidade",
+       title = "QUANTIDADE DE HOMENS E MULHERES",
+       subtitle = "amostra da cidade de Vitória-ES",
+       caption = "fonte: Rais/2017") +
   theme_minimal() +
-  theme(text = element_text(family = &quot;Century Gothic&quot;,
-                            color = &quot;grey30&quot;),
-        axis.text.x = element_blank())</code></pre>
+  theme(text = element_text(family = "Century Gothic",
+                            color = "grey30"),
+        axis.text.x = element_blank())
+
+{{% /highlight %}}
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/barplot-1.png" width="672" /></p>
 <p>Temos praticamente a mesma quantidade de homens e mulheres em nossa amostra. Podemos, antes de realizar qualquer outra análise e aplicar quaisquer filtros, calcular a remuneração média:</p>
-<pre class="r"><code># remuneração média
-aggregate(data = data, rem_media ~ sexo, FUN = mean)</code></pre>
+{{% highlight "r" %}}
+
+# remuneração média
+aggregate(data = data, rem_media ~ sexo, FUN = mean)
+
+{{% /highlight %}}
 <pre><code>##   sexo rem_media
 ## 1    1  3925.187
 ## 2    2  2846.727</code></pre>
 <p>No agregado, a renda média dos homens em Vitória é quase 40% maior que a das mulheres e mesmo quando consideramos a mediana ainda é quase 30% maior. Podemos verificar se essa diferença é significativa com um teste t, mas antes devemos verificar se seus pré-requisitos são atendidos.</p>
-<pre class="r"><code># quartis
-boxplot_data = data %&gt;%
-  group_by(sexo) %&gt;%
-  summarise(stats = list(fivenum(rem_media))) %&gt;%
+{{% highlight "r" %}}
+
+# quartis
+boxplot_data = data %>%
+  group_by(sexo) %>%
+  summarise(stats = list(fivenum(rem_media))) %>%
   unnest(cols = c(stats))
 
 # boxplot
-data %&gt;%
+data %>%
   ggplot(aes(
     x = factor(sexo),
     y = rem_media,
@@ -160,33 +186,37 @@ data %&gt;%
   coord_cartesian(ylim = c(0, 5000)) +
   scale_y_continuous(labels = scales::number) +
   scale_fill_manual(
-    name = &quot;sexo&quot;,
-    labels = c(&quot;homens&quot;, &quot;mulheres&quot;),
-    values = c(&quot;lightblue&quot;, &quot;salmon&quot;)
+    name = "sexo",
+    labels = c("homens", "mulheres"),
+    values = c("lightblue", "salmon")
   ) +
   labs(
-    x = &quot;&quot;,
-    y = &quot;remuneração média&quot;,
-    title = &quot;DISTRIBUIÇÃO DA REMUNERAÇÃO MÉDIA ENTRE HOMENS E MULHERES&quot;,
-    subtitle = &quot;amostra da cidade de Vitória-ES&quot;,
-    caption = &quot;fonte: Rais/2017&quot;
+    x = "",
+    y = "remuneração média",
+    title = "DISTRIBUIÇÃO DA REMUNERAÇÃO MÉDIA ENTRE HOMENS E MULHERES",
+    subtitle = "amostra da cidade de Vitória-ES",
+    caption = "fonte: Rais/2017"
   ) +
   theme_minimal() +
   theme(
     text = element_text(
-      family = &quot;Century Gothic&quot;,
-      color = &quot;grey30&quot;
+      family = "Century Gothic",
+      color = "grey30"
     ),
     axis.text.x = element_blank()
-  )</code></pre>
+  )
+
+{{% /highlight %}}
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/boxplot-1.png" width="672" /></p>
 <div id="verificando-a-hipótese-da-normalidade" class="section level2">
 <h2>VERIFICANDO A HIPÓTESE DA NORMALIDADE</h2>
 <p>Sabemos que o teste t é um teste paramétrico e <a href="https://datamares.netlify.app/post/2020-11-20-comparando-variancias/">já discutimos anteriormente</a> que, quando os dados não seguem uma distribuição próxima da normal, precisamos realizar transformações para alcançar a normalidade.</p>
 <p>Você pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limite garante a hipótese da normalidade. Entretanto, principalmente em dados com muitos <em>outliers</em> extremos, o tamanho da amostra necessária para convergência pode ser absurda, invalidando, na prática, a afirmação a partir da TCL.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. Portanto, defendo que devemos, sim, ter cuidado com essa hipótese mesmo lidando com grandes amostras.</p>
 <p>A primeira análise nesse sentido é a visual. Podemos verificar que a distribuição apresenta <em>fat tail</em> e passa longe de uma normal, tanto pelo histograma quanto pelo <em>Q-Q plot</em>.</p>
-<pre class="r"><code># histograma
-data %&gt;%
+{{% highlight "r" %}}
+
+# histograma
+data %>%
   ggplot(aes(
     x = rem_media,
     fill = factor(sexo)
@@ -196,37 +226,41 @@ data %&gt;%
   scale_y_continuous(labels = scales::number) +
   scale_x_continuous(labels = scales::number) +
   scale_fill_manual(
-    name = &quot;sexo&quot;,
-    labels = c(&quot;homens&quot;, &quot;mulheres&quot;),
-    values = c(&quot;lightblue&quot;, &quot;salmon&quot;)
+    name = "sexo",
+    labels = c("homens", "mulheres"),
+    values = c("lightblue", "salmon")
   ) +
   labs(
-    x = &quot;remuneração média&quot;,
-    y = &quot;quantidade&quot;,
-    title = &quot;DISTRIBUIÇÃO DA REMUNERAÇÃO MÉDIA ENTRE HOMENS E MULHERES&quot;,
-    subtitle = &quot;amostra da cidade de Vitória-ES&quot;,
-    caption = &quot;fonte: Rais/2017&quot;
+    x = "remuneração média",
+    y = "quantidade",
+    title = "DISTRIBUIÇÃO DA REMUNERAÇÃO MÉDIA ENTRE HOMENS E MULHERES",
+    subtitle = "amostra da cidade de Vitória-ES",
+    caption = "fonte: Rais/2017"
   ) +
   theme_minimal() +
   theme(text = element_text(
-    family = &quot;Century Gothic&quot;,
-    color = &quot;grey30&quot;
-  ))</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/qqplot-1.png" width="672" /></p>
-<pre class="r"><code># qqplot
+    family = "Century Gothic",
+    color = "grey30"
+  ))
+
+# qqplot
 # os dados estarão em cima da reta caso sejam distribuídos normalmente
 par(mfrow = c(1, 2))
 
 qqnorm(data[data$sexo == 1, ]$rem_media,
-  main = &quot;Q-Q PLOT: HOMENS&quot;)
+  main = "Q-Q PLOT: HOMENS")
 qqline(data[data$sexo == 1, ]$rem_media)
 
 qqnorm(data[data$sexo == 2, ]$rem_media,
-  main = &quot;Q-Q PLOT: MULHERES&quot;)
-qqline(data[data$sexo == 2, ]$rem_media)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/qqplot-2.png" width="672" /></p>
+  main = "Q-Q PLOT: MULHERES")
+qqline(data[data$sexo == 2, ]$rem_media)
+
+{{% /highlight %}}
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/qqplot-1.png" width="672" /><img src="{{< blogdown/postref >}}index_files/figure-html/qqplot-2.png" width="672" /></p>
 <p>Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos tratar a base.</p>
-<pre class="r"><code># garantir reprodutibilidade
+{{% highlight "r" %}}
+
+# garantir reprodutibilidade
 set.seed(1)
 
 # quantidade de amostras
@@ -246,47 +280,54 @@ for (i in 1:n) {
 
 # qqplot
 qqnorm(medias)
-qqline(medias)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/simulacao-1.png" width="672" /></p>
-<pre class="r"><code># visualização
+qqline(medias)
+
+# visualização
 hist(medias,
-    main = &quot;DISTRIBUIÇÃO DAS MÉDIAS AMOSTRAIS&quot;,
-    xlab = &quot;médias&quot;,
-    sub = &quot;seed = 1&quot;
-)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/simulacao-2.png" width="672" /></p>
+    main = "DISTRIBUIÇÃO DAS MÉDIAS AMOSTRAIS",
+    xlab = "médias",
+    sub = "seed = 1"
+)
+
+{{% /highlight %}}
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/simulacao-1.png" width="672" /><img src="{{< blogdown/postref >}}index_files/figure-html/simulacao-2.png" width="672" /></p>
 <p>Ufa! O TCL se manteve em nossos dados e tanto o <em>Q-Q plot</em> quanto o histograma demonstraram distribuição próxima da normal, nos habilitando a prosseguir com os testes.</p>
 </div>
 <div id="teste-t" class="section level2">
 <h2>TESTE T</h2>
 <p>Agora que garantimos os pré-requisitos, vamos testar se a diferença entre as médias é significativa. Para isso, vamos usar o pacote {infer}:</p>
-<pre class="r"><code># transformando variável `sexo`
-data = data %&gt;%
-  mutate(sexo = ifelse(sexo == 1, &quot;homem&quot;, &quot;mulher&quot;))
+{{% highlight "r" %}}
+
+# transformando variável `sexo`
+data = data %>%
+  mutate(sexo = ifelse(sexo == 1, "homem", "mulher"))
 
 # carregando pacote
 library(infer)
 
 # calculando estatística t
-estatistica_calculada = data %&gt;%
-  specify(rem_media ~ sexo) %&gt;%
-  calculate(stat = &quot;t&quot;, order = c(&quot;homem&quot;, &quot;mulher&quot;))
+estatistica_calculada = data %>%
+  specify(rem_media ~ sexo) %>%
+  calculate(stat = "t", order = c("homem", "mulher"))
 
 # gerando distribuição nula
-distr_nula = data %&gt;%
-  specify(rem_media ~ sexo) %&gt;%
-  hypothesise(null = &quot;independence&quot;) %&gt;%
-  generate(reps = 100, type = &quot;permute&quot;) %&gt;%
-  calculate(stat = &quot;t&quot;, order = c(&quot;homem&quot;, &quot;mulher&quot;))
+distr_nula = data %>%
+  specify(rem_media ~ sexo) %>%
+  hypothesise(null = "independence") %>%
+  generate(reps = 100, type = "permute") %>%
+  calculate(stat = "t", order = c("homem", "mulher"))
 
 # visualizando distribuição nula e estatística do teste
-distr_nula %&gt;%
-  visualize(method = &quot;both&quot;) +
-  shade_p_value(estatistica_calculada, direction = &quot;greater&quot;)</code></pre>
+distr_nula %>%
+  visualize(method = "both") +
+  shade_p_value(estatistica_calculada, direction = "greater")
+
+# calculando p-valor
+distr_nula %>%
+  get_p_value(obs_stat = estatistica_calculada, direction = "greater")
+
+{{% /highlight %}}
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/teste%20t%20agg-1.png" width="672" /></p>
-<pre class="r"><code># calculando p-valor
-distr_nula %&gt;%
-  get_p_value(obs_stat = estatistica_calculada, direction = &quot;greater&quot;)</code></pre>
 <pre><code>## # A tibble: 1 x 1
 ##   p_value
 ##     &lt;dbl&gt;
@@ -301,24 +342,38 @@ distr_nula %&gt;%
 <span class="math display">\[ d = \frac{\text{média do grupo experimental} - \text{média do grupo de controle}}{\text{desvio padrão agrupado}} \]</span></p>
 <p>Para duas médias fixadas, quanto menor for o desvio padrão, maior será a estatística <em>d</em>. Por outro lado, quanto maior for o desvio padrão, menor será o tamanho do efeito.</p>
 <p>No R, vamos utilizar o pacote {effectsize}:</p>
-<pre class="r"><code># carregando pacote
+{{% highlight "r" %}}
+
+# carregando pacote
 library(effectsize)
 
 # calculando a diferença padronizada
 cohens_d(
-  data[data$sexo == &quot;homem&quot;, ]$rem_media,
-  data[data$sexo == &quot;mulher&quot;, ]$rem_media
-)</code></pre>
+  data[data$sexo == "homem", ]$rem_media,
+  data[data$sexo == "mulher", ]$rem_media
+)
+
+# interpretando a estatística d
+interpret_d(0.26, "gignac2016")
+
+{{% /highlight %}}
 <pre><code>## Cohen&#39;s d |       95% CI
 ## ------------------------
 ## 0.26      | [0.28, 0.28]
 ## 
 ## - Estimated using pooled SD.</code></pre>
-<pre class="r"><code># interpretando a estatística d
-interpret_d(0.26, &quot;gignac2016&quot;)</code></pre>
 <pre><code>## [1] &quot;small&quot;
 ## (Rules: gignac2016)</code></pre>
 <p>Com uma estatística <span class="math inline">\(d=0.26\)</span>, a diferença é considerada pequena. Na escala de Gignac &amp; Szodorai (2016):</p>
+{{% highlight "r" %}}
+
+rules(
+  c(0.2, 0.41, 0.63),
+  c("muito pequeno", "pequeno", "moderado", "grande"),
+  "Gignac & Szodorai (2016)"
+)
+
+{{% /highlight %}}
 <pre><code>## # Reference thresholds (Gignac &amp; Szodorai (2016))
 ## 
 ## muito pequeno &lt;= 0.2 &lt; pequeno &lt;= 0.41 &lt; moderado &lt;= 0.63 &lt; grande</code></pre>
@@ -330,35 +385,39 @@ interpret_d(0.26, &quot;gignac2016&quot;)</code></pre>
 <div id="diferenças-entre-profissões" class="section level1">
 <h1>DIFERENÇAS ENTRE PROFISSÕES</h1>
 <p>Podemos estender nossa análise verificando em quais profissões há maior e menor divergência na remuneração.</p>
-<pre class="r"><code># criando dataframe de diferenças na remuneração
+{{% highlight "r" %}}
+
+# criando dataframe de diferenças na remuneração
 # profissões selecionadas
-diferencas = data %&gt;%
+diferencas = data %>%
   mutate(profissao = case_when(
-    str_detect(profissao, &quot;Advogado&quot;) ~ &quot;Advogados&quot;,
-    str_detect(profissao, &quot;Engenheiro&quot;) ~ &quot;Engenheiros&quot;,
-    str_detect(profissao, &quot;Médico&quot;) ~ &quot;Médicos&quot;,
-    str_detect(profissao, &quot;Gerente&quot;) ~ &quot;Gerentes&quot;,
-    str_detect(profissao, &quot;Dirigentes|Diretor&quot;) ~ &quot;Diretores&quot;,
-    str_detect(profissao, &quot;Economista&quot;) ~ &quot;Economistas&quot;,
-    str_detect(profissao, &quot;Analista&quot;) ~ &quot;Analistas&quot;,
-    str_detect(profissao, &quot;Técnico&quot;) ~ &quot;Técnicos&quot;,
-    str_detect(profissao, &quot;Enfermeiro&quot;) ~ &quot;Enfermeiros&quot;,
+    str_detect(profissao, "Advogado") ~ "Advogados",
+    str_detect(profissao, "Engenheiro") ~ "Engenheiros",
+    str_detect(profissao, "Médico") ~ "Médicos",
+    str_detect(profissao, "Gerente") ~ "Gerentes",
+    str_detect(profissao, "Dirigentes|Diretor") ~ "Diretores",
+    str_detect(profissao, "Economista") ~ "Economistas",
+    str_detect(profissao, "Analista") ~ "Analistas",
+    str_detect(profissao, "Técnico") ~ "Técnicos",
+    str_detect(profissao, "Enfermeiro") ~ "Enfermeiros",
     str_detect(profissao,
-      &quot;(Professor)(.*)(ensino superior)(.*)&quot;) ~ &quot;Prof. Ensino Superior&quot;,
-    TRUE ~ &quot;Outros&quot;
-  )) %&gt;%
-  group_by(sexo, profissao) %&gt;%
+      "(Professor)(.*)(ensino superior)(.*)") ~ "Prof. Ensino Superior",
+    TRUE ~ "Outros"
+  )) %>%
+  group_by(sexo, profissao) %>%
   summarise(
     renda = mean(rem_media),
     n = n()
-  ) %&gt;%
-  ungroup() %&gt;%
-    pivot_wider(names_from = sexo, values_from = c(renda, n)) %&gt;%
-    mutate(dif = renda_homem - renda_mulher) %&gt;%
+  ) %>%
+  ungroup() %>%
+    pivot_wider(names_from = sexo, values_from = c(renda, n)) %>%
+    mutate(dif = renda_homem - renda_mulher) %>%
     arrange(desc(dif))
 
 # visualizando tabela
-diferencas</code></pre>
+diferencas
+
+{{% /highlight %}}
 <pre><code>## # A tibble: 11 x 6
 ##    profissao             renda_homem renda_mulher n_homem n_mulher   dif
 ##    &lt;chr&gt;                       &lt;dbl&gt;        &lt;dbl&gt;   &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;
@@ -374,7 +433,9 @@ diferencas</code></pre>
 ## 10 Médicos                     8232.        7704.    1840     1984  528.
 ## 11 Enfermeiros                 4166.        4439.     540     2139 -273.</code></pre>
 <p>Dentre as profissões selecionadas, apenas a de enfermagem tem remuneração média maior para as mulheres. Os homens levam vantagem em todos os demais. Colocando em gráfico:</p>
-<pre class="r"><code># gráfico
+{{% highlight "r" %}}
+
+# gráfico
 diferenca_media = 3925.18 - 2846.727
 setas = tibble(
   x1 = c(2.9, 9.6, 8.3),
@@ -383,61 +444,67 @@ setas = tibble(
   y2 = c(1200, 6300, -270)
 )
 
-diferencas %&gt;%
+diferencas %>%
   ggplot(aes(x = reorder(profissao, desc(profissao)), y = dif)) +
-  geom_hline(yintercept = diferenca_media, color = &quot;grey85&quot;) +
+  geom_hline(yintercept = diferenca_media, color = "grey85") +
   geom_segment(
     aes(y = diferenca_media, yend = dif, xend = profissao),
-    color = &quot;grey85&quot;, size = .7
+    color = "grey85", size = .7
   ) +
-  geom_point(aes(size = renda_homem), color = &quot;#F06337&quot;) +
+  geom_point(aes(size = renda_homem), color = "#F06337") +
   scale_y_continuous(labels = scales::number) +
   scale_size_continuous(labels = scales::number, range = c(1, 10)) +
-  annotate(&quot;text&quot;,
-    x = 2.5, y = 2000, size = 3.5, color = &quot;grey85&quot;,
-    label = &quot;a diferença média é de\nR$ 1.078&quot;
+  annotate("text",
+    x = 2.5, y = 2000, size = 3.5, color = "grey85",
+    label = "a diferença média é de
+R$ 1.078"
   ) +
-  annotate (&quot;text&quot;,
-    x = 10.5, y = 5500, size = 3.5, color = &quot;grey85&quot;,
-    label = paste(&quot;posições de executivo&quot;,
-    &quot;é onde a diferença é maior&quot;,
-    &quot;e é também onde estão\nos maiores salários&quot;,
-    sep = &quot;\n&quot;
+  annotate ("text",
+    x = 10.5, y = 5500, size = 3.5, color = "grey85",
+    label = paste("posições de executivo",
+    "é onde a diferença é maior",
+    "e é também onde estão
+os maiores salários",
+    sep = "
+"
   )) +
-  annotate(&quot;text&quot;,
-  x = 9, y = 250, size = 3.5, color = &quot;grey85&quot;,
+  annotate("text",
+  x = 9, y = 250, size = 3.5, color = "grey85",
   label = paste(
-    &quot;dentre essas profissões,&quot;,
-    &quot;apenas as enfermeiras&quot;,
-    &quot;recebem mais que homens&quot;,
-    sep = &quot;\n&quot;),
+    "dentre essas profissões,",
+    "apenas as enfermeiras",
+    "recebem mais que homens",
+    sep = "
+"),
   ) +
   geom_curve(
     data = setas, aes(x = x1, y = y1, xend = x2, yend = y2),
-    arrow = arrow(length = unit(0.1, &quot;inch&quot;)),
-    size = 0.3, color = &quot;grey85&quot;, curvature = 0.3
+    arrow = arrow(length = unit(0.1, "inch")),
+    size = 0.3, color = "grey85", curvature = 0.3
   ) +
   coord_flip() +
   labs(
-    x = &quot;&quot;,
-    y = &quot;diferença salarial em R$&quot;,
-    size = &quot;rem. média\n(homem)&quot;,
-    title = &quot;desigualdade de gênero&quot;,
-    subtitle = paste(&quot;as disparidades salarias evidenciam o longo caminho na superação da colocação&quot;,
-    &quot;da mulher como profissional de segunda categoria no mercado de trabalho&quot;,
-    sep = &quot;\n&quot;),
-    caption = &quot;fonte: Rais 2017, Vitória/ES | elaboração: Alberson Miranda&quot;
+    x = "",
+    y = "diferença salarial em R$",
+    size = "rem. média
+(homem)",
+    title = "desigualdade de gênero",
+    subtitle = paste("as disparidades salarias evidenciam o longo caminho na superação da colocação",
+    "da mulher como profissional de segunda categoria no mercado de trabalho",
+    sep = "
+"),
+    caption = "fonte: Rais 2017, Vitória/ES | elaboração: Alberson Miranda"
   ) +
   theme(
     panel.grid = element_blank(),
-    plot.background = element_rect(fill = &quot;#002538&quot;),
-    panel.background = element_rect(fill = &quot;#002538&quot;),
+    plot.background = element_rect(fill = "#002538"),
+    panel.background = element_rect(fill = "#002538"),
     text = element_text(
-      family = &quot;Century Gothic&quot;,
-      color = &quot;grey85&quot;
+      family = "Century Gothic",
+      color = "grey85"
     ),
-    axis.text = element_text(color = &quot;grey85&quot;, size = 10),
-    axis.ticks = element_line(color = &quot;grey85&quot;),
+    axis.text = element_text(color = "grey85", size = 10),
+    axis.ticks = element_line(color = "grey85"),
     plot.title = element_text(size = 36, margin = margin(10, 0, 5, 10)),
     plot.subtitle = element_text(
       hjust = 0,
@@ -445,61 +512,73 @@ diferencas %&gt;%
       size = 16
     ),
     plot.caption = element_text(hjust = 1),
-    plot.title.position = &quot;plot&quot;,
-    panel.border = element_rect(color = &quot;grey85&quot;, fill = NA),
-    legend.background = element_rect(fill = &quot;#002538&quot;),
-    legend.key = element_rect(fill = &quot;#002538&quot;)
-  )</code></pre>
+    plot.title.position = "plot",
+    panel.border = element_rect(color = "grey85", fill = NA),
+    legend.background = element_rect(fill = "#002538"),
+    legend.key = element_rect(fill = "#002538")
+  )
+
+{{% /highlight %}}
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/grafico-1.png" width="1152" /></p>
 <p>Dentre essas profissões que escolhemos, vamos analisar o tamanho do efeito para médicos e executivos (dirigentes e diretores).</p>
 <div id="disparidade-salarial-entre-médicos" class="section level2">
 <h2>DISPARIDADE SALARIAL ENTRE MÉDICOS</h2>
 <p>Primeiramente, vamos verificar a significância da diferença. Como esperado, ela é significativa.</p>
-<pre class="r"><code># calculando estatística t
-estatistica_calculada = data %&gt;%
-  filter(str_detect(profissao, &quot;Médico&quot;)) %&gt;%
-  specify(rem_media ~ sexo) %&gt;%
-  calculate(stat = &quot;t&quot;, order = c(&quot;homem&quot;, &quot;mulher&quot;))
+{{% highlight "r" %}}
+
+# calculando estatística t
+estatistica_calculada = data %>%
+  filter(str_detect(profissao, "Médico")) %>%
+  specify(rem_media ~ sexo) %>%
+  calculate(stat = "t", order = c("homem", "mulher"))
 
 # gerando distribuição nula
-distr_nula = data %&gt;%
-  filter(str_detect(profissao, &quot;Médico&quot;)) %&gt;%
-  specify(rem_media ~ sexo) %&gt;%
-  hypothesise(null = &quot;independence&quot;) %&gt;%
-  generate(reps = 100, type = &quot;permute&quot;) %&gt;%
-  calculate(stat = &quot;t&quot;, order = c(&quot;homem&quot;, &quot;mulher&quot;))
+distr_nula = data %>%
+  filter(str_detect(profissao, "Médico")) %>%
+  specify(rem_media ~ sexo) %>%
+  hypothesise(null = "independence") %>%
+  generate(reps = 100, type = "permute") %>%
+  calculate(stat = "t", order = c("homem", "mulher"))
 
 # calculando intervalo de confiança
 percentile_ci = get_ci(distr_nula)
 
 # visualizando distribuição nula e estatística do teste
-distr_nula %&gt;%
-  visualize(method = &quot;both&quot;) +
-  shade_p_value(estatistica_calculada, direction = &quot;greater&quot;) +
-  shade_confidence_interval(endpoints = percentile_ci)</code></pre>
+distr_nula %>%
+  visualize(method = "both") +
+  shade_p_value(estatistica_calculada, direction = "greater") +
+  shade_confidence_interval(endpoints = percentile_ci)
+
+# calculando p-valor
+distr_nula %>%
+  get_p_value(obs_stat = estatistica_calculada, direction = "greater")
+
+{{% /highlight %}}
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/medicos-1.png" width="672" /></p>
-<pre class="r"><code># calculando p-valor
-distr_nula %&gt;%
-  get_p_value(obs_stat = estatistica_calculada, direction = &quot;greater&quot;)</code></pre>
 <pre><code>## # A tibble: 1 x 1
 ##   p_value
 ##     &lt;dbl&gt;
 ## 1       0</code></pre>
 <p>Em seguida, vamos calcular o tamanho do efeito.</p>
-<pre class="r"><code> # calculando a diferença padronizada
+{{% highlight "r" %}}
+
+ # calculando a diferença padronizada
  cohens_d(
-   data[data$sexo == &quot;homem&quot; &amp;
-     str_detect(data$profissao, &quot;Médico&quot;), ]$rem_media,
-   data[data$sexo == &quot;mulher&quot; &amp;
-     str_detect(data$profissao, &quot;Médico&quot;), ]$rem_media
- )</code></pre>
+   data[data$sexo == "homem" &
+     str_detect(data$profissao, "Médico"), ]$rem_media,
+   data[data$sexo == "mulher" &
+     str_detect(data$profissao, "Médico"), ]$rem_media
+ )
+
+ # interpretando a estatística d
+ interpret_d(0.12, "gignac2016")
+
+{{% /highlight %}}
 <pre><code>## Cohen&#39;s d |       95% CI
 ## ------------------------
 ## 0.12      | [0.06, 0.19]
 ## 
 ## - Estimated using pooled SD.</code></pre>
-<pre class="r"><code> # interpretando a estatística d
- interpret_d(0.12, &quot;gignac2016&quot;)</code></pre>
 <pre><code>## [1] &quot;very small&quot;
 ## (Rules: gignac2016)</code></pre>
 <p>Com uma estatística <em>d</em> de 0.12, temos um efeito <em>muito pequeno</em> na escala de Gignac &amp; Szodorai (2016). Isso significa que 54% das médicas da cidade de Vitória teriam remuneração abaixo do que o médico médio do município, enqaunto 46% receberiam mais que o médico médio.</p>
@@ -507,44 +586,53 @@ distr_nula %&gt;%
 <div id="disparidade-salarial-em-cargos-executivos" class="section level2">
 <h2>DISPARIDADE SALARIAL EM CARGOS EXECUTIVOS</h2>
 <p>Repetindo o mesmo procedimento para as pessoas em cargos executivos, vemos que a diferença também é significativa.</p>
-<pre class="r"><code># calculando estatística t
-estatistica_calculada = data %&gt;%
-  filter(str_detect(profissao, &quot;Dirigentes|Diretor&quot;)) %&gt;%
-  specify(rem_media ~ sexo) %&gt;%
-  calculate(stat = &quot;t&quot;, order = c(&quot;homem&quot;, &quot;mulher&quot;))
+{{% highlight "r" %}}
+
+# calculando estatística t
+estatistica_calculada = data %>%
+  filter(str_detect(profissao, "Dirigentes|Diretor")) %>%
+  specify(rem_media ~ sexo) %>%
+  calculate(stat = "t", order = c("homem", "mulher"))
 
 # gerando distribuição nula
-distr_nula &lt;- data %&gt;%
-  filter(str_detect(profissao, &quot;Dirigentes|Diretor&quot;)) %&gt;%
-  specify(rem_media ~ sexo) %&gt;%
-  hypothesise(null = &quot;independence&quot;) %&gt;%
-  generate(reps = 100, type = &quot;permute&quot;) %&gt;%
-  calculate(stat = &quot;t&quot;, order = c(&quot;homem&quot;, &quot;mulher&quot;))
+distr_nula <- data %>%
+  filter(str_detect(profissao, "Dirigentes|Diretor")) %>%
+  specify(rem_media ~ sexo) %>%
+  hypothesise(null = "independence") %>%
+  generate(reps = 100, type = "permute") %>%
+  calculate(stat = "t", order = c("homem", "mulher"))
 
 # calculando intervalo de confiança
-percentile_ci &lt;- get_ci(distr_nula)
+percentile_ci <- get_ci(distr_nula)
 
 # visualizando distribuição nula e estatística do teste
-distr_nula %&gt;%
-  visualize(method = &quot;both&quot;) +
-  shade_p_value(estatistica_calculada, direction = &quot;greater&quot;) +
-  shade_confidence_interval(endpoints = percentile_ci)</code></pre>
+distr_nula %>%
+  visualize(method = "both") +
+  shade_p_value(estatistica_calculada, direction = "greater") +
+  shade_confidence_interval(endpoints = percentile_ci)
+
+{{% /highlight %}}
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/executivos-1.png" width="672" /></p>
 <p>E calculando o tamanho do efeito:</p>
-<pre class="r"><code> # calculando a diferença padronizada
+{{% highlight "r" %}}
+
+ # calculando a diferença padronizada
  cohens_d(
-   data[data$sexo == &quot;homem&quot; &amp;
-     str_detect(data$profissao, &quot;Dirigentes|Diretor&quot;), ]$rem_media,
-   data[data$sexo == &quot;mulher&quot; &amp;
-     str_detect(data$profissao, &quot;Dirigentes|Diretor&quot;), ]$rem_media
- )</code></pre>
+   data[data$sexo == "homem" &
+     str_detect(data$profissao, "Dirigentes|Diretor"), ]$rem_media,
+   data[data$sexo == "mulher" &
+     str_detect(data$profissao, "Dirigentes|Diretor"), ]$rem_media
+ )
+
+ # interpretando a estatística d
+ interpret_d(0.47, "gignac2016")
+ 
+{{% /highlight %}}
 <pre><code>## Cohen&#39;s d |       95% CI
 ## ------------------------
 ## 0.47      | [0.30, 0.63]
 ## 
 ## - Estimated using pooled SD.</code></pre>
-<pre class="r"><code> # interpretando a estatística d
- interpret_d(0.47, &quot;gignac2016&quot;)</code></pre>
 <pre><code>## [1] &quot;moderate&quot;
 ## (Rules: gignac2016)</code></pre>
 <p>Com uma estatística <em>d</em> de 0.47, temos um efeito <em>moderado</em> na escala de Gignac &amp; Szodorai (2016). Isso significa dizer que 69% das mulheres em posição de dirigentes e diretoras receberiam menos do que o homem médio na mesma posição.</p>

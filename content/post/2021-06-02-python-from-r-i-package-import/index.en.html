@@ -50,9 +50,8 @@ mlr3::mlr_measures$keys("auc")
 {{% highlight "r" %}}
 
 mtcars |>
-  ggplot2::ggplot(ggplot2::aes(x = hp, y = mpg, color = factor(cyl))) +
-  ggplot2::geom_point()
-
+ggplot2::ggplot(ggplot2::aes(x = hp, y = mpg, color = factor(cyl))) +
+ggplot2::geom_point()
 
 {{% /highlight %}}
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>

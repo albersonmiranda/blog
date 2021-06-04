@@ -42,9 +42,12 @@ thumbnail: "images/git.png"
 <div id="º-.gitconfig-sem-salvar-senha" class="section level2">
 <h2>1º .gitconfig sem salvar senha</h2>
 <p>Recomendo usar o pacote {usethis} para alterar qualquer arquivo de configuração no R. Para a primeira opção, faríamos da seguinte maneira:</p>
-<pre class="r"><code># abrir o arquivo de configuração
+{{% highlight "r" %}}
 
-usethis::edit_git_config()</code></pre>
+# abrir o arquivo de configuração
+usethis::edit_git_config()
+
+{{% /highlight %}}
 <p>Na janela do .gitconfig que será aberta, adicione as seguintes linhas:</p>
 <pre><code>[http]
     proxy = http[s]://dominio.com:porta

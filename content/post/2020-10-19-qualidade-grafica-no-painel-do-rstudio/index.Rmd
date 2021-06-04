@@ -22,8 +22,9 @@ Primeiramente, vamos plotar um gráfico na configuração padrão do RStudio:
 
 Wow, imagine usando algo assim em um banner! Vamos tentar de novo, agora com o Cairo como dispositivo gráfico e usando anti-aliasing:
 
-```{r, message = FALSE, results = "hide"}
+```{r, echo = FALSE}
 
+blogdown::shortcode("highlight", "r", .content = '
 # Adicionando anti-aliasing
 trace(grDevices::png, quote({
   if (missing(type) && missing(antialias)) {
@@ -33,6 +34,11 @@ trace(grDevices::png, quote({
 }), print = FALSE)
 
 # Plotando novamente
+plot(mtcars$mpg, type = "l")
+')
+```
+
+```{r, echo = FALSE}
 plot(mtcars$mpg, type = "l")
 ```
 

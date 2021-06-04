@@ -45,7 +45,21 @@ Antes de entrarmos no teste em si, sabemos que ele é bem simples de calcular ma
 
 Como são dados binários (acertos ou erros) vamos utilizar 1 para acertos e 0 para erros.
 
-```{r data}
+```{r data, echo = FALSE}
+
+blogdown::shortcode("highlight", "r", .content = "
+# criando amostra
+data = c(rep(1, 125), rep(0, 275))
+
+# para que você chegue nos mesmos números aleatórios do exemplo
+set.seed(1)
+
+# randomizando
+data = sample(data)
+
+# checando
+data
+")
 
 # criando amostra
 data = c(rep(1, 125), rep(0, 275))
@@ -58,24 +72,60 @@ data = sample(data)
 
 # checando
 data
-
 ```
 
 Agora que já temos nosso vetor com os dados aleatórios dos alunos que acertaram e erraram as questões, vamos visualizá-lo:
 
-```{r}
+```{r echo = FALSE}
+
+blogdown::shortcode("highlight", "r", .content = '
+# gráfico de barras
+par(mar = c(2, 2, 0, 0))
+barplot(table(data), col = c("lightblue", "salmon"))
+')
 
 # gráfico de barras
 par(mar = c(2, 2, 0, 0))
 barplot(table(data), col = c("lightblue", "salmon"))
-
 ```
 
 A intuição do teste t é dizer se essa diferença entre os acertos e erros ocorre por mero acaso no processo de amostragem ou não. Mas o que isso significa? Neste caso, a média amostral foi de 31.25% com 400 estudantes. As características da distribuição, o desvio padrão e o tamanho da amostra permitem atestar que a diferença entre a média amostral e a média esperada é significante? 
 
 Para ilustrar o raciocínio, vamos tomar 10 amostras de 10 estudantes aleatoriamente e observar o comportamento das médias. Essas amostras de 10 estudantes podem ter média de acertos (linha vermelha) muito próxima dos 25% esperados (linha azul) e longe da média dos 400 alunos (linha verde).
 
-```{r}
+```{r echo = FALSE}
+
+blogdown::shortcode("highlight", "r", .content = '
+# garantir reprodutibilidade
+set.seed(3)
+
+# quantidade de amostras
+n = 10
+
+# médias
+medias = rep(NA, n)
+
+# tirando amostras e calculando as médias
+for (i in 1:n) {
+  medias[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+# visualização
+hist(medias,
+     main = "1ª tiragem: 10 amostras de 10 alunos",
+     xlab = "média",
+     sub = "seed = 3")
+abline(v = mean(medias, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+legend("topright", legend = c(
+  expression(hat(mu)),
+  expression(paste(mu, "= 0.25")),
+  expression(paste(mu, "= 0.3325"))),
+  col = c("red", "blue", "green"),
+  lty = 1)
+')
 
 # garantir reprodutibilidade
 set.seed(3)
@@ -106,12 +156,43 @@ legend("topright", legend = c(
   expression(paste(mu, "= 0.3325"))),
   col = c("red", "blue", "green"),
   lty = 1)
-
 ```
 
 Mas também é possível realizar outra tiragem de 10 amostras com 10 alunos diferentes e encontrarmos uma média completamente diferente, próxima dos 45%:
 
-```{r}
+```{r echo = FALSE}
+
+blogdown::shortcode("highlight", "r", .content = '
+# garantir reprodutibilidade
+set.seed(4)
+
+# quantidade de amostras
+n = 10
+
+# médias
+medias = rep(NA, n)
+
+# tirando amostras e calculando as médias
+for (i in 1:n) {
+  medias[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+# visualização
+hist(medias,
+     main = "2ª tiragem: 10 amostras de 10 alunos",
+     xlab = "média",
+     sub = "seed = 4")
+abline(v = mean(medias, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+legend("topright", legend = c(
+  expression(hat(mu)),
+  expression(paste(mu, "= 0.25")),
+  expression(paste(mu, "= 0.3325"))),
+  col = c("red", "blue", "green"),
+  lty = 1)
+')
 
 # garantir reprodutibilidade
 set.seed(4)
@@ -142,12 +223,73 @@ legend("topright", legend = c(
   expression(paste(mu, "= 0.3325"))),
   col = c("red", "blue", "green"),
   lty = 1)
-
 ```
 
 Conforme vamos aumentando a quantidade de amostras, o desvio padrão se estabiliza e a média amostral vai se aproximando da média populacional. Veja as médias de 50 amostras de 10 alunos, cada:
 
-```{r, fig.show="hold", out.width="80%"}
+```{r, echo = FALSE, fig.show="hold", out.width="80%"}
+
+blogdown::shortcode("highlight", "r", .content = '
+# garantir reprodutibilidade
+set.seed(3)
+
+# quantidade de amostras
+n = 50
+
+# médias
+medias = rep(NA, n)
+
+# tirando amostras e calculando as médias
+for (i in 1:n) {
+  medias[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+# separando o grid em 2 colunas
+par(mfrow = c(1, 2))
+
+# visualização 1ª tiragem
+hist(medias,
+     main = "1ª tiragem: 50 amostras de 10 alunos",
+     xlab = "média",
+     sub = "seed = 3")
+abline(v = mean(medias, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+
+################################################################################
+
+# garantir reprodutibilidade
+set.seed(4)
+
+# quantidade de amostras
+n = 50
+
+# médias
+medias = rep(NA, n)
+
+# tirando amostras e calculando as médias
+for (i in 1:n) {
+  medias[i] = mean(
+    sample(data, size = runif(1, min = 0, max = n), replace = TRUE))
+}
+
+# visualização 2ª tiragem
+hist(medias,
+     main = "2ª tiragem: 50 amostras de 10 alunos",
+     xlab = "média",
+     sub = "seed = 4")
+abline(v = mean(medias, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+legend("topright", legend = c(
+  expression(hat(mu)),
+  expression(paste(mu, "= 0.25")),
+  expression(paste(mu, "= 0.3325"))),
+  col = c("red", "blue", "green"),
+  lty = 1,
+  cex = .7)
+')
 
 # garantir reprodutibilidade
 set.seed(3)
@@ -208,14 +350,72 @@ legend("topright", legend = c(
   col = c("red", "blue", "green"),
   lty = 1,
   cex = .7)
-
 ```
 
 Pode-se observar que tomando duas tiragens de 50 amostras de 10 alunos aleatoriamente cada, as médias começam a convergir para a média observada no total dos 400 alunos.
 
 E se aumentarmos para 100 amostras de 10 alunos?
 
-```{r}
+```{r echo = FALSE}
+
+blogdown::shortcode("highlight", "r", .content = '
+# garantir reprodutibilidade
+set.seed(3)
+
+# quantidade de amostras
+n = 100
+
+# médias
+medias = rep(NA, n)
+
+# tirando amostras e calculando as médias
+for (i in 1:n) {
+  medias[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+# separando o grid em 2 colunas
+par(mfrow = c(1, 2))
+
+# visualização 1ª tiragem
+hist(medias,
+     main = "1ª tiragem: 100 amostras de 10 alunos",
+     xlab = "média",
+     sub = "seed = 3")
+abline(v = mean(medias, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+
+################################################################################
+
+# garantir reprodutibilidade
+set.seed(4)
+
+# médias
+medias = rep(NA, n)
+
+# tirando amostras e calculando as médias
+for (i in 1:n) {
+  medias[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+# visualização 2ª tiragem
+hist(medias,
+     main = "2ª tiragem: 100 amostras de 10 alunos",
+     xlab = "média",
+     sub = "seed = 4")
+abline(v = mean(medias, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+legend("topright", legend = c(
+  expression(hat(mu)),
+  expression(paste(mu, "= 0.25")),
+  expression(paste(mu, "= 0.3325"))),
+  col = c("red", "blue", "green"),
+  lty = 1,
+  cex = .7)
+')
 
 # garantir reprodutibilidade
 set.seed(3)
@@ -273,7 +473,6 @@ legend("topright", legend = c(
   col = c("red", "blue", "green"),
   lty = 1,
   cex = .7)
-
 ```
 
 Perceba que com 100 amostras aleatórias, as médias já ficam muito próximas dos 33.25% observados em ambas tiragens. Isso acontece porque conforme o número de observações aumenta, o desvio padrão tende a se estabilizar e a incerteza diminui. Seria muito difícil de os primeiros 400^[Ou mil, 10 mil, 100 mil... Quanto maior for $n$, mais difícil será causar mudanças no desvio padrão, de forma que a incerteza é cada vez menor.] alunos terem uma determinada média de acertos e os próximos 50 alunos todos acertassem ou errassem de forma a gerar mudanças no desvio padrão e afetar a média significativamente. É por isso que, em último caso, **o teste t é um teste de tamanho de amostra**. A pergunta por trás de tudo é: minha amostra é grande o suficiente para que a diferença seja significativa?
@@ -315,23 +514,33 @@ Como o valor de 2.693 excede o valor de $z$ a 98% de significância (2.33), pode
 
 No R, o teste não poderia ser mais simples:
 
-```{r}
+```{r echo = FALSE}
+
+blogdown::shortcode("highlight", "r", .content = "
+t.test(data, mu = 0.25, conf.level = 0.98)
+")
 
 t.test(data, mu = 0.25, conf.level = 0.98)
-
 ```
 
 Note que 0.25 não está no intervalo de confiança, de forma que podemos rejeitar $H_o$. Como ilustração, para que não pudessemos rejeitar a hipótese nula, teríamos de aumentar o nível de significância para 1 - p-valor, ou seja, para 99.263%:
 
-```{r}
+```{r echo = FALSE}
+
+blogdown::shortcode("highlight", "r", .content = "
+t.test(data, mu = 0.25, conf.level = 0.99263)
+")
 
 t.test(data, mu = 0.25, conf.level = 0.99263)
-
 ```
 
 Ou aumentar a média para 25.83%:
 
-```{r}
+```{r echo = FALSE}
+
+blogdown::shortcode("highlight", "r", .content = "
+t.test(data, mu = 0.2583, conf.level = 0.98)
+")
 
 t.test(data, mu = 0.2583, conf.level = 0.98)
 ```

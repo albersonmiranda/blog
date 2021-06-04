@@ -41,11 +41,12 @@ Quando esse não é o caso, pode-se simplesmente salvar o usuário e senha no ar
 
 Recomendo usar o pacote {usethis} para alterar qualquer arquivo de configuração no R. Para a primeira opção, faríamos da seguinte maneira:
 
-```{r, message=FALSE}
+```{r, echo = FALSE, message = FALSE}
 
+blogdown::shortcode("highlight", "r", .content = '
 # abrir o arquivo de configuração
-
 usethis::edit_git_config()
+')
 ```
 
 Na janela do .gitconfig que será aberta, adicione as seguintes linhas:

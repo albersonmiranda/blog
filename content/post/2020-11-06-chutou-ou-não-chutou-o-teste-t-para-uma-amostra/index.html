@@ -45,7 +45,9 @@ ao acaso (ou seja, se todos adivinhassem por pura sorte a resposta correta).</p>
 <h1>UM POUCO DE SIMULAÇÃO</h1>
 <p>Antes de entrarmos no teste em si, sabemos que ele é bem simples de calcular mas nem sempre seu conceito é tão facilmente assimilado. Para auxiliar, vamos simular os dados e tentar colocar de maneira visual o que vamos fazer.</p>
 <p>Como são dados binários (acertos ou erros) vamos utilizar 1 para acertos e 0 para erros.</p>
-<pre class="r"><code># criando amostra
+{{% highlight "r" %}}
+
+# criando amostra
 data = c(rep(1, 125), rep(0, 275))
 
 # para que você chegue nos mesmos números aleatórios do exemplo
@@ -55,7 +57,9 @@ set.seed(1)
 data = sample(data)
 
 # checando
-data</code></pre>
+data
+
+{{% /highlight %}}
 <pre><code>##   [1] 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 1 0 0 0 0 0 1 0 0 0 0 1 1 1 1 0 1 1 1 0 1
 ##  [38] 0 0 1 0 0 0 1 0 1 1 0 0 0 1 0 0 0 0 1 0 1 0 0 0 0 1 1 1 0 0 0 1 0 1 0 0 0
 ##  [75] 1 0 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 1 1 0 1 0 1 0 1 1
@@ -68,13 +72,19 @@ data</code></pre>
 ## [334] 1 1 0 0 1 1 0 0 1 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 1 0 1 1 0 1 1 0 1
 ## [371] 0 0 0 1 0 0 0 0 0 1 0 0 0 0 1 1 0 0 1 0 0 1 0 0 1 0 0 1 1 0</code></pre>
 <p>Agora que já temos nosso vetor com os dados aleatórios dos alunos que acertaram e erraram as questões, vamos visualizá-lo:</p>
-<pre class="r"><code># gráfico de barras
+{{% highlight "r" %}}
+
+# gráfico de barras
 par(mar = c(2, 2, 0, 0))
-barplot(table(data), col = c(&quot;lightblue&quot;, &quot;salmon&quot;))</code></pre>
+barplot(table(data), col = c("lightblue", "salmon"))
+
+{{% /highlight %}}
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>A intuição do teste t é dizer se essa diferença entre os acertos e erros ocorre por mero acaso no processo de amostragem ou não. Mas o que isso significa? Neste caso, a média amostral foi de 31.25% com 400 estudantes. As características da distribuição, o desvio padrão e o tamanho da amostra permitem atestar que a diferença entre a média amostral e a média esperada é significante?</p>
 <p>Para ilustrar o raciocínio, vamos tomar 10 amostras de 10 estudantes aleatoriamente e observar o comportamento das médias. Essas amostras de 10 estudantes podem ter média de acertos (linha vermelha) muito próxima dos 25% esperados (linha azul) e longe da média dos 400 alunos (linha verde).</p>
-<pre class="r"><code># garantir reprodutibilidade
+{{% highlight "r" %}}
+
+# garantir reprodutibilidade
 set.seed(3)
 
 # quantidade de amostras
@@ -91,21 +101,25 @@ for (i in 1:n) {
 
 # visualização
 hist(medias,
-     main = &quot;1ª tiragem: 10 amostras de 10 alunos&quot;,
-     xlab = &quot;média&quot;,
-     sub = &quot;seed = 3&quot;)
-abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
-abline(v = 0.25, col = &quot;blue&quot;)
-abline(v = 0.3125, col = &quot;green&quot;)
-legend(&quot;topright&quot;, legend = c(
+     main = "1ª tiragem: 10 amostras de 10 alunos",
+     xlab = "média",
+     sub = "seed = 3")
+abline(v = mean(medias, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+legend("topright", legend = c(
   expression(hat(mu)),
-  expression(paste(mu, &quot;= 0.25&quot;)),
-  expression(paste(mu, &quot;= 0.3325&quot;))),
-  col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
-  lty = 1)</code></pre>
+  expression(paste(mu, "= 0.25")),
+  expression(paste(mu, "= 0.3325"))),
+  col = c("red", "blue", "green"),
+  lty = 1)
+
+{{% /highlight %}}
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Mas também é possível realizar outra tiragem de 10 amostras com 10 alunos diferentes e encontrarmos uma média completamente diferente, próxima dos 45%:</p>
-<pre class="r"><code># garantir reprodutibilidade
+{{% highlight "r" %}}
+
+# garantir reprodutibilidade
 set.seed(4)
 
 # quantidade de amostras
@@ -122,21 +136,25 @@ for (i in 1:n) {
 
 # visualização
 hist(medias,
-     main = &quot;2ª tiragem: 10 amostras de 10 alunos&quot;,
-     xlab = &quot;média&quot;,
-     sub = &quot;seed = 4&quot;)
-abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
-abline(v = 0.25, col = &quot;blue&quot;)
-abline(v = 0.3125, col = &quot;green&quot;)
-legend(&quot;topright&quot;, legend = c(
+     main = "2ª tiragem: 10 amostras de 10 alunos",
+     xlab = "média",
+     sub = "seed = 4")
+abline(v = mean(medias, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+legend("topright", legend = c(
   expression(hat(mu)),
-  expression(paste(mu, &quot;= 0.25&quot;)),
-  expression(paste(mu, &quot;= 0.3325&quot;))),
-  col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
-  lty = 1)</code></pre>
+  expression(paste(mu, "= 0.25")),
+  expression(paste(mu, "= 0.3325"))),
+  col = c("red", "blue", "green"),
+  lty = 1)
+
+{{% /highlight %}}
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Conforme vamos aumentando a quantidade de amostras, o desvio padrão se estabiliza e a média amostral vai se aproximando da média populacional. Veja as médias de 50 amostras de 10 alunos, cada:</p>
-<pre class="r"><code># garantir reprodutibilidade
+{{% highlight "r" %}}
+
+# garantir reprodutibilidade
 set.seed(3)
 
 # quantidade de amostras
@@ -156,12 +174,12 @@ par(mfrow = c(1, 2))
 
 # visualização 1ª tiragem
 hist(medias,
-     main = &quot;1ª tiragem: 50 amostras de 10 alunos&quot;,
-     xlab = &quot;média&quot;,
-     sub = &quot;seed = 3&quot;)
-abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
-abline(v = 0.25, col = &quot;blue&quot;)
-abline(v = 0.3125, col = &quot;green&quot;)
+     main = "1ª tiragem: 50 amostras de 10 alunos",
+     xlab = "média",
+     sub = "seed = 3")
+abline(v = mean(medias, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
 
 ################################################################################
 
@@ -182,23 +200,27 @@ for (i in 1:n) {
 
 # visualização 2ª tiragem
 hist(medias,
-     main = &quot;2ª tiragem: 50 amostras de 10 alunos&quot;,
-     xlab = &quot;média&quot;,
-     sub = &quot;seed = 4&quot;)
-abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
-abline(v = 0.25, col = &quot;blue&quot;)
-abline(v = 0.3125, col = &quot;green&quot;)
-legend(&quot;topright&quot;, legend = c(
+     main = "2ª tiragem: 50 amostras de 10 alunos",
+     xlab = "média",
+     sub = "seed = 4")
+abline(v = mean(medias, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+legend("topright", legend = c(
   expression(hat(mu)),
-  expression(paste(mu, &quot;= 0.25&quot;)),
-  expression(paste(mu, &quot;= 0.3325&quot;))),
-  col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
+  expression(paste(mu, "= 0.25")),
+  expression(paste(mu, "= 0.3325"))),
+  col = c("red", "blue", "green"),
   lty = 1,
-  cex = .7)</code></pre>
+  cex = .7)
+
+{{% /highlight %}}
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="80%" /></p>
 <p>Pode-se observar que tomando duas tiragens de 50 amostras de 10 alunos aleatoriamente cada, as médias começam a convergir para a média observada no total dos 400 alunos.</p>
 <p>E se aumentarmos para 100 amostras de 10 alunos?</p>
-<pre class="r"><code># garantir reprodutibilidade
+{{% highlight "r" %}}
+
+# garantir reprodutibilidade
 set.seed(3)
 
 # quantidade de amostras
@@ -218,12 +240,12 @@ par(mfrow = c(1, 2))
 
 # visualização 1ª tiragem
 hist(medias,
-     main = &quot;1ª tiragem: 100 amostras de 10 alunos&quot;,
-     xlab = &quot;média&quot;,
-     sub = &quot;seed = 3&quot;)
-abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
-abline(v = 0.25, col = &quot;blue&quot;)
-abline(v = 0.3125, col = &quot;green&quot;)
+     main = "1ª tiragem: 100 amostras de 10 alunos",
+     xlab = "média",
+     sub = "seed = 3")
+abline(v = mean(medias, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
 
 ################################################################################
 
@@ -241,19 +263,21 @@ for (i in 1:n) {
 
 # visualização 2ª tiragem
 hist(medias,
-     main = &quot;2ª tiragem: 100 amostras de 10 alunos&quot;,
-     xlab = &quot;média&quot;,
-     sub = &quot;seed = 4&quot;)
-abline(v = mean(medias, na.rm = TRUE), col = &quot;red&quot;)
-abline(v = 0.25, col = &quot;blue&quot;)
-abline(v = 0.3125, col = &quot;green&quot;)
-legend(&quot;topright&quot;, legend = c(
+     main = "2ª tiragem: 100 amostras de 10 alunos",
+     xlab = "média",
+     sub = "seed = 4")
+abline(v = mean(medias, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+legend("topright", legend = c(
   expression(hat(mu)),
-  expression(paste(mu, &quot;= 0.25&quot;)),
-  expression(paste(mu, &quot;= 0.3325&quot;))),
-  col = c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;),
+  expression(paste(mu, "= 0.25")),
+  expression(paste(mu, "= 0.3325"))),
+  col = c("red", "blue", "green"),
   lty = 1,
-  cex = .7)</code></pre>
+  cex = .7)
+
+{{% /highlight %}}
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Perceba que com 100 amostras aleatórias, as médias já ficam muito próximas dos 33.25% observados em ambas tiragens. Isso acontece porque conforme o número de observações aumenta, o desvio padrão tende a se estabilizar e a incerteza diminui. Seria muito difícil de os primeiros 400<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> alunos terem uma determinada média de acertos e os próximos 50 alunos todos acertassem ou errassem de forma a gerar mudanças no desvio padrão e afetar a média significativamente. É por isso que, em último caso, <strong>o teste t é um teste de tamanho de amostra</strong>. A pergunta por trás de tudo é: minha amostra é grande o suficiente para que a diferença seja significativa?</p>
 <p>Agora, com a intuição do teste em mente, vamos formalizá-lo.</p>
@@ -292,7 +316,11 @@ Podemos rejeitar a hipótese nula se <span class="math inline">\(z\)</span> crí
 <div id="ok-mas-e-no-r" class="section level1">
 <h1>OK, MAS E NO R?</h1>
 <p>No R, o teste não poderia ser mais simples:</p>
-<pre class="r"><code>t.test(data, mu = 0.25, conf.level = 0.98)</code></pre>
+{{% highlight "r" %}}
+
+t.test(data, mu = 0.25, conf.level = 0.98)
+
+{{% /highlight %}}
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -305,7 +333,11 @@ Podemos rejeitar a hipótese nula se <span class="math inline">\(z\)</span> crí
 ## mean of x 
 ##    0.3125</code></pre>
 <p>Note que 0.25 não está no intervalo de confiança, de forma que podemos rejeitar <span class="math inline">\(H_o\)</span>. Como ilustração, para que não pudessemos rejeitar a hipótese nula, teríamos de aumentar o nível de significância para 1 - p-valor, ou seja, para 99.263%:</p>
-<pre class="r"><code>t.test(data, mu = 0.25, conf.level = 0.99263)</code></pre>
+{{% highlight "r" %}}
+
+t.test(data, mu = 0.25, conf.level = 0.99263)
+
+{{% /highlight %}}
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -318,7 +350,11 @@ Podemos rejeitar a hipótese nula se <span class="math inline">\(z\)</span> crí
 ## mean of x 
 ##    0.3125</code></pre>
 <p>Ou aumentar a média para 25.83%:</p>
-<pre class="r"><code>t.test(data, mu = 0.2583, conf.level = 0.98)</code></pre>
+{{% highlight "r" %}}
+
+t.test(data, mu = 0.2583, conf.level = 0.98)
+
+{{% /highlight %}}
 <pre><code>## 
 ##  One Sample t-test
 ## 
