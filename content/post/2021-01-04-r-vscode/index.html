@@ -173,45 +173,18 @@ link-citations: yes
 <p class="caption">settings.json</p>
 </div>
 <p>Aqui estão as que utilizo atualmente. Altere conforme necessário e sua preferência.</p>
-<pre class="js"><code>{
-    // VSCode setup
-    &quot;terminal.integrated.shell.windows&quot;: &quot;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe&quot;,
-    &quot;editor.formatOnPaste&quot;: true, // recomendado
-    &quot;editor.formatOnType&quot;: true, // recomendado
-    &quot;diffEditor.ignoreTrimWhitespace&quot;: false,
-    &quot;files.autoSave&quot;: &quot;off&quot;,
+{{% highlight "js" %}}
 
-    // Python setup
-    &quot;python.pythonPath&quot;: &quot;C:\\...\\anaconda3\\python.exe&quot;,
-    &quot;jupyter.alwaysTrustNotebooks&quot;: true,
-
-    // R setup
-    &quot;[r]&quot;: { // obrigatório
-        &quot;editor.defaultFormatter&quot;: &quot;REditorSupport.r-lsp&quot;
-    },
-    &quot;files.associations&quot;: { // obrigatório
-        &quot;*.rmd&quot;: &quot;markdown&quot;,
-        &quot;*.Rmd&quot;: &quot;rmd&quot;
-    },
-    &quot;r.sessionWatcher&quot;: true, // obrigatório
-    &quot;r.bracketedPaste&quot;: true, // obrigatório
-    &quot;r.rterm.windows&quot;: &quot;C:\\...\\anaconda3\\Scripts\\radian.exe&quot;, // caso tenha instalado o Radian
-    &quot;r.rpath.windows&quot;: &quot;C:\\...\\R\\R-4.0.3\\bin\\R.exe&quot;, // obrigatório
-    &quot;r.lsp.debug&quot;: true, // obrigatório
-    &quot;r.alwaysUseActiveTerminal&quot;: true, // obrigatório
-    &quot;r.rtermSendDelay&quot;: 0,
-}</code></pre>
-<script type="text/javascript">
 {
     // VSCode setup
-    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "terminal.integrated.shell.windows": "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe",
     "editor.formatOnPaste": true, // recomendado
     "editor.formatOnType": true, // recomendado
     "diffEditor.ignoreTrimWhitespace": false,
     "files.autoSave": "off",
 
     // Python setup
-    "python.pythonPath": "C:\\...\\anaconda3\\python.exe",
+    "python.pythonPath": "C:\...\anaconda3\python.exe",
     "jupyter.alwaysTrustNotebooks": true,
 
     // R setup
@@ -224,39 +197,44 @@ link-citations: yes
     },
     "r.sessionWatcher": true, // obrigatório
     "r.bracketedPaste": true, // obrigatório
-    "r.rterm.windows": "C:\\...\\anaconda3\\Scripts\\radian.exe", // caso tenha instalado o Radian
-    "r.rpath.windows": "C:\\...\\R\\R-4.0.3\\bin\\R.exe", // obrigatório
+    "r.rterm.windows": "C:\...\anaconda3\Scripts\radian.exe", // caso tenha instalado o Radian
+    "r.rpath.windows": "C:\...\R\R-4.0.3\bin\R.exe", // obrigatório
     "r.lsp.debug": true, // obrigatório
     "r.alwaysUseActiveTerminal": true, // obrigatório
     "r.rtermSendDelay": 0,
 }
-</script>
+
+{{% /highlight %}}
 <p>Também são necessárias algumas configurações no .Rprofile:</p>
-<pre class="r"><code># opções
+{{% highlight "r" %}}
+
+# opções
 options(
   # permitir RStudio Addins no command pallet
   vsc.rstudioapi = TRUE,
   # alterar o schema de highlight no console Radian
-  radian.color_scheme = &quot;native&quot;,
+  radian.color_scheme = "native",
   # adicionar code completion após $
   languageserver.server_capabilities = list(
-    signatureHelpProvider = list(triggerCharacters = list(&quot;(&quot;, &quot;,&quot;, &quot;$&quot;)),
+    signatureHelpProvider = list(triggerCharacters = list("(", ",", "$")),
     completionProvider = list(
-      resolveProvider = TRUE, triggerCharacters = list(&quot;.&quot;, &quot;:&quot;, &quot;$&quot;)
+      resolveProvider = TRUE, triggerCharacters = list(".", ":", "$")
     )
   )
 )
 
 # gráficos interativos no VSCode com o {httpgd}
-if (interactive() &amp;&amp; Sys.getenv(&quot;TERM_PROGRAM&quot;) == &quot;vscode&quot;) {
-  if (&quot;httpgd&quot; %in% .packages(all.available = TRUE)) {
+if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
+  if ("httpgd" %in% .packages(all.available = TRUE)) {
     options(vsc.plot = FALSE)
     options(device = function(...) {
       httpgd::httpgd()
-      .vsc.browser(httpgd::hgd_url(), viewer = &quot;Beside&quot;)
+      .vsc.browser(httpgd::hgd_url(), viewer = "Beside")
     })
   }
-}</code></pre>
+}
+
+{{% /highlight %}}
 <p><strong>Importante: não instalar o {httpgd} ou deixar de incluir essa configuração no .Rprofile vai fazer com que seus gráficos sejam plotados numa janela com tamanho fixo, sem a possibilidade de manuipular o tamanho do plot interativamente.</strong></p>
 </div>
 <div id="por-fim" class="section level1">

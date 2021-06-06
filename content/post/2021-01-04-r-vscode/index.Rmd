@@ -144,7 +144,9 @@ Acessando as configurações do VSCode, podemos configurar tanto o editor quanto
 
 Aqui estão as que utilizo atualmente. Altere conforme necessário e sua preferência.
 
-```{js settings.json}
+```{r settings.json, echo = FALSE}
+
+blogdown::shortcode("highlight", "js", .content = '
 {
     // VSCode setup
     "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
@@ -173,12 +175,14 @@ Aqui estão as que utilizo atualmente. Altere conforme necessário e sua prefer�
     "r.alwaysUseActiveTerminal": true, // obrigatório
     "r.rtermSendDelay": 0,
 }
+')
 ```
 
 Também são necessárias algumas configurações no .Rprofile:
 
-```{r Rprofile, eval = FALSE}
+```{r Rprofile, echo = FALSE}
 
+blogdown::shortcode("highlight", "r", .content = '
 # opções
 options(
   # permitir RStudio Addins no command pallet
@@ -204,6 +208,7 @@ if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
     })
   }
 }
+')
 ```
 
 **Importante: não instalar o {httpgd} ou deixar de incluir essa configuração no .Rprofile vai fazer com que seus gráficos sejam plotados numa janela com tamanho fixo, sem a possibilidade de manuipular o tamanho do plot interativamente.**
