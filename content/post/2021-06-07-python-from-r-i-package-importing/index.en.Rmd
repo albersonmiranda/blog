@@ -11,14 +11,14 @@ tags:
 series: Python from R
 description: Comparing package importing in R and Python.
 featured: yes
-draft: yes
+draft: false
 featureImage: img/r-python.jpg
 thumbnail: images/python.jpg
 shareImage: images/python.jpg
 codeMaxLines: 10
 codeLineNumbers: yes
 figurePositionShow: yes
-bibliography: [../../content/post/bib.bib]
+bibliography: [bib.bib] 
 link-citations: true
 ---
 
@@ -330,4 +330,10 @@ from pandas import DataFrame
 print(*globals(), sep = "\n")
 ```
 
-According to [The Hitchhiker's Guide to Python](python-guide), case 3 is the worst possible scenario since it "makes code harder to read and makes dependencies less compartmentalized"
+According to The Hitchhiker's Guide to Python [@pythonguide], case 3 is the worst possible scenario and it's generally considered bad practice since it "makes code harder to read and makes dependencies less compartmentalized". [Case 2](#case2py), in the other hand, would be a better option because it pinpoints specific names, while [case 1](#case1py) would be the best practice, for "Being able to tell immediately where a class or function comes from greatly improves code readability and understandability in all but the simplest single file projects."
+
+# TL;DR
+
+When learning a new programming language, simply finding equivalent code for the practices you already have may be misleading. Here we're able to see that an equivalent of R's `library()` call is actually considered a bad practice in Python and if you do that in a job interview, you should not expect they call you back `r emo::ji("face_with_tears_of_joy")`
+
+# REFERENCES

@@ -11,14 +11,14 @@ tags:
 series: Python from R
 description: Comparing package importing in R and Python.
 featured: yes
-draft: yes
+draft: false
 featureImage: img/r-python.jpg
 thumbnail: images/python.jpg
 shareImage: images/python.jpg
 codeMaxLines: 10
 codeLineNumbers: yes
 figurePositionShow: yes
-bibliography: [bib.bib]
+bibliography: [bib.bib] 
 link-citations: true
 ---
 
@@ -179,7 +179,7 @@ print(*globals(), sep = "\n")
 ## r
 ## pandas</code></pre>
 <p>Note that only {pandas} is attached to the symbol table, not it’s functions/methods/attributes. So that statement it’s not an equivalent to <code>library()</code>. For us to create a simple dataframe with {pandas}:</p>
-<div id="case-1-explicit-call-1" class="section level3">
+<div id="case1py" class="section level3">
 <h3>CASE 1: EXPLICIT CALL</h3>
 {{% highlight "python" %}}
 
@@ -210,7 +210,7 @@ pandas.DataFrame(
 ## 2  Rio de Janeiro  Rio de Janeiro</code></pre>
 <p>If we were to replicate <code>library()</code> behavior (i.e. load and attach the entire {pandas} functions/methods/attributes into the symbol table), then:</p>
 </div>
-<div id="case-2-attaching-1" class="section level3">
+<div id="case2py" class="section level3">
 <h3>CASE 2: ATTACHING</h3>
 {{% highlight "python" %}}
 
@@ -361,11 +361,21 @@ DataFrame(
 ## 2  Rio de Janeiro  Rio de Janeiro</code></pre>
 <p>But you won’t see any experienced Python user doing that kind of thing because they’re worried about loading that amount of names into the symbol table and the possible conflicts it may cause. An acceptable approach would be attaching only a few frequent names as in:</p>
 </div>
-<div id="case-3-attaching-specific-functions-1" class="section level3">
+<div id="case3py" class="section level3">
 <h3>CASE 3: ATTACHING SPECIFIC FUNCTIONS</h3>
 {{% highlight "python" %}}
 
+# detaching {pandas}
+for name in vars(pandas):
+    if not name.startswith("_"):
+        del globals()[name]
 
+# attaching only DataFrame()
+from pandas import DataFrame
+
+# the updated symbol table
+print(*globals(), sep = "
+")
 
 {{% /highlight %}}
 <pre><code>## __name__
@@ -378,7 +388,21 @@ DataFrame(
 ## sys
 ## os
 ## r
-## name</code></pre>
+## name
+## DataFrame</code></pre>
+<p>According to The Hitchhiker’s Guide to Python <span class="citation">(<a href="#ref-pythonguide" role="doc-biblioref">Kenneth Reitz and Tanya Schlusser 2016</a>)</span>, case 3 is the worst possible scenario and it’s generally considered bad practice since it “makes code harder to read and makes dependencies less compartmentalized.” <a href="#case2py">Case 2</a>, in the other hand, would be a better option because it pinpoints specific names, while <a href="#case1py">case 1</a> would be the best practice, for “Being able to tell immediately where a class or function comes from greatly improves code readability and understandability in all but the simplest single file projects.”</p>
+</div>
+</div>
+</div>
+<div id="tldr" class="section level1">
+<h1>TL;DR</h1>
+<p>When learning a new programming language, simply finding equivalent code for the practices you already have may be misleading. Here we’re able to see that an equivalent of R’s <code>library()</code> call is actually considered a bad practice in Python and if you do that in a job interview, you should not expect they call you back 😂</p>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>REFERENCES</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-pythonguide" class="csl-entry">
+Kenneth Reitz and Tanya Schlusser. 2016. <em>The Hitchhiker’s Guide to Python!</em> O’Reilly Media. <a href="https://docs.python-guide.org/">https://docs.python-guide.org/</a>.
 </div>
 </div>
 </div>
