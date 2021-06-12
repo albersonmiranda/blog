@@ -1,5 +1,5 @@
 ---
-title: 'Python from R I: package importing'
+title: "Python from R I: package importing (and why learning new languages sucks)"
 author: Alberson Miranda
 date: '2021-06-12'
 slug: [package-importing]
