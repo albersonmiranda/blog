@@ -62,7 +62,7 @@ mlr3::mlr_measures$keys("auc")
 mlr3::mlr_measures$keys("auc")
 ```
 
-But that way of calling functions usually take place only if that particular package won't be required very often. Otherwise, it's cultural for R users to load and attach the entire package's namespace to the search path^[An ordered list where R will look for a function. Can be accessed with `search()`.] with a `library()` call.
+But that way of calling functions usually take place only if that particular package won't be required very often. Otherwise, it's cultural for R users to load and attach the entire package's namespace to the search path^[An ordered list where R will look for a function. Can be accessed with `search()` [@r-packages].] with a `library()` call.
 
 ### CASE 2: ATTACHING
 ```{r ggplot example}
@@ -326,9 +326,9 @@ from pandas import DataFrame
 print(*globals(), sep = "\n")
 ```
 
-According to The Hitchhiker's Guide to Python [@pythonguide], case 3 is the worst possible scenario and it's generally considered bad practice since it "makes code harder to read and makes dependencies less compartmentalized".
+According to The Hitchhiker's Guide to Python [@pythonguide], case 3 is the worst possible scenario and it's generally considered bad practice since it "makes code harder to read and makes dependencies less compartmentalized". That claim is endorsed by Python's official docs [@pythontutorial]:
 
-That claim is endorsed by Python's official docs: "Although certain modules are designed to export only names that follow certain patterns when you use import *, it is still considered bad practice in production code" [@pythontutorial].
+> Although certain modules are designed to export only names that follow certain patterns when you use import *, it is still considered bad practice in production code" .
 
 In the opinion of the guide authors, [case 2](#case2py) would be a better option because it pinpoints specific names^[Python Foundation says "There is nothing wrong with using from package import specific_submodule! In fact, this is the recommended notation unless the importing module needs to use submodules with the same name from different packages."], while [case 1](#case1py) would be the best practice, for "Being able to tell immediately where a class or function comes from greatly improves code readability and understandability in all but the simplest single file projects."
 

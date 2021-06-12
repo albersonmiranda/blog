@@ -385,8 +385,10 @@ print(*globals(), sep = "\n")
 ## r
 ## name
 ## DataFrame</code></pre>
-<p>According to The Hitchhiker’s Guide to Python <span class="citation">(<a href="#ref-pythonguide" role="doc-biblioref">Reitz, Kenneth and Schlusser, Tanya. 2016</a>)</span>, case 3 is the worst possible scenario and it’s generally considered bad practice since it “makes code harder to read and makes dependencies less compartmentalized.”</p>
-<p>That claim is endorsed by Python’s official docs: "Although certain modules are designed to export only names that follow certain patterns when you use import *, it is still considered bad practice in production code" <span class="citation">(<a href="#ref-pythontutorial" role="doc-biblioref">Python Software Foundation. 2021</a>)</span>.</p>
+<p>According to The Hitchhiker’s Guide to Python <span class="citation">(<a href="#ref-pythonguide" role="doc-biblioref">Reitz, Kenneth and Schlusser, Tanya. 2016</a>)</span>, case 3 is the worst possible scenario and it’s generally considered bad practice since it “makes code harder to read and makes dependencies less compartmentalized.” That claim is endorsed by Python’s official docs <span class="citation">(<a href="#ref-pythontutorial" role="doc-biblioref">Python Software Foundation. 2021</a>)</span>:</p>
+<blockquote>
+<p>Although certain modules are designed to export only names that follow certain patterns when you use import *, it is still considered bad practice in production code" .</p>
+</blockquote>
 <p>In the opinion of the guide authors, <a href="#case2py">case 2</a> would be a better option because it pinpoints specific names<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>, while <a href="#case1py">case 1</a> would be the best practice, for “Being able to tell immediately where a class or function comes from greatly improves code readability and understandability in all but the simplest single file projects.”</p>
 </div>
 </div>
@@ -404,12 +406,15 @@ Python Software Foundation. 2021. <em>The Python Tutorial</em>. <a href="https:/
 <div id="ref-pythonguide" class="csl-entry">
 Reitz, Kenneth and Schlusser, Tanya. 2016. <em>The Hitchhiker’s Guide to Python!</em> O’Reilly Media. <a href="https://docs.python-guide.org/">https://docs.python-guide.org/</a>.
 </div>
+<div id="ref-r-packages" class="csl-entry">
+Wickham, Hadley. 2015. <em>R Packages</em>. <span>O’Reilly Media; 1st edition</span>. <a href="https://r-pkgs.org/index.html">https://r-pkgs.org/index.html</a>.
+</div>
 </div>
 </div>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>An ordered list where R will look for a function. Can be accessed with <code>search()</code>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>An ordered list where R will look for a function. Can be accessed with <code>search()</code> <span class="citation">(<a href="#ref-r-packages" role="doc-biblioref">Wickham 2015</a>)</span>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p>I guess? I don’t know, still learning lol 😂<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 <li id="fn3"><p>Python Foundation says “There is nothing wrong with using from package import specific_submodule! In fact, this is the recommended notation unless the importing module needs to use submodules with the same name from different packages.”<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
