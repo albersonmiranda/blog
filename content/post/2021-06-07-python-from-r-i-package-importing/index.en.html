@@ -89,9 +89,6 @@ all.equal(p1,p2)
 # attaching plotly
 library(plotly)
 
-# plotly plot
-p3 = ggplotly(p2)
-
 {{% /highlight %}}
 <pre><code>## 
 ## Attaching package: &#39;plotly&#39;</code></pre>
@@ -117,12 +114,12 @@ detach("package:plotly")
 library(plotly, include.only = "ggplotly")
 
 {{% /highlight %}}
-<p>And no conflict warning will be triggered. Unfortunately, you won’t be hearing much of <code>include.only</code> argument from R community 🤷‍♂. On the contrary, meta packages such as {tidyverse}, which will load and attach A LOT of stuff into the namespace — often unnecessary for what you’re about to do —, is quite common among casual users/analysis.</p>
+<p>And no conflict warning will be triggered. Unfortunately, I don’t hear much of <code>include.only</code> argument from R community 🤷‍♂. On the contrary, meta packages such as {tidyverse}, which will load and attach A LOT of stuff into the namespace — often unnecessary for what you’re about to do —, is quite common.</p>
 </div>
 </div>
 <div id="python-experience" class="section level2">
 <h2>PYTHON EXPERIENCE</h2>
-<p>All of the 3 cases stated before are possible in Python, but the community behaves in a very different manner. Specially regarding to the awareness of what is loaded into the namespace — or symbol table, as it is called in Python.</p>
+<p>All of the 3 cases stated before are possible in Python, but the community standards are very different. Specially regarding to the awareness of what is loaded into the namespace — or symbol table, as it is called in Python<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
 <p>Firstly, installed packages aren’t immediately available. So if I try, for example, listing {pandas} functions/methods/attributes it’ll result in an error:</p>
 {{% highlight "python" %}}
 
@@ -218,8 +215,7 @@ pandas.DataFrame(
 from pandas import *
 
 # the updated symbol table
-print(*globals(), sep = "
-")
+print(*globals(), sep = "\n")
 
 # and now this works
 DataFrame(
@@ -374,8 +370,7 @@ for name in vars(pandas):
 from pandas import DataFrame
 
 # the updated symbol table
-print(*globals(), sep = "
-")
+print(*globals(), sep = "\n")
 
 {{% /highlight %}}
 <pre><code>## __name__
@@ -390,7 +385,9 @@ print(*globals(), sep = "
 ## r
 ## name
 ## DataFrame</code></pre>
-<p>According to The Hitchhiker’s Guide to Python <span class="citation">(<a href="#ref-pythonguide" role="doc-biblioref">Kenneth Reitz and Tanya Schlusser 2016</a>)</span>, case 3 is the worst possible scenario and it’s generally considered bad practice since it “makes code harder to read and makes dependencies less compartmentalized.” <a href="#case2py">Case 2</a>, in the other hand, would be a better option because it pinpoints specific names, while <a href="#case1py">case 1</a> would be the best practice, for “Being able to tell immediately where a class or function comes from greatly improves code readability and understandability in all but the simplest single file projects.”</p>
+<p>According to The Hitchhiker’s Guide to Python <span class="citation">(<a href="#ref-pythonguide" role="doc-biblioref">Reitz, Kenneth and Schlusser, Tanya. 2016</a>)</span>, case 3 is the worst possible scenario and it’s generally considered bad practice since it “makes code harder to read and makes dependencies less compartmentalized.”</p>
+<p>That claim is endorsed by Python’s official docs: "Although certain modules are designed to export only names that follow certain patterns when you use import *, it is still considered bad practice in production code" <span class="citation">(<a href="#ref-pythontutorial" role="doc-biblioref">Python Software Foundation. 2021</a>)</span>.</p>
+<p>In the opinion of the guide authors, <a href="#case2py">case 2</a> would be a better option because it pinpoints specific names<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>, while <a href="#case1py">case 1</a> would be the best practice, for “Being able to tell immediately where a class or function comes from greatly improves code readability and understandability in all but the simplest single file projects.”</p>
 </div>
 </div>
 </div>
@@ -401,8 +398,11 @@ print(*globals(), sep = "
 <div id="references" class="section level1 unnumbered">
 <h1>REFERENCES</h1>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-pythontutorial" class="csl-entry">
+Python Software Foundation. 2021. <em>The Python Tutorial</em>. <a href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a>.
+</div>
 <div id="ref-pythonguide" class="csl-entry">
-Kenneth Reitz and Tanya Schlusser. 2016. <em>The Hitchhiker’s Guide to Python!</em> O’Reilly Media. <a href="https://docs.python-guide.org/">https://docs.python-guide.org/</a>.
+Reitz, Kenneth and Schlusser, Tanya. 2016. <em>The Hitchhiker’s Guide to Python!</em> O’Reilly Media. <a href="https://docs.python-guide.org/">https://docs.python-guide.org/</a>.
 </div>
 </div>
 </div>
@@ -410,5 +410,7 @@ Kenneth Reitz and Tanya Schlusser. 2016. <em>The Hitchhiker’s Guide to Python!
 <hr />
 <ol>
 <li id="fn1"><p>An ordered list where R will look for a function. Can be accessed with <code>search()</code>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>I guess? I don’t know, still learning lol 😂<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Python Foundation says “There is nothing wrong with using from package import specific_submodule! In fact, this is the recommended notation unless the importing module needs to use submodules with the same name from different packages.”<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>

@@ -115,14 +115,10 @@ The problem appears when there are namespace conflicts. Say we attach {plotly} f
 blogdown::shortcode("highlight", "r", .content = "
 # attaching plotly
 library(plotly)
-
-# plotly plot
-p3 = ggplotly(p2)
 ")
 
 # attaching plotly
 library(plotly)
-p3 = ggplotly(p2)
 ```
 
 That can be avoided by attaching only the specific functions you're actually gonna use:
@@ -145,11 +141,11 @@ detach("package:plotly")
 library(plotly, include.only = "ggplotly")
 ```
 
-And no conflict warning will be triggered. Unfortunately, you won't be hearing much of `include.only` argument from R community `r emo::ji("man_shrugging")`. On the contrary, meta packages such as {tidyverse}, which will load and attach A LOT of stuff into the namespace — often unnecessary for what you're about to do —, is quite common among casual users/analysis.
+And no conflict warning will be triggered. Unfortunately, I don't hear much of `include.only` argument from R community `r emo::ji("man_shrugging")`. On the contrary, meta packages such as {tidyverse}, which will load and attach A LOT of stuff into the namespace — often unnecessary for what you're about to do —, is quite common.
 
 ## PYTHON EXPERIENCE
 
-All of the 3 cases stated before are possible in Python, but the community behaves in a very different manner. Specially regarding to the awareness of what is loaded into the namespace — or symbol table, as it is called in Python.
+All of the 3 cases stated before are possible in Python, but the community standards are very different. Specially regarding to the awareness of what is loaded into the namespace — or symbol table, as it is called in Python^[I guess? I don't know, still learning lol `r emo::ji("face_with_tears_of_joy")`].
 
 Firstly, installed packages aren't immediately available. So if I try, for example, listing {pandas} functions/methods/attributes it'll result in an error:
 
@@ -267,7 +263,7 @@ blogdown::shortcode("highlight", "python", .content = '
 from pandas import *
 
 # the updated symbol table
-print(*globals(), sep = "\n")
+print(*globals(), sep = "\\n")
 
 # and now this works
 DataFrame(
@@ -312,7 +308,7 @@ for name in vars(pandas):
 from pandas import DataFrame
 
 # the updated symbol table
-print(*globals(), sep = "\n")
+print(*globals(), sep = "\\n")
 ')
 ```
 
@@ -330,7 +326,11 @@ from pandas import DataFrame
 print(*globals(), sep = "\n")
 ```
 
-According to The Hitchhiker's Guide to Python [@pythonguide], case 3 is the worst possible scenario and it's generally considered bad practice since it "makes code harder to read and makes dependencies less compartmentalized". [Case 2](#case2py), in the other hand, would be a better option because it pinpoints specific names, while [case 1](#case1py) would be the best practice, for "Being able to tell immediately where a class or function comes from greatly improves code readability and understandability in all but the simplest single file projects."
+According to The Hitchhiker's Guide to Python [@pythonguide], case 3 is the worst possible scenario and it's generally considered bad practice since it "makes code harder to read and makes dependencies less compartmentalized".
+
+That claim is endorsed by Python's official docs: "Although certain modules are designed to export only names that follow certain patterns when you use import *, it is still considered bad practice in production code" [@pythontutorial].
+
+In the opinion of the guide authors, [case 2](#case2py) would be a better option because it pinpoints specific names^[Python Foundation says "There is nothing wrong with using from package import specific_submodule! In fact, this is the recommended notation unless the importing module needs to use submodules with the same name from different packages."], while [case 1](#case1py) would be the best practice, for "Being able to tell immediately where a class or function comes from greatly improves code readability and understandability in all but the simplest single file projects."
 
 # TL;DR
 
