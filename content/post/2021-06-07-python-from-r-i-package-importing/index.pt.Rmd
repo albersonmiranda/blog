@@ -1,17 +1,17 @@
 ---
-title: "Python from R I: package importing (and why learning new languages sucks)"
+title: "Python from R I: importando pacotes (e porque aprender novas linguagens)"
 author: Alberson Miranda
-date: '2021-06-12'
-slug: [package-importing]
+date: '2021-06-14'
+slug: [importando-pacotes]
 categories:
-  - languages
+  - linguagens
 tags:
   - Python
   - R
 series: Python from R
-description: Comparing package importing in R and Python.
+description: Comparando importação de pacotes em R e Python
 featured: yes
-draft: false
+draft: true
 featureImage: img/r-python.jpg
 thumbnail: images/python.jpg
 shareImage: images/python.jpg
@@ -33,7 +33,7 @@ knitr::opts_chunk$set(
 library(reticulate)
 ```
 
-Python from R is a collaborative initiative to write a book to help experienced R users learn Python. In the words of my boi [Benjamin Wolfe](https://twitter.com/BenjaminWolfe) in the Python from R Slack channel:
+Python from R é uma iniciativa para escrever um livro de forma aberta e colaborativa com o objetivo de ensinar Python para usuários de R. Nas palavras do líder do projeto [Benjamin Wolfe](https://twitter.com/BenjaminWolfe) em nosso canal do Slack:
 
 >- We’re a group of people who either learned Python from R, are R users currently learning Python, or have yet to learn Python, but are comfortable with R.
 - What we hope to do is write some collaborative resources for others like ourselves to find their way more easily.
