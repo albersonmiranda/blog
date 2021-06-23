@@ -18,7 +18,7 @@ shareImage: images/python.jpg
 codeMaxLines: 10
 codeLineNumbers: yes
 figurePositionShow: yes
-bibliography: [../bib.bib] 
+bibliography: [../bib.bib]
 link-citations: true
 ---
 
@@ -48,7 +48,7 @@ When I was writing my concept map for the book (we'll write about it eventually)
 
 ## R EXPERIENCE
 
-In R, every package installed in the library trees are listed whenever a terminal is open. Those listed packages are available for users at all times and can be called explicitly. For example:
+In R [@R], every package installed in the library trees are listed whenever a terminal is open. Those listed packages are available for users at all times and can be called explicitly. For example:
 
 ### CASE 1: EXPLICIT CALL
 ```{r mlr3 example}
