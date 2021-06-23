@@ -71,4 +71,8 @@ $$\text{Variância}(\widehat{GE}_\text{samp}) = \mathbb{E}[(\widehat{GE}_\text{s
 
 Com essa introdução, espero que os conceitos tenham ficado mais claros e que tenha ajudado um pouco na compreensão da meta modelagem. Tenho certeza que eu não verei os resultados da mesma forma na próxima que vez que aplicar técnicas de reamostragem para seleção e *tuning* de meus modelos!
 
+# CITAÇÃO
+
+{{% citacao %}}
+
 # REFERÊNCIAS
