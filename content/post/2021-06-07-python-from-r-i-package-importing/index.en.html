@@ -385,11 +385,11 @@ print(*globals(), sep = "\n")
 ## r
 ## name
 ## DataFrame</code></pre>
-<p>According to The Hitchhiker’s Guide to Python <span class="citation">(<a href="#ref-pythonguide" role="doc-biblioref">Reitz, Kenneth and Schlusser, Tanya. 2016</a>)</span>, case 3 is the worst possible scenario and it’s generally considered bad practice since it “makes code harder to read and makes dependencies less compartmentalized.” That claim is endorsed by Python’s official docs <span class="citation">(<a href="#ref-pythontutorial" role="doc-biblioref">Python Software Foundation. 2021</a>)</span>:</p>
+<p>According to The Hitchhiker’s Guide to Python <span class="citation">(<a href="#ref-pythonguide" role="doc-biblioref">Reitz, Kenneth and Schlusser, Tanya. 2016</a>)</span>, <a href="#case2py">case 2</a> is the worst possible scenario and it’s generally considered bad practice since it “makes code harder to read and makes dependencies less compartmentalized.” That claim is endorsed by Python’s official docs <span class="citation">(<a href="#ref-pythontutorial" role="doc-biblioref">Python Software Foundation. 2021</a>)</span>:</p>
 <blockquote>
 <p>Although certain modules are designed to export only names that follow certain patterns when you use import *, it is still considered bad practice in production code" .</p>
 </blockquote>
-<p>In the opinion of the guide authors, <a href="#case2py">case 2</a> would be a better option because it pinpoints specific names<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>, while <a href="#case1py">case 1</a> would be the best practice, for “Being able to tell immediately where a class or function comes from greatly improves code readability and understandability in all but the simplest single file projects.”</p>
+<p>In the opinion of the guide authors, <a href="#case3py">case 3</a> would be a better option because it pinpoints specific names<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>, while <a href="#case1py">case 1</a> would be the best practice, for “Being able to tell immediately where a class or function comes from greatly improves code readability and understandability in all but the simplest single file projects.”</p>
 </div>
 </div>
 </div>

@@ -326,11 +326,11 @@ from pandas import DataFrame
 print(*globals(), sep = "\n")
 ```
 
-According to The Hitchhiker's Guide to Python [@pythonguide], case 3 is the worst possible scenario and it's generally considered bad practice since it "makes code harder to read and makes dependencies less compartmentalized". That claim is endorsed by Python's official docs [@pythontutorial]:
+According to The Hitchhiker's Guide to Python [@pythonguide], [case 2](#case2py) is the worst possible scenario and it's generally considered bad practice since it "makes code harder to read and makes dependencies less compartmentalized". That claim is endorsed by Python's official docs [@pythontutorial]:
 
 > Although certain modules are designed to export only names that follow certain patterns when you use import *, it is still considered bad practice in production code" .
 
-In the opinion of the guide authors, [case 2](#case2py) would be a better option because it pinpoints specific names^[Python Foundation says "There is nothing wrong with using from package import specific_submodule! In fact, this is the recommended notation unless the importing module needs to use submodules with the same name from different packages."], while [case 1](#case1py) would be the best practice, for "Being able to tell immediately where a class or function comes from greatly improves code readability and understandability in all but the simplest single file projects."
+In the opinion of the guide authors, [case 3](#case3py) would be a better option because it pinpoints specific names^[Python Foundation says "There is nothing wrong with using from package import specific_submodule! In fact, this is the recommended notation unless the importing module needs to use submodules with the same name from different packages."], while [case 1](#case1py) would be the best practice, for "Being able to tell immediately where a class or function comes from greatly improves code readability and understandability in all but the simplest single file projects."
 
 # TL;DR
 

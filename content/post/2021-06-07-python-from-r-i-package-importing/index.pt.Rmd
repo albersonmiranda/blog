@@ -1,7 +1,7 @@
 ---
-title: "Python from R I: importando pacotes (e porque aprender novas linguagens)"
+title: "Python from R I: importando pacotes (e porque é foda aprender novas linguagens)"
 author: Alberson Miranda
-date: '2021-06-14'
+date: '2021-06-12'
 slug: [importando-pacotes]
 categories:
   - linguagens
@@ -40,15 +40,15 @@ Python from R é uma iniciativa para escrever um livro de forma aberta e colabor
 - We will work in the open, for anyone “out there” to find and benefit from (and collaborate on!) along the way.
 - In the end, we envision this looking like a book — whether that means a literal, physical, published print book, or an online one.
 
-# MOTIVATION
+# MOTIVAÇÃO
 
-When I was writing my concept map for the book (we'll write about it eventually), it crossed my mind an analogy about learning a foreign language: *it's impossible to learn a new language by translating word by word*. It's not only a matter of vocabulary. I mean, each language has it's own grammar, phrasal verbs, diction, expressions, pace etc. That kind of issue also appears when learning a new *programming language* and I think importing packages is a good, yet very simple, example of that.
+Quando eu estava escrevendo meu mapa conceitual para o livro (vamos escrever sobre isso eventualmente), passou pela minha cabeça uma analogia sobre aprender uma nova língua estrangeira: *é impossível aprender uma nova língua apenas traduzindo palavra por palavra*. Isso porque não é uma questão apenas de vocabulário. Cada língua tem sua própria gramática, verbos compostos, dicção, expressões, ritmo etc. Esse tipo de problema também aparece quando estamos aprendendo uma nova *linguagem de programação* e eu acho que a importação de pacotes é um bom exemplo disso, apesar de simples.
 
-# CALLING A FUNCTION FROM A PACKAGE
+# CHAMANDO UMA FUNÇÃO DE UM PACOTE
 
-## R EXPERIENCE
+## EM R
 
-In R, every package installed in the library trees are listed whenever a terminal is open. Those listed packages are available for users at all times and can be called explicitly. For example:
+Em R [@R], todo pacote instalado nas árvores das bibliotecas são listadas sempre que um novo terminal é aberto. Esses pacotes estão disponíveis para os usuários a qualquer tempo e podem ser chamados explicitamente. Por exemplo:
 
 ### CASE 1: EXPLICIT CALL
 ```{r mlr3 example}
