@@ -42,7 +42,7 @@ link-citations: yes
 </div>
 <div class="figure">
 <img src="img/color.gif" alt="" />
-<p class="caption">seleção de cores via IDE</p>
+<p class="caption">seleção de cores via IDE (｡◕‿◕｡)</p>
 </div>
 </div>
 <div id="integração-com-git-e-github" class="section level2">
@@ -86,6 +86,10 @@ link-citations: yes
 <div id="live-share" class="section level2">
 <h2>Live Share</h2>
 <p>Já sonhou em trabalhar no mesmo script com sua galera ao vivasso? A extensão <a href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare">Live Share</a> permite isso, além de fornecer canais de chat e de áudio, o que torna desnecessário abrir uma chamada de áudio em outro app enquanto trabalha!</p>
+<div class="figure">
+<img src="img/me_and_the_boys.png" alt="" />
+<p class="caption">praticamente todo mundo agora</p>
+</div>
 <p>Além disso, você não precisa ter o interpretador da linguagem instalado para participar da sessão. Isso significa que mesmo que você esteja em outra máquina, que não tenha o R ou Python (ou qualquer outra) instalados, você pode entrar na sessão e colaborar nos scripts de seus colegas, inclusive usando os terminais deles para executar o código!</p>
 <div class="figure">
 <img src="img/liveshare.gif" alt="" />
@@ -212,6 +216,8 @@ link-citations: yes
 options(
   # permitir RStudio Addins no command pallet
   vsc.rstudioapi = TRUE,
+  # gráficos interativos com o {httpgd}
+  vsc.use_httpgd = TRUE,
   # alterar o schema de highlight no console Radian
   radian.color_scheme = "native",
   # adicionar code completion após $
@@ -223,23 +229,16 @@ options(
   )
 )
 
-# gráficos interativos no VSCode com o {httpgd}
-if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
-  if ("httpgd" %in% .packages(all.available = TRUE)) {
-    options(vsc.plot = FALSE)
-    options(device = function(...) {
-      httpgd::httpgd()
-      .vsc.browser(httpgd::hgd_url(), viewer = "Beside")
-    })
-  }
-}
-
 {{% /highlight %}}
 <p><strong>Importante: não instalar o {httpgd} ou deixar de incluir essa configuração no .Rprofile vai fazer com que seus gráficos sejam plotados numa janela com tamanho fixo, sem a possibilidade de manuipular o tamanho do plot interativamente.</strong></p>
 </div>
 <div id="por-fim" class="section level1">
 <h1>POR FIM</h1>
 <p>E é isso! Tem ainda um monte de coisas para explorar mas já dá pra ter uma ideia do potencial da ferramenta. Pra quem fica empolgado com anúncio de <em>rainbow parenthesis</em>, eu acho que vale a pena fazer um teste :p</p>
+</div>
+<div id="citação" class="section level1">
+<h1>CITAÇÃO</h1>
+<p>{{% citacao %}}</p>
 </div>
 <div id="referências" class="section level1 unnumbered">
 <h1>REFERÊNCIAS</h1>

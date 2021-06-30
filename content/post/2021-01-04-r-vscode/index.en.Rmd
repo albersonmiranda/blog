@@ -189,6 +189,8 @@ blogdown::shortcode("highlight", "r", .content = '
 options(
   # activate RStudio Addins on command pallet
   vsc.rstudioapi = TRUE,
+  # interactive plots with {httpgd}
+  vsc.use_httpgd = TRUE,
   # radian highlight scheme (choose what suits you)
   radian.color_scheme = "native",
   # code completion triggers
@@ -199,16 +201,6 @@ options(
     )
   )
 )
-
-# interactive plots with {httpgd}
-if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
-  if ("httpgd" %in% .packages(all.available = TRUE)) {
-    options(vsc.plot = FALSE)
-    options(device = function(...) {
-      httpgd::httpgd()
-      .vsc.browser(httpgd::hgd_url(), viewer = "Beside")
-    })
-  }
 }')
 ```
 
@@ -217,5 +209,9 @@ if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
 # AT LAST
 
 And that's it for the basics! There's still a lot of things to explore but you can already get an idea of the tool's potential :p 
+
+# CITATION
+
+{{% citethis %}}
 
 # REFERENCES

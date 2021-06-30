@@ -370,4 +370,8 @@ barplot(l_xgboost$importance())
 
 Entretanto, somente a importância não nos descreve o relacionamento da *feature*  com a variável de resposta, nem mesmo sua direção, sendo uma medida muito pobre de interpretação. Discutiremos técnicas de interpretação em outras postagens.
 
+# CITAÇÃO
+
+{{% citacao %}}
+
 # REFERÊNCIAS

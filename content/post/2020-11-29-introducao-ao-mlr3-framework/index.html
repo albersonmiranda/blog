@@ -367,31 +367,31 @@ l_xgboost$train(task_swiss, row_ids = train_set)
 l_xgboost$model
 
 {{% /highlight %}}
-<pre><code>## [17:31:41] WARNING: amalgamation/../src/objective/regression_obj.cu:171: reg:linear is now deprecated in favor of reg:squarederror.
+<pre><code>## [10:21:01] WARNING: amalgamation/../src/objective/regression_obj.cu:171: reg:linear is now deprecated in favor of reg:squarederror.
 ## [1]  train-rmse:17.686886 
 ## Will train until train_rmse hasn&#39;t improved in 10 rounds.
 ## 
 ## [2]  train-rmse:16.014399 
 ## [3]  train-rmse:14.506416 
-## [4]  train-rmse:13.147320 
+## [4]  train-rmse:13.147319 
 ## [5]  train-rmse:11.924172 
 ## [6]  train-rmse:10.822335 
 ## [7]  train-rmse:9.832130 
 ## [8]  train-rmse:8.940679 
 ## [9]  train-rmse:8.136598 
-## [10] train-rmse:7.413038 
+## [10] train-rmse:7.413037 
 ## [11] train-rmse:6.760063 
 ## [12] train-rmse:6.173677 
 ## [13] train-rmse:5.647888 
 ## [14] train-rmse:5.177068 
-## [15] train-rmse:4.751255 
+## [15] train-rmse:4.751254 
 ## [16] train-rmse:4.367561 
 ## [17] train-rmse:4.022047 
-## [18] train-rmse:3.705541 
+## [18] train-rmse:3.705540 
 ## [19] train-rmse:3.421478 
 ## [20] train-rmse:3.165364 
 ## [21] train-rmse:2.923110 
-## [22] train-rmse:2.709536 
+## [22] train-rmse:2.709535 
 ## [23] train-rmse:2.511684 
 ## [24] train-rmse:2.330560 
 ## [25] train-rmse:2.162180 
@@ -445,7 +445,7 @@ l_xgboost$model
 ## [73] train-rmse:0.130172 
 ## [74] train-rmse:0.123807 
 ## [75] train-rmse:0.117861 
-## [76] train-rmse:0.112244 
+## [76] train-rmse:0.112243 
 ## [77] train-rmse:0.106818 
 ## [78] train-rmse:0.101794 
 ## [79] train-rmse:0.096382 
@@ -474,7 +474,7 @@ l_xgboost$model
 ## raw: 156.2 Kb 
 ## call:
 ##   xgboost::xgb.train(data = data, nrounds = 100L, watchlist = list(
-##     train = &lt;pointer: 0x0000000022244f80&gt;), early_stopping_rounds = 10L, 
+##     train = &lt;pointer: 0x000000001ca3f8a0&gt;), early_stopping_rounds = 10L, 
 ##     eta = 0.1, max_depth = 5L, objective = &quot;reg:linear&quot;)
 ## params (as set within xgb.train):
 ##   eta = &quot;0.1&quot;, max_depth = &quot;5&quot;, objective = &quot;reg:linear&quot;, validate_parameters = &quot;TRUE&quot;
@@ -554,6 +554,10 @@ barplot(l_xgboost$importance())
 ##  0.39696784  0.24723198  0.20219343  0.10340228  0.05020448</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/importance-1.png" width="672" /></p>
 <p>Entretanto, somente a importância não nos descreve o relacionamento da <em>feature</em> com a variável de resposta, nem mesmo sua direção, sendo uma medida muito pobre de interpretação. Discutiremos técnicas de interpretação em outras postagens.</p>
+</div>
+<div id="citação" class="section level1">
+<h1>CITAÇÃO</h1>
+<p>{{% citacao %}}</p>
 </div>
 <div id="referências" class="section level1 unnumbered">
 <h1>REFERÊNCIAS</h1>

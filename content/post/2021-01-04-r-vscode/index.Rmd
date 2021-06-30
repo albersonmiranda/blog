@@ -40,7 +40,7 @@ Esse ouro do VSCode te permite ver a documentação da função (*quick info*), 
 
 ![code completion, hover, quick info, parameter info](img/intellisense.gif)
 
-![seleção de cores via IDE](img/color.gif)
+![seleção de cores via IDE (｡◕‿◕｡)](img/color.gif)
 
 ## Integração com Git e GitHub
 
@@ -73,6 +73,8 @@ Este é um exemplo de uma das inúmeras extensões úteis que a comunidade dispo
 ## Live Share
 
 Já sonhou em trabalhar no mesmo script com sua galera ao vivasso? A extensão [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) permite isso, além de fornecer canais de chat e de áudio, o que torna desnecessário abrir uma chamada de áudio em outro app enquanto trabalha!
+
+![praticamente todo mundo agora](img/me_and_the_boys.png)
 
 Além disso, você não precisa ter o interpretador da linguagem instalado para participar da sessão. Isso significa que mesmo que você esteja em outra máquina, que não tenha o R ou Python (ou qualquer outra) instalados, você pode entrar na sessão e colaborar nos scripts de seus colegas, inclusive usando os terminais deles para executar o código!
 
@@ -187,6 +189,8 @@ blogdown::shortcode("highlight", "r", .content = '
 options(
   # permitir RStudio Addins no command pallet
   vsc.rstudioapi = TRUE,
+  # gráficos interativos com o {httpgd}
+  vsc.use_httpgd = TRUE,
   # alterar o schema de highlight no console Radian
   radian.color_scheme = "native",
   # adicionar code completion após $
@@ -197,17 +201,6 @@ options(
     )
   )
 )
-
-# gráficos interativos no VSCode com o {httpgd}
-if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
-  if ("httpgd" %in% .packages(all.available = TRUE)) {
-    options(vsc.plot = FALSE)
-    options(device = function(...) {
-      httpgd::httpgd()
-      .vsc.browser(httpgd::hgd_url(), viewer = "Beside")
-    })
-  }
-}
 ')
 ```
 
@@ -216,5 +209,9 @@ if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
 # POR FIM
 
 E é isso! Tem ainda um monte de coisas para explorar mas já dá pra ter uma ideia do potencial da ferramenta. Pra quem fica empolgado com anúncio de *rainbow parenthesis*, eu acho que vale a pena fazer um teste :p
+
+# CITAÇÃO
+
+{{% citacao %}}
 
 # REFERÊNCIAS
