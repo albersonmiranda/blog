@@ -10,7 +10,7 @@ tags:
   - mlr3
   - r
   - resampling
-description: Article description.
+description: Tecnicas de resampling no pacote {mlr3}.
 featured: yes
 draft: true
 featureImage: img/cross-validation.jpg
@@ -38,3 +38,8 @@ Os métodos de *resampling* (reamostragem) tem vários objetivos na estatística
 - *holdout*;
 - *in-sample resampling*
 
+# CITAÇÃO
+
+{{% citacao %}}
+
+# REFERÊNCIAS

@@ -62,6 +62,8 @@ mlr3::mlr_measures$keys("auc")
 mlr3::mlr_measures$keys("auc")
 ```
 
+Mas esse jeito de chamar funções só costuma acontecer se o pacote não for usado com muita frequência. Caso contrário, é cultural para usuários de R carregar
+
 But that way of calling functions usually take place only if that particular package won't be required very often. Otherwise, it's cultural for R users to load and attach the entire package's namespace to the search path^[An ordered list where R will look for a function. Can be accessed with `search()` [@r-packages].] with a `library()` call.
 
 ### CASE 2: ATTACHING
