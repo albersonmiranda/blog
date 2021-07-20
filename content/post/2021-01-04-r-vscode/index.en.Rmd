@@ -101,7 +101,7 @@ To get started you only need VSCode and R and R-LSP extensions. But here I share
 1. Visual Studio Code and extensions:
 - [VSCode](https://code.visualstudio.com/download): the IDE
 - [vscode-R](https://marketplace.visualstudio.com/items?itemName=Ikuyadeu.r): R language support
-- [vscode-r-lsp](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r-lsp): R Language Server Protocol Client for VSCode
+- ~~[vscode-r-lsp](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r-lsp): R Language Server Protocol Client for VSCode~~ ^[now integrated in vscode-R extension.]
 
 2. Packages:
 - [languageserver](https://github.com/REditorSupport/languageserver) [@lsp]: R Language Server Protocol implementation
@@ -169,7 +169,7 @@ blogdown::shortcode("highlight", "js", .content = '
         "*.rmd": "markdown",
         "*.Rmd": "rmd"
     },
-    "r.sessionWatcher": true, // required
+    "r.sessionWatcher": true, // default
     "r.bracketedPaste": true, // required
     "r.rterm.windows": "C:\\...\\anaconda3\\Scripts\\radian.exe", // for Radian
     "r.rpath.windows": "C:\\...\\R\\R-4.1.0\\bin\\R.exe", // required
