@@ -12,7 +12,7 @@ featured: no
 draft: no
 toc: no
 featureImage: img/quarto.png
-thumbnail: imgages/quarto.png
+thumbnail: images/quarto.png
 shareImage: 
 codeMaxLines: 10
 codeLineNumbers: yes
