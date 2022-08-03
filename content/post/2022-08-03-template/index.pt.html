@@ -1,0 +1,58 @@
+---
+title: Template para dissertações em Quarto
+author: Alberson Miranda
+date: '2022-08-03'
+slug: template
+categories:
+  - Configurações
+tags:
+  - quarto
+description: Template para monografia/tese/disseração em Quarto
+featured: no
+draft: no
+toc: no
+featureImage: img/quarto.png
+thumbnail: imgages/quarto.png
+shareImage: 
+codeMaxLines: 10
+codeLineNumbers: yes
+figurePositionShow: yes
+bibliography:
+  - ../bib.bib
+bibEntry: datamares_
+link-citations: yes
+---
+
+
+<div id="TOC">
+
+</div>
+
+<p>Aproveitando que começo a escrever <a href="https://github.com/albersonmiranda/dissertacao/blob/master/dissertacao.pdf">minha dissertação</a> este semestre, porque não matar dois coelhos com uma cajadada só (Luisa Mell me perdoa) e conhecer esse tal de <a href="https://quarto.org/">Quarto</a> que está na boca do povo? Pois bem, <a href="https://github.com/albersonmiranda/dissertacao">aqui está um template</a> para monografia/dissertação/tese em Quarto<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>Para facilitar (ou não, o futuro dirá) a vida do povo, parametrizei os elementos pré-textuais — capa, folha de rosto, folha de aprovação, resumo, abstract etc. São esses aqui:</p>
+<div class="figure">
+<img src="img/preambulo.png" alt="" />
+<p class="caption">parâmetros para elementos pré-textuais</p>
+</div>
+<p>Para usar, primeiramente os pré-requisitos:</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://quarto.org/docs/get-started/">Instalar o Quarto</a>;</li>
+<li>Instalar uma distribuição Tex (porque estamos falando de geração de PDF);<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></li>
+<li>Como, obviamente, estou usando o VSCode, instalar a <a href="https://marketplace.visualstudio.com/items?itemName=quarto.quarto">extensão do Quarto</a>.</li>
+</ol>
+<p>Agora você pode <em>forkar</em> o projeto e cair dentro! Basta atualizar os parâmetros em <code>config/preamble.tex</code> e escrever seu trabalho em <code>dissertacao.qmd</code>:</p>
+<div class="figure">
+<img src="img/1.gif" alt="" />
+<p class="caption">atualizando os parâmetros e renderizando</p>
+</div>
+<div id="citação" class="section level1">
+<h1>CITAÇÃO</h1>
+<p>{{% citacao %}}</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Esse template é uma adaptação do <a href="http://www.uel.br/projetos/experimental/pages/modelo-monografiauel.php">modelo padrão da UEL</a>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Para usuários de R, o mais fácil é via <code>tinytex::install_tinytex()</code>.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
