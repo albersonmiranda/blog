@@ -36,14 +36,14 @@
   name = "linkedin"
   weight = 3
   url = "https://www.linkedin.com/in/albersonmiranda/"
-[[social]]
-  name = "facebook"
-  weight = 3
-  url = "https://www.facebook.com/alberson.miranda"
+#[[social]]
+#  name = "facebook"
+#  weight = 3
+#  url = "https://www.facebook.com/alberson.miranda"
 [[social]]
   name = "instagram"
   weight = 3
-  url = "https://www.instagram.com/alberson.miranda/"
+  url = "https://www.instagram.com/alfacebovina/"
 [[social]]
   name = "stackoverflow"
   weight = 3
