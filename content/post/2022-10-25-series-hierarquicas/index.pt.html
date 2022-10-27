@@ -1,5 +1,5 @@
 ---
-title: Previsões de Séries Temporais Hierárquicas
+title: "Séries Temporais Hierárquicas: teoria"
 author: Alberson Miranda
 date: '2022-10-25'
 slug: series-hierarquicas
@@ -9,11 +9,11 @@ tags:
   - time-series
 description: Article description.
 featured: yes
-draft: yes
+draft: no
 toc: no
-featureImage: img/path/file.jpg
-thumbnail: /images/path/thumbnail.png
-shareImage: /images/path/share.png
+featureImage: img/hier_agrup_2.png
+thumbnail: images/posts/2022-10-26 - hierarchical.png
+shareImage: images/posts/2022-10-26 - hierarchical.png
 codeMaxLines: 10
 codeLineNumbers: yes
 figurePositionShow: yes
@@ -29,7 +29,7 @@ link-citations: yes
 <p>Claro que sozinhas não devem ser adotadas como finais ou verdadeiras, uma vez que não usam da informação gerencial e expectativas dos <em>stakeholders</em>, por exemplo. Mas são um ponto de partida razoável que serve como base para elaborar e construir expectativas, plano de ação etc.</p>
 <div id="séries-hierárquicas-e-séries-agrupadas" class="section level2 unnumbered">
 <h2>SÉRIES HIERÁRQUICAS E SÉRIES AGRUPADAS</h2>
-<p>Séries temporais hierárquicas são aquelas que podem ser agregadas ou desagregadas naturalmente em uma estrutura aninhada <span class="citation">(<a href="#ref-hyndman2021" role="doc-biblioref">Hyndman and Athanasopoulos 2021</a>)</span>. Para ilustrar, tome a série do PIB brasileiro. Ela pode ser desagregada por estado que, por sua vez, pode ser desagregada por município.</p>
+<p>Séries temporais hierárquicas são aquelas que podem ser agregadas ou desagregadas naturalmente em uma estrutura aninhada <span class="citation">(<a href="#ref-hyndman2021" role="doc-biblioref">R. J. Hyndman and Athanasopoulos 2021</a>)</span>. Para ilustrar, tome a série do PIB brasileiro. Ela pode ser desagregada por estado que, por sua vez, pode ser desagregada por município.</p>
 <div class="figure"><span style="display:block;" id="fig:h"></span>
 <img src="img/hierarq.png" alt="Séries Hierárquicas" width="100%" />
 <p class="caption">
@@ -161,15 +161,15 @@ Figure 4: Séries Hierárquicas Agrupadas (b)
 </div>
 <div id="abordagens-top-down-e-bottom-up" class="section level2 unnumbered">
 <h2>ABORDAGENS TOP-DOWN E BOTTOM-UP</h2>
-<p>Talvez as formas mais intuitivas de se pensar em previsões para esses tipos de estrutura sejam as abordagens top-down e bottom-up. Tome a estrutura descrita na Figura <a href="#fig:h">1</a>, por exemplo. Podemos realizar a previsão para o horizonte de tempo <span class="math inline">\(h\)</span> do agregado do PIB brasileiro, representado no topo da hierarquia por <em>Total</em> (6), e então distribuir os valores previstos proporcionalmente entre os estados e municípios.</p>
+<p>Talvez as formas mais intuitivas de se pensar em previsões para esses tipos de estrutura sejam as abordagens <em>top-down</em> e <em>bottom-up</em>. Tome a estrutura descrita na Figura <a href="#fig:h">1</a>, por exemplo. Podemos realizar a previsão para o horizonte de tempo <span class="math inline">\(h\)</span> do agregado do PIB brasileiro, representado no topo da hierarquia por <em>Total</em> (6), e então distribuir os valores previstos proporcionalmente entre os estados e municípios.</p>
 <p><span class="math display">\[\begin{equation}
 \hat{y}_{T+h | T} = E[y_{T+h} | \Omega_T]
 \end{equation}\]</span></p>
-<p>Essa é a abordagem top-down. Nela, a previsão para os níveis mais desagregados da hierarquia são determinadas por uma proporção <span class="math inline">\(p_i\)</span> do nível agregado. Por exemplo, as previsões para Vitória são dadas pela equação (7).</p>
+<p>Essa é a abordagem <em>top-down</em>. Nela, a previsão para os níveis mais desagregados da hierarquia são determinadas por uma proporção <span class="math inline">\(p_i\)</span> do nível agregado. Por exemplo, as previsões para Vitória são dadas pela equação (7).</p>
 <p><span class="math display">\[\begin{equation}
 \tilde{y}_{AA, T+h | T} = p_{1}\hat{y}_{T+h | T}
 \end{equation}\]</span></p>
-<p>Para isso, temos de definir uma matriz com todos esses pesos, que, seguindo a formulação de <span class="citation">Hyndman and Athanasopoulos (<a href="#ref-hyndman2021" role="doc-biblioref">2021</a>)</span>, vamos chamar de <span class="math inline">\(\mathbf{G}\)</span>:</p>
+<p>Para isso, temos de definir uma matriz com todos esses pesos, que, seguindo a formulação de <span class="citation">R. J. Hyndman and Athanasopoulos (<a href="#ref-hyndman2021" role="doc-biblioref">2021</a>)</span>, vamos chamar de <span class="math inline">\(\mathbf{G}\)</span>:</p>
 <p><span class="math display">\[\begin{equation}
 \mathbf{G}
 =
@@ -293,7 +293,7 @@ Figure 4: Séries Hierárquicas Agrupadas (b)
     p_7\hat{y}_{T+h|T}
 \end{bmatrix}
 \end{equation}\]</span></p>
-<p>Já a abordagem bottom-up parte do raciocínio inverso e define as previsões de cada elemento da estrutura a partir das previsões dos elementos mais desagregados. Para tanto, basta modificar a matriz <span class="math inline">\(\mathbf{G}\)</span>.</p>
+<p>Já a abordagem <em>bottom-up</em> parte do raciocínio inverso e define as previsões de cada elemento da estrutura a partir das previsões dos elementos mais desagregados. Para tanto, basta modificar a matriz <span class="math inline">\(\mathbf{G}\)</span>.</p>
 <p><span class="math display">\[\begin{equation}
 \mathbf{G}
 =
@@ -347,6 +347,22 @@ Figure 4: Séries Hierárquicas Agrupadas (b)
 \end{bmatrix}
 \end{equation}\]</span></p>
 </div>
+<div id="coerência-e-reconciliação" class="section level2 unnumbered">
+<h2>COERÊNCIA E RECONCILIAÇÃO</h2>
+<p>Seja somando as previsões do nível mais desagregado para formar os níveis superiores da hierarquia (<em>bottom-up</em>) ou distribuindo proporcionalmente as previsões do nível mais agregado (<em>top-down</em>), o vetor <span class="math inline">\(\mathbf{\tilde{y}}_t\)</span> representa as previsões <em>coerentes</em>. Isso significa que as previsões “batem”, ou seja, são totalizadas corretamente — as previsões de cada elemento agregado corresponde ao somatório das previsões dos níveis inferiores da hierarquia. Isso é garantido pela multiplicação das matrizes <span class="math inline">\(\mathbf{SG}\)</span>.</p>
+<p>Não fosse essa pré multiplicação, nada garantiria a coerência das previsões. Tomando a estrutura da Figura <a href="#fig:h">1</a> como exemplo, seria um acaso improvável que as previsões do agregado para o estado do Espírito Santo fossem exatamente a soma das previsões individuais de seus municípios. Isso porque cada série pode seguir um processo diferente (e.g., arima) com erros e variâncias distintas.</p>
+<p>Os métodos de gerar previsões coerentes a partir de previsões base são chamados de métodos de <em>reconciliação</em>. Os métodos de reconciliação tradicionais apresentados, <em>top-down</em> e <em>bottom-up</em>, utilizam informação limitada. No método <em>top-down</em>, utiliza-se apenas informações do nível mais agregado — por isso, apenas a primeira coluna em (8) é diferente de zero. Já na abordagem <em>bottom-up</em>, utiliza-se apenas as informações dos níveis mais desagregados, o que resulta na submatriz identidade <span class="math inline">\(m \times m\)</span> em (13), enquanto as colunas que representam os níveis mais agregados são nulas.</p>
+<p>Alternativamente, podemos pensar numa matriz <span class="math inline">\(\mathbf{G}\)</span> qualquer que utilize toda a informação disponível e tenha algumas propriedades que garantam que as previsões coerentes tenham o menor erro o possível. Esse é o problema de pesquisa trabalhado na <em>reconciliação ótima</em>, e é um assunto relativamente novo. Quer dizer, previsões pontuais de séries temporais hierárquicas é um troço antigo. Ao menos desde a década de 70, pesquisas foram publicadas acerca de abordagens <em>bottom-up</em> e <em>top-down</em>, suas vantagens e desvantagens, e tentativas de se definir qual é o melhor método<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Entretanto, é apenas em <span class="citation">R. J. Hyndman et al. (<a href="#ref-hyndman2011" role="doc-biblioref">2011</a>)</span> que é formalizada uma abordagem prática que utiliza toda a informação disponível, (i.e. as previsões de todos elementos de todos os níveis da hierarquia) a partir da estimação da matriz <span class="math inline">\(\mathbf{G}\)</span> via regressão linear por mínimos quadrados generalizados (MQG).</p>
+<p>Entretanto, para ser capaz de estimar o modelo por MQG, é necessária a matriz de variância-covariância dos erros. <span class="citation">R. J. Hyndman et al. (<a href="#ref-hyndman2011" role="doc-biblioref">2011</a>)</span> usam a matriz de erros de coerência, ou seja, a diferença entre as previsões reconciliadas e as previsões base, que tem posto incompleto e não identificada e, portanto, não pode ser estimada. Os autores contornam esse problema adotando no lugar da matriz de variância-covariância dos erros uma matriz diagonal constante, ou seja, assumem variância constante dos erros de reconciliação, o que acaba caindo na estimação de <span class="math inline">\(\mathbf{G}\)</span> por mínimos quadrados ordinários (MQO).</p>
+<p>A estimação por esse método resulta numa reconciliação ótima que depende apenas da matriz <span class="math inline">\(\mathbf{S}\)</span>, ou seja, da estrutura hierárquica, e independe da variância e covariância das previsões base <span class="math inline">\(\mathbf{\hat{y}_{T+h}}\)</span> — o que não é uma conclusão satisfatória.</p>
+<p><span class="citation">Rob J. Hyndman, Lee, and Wang (<a href="#ref-hyndman2016" role="doc-biblioref">2016</a>)</span> tentam aperfeiçoar o método usando as variâncias das previsões base estimadas (dentro da amostra) como estimativa para a matriz de variância-covariância dos erros de reconciliação, de forma a as utilizar como pesos e realizar a reconciliação ótima por mínimos quadrados ponderados (MQP). Assim, previsões base mais acuradas têm peso maior do que as mais ruidosas. Entretanto, não fornecem justificativa teórica para usar a diagonal da matriz de variância-covariância de <span class="math inline">\(\mathbf{\hat{e}_{t}}\)</span>.</p>
+<p><span class="citation">Wickramasuriya, Athanasopoulos, and Hyndman (<a href="#ref-wickramasuriya2019" role="doc-biblioref">2019</a>)</span> argumentam que o que de fato interessa é que as previsões reconciliadas tenham o menor erro — não interessa que a previsão reconciliada seja mais próxima da previsão base, mas que as reconciliadas sejam as mais precisas o possível, já que é a que se vai utilizar!. Então, corrigem a abordagem de reconciliação ótima para o objetivo de minimização dos erros das previsões reconciliadas <span class="math inline">\(\mathbf{\tilde{e}_{t+h}} = \mathbf{y_{t+h} - \mathbf{\tilde{y}_{t+h}}}\)</span>, ao invés dos erros de reconciliação das previsões base <span class="math inline">\(\mathbf{\hat{y}_{t+h}} - \mathbf{\tilde{y}_{t+h}}\)</span>. Dado que isso implica na minimização da variância de <span class="math inline">\(\mathbf{\tilde{e}_{t+h}}\)</span>, ou seja, na minimização do somatório da diagonal, o traço, da matriz de variância-covariância de <span class="math inline">\(\mathbf{\tilde{e}_{t+h}}\)</span>, eles chamaram esse método de Menor Traço (MinT, na sigla em inglês). Paralelamente, usam desigualdade triangular para demonstrar que as previsões reconciliadas obtidas por esse método são ao menos tão boas quanto as previsões base.</p>
+<p>E, de 2021 pra cá, há desenvolvimentos interessantes na extensão probabilística desse corpo teórico (e é onde estou realizando minha pesquisa de mestrado). <span class="citation">Panagiotelis et al. (<a href="#ref-panagiotelis2021" role="doc-biblioref">2021</a>)</span> reinterpreta a literatura de coerência e reconciliação de previsões pontuais a partir de uma abordagem geométrica, trazendo provas alternativas para conclusões anteriores ao mesmo tempo em que fornece novos teoremas. Além disso, <span class="citation">Panagiotelis et al. (<a href="#ref-panagiotelis2021" role="doc-biblioref">2021</a>)</span> estende essa interpretação geométrica para o contexto probabilístico, fornecendo métodos paramétricos e não paramétricos (via <em>bootstrapping</em>) para reconciliação de previsões probabilísticas, ou seja, para reconciliar previsões <span class="math inline">\(\hat{y}_t\)</span> obtidas a partir de toda a distribuição, e não apenas a média.</p>
+</div>
+<div id="anyway" class="section level1">
+<h1>ANYWAY…</h1>
+<p>Se você chegou até aqui, recomendo que arrume algo mais interessante pra fazer da vida. No próximo post (talvez) eu trago como fazer esse troço todo na prática com nosso queridão #RStats.</p>
+</div>
 <div id="citação" class="section level1">
 <h1>CITAÇÃO</h1>
 <p>{{% citacao %}}</p>
@@ -354,8 +370,29 @@ Figure 4: Séries Hierárquicas Agrupadas (b)
 <div id="referências" class="section level1 unnumbered">
 <h1>REFERÊNCIAS</h1>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-athanasopoulos2009" class="csl-entry">
+Athanasopoulos, George, Roman A. Ahmed, and Rob J. Hyndman. 2009. <span>“Hierarchical Forecasts for Australian Domestic Tourism.”</span> <em>International Journal of Forecasting</em> 25 (1): 146–66. https://doi.org/<a href="https://doi.org/10.1016/j.ijforecast.2008.07.004">https://doi.org/10.1016/j.ijforecast.2008.07.004</a>.
+</div>
+<div id="ref-hyndman2011" class="csl-entry">
+Hyndman, R. J., R. A. Ahmed, G. Athanasopoulos, and H. L. Shang. 2011. <span>“Optimal Combination Forecasts for Hierarquical Time Series.”</span> <em>Computational Statistics and Data Analysis</em> 55: 2579–89.
+</div>
 <div id="ref-hyndman2021" class="csl-entry">
 Hyndman, R. J., and G. Athanasopoulos. 2021. <em>Forecasting: Principles and Practice</em>. 3rd ed. Melbourne, Australia: OTexts. <a href="https://otexts.com/fpp3/">https://otexts.com/fpp3/</a>.
 </div>
+<div id="ref-hyndman2016" class="csl-entry">
+Hyndman, Rob J., Alan J. Lee, and Earo Wang. 2016. <span>“Fast Computation of Reconciled Forecasts for Hierarchical and Grouped Time Series.”</span> <em>Computational Statistics and Data Analysis</em> 97: 16–32. https://doi.org/<a href="https://doi.org/10.1016/j.csda.2015.11.007">https://doi.org/10.1016/j.csda.2015.11.007</a>.
 </div>
+<div id="ref-panagiotelis2021" class="csl-entry">
+Panagiotelis, Anastasios, George Athanasopoulos, Puwasala Gamakumara, and Rob J. Hyndman. 2021. <span>“Forecast Reconciliation: A Geometric View with New Insights on Bias Correction.”</span> <em>International Journal of Forecasting</em> 37 (1): 343–59. https://doi.org/<a href="https://doi.org/10.1016/j.ijforecast.2020.06.004">https://doi.org/10.1016/j.ijforecast.2020.06.004</a>.
+</div>
+<div id="ref-wickramasuriya2019" class="csl-entry">
+Wickramasuriya, Shanika L., George Athanasopoulos, and Rob J. Hyndman. 2019. <span>“Optimal Forecast Reconciliation for Hierarchical and Grouped Time Series Through Trace Minimization.”</span> <em>Journal of the American Statistical Association</em> 114 (526): 804–19. <a href="https://doi.org/10.1080/01621459.2018.1448825">https://doi.org/10.1080/01621459.2018.1448825</a>.
+</div>
+</div>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>Uma revisão dessa literatura pode ser encontrada em <span class="citation">Athanasopoulos, Ahmed, and Hyndman (<a href="#ref-athanasopoulos2009" role="doc-biblioref">2009</a>)</span>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>

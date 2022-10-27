@@ -1,5 +1,5 @@
 ---
-title: Previsões de Séries Temporais Hierárquicas
+title: "Séries Temporais Hierárquicas: teoria"
 author: Alberson Miranda
 date: '2022-10-25'
 slug: series-hierarquicas
@@ -9,11 +9,11 @@ tags:
   - time-series
 description: Article description.
 featured: yes
-draft: yes
+draft: no
 toc: no
-featureImage: img/path/file.jpg
-thumbnail: /images/path/thumbnail.png
-shareImage: /images/path/share.png
+featureImage: img/hier_agrup_2.png
+thumbnail: images/posts/2022-10-26 - hierarchical.png
+shareImage: images/posts/2022-10-26 - hierarchical.png
 codeMaxLines: 10
 codeLineNumbers: yes
 figurePositionShow: yes
@@ -171,13 +171,13 @@ Na notação matricial, a estrutura da Figura \@ref(fig:ha2) é representada com
 
 ## ABORDAGENS TOP-DOWN E BOTTOM-UP {-}
 
-Talvez as formas mais intuitivas de se pensar em previsões para esses tipos de estrutura sejam as abordagens top-down e bottom-up. Tome a estrutura descrita na Figura \@ref(fig:h), por exemplo. Podemos realizar a previsão para o horizonte de tempo $h$ do agregado do PIB brasileiro, representado no topo da hierarquia por *Total* (6), e então distribuir os valores previstos proporcionalmente entre os estados e municípios.
+Talvez as formas mais intuitivas de se pensar em previsões para esses tipos de estrutura sejam as abordagens *top-down* e *bottom-up*. Tome a estrutura descrita na Figura \@ref(fig:h), por exemplo. Podemos realizar a previsão para o horizonte de tempo $h$ do agregado do PIB brasileiro, representado no topo da hierarquia por *Total* (6), e então distribuir os valores previstos proporcionalmente entre os estados e municípios.
 
 \begin{equation}
 \hat{y}_{T+h | T} = E[y_{T+h} | \Omega_T]
 \end{equation}
 
-Essa é a abordagem top-down. Nela, a previsão para os níveis mais desagregados da hierarquia são determinadas por uma proporção $p_i$ do nível agregado. Por exemplo, as previsões para Vitória são dadas pela equação (7).
+Essa é a abordagem *top-down*. Nela, a previsão para os níveis mais desagregados da hierarquia são determinadas por uma proporção $p_i$ do nível agregado. Por exemplo, as previsões para Vitória são dadas pela equação (7).
 
 \begin{equation}
 \tilde{y}_{AA, T+h | T} = p_{1}\hat{y}_{T+h | T}
@@ -316,7 +316,7 @@ Substituindo a matriz $\mathbf{S}$, temos as equações que definem cada previs�
 \end{bmatrix}
 \end{equation}
 
-Já a abordagem bottom-up parte do raciocínio inverso e define as previsões de cada elemento da estrutura a partir das previsões dos elementos mais desagregados. Para tanto, basta modificar a matriz $\mathbf{G}$.
+Já a abordagem *bottom-up* parte do raciocínio inverso e define as previsões de cada elemento da estrutura a partir das previsões dos elementos mais desagregados. Para tanto, basta modificar a matriz $\mathbf{G}$.
 
 \begin{equation}
 \mathbf{G}
@@ -372,6 +372,30 @@ O que resulta nas equações desejadas. Portanto, $\mathbf{G}$ define a abordage
     \hat{y}_{CA, T+h|T}
 \end{bmatrix}
 \end{equation}
+
+## COERÊNCIA E RECONCILIAÇÃO {-}
+
+Seja somando as previsões do nível mais desagregado para formar os níveis superiores da hierarquia (*bottom-up*) ou distribuindo proporcionalmente as previsões do nível mais agregado (*top-down*), o vetor $\mathbf{\tilde{y}}_t$ representa as previsões *coerentes*. Isso significa que as previsões "batem", ou seja, são totalizadas corretamente --- as previsões de cada elemento agregado corresponde ao somatório das previsões dos níveis inferiores da hierarquia. Isso é garantido pela multiplicação das matrizes $\mathbf{SG}$.
+
+Não fosse essa pré multiplicação, nada garantiria a coerência das previsões. Tomando a estrutura da Figura \@ref(fig:h) como exemplo, seria um acaso improvável que as previsões do agregado para o estado do Espírito Santo fossem exatamente a soma das previsões individuais de seus municípios. Isso porque cada série pode seguir um processo diferente (e.g., arima) com erros e variâncias distintas.
+
+Os métodos de gerar previsões coerentes a partir de previsões base são chamados de métodos de *reconciliação*. Os métodos de reconciliação tradicionais apresentados, *top-down* e *bottom-up*, utilizam informação limitada. No método *top-down*, utiliza-se apenas informações do nível mais agregado --- por isso, apenas a primeira coluna em (8) é diferente de zero. Já na abordagem *bottom-up*, utiliza-se apenas as informações dos níveis mais desagregados, o que resulta na submatriz identidade $m \times m$ em (13), enquanto as colunas que representam os níveis mais agregados são nulas.
+
+Alternativamente, podemos pensar numa matriz $\mathbf{G}$ qualquer que utilize toda a informação disponível e tenha algumas propriedades que garantam que as previsões coerentes tenham o menor erro o possível. Esse é o problema de pesquisa trabalhado na *reconciliação ótima*, e é um assunto relativamente novo. Quer dizer, previsões pontuais de séries temporais hierárquicas é um troço antigo. Ao menos desde a década de 70, pesquisas foram publicadas acerca de abordagens *bottom-up* e *top-down*, suas vantagens e desvantagens, e tentativas de se definir qual é o melhor método^[Uma revisão dessa literatura pode ser encontrada em @athanasopoulos2009.]. Entretanto, é apenas em @hyndman2011 que é formalizada uma abordagem prática que utiliza toda a informação disponível, (i.e. as previsões de todos elementos de todos os níveis da hierarquia) a partir da estimação da matriz $\mathbf{G}$ via regressão linear por mínimos quadrados generalizados (MQG).
+
+Entretanto, para ser capaz de estimar o modelo por MQG, é necessária a matriz de variância-covariância dos erros. @hyndman2011 usam a matriz de erros de coerência, ou seja, a diferença entre as previsões reconciliadas e as previsões base, que tem posto incompleto e não identificada e, portanto, não pode ser estimada. Os autores contornam esse problema adotando no lugar da matriz de variância-covariância dos erros uma matriz diagonal constante, ou seja, assumem variância constante dos erros de reconciliação, o que acaba caindo na estimação de $\mathbf{G}$ por mínimos quadrados ordinários (MQO).
+
+A estimação por esse método resulta numa reconciliação ótima que depende apenas da matriz $\mathbf{S}$, ou seja, da estrutura hierárquica, e independe da variância e covariância das previsões base $\mathbf{\hat{y}_{T+h}}$ --- o que não é uma conclusão satisfatória.
+
+@hyndman2016 tentam aperfeiçoar o método usando as variâncias das previsões base estimadas (dentro da amostra) como estimativa para a matriz de variância-covariância dos erros de reconciliação, de forma a as utilizar como pesos e realizar a reconciliação ótima por mínimos quadrados ponderados (MQP). Assim, previsões base mais acuradas têm peso maior do que as mais ruidosas. Entretanto, não fornecem justificativa teórica para usar a diagonal da matriz de variância-covariância de $\mathbf{\hat{e}_{t}}$.
+
+@wickramasuriya2019 argumentam que o que de fato interessa é que as previsões reconciliadas tenham o menor erro — não interessa que a previsão reconciliada seja mais próxima da previsão base, mas que as reconciliadas sejam as mais precisas o possível, já que é a que se vai utilizar!. Então, corrigem a abordagem de reconciliação ótima para o objetivo de minimização dos erros das previsões reconciliadas $\mathbf{\tilde{e}_{t+h}} = \mathbf{y_{t+h} - \mathbf{\tilde{y}_{t+h}}}$, ao invés dos erros de reconciliação das previsões base $\mathbf{\hat{y}_{t+h}} - \mathbf{\tilde{y}_{t+h}}$. Dado que isso implica na minimização da variância de $\mathbf{\tilde{e}_{t+h}}$, ou seja, na minimização do somatório da diagonal, o traço, da matriz de variância-covariância de $\mathbf{\tilde{e}_{t+h}}$, eles chamaram esse método de Menor Traço (MinT, na sigla em inglês). Paralelamente, usam desigualdade triangular para demonstrar que as previsões reconciliadas obtidas por esse método são ao menos tão boas quanto as previsões base.
+
+E, de 2021 pra cá, há desenvolvimentos interessantes na extensão probabilística desse corpo teórico (e é onde estou realizando minha pesquisa de mestrado). @panagiotelis2021 reinterpreta a literatura de coerência e reconciliação de previsões pontuais a partir de uma abordagem geométrica, trazendo provas alternativas para conclusões anteriores ao mesmo tempo em que fornece novos teoremas. Além disso, @panagiotelis2021 estende essa interpretação geométrica para o contexto probabilístico, fornecendo métodos paramétricos e não paramétricos (via *bootstrapping*) para reconciliação de previsões probabilísticas, ou seja, para reconciliar previsões $\hat{y}_t$ obtidas a partir de toda a distribuição, e não apenas a média.
+
+# ANYWAY...
+
+Se você chegou até aqui, recomendo que arrume algo mais interessante pra fazer da vida. No próximo post (talvez) eu trago como fazer esse troço todo na prática com nosso queridão #RStats.
 
 # CITAÇÃO
 
