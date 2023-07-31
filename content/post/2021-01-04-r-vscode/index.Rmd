@@ -23,10 +23,10 @@ link-citations: yes
 ---
 
 Comecei a usar o VSCode em outubro de 2020 quando comecei a estudar Python. Pesquisando sobre o setup ideal, li que a IDE de menor impacto para usuários de R [@R] seria o Spyder, mas que a experiência de um usuário Python nativo seria com o VSCode, então foi pra lá que eu fui, mesmo sendo uma experiência mais complicada.
-<!--{{% tweet 1312504411956998144 %}}-->
+{{% tweet 1312504411956998144 %}}
 
 Rapidamente me apaixonei por sua capacidade e maturidade. Há extensões da comunidade para tudo, o que torna a experiência muito agradável! Entretanto, o ecossistema do R ainda era muito voltado ao RStudio e eu ainda me via preso naquela IDE no meu dia-a-dia com o R. Claro que isso mudou quando vi esse tweet do [Miles McBain](https://twitter.com/MilesMcBain):
-<!--{{% tweet 1319242982814408704 %}}-->
+{{% tweet 1319242982814408704 %}}
 
 Passando a considerar o VSCode como uma possibilidade real para R, dei uma pesquisada e achei esse [post](https://renkun.me/2019/12/11/writing-r-in-vscode-a-fresh-start/) do [Kun Ren](https://twitter.com/renkun_ken) que oferece um setup para trabalhar em R no VSCode. Neste post falo das funcionalidades e de como configurar.
 

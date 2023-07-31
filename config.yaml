@@ -13,3 +13,5 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+
+ignoreErrors: "error-remote-getjson"
