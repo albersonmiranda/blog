@@ -1,8 +1,6 @@
 [build]
-command: hugo
-commandOrigin: config
-publish: /opt/build/repo/public
-publishOrigin: config
+command = "hugo"
+publish = "public"
 [build.environment]
 HUGO_VERSION = "0.80.0"
 
