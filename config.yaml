@@ -1,7 +1,7 @@
 baseurl: https://datamares.netlify.app/
 copyright: Copyright © 2021, Alberson Miranda; all rights reserved.
 paginate: 10
-theme: hugo-clarity
+theme: "hugo-clarity"
 disqusShortname: 'datamares-1'
 DefaultContentLanguage: pt
 taxonomies:
@@ -15,3 +15,4 @@ markup:
       unsafe: true
 
 ignoreErrors: "error-remote-getjson"
+ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]

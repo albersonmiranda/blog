@@ -1,5 +1,5 @@
 [read_more]
-other = "Leia Mais"
+other = "Ler Mais"
 
 [copyright]
 other = "Copyright"
@@ -8,13 +8,13 @@ other = "Copyright"
 other = "Todos os Direitos Reservados"
 
 [share_on]
-other = "Compartilhar"
+other = "Partilhar"
 
 [featured_posts]
-other = "Principais Posts"
+other = "Principais Artigos"
 
 [recent_posts]
-other = "Posts Recentes"
+other = "Artigos Mais Recentes"
 
 [404_title]
 other = "Ooops"
@@ -32,7 +32,7 @@ other = "Traduções"
 other = "Categorias"
 
 [tags]
-other = "Tags"
+other = "Etiquetas"
 
 [series]
 other = "Séries"
@@ -41,13 +41,32 @@ other = "Séries"
 other = "Todas as Categorias"
 
 [all_tags]
-other = "Todas as Tags"
+other = "Todas as Etiquetas"
 
 [all_series]
 other = "Todas as Séries"
 
 [overview]
-other = "Sumário"
+other = "Overview"
 
 [reading_time]
-other = "{{ .ReadingTime }} minutos de leitura"
+other = "{{ .ReadingTime }} min read"
+
+[series_posts]
+other = "Postagens nesta série"
+
+# search
+[quick_links]
+  other = "Resultados"
+[no_matches]
+  other = "Nenhum resultado encontrado"
+[search_field_placeholder]
+  other = "Pesquisar a base de conhecimento"
+[blog_search_field_placeholder]
+  other = "Pesquisar..."
+[search_results_label]
+  other = "Resultados da pesquisa"
+[short_search_query]
+  other = "A consulta é muito curta"
+[type_to_search]
+  other = "Digite para pesquisar"
