@@ -1,5 +1,5 @@
 ---
-title: R in 2021 with VSCode
+title: 'R in 2021 with VSCode'
 author: Alberson Miranda
 date: '2021-06-01'
 slug: r-vscode
