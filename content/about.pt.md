@@ -7,8 +7,10 @@ description: Sobre o autor
 title: quem eu sou?
 ---
 
-Atuo como assessor no \@Banestes_SA, onde sou concursado desde 2008. Sou economista de formação (UFES) mas me tornei cientista de dados por afinidade. Atualmente, tenho trabalhado com estatística computacional e análise de séries temporais, focado em aumentar a qualidade da informação e reduzir a incerteza da tomada de decisão através de métodos estatísticos e experimentação.
+Atuo na modelagem de risco de crédito e ciências de dados em geral no Banco do Estado do Espírito Santo (\@Banestes_SA), onde sou concursado desde 2008. Meu foco está em aumentar a qualidade da informação e reduzir a incerteza da tomada de decisão através de métodos estatísticos e experimentação. Sou economista (Universidade Federal do Espírito Santo - UFES, 2014) e matemático (Instituto Federal do Espírito Santo, 2024) de formação, e me tornei cientista de dados por afinidade.
 
-Sou aluno de pós-graduação (mestrado em economia - PPGEco/UFES) e também estou cursando minha segunda graduação (matemática - IFES). Meu campo de pesquisa é econometria de séries temporais.
+Sou discente de doutorado no Programa de Pós-Graduação da Universidade Federal do Espírito Santo (PPGEco/UFES), onde também cursei meu mestrado. Meu campo de pesquisa é econometria de séries temporais, especificamente séries temporais hierárquicas e métodos de aprendizado de máquina para previsão de séries temporais hierárquicas.
 
-Sou fã de basquete, futebol americano e automobilismo. Quando não estou na frente do computador escrevendo códigos ou estudando, provavelmente estarei chorando na seção de comentários de algum vídeo do Senna.
+Em relação à tecnologias, eu sou um entusiasta de FOSS (Free and Open Source Software) e utilizo principalmente R, Rust e Python em meus projetos, sempre em ambiente Linux. Sou autor do pacote [fio](https://albersonmiranda.github.io/fio/), que é uma ferramenta para análise de matrizes insumo-produto -- que combina perfeitamente meu background em economia, matemática e computação.
+
+Em meu tempo livre eu gosto de surfar e tocar guitarra em meu home studio. 

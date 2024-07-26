@@ -7,8 +7,10 @@ description: About the author
 title: who am I?
 ---
 
-I act as advisor at \@Banestes_SA, where I've been working since 2008. I'm an economist by trainning (Federal University of ES - UFES) and data scientist by affinity. Currently, I have been working with computational statistics and time-series analisys, focused on increasing the quality of information and reducing the uncertainty on decision making through statistical methods and experimentation.
+I work in credit risk modeling and data science in general at the State Bank of Espírito Santo (\@Banestes_SA), where I have been employed since 2008. My focus is on improving information quality and reducing decision-making uncertainty through statistical methods and experimentation. I am an economist (Federal University of Espírito Santo - UFES, 2014) and a mathematician (Federal Institute of Espírito Santo, 2024) by training, and I became a data scientist by affinity.
 
-I'm a grad student (Ph.D, economics, Federal University of ES - UFES) and at the same time I'm in my (hopefully) last year of my second bachelor's degree, now in mathematics, at the Federal Institute of ES — Vitória. My research field is econometrics (time-series), specifically machine learning methods for hierarchical time series forecasting.
+I am a PhD student at the Federal University of Espírito Santo (PPGEco/UFES), where I also completed my master's degree. My research field is time series econometrics, specifically hierarchical time series and machine learning methods for hierarchical time series forecasting.
 
-I'm a fan of basketball, football and motorsport. When I’m not in front of the computer writing code or studying, I’ll probably be crying in the comments section of some Senna video. 
+Regarding technology, I am an enthusiast of FOSS (Free and Open Source Software) and primarily use R, Rust, and Python in my projects, always in a Linux environment. I am the author of the [fio](https://albersonmiranda.github.io/fio/) package, which is a tool for input-output matrix analysis -- perfectly combining my background in economics, mathematics, and computing.
+
+In my free time, I enjoy surfing and playing guitar in my home studio.
