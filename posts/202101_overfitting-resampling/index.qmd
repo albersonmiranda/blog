@@ -1,0 +1,58 @@
+---
+title: 'A Bit of Concepts: Overfitting & Resampling'
+date: '2021-04-17'
+categories: machine learning
+image: img/overfitting.png
+bibliography: bib.bib
+---
+
+Although they are recurring terms in *machine learning*, *resampling* and *overfitting* are often discussed only in practice, frequently without a deep understanding. In this post^[Heavily based on [@resampling].], I will try to introduce the concepts in a generic way.
+
+# THE FITTING PROCESS AND OVERFITTING
+
+Consider a fitting function $f$, a set of points $D = {d_1, ..., d_n}$ with $d_i = (x_i, y_i)$, decision variables or parameters $x_i \in \R^m$ and output $y_i = f(x_i) \in \R$. Unlike the classical approach, where, in the case of the classical linear regression model, there is a theoretical model with coefficients estimated by ordinary least squares (OLS) that is guaranteed by the Gauss-Markov theorem to be the best linear unbiased estimator (BLUE), in *machine learning* the goal is to iteratively find a meta-model that best approximates the function $f$ using the information contained in $D$, that is, we want to fit a regression function $\hat{f}_D$ to our data $D$ so that $\hat{y} = \hat{f}_D(x, \varepsilon)$ has the smallest approximation error $\varepsilon$.
+
+To check how well the model $\hat{f}_D$ approximates the real function $f$, we need a loss function $L(y, \hat{f}(x))$ which, in the case of regression, will be the quadratic loss $(y - \hat{f}(x))^2$ or the absolute loss $|y - \hat{f}(x)|$. These values are averaged to form the cost functions mean squared error (MSE) and mean absolute error (MAE).
+
+Given the loss function, we can define the risk associated with the model fitting function as
+$$R(f, p) = \int_{\R}{}\int_{\R^m}{} L(y, f(x))p(x, y)dxdy$$
+where $p(x, y)$ is the joint probability density function. Since we do not have the real function but seek an estimated function that approximates it, we have
+$$GE(\hat{f}_D, p) = \int_{\R}{}\int_{\R^m}{} L(y, \hat{f}_D(x))p(x, y)dxdy \tag{1}$$
+which is the generalization error or conditional risk associated with the predictor.
+
+Thus, we can estimate the generalization error of the model. Since we do not know the distribution $P$, we replace it with the test sample $D^*$ and get
+$$\widehat{GE}(\hat{f}_D, D^*) = \sum_{(x, y) \in D^*} \frac{L(y, \hat{f}_D(x))}{|D^*|}$$
+If we replace the test sample with the training sample $D$ used to fit the model, we have the so-called resubstitution error
+$$\widehat{GE}_\text{resub} = \widehat{GE}(\hat{f}_D, D)$$
+Naturally, in this case we would be using the training data both to train the predictor and to estimate the generalization error, which would lead to a biased estimate of the generalization error. If we used this estimate for model selection, this bias would favor models more adapted to the sample.
+
+The problem is that in these models, given enough iterations, the resubstitution error tends to zero. This happens because as the predictor adapts more and more to the training data, it will memorize the relationship between the set of points $D$ and the output $f(x_i)$, that is, it will fit perfectly to the shape of the function to be modeled. And a perfectly fitted model does not necessarily translate into the ability to predict future (out-of-sample) data.
+
+In general, it is expected that the predictor reduces its bias during training just enough to be able to generalize its prediction to out-of-sample data at an optimal level of accuracy. Beyond this point, reducing bias is penalized by increased variance, i.e., by reducing its ability to predict future data. This process is called *overfitting*. This means we cannot consider the predictor's performance on $D$ if we want to honestly estimate the real performance of the model.
+
+# RESAMPLING
+
+One way to correct this problem is to split the sample into a training set $D_\text{train}$ and a test set $D_\text{test}$ such that $D_\text{train} \cup D_\text{test} = D$ and $D_\text{train} \cap D_\text{test} = \emptyset$. Thus, we can train the model on $D_\text{train}$ to obtain $\hat{f}_{D_{\text{train}}}$ and calculate its generalization error using the data from $D_\text{test}$. This approach is called *hold-out* and it is simple to implement and use, since the observations in the test set are completely independent from those used to train the model. The estimate of the generalization error then becomes
+$$\widehat{GE}_\text{hold-out} = \widehat{GE}(\hat{f}_{D_{\text{train}}}, D_{\text{test}})$$
+Two problems remain:
+
+1. A large sample is required, since there must be enough data in both the training set to fit an adequate model and in the test set to perform a statistically valid performance evaluation.
+
+2. This method is not sufficient to detect variance and instabilities in the training sample. More complex models, especially nonlinear ones, can produce very different results with small changes in the training data.
+
+It is precisely to deal with these situations that resampling techniques were developed. All these techniques repeatedly generate $i$ training subsets $D_{\text{train}}^{(i)}$ and test subsets $D_{\text{test}}^{(i)}$ from the available dataset, fit a model with each training set, and assess its quality on the corresponding test set. The estimate of the generalization error then becomes
+$$\widehat{GE}_\text{samp} = \frac{1}{k}\sum_{i=1}^{k}\widehat{GE}(\hat{f}_{D_{\text{train}}^{(i)}}, D_{\text{test}}^{(i)}) \tag{2}$$
+The generalization error given in equation (1) depends on both the size of the sample used to train and to test the fitted model. Therefore, we must ensure that the sample size used to check the generalization error of a model estimated from $n$ data points is close to $n$. If, for example, the training set is much smaller than the total sample, the error will be overestimated, since much less information was used to calculate the estimator.
+
+Similarly, the quality of the generalization error estimator obtained in (2) from a resampling strategy also depends greatly on the size of the sets $D^{(i)}$ relative to the original sample, the number $k$ of subsets used, and the dependency structure between the subsets $D^{(i)}$—again, more complex models are more sensitive to changes in the dataset and the variance between subsets tends to be higher. The estimator's error is usually measured by the mean squared error (MSE):
+$$\text{MSE}(\widehat{GE}_\text{samp}) = \mathbb{E}[(\widehat{GE}_\text{samp} - GE(\hat{f}_D, P))^2]$$
+This estimator can also be represented as the sum of the squared bias and the variance:
+$$\text{MSE}(\widehat{GE}_\text{samp}) = \text{Bias}(\widehat{GE}_\text{samp})^2 + \text{Variance}(\widehat{GE}_\text{samp})$$
+Where the bias expresses the average difference between an estimator and the true value, while the variance measures the average dispersion of the estimator. These quantities are defined as follows:
+$$\text{Bias}(\widehat{GE}_\text{samp}) = \mathbb{E}[\widehat{GE}_\text{samp}] - \mathbb{E}[GE(\hat{f}_D, p)]$$
+and
+$$\text{Variance}(\widehat{GE}_\text{samp}) = \mathbb{E}[(\widehat{GE}_\text{samp} - \mathbb{E}[\widehat{GE}_\text{samp}])^2]$$
+
+# TO CONCLUDE
+
+With this introduction, I hope the concepts have become clearer and that it has helped a bit in understanding meta-modeling. I'm sure I won't see the results the same way the next time I apply resampling techniques for selection and *tuning* of my models!

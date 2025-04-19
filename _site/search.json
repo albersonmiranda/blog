@@ -1,0 +1,296 @@
+[
+  {
+    "objectID": "posts/202009_hello-world/index.html",
+    "href": "posts/202009_hello-world/index.html",
+    "title": "Hello World",
+    "section": "",
+    "text": "After a couple of posts on LinkedIn and Kaggle, it was about time for me to set up my own blog for data science, wasn’t it?\nFirst things first, what’s with the name? Datamares & Dreamscapes refers to the title of a Stephen King short story collection Nightmares & Dreamscapes and quite fittingly describes my relationship with this world. I always want to learn more, go further, conquer new horizons, but learning involves certain sacrifices and sleepless or poorly slept nights. However, when you achieve that expected result, it’s as if a portal opens to a new world.\nSo, what do I intend to talk about here? Mainly about the R projects I’m working on, machine learning, classical statistics, forecasting, frameworks… and a bit of mathematics, economics, and teaching. Basically ideas, insights, and works that I might need to revisit from time to time.\nAnd if any of these things help you in some way, I’ll be very happy :p"
+  },
+  {
+    "objectID": "posts/202010_graphics-rstudio/index.html",
+    "href": "posts/202010_graphics-rstudio/index.html",
+    "title": "Graphic quality in the RStudio panel",
+    "section": "",
+    "text": "If you’ve ever plotted a line chart in R and, when you saw the plot in the RStudio panel, thought “wow, what terrible quality!”, you’re not alone. But don’t worry, the solution is quite simple!\nFirst, let’s plot a chart using RStudio’s default settings:\n\nknitr::include_graphics(\"img/Rplot.png\")\n\n\n\n\n\n\n\nFigure 1: Plot without anti-aliasing.\n\n\n\n\n\nWow, imagine using something like that on a poster! Let’s try again, now with Cairo as the graphics device and using anti-aliasing:\n\n# Adding anti-aliasing\ntrace(grDevices::png, quote({\n  if (missing(type) && missing(antialias)) {\n    type = \"cairo-png\"\n    antialias = \"subpixel\"\n  }\n}), print = FALSE)\n\nTracing function \"png\" in package \"grDevices\"\n\n\n[1] \"png\"\n\n# Plotting again\nplot(mtcars$mpg, type = \"l\")\n\n\n\n\n\n\n\nFigure 2: Plot with anti-aliasing.\n\n\n\n\n\nHoly anti-aliasing, right? (Zoom in on both to really see the difference)\nWell, do I need to do this every time I plot a chart or start an R session? Not at all, just add these lines to your .Rprofile. I always recommend using {usethis} to edit configuration files, as you might get lost among the possible paths R will check. Using {usethis} ensures you’re creating or editing the correct file.\nusethis::edit_r_profile() will open a window with the file for editing. Then, paste the call above (removing the plot line, of course), make sure your .Rprofile ends with a blank line (because R ignores the last line), save, and restart your session. Done! Now anti-aliasing will always be applied to your R plots, regardless of the package used, whether base or {ggplot}, for example."
+  },
+  {
+    "objectID": "posts/202011_comparando-variancias/index.html",
+    "href": "posts/202011_comparando-variancias/index.html",
+    "title": "Comparing Variances: The F Test",
+    "section": "",
+    "text": "Before I dive into machine learning—because it’s a bottomless pit I should take my time when I do—I want to cover a bit more of the basics in inference.\nIn this post I mentioned that to perform the t-test for two independent samples, we should first know whether the variances of these samples are equal or different. Let’s see how to check this now. The dataset used will be the German credit data.\n# importing data\n# note: -1 removes the first column, which is just the index\ndata = readr::read_csv(\"german_credit_data.csv\")[-1]\n\nNew names:\nRows: 1000 Columns: 10\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(5): Sex, Housing, Saving accounts, Checking account, Purpose dbl (5): ...1,\nAge, Job, Credit amount, Duration\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -&gt; `...1`\n\n# viewing data\nprint(data)\n\n# A tibble: 1,000 × 9\n     Age Sex      Job Housing `Saving accounts` `Checking account`\n   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;             &lt;chr&gt;             \n 1    67 male       2 own     &lt;NA&gt;              little            \n 2    22 female     2 own     little            moderate          \n 3    49 male       1 own     little            &lt;NA&gt;              \n 4    45 male       2 free    little            little            \n 5    53 male       2 free    little            little            \n 6    35 male       1 free    &lt;NA&gt;              &lt;NA&gt;              \n 7    53 male       2 own     quite rich        &lt;NA&gt;              \n 8    35 male       3 rent    little            moderate          \n 9    61 male       1 own     rich              &lt;NA&gt;              \n10    28 male       3 own     little            moderate          \n# ℹ 990 more rows\n# ℹ 3 more variables: `Credit amount` &lt;dbl&gt;, Duration &lt;dbl&gt;, Purpose &lt;chr&gt;\nJust like the t-test, we can test whether the measure of a sample is significantly different from a chosen value or compare it to another sample—whether greater, smaller, or different. For this exercise, let’s test whether the variance of the Credit amount variable (credit limit) is the same for men and women who rent their homes. First, let’s calculate the population standard deviations:\n# getting samples\nmen = data[data$Sex == \"male\" & data$Housing == \"rent\",]$`Credit amount`\nwomen = data[data$Sex == \"female\" & data$Housing == \"rent\",]$`Credit amount`\n\n# calculating standard deviation\nsd(men)\n\n[1] 2846.647\n\nsd(women)\n\n[1] 2235.225\nWe see that men’s credit limit has a standard deviation of DM$ 2,846, while women’s is DM$ 2,2351, which means men’s credit limits vary more around the mean than women’s. What we want to know now is whether this difference is statistically significant. Let’s proceed to the test!"
+  },
+  {
+    "objectID": "posts/202011_comparando-variancias/index.html#checking-the-normality-assumption",
+    "href": "posts/202011_comparando-variancias/index.html#checking-the-normality-assumption",
+    "title": "Comparing Variances: The F Test",
+    "section": "1.1 CHECKING THE NORMALITY ASSUMPTION",
+    "text": "1.1 CHECKING THE NORMALITY ASSUMPTION\nFirst, let’s plot the densities to check if their distribution is plausible under the normality assumption:\n\n# density data\nd1 = density(men)\nd2 = density(women)\n\n# splitting the grid into 2 columns\npar(mfrow = c(1,2))\n\n# visualization\nplot(d1,\n  main = \"Density Plot: men\")\npolygon(d1, col = \"lightblue\")\n\nplot(d2,\n  main = \"Density Plot: women\")\npolygon(d2, col = \"salmon\")\n\n\n\n\n\n\n\n\nWith this shape, normality is quite implausible and there’s no need to perform any tests. To address this, we can try a logarithmic transformation:\n\n# logarithmic transformation\nlog_men = log(men)\nlog_women = log(women)\n\n# calculating variance after transformation\nvar(log_men)\n\n[1] 0.5614271\n\nvar(log_women)\n\n[1] 0.5229548\n\n# density data\nd3 = density(log_men)\nd4 = density(log_women)\n\n# splitting the grid into 2 columns\npar(mfrow = c(1,2))\n\n# visualization\nplot(d3,\n  main = \"Density Plot: log(men)\")\npolygon(d3, col = \"lightblue\")\n\nplot(d4,\n  main = \"Density Plot: log(women)\")\npolygon(d4, col = \"salmon\")\n\n\n\n\n\n\n\n\nThe data now seem to follow a distribution close to normal. To check, we could perform a normality test, but since that’s not the topic here, we’ll explore it in another post. For now, let’s just note that the transformation was successful and the data now appear approximately normal.\n\n# normality test\nshapiro.test(log_men)\n\n\n    Shapiro-Wilk normality test\n\ndata:  log_men\nW = 0.98624, p-value = 0.5147\n\nshapiro.test(log_women)\n\n\n    Shapiro-Wilk normality test\n\ndata:  log_women\nW = 0.98171, p-value = 0.2071"
+  },
+  {
+    "objectID": "posts/202011_comparando-variancias/index.html#the-hypotheses",
+    "href": "posts/202011_comparando-variancias/index.html#the-hypotheses",
+    "title": "Comparing Variances: The F Test",
+    "section": "1.2 THE HYPOTHESES",
+    "text": "1.2 THE HYPOTHESES\n\\[\n\\begin{cases}\nH_0: \\sigma_1 = \\sigma_2 \\\\\nH_1: \\sigma_1 \\neq \\sigma_2\n\\end{cases}\n\\]\nThe null hypothesis is that we cannot infer, at a certain significance level, that the variances are different. The alternative hypothesis is that they are significantly different."
+  },
+  {
+    "objectID": "posts/202011_comparando-variancias/index.html#significance-level",
+    "href": "posts/202011_comparando-variancias/index.html#significance-level",
+    "title": "Comparing Variances: The F Test",
+    "section": "1.3 SIGNIFICANCE LEVEL",
+    "text": "1.3 SIGNIFICANCE LEVEL\n\\[ \\alpha = 0.05 \\]\nWe’ll use a standard significance level of 5%, which means the probability of rejecting the null hypothesis when it shouldn’t be rejected is only 5%. The lower this probability, the greater the difference between the variances must be for us to claim a significant difference."
+  },
+  {
+    "objectID": "posts/202011_comparando-variancias/index.html#test-statistic",
+    "href": "posts/202011_comparando-variancias/index.html#test-statistic",
+    "title": "Comparing Variances: The F Test",
+    "section": "1.4 TEST STATISTIC",
+    "text": "1.4 TEST STATISTIC\n\\[ F = \\frac{s^2_1}{s^2_2} \\]\nSince the test statistic is the ratio of the sample variances, the test checks whether this ratio is different from one. To check the tabulated statistic, we need to know the degrees of freedom in the samples:\n\n# degrees of freedom (n-1)\ntable(data[data$Housing == \"rent\",]$Sex)\n\n\nfemale   male \n    95     84 \n\n\nAnd then the tabulated statistic will be:\n\n# F-statistic for the 95th percentile\nqf(.95, 83, 94)\n\n[1] 1.419123"
+  },
+  {
+    "objectID": "posts/202011_comparando-variancias/index.html#critical-value",
+    "href": "posts/202011_comparando-variancias/index.html#critical-value",
+    "title": "Comparing Variances: The F Test",
+    "section": "1.5 CRITICAL VALUE",
+    "text": "1.5 CRITICAL VALUE\n\n# calculating critical value\nvar(log_men) / var(log_women)\n\n[1] 1.073567\n\n\n\\[ F = \\frac{s^2_1}{s^2_2} = 1.07 \\]"
+  },
+  {
+    "objectID": "posts/202011_comparando-variancias/index.html#decision",
+    "href": "posts/202011_comparando-variancias/index.html#decision",
+    "title": "Comparing Variances: The F Test",
+    "section": "1.6 DECISION",
+    "text": "1.6 DECISION\nSince the value 1.07 does not exceed 1.42, we cannot reject the null hypothesis at the 5% significance level. The variances are not significantly different."
+  },
+  {
+    "objectID": "posts/202011_comparando-variancias/index.html#footnotes",
+    "href": "posts/202011_comparando-variancias/index.html#footnotes",
+    "title": "Comparing Variances: The F Test",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nDeutsche Marks.↩︎"
+  },
+  {
+    "objectID": "posts/202101_r-vscode/index.html",
+    "href": "posts/202101_r-vscode/index.html",
+    "title": "R in 2021 with VSCode",
+    "section": "",
+    "text": "I first installed VSCode in october 2020 when I’ve decided to learn Python. Looking for the ideal setup, I’ve read somewhere that Spyder would be the best IDE for R (R Core Team 2020) users due to similarities with RStudio, but I wanted the same experience as a native Python user so I’ve decided to go with VSCode (even if that meant a tougher xp at the time).\nI quickly fell in love with it’s flexibility and maturity. There are community extensions for about everything, which makes ux delightful! However, R ecosystem was still very much geared towards RStudio and I still found myself stuck with that IDE in my day-to-day life with R. That changed, of course, when I saw this tweet from Miles McBain:\nMoving on to consider VSCode as a real possibility for R, I found this post from Kun Ren that offers a setup for R with VSCode. In this post I write about my favorite features and what settings that I use."
+  },
+  {
+    "objectID": "posts/202101_r-vscode/index.html#intellisense",
+    "href": "posts/202101_r-vscode/index.html#intellisense",
+    "title": "R in 2021 with VSCode",
+    "section": "1.1 Intellisense",
+    "text": "1.1 Intellisense\nThat’s what is called VSCode’s code editing features, like quick info (docs for functions, datasets etc) and parameter info (args definition), just by hovering over it. It also includes code completion, member list and more.\n\n\n\ncode completion, hover, quick info, parameter info\n\n\n\n\n\ncolor selection via IDE (｡◕‿◕｡)"
+  },
+  {
+    "objectID": "posts/202101_r-vscode/index.html#git-github-integration",
+    "href": "posts/202101_r-vscode/index.html#git-github-integration",
+    "title": "R in 2021 with VSCode",
+    "section": "1.2 Git & GitHub integration",
+    "text": "1.2 Git & GitHub integration\nGitHub Pull Requests and Issues and Git Lens extensions provide a very useful GitHub integration, so you don’t have to leave your IDE for nothing. You can open, comment and close issues and PRs; submit, view and edit commits; execute most common bash commands via command pallet (push, pull, checkout, prune, rebase etc) and other stuff.\n\n\n\nnew issue\n\n\nClicking on the issue, VSCode opens a new branch and checks it out for you to work on (and still triggers a personalized commit message!).\n\n\n\nnew branch via issue\n\n\nAnd, at the end of the work, just click on create new PR to push the branch to origin and bring the PR interface. All without opening the browser or a terminal.\n\n\n\nnew pull request"
+  },
+  {
+    "objectID": "posts/202101_r-vscode/index.html#multiple-terminals",
+    "href": "posts/202101_r-vscode/index.html#multiple-terminals",
+    "title": "R in 2021 with VSCode",
+    "section": "1.3 Multiple terminals",
+    "text": "1.3 Multiple terminals\nWhile your blog or Shiny app is rendering and consequently occupying one terminal, you can simply open another one and continue working normally!\n\n\n\nyou can open as many terminals as you wish!"
+  },
+  {
+    "objectID": "posts/202101_r-vscode/index.html#draw.io",
+    "href": "posts/202101_r-vscode/index.html#draw.io",
+    "title": "R in 2021 with VSCode",
+    "section": "1.4 Draw.io",
+    "text": "1.4 Draw.io\nThis is an example of one of the many useful extensions that the community makes available on VSCode. The draw.io extension integrates diagrams.net into VSCode. With it, you can make diagrams very quickly and without having to leave your IDE!\n\n\n\nto bring the extension interface, just create a .drawio file\n\n\n\n\n\ndiagram I made for this post using it"
+  },
+  {
+    "objectID": "posts/202101_r-vscode/index.html#live-share",
+    "href": "posts/202101_r-vscode/index.html#live-share",
+    "title": "R in 2021 with VSCode",
+    "section": "1.5 Live Share",
+    "text": "1.5 Live Share\nEver dreamed of working on the same script with your boys live? The Live Share extension allows it and also provides chat and audio channels, which makes it unnecessary to open an audio call on another app while you work!\n\n\n\npretty much everyone right now\n\n\nAlso, you don’t need to have the language interpreter installed to join the session. That means that even if you’re on another machine that doesn’t have R or Python (or else) installed, you can log in and collaborate on your colleagues’ scripts, even running the code through their terminals!\n\n\n\ntwo machines visualizing each other during a VSCode Live Share session"
+  },
+  {
+    "objectID": "posts/202101_r-vscode/index.html#windows-subsystem-for-linux",
+    "href": "posts/202101_r-vscode/index.html#windows-subsystem-for-linux",
+    "title": "R in 2021 with VSCode",
+    "section": "1.6 Windows Subsystem for Linux",
+    "text": "1.6 Windows Subsystem for Linux\nAre you in a Windows machine and and ever needed to debug some stuff in a Linux environment? Then you had the displeasure of installing virtual machines or dual boot (╯°□°）╯︵ ┻━┻\nGood news: with the Remote - WSL extension you’re just one click away from happiness. It copies your folder (project) and reopens it in a Linux environment, with a terminal ready for business!\n\n\n\nstarting a Linux session"
+  },
+  {
+    "objectID": "posts/202101_r-vscode/index.html#linter",
+    "href": "posts/202101_r-vscode/index.html#linter",
+    "title": "R in 2021 with VSCode",
+    "section": "1.7 Linter",
+    "text": "1.7 Linter\nR extension integrates the {lintr} package into the IDE, so you have real time styling updates.\n\n\n\nreal time checks"
+  },
+  {
+    "objectID": "posts/202101_r-vscode/index.html#footnotes",
+    "href": "posts/202101_r-vscode/index.html#footnotes",
+    "title": "R in 2021 with VSCode",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nnow integrated in vscode-R extension.↩︎"
+  },
+  {
+    "objectID": "posts/202504_all-models-are-wrong/index.html",
+    "href": "posts/202504_all-models-are-wrong/index.html",
+    "title": "All models are wrong, but some are useless",
+    "section": "",
+    "text": "TL;DR\n\n\n\nWhen you do use the Pearson correlation coefficient, always test for significance. But don’t use it to analyze time series. It’s a common mistake. It violates the independence of observations and ignores the relationship between lags. Instead, use cross-correlogram analysis to identify relationships between time series, including lagged relationships.\n“All models are wrong, but some are useful” is a recurring phrase among those who practice statistics. It originates from a statement by George Box, one of the great statisticians of the 20th century: “Since all models are wrong the scientist must be alert to what is importantly wrong.” (Box 1976). “All models are wrong”, means that models are instrinsically limited and will not perfectly capture reality. In other words, a model is a simplified representation of reality, used to explain or predict a phenomenon. If it were a perfect explanation of this phenomenon, it would cease to be a model and become a law.\nIn statistics, we essentially deal with random or stochastic variables, that is, variables that have a probability distribution (Gujarati and Porter 2021). Our mission as analysts is to develop and utilize methods that tell us how to formulate functions allowing us to describe and predict the relationship between these variables, while minimizing stochastic errors.\nDepending on the functional form and the chosen estimation method, there are a series of assumptions that must be met for any inference about the error, coefficients, predictors, and regressands to be valid. If these assumptions are ignored, there is no guarantee that the results found are an optimal approximation of the function one aims to estimate. Not only that, but the violation of some of these assumptions can generate misleading results, showing significant statistical relationships where none should exist, underestimating or overestimating the object of study.\nIn this post, I address some frequent methodological errors that cause some models to be useless."
+  },
+  {
+    "objectID": "posts/202504_all-models-are-wrong/index.html#footnotes",
+    "href": "posts/202504_all-models-are-wrong/index.html#footnotes",
+    "title": "All models are wrong, but some are useless",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nA summary can be found in Cambridge University (2021).↩︎"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "All models are wrong, but some are useless\nPart I: Pearson correlation and significancy\n\n \n\n\ntime-series\n\n\n \n\n\n\n\n\nApr 19, 2025\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPython from R I: package importing (and why learning new languages sucks)\n\n\n \n\n\npython\n\n\n \n\n\n\n\n\nJun 12, 2021\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR in 2021 with VSCode\n\n\n \n\n\ntools\n\n\n \n\n\n\n\n\nJun 1, 2021\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nComparing Variances: The F Test\n\n\n \n\n\nstatistics\n\n\n \n\n\n\n\n\nNov 20, 2020\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGuessed or not? The one-sample t-test\n\n\n \n\n\nstatistics\n\n\n \n\n\n\n\n\nNov 6, 2020\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTesting differences in means: the t-test for independent samples\n\n\n \n\n\nstatistics\n\n\n \n\n\n\n\n\nNov 2, 2020\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGraphic quality in the RStudio panel\n\n\n \n\n\ntools\n\n\n \n\n\n\n\n\nOct 19, 2020\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConfiguring git behind a proxy server\n\n\n \n\n\ntools\n\n\n \n\n\n\n\n\nSep 25, 2020\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHello World\n\n\n \n\n\nnews\n\n\n \n\n\n\n\n\nSep 11, 2020\nAlberson Miranda\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "software.html",
+    "href": "software.html",
+    "title": "Software",
+    "section": "",
+    "text": "R package designed for input-output analysis, emphasizing usability for Excel users and performance. It includes an RStudio Addin and a suite of functions for straightforward import of input-output tables from Excel, either programmatically or directly from the clipboard.\nThe package is optimized for speed and efficiency. It leverages the R6 class for clean, memory-efficient object-oriented programming. Furthermore, all linear algebra computations are implemented in Rust to achieve highly optimized performance.\n Code  Website"
+  },
+  {
+    "objectID": "software.html#fio",
+    "href": "software.html#fio",
+    "title": "Software",
+    "section": "",
+    "text": "R package designed for input-output analysis, emphasizing usability for Excel users and performance. It includes an RStudio Addin and a suite of functions for straightforward import of input-output tables from Excel, either programmatically or directly from the clipboard.\nThe package is optimized for speed and efficiency. It leverages the R6 class for clean, memory-efficient object-oriented programming. Furthermore, all linear algebra computations are implemented in Rust to achieve highly optimized performance.\n Code  Website"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I work in credit risk modeling and data science in general at Banco do Estado do Espírito Santo (@Banestes_SA), where I have been employed since 2008. My focus is on improving information quality and reducing decision-making uncertainty through statistical methods and experimentation. I am an economist (Federal University of Espírito Santo - UFES, 2014) and mathematician (Federal Institute of Espírito Santo, 2024) by training, and I became a data scientist out of affinity.\nI am a doctoral student in the Graduate Program at the Federal University of Espírito Santo (PPGEco/UFES), where I also completed my master’s degree. My research field is time series econometrics, specifically hierarchical time series and machine learning methods for hierarchical time series forecasting.\nRegarding technologies, I am an enthusiast of FOSS (Free and Open Source Software) and primarily use R, Rust, and Python in my projects. I do not use a single OS and am always switching between macOS, Linux Ubuntu, and Linux Fedora at home, and Windows at work. I am the author of the fio package, which is a tool for input-output matrix analysis – perfectly combining my background in economics, mathematics, and computing.\nIn my free time, I enjoy surfing, playing guitar, and producing music in my home studio."
+  },
+  {
+    "objectID": "posts/202106_python-from-r-i-package-importing/index.html",
+    "href": "posts/202106_python-from-r-i-package-importing/index.html",
+    "title": "Python from R I: package importing (and why learning new languages sucks)",
+    "section": "",
+    "text": "TL;DR\n\n\n\nWhen learning a new programming language, simply finding equivalent code for the practices you already have may be misleading. Here we’re able to see that an equivalent of R’s library() call is actually considered a bad practice in Python and if you do that in a job interview, you should not expect they call you back."
+  },
+  {
+    "objectID": "posts/202106_python-from-r-i-package-importing/index.html#r-experience",
+    "href": "posts/202106_python-from-r-i-package-importing/index.html#r-experience",
+    "title": "Python from R I: package importing (and why learning new languages sucks)",
+    "section": "2.1 R EXPERIENCE",
+    "text": "2.1 R EXPERIENCE\nIn R, every package installed in the library trees are listed whenever a terminal is open. Those listed packages are available for users at all times and can be called explicitly. For example:\n\n2.1.1 CASE 1: EXPLICIT CALL\n\n# search for machine learning measures that contais \"AUC\" in the {mlr3} package\nmlr3::mlr_measures$keys(\"auc\")\n\n[1] \"classif.auc\"       \"classif.mauc_au1p\" \"classif.mauc_au1u\"\n[4] \"classif.mauc_aunp\" \"classif.mauc_aunu\" \"classif.mauc_mu\"  \n[7] \"classif.prauc\"    \n\n\nBut that way of calling functions usually take place only if that particular package won’t be required very often. Otherwise, it’s cultural for R users to load and attach the entire package’s namespace to the search path1 with a library() call.\n\n\n2.1.2 CASE 2: ATTACHING\n\n# tired: explicitly calling from {ggplot2}\nt1 = mtcars |&gt;\n  dplyr::mutate(hp_by_cyl = hp / cyl)\n\n# wired: attaching {ggplot2} namespace\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nt2 = mtcars |&gt;\n  mutate(hp_by_cyl = hp / cyl)\n\n# are they equivalent?\nall.equal(t1, t2)\n\n[1] TRUE\n\n\nThe problem appears when there are namespace conflicts. Did you notice the warning about objects being masked from {stats} and {base}?. Usually, users just don’t care for startup warnings 😨 and that may eventually lead them to inconsistent results or tricky errors.\nThat can be avoided by attaching only the specific functions you’re actually gonna use:\n\n\n2.1.3 CASE 3: ATTACHING SPECIFIC FUNCTIONS\n\n# detaching dplyr\ndetach(\"package:dplyr\")\n\n# attaching only mutate():\nlibrary(dplyr, include.only = \"mutate\")\n\nAnd no conflict warning will be triggered. Unfortunately, I don’t hear much of include.only argument from R community 🤷‍♂. On the contrary, meta packages such as {tidyverse}, which will load and attach A LOT of stuff into the namespace — often unnecessary for what you’re about to do —, is quite common."
+  },
+  {
+    "objectID": "posts/202106_python-from-r-i-package-importing/index.html#python-experience",
+    "href": "posts/202106_python-from-r-i-package-importing/index.html#python-experience",
+    "title": "Python from R I: package importing (and why learning new languages sucks)",
+    "section": "2.2 PYTHON EXPERIENCE",
+    "text": "2.2 PYTHON EXPERIENCE\nAll of the 3 cases stated before are possible in Python, but the community standards are very different. Specially regarding to the awareness of what is loaded into the namespace — or symbol table, as it is called in Python2.\nFirstly, installed packages aren’t immediately available. So if I try, for example, listing {pandas} functions/methods/attributes it’ll result in an error:\n\n# inspecting modules in {pandas}\nimport pandas\ndir(pandas)\n\n['ArrowDtype', 'BooleanDtype', 'Categorical', 'CategoricalDtype', 'CategoricalIndex', 'DataFrame', 'DateOffset', 'DatetimeIndex', 'DatetimeTZDtype', 'ExcelFile', 'ExcelWriter', 'Flags', 'Float32Dtype', 'Float64Dtype', 'Grouper', 'HDFStore', 'Index', 'IndexSlice', 'Int16Dtype', 'Int32Dtype', 'Int64Dtype', 'Int8Dtype', 'Interval', 'IntervalDtype', 'IntervalIndex', 'MultiIndex', 'NA', 'NaT', 'NamedAgg', 'Period', 'PeriodDtype', 'PeriodIndex', 'RangeIndex', 'Series', 'SparseDtype', 'StringDtype', 'Timedelta', 'TimedeltaIndex', 'Timestamp', 'UInt16Dtype', 'UInt32Dtype', 'UInt64Dtype', 'UInt8Dtype', '__all__', '__builtins__', '__cached__', '__doc__', '__docformat__', '__file__', '__git_version__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__version__', '_built_with_meson', '_config', '_is_numpy_dev', '_libs', '_pandas_datetime_CAPI', '_pandas_parser_CAPI', '_testing', '_typing', '_version_meson', 'annotations', 'api', 'array', 'arrays', 'bdate_range', 'compat', 'concat', 'core', 'crosstab', 'cut', 'date_range', 'describe_option', 'errors', 'eval', 'factorize', 'from_dummies', 'get_dummies', 'get_option', 'infer_freq', 'interval_range', 'io', 'isna', 'isnull', 'json_normalize', 'lreshape', 'melt', 'merge', 'merge_asof', 'merge_ordered', 'notna', 'notnull', 'offsets', 'option_context', 'options', 'pandas', 'period_range', 'pivot', 'pivot_table', 'plotting', 'qcut', 'read_clipboard', 'read_csv', 'read_excel', 'read_feather', 'read_fwf', 'read_gbq', 'read_hdf', 'read_html', 'read_json', 'read_orc', 'read_parquet', 'read_pickle', 'read_sas', 'read_spss', 'read_sql', 'read_sql_query', 'read_sql_table', 'read_stata', 'read_table', 'read_xml', 'reset_option', 'set_eng_float_format', 'set_option', 'show_versions', 'test', 'testing', 'timedelta_range', 'to_datetime', 'to_numeric', 'to_pickle', 'to_timedelta', 'tseries', 'unique', 'util', 'value_counts', 'wide_to_long']\n\n\nOne can check the symbol table with the following statement.\n\n# what is attached into the symbol table?\nprint(*globals(), sep = \"\\n\")\n\n__name__\n__doc__\n__package__\n__loader__\n__spec__\n__annotations__\n__builtins__\nr\npandas\n\n\nDepending on what system/tools you’re using, Python interpreter will load a few modules or not. If you start a REPL — a Python interactive terminal —, no modules will be leaded. If you start a Jupyter notebook, a few modules necessary for it to run will be loaded. In this case, since I’m running Python from R via {reticulate}, some modules have been loaded:\n\nsys: for accesses to some variables and functions used by the interpreter\nos: for OS routines for NT or Posix\n\nSo if I want to work with {pandas}, I need to attach it to the symbol table with an equivalent to R’s library(). And just like it’s cousin function, Python’s import also comes in different flavours.\nFirstly, import pandas will make the package available for explicit calls.\n\n# import pandas\nimport pandas\n\n# what is attached into the symbol table?\nprint(*globals(), sep = \"\\n\")\n\n__name__\n__doc__\n__package__\n__loader__\n__spec__\n__annotations__\n__builtins__\nr\npandas\n\n\nNote that only {pandas} is attached to the symbol table, not it’s functions/methods/attributes. So that statement it’s not an equivalent to library(). For us to create a simple dataframe with {pandas}:\n\n2.2.1 CASE 1: EXPLICIT CALL\n\n# this will result in a NameError: name 'DataFrame' is not defined\nDataFrame(\n  {\n    \"capital\": [\"Vitoria\", \"São Paulo\", \"Rio de Janeiro\"],\n    \"state\": [\"Espírito Santo\", \"São Paulo\", \"Rio de Janeiro\"]\n  }\n)\n\nNameError: name 'DataFrame' is not defined\n\n# this will work\npandas.DataFrame(\n  {\n    \"capital\": [\"Vitoria\", \"São Paulo\", \"Rio de Janeiro\"],\n    \"state\": [\"Espírito Santo\", \"São Paulo\", \"Rio de Janeiro\"]\n  }\n)\n\n          capital           state\n0         Vitoria  Espírito Santo\n1       São Paulo       São Paulo\n2  Rio de Janeiro  Rio de Janeiro\n\n\nIf we were to replicate library() behavior (i.e. load and attach the entire {pandas} functions/methods/attributes into the symbol table), then:\n\n\n2.2.2 CASE 2: ATTACHING\n\n# importing entire {pandas} into symbol table\nfrom pandas import *\n\n# the updated symbol table\nprint(*globals(), sep = \"\\n\")\n\n__name__\n__doc__\n__package__\n__loader__\n__spec__\n__annotations__\n__builtins__\nr\npandas\nArrowDtype\nBooleanDtype\nCategorical\nCategoricalDtype\nCategoricalIndex\nDataFrame\nDateOffset\nDatetimeIndex\nDatetimeTZDtype\nExcelFile\nExcelWriter\nFlags\nFloat32Dtype\nFloat64Dtype\nGrouper\nHDFStore\nIndex\nIndexSlice\nInt16Dtype\nInt32Dtype\nInt64Dtype\nInt8Dtype\nInterval\nIntervalDtype\nIntervalIndex\nMultiIndex\nNA\nNaT\nNamedAgg\nPeriod\nPeriodDtype\nPeriodIndex\nRangeIndex\nSeries\nSparseDtype\nStringDtype\nTimedelta\nTimedeltaIndex\nTimestamp\nUInt16Dtype\nUInt32Dtype\nUInt64Dtype\nUInt8Dtype\napi\narray\narrays\nbdate_range\nconcat\ncrosstab\ncut\ndate_range\ndescribe_option\nerrors\neval\nfactorize\nget_dummies\nfrom_dummies\nget_option\ninfer_freq\ninterval_range\nio\nisna\nisnull\njson_normalize\nlreshape\nmelt\nmerge\nmerge_asof\nmerge_ordered\nnotna\nnotnull\noffsets\noption_context\noptions\nperiod_range\npivot\npivot_table\nplotting\nqcut\nread_clipboard\nread_csv\nread_excel\nread_feather\nread_fwf\nread_gbq\nread_hdf\nread_html\nread_json\nread_orc\nread_parquet\nread_pickle\nread_sas\nread_spss\nread_sql\nread_sql_query\nread_sql_table\nread_stata\nread_table\nread_xml\nreset_option\nset_eng_float_format\nset_option\nshow_versions\ntest\ntesting\ntimedelta_range\nto_datetime\nto_numeric\nto_pickle\nto_timedelta\ntseries\nunique\nvalue_counts\nwide_to_long\n\n# and now this works\nDataFrame(\n  {\n    \"capital\": [\"Vitoria\", \"São Paulo\", \"Rio de Janeiro\"],\n    \"state\": [\"Espírito Santo\", \"São Paulo\", \"Rio de Janeiro\"]\n  }\n)\n\n          capital           state\n0         Vitoria  Espírito Santo\n1       São Paulo       São Paulo\n2  Rio de Janeiro  Rio de Janeiro\n\n\nBut you won’t see any experienced Python user doing that kind of thing because they’re worried about loading that amount of names into the symbol table and the possible conflicts it may cause. An acceptable approach would be attaching only a few frequent names as in:\n\n\n2.2.3 CASE 3: ATTACHING SPECIFIC FUNCTIONS\n\n# detaching {pandas}\nfor name in vars(pandas):\n    if not name.startswith('_'):\n        del globals()[name]\n\nKeyError: 'annotations'\n\n# attaching only DataFrame()\nfrom pandas import DataFrame\n\n# the updated symbol table\nprint(*globals(), sep = \"\\n\")\n\n__name__\n__doc__\n__package__\n__loader__\n__spec__\n__annotations__\n__builtins__\nr\npandas\nArrowDtype\nBooleanDtype\nCategorical\nCategoricalDtype\nCategoricalIndex\nDataFrame\nDateOffset\nDatetimeIndex\nDatetimeTZDtype\nExcelFile\nExcelWriter\nFlags\nFloat32Dtype\nFloat64Dtype\nGrouper\nHDFStore\nIndex\nIndexSlice\nInt16Dtype\nInt32Dtype\nInt64Dtype\nInt8Dtype\nInterval\nIntervalDtype\nIntervalIndex\nMultiIndex\nNA\nNaT\nNamedAgg\nPeriod\nPeriodDtype\nPeriodIndex\nRangeIndex\nSeries\nSparseDtype\nStringDtype\nTimedelta\nTimedeltaIndex\nTimestamp\nUInt16Dtype\nUInt32Dtype\nUInt64Dtype\nUInt8Dtype\napi\narray\narrays\nbdate_range\nconcat\ncrosstab\ncut\ndate_range\ndescribe_option\nerrors\neval\nfactorize\nget_dummies\nfrom_dummies\nget_option\ninfer_freq\ninterval_range\nio\nisna\nisnull\njson_normalize\nlreshape\nmelt\nmerge\nmerge_asof\nmerge_ordered\nnotna\nnotnull\noffsets\noption_context\noptions\nperiod_range\npivot\npivot_table\nplotting\nqcut\nread_clipboard\nread_csv\nread_excel\nread_feather\nread_fwf\nread_gbq\nread_hdf\nread_html\nread_json\nread_orc\nread_parquet\nread_pickle\nread_sas\nread_spss\nread_sql\nread_sql_query\nread_sql_table\nread_stata\nread_table\nread_xml\nreset_option\nset_eng_float_format\nset_option\nshow_versions\ntest\ntesting\ntimedelta_range\nto_datetime\nto_numeric\nto_pickle\nto_timedelta\ntseries\nunique\nvalue_counts\nwide_to_long\nname\n\n\nAccording to The Hitchhiker’s Guide to Python [@pythonguide], case 2 is the worst possible scenario and it’s generally considered bad practice since it “makes code harder to read and makes dependencies less compartmentalized”. That claim is endorsed by Python’s official docs [@pythontutorial]:\n\nAlthough certain modules are designed to export only names that follow certain patterns when you use import *, it is still considered bad practice in production code” .\n\nIn the opinion of the guide authors, case 3 would be a better option because it pinpoints specific names3, while case 1 would be the best practice, for “Being able to tell immediately where a class or function comes from greatly improves code readability and understandability in all but the simplest single file projects.”"
+  },
+  {
+    "objectID": "posts/202106_python-from-r-i-package-importing/index.html#footnotes",
+    "href": "posts/202106_python-from-r-i-package-importing/index.html#footnotes",
+    "title": "Python from R I: package importing (and why learning new languages sucks)",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAn ordered list where R will look for a function. Can be accessed with search().↩︎\nI guess? I don’t know, still learning lol 😂↩︎\nPython Foundation says “There is nothing wrong with using from package import specific_submodule! In fact, this is the recommended notation unless the importing module needs to use submodules with the same name from different packages.”↩︎"
+  },
+  {
+    "objectID": "posts/202011_t-test/index.html",
+    "href": "posts/202011_t-test/index.html",
+    "title": "Testing differences in means: the t-test for independent samples",
+    "section": "",
+    "text": "Suppose you have two samples (e.g., the incomes of the Black and White populations in your city) and you want to prove that their means are significantly different, that is, that they are different even considering the variance and the sample size. This is possible with a Student’s t-test, one of the most popular tests in statistics.\nLet’s use one of R’s built-in datasets to apply this concept, mtcars. First, let’s take a look at our data.\n\ndata = mtcars\nknitr::kable(head(data), booktabs = TRUE, digits = 2) |&gt;\n  kableExtra::kable_styling(latex_options = c(\"striped\"))\n\n\n\nTable 1: Dataset.\n\n\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.62\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.88\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.32\n18.61\n1\n1\n4\n1\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.21\n19.44\n1\n0\n3\n1\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.44\n17.02\n0\n0\n3\n2\n\n\nValiant\n18.1\n6\n225\n105\n2.76\n3.46\n20.22\n1\n0\n3\n1\n\n\n\n\n\n\n\n\n\n\nA good way to illustrate the test is to check whether the mean fuel consumption (mpg, miles per gallon) of cars with 4, 6, and 8 cylinders (cyl) differ significantly from each other.\n\n# Sample means\naggregate(mpg ~ cyl, data = data, FUN = mean)\n\n  cyl      mpg\n1   4 26.66364\n2   6 19.74286\n3   8 15.10000\n\n\nWe see that the sample means are different. We still need to know if they are significantly different. Plotting a boxplot can help us get an intuition. We can see that, except for the 4-cylinder group which has a higher variance, the groups are quite concentrated, so we might suspect that the differences are significant.\n\n# Boxplot\nboxplot(mpg ~ cyl, data = data)\n\n\n\n\n\n\n\nFigure 1: Boxplot of fuel consumption by number of cylinders.\n\n\n\n\n\nThe t-test has several variations — one sample, two paired samples, two independent samples — and corrections to handle differences in variance. For this case, we have three independent samples and, for now, let’s assume that the variance of the 4-cylinder group differs from the others and that the variances of the 6- and 8-cylinder groups are equal — we’ll leave variance analysis for another post. This leaves us with the t-test for two independent samples.\nThe null hypothesis of the test is that the means are significantly equal. The alternative hypothesis can be formulated as the non-nullity of the difference between the means or \\(\\bar{X_1}\\) greater or less than \\(\\bar{X_2}\\). Here we will use the first option:\n\\[\nh_0: \\bar{X_1} - \\bar{X_2} = 0 \\\\\nh_1: \\bar{X_1} - \\bar{X_2} \\neq 0\n\\] The t statistic for this test is calculated as below. Note that if we take the limit of \\(t(n)\\), with \\(n \\rightarrow \\infty\\), \\(t\\rightarrow \\infty\\), causing the rejection of \\(h_0\\). Thus, ultimately, the t-test is a sample size test, that is, if your sample is large enough and the means diverge, they will also tend to be significantly different.\n\\[ t = \\frac{\\bar{X_1} - \\bar{X_2}}{s_p . \\sqrt{\\frac{1}{n_1}+\\frac{1}{n_2}}} \\]\nAs a first case, let’s compare the mean fuel consumption of vehicles with 6 and 8 cylinders. Since we are considering their variances to be equal, we must use the argument var.equal = TRUE:\n\n# t-test for 6 and 8 cylinders\nt.test(mpg ~ cyl, data = data[which(data$cyl != 4),], var.equal = TRUE)\n\n\n    Two Sample t-test\n\ndata:  mpg by cyl\nt = 4.419, df = 19, p-value = 0.0002947\nalternative hypothesis: true difference in means between group 6 and group 8 is not equal to 0\n95 percent confidence interval:\n 2.443809 6.841905\nsample estimates:\nmean in group 6 mean in group 8 \n       19.74286        15.10000 \n\n\nWith a p-value of zero, we can reject the null hypothesis and consider that the mean fuel consumption between vehicles with 6 and 8 cylinders differs.\nFor the other comparisons, let’s use the default for var.equal, which is FALSE. This means applying Welch’s correction for independent samples with different variances. As expected, we can also reject the null hypothesis and confirm the difference in mean fuel consumption between vehicles with 4 and 6 cylinders and 4 and 8 cylinders.\n\n# t-test for 4 and 8 cylinders\nt.test(mpg ~ cyl, data = data[which(data$cyl != 6),])\n\n\n    Welch Two Sample t-test\n\ndata:  mpg by cyl\nt = 7.5967, df = 14.967, p-value = 1.641e-06\nalternative hypothesis: true difference in means between group 4 and group 8 is not equal to 0\n95 percent confidence interval:\n  8.318518 14.808755\nsample estimates:\nmean in group 4 mean in group 8 \n       26.66364        15.10000 \n\n# t-test for 4 and 6 cylinders\nt.test(mpg ~ cyl, data = data[which(data$cyl != 8),])\n\n\n    Welch Two Sample t-test\n\ndata:  mpg by cyl\nt = 4.7191, df = 12.956, p-value = 0.0004048\nalternative hypothesis: true difference in means between group 4 and group 6 is not equal to 0\n95 percent confidence interval:\n  3.751376 10.090182\nsample estimates:\nmean in group 4 mean in group 6 \n       26.66364        19.74286 \n\n\nEasy peasy lemon squeezy, right?"
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html",
+    "href": "posts/202011_chutou-ou-nao/index.html",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "",
+    "text": "In the previous post, I talked about the t-test for two independent samples. Coincidentally, the next day, this question appeared on the math forum where I contribute. We can’t miss this opportunity, can we?"
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#state-the-null-and-alternative-hypotheses",
+    "href": "posts/202011_chutou-ou-nao/index.html#state-the-null-and-alternative-hypotheses",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "3.1 State the null and alternative hypotheses",
+    "text": "3.1 State the null and alternative hypotheses\n\\[\\begin{cases}\n      H_0: \\mu = 0.25 \\\\\n      H_1: \\mu \\neq 0.25 \\\\\n    \\end{cases}\\]\nThe null hypothesis is that we cannot state that the observed mean of correct answers is significantly different from the expected mean. The alternative hypothesis is that they are significantly different."
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#state-the-significance-level",
+    "href": "posts/202011_chutou-ou-nao/index.html#state-the-significance-level",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "3.2 State the significance level",
+    "text": "3.2 State the significance level\n\\[\\alpha = 0.02\\] The \\(\\alpha = 0.02\\) is what gives meaning to the term significantly different. It is the probability of making a type II error, that is, rejecting the null hypothesis when it should not be rejected. The lower the \\(\\alpha\\), the greater the difference between the means must be for it to be considered significant."
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#calculate-the-test-statistic",
+    "href": "posts/202011_chutou-ou-nao/index.html#calculate-the-test-statistic",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "3.3 Calculate the test statistic",
+    "text": "3.3 Calculate the test statistic\n\\[z = \\frac{\\bar{x} - \\mu_0}{\\frac{\\sigma}{\\sqrt{n}}}\\] Note that: \\[\\lim_{n \\to \\infty}z(n) = \\infty\\] We can reject the null hypothesis if the critical \\(z\\) is greater than the tabulated \\(z\\). As \\(n\\) increases, eventually the difference will be significant, demonstrating mathematically what we verified intuitively."
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#calculate-the-critical-value",
+    "href": "posts/202011_chutou-ou-nao/index.html#calculate-the-critical-value",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "3.4 Calculate the critical value",
+    "text": "3.4 Calculate the critical value\n\\[z = \\frac{0.3125 - 0.25}{\\frac{0.464}{\\sqrt{400}}} = 2.693\\]"
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#decide-whether-to-reject-the-null-hypothesis",
+    "href": "posts/202011_chutou-ou-nao/index.html#decide-whether-to-reject-the-null-hypothesis",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "3.5 Decide whether to reject the null hypothesis",
+    "text": "3.5 Decide whether to reject the null hypothesis\nSince the value 2.693 exceeds the \\(z\\) value at 98% significance (2.33), we can reject the null hypothesis. The difference is significant and cannot be attributed to sampling chance."
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#ok-but-what-about-in-r",
+    "href": "posts/202011_chutou-ou-nao/index.html#ok-but-what-about-in-r",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "3.6 Ok, but what about in R?",
+    "text": "3.6 Ok, but what about in R?\nIn R, the test couldn’t be simpler:\n\nt.test(data, mu = 0.25, conf.level = 0.98)\n\n\n    One Sample t-test\n\ndata:  data\nt = 2.6934, df = 399, p-value = 0.00737\nalternative hypothesis: true mean is not equal to 0.25\n98 percent confidence interval:\n 0.2583002 0.3666998\nsample estimates:\nmean of x \n   0.3125 \n\n\nNote that 0.25 is not in the confidence interval, so we can reject \\(H_0\\). As an illustration, so that we could not reject the null hypothesis, we would have to increase the significance level to 1 - p-value, that is, to 99.263%:\n\nt.test(data, mu = 0.25, conf.level = 0.99263)\n\n\n    One Sample t-test\n\ndata:  data\nt = 2.6934, df = 399, p-value = 0.00737\nalternative hypothesis: true mean is not equal to 0.25\n99.263 percent confidence interval:\n 0.2499995 0.3750005\nsample estimates:\nmean of x \n   0.3125 \n\n\nOr increase the mean to 25.83%:\n\nt.test(data, mu = 0.2583, conf.level = 0.98)\n\n\n    One Sample t-test\n\ndata:  data\nt = 2.3357, df = 399, p-value = 0.02\nalternative hypothesis: true mean is not equal to 0.2583\n98 percent confidence interval:\n 0.2583002 0.3666998\nsample estimates:\nmean of x \n   0.3125 \n\n\nMuch easier than doing it by hand, right?"
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#footnotes",
+    "href": "posts/202011_chutou-ou-nao/index.html#footnotes",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nOr a thousand, 10 thousand, 100 thousand… The larger \\(n\\) is, the harder it is to cause changes in the standard deviation, so the uncertainty is increasingly smaller.↩︎"
+  },
+  {
+    "objectID": "posts/202010_git-proxy/index.html",
+    "href": "posts/202010_git-proxy/index.html",
+    "title": "Configuring git behind a proxy server",
+    "section": "",
+    "text": "If you are working in an organization that takes information security seriously, then you are probably behind a proxy server and having trouble using Git. To solve this, we need to go through 3 steps:"
+  },
+  {
+    "objectID": "posts/202010_git-proxy/index.html#gitconfig-without-saving-password",
+    "href": "posts/202010_git-proxy/index.html#gitconfig-without-saving-password",
+    "title": "Configuring git behind a proxy server",
+    "section": "2.1 .gitconfig without saving password",
+    "text": "2.1 .gitconfig without saving password\nI recommend using the {usethis} package to change any configuration file in R. For the first option, we would do as follows:\n\n# open the configuration file\nusethis::edit_git_config()\n\nIn the .gitconfig window that will open, add the following lines:\n[http]\n    proxy = http[s]://domain.com:port\n\n[credential]\n    helper = wincred\n\n[credential \"helperselector\"]\n    selected = manager\n\nWhere “domain.com” is the proxy address you found in the .dat file and the other settings define how you will be prompted to enter username and password, in this case through a pop-up window for each push/pull."
+  },
+  {
+    "objectID": "posts/202010_git-proxy/index.html#gitconfig-with-saved-password",
+    "href": "posts/202010_git-proxy/index.html#gitconfig-with-saved-password",
+    "title": "Configuring git behind a proxy server",
+    "section": "2.2 .gitconfig with saved password",
+    "text": "2.2 .gitconfig with saved password\nThe other alternative is to save the username and password in the .gitconfig itself. Again, if the file is on a network or if other people have access to the machine, avoid this option. To save your username and password in .gitconfig, just add them before the domain. The advantage of this method is not having to enter the information for each push/pull.\n[http]\n    proxy = http[s]://user:password@domain.com:port\n\nRemember to update the password in .gitconfig whenever it is changed!"
+  },
+  {
+    "objectID": "posts/202010_git-proxy/index.html#footnotes",
+    "href": "posts/202010_git-proxy/index.html#footnotes",
+    "title": "Configuring git behind a proxy server",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAvoid Notepad to display line breaks correctly. I suggest Wordpad.↩︎"
+  }
+]

@@ -1,0 +1,235 @@
+---
+title: Introduction to the {mlr3} Framework
+date: '2020-12-27'
+categories: [machine-learning]
+image: "img/mlr3.png"
+bibliography: bib.bib
+---
+
+This is the first post in a series about the {mlr3} ecosystem [@mlr3]. It is more complete and also much more complex than its predecessor, {mlr}, which had its initial version published on CRAN in 2013. The ecosystem provides an agnostic framework (i.e., it does not depend on the chosen algorithms), extensible and object-oriented, and currently supports various types of tasks such as classification, regression, survival analysis, forecasting, clustering, among others. {mlr3} has several advantages that make it, IMHO, the most complete *machine learning* framework for R [@R], and these will become clear throughout the next posts.
+
+# INTRODUCTION
+
+The standard workflow of a machine learning project consists of:
+
+1. splitting your sample into training and test sets;
+2. choosing the appropriate algorithm^[In {mlr3} it's called a *learner*.] for the task type;
+3. passing the training sample to the algorithm to create a model of the relationship between the response variable (*output features*) and the explanatory variables (*input features*);
+4. passing the test data to the trained model to produce predictions;
+5. comparing the predictions with the sample data;
+6. measuring the model's performance using established accuracy metrics.
+
+![](img/basics.svg)
+
+The process of repeating this workflow several times, splitting the training sample into different parts and using others as *fake test samples*, is called *resampling*, a vital process for the calibration stage and to avoid *overfitting*.
+
+Depending on the data, the type of task, and the chosen algorithm, several filters may be necessary, such as normalization, feature selection, and handling outliers or missing data. For these cases, {mlr3} has new solutions that stand out not only compared to its predecessor {mlr} but also to other *machine learning* frameworks in R, such as {caret} and {tidymodels}.
+
+## DESIGN CHARACTERISTICS
+
+Some general principles that guide the package's development and greatly affect its use are:
+
+- Focus on the *backend*. Most ecosystem packages aim to process and transform data, apply algorithms, and compute results. Visualizations are provided in external packages;
+
+- Adoption of the R6 class [@R-R6] for object-oriented design, *modify-in-place*, and reference semantics (we'll talk a bit about these concepts below);
+
+- Use of {data.table} [@R-data.table] for data frame manipulations. The combination of {R6} + {data.table} makes performance one of the ecosystem's strengths.
+
+- Low dependency. However, algorithms are not implemented in the ecosystem, as in Python's scikit-learn. To run XGBoost [@xgboost], for example, you must have the package that implements it installed.
+
+## OUT OF SCOPE
+
+As this is an introduction, the steps of *tuning* and *resampling*, as well as functionalities like *pipelines*, will be covered in future posts. In this post, we will only cover the basic workflow concepts.
+
+# STRAIGHT TO THE POINT
+
+To get to know the package's basic functionalities, we'll use one of the datasets included in R, `swiss`. This dataset consists of standardized measurements of fertility and socioeconomic indicators for 47 Swiss provinces in 1888.
+
+```{r data}
+
+# creating dataframe
+data = swiss
+
+# overview
+skimr::skim(data)
+```
+
+Among the available variables, we can choose to model infant mortality `Infant.Mortality` based on the other features, which are:
+
+- `Fertility`: Fertility measure. Like infant mortality, it is scaled between 0-100.
+- `Agriculture`: Percentage of men involved in agriculture as an occupation.
+- `Examination`: Percentage of conscripts well evaluated in army exams.
+- `Education`: Percentage of conscripts with education above primary.
+- `Catholic`: Percentage of Catholics (as opposed to Protestants).
+
+The workflow starts with the creation of the `task`, which is an object that contains the data and information about the task to be performed, such as the response variable^[Also called *output feature* or *label*.] and the other features, as well as their types. Since we want to predict a continuous numeric variable, this is a regression task.
+
+```{r task, message = FALSE, warning = FALSE}
+
+# importing package
+library(mlr3verse)
+
+# creating task
+task_swiss = TaskRegr$new(
+  id = "swiss",
+  backend = data,
+  target = "Infant.Mortality"
+)
+```
+
+Notice anything unusual? Since {mlr3} works with the R6 class, its handling is more similar to other object-oriented languages, such as Python. This class has two special properties:
+
+- Methods belong to objects and are called as `object$method()` and not as generic functions like `foo()`. This is the OOP (object-oriented programming) paradigm. In the example above, there is no function to create a task like `task_regr_new()`, but a `new()` method associated with the `TaskRegr` object;
+
+- R6 class objects are mutable, i.e., they are modified in place (*modify-in-place*) and therefore have reference semantics. This means they are not copied with each modification, unlike regular data frames (S3 class), which is a factor in memory allocation and, consequently, speed.
+
+The side effect is that this is not very familiar to people who only know R and at first it may seem unnatural and confusing.
+
+Once the object is created, we can access it to check and visualize the information it contains:
+
+```{r task_cont, message = FALSE}
+
+# checking
+task_swiss
+
+# visualizing
+autoplot(task_swiss, type = "pairs")
+```
+
+We can see that only fertility is linearly correlated with infant mortality—the higher the fertility, the higher the mortality—and we can expect it to have more weight in predictions. The other variables do not show significant linear correlation with the response variable. However, they show moderate or strong correlation among themselves, but not enough to present collinearity, which would require treatment.
+
+Now we select the algorithm^[Here we will work with just one, but in future posts we will use several—in pipelines with different features, stacking, etc.] that will be used to train the model. Here I chose *XGBoost*. The full list can be accessed [in this static list](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html), [in this dynamic list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html), or via the function `mlr3extralearners::list_mlr3learners()`. As mentioned earlier, algorithms are not implemented by the {mlr3} ecosystem, and the lists show the packages where the algorithms were implemented and that must be installed for use.
+
+```{r learner}
+
+# defining the learner
+l_xgboost = lrn("regr.xgboost")
+
+# checking
+l_xgboost
+```
+
+Let's understand what the `l_xgboost` object tells us.
+
+1. **Model**: Empty, as there is no trained model yet;
+2. **Parameters**: The hyperparameters to be chosen and tuned for model performance;
+3. **Packages**: The package where the algorithm was implemented and from which it will be imported by {mlr3};
+4. **Predict Type**: If `response`, the prediction is returned as 0 or 1 for classification, or as a value for the response variable for regression—in this case, it will be infant mortality scaled in the [1, 100] range. If "prob", for classification, the prediction returns the probability between 0 and 1;
+5. **Feature Type**: The types of variables the algorithm can handle. For *XGBoost*, for example, only numeric variables can be used. This means that factors must be converted into binary values (i.e., 0 or 1), that is, the matrix must be made sparse—for a factor `sex`, for example, in the preprocessing phase columns `sex.male` and `sex.female` would be created, each with values 1 or 0;
+6. **Properties**: Additional properties and capabilities of the algorithm. In this case, **XGBoost** can compute and return feature importance values for the model; handle missing data; and compute and return feature weights.
+
+As you can see in *parameters*, no hyperparameters are set. We can access them as follows:
+
+```{r hyperparameters}
+
+# accessing hyperparameters
+head(as.data.table(l_xgboost$param_set))
+```
+
+Since hyperparameter tuning is not the topic, let's just set some basic things to demonstrate how this information is accessed and modified. The method for this is `param_set$values`:
+
+```{r hiper_set}
+
+# hyperparameters
+l_xgboost$param_set$values = list(
+  # making the algorithm train more slowly
+  eta = 0.1,
+  # limiting tree depth
+  max_depth = 5,
+  # maximum number of iterations
+  nrounds = 100
+)
+
+# checking
+l_xgboost
+```
+
+# TRAINING AND PREDICTION
+
+The next steps are training and prediction—we'll cover *tuning* and *resampling* in future posts. First, split the dataset into training and test sets. For this, we'll use the `sample()` function on two methods of the `task_swiss` object, `row_ids` and `nrow`. The first enumerates the indices of each row:
+
+```{r row_ids}
+
+# row_ids method
+task_swiss$row_ids
+```
+
+While the second returns the number of rows in the dataset:
+
+```{r nrow}
+
+# nrow method
+task_swiss$nrow
+```
+
+Thus, we can select the dataset indices into two random samples:
+
+```{r indexes}
+
+# ensuring reproducibility
+set.seed(1)
+
+# indices for training sample
+train_set = sample(task_swiss$row_ids, 0.7 * task_swiss$nrow)
+
+# indices for test sample
+test_set = setdiff(task_swiss$row_ids, train_set)
+
+# checking
+head(train_set)
+```
+
+With the indices selected, we can train only on the randomly chosen 70% of the sample, without copying the data and allocating unnecessary memory:
+
+```{r treino, warning = FALSE}
+
+# training
+l_xgboost$train(task_swiss, row_ids = train_set)
+
+# checking
+l_xgboost$model
+```
+
+As we can see, in the first iteration the model obtained an *rmse*^[Root Mean Squared Error]. of 17.7, which is high considering the [1-100] scale of infant mortality. Throughout training, the error was reduced to 0.03, which does not mean that its performance will remain at this level when extrapolated to the test sample or new data, but it is a good sign. The expected result is that the real performance of the model, after being applied to the test sample, will be between the initial and final iteration. If it is *better* than the test performance, something is certainly wrong.
+
+Let's check the real performance after making predictions on the test sample. First, we pass the test indices to the learner object with the model and call the `predict()` method to get the predictions.
+
+```{r predictions}
+
+# predictions
+preds = l_xgboost$predict(task_swiss, row_ids = test_set)
+
+# checking
+preds
+```
+
+In the predictions object, both the values predicted by the model (`response`) and the sample values (`truth`) are stored. These values can then be compared to calculate the model's accuracy using the `score()` method:
+
+```{r accuracy}
+
+# accuracy
+preds$score(list(
+  msr("regr.rmse"),
+  msr("regr.mae")
+))
+
+# visualizing
+autoplot(preds)
+```
+
+The model's *rmse* on the test sample was only 2.59 units, which is very good performance!
+
+# INTERPRETATION
+
+Since XGBoost has the *feature importance* property, we can extract it with the `importance()` method:
+
+```{r importance}
+
+# feature importance
+l_xgboost$importance()
+
+# visualizing
+barplot(l_xgboost$importance())
+```
+
+However, importance alone does not describe the relationship of the feature with the response variable, nor its direction, being a very poor measure of interpretation. We will discuss interpretation techniques in other posts.

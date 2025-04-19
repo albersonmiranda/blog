@@ -1,0 +1,165 @@
+---
+title: 'Comparing Variances: The F Test'
+date: '2020-11-20'
+categories: [statistics]
+image: "variancia.png"
+---
+
+Before I dive into *machine learning*—because ~~it's a bottomless pit~~ I should take my time when I do—I want to cover a bit more of the basics in inference.
+
+[In this post](https://datamares.netlify.app/post/atestando-diferencas-em-medias-o-teste-t-para-amostras-independentes/) I mentioned that to perform the t-test for two independent samples, we should first know whether the variances of these samples are equal or different. Let's see how to check this now. The dataset used will be the [German credit data](https://www.kaggle.com/uciml/german-credit).
+
+```{r}
+
+# importing data
+# note: -1 removes the first column, which is just the index
+data = readr::read_csv("german_credit_data.csv")[-1]
+
+# viewing data
+print(data)
+```
+
+Just like the t-test, we can test whether the measure of a sample is significantly different from a chosen value or compare it to another sample—whether greater, smaller, or different. For this exercise, let's test whether the variance of the `Credit amount` variable (credit limit) is the same for men and women who rent their homes. First, let's calculate the population standard deviations:
+
+```{r}
+
+# getting samples
+men = data[data$Sex == "male" & data$Housing == "rent",]$`Credit amount`
+women = data[data$Sex == "female" & data$Housing == "rent",]$`Credit amount`
+
+# calculating standard deviation
+sd(men)
+sd(women)
+```
+
+We see that men's credit limit has a standard deviation of DM\$ 2,846, while women's is DM\$ 2,235^[Deutsche Marks.], which means men's credit limits vary more around the mean than women's. What we want to know now is whether this difference is statistically significant. Let's proceed to the test!
+
+# THE TEST
+
+The F test, among its various applications, is used together with the two-sample t-test—when it's necessary to know whether the two sampled populations have the same variance or not.
+
+It is also a parametric test, which means it assumes the populations are approximately normally distributed. Therefore, we must first ensure this assumption is met.
+
+## CHECKING THE NORMALITY ASSUMPTION
+
+First, let's plot the densities to check if their distribution is plausible under the normality assumption:
+
+```{r}
+
+# density data
+d1 = density(men)
+d2 = density(women)
+
+# splitting the grid into 2 columns
+par(mfrow = c(1,2))
+
+# visualization
+plot(d1,
+  main = "Density Plot: men")
+polygon(d1, col = "lightblue")
+
+plot(d2,
+  main = "Density Plot: women")
+polygon(d2, col = "salmon")
+```
+
+With this shape, normality is quite implausible and there's no need to perform any tests. To address this, we can try a logarithmic transformation:
+
+```{r}
+
+# logarithmic transformation
+log_men = log(men)
+log_women = log(women)
+
+# calculating variance after transformation
+var(log_men)
+var(log_women)
+
+# density data
+d3 = density(log_men)
+d4 = density(log_women)
+
+# splitting the grid into 2 columns
+par(mfrow = c(1,2))
+
+# visualization
+plot(d3,
+  main = "Density Plot: log(men)")
+polygon(d3, col = "lightblue")
+
+plot(d4,
+  main = "Density Plot: log(women)")
+polygon(d4, col = "salmon")
+```
+
+The data now seem to follow a distribution close to normal. To check, we could perform a normality test, but since that's not the topic here, we'll explore it in another post. For now, let's just note that the transformation was successful and the data now appear approximately normal.
+
+```{r}
+
+# normality test
+shapiro.test(log_men)
+shapiro.test(log_women)
+```
+
+## THE HYPOTHESES
+
+$$
+\begin{cases}
+H_0: \sigma_1 = \sigma_2 \\
+H_1: \sigma_1 \neq \sigma_2
+\end{cases}
+$$
+
+The null hypothesis is that we cannot infer, at a certain significance level, that the variances are different. The alternative hypothesis is that they are significantly different.
+
+## SIGNIFICANCE LEVEL
+
+$$ \alpha = 0.05 $$
+
+We'll use a standard significance level of 5%, which means the probability of rejecting the null hypothesis when it shouldn't be rejected is only 5%. The lower this probability, the greater the difference between the variances must be for us to claim a significant difference.
+
+## TEST STATISTIC
+
+$$ F = \frac{s^2_1}{s^2_2} $$
+
+Since the test statistic is the ratio of the sample variances, the test checks whether this ratio is different from one. To check the tabulated statistic, we need to know the degrees of freedom in the samples:
+
+```{r}
+
+# degrees of freedom (n-1)
+table(data[data$Housing == "rent",]$Sex)
+```
+
+And then the tabulated statistic will be:
+
+```{r}
+
+# F-statistic for the 95th percentile
+qf(.95, 83, 94)
+```
+
+## CRITICAL VALUE
+
+```{r}
+
+# calculating critical value
+var(log_men) / var(log_women)
+```
+
+$$ F = \frac{s^2_1}{s^2_2} = 1.07 $$
+
+## DECISION
+
+Since the value 1.07 does not exceed 1.42, we cannot reject the null hypothesis at the 5% significance level. The variances are not significantly different.
+
+# THE F TEST IN R
+
+In base R, the syntax for the test is very similar to the t-test:
+
+```{r echo=FALSE}
+
+# F test
+var.test(log_men, log_women)
+```
+
+The test summary tells us that to reject the null hypothesis at $\alpha$ = 5%, the ratio should be around 1.64 (variance of `log_men` greater than `log_women`) or 0.70 (variance of `log_men` less than `log_women`). Alternatively, we could reject the null hypothesis if we increased $\alpha$ to 1-0.7362 = 26.38%, which is a probability of making a type II error too high to be considered reasonable.
