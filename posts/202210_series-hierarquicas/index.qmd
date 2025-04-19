@@ -164,7 +164,7 @@ In matrix notation, the structure of @fig-ha2 is represented as below. Formally,
 
 # Top-down and bottom-up approaches
 
-Perhaps the most intuitive ways to think about forecasts for these types of structures are the *top-down* and *bottom-up* approaches. Take the structure described in Figure \@ref(fig:h), for example. We can forecast for the horizon $h$ of the aggregate Brazilian GDP, represented at the top of the hierarchy by *Total* (6), and then distribute the forecasted values proportionally among states and municipalities.
+Perhaps the most intuitive ways to think about forecasts for these types of structures are the *top-down* and *bottom-up* approaches. Take the structure described in @fig-h, for example. We can forecast for the horizon $h$ of the aggregate Brazilian GDP, represented at the top of the hierarchy by *Total* (6), and then distribute the forecasted values proportionally among states and municipalities.
 
 \begin{equation}
 \hat{y}_{T+h | T} = E[y_{T+h} | \Omega_T]

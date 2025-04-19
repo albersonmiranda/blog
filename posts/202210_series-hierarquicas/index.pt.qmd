@@ -164,7 +164,7 @@ Na notação matricial, a estrutura da @fig-ha2 é representada como abaixo. For
 
 ## ABORDAGENS TOP-DOWN E BOTTOM-UP {-}
 
-Talvez as formas mais intuitivas de se pensar em previsões para esses tipos de estrutura sejam as abordagens *top-down* e *bottom-up*. Tome a estrutura descrita na Figura \@ref(fig:h), por exemplo. Podemos realizar a previsão para o horizonte de tempo $h$ do agregado do PIB brasileiro, representado no topo da hierarquia por *Total* (6), e então distribuir os valores previstos proporcionalmente entre os estados e municípios.
+Talvez as formas mais intuitivas de se pensar em previsões para esses tipos de estrutura sejam as abordagens *top-down* e *bottom-up*. Tome a estrutura descrita na @fig-h, por exemplo. Podemos realizar a previsão para o horizonte de tempo $h$ do agregado do PIB brasileiro, representado no topo da hierarquia por *Total* (6), e então distribuir os valores previstos proporcionalmente entre os estados e municípios.
 
 \begin{equation}
 \hat{y}_{T+h | T} = E[y_{T+h} | \Omega_T]
