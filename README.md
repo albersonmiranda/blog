@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://datamares.netlify.app/">
-    <img src="https://datamares.netlify.app/logos/logo.png" alt="Datamares" />
+    <img src="https://datamares.netlify.app/assets/logo/logo.png" alt="Datamares" />
   </a>
 </p>
 
