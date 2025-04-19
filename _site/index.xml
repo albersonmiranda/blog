@@ -9,7 +9,7 @@
 <link>https://datamares.netlify.app/</link>
 <atom:link href="https://datamares.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description>Data science, statistics and programming blog by Alberson Miranda.</description>
-<generator>quarto-1.7.6</generator>
+<generator>quarto-1.6.39</generator>
 <lastBuildDate>Sat, 19 Apr 2025 03:00:00 GMT</lastBuildDate>
 <item>
   <title>All models are wrong, but some are useless</title>

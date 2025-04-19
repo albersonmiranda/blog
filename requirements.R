@@ -1,0 +1,6 @@
+library(GGally)
+library(languageserver)
+library(jsonlite)
+library(httpgd)
+library(babelquarto)
+library(xgboost)
