@@ -19,6 +19,13 @@
   display: none;
 }
 
+/* adjustments for small screens */
+@media (max-width: 768px) {
+  .navbar-logo {
+    max-width: 25vh;
+  }
+}
+
 /* text */
 figcaption {
   text-align: center;

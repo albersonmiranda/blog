@@ -16,17 +16,17 @@ py_install("pandas")
 Ao aprender uma nova linguagem de programação, simplesmente buscar código equivalente para as práticas que você já tem pode ser enganoso. Aqui vemos que um equivalente à chamada `library()` do R é, na verdade, considerada uma má prática em Python e, se você fizer isso em uma entrevista de emprego, não espere ser chamado de volta.
 :::
 
-# MOTIVAÇÃO
+# Motivação
 
 Me ocorreu uma analogia sobre aprender um idioma estrangeiro: *é impossível aprender uma nova língua traduzindo palavra por palavra*. Não é apenas uma questão de vocabulário. Cada idioma tem sua própria gramática, verbos frasais, dicção, expressões, ritmo etc. Esse tipo de questão também aparece ao aprender uma nova *linguagem de programação* e acho que importar pacotes é um bom, ainda que simples, exemplo disso.
 
-# CHAMANDO UMA FUNÇÃO DE UM PACOTE
+# Chamando Uma Função De Um Pacote
 
-## EXPERIÊNCIA EM R
+## Experiência Em R
 
 No R, todo pacote instalado nas árvores de bibliotecas é listado sempre que um terminal é aberto. Esses pacotes listados estão disponíveis para os usuários o tempo todo e podem ser chamados explicitamente. Por exemplo:
 
-### CASO 1: CHAMADA EXPLÍCITA
+### Caso 1: Chamada Explícita
 ```{r mlr3 example}
 
 # procurar por medidas de machine learning que contenham "AUC" no pacote {mlr3}
@@ -35,7 +35,7 @@ mlr3::mlr_measures$keys("auc")
 
 Mas esse modo de chamar funções geralmente só é usado se aquele pacote não será necessário com frequência. Caso contrário, é cultural para usuários de R carregar e anexar todo o namespace do pacote ao search path^[Uma lista ordenada onde o R procura por uma função. Pode ser acessada com `search()`.] com uma chamada `library()`.
 
-### CASO 2: ANEXANDO
+### Caso 2: Anexando
 ```{r ggplot example}
 
 # cansado: chamada explícita do {ggplot2}
@@ -56,7 +56,7 @@ O problema aparece quando há conflitos de namespace. Você notou o aviso sobre 
 
 Isso pode ser evitado anexando apenas as funções específicas que você realmente vai usar:
 
-### CASO 3: ANEXANDO FUNÇÕES ESPECÍFICAS
+### Caso 3: Anexando Funções Específicas
 
 ```{r plotly example 2}
 
@@ -69,7 +69,7 @@ library(dplyr, include.only = "mutate")
 
 E nenhum aviso de conflito será disparado. Infelizmente, não ouço muito falar do argumento `include.only` na comunidade R `r emo::ji("man_shrugging")`. Pelo contrário, meta pacotes como o {tidyverse}, que carregam e anexam MUITAS coisas ao namespace — muitas vezes desnecessárias para o que você vai fazer —, são bastante comuns.
 
-## EXPERIÊNCIA EM PYTHON
+## Experiência Em Python
 
 Todos os 3 casos citados antes são possíveis em Python, mas os padrões da comunidade são bem diferentes. Especialmente em relação à consciência do que está carregado no namespace — ou symbol table, como é chamado em Python^[Acho? Não sei, ainda estou aprendendo lol `r emo::ji("face_with_tears_of_joy")`].
 
@@ -109,7 +109,7 @@ print(*globals(), sep = "\n")
 
 Note que apenas {pandas} está anexado à symbol table, não suas funções/métodos/atributos. Portanto, essa instrução não é equivalente ao `library()`. Para criar um dataframe simples com {pandas}:
 
-### CASO 1: CHAMADA EXPLÍCITA {#case1py}
+### Caso 1: Chamada Explícita {#Case1py}
 
 ```{python dataframe py}
 #| error: true
@@ -133,7 +133,7 @@ pandas.DataFrame(
 
 Se quisermos replicar o comportamento do `library()` (ou seja, carregar e anexar todas as funções/métodos/atributos do {pandas} à symbol table), então:
 
-### CASO 2: ANEXANDO {#case2py}
+### Caso 2: Anexando {#Case2py}
 
 ```{python case 2 python py}
 
@@ -154,7 +154,7 @@ DataFrame(
 
 Mas você não verá nenhum usuário experiente de Python fazendo isso, pois eles se preocupam em carregar muitos nomes na symbol table e os possíveis conflitos que isso pode causar. Uma abordagem aceitável seria anexar apenas alguns nomes frequentes, como em:
 
-### CASO 3: ANEXANDO FUNÇÕES ESPECÍFICAS {#case3py}
+### Caso 3: Anexando Funções Específicas {#Case3py}
 
 ```{python case 3 python py}
 #| error: true

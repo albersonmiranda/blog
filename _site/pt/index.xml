@@ -646,18 +646,15 @@ Gujarati, Damodar N., e Dawn C. Porter. 2021. <em>Econometria básica</em>. 5.ª
 <h2 class="unnumbered anchored" data-anchor-id="séries-hierárquicas-e-séries-agrupadas">SÉRIES HIERÁRQUICAS E SÉRIES AGRUPADAS</h2>
 <p>Séries temporais hierárquicas são aquelas que podem ser agregadas ou desagregadas naturalmente em uma estrutura aninhada <span class="citation" data-cites="hyndman2021">(R. J. Hyndman e Athanasopoulos 2021)</span>. Para ilustrar, tome a série do PIB brasileiro. Ela pode ser desagregada por estado que, por sua vez, pode ser desagregada por município.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">knitr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">include_graphics</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"img/hierarq.png"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hierarq.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>Séries Hierárquicas</figcaption>
+<div id="fig-h" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-h-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hierarq.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-h-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Séries Hierárquicas.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -669,58 +666,49 @@ font-style: inherit;">"img/hierarq.png"</span>)</span></code></pre></div>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20y_%7Bt%7D%20%5C%5C%0A%20%20%20%20y_%7BA,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BB,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BC,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAA,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAB,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAC,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBA,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBB,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBC,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCA,%20t%7D%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20%5C%5C%0A%20%20%20%201%20&amp;%201%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20%5C%5C%0A%20%20%20%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20%5C%5C%0A%5Cend%7Bbmatrix%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20y_%7BAA,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAB,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAC,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBA,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBB,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBC,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCA,%20t%7D%0A%5Cend%7Bbmatrix%7D%0A"></p>
 <p>Por outro lado, o PIB pode ser também desagregado de forma cruzada de acordo com a atividade econômica — lavoura, rebanho, indústria de transformação, extrativa, bens de capital, bens intermediários, comércio de vestuário, automotivos, serviços etc. Essa estrutura não pode ser desagregada naturalmente de uma única forma, como é a hierarquia de estados e municípios. Não pode ser aninhada por um atributo como a própria geografia. A esse tipo de estrutura dá-se o nome de séries agrupadas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">knitr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">include_graphics</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"img/agrupadas.png"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/agrupadas.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>Séries Agrupadas</figcaption>
+<div id="fig-agrupadas" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-agrupadas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/agrupadas.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-agrupadas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Séries agrupadas.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Combinando as duas, temos a estrutura de séries hierárquicas agrupadas. Ao contrário da estrutura hierárquica, que só pode ser agregada de uma forma — como com os municípios abaixo dos estados —, a adição da estrutura agrupada pode ocorrer tanto acima (Figura @ref(fig:ha1)) quanto abaixo (Figura @ref(fig:ha2)) da hierárquica.</p>
+<p>Combinando as duas, temos a estrutura de séries hierárquicas agrupadas. Ao contrário da estrutura hierárquica, que só pode ser agregada de uma forma — como com os municípios abaixo dos estados —, a adição da estrutura agrupada pode ocorrer tanto acima (Figura&nbsp;3) quanto abaixo (Figura&nbsp;4) da hierárquica.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">knitr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">include_graphics</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"img/hier_agrup.png"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>Séries Hierárquicas Agrupadas (a)</figcaption>
+<div id="fig-ha1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ha1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ha1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Séries Hierárquicas Agrupadas (a).
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">knitr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">include_graphics</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"img/hier_agrup_2.png"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup_2.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>Séries Hierárquicas Agrupadas (b)</figcaption>
+<div id="fig-ha2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ha2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup_2.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ha2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Séries Hierárquicas Agrupadas (b).
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Na notação matricial, a estrutura da Figura @ref(fig:ha2) é representada como abaixo. Formalmente, o primeiro membro da igualdade é composto pelo vetor <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7By%7D_t"> <img src="https://latex.codecogs.com/png.latex?n">-dimensional com todas as observações no tempo <img src="https://latex.codecogs.com/png.latex?t"> para todos os níveis da hierarquia. O segundo membro é composto pela matriz de soma <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BS%7D"> de dimensão <img src="https://latex.codecogs.com/png.latex?n%20%5Ctimes%20m"> que define as equações para todo nível de agregação, e pela matriz <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bb%7D_t"> composta pelas séries no nível mais desagregado.</p>
+<p>Na notação matricial, a estrutura da Figura&nbsp;4 é representada como abaixo. Formalmente, o primeiro membro da igualdade é composto pelo vetor <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7By%7D_t"> <img src="https://latex.codecogs.com/png.latex?n">-dimensional com todas as observações no tempo <img src="https://latex.codecogs.com/png.latex?t"> para todos os níveis da hierarquia. O segundo membro é composto pela matriz de soma <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BS%7D"> de dimensão <img src="https://latex.codecogs.com/png.latex?n%20%5Ctimes%20m"> que define as equações para todo nível de agregação, e pela matriz <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bb%7D_t"> composta pelas séries no nível mais desagregado.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cmathbf%7By%7D_t=%5Cmathbf%7BSb%7D_t%0A%5Cend%7Bequation%7D"></p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20y_%7Bt%7D%20%5C%5C%0A%20%20%20%20y_%7BA,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BB,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BC,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BZ,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAZ,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBZ,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCZ,%20t%7D%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20%5C%5C%0A%20%20%20%201%20&amp;%201%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%201%20&amp;%201%20%5C%5C%0A%20%20%20%201%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%201%20%5C%5C%0A%20%20%20%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%0A%5Cend%7Bbmatrix%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20y_%7BAX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAZ,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBZ,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCZ,%20t%7D%0A%5Cend%7Bbmatrix%7D%0A%5Cend%7Bequation%7D"></p>
 </section>
@@ -734,7 +722,7 @@ font-style: inherit;">"img/hier_agrup_2.png"</span>)</span></code></pre></div>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cmathbf%7BG%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20p_1%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_2%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_3%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_4%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_5%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_6%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_7%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%0A%5Cend%7Bbmatrix%7D%0A%5Cend%7Bequation%7D"></p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BG%7D"> é uma matriz <img src="https://latex.codecogs.com/png.latex?m%20%5Ctimes%20n"> que multiplica a matriz <img src="https://latex.codecogs.com/png.latex?%5Chat%7B%5Cmathbf%7By%7D%7D_%7BT+h%7CT%7D"> que, por sua vez, é composta pelas previsões base — as previsões individuais para todos os níveis de agregação. A equação para a abordagem <em>top-down</em> será, então:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cmathbf%7B%5Ctilde%7By%7D%7D_%7BT+h%20%7C%20T%7D%20=%20%5Cmathbf%7BSG%5Chat%7By%7D%7D_%7BT+h%20%7C%20T%7D%0A%5Cend%7Bequation%7D"></p>
-<p>Na notação matricial para a estrutura da Figura @ref(fig:h), temos:</p>
+<p>Na notação matricial para a estrutura da Figura&nbsp;1, temos:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20%5Ctilde%7By%7D_%7Bt%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BCA,%20t%7D%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cmathbf%7BS%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20p_1%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_2%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_3%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_4%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_5%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_6%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_7%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%0A%5Cend%7Bbmatrix%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BA,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BB,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BC,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BAA,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BAB,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BAC,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BBA,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BBB,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BBC,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BCA,%20T+h%7CT%7D%0A%5Cend%7Bbmatrix%7D%0A%5Cend%7Bequation%7D"></p>
 <p>O que nos dá uma proporção do total para cada elemento no nível mais desagregado. <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20%5Ctilde%7By%7D_%7Bt%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BCA,%20t%7D%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cmathbf%7BS%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20p_1%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20p_2%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20p_3%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20p_4%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20p_5%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20p_6%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20p_7%5Chat%7By%7D_%7BT+h%7CT%7D%0A%5Cend%7Bbmatrix%7D%0A%5Cend%7Bequation%7D"></p>
 <p>Substituindo a matriz <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BS%7D">, temos as equações que definem cada previsão da estrutura em função de proporções da previsão do agregado.</p>
@@ -747,7 +735,7 @@ font-style: inherit;">"img/hier_agrup_2.png"</span>)</span></code></pre></div>
 <section id="coerência-e-reconciliação" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="coerência-e-reconciliação">COERÊNCIA E RECONCILIAÇÃO</h2>
 <p>Seja somando as previsões do nível mais desagregado para formar os níveis superiores da hierarquia (<em>bottom-up</em>) ou distribuindo proporcionalmente as previsões do nível mais agregado (<em>top-down</em>), o vetor <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Ctilde%7By%7D%7D_t"> representa as previsões <em>coerentes</em>. Isso significa que as previsões “batem”, ou seja, são totalizadas corretamente — as previsões de cada elemento agregado corresponde ao somatório das previsões dos níveis inferiores da hierarquia. Isso é garantido pela multiplicação das matrizes <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BSG%7D">.</p>
-<p>Não fosse essa pré multiplicação, nada garantiria a coerência das previsões. Tomando a estrutura da Figura @ref(fig:h) como exemplo, seria um acaso improvável que as previsões do agregado para o estado do Espírito Santo fossem exatamente a soma das previsões individuais de seus municípios. Isso porque cada série pode seguir um processo diferente (e.g., arima) com erros e variâncias distintas.</p>
+<p>Não fosse essa pré multiplicação, nada garantiria a coerência das previsões. Tomando a estrutura da Figura&nbsp;1 como exemplo, seria um acaso improvável que as previsões do agregado para o estado do Espírito Santo fossem exatamente a soma das previsões individuais de seus municípios. Isso porque cada série pode seguir um processo diferente (e.g., arima) com erros e variâncias distintas.</p>
 <p>Os métodos de gerar previsões coerentes a partir de previsões base são chamados de métodos de <em>reconciliação</em>. Os métodos de reconciliação tradicionais apresentados, <em>top-down</em> e <em>bottom-up</em>, utilizam informação limitada. No método <em>top-down</em>, utiliza-se apenas informações do nível mais agregado — por isso, apenas a primeira coluna em (8) é diferente de zero. Já na abordagem <em>bottom-up</em>, utiliza-se apenas as informações dos níveis mais desagregados, o que resulta na submatriz identidade <img src="https://latex.codecogs.com/png.latex?m%20%5Ctimes%20m"> em (13), enquanto as colunas que representam os níveis mais agregados são nulas.</p>
 <p>Alternativamente, podemos pensar numa matriz <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BG%7D"> qualquer que utilize toda a informação disponível e tenha algumas propriedades que garantam que as previsões coerentes tenham o menor erro o possível. Esse é o problema de pesquisa trabalhado na <em>reconciliação ótima</em>, e é um assunto relativamente novo. Quer dizer, previsões pontuais de séries temporais hierárquicas é um troço antigo. Ao menos desde a década de 70, pesquisas foram publicadas acerca de abordagens <em>bottom-up</em> e <em>top-down</em>, suas vantagens e desvantagens, e tentativas de se definir qual é o melhor método<sup>1</sup>. Entretanto, é apenas em <span class="citation" data-cites="hyndman2011">R. J. Hyndman et al. (2011)</span> que é formalizada uma abordagem prática que utiliza toda a informação disponível, (i.e.&nbsp;as previsões de todos elementos de todos os níveis da hierarquia) a partir da estimação da matriz <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BG%7D"> via regressão linear por mínimos quadrados generalizados (MQG).</p>
 <p>Entretanto, para ser capaz de estimar o modelo por MQG, é necessária a matriz de variância-covariância dos erros. <span class="citation" data-cites="hyndman2011">R. J. Hyndman et al. (2011)</span> usam a matriz de erros de coerência, ou seja, a diferença entre as previsões reconciliadas e as previsões base, que tem posto incompleto e não identificada e, portanto, não pode ser estimada. Os autores contornam esse problema adotando no lugar da matriz de variância-covariância dos erros uma matriz diagonal constante, ou seja, assumem variância constante dos erros de reconciliação, o que acaba caindo na estimação de <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BG%7D"> por mínimos quadrados ordinários (MQO).</p>
@@ -757,7 +745,7 @@ font-style: inherit;">"img/hier_agrup_2.png"</span>)</span></code></pre></div>
 <p>E, de 2021 pra cá, há desenvolvimentos interessantes na extensão probabilística desse corpo teórico (e é onde estou realizando minha pesquisa de mestrado). <span class="citation" data-cites="panagiotelis2021">Panagiotelis et al. (2021)</span> reinterpreta a literatura de coerência e reconciliação de previsões pontuais a partir de uma abordagem geométrica, trazendo provas alternativas para conclusões anteriores ao mesmo tempo em que fornece novos teoremas. Além disso, <span class="citation" data-cites="panagiotelis2021">Panagiotelis et al. (2021)</span> estende essa interpretação geométrica para o contexto probabilístico, fornecendo métodos paramétricos e não paramétricos (via <em>bootstrapping</em>) para reconciliação de previsões probabilísticas, ou seja, para reconciliar previsões <img src="https://latex.codecogs.com/png.latex?%5Chat%7By%7D_t"> obtidas a partir de toda a distribuição, e não apenas a média.</p>
 </section>
 <section id="anyway" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> ANYWAY…</h1>
+<h1 data-number="1"><span class="header-section-number">1</span> Anyway …</h1>
 <p>Se você chegou até aqui, recomendo que arrume algo mais interessante pra fazer da vida. No próximo post (talvez) eu trago como fazer esse troço todo na prática com nosso queridão #RStats.</p>
 
 
@@ -796,7 +784,7 @@ Wickramasuriya, Shanika L., George Athanasopoulos, e Rob J. Hyndman. 2019. <span
   <media:content url="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup.png" medium="image" type="image/png" height="50" width="144"/>
 </item>
 <item>
-  <title>O PAPEL DA EDUCAÇÃO MATEMÁTICA SOB A HEGEMONIA DO CAPITAL</title>
+  <title>O Papel Da Educação Matemática Sob A Hegemonia Do Capital</title>
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202208_educacao-pre-capitalista/</link>
   <description><![CDATA[ 
@@ -940,16 +928,16 @@ Resumo
 </div>
 </div>
 <section id="motivação" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> MOTIVAÇÃO</h1>
+<h1 data-number="1"><span class="header-section-number">1</span> Motivação</h1>
 <p>Me ocorreu uma analogia sobre aprender um idioma estrangeiro: <em>é impossível aprender uma nova língua traduzindo palavra por palavra</em>. Não é apenas uma questão de vocabulário. Cada idioma tem sua própria gramática, verbos frasais, dicção, expressões, ritmo etc. Esse tipo de questão também aparece ao aprender uma nova <em>linguagem de programação</em> e acho que importar pacotes é um bom, ainda que simples, exemplo disso.</p>
 </section>
 <section id="chamando-uma-função-de-um-pacote" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> CHAMANDO UMA FUNÇÃO DE UM PACOTE</h1>
+<h1 data-number="2"><span class="header-section-number">2</span> Chamando Uma Função De Um Pacote</h1>
 <section id="experiência-em-r" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="experiência-em-r"><span class="header-section-number">2.1</span> EXPERIÊNCIA EM R</h2>
+<h2 data-number="2.1" class="anchored" data-anchor-id="experiência-em-r"><span class="header-section-number">2.1</span> Experiência Em R</h2>
 <p>No R, todo pacote instalado nas árvores de bibliotecas é listado sempre que um terminal é aberto. Esses pacotes listados estão disponíveis para os usuários o tempo todo e podem ser chamados explicitamente. Por exemplo:</p>
 <section id="caso-1-chamada-explícita" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="caso-1-chamada-explícita"><span class="header-section-number">2.1.1</span> CASO 1: CHAMADA EXPLÍCITA</h3>
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="caso-1-chamada-explícita"><span class="header-section-number">2.1.1</span> Caso 1: Chamada Explícita</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -972,7 +960,7 @@ font-style: inherit;">"auc"</span>)</span></code></pre></div>
 <p>Mas esse modo de chamar funções geralmente só é usado se aquele pacote não será necessário com frequência. Caso contrário, é cultural para usuários de R carregar e anexar todo o namespace do pacote ao search path<sup>1</sup> com uma chamada <code>library()</code>.</p>
 </section>
 <section id="caso-2-anexando" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="caso-2-anexando"><span class="header-section-number">2.1.2</span> CASO 2: ANEXANDO</h3>
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="caso-2-anexando"><span class="header-section-number">2.1.2</span> Caso 2: Anexando</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1039,7 +1027,7 @@ font-style: inherit;">all.equal</span>(t1, t2)</span></code></pre></div>
 <p>Isso pode ser evitado anexando apenas as funções específicas que você realmente vai usar:</p>
 </section>
 <section id="caso-3-anexando-funções-específicas" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="caso-3-anexando-funções-específicas"><span class="header-section-number">2.1.3</span> CASO 3: ANEXANDO FUNÇÕES ESPECÍFICAS</h3>
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="caso-3-anexando-funções-específicas"><span class="header-section-number">2.1.3</span> Caso 3: Anexando Funções Específicas</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1065,7 +1053,7 @@ font-style: inherit;">"mutate"</span>)</span></code></pre></div>
 </section>
 </section>
 <section id="experiência-em-python" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="experiência-em-python"><span class="header-section-number">2.2</span> EXPERIÊNCIA EM PYTHON</h2>
+<h2 data-number="2.2" class="anchored" data-anchor-id="experiência-em-python"><span class="header-section-number">2.2</span> Experiência Em Python</h2>
 <p>Todos os 3 casos citados antes são possíveis em Python, mas os padrões da comunidade são bem diferentes. Especialmente em relação à consciência do que está carregado no namespace — ou symbol table, como é chamado em Python<sup>2</sup>.</p>
 <p>Primeiro, pacotes instalados não ficam imediatamente disponíveis. Então, se eu tentar, por exemplo, listar funções/métodos/atributos do {pandas}, resultará em erro:</p>
 <div class="cell">
@@ -1160,8 +1148,8 @@ pandas</code></pre>
 </div>
 </div>
 <p>Note que apenas {pandas} está anexado à symbol table, não suas funções/métodos/atributos. Portanto, essa instrução não é equivalente ao <code>library()</code>. Para criar um dataframe simples com {pandas}:</p>
-<section id="case1py" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="case1py"><span class="header-section-number">2.2.1</span> CASO 1: CHAMADA EXPLÍCITA</h3>
+<section id="Case1py" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="Case1py"><span class="header-section-number">2.2.1</span> Caso 1: Chamada Explícita</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1225,8 +1213,8 @@ font-style: inherit;">"Rio de Janeiro"</span>]</span>
 </div>
 <p>Se quisermos replicar o comportamento do <code>library()</code> (ou seja, carregar e anexar todas as funções/métodos/atributos do {pandas} à symbol table), então:</p>
 </section>
-<section id="case2py" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="case2py"><span class="header-section-number">2.2.2</span> CASO 2: ANEXANDO</h3>
+<section id="Case2py" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="Case2py"><span class="header-section-number">2.2.2</span> Caso 2: Anexando</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1416,8 +1404,8 @@ font-style: inherit;">"Rio de Janeiro"</span>]</span>
 </div>
 <p>Mas você não verá nenhum usuário experiente de Python fazendo isso, pois eles se preocupam em carregar muitos nomes na symbol table e os possíveis conflitos que isso pode causar. Uma abordagem aceitável seria anexar apenas alguns nomes frequentes, como em:</p>
 </section>
-<section id="case3py" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="case3py"><span class="header-section-number">2.2.3</span> CASO 3: ANEXANDO FUNÇÕES ESPECÍFICAS</h3>
+<section id="Case3py" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="Case3py"><span class="header-section-number">2.2.3</span> Caso 3: Anexando Funções Específicas</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -4223,7 +4211,7 @@ font-style: inherit;">"greater"</span>)</span></code></pre></div>
 <h2 data-number="2.3" class="anchored" data-anchor-id="tamanho-do-efeito-cohens-d"><span class="header-section-number">2.3</span> TAMANHO DO EFEITO: <em>Cohen’s D</em></h2>
 <p><a href="https://datamares.netlify.app/post/2020-11-06-chutou-ou-n%C3%A3o-chutou-o-teste-t-para-uma-amostra/">Nesse post</a> eu mostrei que o tamanho da amostra é determinante para o teste t e tenderemos a rejeitar a hipótese nula quanto maior for a amostra. Aqui, se tratando de mais de 140 mil observações para cada sexo, dificilmente essas diferenças não seriam significativas. Para complementar esse teste, podemos calcular o <strong>tamanho do efeito</strong> com a estatística <em>d de Cohen</em>.</p>
 <p>Muito usada no campo da saúde em experimentos com testes t pareados, quando é preciso definir o efeito de uma ação em um grupo de tratamento em relação ao grupo de controle, a estatística <em>d de Cohen</em> é um indicador de diferenças padronizadas e é particularmente valiosa para quantificar o efeito de uma intervenção, seja em políticas públicas ou em ações de marketing na sua empresa. Isso quer dizer que ele enfatiza o tamanho da diferença entre as médias, sem confundir com a questão do tamanho da amostra.</p>
-<p>Por ser padronizado (i.e.&nbsp;não é medido na unidade da amostra, aqui em BR<img src="https://latex.codecogs.com/png.latex?,%20mas%20sim%20em%20desvios-padr%C3%B5es)%20pode%20ser%20facilmente%20comparado%20%C3%A0%20diferentes%20experimentos.%20Sua%20forma%20de%20c%C3%A1lculo%20%C3%A9%20a%20seguinte:">$ d = $$</p>
+<p>Por ser padronizado (i.e.&nbsp;não é medido na unidade da amostra, aqui em Reais, mas sim em desvios-padrões) pode ser facilmente comparado à diferentes experimentos. Sua forma de cálculo é a seguinte: <img src="https://latex.codecogs.com/png.latex?%20d%20=%20%5Cfrac%7B%5Ctext%7Bm%C3%A9dia%20do%20grupo%20experimental%7D%20-%20%5Ctext%7Bm%C3%A9dia%20do%20grupo%20de%20controle%7D%7D%7B%5Ctext%7Bdesvio%20padr%C3%A3o%20agrupado%7D%7D%20"></p>
 <p>Para duas médias fixadas, quanto menor for o desvio padrão, maior será a estatística <em>d</em>. Por outro lado, quanto maior for o desvio padrão, menor será o tamanho do efeito.</p>
 <p>No R, vamos utilizar o pacote {effectsize}:</p>
 <div class="cell">

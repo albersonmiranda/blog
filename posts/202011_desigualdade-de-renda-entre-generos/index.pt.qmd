@@ -327,7 +327,7 @@ Com p-valor de 0% e uma estatística calculada a *quilômetros* da distribuiçã
 
 Muito usada no campo da saúde em experimentos com testes t pareados, quando é preciso definir o efeito de uma ação em um grupo de tratamento em relação ao grupo de controle, a estatística *d de Cohen* é um indicador de diferenças padronizadas e é particularmente valiosa para quantificar o efeito de uma intervenção, seja em políticas públicas ou em ações de marketing na sua empresa. Isso quer dizer que ele enfatiza o tamanho da diferença entre as médias, sem confundir com a questão do tamanho da amostra.
 
-Por ser padronizado (i.e. não é medido na unidade da amostra, aqui em BR$, mas sim em desvios-padrões) pode ser facilmente comparado à diferentes experimentos. Sua forma de cálculo é a seguinte:
+Por ser padronizado (i.e. não é medido na unidade da amostra, aqui em Reais, mas sim em desvios-padrões) pode ser facilmente comparado à diferentes experimentos. Sua forma de cálculo é a seguinte:
 $$ d = \frac{\text{média do grupo experimental} - \text{média do grupo de controle}}{\text{desvio padrão agrupado}} $$
 
 Para duas médias fixadas, quanto menor for o desvio padrão, maior será a estatística *d*. Por outro lado, quanto maior for o desvio padrão, menor será o tamanho do efeito.

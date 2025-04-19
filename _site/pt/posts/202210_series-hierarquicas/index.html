@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -245,7 +211,7 @@ window.Quarto = {
 <li><a href="#s%C3%A9ries-hier%C3%A1rquicas-e-s%C3%A9ries-agrupadas" id="toc-séries-hierárquicas-e-séries-agrupadas" class="nav-link active" data-scroll-target="#séries-hierárquicas-e-séries-agrupadas">SÉRIES HIERÁRQUICAS E SÉRIES AGRUPADAS</a></li>
   <li><a href="#abordagens-top-down-e-bottom-up" id="toc-abordagens-top-down-e-bottom-up" class="nav-link" data-scroll-target="#abordagens-top-down-e-bottom-up">ABORDAGENS TOP-DOWN E BOTTOM-UP</a></li>
   <li><a href="#coer%C3%AAncia-e-reconcilia%C3%A7%C3%A3o" id="toc-coerência-e-reconciliação" class="nav-link" data-scroll-target="#coerência-e-reconciliação">COERÊNCIA E RECONCILIAÇÃO</a></li>
-  <li><a href="#anyway" id="toc-anyway" class="nav-link" data-scroll-target="#anyway"><span class="header-section-number">1</span> ANYWAY…</a></li>
+  <li><a href="#anyway" id="toc-anyway" class="nav-link" data-scroll-target="#anyway"><span class="header-section-number">1</span> Anyway …</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/albersonmiranda/blog/issues" class="toc-action"><i class="bi bi-github"></i>Criar uma issue</a></li></ul></div></nav>
 </div>
@@ -255,11 +221,14 @@ window.Quarto = {
 <section id="séries-hierárquicas-e-séries-agrupadas" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="séries-hierárquicas-e-séries-agrupadas">SÉRIES HIERÁRQUICAS E SÉRIES AGRUPADAS</h2>
 <p>Séries temporais hierárquicas são aquelas que podem ser agregadas ou desagregadas naturalmente em uma estrutura aninhada <span class="citation" data-cites="hyndman2021">(<a href="#ref-hyndman2021" role="doc-biblioref">R. J. Hyndman e Athanasopoulos 2021</a>)</span>. Para ilustrar, tome a série do PIB brasileiro. Ela pode ser desagregada por estado que, por sua vez, pode ser desagregada por município.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/hierarq.png"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="img/hierarq.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>Séries Hierárquicas</figcaption></figure>
+<div id="fig-h" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-h-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/hierarq.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-h-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura 1: Séries Hierárquicas.
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -313,34 +282,43 @@ y_{A,t} &amp;= y_{AA,t} + y_{AB,t} + y_{AC,t}
 \]</span></p>
 <p>Por outro lado, o PIB pode ser também desagregado de forma cruzada de acordo com a atividade econômica — lavoura, rebanho, indústria de transformação, extrativa, bens de capital, bens intermediários, comércio de vestuário, automotivos, serviços etc. Essa estrutura não pode ser desagregada naturalmente de uma única forma, como é a hierarquia de estados e municípios. Não pode ser aninhada por um atributo como a própria geografia. A esse tipo de estrutura dá-se o nome de séries agrupadas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/agrupadas.png"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="img/agrupadas.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>Séries Agrupadas</figcaption></figure>
+<div id="fig-agrupadas" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-agrupadas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/agrupadas.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-agrupadas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura 2: Séries agrupadas.
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Combinando as duas, temos a estrutura de séries hierárquicas agrupadas. Ao contrário da estrutura hierárquica, que só pode ser agregada de uma forma — como com os municípios abaixo dos estados —, a adição da estrutura agrupada pode ocorrer tanto acima (Figura @ref(fig:ha1)) quanto abaixo (Figura @ref(fig:ha2)) da hierárquica.</p>
+<p>Combinando as duas, temos a estrutura de séries hierárquicas agrupadas. Ao contrário da estrutura hierárquica, que só pode ser agregada de uma forma — como com os municípios abaixo dos estados —, a adição da estrutura agrupada pode ocorrer tanto acima (<a href="#fig-ha1" class="quarto-xref">Figura 3</a>) quanto abaixo (<a href="#fig-ha2" class="quarto-xref">Figura 4</a>) da hierárquica.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/hier_agrup.png"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="img/hier_agrup.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>Séries Hierárquicas Agrupadas (a)</figcaption></figure>
+<div id="fig-ha1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ha1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/hier_agrup.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ha1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura 3: Séries Hierárquicas Agrupadas (a).
+</figcaption></figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/hier_agrup_2.png"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="img/hier_agrup_2.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>Séries Hierárquicas Agrupadas (b)</figcaption></figure>
+<div id="fig-ha2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ha2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/hier_agrup_2.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ha2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura 4: Séries Hierárquicas Agrupadas (b).
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Na notação matricial, a estrutura da Figura @ref(fig:ha2) é representada como abaixo. Formalmente, o primeiro membro da igualdade é composto pelo vetor <span class="math inline">\(\mathbf{y}_t\)</span> <span class="math inline">\(n\)</span>-dimensional com todas as observações no tempo <span class="math inline">\(t\)</span> para todos os níveis da hierarquia. O segundo membro é composto pela matriz de soma <span class="math inline">\(\mathbf{S}\)</span> de dimensão <span class="math inline">\(n \times m\)</span> que define as equações para todo nível de agregação, e pela matriz <span class="math inline">\(\mathbf{b}_t\)</span> composta pelas séries no nível mais desagregado.</p>
+<p>Na notação matricial, a estrutura da <a href="#fig-ha2" class="quarto-xref">Figura 4</a> é representada como abaixo. Formalmente, o primeiro membro da igualdade é composto pelo vetor <span class="math inline">\(\mathbf{y}_t\)</span> <span class="math inline">\(n\)</span>-dimensional com todas as observações no tempo <span class="math inline">\(t\)</span> para todos os níveis da hierarquia. O segundo membro é composto pela matriz de soma <span class="math inline">\(\mathbf{S}\)</span> de dimensão <span class="math inline">\(n \times m\)</span> que define as equações para todo nível de agregação, e pela matriz <span class="math inline">\(\mathbf{b}_t\)</span> composta pelas séries no nível mais desagregado.</p>
 <p><span class="math display">\[\begin{equation}
 \mathbf{y}_t=\mathbf{Sb}_t
 \end{equation}\]</span></p>
@@ -421,7 +399,7 @@ y_{A,t} &amp;= y_{AA,t} + y_{AB,t} + y_{AC,t}
 <p><span class="math display">\[\begin{equation}
 \mathbf{\tilde{y}}_{T+h | T} = \mathbf{SG\hat{y}}_{T+h | T}
 \end{equation}\]</span></p>
-<p>Na notação matricial para a estrutura da Figura @ref(fig:h), temos:</p>
+<p>Na notação matricial para a estrutura da <a href="#fig-h" class="quarto-xref">Figura 1</a>, temos:</p>
 <p><span class="math display">\[\begin{equation}
 \begin{bmatrix}
     \tilde{y}_{t} \\
@@ -581,7 +559,7 @@ y_{A,t} &amp;= y_{AA,t} + y_{AB,t} + y_{AC,t}
 \end{equation}\]</span></p>
 </section><section id="coerência-e-reconciliação" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="coerência-e-reconciliação">COERÊNCIA E RECONCILIAÇÃO</h2>
 <p>Seja somando as previsões do nível mais desagregado para formar os níveis superiores da hierarquia (<em>bottom-up</em>) ou distribuindo proporcionalmente as previsões do nível mais agregado (<em>top-down</em>), o vetor <span class="math inline">\(\mathbf{\tilde{y}}_t\)</span> representa as previsões <em>coerentes</em>. Isso significa que as previsões “batem”, ou seja, são totalizadas corretamente — as previsões de cada elemento agregado corresponde ao somatório das previsões dos níveis inferiores da hierarquia. Isso é garantido pela multiplicação das matrizes <span class="math inline">\(\mathbf{SG}\)</span>.</p>
-<p>Não fosse essa pré multiplicação, nada garantiria a coerência das previsões. Tomando a estrutura da Figura @ref(fig:h) como exemplo, seria um acaso improvável que as previsões do agregado para o estado do Espírito Santo fossem exatamente a soma das previsões individuais de seus municípios. Isso porque cada série pode seguir um processo diferente (e.g., arima) com erros e variâncias distintas.</p>
+<p>Não fosse essa pré multiplicação, nada garantiria a coerência das previsões. Tomando a estrutura da <a href="#fig-h" class="quarto-xref">Figura 1</a> como exemplo, seria um acaso improvável que as previsões do agregado para o estado do Espírito Santo fossem exatamente a soma das previsões individuais de seus municípios. Isso porque cada série pode seguir um processo diferente (e.g., arima) com erros e variâncias distintas.</p>
 <p>Os métodos de gerar previsões coerentes a partir de previsões base são chamados de métodos de <em>reconciliação</em>. Os métodos de reconciliação tradicionais apresentados, <em>top-down</em> e <em>bottom-up</em>, utilizam informação limitada. No método <em>top-down</em>, utiliza-se apenas informações do nível mais agregado — por isso, apenas a primeira coluna em (8) é diferente de zero. Já na abordagem <em>bottom-up</em>, utiliza-se apenas as informações dos níveis mais desagregados, o que resulta na submatriz identidade <span class="math inline">\(m \times m\)</span> em (13), enquanto as colunas que representam os níveis mais agregados são nulas.</p>
 <p>Alternativamente, podemos pensar numa matriz <span class="math inline">\(\mathbf{G}\)</span> qualquer que utilize toda a informação disponível e tenha algumas propriedades que garantam que as previsões coerentes tenham o menor erro o possível. Esse é o problema de pesquisa trabalhado na <em>reconciliação ótima</em>, e é um assunto relativamente novo. Quer dizer, previsões pontuais de séries temporais hierárquicas é um troço antigo. Ao menos desde a década de 70, pesquisas foram publicadas acerca de abordagens <em>bottom-up</em> e <em>top-down</em>, suas vantagens e desvantagens, e tentativas de se definir qual é o melhor método<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Entretanto, é apenas em <span class="citation" data-cites="hyndman2011">R. J. Hyndman et al. (<a href="#ref-hyndman2011" role="doc-biblioref">2011</a>)</span> que é formalizada uma abordagem prática que utiliza toda a informação disponível, (i.e. as previsões de todos elementos de todos os níveis da hierarquia) a partir da estimação da matriz <span class="math inline">\(\mathbf{G}\)</span> via regressão linear por mínimos quadrados generalizados (MQG).</p>
 <p>Entretanto, para ser capaz de estimar o modelo por MQG, é necessária a matriz de variância-covariância dos erros. <span class="citation" data-cites="hyndman2011">R. J. Hyndman et al. (<a href="#ref-hyndman2011" role="doc-biblioref">2011</a>)</span> usam a matriz de erros de coerência, ou seja, a diferença entre as previsões reconciliadas e as previsões base, que tem posto incompleto e não identificada e, portanto, não pode ser estimada. Os autores contornam esse problema adotando no lugar da matriz de variância-covariância dos erros uma matriz diagonal constante, ou seja, assumem variância constante dos erros de reconciliação, o que acaba caindo na estimação de <span class="math inline">\(\mathbf{G}\)</span> por mínimos quadrados ordinários (MQO).</p>
@@ -590,7 +568,7 @@ y_{A,t} &amp;= y_{AA,t} + y_{AB,t} + y_{AC,t}
 <p><span class="citation" data-cites="wickramasuriya2019">Wickramasuriya, Athanasopoulos, e Hyndman (<a href="#ref-wickramasuriya2019" role="doc-biblioref">2019</a>)</span> argumentam que o que de fato interessa é que as previsões reconciliadas tenham o menor erro — não interessa que a previsão reconciliada seja mais próxima da previsão base, mas que as reconciliadas sejam as mais precisas o possível, já que é a que se vai utilizar!. Então, corrigem a abordagem de reconciliação ótima para o objetivo de minimização dos erros das previsões reconciliadas <span class="math inline">\(\mathbf{\tilde{e}_{t+h}} = \mathbf{y_{t+h} - \mathbf{\tilde{y}_{t+h}}}\)</span>, ao invés dos erros de reconciliação das previsões base <span class="math inline">\(\mathbf{\hat{y}_{t+h}} - \mathbf{\tilde{y}_{t+h}}\)</span>. Dado que isso implica na minimização da variância de <span class="math inline">\(\mathbf{\tilde{e}_{t+h}}\)</span>, ou seja, na minimização do somatório da diagonal, o traço, da matriz de variância-covariância de <span class="math inline">\(\mathbf{\tilde{e}_{t+h}}\)</span>, eles chamaram esse método de Menor Traço (MinT, na sigla em inglês). Paralelamente, usam desigualdade triangular para demonstrar que as previsões reconciliadas obtidas por esse método são ao menos tão boas quanto as previsões base.</p>
 <p>E, de 2021 pra cá, há desenvolvimentos interessantes na extensão probabilística desse corpo teórico (e é onde estou realizando minha pesquisa de mestrado). <span class="citation" data-cites="panagiotelis2021">Panagiotelis et al. (<a href="#ref-panagiotelis2021" role="doc-biblioref">2021</a>)</span> reinterpreta a literatura de coerência e reconciliação de previsões pontuais a partir de uma abordagem geométrica, trazendo provas alternativas para conclusões anteriores ao mesmo tempo em que fornece novos teoremas. Além disso, <span class="citation" data-cites="panagiotelis2021">Panagiotelis et al. (<a href="#ref-panagiotelis2021" role="doc-biblioref">2021</a>)</span> estende essa interpretação geométrica para o contexto probabilístico, fornecendo métodos paramétricos e não paramétricos (via <em>bootstrapping</em>) para reconciliação de previsões probabilísticas, ou seja, para reconciliar previsões <span class="math inline">\(\hat{y}_t\)</span> obtidas a partir de toda a distribuição, e não apenas a média.</p>
 </section><section id="anyway" class="level1" data-number="1"><h1 data-number="1">
-<span class="header-section-number">1</span> ANYWAY…</h1>
+<span class="header-section-number">1</span> Anyway …</h1>
 <p>Se você chegou até aqui, recomendo que arrume algo mais interessante pra fazer da vida. No próximo post (talvez) eu trago como fazer esse troço todo na prática com nosso queridão #RStats.</p>
 
 

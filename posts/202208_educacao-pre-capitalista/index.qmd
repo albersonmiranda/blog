@@ -1,5 +1,5 @@
 ---
-title: THE ROLE OF MATHEMATICS EDUCATION UNDER THE HEGEMONY OF CAPITAL
+title: The Role Of Mathematics Education Under The Hegemony Of Capital
 subtitle: Pre-capitalist Education
 date: '2022-08-14'
 categories: [education]

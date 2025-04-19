@@ -642,22 +642,19 @@ Gujarati, Damodar N., and Dawn C. Porter. 2021. <em>Econometria básica</em>. 5t
 
 <p>For almost a decade now, every year around this time I work with time series forecasting at <a href="https://www.banestes.com.br/">Banestes</a>. When it comes to setting goals and budget objectives (balances, revenues, expenses, etc.), knowing how to model and forecast is a real lifesaver.</p>
 <p>Of course, forecasts alone should not be adopted as final or absolute truth, since they do not use managerial information and stakeholder expectations, for example. But they are a reasonable starting point that serves as a basis for building expectations, action plans, etc.</p>
-<section id="hierarchical-and-grouped-time-series" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="hierarchical-and-grouped-time-series">HIERARCHICAL AND GROUPED TIME SERIES</h2>
+<section id="hierarchical-and-grouped-time-series" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Hierarchical and grouped time series</h1>
 <p>Hierarchical time series are those that can be naturally aggregated or disaggregated in a nested structure <span class="citation" data-cites="hyndman2021">(R. J. Hyndman and Athanasopoulos 2021)</span>. To illustrate, take the Brazilian GDP series. It can be disaggregated by state, which in turn can be disaggregated by municipality.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">knitr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">include_graphics</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"img/hierarq.png"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hierarq.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>Hierarchical Series</figcaption>
+<div id="fig-h" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-h-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hierarq.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-h-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Hierarchical series.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -669,63 +666,54 @@ font-style: inherit;">"img/hierarq.png"</span>)</span></code></pre></div>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20y_%7Bt%7D%20%5C%5C%0A%20%20%20%20y_%7BA,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BB,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BC,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAA,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAB,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAC,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBA,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBB,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBC,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCA,%20t%7D%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20%5C%5C%0A%20%20%20%201%20&amp;%201%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20%5C%5C%0A%20%20%20%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20%5C%5C%0A%5Cend%7Bbmatrix%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20y_%7BAA,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAB,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAC,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBA,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBB,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBC,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCA,%20t%7D%0A%5Cend%7Bbmatrix%7D%0A"></p>
 <p>On the other hand, GDP can also be disaggregated in a cross-sectional way according to economic activity—crops, livestock, manufacturing, extractive industry, capital goods, intermediate goods, clothing trade, automotive, services, etc. This structure cannot be naturally disaggregated in a single way, as in the hierarchy of states and municipalities. It cannot be nested by a single attribute like geography. This type of structure is called grouped series.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">knitr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">include_graphics</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"img/agrupadas.png"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/agrupadas.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>Grouped Series</figcaption>
+<div id="fig-agrupadas" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-agrupadas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/agrupadas.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-agrupadas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Grouped series.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Combining both, we have the structure of hierarchical grouped series. Unlike the hierarchical structure, which can only be aggregated in one way—as with municipalities under states—the addition of the grouped structure can occur either above (Figure @ref(fig:ha1)) or below (Figure @ref(fig:ha2)) the hierarchy.</p>
+<p>Combining both, we have the structure of hierarchical grouped series. Unlike the hierarchical structure, which can only be aggregated in one way—as with municipalities under states—the addition of the grouped structure can occur either above (Figure&nbsp;3) or below (<strong>?@fig-fig-ha2</strong>) the hierarchy.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">knitr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">include_graphics</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"img/hier_agrup.png"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>Hierarchical Grouped Series (a)</figcaption>
+<div id="fig-ha1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ha1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ha1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Hierarchical and grouped time series (a).
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">knitr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">include_graphics</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"img/hier_agrup_2.png"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup_2.png" class="img-fluid figure-img" width="600"></p>
-<figcaption>Hierarchical Grouped Series (b)</figcaption>
+<div id="fig-ha2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ha2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup_2.png" class="img-fluid figure-img" width="600">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ha2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Hierarchical and grouped time series (b).
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>In matrix notation, the structure of Figure @ref(fig:ha2) is represented as below. Formally, the left-hand side of the equation is composed of the <img src="https://latex.codecogs.com/png.latex?n">-dimensional vector <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7By%7D_t"> with all observations at time <img src="https://latex.codecogs.com/png.latex?t"> for all hierarchy levels. The right-hand side is composed of the summing matrix <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BS%7D"> of dimension <img src="https://latex.codecogs.com/png.latex?n%20%5Ctimes%20m"> that defines the equations for every aggregation level, and the matrix <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bb%7D_t"> composed of the series at the most disaggregated level.</p>
+<p>In matrix notation, the structure of Figure&nbsp;4 is represented as below. Formally, the left-hand side of the equation is composed of the <img src="https://latex.codecogs.com/png.latex?n">-dimensional vector <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7By%7D_t"> with all observations at time <img src="https://latex.codecogs.com/png.latex?t"> for all hierarchy levels. The right-hand side is composed of the summing matrix <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BS%7D"> of dimension <img src="https://latex.codecogs.com/png.latex?n%20%5Ctimes%20m"> that defines the equations for every aggregation level, and the matrix <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bb%7D_t"> composed of the series at the most disaggregated level.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cmathbf%7By%7D_t=%5Cmathbf%7BSb%7D_t%0A%5Cend%7Bequation%7D"></p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20y_%7Bt%7D%20%5C%5C%0A%20%20%20%20y_%7BA,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BB,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BC,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BZ,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAZ,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBZ,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCZ,%20t%7D%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20%5C%5C%0A%20%20%20%201%20&amp;%201%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%201%20&amp;%201%20%5C%5C%0A%20%20%20%201%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%201%20%5C%5C%0A%20%20%20%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%0A%5Cend%7Bbmatrix%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20y_%7BAX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BAZ,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BBZ,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCX,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCY,%20t%7D%20%5C%5C%0A%20%20%20%20y_%7BCZ,%20t%7D%0A%5Cend%7Bbmatrix%7D%0A%5Cend%7Bequation%7D"></p>
 </section>
-<section id="top-down-and-bottom-up-approaches" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="top-down-and-bottom-up-approaches">TOP-DOWN AND BOTTOM-UP APPROACHES</h2>
+<section id="top-down-and-bottom-up-approaches" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Top-down and bottom-up approaches</h1>
 <p>Perhaps the most intuitive ways to think about forecasts for these types of structures are the <em>top-down</em> and <em>bottom-up</em> approaches. Take the structure described in Figure @ref(fig:h), for example. We can forecast for the horizon <img src="https://latex.codecogs.com/png.latex?h"> of the aggregate Brazilian GDP, represented at the top of the hierarchy by <em>Total</em> (6), and then distribute the forecasted values proportionally among states and municipalities.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Chat%7By%7D_%7BT+h%20%7C%20T%7D%20=%20E%5By_%7BT+h%7D%20%7C%20%5COmega_T%5D%0A%5Cend%7Bequation%7D"></p>
 <p>This is the <em>top-down</em> approach. In it, the forecasts for the most disaggregated levels of the hierarchy are determined by a proportion <img src="https://latex.codecogs.com/png.latex?p_i"> of the aggregate level. For example, the forecasts for Vitória are given by equation (7).</p>
@@ -734,7 +722,7 @@ font-style: inherit;">"img/hier_agrup_2.png"</span>)</span></code></pre></div>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cmathbf%7BG%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20p_1%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_2%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_3%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_4%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_5%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_6%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_7%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%0A%5Cend%7Bbmatrix%7D%0A%5Cend%7Bequation%7D"></p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BG%7D"> is an <img src="https://latex.codecogs.com/png.latex?m%20%5Ctimes%20n"> matrix that multiplies the matrix <img src="https://latex.codecogs.com/png.latex?%5Chat%7B%5Cmathbf%7By%7D%7D_%7BT+h%7CT%7D">, which in turn is composed of the base forecasts—the individual forecasts for all aggregation levels. The equation for the <em>top-down</em> approach will then be:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cmathbf%7B%5Ctilde%7By%7D%7D_%7BT+h%20%7C%20T%7D%20=%20%5Cmathbf%7BSG%5Chat%7By%7D%7D_%7BT+h%20%7C%20T%7D%0A%5Cend%7Bequation%7D"></p>
-<p>In matrix notation for the structure of Figure @ref(fig:h), we have:</p>
+<p>In matrix notation for the structure of Figure&nbsp;1, we have:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20%5Ctilde%7By%7D_%7Bt%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BCA,%20t%7D%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cmathbf%7BS%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20p_1%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_2%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_3%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_4%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_5%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_6%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%20p_7%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%0A%5Cend%7Bbmatrix%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BA,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BB,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BC,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BAA,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BAB,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BAC,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BBA,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BBB,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BBC,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BCA,%20T+h%7CT%7D%0A%5Cend%7Bbmatrix%7D%0A%5Cend%7Bequation%7D"></p>
 <p>Which gives us a proportion of the total for each element at the most disaggregated level. <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20%5Ctilde%7By%7D_%7Bt%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BCA,%20t%7D%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cmathbf%7BS%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20p_1%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20p_2%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20p_3%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20p_4%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20p_5%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20p_6%5Chat%7By%7D_%7BT+h%7CT%7D%20%5C%5C%0A%20%20%20%20p_7%5Chat%7By%7D_%7BT+h%7CT%7D%0A%5Cend%7Bbmatrix%7D%0A%5Cend%7Bequation%7D"></p>
 <p>Replacing the matrix <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BS%7D">, we have the equations that define each forecast in the structure as a function of proportions of the aggregate forecast.</p>
@@ -744,10 +732,10 @@ font-style: inherit;">"img/hier_agrup_2.png"</span>)</span></code></pre></div>
 <p>Which results in the desired equations. Therefore, <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BG%7D"> defines the approach—whether <em>top-down</em> or <em>bottom-up</em>—and <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BS%7D"> defines how the forecasts are summed to form the forecast equations for each element of the structure.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20%5Ctilde%7By%7D_%7Bt%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BAC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBA,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBB,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BBC,%20t%7D%20%5C%5C%0A%20%20%20%20%5Ctilde%7By%7D_%7BCA,%20t%7D%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%201%20%5C%5C%0A%20%20%20%201%20&amp;%201%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%201%20&amp;%201%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20%5C%5C%0A%20%20%20%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%20&amp;%200%20%5C%5C%0A%20%20%20%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%200%20&amp;%201%0A%5Cend%7Bbmatrix%7D%0A%5Cbegin%7Bbmatrix%7D%0A%20%20%20%20%5Chat%7By%7D_%7BAA,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BAB,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BAC,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BBA,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BBB,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BBC,%20T+h%7CT%7D%20%5C%5C%0A%20%20%20%20%5Chat%7By%7D_%7BCA,%20T+h%7CT%7D%0A%5Cend%7Bbmatrix%7D%0A%5Cend%7Bequation%7D"></p>
 </section>
-<section id="coherence-and-reconciliation" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="coherence-and-reconciliation">COHERENCE AND RECONCILIATION</h2>
+<section id="coherence-and-reconciliation" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Coherence and reconciliation</h1>
 <p>Whether by summing the forecasts from the most disaggregated level to form the upper levels of the hierarchy (<em>bottom-up</em>) or proportionally distributing the forecasts from the most aggregated level (<em>top-down</em>), the vector <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Ctilde%7By%7D%7D_t"> represents the <em>coherent</em> forecasts. This means that the forecasts “match”, i.e., they are correctly totaled—the forecasts for each aggregate element correspond to the sum of the forecasts for the lower levels of the hierarchy. This is ensured by the multiplication of the matrices <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BSG%7D">.</p>
-<p>Without this pre-multiplication, nothing would guarantee the coherence of the forecasts. Taking the structure of Figure @ref(fig:h) as an example, it would be an unlikely coincidence for the forecasts of the aggregate for the state of Espírito Santo to be exactly the sum of the individual forecasts of its municipalities. This is because each series may follow a different process (e.g., ARIMA) with different errors and variances.</p>
+<p>Without this pre-multiplication, nothing would guarantee the coherence of the forecasts. Taking the structure of Figure&nbsp;1 as an example, it would be an unlikely coincidence for the forecasts of the aggregate for the state of Espírito Santo to be exactly the sum of the individual forecasts of its municipalities. This is because each series may follow a different process (e.g., ARIMA) with different errors and variances.</p>
 <p>The methods for generating coherent forecasts from base forecasts are called <em>reconciliation</em> methods. The traditional reconciliation methods presented, <em>top-down</em> and <em>bottom-up</em>, use limited information. In the <em>top-down</em> method, only information from the most aggregated level is used—which is why only the first column in (8) is nonzero. In the <em>bottom-up</em> approach, only information from the most disaggregated levels is used, resulting in the <img src="https://latex.codecogs.com/png.latex?m%20%5Ctimes%20m"> identity submatrix in (13), while the columns representing the most aggregated levels are zero.</p>
 <p>Alternatively, we can think of any matrix <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BG%7D"> that uses all available information and has some properties that ensure that the coherent forecasts have the smallest possible error. This is the research problem addressed in <em>optimal reconciliation</em>, and it is a relatively new topic. That is, point forecasts for hierarchical time series are an old thing. At least since the 1970s, research has been published on <em>bottom-up</em> and <em>top-down</em> approaches, their advantages and disadvantages, and attempts to define the best method<sup>1</sup>. However, it is only in <span class="citation" data-cites="hyndman2011">R. J. Hyndman et al. (2011)</span> that a practical approach is formalized that uses all available information (i.e., the forecasts of all elements at all levels of the hierarchy) by estimating the matrix <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BG%7D"> via generalized least squares (GLS) regression.</p>
 <p>However, to be able to estimate the model by GLS, the variance-covariance matrix of the errors is needed. <span class="citation" data-cites="hyndman2011">R. J. Hyndman et al. (2011)</span> use the coherence error matrix, i.e., the difference between the reconciled forecasts and the base forecasts, which is rank-deficient and unidentified and therefore cannot be estimated. The authors circumvent this problem by adopting, instead of the variance-covariance matrix of the errors, a constant diagonal matrix, i.e., they assume constant variance of the reconciliation errors, which ends up falling into the estimation of <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BG%7D"> by ordinary least squares (OLS).</p>
@@ -756,8 +744,8 @@ font-style: inherit;">"img/hier_agrup_2.png"</span>)</span></code></pre></div>
 <p><span class="citation" data-cites="wickramasuriya2019">Wickramasuriya, Athanasopoulos, and Hyndman (2019)</span> argue that what really matters is that the reconciled forecasts have the smallest error—it does not matter that the reconciled forecast is closer to the base forecast, but that the reconciled forecasts are as accurate as possible, since that is what will be used! So, they correct the optimal reconciliation approach to the objective of minimizing the errors of the reconciled forecasts <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Ctilde%7Be%7D_%7Bt+h%7D%7D%20=%20%5Cmathbf%7By_%7Bt+h%7D%20-%20%5Cmathbf%7B%5Ctilde%7By%7D_%7Bt+h%7D%7D%7D">, instead of the reconciliation errors of the base forecasts <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Chat%7By%7D_%7Bt+h%7D%7D%20-%20%5Cmathbf%7B%5Ctilde%7By%7D_%7Bt+h%7D%7D">. Since this implies minimizing the variance of <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Ctilde%7Be%7D_%7Bt+h%7D%7D">, i.e., minimizing the sum of the diagonal, the trace, of the variance-covariance matrix of <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7B%5Ctilde%7Be%7D_%7Bt+h%7D%7D">, they called this method Minimum Trace (MinT). In parallel, they use the triangle inequality to show that the reconciled forecasts obtained by this method are at least as good as the base forecasts.</p>
 <p>And, from 2021 onwards, there have been interesting developments in the probabilistic extension of this theoretical body (and this is where I am conducting my master’s research). <span class="citation" data-cites="panagiotelis2021">Panagiotelis et al. (2021)</span> reinterpret the literature on coherence and reconciliation of point forecasts from a geometric approach, providing alternative proofs for previous conclusions while also providing new theorems. In addition, <span class="citation" data-cites="panagiotelis2021">Panagiotelis et al. (2021)</span> extend this geometric interpretation to the probabilistic context, providing parametric and non-parametric (via bootstrapping) methods for reconciliation of probabilistic forecasts, i.e., to reconcile forecasts <img src="https://latex.codecogs.com/png.latex?%5Chat%7By%7D_t"> obtained from the entire distribution, not just the mean.</p>
 </section>
-<section id="anyway" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> ANYWAY…</h1>
+<section id="anyway" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Anyway…</h1>
 <p>If you made it this far, I recommend you find something more interesting to do with your life. In the next post (maybe) I’ll show how to do all this in practice with our beloved #RStats.</p>
 
 
@@ -796,7 +784,7 @@ Wickramasuriya, Shanika L., George Athanasopoulos, and Rob J. Hyndman. 2019. <sp
   <media:content url="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup.png" medium="image" type="image/png" height="50" width="144"/>
 </item>
 <item>
-  <title>THE ROLE OF MATHEMATICS EDUCATION UNDER THE HEGEMONY OF CAPITAL</title>
+  <title>The Role Of Mathematics Education Under The Hegemony Of Capital</title>
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202208_educacao-pre-capitalista/</link>
   <description><![CDATA[ 
@@ -940,16 +928,16 @@ TL;DR
 </div>
 </div>
 <section id="motivation" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> MOTIVATION</h1>
+<h1 data-number="1"><span class="header-section-number">1</span> Motivation</h1>
 <p>It crossed my mind an analogy about learning a foreign language: <em>it’s impossible to learn a new language by translating word by word</em>. It’s not only a matter of vocabulary. I mean, each language has it’s own grammar, phrasal verbs, diction, expressions, pace etc. That kind of issue also appears when learning a new <em>programming language</em> and I think importing packages is a good, yet very simple, example of that.</p>
 </section>
 <section id="calling-a-function-from-a-package" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> CALLING A FUNCTION FROM A PACKAGE</h1>
+<h1 data-number="2"><span class="header-section-number">2</span> Calling A Function From A Package</h1>
 <section id="r-experience" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="r-experience"><span class="header-section-number">2.1</span> R EXPERIENCE</h2>
+<h2 data-number="2.1" class="anchored" data-anchor-id="r-experience"><span class="header-section-number">2.1</span> R Experience</h2>
 <p>In R, every package installed in the library trees are listed whenever a terminal is open. Those listed packages are available for users at all times and can be called explicitly. For example:</p>
 <section id="case-1-explicit-call" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="case-1-explicit-call"><span class="header-section-number">2.1.1</span> CASE 1: EXPLICIT CALL</h3>
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="case-1-explicit-call"><span class="header-section-number">2.1.1</span> Case 1: Explicit Call</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -972,7 +960,7 @@ font-style: inherit;">"auc"</span>)</span></code></pre></div>
 <p>But that way of calling functions usually take place only if that particular package won’t be required very often. Otherwise, it’s cultural for R users to load and attach the entire package’s namespace to the search path<sup>1</sup> with a <code>library()</code> call.</p>
 </section>
 <section id="case-2-attaching" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="case-2-attaching"><span class="header-section-number">2.1.2</span> CASE 2: ATTACHING</h3>
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="case-2-attaching"><span class="header-section-number">2.1.2</span> Case 2: Attaching</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1039,7 +1027,7 @@ font-style: inherit;">all.equal</span>(t1, t2)</span></code></pre></div>
 <p>That can be avoided by attaching only the specific functions you’re actually gonna use:</p>
 </section>
 <section id="case-3-attaching-specific-functions" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="case-3-attaching-specific-functions"><span class="header-section-number">2.1.3</span> CASE 3: ATTACHING SPECIFIC FUNCTIONS</h3>
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="case-3-attaching-specific-functions"><span class="header-section-number">2.1.3</span> Case 3: Attaching Specific Functions</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1065,7 +1053,7 @@ font-style: inherit;">"mutate"</span>)</span></code></pre></div>
 </section>
 </section>
 <section id="python-experience" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="python-experience"><span class="header-section-number">2.2</span> PYTHON EXPERIENCE</h2>
+<h2 data-number="2.2" class="anchored" data-anchor-id="python-experience"><span class="header-section-number">2.2</span> Python Experience</h2>
 <p>All of the 3 cases stated before are possible in Python, but the community standards are very different. Specially regarding to the awareness of what is loaded into the namespace — or symbol table, as it is called in Python<sup>2</sup>.</p>
 <p>Firstly, installed packages aren’t immediately available. So if I try, for example, listing {pandas} functions/methods/attributes it’ll result in an error:</p>
 <div class="cell">
@@ -1160,8 +1148,8 @@ pandas</code></pre>
 </div>
 </div>
 <p>Note that only {pandas} is attached to the symbol table, not it’s functions/methods/attributes. So that statement it’s not an equivalent to <code>library()</code>. For us to create a simple dataframe with {pandas}:</p>
-<section id="case1py" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="case1py"><span class="header-section-number">2.2.1</span> CASE 1: EXPLICIT CALL</h3>
+<section id="Case1py" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="Case1py"><span class="header-section-number">2.2.1</span> Case 1: Explicit Call</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1225,8 +1213,8 @@ font-style: inherit;">"Rio de Janeiro"</span>]</span>
 </div>
 <p>If we were to replicate <code>library()</code> behavior (i.e.&nbsp;load and attach the entire {pandas} functions/methods/attributes into the symbol table), then:</p>
 </section>
-<section id="case2py" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="case2py"><span class="header-section-number">2.2.2</span> CASE 2: ATTACHING</h3>
+<section id="Case2py" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="Case2py"><span class="header-section-number">2.2.2</span> Case 2: Attaching</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1416,8 +1404,8 @@ font-style: inherit;">"Rio de Janeiro"</span>]</span>
 </div>
 <p>But you won’t see any experienced Python user doing that kind of thing because they’re worried about loading that amount of names into the symbol table and the possible conflicts it may cause. An acceptable approach would be attaching only a few frequent names as in:</p>
 </section>
-<section id="case3py" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="case3py"><span class="header-section-number">2.2.3</span> CASE 3: ATTACHING SPECIFIC FUNCTIONS</h3>
+<section id="Case3py" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="Case3py"><span class="header-section-number">2.2.3</span> Case 3: Attaching Specific Functions</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -2987,8 +2975,8 @@ R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</
 
 
 <p>There is still a lot to cover in this “Inference 101” series and, to continue our studies, I brought the 2017 RAIS (Annual Social Information Report) dataset<sup>1</sup>. With it, we will introduce the concept of <em>effect size</em> and, as a bonus, analyze gender inequality in our beloved capital, Vitória.</p>
-<section id="the-data" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> THE DATA</h1>
+<section id="data" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> DATA</h1>
 <p>Here are two options to obtain this data:</p>
 <ol type="1">
 <li>Manually, by browsing ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2017/ES2017.7z</li>
@@ -3355,7 +3343,7 @@ font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #6
 background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"sexo"</span>,</span>
+font-style: inherit;">"gender"</span>,</span>
 <span id="cb6-12">                    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">labels =</span> <span class="fu" style="color: #4758AB;
@@ -3588,7 +3576,7 @@ font-style: inherit;">scale_fill_manual</span>(</span>
 background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"sexo"</span>,</span>
+font-style: inherit;">"gender"</span>,</span>
 <span id="cb9-25">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">labels =</span> <span class="fu" style="color: #4758AB;
@@ -3754,7 +3742,7 @@ font-style: inherit;">scale_fill_manual</span>(</span>
 background-color: null;
 font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"sexo"</span>,</span>
+font-style: inherit;">"gender"</span>,</span>
 <span id="cb10-13">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">labels =</span> <span class="fu" style="color: #4758AB;
@@ -4542,9 +4530,9 @@ font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2.9</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">9.6</span>, <span class="fl" style="color: #AD0000;
+font-style: inherit;">7.6</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">8.3</span>),</span>
+font-style: inherit;">4.3</span>),</span>
 <span id="cb25-5">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x2 =</span> <span class="fu" style="color: #4758AB;
@@ -4553,9 +4541,9 @@ font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3.5</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">9.2</span>, <span class="fl" style="color: #AD0000;
+font-style: inherit;">7.2</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">7.4</span>),</span>
+font-style: inherit;">3.4</span>),</span>
 <span id="cb25-6">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y1 =</span> <span class="fu" style="color: #4758AB;
@@ -4717,7 +4705,7 @@ font-style: inherit;">"text"</span>,</span>
 background-color: null;
 font-style: inherit;">x =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">10.5</span>, <span class="at" style="color: #657422;
+font-style: inherit;">8.5</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -4764,7 +4752,7 @@ font-style: inherit;">"text"</span>,</span>
 background-color: null;
 font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">9</span>, <span class="at" style="color: #657422;
+font-style: inherit;">5</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> <span class="dv" style="color: #AD0000;
 background-color: null;

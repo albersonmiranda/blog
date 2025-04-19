@@ -86,7 +86,7 @@ $$
 Por outro lado, o PIB pode ser também desagregado de forma cruzada de acordo com a atividade econômica --- lavoura, rebanho, indústria de transformação, extrativa, bens de capital, bens intermediários, comércio de vestuário, automotivos, serviços etc. Essa estrutura não pode ser desagregada naturalmente de uma única forma, como é a hierarquia de estados e municípios. Não pode ser aninhada por um atributo como a própria geografia. A esse tipo de estrutura dá-se o nome de séries agrupadas.
 
 ```{r}
-#| label: fig-h
+#| label: fig-agrupadas
 #| fig-cap: "Séries agrupadas."
 knitr::include_graphics("img/agrupadas.png")
 ```

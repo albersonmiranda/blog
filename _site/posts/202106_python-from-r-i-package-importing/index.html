@@ -198,24 +198,24 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><span class="header-section-number">1</span> MOTIVATION</a></li>
+<li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><span class="header-section-number">1</span> Motivation</a></li>
   <li>
-<a href="#calling-a-function-from-a-package" id="toc-calling-a-function-from-a-package" class="nav-link" data-scroll-target="#calling-a-function-from-a-package"><span class="header-section-number">2</span> CALLING A FUNCTION FROM A PACKAGE</a>
+<a href="#calling-a-function-from-a-package" id="toc-calling-a-function-from-a-package" class="nav-link" data-scroll-target="#calling-a-function-from-a-package"><span class="header-section-number">2</span> Calling A Function From A Package</a>
   <ul class="collapse">
 <li>
-<a href="#r-experience" id="toc-r-experience" class="nav-link" data-scroll-target="#r-experience"><span class="header-section-number">2.1</span> R EXPERIENCE</a>
+<a href="#r-experience" id="toc-r-experience" class="nav-link" data-scroll-target="#r-experience"><span class="header-section-number">2.1</span> R Experience</a>
   <ul class="collapse">
-<li><a href="#case-1-explicit-call" id="toc-case-1-explicit-call" class="nav-link" data-scroll-target="#case-1-explicit-call"><span class="header-section-number">2.1.1</span> CASE 1: EXPLICIT CALL</a></li>
-  <li><a href="#case-2-attaching" id="toc-case-2-attaching" class="nav-link" data-scroll-target="#case-2-attaching"><span class="header-section-number">2.1.2</span> CASE 2: ATTACHING</a></li>
-  <li><a href="#case-3-attaching-specific-functions" id="toc-case-3-attaching-specific-functions" class="nav-link" data-scroll-target="#case-3-attaching-specific-functions"><span class="header-section-number">2.1.3</span> CASE 3: ATTACHING SPECIFIC FUNCTIONS</a></li>
+<li><a href="#case-1-explicit-call" id="toc-case-1-explicit-call" class="nav-link" data-scroll-target="#case-1-explicit-call"><span class="header-section-number">2.1.1</span> Case 1: Explicit Call</a></li>
+  <li><a href="#case-2-attaching" id="toc-case-2-attaching" class="nav-link" data-scroll-target="#case-2-attaching"><span class="header-section-number">2.1.2</span> Case 2: Attaching</a></li>
+  <li><a href="#case-3-attaching-specific-functions" id="toc-case-3-attaching-specific-functions" class="nav-link" data-scroll-target="#case-3-attaching-specific-functions"><span class="header-section-number">2.1.3</span> Case 3: Attaching Specific Functions</a></li>
   </ul>
 </li>
   <li>
-<a href="#python-experience" id="toc-python-experience" class="nav-link" data-scroll-target="#python-experience"><span class="header-section-number">2.2</span> PYTHON EXPERIENCE</a>
+<a href="#python-experience" id="toc-python-experience" class="nav-link" data-scroll-target="#python-experience"><span class="header-section-number">2.2</span> Python Experience</a>
   <ul class="collapse">
-<li><a href="#case1py" id="toc-case1py" class="nav-link" data-scroll-target="#case1py"><span class="header-section-number">2.2.1</span> CASE 1: EXPLICIT CALL</a></li>
-  <li><a href="#case2py" id="toc-case2py" class="nav-link" data-scroll-target="#case2py"><span class="header-section-number">2.2.2</span> CASE 2: ATTACHING</a></li>
-  <li><a href="#case3py" id="toc-case3py" class="nav-link" data-scroll-target="#case3py"><span class="header-section-number">2.2.3</span> CASE 3: ATTACHING SPECIFIC FUNCTIONS</a></li>
+<li><a href="#Case1py" id="toc-Case1py" class="nav-link" data-scroll-target="#Case1py"><span class="header-section-number">2.2.1</span> Case 1: Explicit Call</a></li>
+  <li><a href="#Case2py" id="toc-Case2py" class="nav-link" data-scroll-target="#Case2py"><span class="header-section-number">2.2.2</span> Case 2: Attaching</a></li>
+  <li><a href="#Case3py" id="toc-Case3py" class="nav-link" data-scroll-target="#Case3py"><span class="header-section-number">2.2.3</span> Case 3: Attaching Specific Functions</a></li>
   </ul>
 </li>
   </ul>
@@ -238,15 +238,15 @@ TL;DR
 </div>
 </div>
 <section id="motivation" class="level1" data-number="1"><h1 data-number="1">
-<span class="header-section-number">1</span> MOTIVATION</h1>
+<span class="header-section-number">1</span> Motivation</h1>
 <p>It crossed my mind an analogy about learning a foreign language: <em>it’s impossible to learn a new language by translating word by word</em>. It’s not only a matter of vocabulary. I mean, each language has it’s own grammar, phrasal verbs, diction, expressions, pace etc. That kind of issue also appears when learning a new <em>programming language</em> and I think importing packages is a good, yet very simple, example of that.</p>
 </section><section id="calling-a-function-from-a-package" class="level1" data-number="2"><h1 data-number="2">
-<span class="header-section-number">2</span> CALLING A FUNCTION FROM A PACKAGE</h1>
+<span class="header-section-number">2</span> Calling A Function From A Package</h1>
 <section id="r-experience" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="r-experience">
-<span class="header-section-number">2.1</span> R EXPERIENCE</h2>
+<span class="header-section-number">2.1</span> R Experience</h2>
 <p>In R, every package installed in the library trees are listed whenever a terminal is open. Those listed packages are available for users at all times and can be called explicitly. For example:</p>
 <section id="case-1-explicit-call" class="level3" data-number="2.1.1"><h3 data-number="2.1.1" class="anchored" data-anchor-id="case-1-explicit-call">
-<span class="header-section-number">2.1.1</span> CASE 1: EXPLICIT CALL</h3>
+<span class="header-section-number">2.1.1</span> Case 1: Explicit Call</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># search for machine learning measures that contais "AUC" in the {mlr3} package</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mlr3<span class="sc">::</span>mlr_measures<span class="sc">$</span><span class="fu">keys</span>(<span class="st">"auc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -258,7 +258,7 @@ TL;DR
 </div>
 <p>But that way of calling functions usually take place only if that particular package won’t be required very often. Otherwise, it’s cultural for R users to load and attach the entire package’s namespace to the search path<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> with a <code>library()</code> call.</p>
 </section><section id="case-2-attaching" class="level3" data-number="2.1.2"><h3 data-number="2.1.2" class="anchored" data-anchor-id="case-2-attaching">
-<span class="header-section-number">2.1.2</span> CASE 2: ATTACHING</h3>
+<span class="header-section-number">2.1.2</span> Case 2: Attaching</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tired: explicitly calling from {ggplot2}</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">=</span> mtcars <span class="sc">|&gt;</span></span>
@@ -292,7 +292,7 @@ Attaching package: 'dplyr'</code></pre>
 <p>The problem appears when there are namespace conflicts. Did you notice the warning about objects being masked from {stats} and {base}?. Usually, users just don’t care for startup warnings 😨 and that may eventually lead them to inconsistent results or tricky errors.</p>
 <p>That can be avoided by attaching only the specific functions you’re actually gonna use:</p>
 </section><section id="case-3-attaching-specific-functions" class="level3" data-number="2.1.3"><h3 data-number="2.1.3" class="anchored" data-anchor-id="case-3-attaching-specific-functions">
-<span class="header-section-number">2.1.3</span> CASE 3: ATTACHING SPECIFIC FUNCTIONS</h3>
+<span class="header-section-number">2.1.3</span> Case 3: Attaching Specific Functions</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># detaching dplyr</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(<span class="st">"package:dplyr"</span>)</span>
@@ -302,7 +302,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <p>And no conflict warning will be triggered. Unfortunately, I don’t hear much of <code>include.only</code> argument from R community 🤷‍♂. On the contrary, meta packages such as {tidyverse}, which will load and attach A LOT of stuff into the namespace — often unnecessary for what you’re about to do —, is quite common.</p>
 </section></section><section id="python-experience" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="python-experience">
-<span class="header-section-number">2.2</span> PYTHON EXPERIENCE</h2>
+<span class="header-section-number">2.2</span> Python Experience</h2>
 <p>All of the 3 cases stated before are possible in Python, but the community standards are very different. Specially regarding to the awareness of what is loaded into the namespace — or symbol table, as it is called in Python<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 <p>Firstly, installed packages aren’t immediately available. So if I try, for example, listing {pandas} functions/methods/attributes it’ll result in an error:</p>
 <div class="cell">
@@ -357,8 +357,8 @@ pandas</code></pre>
 </div>
 </div>
 <p>Note that only {pandas} is attached to the symbol table, not it’s functions/methods/attributes. So that statement it’s not an equivalent to <code>library()</code>. For us to create a simple dataframe with {pandas}:</p>
-<section id="case1py" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="case1py">
-<span class="header-section-number">2.2.1</span> CASE 1: EXPLICIT CALL</h3>
+<section id="Case1py" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="Case1py">
+<span class="header-section-number">2.2.1</span> Case 1: Explicit Call</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will result in a NameError: name 'DataFrame' is not defined</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>DataFrame(</span>
@@ -385,8 +385,8 @@ pandas</code></pre>
 </div>
 </div>
 <p>If we were to replicate <code>library()</code> behavior (i.e. load and attach the entire {pandas} functions/methods/attributes into the symbol table), then:</p>
-</section><section id="case2py" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="case2py">
-<span class="header-section-number">2.2.2</span> CASE 2: ATTACHING</h3>
+</section><section id="Case2py" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="Case2py">
+<span class="header-section-number">2.2.2</span> Case 2: Attaching</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing entire {pandas} into symbol table</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> <span class="op">*</span></span>
@@ -533,8 +533,8 @@ wide_to_long</code></pre>
 </div>
 </div>
 <p>But you won’t see any experienced Python user doing that kind of thing because they’re worried about loading that amount of names into the symbol table and the possible conflicts it may cause. An acceptable approach would be attaching only a few frequent names as in:</p>
-</section><section id="case3py" class="level3" data-number="2.2.3"><h3 data-number="2.2.3" class="anchored" data-anchor-id="case3py">
-<span class="header-section-number">2.2.3</span> CASE 3: ATTACHING SPECIFIC FUNCTIONS</h3>
+</section><section id="Case3py" class="level3" data-number="2.2.3"><h3 data-number="2.2.3" class="anchored" data-anchor-id="Case3py">
+<span class="header-section-number">2.2.3</span> Case 3: Attaching Specific Functions</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># detaching {pandas}</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name <span class="kw">in</span> <span class="bu">vars</span>(pandas):</span>

@@ -22,7 +22,7 @@ library(tidyverse)
 data = read_rds("data/data.RDS")
 ```
 
-# THE DATA
+# DATA
 
 Here are two options to obtain this data:
 
@@ -127,7 +127,7 @@ data %>%
              show.legend = FALSE,
              color = "grey30") +
   scale_y_continuous(labels = scales::number) +
-  scale_fill_manual(name = "sexo",
+  scale_fill_manual(name = "gender",
                     labels = c("men", "women"),
                     values = c("lightblue", "salmon")) +
   labs(x = "",
@@ -176,7 +176,7 @@ data %>%
   coord_cartesian(ylim = c(0, 5000)) +
   scale_y_continuous(labels = scales::number) +
   scale_fill_manual(
-    name = "sexo",
+    name = "gender",
     labels = c("men", "women"),
     values = c("lightblue", "salmon")
   ) +
@@ -218,7 +218,7 @@ data %>%
   scale_y_continuous(labels = scales::number) +
   scale_x_continuous(labels = scales::number) +
   scale_fill_manual(
-    name = "sexo",
+    name = "gender",
     labels = c("men", "women"),
     values = c("lightblue", "salmon")
   ) +
@@ -410,8 +410,8 @@ Among the selected professions, only nursing has a higher average income for wom
 # plot
 mean_diff = 3925.18 - 2846.727
 arrows = tibble(
-  x1 = c(2.9, 9.6, 8.3),
-  x2 = c(3.5, 9.2, 7.4),
+  x1 = c(2.9, 7.6, 4.3),
+  x2 = c(3.5, 7.2, 3.4),
   y1 = c(2000, 6000, 0),
   y2 = c(1200, 6300, -270)
 )
@@ -431,14 +431,14 @@ differences %>%
     label = "the average difference is\nR$ 1,078"
   ) +
   annotate ("text",
-    x = 10.5, y = 5500, size = 3.5, color = "grey85",
+    x = 8.5, y = 5500, size = 3.5, color = "grey85",
     label = paste("executive positions",
     "have the largest difference",
     "and also the highest salaries",
     sep = "\n"
   )) +
   annotate("text",
-  x = 9, y = 250, size = 3.5, color = "grey85",
+  x = 5, y = 250, size = 3.5, color = "grey85",
   label = paste(
     "among these professions,",
     "only female nurses",

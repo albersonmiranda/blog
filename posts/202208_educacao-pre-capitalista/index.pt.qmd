@@ -1,5 +1,5 @@
 ---
-title: O PAPEL DA EDUCAÇÃO MATEMÁTICA SOB A HEGEMONIA DO CAPITAL
+title: O Papel Da Educação Matemática Sob A Hegemonia Do Capital
 subtutle: Educação pré-capitalista
 date: '2022-08-14'
 categories: [education]
