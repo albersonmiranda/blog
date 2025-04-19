@@ -91,7 +91,7 @@ On the other hand, GDP can also be disaggregated in a cross-sectional way accord
 knitr::include_graphics("img/agrupadas.png")
 ```
 
-Combining both, we have the structure of hierarchical grouped series. Unlike the hierarchical structure, which can only be aggregated in one way—as with municipalities under states—the addition of the grouped structure can occur either above (@fig-ha1) or below (@fig-fig-ha2) the hierarchy.
+Combining both, we have the structure of hierarchical grouped series. Unlike the hierarchical structure, which can only be aggregated in one way—as with municipalities under states—the addition of the grouped structure can occur either above (@fig-ha1) or below (@fig-ha2) the hierarchy.
 
 ```{r}
 #| label: fig-ha1

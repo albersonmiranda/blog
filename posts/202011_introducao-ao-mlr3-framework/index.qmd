@@ -1,7 +1,7 @@
 ---
 title: Introduction to the {mlr3} Framework
 date: '2020-12-27'
-categories: [machine-learning]
+categories: [machine learning]
 image: "img/mlr3.png"
 bibliography: bib.bib
 ---
