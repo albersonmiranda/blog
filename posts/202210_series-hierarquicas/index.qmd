@@ -6,15 +6,27 @@ image: "img/hier_agrup.png"
 bibliography: bib.bib
 ---
 
+```{r options, include = FALSE}
+
+# chunk options
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE
+)
+```
+
 For almost a decade now, every year around this time I work with time series forecasting at [Banestes](https://www.banestes.com.br/). When it comes to setting goals and budget objectives (balances, revenues, expenses, etc.), knowing how to model and forecast is a real lifesaver.
 
 Of course, forecasts alone should not be adopted as final or absolute truth, since they do not use managerial information and stakeholder expectations, for example. But they are a reasonable starting point that serves as a basis for building expectations, action plans, etc.
 
-## HIERARCHICAL AND GROUPED TIME SERIES {-}
+# Hierarchical and grouped time series
 
 Hierarchical time series are those that can be naturally aggregated or disaggregated in a nested structure [@hyndman2021]. To illustrate, take the Brazilian GDP series. It can be disaggregated by state, which in turn can be disaggregated by municipality.
 
-```{r h, fig.cap = "Hierarchical Series"}
+```{r}
+#| label: fig-h
+#| fig-cap: "Hierarchical series."
 knitr::include_graphics("img/hierarq.png")
 ```
 
@@ -73,21 +85,27 @@ $$
 
 On the other hand, GDP can also be disaggregated in a cross-sectional way according to economic activity—crops, livestock, manufacturing, extractive industry, capital goods, intermediate goods, clothing trade, automotive, services, etc. This structure cannot be naturally disaggregated in a single way, as in the hierarchy of states and municipalities. It cannot be nested by a single attribute like geography. This type of structure is called grouped series.
 
-```{r agrupadas, fig.cap = "Grouped Series"}
+```{r}
+#| label: fig-agrupadas
+#| fig-cap: "Grouped series."
 knitr::include_graphics("img/agrupadas.png")
 ```
 
-Combining both, we have the structure of hierarchical grouped series. Unlike the hierarchical structure, which can only be aggregated in one way—as with municipalities under states—the addition of the grouped structure can occur either above (Figure \@ref(fig:ha1)) or below (Figure \@ref(fig:ha2)) the hierarchy.
+Combining both, we have the structure of hierarchical grouped series. Unlike the hierarchical structure, which can only be aggregated in one way—as with municipalities under states—the addition of the grouped structure can occur either above (@fig-ha1) or below (@fig-fig-ha2) the hierarchy.
 
-```{r ha1, fig.cap = "Hierarchical Grouped Series (a)"}
+```{r}
+#| label: fig-ha1
+#| fig-cap: "Hierarchical and grouped time series (a)."
 knitr::include_graphics("img/hier_agrup.png")
 ```
 
-```{r ha2, fig.cap = "Hierarchical Grouped Series (b)"}
+```{r}
+#| label: fig-ha2
+#| fig-cap: "Hierarchical and grouped time series (b)."
 knitr::include_graphics("img/hier_agrup_2.png")
 ```
 
-In matrix notation, the structure of Figure \@ref(fig:ha2) is represented as below. Formally, the left-hand side of the equation is composed of the $n$-dimensional vector $\mathbf{y}_t$ with all observations at time $t$ for all hierarchy levels. The right-hand side is composed of the summing matrix $\mathbf{S}$ of dimension $n \times m$ that defines the equations for every aggregation level, and the matrix $\mathbf{b}_t$ composed of the series at the most disaggregated level.
+In matrix notation, the structure of @fig-ha2 is represented as below. Formally, the left-hand side of the equation is composed of the $n$-dimensional vector $\mathbf{y}_t$ with all observations at time $t$ for all hierarchy levels. The right-hand side is composed of the summing matrix $\mathbf{S}$ of dimension $n \times m$ that defines the equations for every aggregation level, and the matrix $\mathbf{b}_t$ composed of the series at the most disaggregated level.
 
 \begin{equation}
 \mathbf{y}_t=\mathbf{Sb}_t
@@ -144,7 +162,7 @@ In matrix notation, the structure of Figure \@ref(fig:ha2) is represented as bel
 \end{bmatrix}
 \end{equation}
 
-## TOP-DOWN AND BOTTOM-UP APPROACHES {-}
+# Top-down and bottom-up approaches
 
 Perhaps the most intuitive ways to think about forecasts for these types of structures are the *top-down* and *bottom-up* approaches. Take the structure described in Figure \@ref(fig:h), for example. We can forecast for the horizon $h$ of the aggregate Brazilian GDP, represented at the top of the hierarchy by *Total* (6), and then distribute the forecasted values proportionally among states and municipalities.
 
@@ -180,7 +198,7 @@ $\mathbf{G}$ is an $m \times n$ matrix that multiplies the matrix $\hat{\mathbf{
 \mathbf{\tilde{y}}_{T+h | T} = \mathbf{SG\hat{y}}_{T+h | T}
 \end{equation}
 
-In matrix notation for the structure of Figure \@ref(fig:h), we have:
+In matrix notation for the structure of @fig-h, we have:
 
 \begin{equation}
 \begin{bmatrix}
@@ -348,11 +366,11 @@ Which results in the desired equations. Therefore, $\mathbf{G}$ defines the appr
 \end{bmatrix}
 \end{equation}
 
-## COHERENCE AND RECONCILIATION {-}
+# Coherence and reconciliation
 
 Whether by summing the forecasts from the most disaggregated level to form the upper levels of the hierarchy (*bottom-up*) or proportionally distributing the forecasts from the most aggregated level (*top-down*), the vector $\mathbf{\tilde{y}}_t$ represents the *coherent* forecasts. This means that the forecasts "match", i.e., they are correctly totaled—the forecasts for each aggregate element correspond to the sum of the forecasts for the lower levels of the hierarchy. This is ensured by the multiplication of the matrices $\mathbf{SG}$.
 
-Without this pre-multiplication, nothing would guarantee the coherence of the forecasts. Taking the structure of Figure \@ref(fig:h) as an example, it would be an unlikely coincidence for the forecasts of the aggregate for the state of Espírito Santo to be exactly the sum of the individual forecasts of its municipalities. This is because each series may follow a different process (e.g., ARIMA) with different errors and variances.
+Without this pre-multiplication, nothing would guarantee the coherence of the forecasts. Taking the structure of @fig-h as an example, it would be an unlikely coincidence for the forecasts of the aggregate for the state of Espírito Santo to be exactly the sum of the individual forecasts of its municipalities. This is because each series may follow a different process (e.g., ARIMA) with different errors and variances.
 
 The methods for generating coherent forecasts from base forecasts are called *reconciliation* methods. The traditional reconciliation methods presented, *top-down* and *bottom-up*, use limited information. In the *top-down* method, only information from the most aggregated level is used—which is why only the first column in (8) is nonzero. In the *bottom-up* approach, only information from the most disaggregated levels is used, resulting in the $m \times m$ identity submatrix in (13), while the columns representing the most aggregated levels are zero.
 
@@ -368,6 +386,6 @@ Estimation by this method results in an optimal reconciliation that depends only
 
 And, from 2021 onwards, there have been interesting developments in the probabilistic extension of this theoretical body (and this is where I am conducting my master's research). @panagiotelis2021 reinterpret the literature on coherence and reconciliation of point forecasts from a geometric approach, providing alternative proofs for previous conclusions while also providing new theorems. In addition, @panagiotelis2021 extend this geometric interpretation to the probabilistic context, providing parametric and non-parametric (via bootstrapping) methods for reconciliation of probabilistic forecasts, i.e., to reconcile forecasts $\hat{y}_t$ obtained from the entire distribution, not just the mean.
 
-# ANYWAY...
+# Anyway...
 
 If you made it this far, I recommend you find something more interesting to do with your life. In the next post (maybe) I'll show how to do all this in practice with our beloved #RStats.

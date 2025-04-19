@@ -6,6 +6,16 @@ image: "img/hier_agrup.png"
 bibliography: bib.bib
 ---
 
+```{r options, include = FALSE}
+
+# chunk options
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE
+)
+```
+
 Já faz quase uma década que chega nessa época do ano e eu trabalho com previsões de séries temporais lá no [Banestes](https://www.banestes.com.br/). Na hora de estabelecer metas e objetivos orçamentários (saldos, receitas, despesas etc), saber modelar e fazer previsões é uma mão na roda.
 
 Claro que sozinhas não devem ser adotadas como finais ou verdadeiras, uma vez que não usam da informação gerencial e expectativas dos *stakeholders*, por exemplo. Mas são um ponto de partida razoável que serve como base para elaborar e construir expectativas, plano de ação etc.
@@ -14,7 +24,9 @@ Claro que sozinhas não devem ser adotadas como finais ou verdadeiras, uma vez q
 
 Séries temporais hierárquicas são aquelas que podem ser agregadas ou desagregadas naturalmente em uma estrutura aninhada [@hyndman2021]. Para ilustrar, tome a série do PIB brasileiro. Ela pode ser desagregada por estado que, por sua vez, pode ser desagregada por município.
 
-```{r h, fig.cap = "Séries Hierárquicas"}
+```{r}
+#| label: fig-h
+#| fig-cap: "Séries Hierárquicas."
 knitr::include_graphics("img/hierarq.png")
 ```
 
@@ -73,21 +85,27 @@ $$
 
 Por outro lado, o PIB pode ser também desagregado de forma cruzada de acordo com a atividade econômica --- lavoura, rebanho, indústria de transformação, extrativa, bens de capital, bens intermediários, comércio de vestuário, automotivos, serviços etc. Essa estrutura não pode ser desagregada naturalmente de uma única forma, como é a hierarquia de estados e municípios. Não pode ser aninhada por um atributo como a própria geografia. A esse tipo de estrutura dá-se o nome de séries agrupadas.
 
-```{r agrupadas, fig.cap = "Séries Agrupadas"}
+```{r}
+#| label: fig-h
+#| fig-cap: "Séries agrupadas."
 knitr::include_graphics("img/agrupadas.png")
 ```
 
-Combinando as duas, temos a estrutura de séries hierárquicas agrupadas. Ao contrário da estrutura hierárquica, que só pode ser agregada de uma forma --- como com os municípios abaixo dos estados ---, a adição da estrutura agrupada pode ocorrer tanto acima (Figura \@ref(fig:ha1)) quanto abaixo (Figura \@ref(fig:ha2)) da hierárquica.
+Combinando as duas, temos a estrutura de séries hierárquicas agrupadas. Ao contrário da estrutura hierárquica, que só pode ser agregada de uma forma --- como com os municípios abaixo dos estados ---, a adição da estrutura agrupada pode ocorrer tanto acima (@fig-ha1) quanto abaixo (@fig-ha2) da hierárquica.
 
-```{r ha1, fig.cap = "Séries Hierárquicas Agrupadas (a)"}
+```{r}
+#| label: fig-ha1
+#| fig-cap: "Séries Hierárquicas Agrupadas (a)."
 knitr::include_graphics("img/hier_agrup.png")
 ```
 
-```{r ha2, fig.cap = "Séries Hierárquicas Agrupadas (b)"}
+```{r}
+#| label: fig-ha2
+#| fig-cap: "Séries Hierárquicas Agrupadas (b)."
 knitr::include_graphics("img/hier_agrup_2.png")
 ```
 
-Na notação matricial, a estrutura da Figura \@ref(fig:ha2) é representada como abaixo. Formalmente, o primeiro membro da igualdade é composto pelo vetor $\mathbf{y}_t$ $n$-dimensional com todas as observações no tempo $t$ para todos os níveis da hierarquia. O segundo membro é composto pela matriz de soma $\mathbf{S}$ de dimensão $n \times m$ que define as equações para todo nível de agregação, e pela matriz $\mathbf{b}_t$ composta pelas séries no nível mais desagregado.
+Na notação matricial, a estrutura da @fig-ha2 é representada como abaixo. Formalmente, o primeiro membro da igualdade é composto pelo vetor $\mathbf{y}_t$ $n$-dimensional com todas as observações no tempo $t$ para todos os níveis da hierarquia. O segundo membro é composto pela matriz de soma $\mathbf{S}$ de dimensão $n \times m$ que define as equações para todo nível de agregação, e pela matriz $\mathbf{b}_t$ composta pelas séries no nível mais desagregado.
 
 \begin{equation}
 \mathbf{y}_t=\mathbf{Sb}_t
@@ -180,7 +198,7 @@ $\mathbf{G}$ é uma matriz $m \times n$ que multiplica a matriz $\hat{\mathbf{y}
 \mathbf{\tilde{y}}_{T+h | T} = \mathbf{SG\hat{y}}_{T+h | T}
 \end{equation}
 
-Na notação matricial para a estrutura da Figura \@ref(fig:h), temos:
+Na notação matricial para a estrutura da @fig-h, temos:
 
 \begin{equation}
 \begin{bmatrix}
@@ -352,7 +370,7 @@ O que resulta nas equações desejadas. Portanto, $\mathbf{G}$ define a abordage
 
 Seja somando as previsões do nível mais desagregado para formar os níveis superiores da hierarquia (*bottom-up*) ou distribuindo proporcionalmente as previsões do nível mais agregado (*top-down*), o vetor $\mathbf{\tilde{y}}_t$ representa as previsões *coerentes*. Isso significa que as previsões "batem", ou seja, são totalizadas corretamente --- as previsões de cada elemento agregado corresponde ao somatório das previsões dos níveis inferiores da hierarquia. Isso é garantido pela multiplicação das matrizes $\mathbf{SG}$.
 
-Não fosse essa pré multiplicação, nada garantiria a coerência das previsões. Tomando a estrutura da Figura \@ref(fig:h) como exemplo, seria um acaso improvável que as previsões do agregado para o estado do Espírito Santo fossem exatamente a soma das previsões individuais de seus municípios. Isso porque cada série pode seguir um processo diferente (e.g., arima) com erros e variâncias distintas.
+Não fosse essa pré multiplicação, nada garantiria a coerência das previsões. Tomando a estrutura da @fig-h como exemplo, seria um acaso improvável que as previsões do agregado para o estado do Espírito Santo fossem exatamente a soma das previsões individuais de seus municípios. Isso porque cada série pode seguir um processo diferente (e.g., arima) com erros e variâncias distintas.
 
 Os métodos de gerar previsões coerentes a partir de previsões base são chamados de métodos de *reconciliação*. Os métodos de reconciliação tradicionais apresentados, *top-down* e *bottom-up*, utilizam informação limitada. No método *top-down*, utiliza-se apenas informações do nível mais agregado --- por isso, apenas a primeira coluna em (8) é diferente de zero. Já na abordagem *bottom-up*, utiliza-se apenas as informações dos níveis mais desagregados, o que resulta na submatriz identidade $m \times m$ em (13), enquanto as colunas que representam os níveis mais agregados são nulas.
 
@@ -368,6 +386,6 @@ A estimação por esse método resulta numa reconciliação ótima que depende a
 
 E, de 2021 pra cá, há desenvolvimentos interessantes na extensão probabilística desse corpo teórico (e é onde estou realizando minha pesquisa de mestrado). @panagiotelis2021 reinterpreta a literatura de coerência e reconciliação de previsões pontuais a partir de uma abordagem geométrica, trazendo provas alternativas para conclusões anteriores ao mesmo tempo em que fornece novos teoremas. Além disso, @panagiotelis2021 estende essa interpretação geométrica para o contexto probabilístico, fornecendo métodos paramétricos e não paramétricos (via *bootstrapping*) para reconciliação de previsões probabilísticas, ou seja, para reconciliar previsões $\hat{y}_t$ obtidas a partir de toda a distribuição, e não apenas a média.
 
-# ANYWAY...
+# Anyway ...
 
 Se você chegou até aqui, recomendo que arrume algo mais interessante pra fazer da vida. No próximo post (talvez) eu trago como fazer esse troço todo na prática com nosso queridão #RStats.
