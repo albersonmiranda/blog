@@ -15,6 +15,10 @@
   background-color: #002538;
 }
 
+.navbar-brand {
+  display: none;
+}
+
 /* text */
 figcaption {
   text-align: center;

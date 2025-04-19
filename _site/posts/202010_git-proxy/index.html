@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<link rel="alternate" hreflang="en" href="https://datamares.netlify.app/posts/202010_git-proxy/index.html" />
+<link rel="alternate" hreflang="pt" href="https://datamares.netlify.app/pt/posts/202010_git-proxy/index.pt.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.6">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Alberson Miranda">
 <meta name="dcterms.date" content="2020-09-25">
-
 <title>Configuring git behind a proxy server – Datamares &amp; Dreamscapes</title>
 <style>
 code{white-space: pre-wrap;}
@@ -57,25 +57,12 @@ div.sourceCode
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
-
-
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><meta name="quarto:offset" content="../../">
 <link href="../../assets/logo/favicon-256x256.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6c21014d9765ba549c6ebad95917e4d7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0a9048d95e02c7ff9c82715fd5ddea4.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-f3c2ea88cadbcfb37ba28ffa2c97cfc1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-ae2d0dcda2edce4ab590422bb373b64f.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
@@ -104,31 +91,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-B65R9LH9ES"></script>
-
-<script type="text/javascript">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-B65R9LH9ES"></script><script type="text/javascript">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
-</script>
-
-
-<link rel="stylesheet" href="../../styles.css">
+</script><link rel="stylesheet" href="../../styles.css">
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../assets/logo/logo.png" alt="" class="navbar-logo">
-    </a>
+    <img src="../../assets/logo/logo.png" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Datamares &amp; Dreamscapes</span>
     </a>
@@ -139,7 +116,10 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
+<li class="nav-item"><div class="dropdown" id="languages-links-parent">
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> English</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://datamares.netlify.app/pt/posts/202010_git-proxy/index.html" id="language-link-pt">Português</a></li></ul>
+</div></li>
+<li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -176,16 +156,12 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Configuring git behind a proxy server</h1>
                                 <div class="quarto-categories">
@@ -219,54 +195,44 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proxy-address" id="toc-proxy-address" class="nav-link active" data-scroll-target="#proxy-address"><span class="header-section-number">1</span> PROXY ADDRESS</a></li>
-  <li><a href="#choose-the-authentication-method" id="toc-choose-the-authentication-method" class="nav-link" data-scroll-target="#choose-the-authentication-method"><span class="header-section-number">2</span> CHOOSE THE AUTHENTICATION METHOD</a>
+<li><a href="#proxy-address" id="toc-proxy-address" class="nav-link active" data-scroll-target="#proxy-address"><span class="header-section-number">1</span> PROXY ADDRESS</a></li>
+  <li>
+<a href="#choose-the-authentication-method" id="toc-choose-the-authentication-method" class="nav-link" data-scroll-target="#choose-the-authentication-method"><span class="header-section-number">2</span> CHOOSE THE AUTHENTICATION METHOD</a>
   <ul class="collapse">
-  <li><a href="#gitconfig-without-saving-password" id="toc-gitconfig-without-saving-password" class="nav-link" data-scroll-target="#gitconfig-without-saving-password"><span class="header-section-number">2.1</span> .gitconfig without saving password</a></li>
+<li><a href="#gitconfig-without-saving-password" id="toc-gitconfig-without-saving-password" class="nav-link" data-scroll-target="#gitconfig-without-saving-password"><span class="header-section-number">2.1</span> .gitconfig without saving password</a></li>
   <li><a href="#gitconfig-with-saved-password" id="toc-gitconfig-with-saved-password" class="nav-link" data-scroll-target="#gitconfig-with-saved-password"><span class="header-section-number">2.2</span> .gitconfig with saved password</a></li>
-  </ul></li>
+  </ul>
+</li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/albersonmiranda/blog/issues" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
-    </div>
+</div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-
-<p>If you are working in an organization that takes information security seriously, then you are probably behind a proxy server and having trouble using Git. To solve this, we need to go through 3 steps:</p>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><p>If you are working in an organization that takes information security seriously, then you are probably behind a proxy server and having trouble using Git. To solve this, we need to go through 3 steps:</p>
 <ol type="1">
 <li>Find out the proxy server address</li>
 <li>Choose an authentication method</li>
 <li>Update git settings</li>
 </ol>
-<section id="proxy-address" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> PROXY ADDRESS</h1>
+<section id="proxy-address" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> PROXY ADDRESS</h1>
 <p>The proxy server address is saved in a configuration file that can be obtained via your browser. If you are on Windows, you will have to access the infamous Internet Explorer, go to <code>Internet Options</code>, <code>Connections</code>, and <code>LAN Settings</code>.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/1.png" class="img-fluid figure-img"></p>
-<figcaption>location of the configuration file</figcaption>
-</figure>
+<figure class="figure"><p><img src="img/1.png" class="img-fluid figure-img"></p>
+<figcaption>location of the configuration file</figcaption></figure>
 </div>
 <p>Copy and paste the path shown in the <code>Address</code> field into your browser and you will download a .dat file with the proxy settings. Open the file in a reader<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. In the file, search for “PROXY”, this variable will contain the proxy server address in the format <code>domain.com:port</code>.</p>
-</section>
-<section id="choose-the-authentication-method" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> CHOOSE THE AUTHENTICATION METHOD</h1>
-<p>With the proxy address in hand, we need to choose how we will authenticate:<br>
-<br>
+</section><section id="choose-the-authentication-method" class="level1" data-number="2"><h1 data-number="2">
+<span class="header-section-number">2</span> CHOOSE THE AUTHENTICATION METHOD</h1>
+<p>With the proxy address in hand, we need to choose how we will authenticate:<br><br>
 1. Enter the password for each push/pull<br>
-2. Save the password in .gitconfig<br>
-</p>
+2. Save the password in .gitconfig<br></p>
 <p>The first method applies when we are concerned about our password, that is, when the computer is shared or the configuration is saved on a network, for example.</p>
 <p>When this is not the case, you can simply save the username and password in the configuration file and push/pull will occur directly.</p>
-<section id="gitconfig-without-saving-password" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="gitconfig-without-saving-password"><span class="header-section-number">2.1</span> .gitconfig without saving password</h2>
+<section id="gitconfig-without-saving-password" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="gitconfig-without-saving-password">
+<span class="header-section-number">2.1</span> .gitconfig without saving password</h2>
 <p>I recommend using the {usethis} package to change any configuration file in R. For the first option, we would do as follows:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># open the configuration file</span></span>
@@ -283,9 +249,8 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
     selected = manager
 </code></pre>
 <p>Where “domain.com” is the proxy address you found in the .dat file and the other settings define how you will be prompted to enter username and password, in this case through a pop-up window for each push/pull.</p>
-</section>
-<section id="gitconfig-with-saved-password" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="gitconfig-with-saved-password"><span class="header-section-number">2.2</span> .gitconfig with saved password</h2>
+</section><section id="gitconfig-with-saved-password" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="gitconfig-with-saved-password">
+<span class="header-section-number">2.2</span> .gitconfig with saved password</h2>
 <p>The other alternative is to save the username and password in the .gitconfig itself. Again, if the file is on a network or if other people have access to the machine, avoid this option. To save your username and password in .gitconfig, just add them before the domain. The advantage of this method is not having to enter the information for each push/pull.</p>
 <pre><code>[http]
     proxy = http[s]://user:password@domain.com:port
@@ -293,17 +258,11 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 <p>Remember to update the password in .gitconfig whenever it is changed!</p>
 
 
-</section>
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+</section></section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>Avoid Notepad to display line breaks correctly. I suggest Wordpad.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -865,21 +824,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p><a href="https://datamares.netlify.app"><img src="assets/logo/favicon-256x256.png" class="img-fluid" width="65"></a> Copyright Alberson Miranda © 2020. All rights reserved.</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/albersonmiranda/blog/issues" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+       
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/albersonmiranda/blog/issues" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div>
+</div>
     <div class="nav-footer-right">
-      &nbsp;
+       
     </div>
   </div>
 </footer>
-
-
-
-
-</body></html>
+</body>
+</html>

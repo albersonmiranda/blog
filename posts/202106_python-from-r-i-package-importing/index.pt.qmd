@@ -1,0 +1,178 @@
+---
+title: "Python a partir do R I: importando pacotes (e por que aprender novas linguagens é difícil)"
+date: '2021-06-12'
+categories: [python]
+image: "img/r-python.jpg"
+---
+
+```{r, include = FALSE}
+library(reticulate)
+py_install("pandas")
+```
+
+::: {.callout-tip}
+# Resumo
+
+Ao aprender uma nova linguagem de programação, simplesmente buscar código equivalente para as práticas que você já tem pode ser enganoso. Aqui vemos que um equivalente à chamada `library()` do R é, na verdade, considerada uma má prática em Python e, se você fizer isso em uma entrevista de emprego, não espere ser chamado de volta.
+:::
+
+# MOTIVAÇÃO
+
+Me ocorreu uma analogia sobre aprender um idioma estrangeiro: *é impossível aprender uma nova língua traduzindo palavra por palavra*. Não é apenas uma questão de vocabulário. Cada idioma tem sua própria gramática, verbos frasais, dicção, expressões, ritmo etc. Esse tipo de questão também aparece ao aprender uma nova *linguagem de programação* e acho que importar pacotes é um bom, ainda que simples, exemplo disso.
+
+# CHAMANDO UMA FUNÇÃO DE UM PACOTE
+
+## EXPERIÊNCIA EM R
+
+No R, todo pacote instalado nas árvores de bibliotecas é listado sempre que um terminal é aberto. Esses pacotes listados estão disponíveis para os usuários o tempo todo e podem ser chamados explicitamente. Por exemplo:
+
+### CASO 1: CHAMADA EXPLÍCITA
+```{r mlr3 example}
+
+# procurar por medidas de machine learning que contenham "AUC" no pacote {mlr3}
+mlr3::mlr_measures$keys("auc")
+```
+
+Mas esse modo de chamar funções geralmente só é usado se aquele pacote não será necessário com frequência. Caso contrário, é cultural para usuários de R carregar e anexar todo o namespace do pacote ao search path^[Uma lista ordenada onde o R procura por uma função. Pode ser acessada com `search()`.] com uma chamada `library()`.
+
+### CASO 2: ANEXANDO
+```{r ggplot example}
+
+# cansado: chamada explícita do {ggplot2}
+t1 = mtcars |>
+  dplyr::mutate(hp_by_cyl = hp / cyl)
+
+# animado: anexando o namespace do {ggplot2}
+library(dplyr)
+
+t2 = mtcars |>
+  mutate(hp_by_cyl = hp / cyl)
+
+# são equivalentes?
+all.equal(t1, t2)
+```
+
+O problema aparece quando há conflitos de namespace. Você notou o aviso sobre objetos sendo mascarados de {stats} e {base}? Normalmente, os usuários simplesmente ignoram avisos de inicialização `r emo::ji("fearful_face")` e isso pode eventualmente levar a resultados inconsistentes ou erros difíceis de depurar.
+
+Isso pode ser evitado anexando apenas as funções específicas que você realmente vai usar:
+
+### CASO 3: ANEXANDO FUNÇÕES ESPECÍFICAS
+
+```{r plotly example 2}
+
+# desanexando dplyr
+detach("package:dplyr")
+
+# anexando apenas mutate():
+library(dplyr, include.only = "mutate")
+```
+
+E nenhum aviso de conflito será disparado. Infelizmente, não ouço muito falar do argumento `include.only` na comunidade R `r emo::ji("man_shrugging")`. Pelo contrário, meta pacotes como o {tidyverse}, que carregam e anexam MUITAS coisas ao namespace — muitas vezes desnecessárias para o que você vai fazer —, são bastante comuns.
+
+## EXPERIÊNCIA EM PYTHON
+
+Todos os 3 casos citados antes são possíveis em Python, mas os padrões da comunidade são bem diferentes. Especialmente em relação à consciência do que está carregado no namespace — ou symbol table, como é chamado em Python^[Acho? Não sei, ainda estou aprendendo lol `r emo::ji("face_with_tears_of_joy")`].
+
+Primeiro, pacotes instalados não ficam imediatamente disponíveis. Então, se eu tentar, por exemplo, listar funções/métodos/atributos do {pandas}, resultará em erro:
+
+```{python pandas example 1 py}
+# inspecionando módulos em {pandas}
+import pandas
+dir(pandas)
+```
+
+Você pode checar a symbol table com o seguinte comando.
+
+```{python globals py}
+
+# o que está anexado à symbol table?
+print(*globals(), sep = "\n")
+```
+
+Dependendo do sistema/ferramentas que você está usando, o interpretador Python vai carregar alguns módulos ou não. Se você iniciar um REPL — um terminal interativo Python —, nenhum módulo será carregado. Se iniciar um Jupyter notebook, alguns módulos necessários para ele rodar serão carregados. Neste caso, como estou rodando Python a partir do R via {reticulate}, alguns módulos foram carregados:
+
+- `sys`: para acesso a variáveis e funções usadas pelo interpretador
+- `os`: para rotinas do sistema operacional NT ou Posix
+
+Então, se quero trabalhar com {pandas}, preciso anexá-lo à symbol table com um equivalente ao `library()` do R. E assim como sua função prima, o `import` do Python também tem diferentes formas.
+
+Primeiro, `import pandas` torna o pacote disponível para chamadas explícitas.
+
+```{python import example 2 py}
+
+# importar pandas
+import pandas
+
+# o que está anexado à symbol table?
+print(*globals(), sep = "\n")
+```
+
+Note que apenas {pandas} está anexado à symbol table, não suas funções/métodos/atributos. Portanto, essa instrução não é equivalente ao `library()`. Para criar um dataframe simples com {pandas}:
+
+### CASO 1: CHAMADA EXPLÍCITA {#case1py}
+
+```{python dataframe py}
+#| error: true
+
+# isso resultará em NameError: name 'DataFrame' is not defined
+DataFrame(
+  {
+    "capital": ["Vitoria", "São Paulo", "Rio de Janeiro"],
+    "state": ["Espírito Santo", "São Paulo", "Rio de Janeiro"]
+  }
+)
+
+# isso funciona
+pandas.DataFrame(
+  {
+    "capital": ["Vitoria", "São Paulo", "Rio de Janeiro"],
+    "state": ["Espírito Santo", "São Paulo", "Rio de Janeiro"]
+  }
+)
+```
+
+Se quisermos replicar o comportamento do `library()` (ou seja, carregar e anexar todas as funções/métodos/atributos do {pandas} à symbol table), então:
+
+### CASO 2: ANEXANDO {#case2py}
+
+```{python case 2 python py}
+
+# importando todo o {pandas} para a symbol table
+from pandas import *
+
+# symbol table atualizada
+print(*globals(), sep = "\n")
+
+# agora isso funciona
+DataFrame(
+  {
+    "capital": ["Vitoria", "São Paulo", "Rio de Janeiro"],
+    "state": ["Espírito Santo", "São Paulo", "Rio de Janeiro"]
+  }
+)
+```
+
+Mas você não verá nenhum usuário experiente de Python fazendo isso, pois eles se preocupam em carregar muitos nomes na symbol table e os possíveis conflitos que isso pode causar. Uma abordagem aceitável seria anexar apenas alguns nomes frequentes, como em:
+
+### CASO 3: ANEXANDO FUNÇÕES ESPECÍFICAS {#case3py}
+
+```{python case 3 python py}
+#| error: true
+
+# desanexando {pandas}
+for name in vars(pandas):
+    if not name.startswith('_'):
+        del globals()[name]
+
+# anexando apenas DataFrame()
+from pandas import DataFrame
+
+# symbol table atualizada
+print(*globals(), sep = "\n")
+```
+
+Segundo o The Hitchhiker's Guide to Python [@pythonguide], [caso 2](#case2py) é o pior cenário possível e geralmente é considerado má prática, pois "torna o código mais difícil de ler e as dependências menos compartimentalizadas". Essa afirmação é endossada pela documentação oficial do Python [@pythontutorial]:
+
+> Embora certos módulos sejam projetados para exportar apenas nomes que seguem certos padrões quando você usa import *, ainda é considerado má prática em código de produção.
+
+Na opinião dos autores do guia, [caso 3](#case3py) seria uma opção melhor porque destaca nomes específicos^[Python Foundation diz "Não há nada de errado em usar from package import specific_submodule! Na verdade, essa é a notação recomendada, a menos que o módulo importador precise usar submódulos com o mesmo nome de pacotes diferentes."], enquanto [caso 1](#case1py) seria a melhor prática, pois "Ser capaz de dizer imediatamente de onde uma classe ou função vem melhora muito a legibilidade e compreensão do código, exceto nos projetos mais simples de arquivo único."

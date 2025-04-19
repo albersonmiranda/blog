@@ -48,7 +48,7 @@ babelquarto:
     text: "English"
   mainlanguage: 'en'
   languages: ['pt']
-title-pt: ""
+title-pt: "Datamares & Dreamscapes"
 description-pt: Blog sobre ciência de dados, estatística e programação, de Alberson Miranda.
 author-pt: Alberson Miranda
 lang: en

@@ -1,0 +1,22 @@
+---
+title: Template for Theses in Quarto
+date: '2022-08-03'
+categories: tools
+image: img/quarto.png
+---
+
+Since I'm starting to write [my thesis](https://github.com/albersonmiranda/dissertacao/blob/master/dissertacao.pdf) this semester, why not kill two birds with one stone (sorry, Luisa Mell) and get to know this [Quarto](https://quarto.org/) everyone is talking about? Well, [here is a template](https://github.com/albersonmiranda/dissertacao) for monograph/thesis/dissertation in Quarto^[This template is an adaptation of the [standard UEL model](http://www.uel.br/projetos/experimental/pages/modelo-monografiauel.php).].
+
+To make life easier (or not, time will tell), I parameterized the pre-textual elements — cover, title page, approval sheet, abstract, summary, etc. Here they are:
+
+![parameters for pre-textual elements](img/preambulo.png)
+
+To use it, first the prerequisites:
+
+1. [Install Quarto](https://quarto.org/docs/get-started/);
+2. Install a TeX distribution (since we're talking about PDF generation) ^[For R users, the easiest way is via `tinytex::install_tinytex()`.];
+3. Since I'm obviously using VSCode, install the [Quarto extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto).
+
+Now you can fork the project and get started! Just update the parameters in `config/preamble.tex` and write your work in `dissertacao.qmd`:
+
+![updating parameters and rendering](img/1.gif)
