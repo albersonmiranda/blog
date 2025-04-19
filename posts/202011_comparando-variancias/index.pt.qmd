@@ -1,0 +1,165 @@
+---
+title: 'Comparando variâncias: o teste F'
+date: '2020-11-20'
+categories: [statistics]
+image: "variancia.png"
+---
+
+Antes de eu entrar no assunto *machine learning*, porque ~~é um buraco sem fundo~~ devo me demorar quando entrar, quero cobrir um pouco mais do básico em inferência.
+
+[Nesse post](https://datamares.netlify.app/post/atestando-diferencas-em-medias-o-teste-t-para-amostras-independentes/) eu disse que para realizar o teste t em duas amostras independentes deveríamos saber antes se as variâncias dessas amostras são iguais ou diferentes. Vamos ver como atestar isso agora. A base utilizada será a [german credit data](https://www.kaggle.com/uciml/german-credit).
+
+```{r}
+
+# importando dados
+# obs.: o -1 é para remover a primeira coluna, que é apenas o índice
+data = readr::read_csv("german_credit_data.csv")[-1]
+
+# visualizando
+print(data)
+```
+
+Da mesma forma que o teste t, podemos testar se a medida de uma amostra é significativamente diferente de um valor escolhido ou podemos testar em relação à outra amostra — se maior, menor ou diferente. Para este exercício, vamos testar se a variância da variável `Credit amount` (limite de crédito) é o mesmo para homens e mulheres que vivem de aluguel. Primeiro, vamos calcular os desvios-padrão populacionais:
+
+```{r}
+
+# obtendo amostras
+homens = data[data$Sex == "male" & data$Housing == "rent",]$`Credit amount`
+mulheres = data[data$Sex == "female" & data$Housing == "rent",]$`Credit amount`
+
+# calculando desvio padrão
+sd(homens)
+sd(mulheres)
+```
+
+Verificamos que o limite de crédito dos homens tem um desvio-padrão de DM\$ 2.846, enquanto o das mulheres é de DM\$ 2235^[Marcos alemães.], o que quer dizer que o limite de crédito dos homens varia mais em torno da média do que das mulheres. O que gostaríamos de saber agora é se essa diferença é significativamente diferente. Vamos ao teste!
+
+# O TESTE
+
+O teste F, dentre suas várias outras aplicações, é usado em conjunto com o teste t de duas amostras — quando é preciso conhecer se as duas populações amostradas têm a mesma variância ou não.
+
+Ele também é um teste paramétrico, o que significa que ele supõe que as populações têm aproximadamente uma certa de distribuição, neste caso a normal. Portanto, temos de primeiramente garantir que essa hipótese seja atendida.
+
+## VERIFICANDO A HIPÓTESE DE NORMALIDADE
+
+Primeiramente, vamos plotar as densidades para verificar se sua distribuição é plausível com a hipótese de normalidade:
+
+```{r}
+
+# dados de densidade
+d1 = density(homens)
+d2 = density(mulheres)
+
+# separando o grid em 2 colunas
+par(mfrow = c(1,2))
+
+# visualização
+plot(d1,
+  main = "Density Plot: homens")
+polygon(d1, col = "lightblue")
+
+plot(d2,
+  main = "Density Plot: mulheres")
+polygon(d2, col = "salmon")
+```
+
+Com esse formato, a normalidade é bastante implausível e não há necessidade de realizar quaisquer testes. Para contornar esse problema, podemos tentar realizar uma transformação logarítmica:
+
+```{r}
+
+# transformação logarítimica
+log_homens = log(homens)
+log_mulheres = log(mulheres)
+
+# calculando a variância após transformação
+var(log_homens)
+var(log_mulheres)
+
+# dados de densidade
+d3 = density(log_homens)
+d4 = density(log_mulheres)
+
+# separando o grid em 2 colunas
+par(mfrow = c(1,2))
+
+# visualização
+plot(d3,
+  main = "Density Plot: log(homens)")
+polygon(d3, col = "lightblue")
+
+plot(d4,
+  main = "Density Plot: log(mulheres)")
+polygon(d4, col = "salmon")
+```
+
+Os dados agora parecem seguir uma distribuição próxima da normal. Para verificar, pode-se realizar um teste de normalidade mas, como não é esse o tema, exploraremos o assunto em outra postagem. Por hora, vamos apenas registrar que a transformação foi exitosa e os dados agora apresentam uma distribuição próxima da normal.
+
+```{r}
+
+# teste de normalidade
+shapiro.test(log_homens)
+shapiro.test(log_mulheres)
+```
+
+## AS HIPÓTESES
+
+$$
+\begin{cases}
+H_0: \sigma_1 = \sigma_2 \\
+H_1: \sigma_1 \neq \sigma_2
+\end{cases}
+$$
+
+A hipótese nula é de que não se pode inferir, com certo nível de significância, que as variâncias são diferentes. E a hipótese alternativa é de que elas são significamente distintas.
+
+## NÍVEL DE SIGNIFICÂNCIA
+
+$$ \alpha = 0.05 $$
+
+Vamos utilizar um nível de significância padrão de 5%, o que quer dizer que a probabilidade de rejeitarmos a hipótese nula quando ela não deve ser rejeitada é de apenas 5%. Quanto menor for essa probabilidade, maior deve ser a diferença entre as variâncias para que possamos atestar a diferença significativa entre elas.
+
+## ESTATÍSTICA DO TESTE
+
+$$ F = \frac{s^2_1}{s^2_2} $$
+
+Como a estatística do teste é a razão entre as variâncias amostrais, o teste é para verificar se essa razão é diferente da unidade. Para verificarmos a estatística tabelada, precisamos de saber quantos graus de liberdade temos nas amostras:
+
+```{r}
+
+# graus de liberdade (n-1)
+table(data[data$Housing == "rent",]$Sex)
+```
+
+E então a estatística tabelada será:
+
+```{r}
+
+# F-statistic para 95º percentil
+qf(.95, 83, 94)
+```
+
+## VALOR CRÍTICO
+
+```{r}
+
+# calculando valor crítico
+var(log_homens) / var(log_mulheres)
+```
+
+$$ F = \frac{s^2_1}{s^2_2} = 1.07 $$
+
+## DECISÃO
+
+Como o valor de 1.07 não excede 1.42, não podemos rejeitar a hipótese nula ao nível de 5% de significância. As variâncias não são significativamente distintas.
+
+# O TESTE F NO R
+
+No base R, a sintaxe do teste é muito semelhante a do teste t:
+
+```{r echo=FALSE}
+
+# teste F
+var.test(log_homens, log_mulheres)
+```
+
+O sumário do teste nos diz que para que pudéssemos rejeitar a hipótese nula com $\alpha$ = 5%, a razão deveria ser na ordem de 1.64 (variância de `log_homens` maior do que `log_mulheres`) ou 0.70 (variância de `log_homens` menor do que `log_mulheres`). Alternativamente, poderíamos rejeitar a hipótese nula se aumentássemos $\alpha$ para 1-0.7362 = 26.38%, o que é uma probabilidade de incorrer no erro tipo II muito alta para ser considerada razoável.

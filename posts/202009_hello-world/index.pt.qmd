@@ -1,0 +1,13 @@
+---
+title: "Hello World"
+date: "2020-09-11"
+categories: [news]
+---
+
+Depois de uma ou outra postagem no LinkedIn e Kaggle, já era hora de eu montar meu próprio blog para ciência de dados, não é mesmo?
+
+*First things first*, que nome é esse? **Datamares & Dreamscapes** faz referência ao título de uma coletânea de contos do Stephen King *Nightmares & Dreamscapes* (Pesadelos e Paisagens Noturnas, no Brasil) e faz bastante jus à minha relação com esse mundo. Eu smepre quero aprender mais, ir mais longe, conquistar novos horiontes, mas o aprendizado envolve certos sacrifícios e noites perdidas ou mal dormidas. Entretanto, quando você consegue aquele resultado esperado é como se um portal se abrisse para um novo mundo.
+
+Então, sobre o que pretendo falar por aqui? Principalmente acerca dos projetos em R nos quais estiver trabalhando, machine learning, estatística clássica, forecasting, frameworks... e um pouco de matemática, economia e ensino. Basicamente ideias, insights e trabalhos que devo consultar vez ou outra.
+
+E se alguma dessas coisas te ajudar de alguma forma, eu vou ficar bastante feliz :p

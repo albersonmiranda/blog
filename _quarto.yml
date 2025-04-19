@@ -1,0 +1,54 @@
+project:
+  type: website
+
+website:
+  title: ""
+  site-url: "https://datamares.netlify.app/"
+  repo-url: https://github.com/albersonmiranda/blog
+  issue-url: https://github.com/albersonmiranda/blog/issues
+  page-navigation: true
+  bread-crumbs: true
+  description: "Data science, statistics and programming blog by Alberson Miranda."
+  favicon: assets/logo/favicon-256x256.png
+  google-analytics: "G-B65R9LH9ES"
+  navbar:
+    logo: assets/logo/logo.png
+    right:
+      - href: index.qmd
+        text: Home
+      - href: software.qmd
+      - href: assets/cv.pdf
+        text: CV
+      - href: about.qmd
+        text: About
+      - icon: github
+        href: https://github.com/albersonmiranda
+      - icon: linkedin
+        href: https://www.linkedin.com/in/albersonmiranda
+      - icon: mastodon
+        href: https://fosstodon.org/@albersonomiranda
+      - icon: rss
+        href: index.xml
+  page-footer:
+    left: |
+      [![](assets/logo/favicon-256x256.png){width=65px}](https://datamares.netlify.app) Copyright Alberson Miranda © 2020. All rights reserved.
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+
+babelquarto:
+  languagecodes:
+  - name: pt
+    text: "Português"
+  - name: en
+    text: "English"
+  mainlanguage: 'en'
+  languages: ['pt']
+title-pt: ""
+description-pt: Blog sobre ciência de dados, estatística e programação, de Alberson Miranda.
+author-pt: Alberson Miranda
+lang: en

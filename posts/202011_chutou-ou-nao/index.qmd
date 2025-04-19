@@ -1,0 +1,311 @@
+---
+title: "Guessed or not? The one-sample t-test"
+date: "2020-11-06"
+categories: [statistics]
+image: "img/statistics.jpg"
+---
+
+In the [previous post](https://datamares.netlify.app/post/atestando-diferencas-em-medias-o-teste-t-para-amostras-independentes/), I talked about the t-test for two independent samples. Coincidentally, the next day, [this question](https://forumdematematica.org/viewtopic.php?f=69&t=14319&sid=88c3f5cb4248d2096eb36656bbb95c45) appeared on the [math forum](https://forumdematematica.org/) where I contribute. We can't miss this opportunity, can we?
+
+# THE PROBLEM
+
+>Consider a multiple-choice question with four possible answers. The question
+was designed to be very difficult, with none of the four answers considered wrong,
+but with only one correct answer. A test was conducted with 400 students. The test aims
+to verify whether more people answer the question correctly than would be expected just by chance
+(i.e., if everyone guessed the correct answer by pure luck).
+>
+>Perform the hypothesis test (following the 5 steps), knowing that out of 400 students, 125
+answered the question correctly. Use α = 2%.
+
+I believe the biggest challenge here for beginner students is to understand the problem and structure it in a way that can be answered assertively. The key is in the following excerpt:
+
+>than would be expected just by chance (i.e., if everyone guessed the correct answer by pure luck).
+
+The probability of choosing the correct answer among 4 options by chance is 25%. However, 125 out of 400 students got the question right, that is, 31.25%. The problem then is to infer whether the mean of 31.25% is significantly different from the expected mean, 25%, given the sample size and its variance. This can be achieved with the *one-sample t-test*.
+
+# A BIT OF SIMULATION
+
+Before we get into the test itself, we know it is quite simple to calculate but its concept is not always so easily assimilated. To help, let's simulate the data and try to visually represent what we are going to do.
+
+Since these are binary data (correct or incorrect), we will use 1 for correct and 0 for incorrect.
+
+```{r data}
+# creating sample
+data = c(rep(1, 125), rep(0, 275))
+
+# to get the same random numbers as the example
+set.seed(1)
+
+# randomizing
+data = sample(data)
+
+# checking
+data
+```
+
+Now that we have our vector with the random data of students who got the questions right and wrong, let's visualize it:
+
+```{r}
+# bar chart
+par(mar = c(2, 2, 0, 0))
+barplot(table(data), col = c("lightblue", "salmon"))
+```
+
+The intuition of the t-test is to say whether this difference between correct and incorrect answers occurs by mere chance in the sampling process or not. But what does that mean? In this case, the sample mean was 31.25% with 400 students. The characteristics of the distribution, the standard deviation, and the sample size allow us to attest whether the difference between the sample mean and the expected mean is significant?
+
+To illustrate the reasoning, let's take 10 samples of 10 students randomly and observe the behavior of the means. These samples of 10 students may have a mean of correct answers (red line) very close to the expected 25% (blue line) and far from the mean of the 400 students (green line).
+
+```{r}
+# ensure reproducibility
+set.seed(3)
+
+# number of samples
+n = 10
+
+# means
+means = rep(NA, n)
+
+# taking samples and calculating means
+for (i in 1:n) {
+  means[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+# visualization
+hist(means,
+     main = "1st draw: 10 samples of 10 students",
+     xlab = "mean",
+     sub = "seed = 3")
+abline(v = mean(means, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+legend("topright", legend = c(
+  expression(hat(mu)),
+  expression(paste(mu, "= 0.25")),
+  expression(paste(mu, "= 0.3325"))),
+  col = c("red", "blue", "green"),
+  lty = 1)
+```
+
+But it is also possible to take another draw of 10 samples with 10 different students and find a completely different mean, close to 45%:
+
+```{r}
+# ensure reproducibility
+set.seed(4)
+
+# number of samples
+n = 10
+
+# means
+means = rep(NA, n)
+
+# taking samples and calculating means
+for (i in 1:n) {
+  means[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+# visualization
+hist(means,
+     main = "2nd draw: 10 samples of 10 students",
+     xlab = "mean",
+     sub = "seed = 4")
+abline(v = mean(means, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+legend("topright", legend = c(
+  expression(hat(mu)),
+  expression(paste(mu, "= 0.25")),
+  expression(paste(mu, "= 0.3325"))),
+  col = c("red", "blue", "green"),
+  lty = 1)
+```
+
+As we increase the number of samples, the standard deviation stabilizes and the sample mean approaches the population mean. See the means of 50 samples of 10 students each:
+
+```{r, fig.show="hold", out.width="80%"}
+# ensure reproducibility
+set.seed(3)
+
+# number of samples
+n = 50
+
+# means
+means = rep(NA, n)
+
+# taking samples and calculating means
+for (i in 1:n) {
+  means[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+# separating the grid into 2 columns
+par(mfrow = c(1, 2))
+
+# visualization 1st draw
+hist(means,
+     main = "1st draw: 50 samples of 10 students",
+     xlab = "mean",
+     sub = "seed = 3")
+abline(v = mean(means, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+
+################################################################################
+
+# ensure reproducibility
+set.seed(4)
+
+# number of samples
+n = 50
+
+# means
+means = rep(NA, n)
+
+# taking samples and calculating means
+for (i in 1:n) {
+  means[i] = mean(
+    sample(data, size = runif(1, min = 0, max = n), replace = TRUE))
+}
+
+# visualization 2nd draw
+hist(means,
+     main = "2nd draw: 50 samples of 10 students",
+     xlab = "mean",
+     sub = "seed = 4")
+abline(v = mean(means, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+legend("topright", legend = c(
+  expression(hat(mu)),
+  expression(paste(mu, "= 0.25")),
+  expression(paste(mu, "= 0.3325"))),
+  col = c("red", "blue", "green"),
+  lty = 1,
+  cex = .7)
+```
+
+It can be observed that taking two draws of 50 samples of 10 students each, the means begin to converge to the mean observed in the total of 400 students.
+
+And if we increase to 100 samples of 10 students?
+
+```{r}
+# ensure reproducibility
+set.seed(3)
+
+# number of samples
+n = 100
+
+# means
+means = rep(NA, n)
+
+# taking samples and calculating means
+for (i in 1:n) {
+  means[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+# separating the grid into 2 columns
+par(mfrow = c(1, 2))
+
+# visualization 1st draw
+hist(means,
+     main = "1st draw: 100 samples of 10 students",
+     xlab = "mean",
+     sub = "seed = 3")
+abline(v = mean(means, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+
+################################################################################
+
+# ensure reproducibility
+set.seed(4)
+
+# means
+means = rep(NA, n)
+
+# taking samples and calculating means
+for (i in 1:n) {
+  means[i] = mean(
+    sample(data, size = runif(1, min = 0, max = 10), replace = TRUE))
+}
+
+# visualization 2nd draw
+hist(means,
+     main = "2nd draw: 100 samples of 10 students",
+     xlab = "mean",
+     sub = "seed = 4")
+abline(v = mean(means, na.rm = TRUE), col = "red")
+abline(v = 0.25, col = "blue")
+abline(v = 0.3125, col = "green")
+legend("topright", legend = c(
+  expression(hat(mu)),
+  expression(paste(mu, "= 0.25")),
+  expression(paste(mu, "= 0.3325"))),
+  col = c("red", "blue", "green"),
+  lty = 1,
+  cex = .7)
+```
+
+Notice that with 100 random samples, the means are already very close to the observed 33.25% in both draws. This happens because as the number of observations increases, the standard deviation tends to stabilize and the uncertainty decreases. It would be very difficult for the first 400^[Or a thousand, 10 thousand, 100 thousand... The larger $n$ is, the harder it is to cause changes in the standard deviation, so the uncertainty is increasingly smaller.] students to have a certain mean of correct answers and the next 50 students all get it right or wrong in a way that would generate changes in the standard deviation and significantly affect the mean. That is why, ultimately, **the t-test is a sample size test**. The question behind everything is: is my sample large enough for the difference to be significant?
+
+Now, with the intuition of the test in mind, let's formalize it.
+
+# THE TEST
+
+To make the process very transparent and reinforce the concepts, it is always recommended to use the 5-step hypothesis testing framework, which are:
+
+## State the null and alternative hypotheses
+
+$$\begin{cases}
+      H_0: \mu = 0.25 \\
+      H_1: \mu \neq 0.25 \\
+    \end{cases}$$
+    
+The null hypothesis is that we cannot state that the observed mean of correct answers is significantly different from the expected mean. The alternative hypothesis is that they are significantly different.
+
+## State the significance level
+
+$$\alpha = 0.02$$
+The $\alpha = 0.02$ is what gives meaning to the term **significantly different**. It is the probability of making a type II error, that is, rejecting the null hypothesis when it should not be rejected. The lower the $\alpha$, the greater the difference between the means must be for it to be considered significant.
+
+## Calculate the test statistic
+
+$$z = \frac{\bar{x} - \mu_0}{\frac{\sigma}{\sqrt{n}}}$$
+Note that: $$\lim_{n \to \infty}z(n) = \infty$$
+We can reject the null hypothesis if the critical $z$ is greater than the tabulated $z$. As $n$ increases, eventually the difference will be significant, demonstrating mathematically what we verified intuitively.
+
+## Calculate the critical value
+$$z = \frac{0.3125 - 0.25}{\frac{0.464}{\sqrt{400}}} = 2.693$$
+
+## Decide whether to reject the null hypothesis
+
+Since the value 2.693 exceeds the $z$ value at 98% significance (2.33), we can reject the null hypothesis. The difference is significant and cannot be attributed to sampling chance.
+
+## Ok, but what about in R?
+
+In R, the test couldn't be simpler:
+
+```{r}
+t.test(data, mu = 0.25, conf.level = 0.98)
+```
+
+Note that 0.25 is not in the confidence interval, so we can reject $H_0$. As an illustration, so that we could not reject the null hypothesis, we would have to increase the significance level to 1 - p-value, that is, to 99.263%:
+
+```{r}
+t.test(data, mu = 0.25, conf.level = 0.99263)
+```
+
+Or increase the mean to 25.83%:
+
+```{r}
+t.test(data, mu = 0.2583, conf.level = 0.98)
+```
+
+Much easier than doing it by hand, right?
+
+# CONCLUSION
+
+Now that we have all the tools, we can answer the student's question from the forum. The teacher, yes, can be proud, because we can reject the hypothesis that the students' mean correct answer rate was just luck. Congratulations to the class! :p

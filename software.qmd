@@ -1,0 +1,25 @@
+---
+title: "Software"
+lang: en
+date: today
+output: distill::distill_article
+execute:
+  echo: false
+comments: false
+toc: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(distilltools)
+```
+
+## `fio` <img src="https://raw.githubusercontent.com/albersonmiranda/fio/main/man/figures/leontief.jpg?raw=true" align="right" alt="" width="120" />
+
+R package designed for input-output analysis, emphasizing usability for Excel users and performance. It includes an RStudio Addin and a suite of functions for straightforward import of input-output tables from Excel, either programmatically or directly from the clipboard.
+
+The package is optimized for speed and efficiency. It leverages the R6 class for clean, memory-efficient object-oriented programming. Furthermore, all linear algebra computations are implemented in Rust to achieve highly optimized performance.
+
+`r icon_link("github", "Code", "https://github.com/albersonmiranda/fio")`
+`r icon_link("globe", "Website", "https://albersonmiranda.github.io/fio/")`

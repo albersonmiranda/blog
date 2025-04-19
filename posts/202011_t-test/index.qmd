@@ -1,0 +1,71 @@
+---
+title: "Testing differences in means: the t-test for independent samples"
+date: "2020-11-02"
+categories: [statistics]
+image: "img/statistics.jpg"
+---
+
+Suppose you have two samples (e.g., the incomes of the Black and White populations in your city) and you want to prove that their means are *significantly* different, that is, that they are different even considering the variance and the sample size. This is possible with a Student's t-test, one of the most popular tests in statistics.
+
+Let's use one of R's built-in datasets to apply this concept, `mtcars`. First, let's take a look at our data.
+
+```{r}
+#| label: tbl-dados
+#| tbl-cap: "Dataset."
+
+data = mtcars
+knitr::kable(head(data), booktabs = TRUE, digits = 2) |>
+  kableExtra::kable_styling(latex_options = c("striped"))
+```
+
+A good way to illustrate the test is to check whether the mean fuel consumption (`mpg`, miles per gallon) of cars with 4, 6, and 8 cylinders (`cyl`) differ significantly from each other.
+
+```{r}
+# Sample means
+aggregate(mpg ~ cyl, data = data, FUN = mean)
+```
+
+We see that the sample means are different. We still need to know if they are *significantly* different. Plotting a boxplot can help us get an intuition. We can see that, except for the 4-cylinder group which has a higher variance, the groups are quite concentrated, so we might suspect that the differences are significant.
+
+```{r}
+#| label: fig-boxplot
+#| fig-cap: "Boxplot of fuel consumption by number of cylinders."
+
+# Boxplot
+boxplot(mpg ~ cyl, data = data)
+```
+
+The t-test has several variations — one sample, two paired samples, two independent samples — and corrections to handle differences in variance. For this case, we have three independent samples and, for now, let's assume that the variance of the 4-cylinder group differs from the others and that the variances of the 6- and 8-cylinder groups are equal — we'll leave variance analysis for another post. This leaves us with the **t-test for two independent samples**.
+
+The null hypothesis of the test is that the means are significantly equal. The alternative hypothesis can be formulated as the non-nullity of the difference between the means or $\bar{X_1}$ greater or less than $\bar{X_2}$. Here we will use the first option:
+
+$$
+h_0: \bar{X_1} - \bar{X_2} = 0 \\
+h_1: \bar{X_1} - \bar{X_2} \neq 0
+$$
+The t statistic for this test is calculated as below. Note that if we take the limit of $t(n)$, with $n \rightarrow \infty$, $t\rightarrow \infty$, causing the rejection of $h_0$. Thus, ultimately, **the t-test is a sample size test**, that is, if your sample is large enough and the means diverge, they will also tend to be significantly different.
+
+$$ t = \frac{\bar{X_1} - \bar{X_2}}{s_p . \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} $$
+
+As a first case, let's compare the mean fuel consumption of vehicles with 6 and 8 cylinders. Since we are considering their variances to be equal, we must use the argument `var.equal = TRUE`:
+
+```{r}
+
+# t-test for 6 and 8 cylinders
+t.test(mpg ~ cyl, data = data[which(data$cyl != 4),], var.equal = TRUE)
+```
+
+With a p-value of zero, we can reject the null hypothesis and consider that the mean fuel consumption between vehicles with 6 and 8 cylinders differs.
+
+For the other comparisons, let's use the default for `var.equal`, which is `FALSE`. This means applying Welch's correction for independent samples with different variances. As expected, we can also reject the null hypothesis and confirm the difference in mean fuel consumption between vehicles with 4 and 6 cylinders and 4 and 8 cylinders.
+
+```{r}
+
+# t-test for 4 and 8 cylinders
+t.test(mpg ~ cyl, data = data[which(data$cyl != 6),])
+
+# t-test for 4 and 6 cylinders
+t.test(mpg ~ cyl, data = data[which(data$cyl != 8),])
+```
+
+*Easy peasy lemon squeezy*, right?

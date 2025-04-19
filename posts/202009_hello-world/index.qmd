@@ -1,0 +1,13 @@
+---
+title: "Hello World"
+date: "2020-09-11"
+categories: [news]
+---
+
+After a couple of posts on LinkedIn and Kaggle, it was about time for me to set up my own blog for data science, wasn't it?
+
+*First things first*, what's with the name? **Datamares & Dreamscapes** refers to the title of a Stephen King short story collection *Nightmares & Dreamscapes* and quite fittingly describes my relationship with this world. I always want to learn more, go further, conquer new horizons, but learning involves certain sacrifices and sleepless or poorly slept nights. However, when you achieve that expected result, it's as if a portal opens to a new world.
+
+So, what do I intend to talk about here? Mainly about the R projects I'm working on, machine learning, classical statistics, forecasting, frameworks... and a bit of mathematics, economics, and teaching. Basically ideas, insights, and works that I might need to revisit from time to time.
+
+And if any of these things help you in some way, I'll be very happy :p

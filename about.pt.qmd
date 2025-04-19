@@ -1,0 +1,22 @@
+---
+title: "Sobre"
+image: assets/img/profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: mastodon
+      href: https://fosstodon.org/@albersonomiranda
+    - icon: linkedin
+      href: https://www.linkedin.com/in/albersonmiranda
+    - icon: github
+      href: https://github.com/albersonmiranda
+
+---
+
+Atuo na modelagem de risco de crédito e ciências de dados em geral no Banco do Estado do Espírito Santo (\@Banestes_SA), onde sou concursado desde 2008. Meu foco está em aumentar a qualidade da informação e reduzir a incerteza da tomada de decisão através de métodos estatísticos e experimentação. Sou economista (Universidade Federal do Espírito Santo - UFES, 2014) e matemático (Instituto Federal do Espírito Santo, 2024) de formação, e me tornei cientista de dados por afinidade.
+
+Sou discente de doutorado no Programa de Pós-Graduação da Universidade Federal do Espírito Santo (PPGEco/UFES), onde também cursei meu mestrado. Meu campo de pesquisa é econometria de séries temporais, especificamente séries temporais hierárquicas e métodos de aprendizado de máquina para previsão de séries temporais hierárquicas.
+
+Em relação à tecnologias, eu sou um entusiasta de FOSS (Free and Open Source Software) e utilizo principalmente R, Rust e Python em meus projetos. Não uso um único OS e estou sempre variando entre macOS, Linux Ubuntu e Linux Fedora em casa, e Windows no trabalho. Sou autor do pacote [fio](https://albersonmiranda.github.io/fio/), que é uma ferramenta para análise de matrizes insumo-produto -- que combina perfeitamente meu background em economia, matemática e computação.
+
+Em meu tempo livre eu gosto de surfar, tocar guitarra e produzir músicas em meu home studio.

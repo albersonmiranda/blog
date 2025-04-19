@@ -1,0 +1,155 @@
+---
+title: "Todos os modelos estão errados, mas alguns são inúteis"
+subtitle: "Parte I: Correlação de Pearson e significância"
+date: "2025-04-19"
+categories: [time-series]
+bibliography: bib.bib
+---
+
+```{r options, include = FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  out.width = "100%",
+  warnings = FALSE,
+  message = FALSE
+)
+
+# packages
+library(kableExtra)
+library(ggplot2)
+```
+
+::: {.callout-tip}
+## TL;DR
+
+Quando usar o coeficiente de correlação de Pearson, sempre teste a significância. Mas não o utilize para analisar séries temporais. É um erro comum. Isso viola a independência das observações e ignora o relacionamento entre defasagens. Em vez disso, use a análise de cross-correlograma para identificar relações entre séries temporais, incluindo relações defasadas.
+
+:::
+
+
+"Todos os modelos estão errados, mas alguns são úteis" é uma frase recorrente entre aqueles que praticam estatística. Ela se origina de uma afirmação de George Box, um dos grandes estatísticos do século XX: "Since all models are wrong the scientist must be alert to what is importantly wrong." [@box_science_1976]. "Todos os modelos estão errados" significa que os modelos são intrinsecamente limitados e não capturam perfeitamente a realidade. Em outras palavras, um modelo é uma representação simplificada da realidade, usada para explicar ou prever um fenômeno. Se fosse uma explicação perfeita desse fenômeno, deixaria de ser um modelo e se tornaria uma lei.
+
+Na estatística, lidamos essencialmente com variáveis aleatórias ou estocásticas, ou seja, variáveis que possuem uma distribuição de probabilidade [@gujarati_econometria_2021]. Nossa missão como analistas é desenvolver e utilizar métodos que nos digam como formular funções que nos permitam descrever e prever o relacionamento entre essas variáveis, minimizando os erros estocásticos.
+
+Dependendo da forma funcional e do método de estimação escolhido, há uma série de pressupostos que devem ser atendidos para que qualquer inferência sobre o erro, coeficientes, preditores e regressandos seja válida. Se esses pressupostos forem ignorados, não há garantia de que os resultados encontrados sejam uma aproximação ótima da função que se deseja estimar. Mais do que isso, a violação de alguns desses pressupostos pode gerar resultados enganosos, mostrando relações estatísticas significativas onde não deveria haver, subestimando ou superestimando o objeto de estudo.
+
+Neste post, abordo alguns erros metodológicos frequentes que fazem com que alguns modelos sejam inúteis.
+
+# VAMOS PEGAR ALGUNS DADOS
+
+Você já ouviu falar do conjunto de dados `presidents`? Do pacote {datasets}, ele armazena as avaliações trimestrais de aprovação dos presidentes dos EUA de 1945 a 1974. Será que existe alguma relação com o índice de preços ao consumidor (CPI), PIB real, taxa de desemprego ou taxas de juros? Vamos descobrir!
+
+```{r dados}
+#| label: tbl-dados
+#| tbl-cap: "Base de dados."
+
+# convert to dataframe
+presi <- data.frame(
+  date = zoo::as.Date(zoo::as.yearqtr(time(presidents))),
+  ratings = as.vector(presidents)
+) |>
+  na.omit()
+
+# get CPI and funds rates from FRED
+quantmod::getSymbols(
+  c("CPIAUCSL", "FEDFUNDS", "GDPC1", "UNRATE"),
+  src = "FRED"
+)
+
+# convert to time series
+series <- lapply(list(CPIAUCSL, FEDFUNDS, GDPC1, UNRATE), function(serie) {
+
+  # serie name
+  serie_name <- names(serie)
+  # convert to dataframe
+  data.frame(
+    date = zoo::as.Date(zoo::as.yearmon(time(serie))),
+    value = as.vector(serie)
+  ) |>
+    setNames(c("date", serie_name))
+})
+
+# merge datasets
+presi_merged <- Reduce(
+  function(x, y) merge(x, y, by = "date"),
+  c(list(presi), series)
+)
+
+# visualize
+kbl(head(presi_merged), booktabs = TRUE, digits = 2) |>
+  kable_styling(latex_options = c("striped", "scale_down"))
+```
+
+```{r}
+#| label: fig-series
+#| fig-cap: "Séries temporais em nível."
+
+# plot
+presi_merged |>
+  tidyr::pivot_longer(-date) |>
+  ggplot(aes(x = date, y = value)) +
+  geom_line() +
+  scale_x_date(date_labels = "%Y") +
+  facet_wrap(~name, nrow = 5, scales = "free_y")
+```
+
+# ERRO #1: NÃO TESTAR SIGNIFICÂNCIA {#sec-erro1}
+
+O primeiro, e frequentemente único, recurso para seleção de variáveis e especificação de modelos entre aqueles não iniciados em análise de séries temporais é o coeficiente de correlação de Pearson $r$. Se tentarmos usá-lo, teremos os seguintes resultados ([@tbl-pearson]):
+
+```{r}
+#| label: tbl-pearson
+#| tbl-cap: "Pearson's $r$."
+
+# Pearson correlation
+cor(subset(presi_merged, select = -date)) |>
+  kbl(booktabs = TRUE, digits = 2) |>
+  kable_styling(latex_options = c("striped", "scale_down"))
+```
+
+De acordo com a regra de bolso para interpretar o tamanho do efeito do coeficiente de correlação de Pearson^[Um resumo pode ser encontrado em @cambridge_university_faqeffectsize_2021.], CPI, taxas de juros e PIB têm alta correlação com a aprovação presidencial, enquanto a taxa de desemprego tem correlação pequena.
+
+Mesmo que fosse apropriado usar o coeficiente de correlação de Pearson para selecionar variáveis, seria necessário realizar um teste para verificar se o coeficiente encontrado é estatisticamente significativo. Neste caso, podemos verificar que a correlação de 10% entre aprovação presidencial e taxa de desemprego não é significativa. Ignorar testes de significância resulta em interpretações errôneas, levando o analista a encontrar relações onde, na verdade, não existem.
+
+```{r}
+#| label: tbl-pearson-t
+#| tbl-cap: "P-values for $r$"
+
+# p-values for t-test
+sapply(subset(presi_merged, select = -c(date, ratings)), function(serie) {
+  cor.test(presi_merged$ratings, serie)$p.value
+}) |>
+  kbl(booktabs = TRUE, digits = 2) |>
+  kable_styling(latex_options = c("striped", "scale_down"))
+```
+
+Quando se trata de estatística inferencial, fazer qualquer afirmação exige a realização de testes de hipótese. Exceto em casos extremos que impedem a estimação de algum coeficiente, na maioria dos casos, é possível obter alguma medida estatística, como em regressões, análise de variância, correlações, etc. No entanto, obter um número não significa que ele é válido ou pode ser utilizado.
+
+O coeficiente de correlação calculado a partir de uma amostra ($r$) é uma estimativa pontual de um parâmetro populacional ($\rho$). Como qualquer estimativa baseada em amostra, possui variabilidade amostral e, portanto, deve ser acompanhado de um intervalo de confiança (IC) que reflita a incerteza dessa estimativa e forneça um intervalo de valores plausíveis para o verdadeiro parâmetro populacional. Esse valor $r$ é um ponto central (média) em torno do qual o intervalo de confiança para o valor verdadeiro é construído.
+
+Se, devido à variabilidade amostral, $0 \in IC$ (por exemplo, $r=0.05$ com intervalo de confiança de $[-0.01,0.11]$), então não há evidência estatística para afirmar que o valor médio de 0,05 é diferente de zero.
+
+# ERRO #2: USAR O COEFICIENTE DE CORRELAÇÃO DE PEARSON
+
+Na seção @sec-erro1, eu disse "mesmo que fosse apropriado", porque não é. O coeficiente de Pearson é inadequado para avaliar a correlação entre duas séries temporais porque viola pressupostos fundamentais do coeficiente de Pearson.
+
+Primeiro, viola a independência das observações. Um dos pressupostos de $r$ é a independência das observações dentro de cada variável e entre variáveis. Séries temporais, por natureza, geralmente apresentam autocorrelação, ou seja, uma observação $y_t$ está correlacionada com $y_{t-1}, y_{t-2}, \ldots, y_{t-n}$.
+
+Segundo, ignora o relacionamento entre defasagens. A correlação entre duas séries temporais $y_t$ e $z_t$ pode não ser contemporânea. Uma série pode influenciar a outra com algum atraso (por exemplo, $y_t$ correlacionada com $z_{t-3}$, mas não com $z_t$). O coeficiente de Pearson mede apenas a relação linear no mesmo ponto do tempo, ignorando essas relações defasadas.
+
+Existem algumas formas válidas de identificar a relação entre duas séries temporais. Uma das mais simples é a análise do correlograma cruzado. Ela permite identificar não apenas a relação contemporânea, mas também a relação em cada defasagem da série temporal.
+
+Agora vamos observar o correlograma cruzado entre a série temporal da taxa de desemprego e a aprovação presidencial:
+
+```{r}
+#| label: fig-ccf
+#| fig-cap: "Correlograma cruzado entre a taxa de desemprego e as avaliações de aprovação presidencial."
+
+ccf(
+  presi_merged[["UNRATE"]],
+  presi_merged[["ratings"]],
+  main = ""
+)
+```
+
+*Se fosse* apropriado analisar as duas séries temporais diretamente, veríamos que, embora não haja correlação contemporânea significativa --- como vemos pela correlação dentro do intervalo de confiança em *lag* 0 ---, elas aparecem a partir de $t-2$, o que significaria que a taxa de desemprego de 2 meses atrás impacta a aprovação presidencial atual.

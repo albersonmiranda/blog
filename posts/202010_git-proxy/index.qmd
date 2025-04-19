@@ -1,0 +1,68 @@
+---
+title: Configuring git behind a proxy server
+date: "2020-09-25"
+categories: [tools]
+image: img/git.png
+---
+
+If you are working in an organization that takes information security seriously, then you are probably behind a proxy server and having trouble using Git. To solve this, we need to go through 3 steps:
+
+1. Find out the proxy server address
+2. Choose an authentication method
+3. Update git settings
+
+# PROXY ADDRESS
+
+The proxy server address is saved in a configuration file that can be obtained via your browser. If you are on Windows, you will have to access the infamous Internet Explorer, go to `Internet Options`, `Connections`, and `LAN Settings`.
+
+![location of the configuration file](img/1.png)
+
+Copy and paste the path shown in the `Address` field into your browser and you will download a .dat file with the proxy settings. Open the file in a reader^[Avoid Notepad to display line breaks correctly. I suggest Wordpad.]. In the file, search for "PROXY", this variable will contain the proxy server address in the format `domain.com:port`.
+
+# CHOOSE THE AUTHENTICATION METHOD
+
+With the proxy address in hand, we need to choose how we will authenticate:\
+\
+1. Enter the password for each push/pull\
+2. Save the password in .gitconfig\
+
+The first method applies when we are concerned about our password, that is, when the computer is shared or the configuration is saved on a network, for example.
+
+When this is not the case, you can simply save the username and password in the configuration file and push/pull will occur directly.
+
+## .gitconfig without saving password
+
+I recommend using the {usethis} package to change any configuration file in R. For the first option, we would do as follows:
+
+```{r, eval=FALSE}
+# open the configuration file
+usethis::edit_git_config()
+```
+
+In the .gitconfig window that will open, add the following lines:
+
+```
+[http]
+	proxy = http[s]://domain.com:port
+
+[credential]
+	helper = wincred
+
+[credential "helperselector"]
+	selected = manager
+
+```
+
+Where "domain.com" is the proxy address you found in the .dat file and the other settings define how you will be prompted to enter username and password, in this case through a pop-up window for each push/pull.
+
+## .gitconfig with saved password
+
+The other alternative is to save the username and password in the .gitconfig itself. Again, if the file is on a network or if other people have access to the machine, avoid this option. To save your username and password in .gitconfig, just add them before the domain. The advantage of this method is not having to enter the information for each push/pull.
+
+```
+[http]
+	proxy = http[s]://user:password@domain.com:port
+
+```
+
+Remember to update the password in .gitconfig whenever it is changed!

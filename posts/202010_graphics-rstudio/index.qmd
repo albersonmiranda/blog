@@ -1,0 +1,41 @@
+---
+title: "Graphic quality in the RStudio panel"
+date: "2020-10-19"
+categories: [tools]
+image: "img/rstudio.png"
+---
+
+If you've ever plotted a line chart in R and, when you saw the plot in the RStudio panel, thought "wow, what terrible quality!", you're not alone. But don't worry, the solution is quite simple!
+
+First, let's plot a chart using RStudio's default settings:
+
+```{r}
+#| label: fig-plot1
+#| fig-cap: "Plot without anti-aliasing."
+
+knitr::include_graphics("img/Rplot.png")
+```
+
+Wow, imagine using something like that on a poster! Let's try again, now with Cairo as the graphics device and using anti-aliasing:
+
+```{r}
+#| label: fig-plot2
+#| fig-cap: "Plot with anti-aliasing."
+
+# Adding anti-aliasing
+trace(grDevices::png, quote({
+  if (missing(type) && missing(antialias)) {
+    type = "cairo-png"
+    antialias = "subpixel"
+  }
+}), print = FALSE)
+
+# Plotting again
+plot(mtcars$mpg, type = "l")
+```
+
+Holy anti-aliasing, right? (Zoom in on both to really see the difference)
+
+Well, do I need to do this every time I plot a chart or start an R session? Not at all, just add these lines to your .Rprofile. I always recommend using {usethis} to edit configuration files, as you might get lost among the possible paths R will check. Using {usethis} ensures you're creating or editing the correct file.
+
+`usethis::edit_r_profile()` will open a window with the file for editing. Then, paste the call above (removing the plot line, of course), make sure your .Rprofile ends with a blank line (because R ignores the last line), save, and restart your session. Done! Now anti-aliasing will always be applied to your R plots, regardless of the package used, whether base or {ggplot}, for example.

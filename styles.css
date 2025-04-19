@@ -1,0 +1,21 @@
+/* aesthetic */
+.navbar {
+  background-color: #002538;
+}
+
+.navbar-logo {
+  max-height: none;
+}
+
+.quarto-title-banner {
+  background-color: #002538;
+}
+
+.quarto-dark {
+  background-color: #002538;
+}
+
+/* text */
+figcaption {
+  text-align: center;
+}

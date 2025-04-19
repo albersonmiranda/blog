@@ -1,0 +1,25 @@
+---
+title: "Software"
+lang: pt
+date: today
+output: distill::distill_article
+execute:
+  echo: false
+comments: false
+toc: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(distilltools)
+```
+
+## `fio` <img src="https://raw.githubusercontent.com/albersonmiranda/fio/main/man/figures/leontief.jpg?raw=true" align="right" alt="" width="120" />
+
+Pacote R projetado para análise de insumo-produto, enfatizando a usabilidade para usuários de Excel e desempenho. Inclui um Addin para RStudio e um conjunto de funções para importação simplificada de tabelas de insumo-produto do Excel, seja programaticamente ou diretamente da área de transferência.
+
+O pacote é otimizado para velocidade e eficiência. Ele utiliza a classe R6 para programação orientada a objetos limpa e eficiente em termos de memória. Além disso, todos os cálculos de álgebra linear são implementados em Rust para alcançar um desempenho altamente otimizado.
+
+`r icon_link("github", "Código", "https://github.com/albersonmiranda/fio")`
+`r icon_link("globe", "Site", "https://albersonmiranda.github.io/fio/")`
