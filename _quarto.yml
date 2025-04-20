@@ -31,7 +31,7 @@ website:
         href: index.xml
   page-footer:
     left: |
-      [![](assets/logo/favicon-256x256.png){width=65px}](https://datamares.netlify.app) Copyright Alberson Miranda © 2020. All rights reserved.
+      [![](https://datamares.netlify.app/assets/logo/favicon-256x256.png){width=65px}](https://datamares.netlify.app) Copyright Alberson Miranda © 2020. All rights reserved.
 
 format:
   html:
