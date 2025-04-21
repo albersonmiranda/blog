@@ -14,6 +14,13 @@
     "text": "Pacote R projetado para análise de insumo-produto, enfatizando a usabilidade para usuários de Excel e desempenho. Inclui um Addin para RStudio e um conjunto de funções para importação simplificada de tabelas de insumo-produto do Excel, seja programaticamente ou diretamente da área de transferência.\nO pacote é otimizado para velocidade e eficiência. Ele utiliza a classe R6 para programação orientada a objetos limpa e eficiente em termos de memória. Além disso, todos os cálculos de álgebra linear são implementados em Rust para alcançar um desempenho altamente otimizado.\n Código  Site"
   },
   {
+    "objectID": "software.html#biodiversity",
+    "href": "software.html#biodiversity",
+    "title": "Software",
+    "section": "biodiversity ",
+    "text": "biodiversity \nImagem Docker contendo um aplicativo Shiny para visualizar dados globais de biodiversidade. Este projeto fornece uma plataforma interativa para explorar dados de biodiversidade do GBIF. Os usuários podem visualizar conjuntos de dados, mapas e linhas do tempo de observações de espécies. Ele demonstra minhas habilidades em criar páginas de destino atraentes, mesmo para aplicativos Shiny. Uma versão implantada pode ser encontrada aqui.\n Código  Site"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Posts",

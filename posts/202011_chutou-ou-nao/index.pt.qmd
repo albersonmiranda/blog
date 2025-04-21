@@ -5,7 +5,7 @@ categories: [statistics]
 image: "img/statistics.jpg"
 ---
 
-No [post anterior](https://datamares.netlify.app/post/atestando-diferencas-em-medias-o-teste-t-para-amostras-independentes/), falei sobre o teste t para duas amostras independentes. Coincidentemente, no dia seguinte apareceu [essa dúvida](https://forumdematematica.org/viewtopic.php?f=69&t=14319&sid=88c3f5cb4248d2096eb36656bbb95c45) no [fórum de matemática](https://forumdematematica.org/) do qual sou contribuidor. Não podemos perder essa oportunidade, não é mesmo?
+No [post anterior](https://datamares.netlify.app/pt/posts/202011_t-test/), falei sobre o teste t para duas amostras independentes. Coincidentemente, no dia seguinte apareceu [essa dúvida](https://forumdematematica.org/viewtopic.php?f=69&t=14319&sid=88c3f5cb4248d2096eb36656bbb95c45) no [fórum de matemática](https://forumdematematica.org/) do qual sou contribuidor. Não podemos perder essa oportunidade, não é mesmo?
 
 # O PROBLEMA
 

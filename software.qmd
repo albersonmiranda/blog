@@ -23,3 +23,10 @@ The package is optimized for speed and efficiency. It leverages the R6 class for
 
 `r icon_link("github", "Code", "https://github.com/albersonmiranda/fio")`
 `r icon_link("globe", "Website", "https://albersonmiranda.github.io/fio/")`
+
+## `biodiversity` <img src="assets/img/globalbiodiversity.png" align="right" alt="" width="120" />
+
+Docker image containing a Shiny app for visualizing global biodiversity data. This project provides an interactive platform to explore biodiversity data from the GBIF. Users can view datasets, maps, and timelines of species observations. It showcases my skills on making beautiful landing pages even for Shiny apps. A deployed version can be found [here](https://albersonmiranda.shinyapps.io/Global_Biodiversity/).
+
+`r icon_link("github", "Code", "https://github.com/albersonmiranda/global_biodiversity")`
+`r icon_link("globe", "Website", "https://hub.docker.com/r/albersonmiranda/biodiversity")`
