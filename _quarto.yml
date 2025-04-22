@@ -32,6 +32,18 @@ website:
   page-footer:
     left: |
       [![](https://datamares.netlify.app/assets/logo/favicon-256x256.png){width=65px}](https://datamares.netlify.app) Copyright Alberson Miranda © 2020. All rights reserved.
+  comments:
+    giscus:
+      repo: albersonmiranda/blog
+      repo-id: MDEwOlJlcG9zaXRvcnkyOTQ1NjA1MjM=
+      category: "Announcements"
+      category-id: DIC_kwDOEY6jC84CpU2y
+      mapping: title
+      reactions-enabled: true
+      loading: lazy
+      input-position: bottom
+      theme: preferred_color_scheme
+      language: en
 
 format:
   html:
