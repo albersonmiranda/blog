@@ -40,7 +40,6 @@ website:
       category-id: DIC_kwDOEY6jC84CpU2y
       mapping: title
       reactions-enabled: true
-      loading: lazy
       input-position: bottom
       theme: preferred_color_scheme
       language: en
