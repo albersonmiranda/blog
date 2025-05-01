@@ -15,7 +15,7 @@ toc: false
 library(distilltools)
 ```
 
-## `fio` <img src="https://raw.githubusercontent.com/albersonmiranda/fio/main/man/figures/leontief.jpg?raw=true" align="right" alt="" width="120" />
+## `fio` (autor) <img src="https://raw.githubusercontent.com/albersonmiranda/fio/main/man/figures/leontief.jpg?raw=true" align="right" alt="" width="120" />
 
 Pacote R projetado para análise de insumo-produto, enfatizando a usabilidade para usuários de Excel e desempenho. Inclui um Addin para RStudio e um conjunto de funções para importação simplificada de tabelas de insumo-produto do Excel, seja programaticamente ou diretamente da área de transferência.
 
@@ -24,9 +24,16 @@ O pacote é otimizado para velocidade e eficiência. Ele utiliza a classe R6 par
 `r icon_link("github", "Código", "https://github.com/albersonmiranda/fio")`
 `r icon_link("globe", "Site", "https://albersonmiranda.github.io/fio/")`
 
-## `biodiversity` <img src="assets/img/globalbiodiversity.png" align="right" alt="" width="120" />
+## `biodiversity` (autor) <img src="assets/img/globalbiodiversity.png" align="right" alt="" width="120" />
 
 Imagem Docker contendo um aplicativo Shiny para visualizar dados globais de biodiversidade. Este projeto fornece uma plataforma interativa para explorar dados de biodiversidade do GBIF. Os usuários podem visualizar conjuntos de dados, mapas e linhas do tempo de observações de espécies. Ele demonstra minhas habilidades em criar páginas de destino atraentes, mesmo para aplicativos Shiny. Uma versão implantada pode ser encontrada [aqui](https://albersonmiranda.shinyapps.io/Global_Biodiversity/).
 
 `r icon_link("github", "Código", "https://github.com/albersonmiranda/global_biodiversity")`
 `r icon_link("globe", "Site", "https://hub.docker.com/r/albersonmiranda/biodiversity")`
+
+## `rextendr` (contribuidor) <img src="https://raw.githubusercontent.com/extendr/rextendr/main/man/figures/rextendr-logo.png" align="right" alt="" width="120" />
+
+An R package that helps scaffolding extendr-enabled packages or compiling Rust code dynamically.
+
+`r icon_link("github", "Code", "https://github.com/extendr/rextendr")`
+`r icon_link("globe", "Website", "https://extendr.github.io/rextendr/")`

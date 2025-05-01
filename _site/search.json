@@ -7,18 +7,25 @@
     "text": "R package designed for input-output analysis, emphasizing usability for Excel users and performance. It includes an RStudio Addin and a suite of functions for straightforward import of input-output tables from Excel, either programmatically or directly from the clipboard.\nThe package is optimized for speed and efficiency. It leverages the R6 class for clean, memory-efficient object-oriented programming. Furthermore, all linear algebra computations are implemented in Rust to achieve highly optimized performance.\n Code  Website"
   },
   {
-    "objectID": "software.html#fio",
-    "href": "software.html#fio",
+    "objectID": "software.html#fio-author",
+    "href": "software.html#fio-author",
     "title": "Software",
     "section": "",
     "text": "R package designed for input-output analysis, emphasizing usability for Excel users and performance. It includes an RStudio Addin and a suite of functions for straightforward import of input-output tables from Excel, either programmatically or directly from the clipboard.\nThe package is optimized for speed and efficiency. It leverages the R6 class for clean, memory-efficient object-oriented programming. Furthermore, all linear algebra computations are implemented in Rust to achieve highly optimized performance.\n Code  Website"
   },
   {
-    "objectID": "software.html#biodiversity",
-    "href": "software.html#biodiversity",
+    "objectID": "software.html#biodiversity-author",
+    "href": "software.html#biodiversity-author",
     "title": "Software",
-    "section": "biodiversity ",
-    "text": "biodiversity \nDocker image containing a Shiny app for visualizing global biodiversity data. This project provides an interactive platform to explore biodiversity data from the GBIF. Users can view datasets, maps, and timelines of species observations. It showcases my skills on making beautiful landing pages even for Shiny apps. A deployed version can be found here.\n Code  Website"
+    "section": "biodiversity (author) ",
+    "text": "biodiversity (author) \nDocker image containing a Shiny app for visualizing global biodiversity data. This project provides an interactive platform to explore biodiversity data from the GBIF. Users can view datasets, maps, and timelines of species observations. It showcases my skills on making beautiful landing pages even for Shiny apps. A deployed version can be found here.\n Code  Website"
+  },
+  {
+    "objectID": "software.html#rextendr-contributor",
+    "href": "software.html#rextendr-contributor",
+    "title": "Software",
+    "section": "rextendr (contributor) ",
+    "text": "rextendr (contributor) \nAn R package that helps scaffolding extendr-enabled packages or compiling Rust code dynamically.\n Code  Website"
   },
   {
     "objectID": "index.html",
