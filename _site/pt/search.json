@@ -25,7 +25,7 @@
     "href": "software.html#rextendr-contribuidor",
     "title": "Software",
     "section": "rextendr (contribuidor) ",
-    "text": "rextendr (contribuidor) \nAn R package that helps scaffolding extendr-enabled packages or compiling Rust code dynamically.\n Code  Website"
+    "text": "rextendr (contribuidor) \nUm pacote R que ajuda a criar pacotes compatíveis com {extendr} ou a compilar código Rust dinamicamente.\n Código  Site"
   },
   {
     "objectID": "index.html",

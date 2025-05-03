@@ -33,7 +33,7 @@ Imagem Docker contendo um aplicativo Shiny para visualizar dados globais de biod
 
 ## `rextendr` (contribuidor) <img src="https://raw.githubusercontent.com/extendr/rextendr/main/man/figures/rextendr-logo.png" align="right" alt="" width="120" />
 
-An R package that helps scaffolding extendr-enabled packages or compiling Rust code dynamically.
+Um pacote R que ajuda a criar pacotes compatíveis com {extendr} ou a compilar código Rust dinamicamente.
 
-`r icon_link("github", "Code", "https://github.com/extendr/rextendr")`
-`r icon_link("globe", "Website", "https://extendr.github.io/rextendr/")`
+`r icon_link("github", "Código", "https://github.com/extendr/rextendr")`
+`r icon_link("globe", "Site", "https://extendr.github.io/rextendr/")`
