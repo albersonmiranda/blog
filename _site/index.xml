@@ -9,13 +9,14 @@
 <link>https://datamares.netlify.app/</link>
 <atom:link href="https://datamares.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description>Data science, statistics and programming blog by Alberson Miranda.</description>
-<generator>quarto-1.6.39</generator>
-<lastBuildDate>Sat, 19 Apr 2025 03:00:00 GMT</lastBuildDate>
+<generator>quarto-1.7.31</generator>
+<lastBuildDate>Sat, 19 Apr 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>All models are wrong, but some are useless</title>
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202504_all-models-are-wrong/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -284,8 +285,6 @@ Table&nbsp;1: Dataset
 </tr>
 </tbody>
 </table>
-
-
 </div>
 </div>
 </figure>
@@ -462,8 +461,6 @@ Table&nbsp;2: Pearson’s <img src="https://latex.codecogs.com/png.latex?r">.
 </tr>
 </tbody>
 </table>
-
-
 </div>
 </div>
 </figure>
@@ -556,8 +553,6 @@ Table&nbsp;3: P-values for <img src="https://latex.codecogs.com/png.latex?r">
 </tr>
 </tbody>
 </table>
-
-
 </div>
 </div>
 </figure>
@@ -628,13 +623,14 @@ Gujarati, Damodar N., and Dawn C. Porter. 2021. <em>Econometria básica</em>. 5t
 </section></div> ]]></description>
   <category>time-series</category>
   <guid>https://datamares.netlify.app/posts/202504_all-models-are-wrong/</guid>
-  <pubDate>Sat, 19 Apr 2025 03:00:00 GMT</pubDate>
+  <pubDate>Sat, 19 Apr 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Hierarchical Time Series: Theory</title>
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202210_series-hierarquicas/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -780,7 +776,7 @@ Wickramasuriya, Shanika L., George Athanasopoulos, and Rob J. Hyndman. 2019. <sp
 </section></div> ]]></description>
   <category>statistics</category>
   <guid>https://datamares.netlify.app/posts/202210_series-hierarquicas/</guid>
-  <pubDate>Tue, 25 Oct 2022 03:00:00 GMT</pubDate>
+  <pubDate>Tue, 25 Oct 2022 00:00:00 GMT</pubDate>
   <media:content url="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup.png" medium="image" type="image/png" height="50" width="144"/>
 </item>
 <item>
@@ -788,6 +784,7 @@ Wickramasuriya, Shanika L., George Athanasopoulos, and Rob J. Hyndman. 2019. <sp
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202208_educacao-pre-capitalista/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -855,13 +852,14 @@ Williams, Samuel Gardner. 2016. <em>The History of Mediaeval Education: An Accou
 </section></div> ]]></description>
   <category>education</category>
   <guid>https://datamares.netlify.app/posts/202208_educacao-pre-capitalista/</guid>
-  <pubDate>Sun, 14 Aug 2022 03:00:00 GMT</pubDate>
+  <pubDate>Sun, 14 Aug 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Template for Theses in Quarto</title>
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202208_template/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -901,7 +899,7 @@ Williams, Samuel Gardner. 2016. <em>The History of Mediaeval Education: An Accou
 </section></div> ]]></description>
   <category>tools</category>
   <guid>https://datamares.netlify.app/posts/202208_template/</guid>
-  <pubDate>Wed, 03 Aug 2022 03:00:00 GMT</pubDate>
+  <pubDate>Wed, 03 Aug 2022 00:00:00 GMT</pubDate>
   <media:content url="https://datamares.netlify.app/posts/202208_template/img/quarto.png" medium="image" type="image/png" height="53" width="144"/>
 </item>
 <item>
@@ -909,6 +907,7 @@ Williams, Samuel Gardner. 2016. <em>The History of Mediaeval Education: An Accou
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202106_python-from-r-i-package-importing/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -1613,7 +1612,7 @@ name</code></pre>
 </section></div> ]]></description>
   <category>python</category>
   <guid>https://datamares.netlify.app/posts/202106_python-from-r-i-package-importing/</guid>
-  <pubDate>Sat, 12 Jun 2021 03:00:00 GMT</pubDate>
+  <pubDate>Sat, 12 Jun 2021 00:00:00 GMT</pubDate>
   <media:content url="https://datamares.netlify.app/posts/202106_python-from-r-i-package-importing/img/r-python.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -1621,6 +1620,7 @@ name</code></pre>
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202101_r-vscode/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -2232,7 +2232,7 @@ Rupprecht, Florian. 2021. <em>Httpgd: A ’HTTP’ Server Graphics Device</em>. 
 </section></div> ]]></description>
   <category>tools</category>
   <guid>https://datamares.netlify.app/posts/202101_r-vscode/</guid>
-  <pubDate>Tue, 01 Jun 2021 03:00:00 GMT</pubDate>
+  <pubDate>Tue, 01 Jun 2021 00:00:00 GMT</pubDate>
   <media:content url="https://datamares.netlify.app/posts/202101_r-vscode/img/vscode.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -2240,6 +2240,7 @@ Rupprecht, Florian. 2021. <em>Httpgd: A ’HTTP’ Server Graphics Device</em>. 
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202101_overfitting-resampling/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -2286,7 +2287,7 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>“Resampling Methods for Meta-
 </section></div> ]]></description>
   <category>machine learning</category>
   <guid>https://datamares.netlify.app/posts/202101_overfitting-resampling/</guid>
-  <pubDate>Sat, 17 Apr 2021 03:00:00 GMT</pubDate>
+  <pubDate>Sat, 17 Apr 2021 00:00:00 GMT</pubDate>
   <media:content url="https://datamares.netlify.app/posts/202101_overfitting-resampling/img/overfitting.png" medium="image" type="image/png" height="70" width="144"/>
 </item>
 <item>
@@ -2294,6 +2295,7 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>“Resampling Methods for Meta-
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202011_introducao-ao-mlr3-framework/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -2961,7 +2963,7 @@ R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</
 </section></div> ]]></description>
   <category>machine learning</category>
   <guid>https://datamares.netlify.app/posts/202011_introducao-ao-mlr3-framework/</guid>
-  <pubDate>Sun, 27 Dec 2020 03:00:00 GMT</pubDate>
+  <pubDate>Sun, 27 Dec 2020 00:00:00 GMT</pubDate>
   <media:content url="https://datamares.netlify.app/posts/202011_introducao-ao-mlr3-framework/img/mlr3.png" medium="image" type="image/png" height="73" width="144"/>
 </item>
 <item>
@@ -2969,6 +2971,7 @@ R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -5549,7 +5552,7 @@ font-style: inherit;">"gignac2016"</span>)</span></code></pre></div>
 </section></div> ]]></description>
   <category>statistics</category>
   <guid>https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/</guid>
-  <pubDate>Tue, 24 Nov 2020 03:00:00 GMT</pubDate>
+  <pubDate>Tue, 24 Nov 2020 00:00:00 GMT</pubDate>
   <media:content url="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/img/gender.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -5557,6 +5560,7 @@ font-style: inherit;">"gignac2016"</span>)</span></code></pre></div>
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202011_comparando-variancias/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -6010,7 +6014,7 @@ ratio of variances
 </section></div> ]]></description>
   <category>statistics</category>
   <guid>https://datamares.netlify.app/posts/202011_comparando-variancias/</guid>
-  <pubDate>Fri, 20 Nov 2020 03:00:00 GMT</pubDate>
+  <pubDate>Fri, 20 Nov 2020 00:00:00 GMT</pubDate>
   <media:content url="https://datamares.netlify.app/posts/202011_comparando-variancias/variancia.png" medium="image" type="image/png" height="72" width="144"/>
 </item>
 <item>
@@ -6018,6 +6022,7 @@ ratio of variances
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202011_chutou-ou-nao/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -7299,7 +7304,7 @@ mean of x
 </section></div> ]]></description>
   <category>statistics</category>
   <guid>https://datamares.netlify.app/posts/202011_chutou-ou-nao/</guid>
-  <pubDate>Fri, 06 Nov 2020 03:00:00 GMT</pubDate>
+  <pubDate>Fri, 06 Nov 2020 00:00:00 GMT</pubDate>
   <media:content url="https://datamares.netlify.app/posts/202011_chutou-ou-nao/img/statistics.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -7307,6 +7312,7 @@ mean of x
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202011_t-test/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -7457,8 +7463,6 @@ Table&nbsp;1: Dataset.
 </tr>
 </tbody>
 </table>
-
-
 </div>
 </div>
 </figure>
@@ -7625,7 +7629,7 @@ mean in group 4 mean in group 6
  ]]></description>
   <category>statistics</category>
   <guid>https://datamares.netlify.app/posts/202011_t-test/</guid>
-  <pubDate>Mon, 02 Nov 2020 03:00:00 GMT</pubDate>
+  <pubDate>Mon, 02 Nov 2020 00:00:00 GMT</pubDate>
   <media:content url="https://datamares.netlify.app/posts/202011_t-test/img/statistics.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -7633,6 +7637,7 @@ mean in group 4 mean in group 6
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202010_graphics-rstudio/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -7739,7 +7744,7 @@ Figure&nbsp;2: Plot with anti-aliasing.
  ]]></description>
   <category>tools</category>
   <guid>https://datamares.netlify.app/posts/202010_graphics-rstudio/</guid>
-  <pubDate>Mon, 19 Oct 2020 03:00:00 GMT</pubDate>
+  <pubDate>Mon, 19 Oct 2020 00:00:00 GMT</pubDate>
   <media:content url="https://datamares.netlify.app/posts/202010_graphics-rstudio/img/rstudio.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -7747,6 +7752,7 @@ Figure&nbsp;2: Plot with anti-aliasing.
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202010_git-proxy/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -7824,7 +7830,7 @@ font-style: inherit;">edit_git_config</span>()</span></code></pre></div>
 </section></div> ]]></description>
   <category>tools</category>
   <guid>https://datamares.netlify.app/posts/202010_git-proxy/</guid>
-  <pubDate>Fri, 25 Sep 2020 03:00:00 GMT</pubDate>
+  <pubDate>Fri, 25 Sep 2020 00:00:00 GMT</pubDate>
   <media:content url="https://datamares.netlify.app/posts/202010_git-proxy/img/git.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -7832,6 +7838,7 @@ font-style: inherit;">edit_git_config</span>()</span></code></pre></div>
   <dc:creator>Alberson Miranda</dc:creator>
   <link>https://datamares.netlify.app/posts/202009_hello-world/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -7847,7 +7854,7 @@ font-style: inherit;">edit_git_config</span>()</span></code></pre></div>
  ]]></description>
   <category>news</category>
   <guid>https://datamares.netlify.app/posts/202009_hello-world/</guid>
-  <pubDate>Fri, 11 Sep 2020 03:00:00 GMT</pubDate>
+  <pubDate>Fri, 11 Sep 2020 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

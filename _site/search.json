@@ -1,201 +1,5 @@
 [
   {
-    "objectID": "software.html",
-    "href": "software.html",
-    "title": "Software",
-    "section": "",
-    "text": "R package designed for input-output analysis, emphasizing usability for Excel users and performance. It includes an RStudio Addin and a suite of functions for straightforward import of input-output tables from Excel, either programmatically or directly from the clipboard.\nThe package is optimized for speed and efficiency. It leverages the R6 class for clean, memory-efficient object-oriented programming. Furthermore, all linear algebra computations are implemented in Rust to achieve highly optimized performance.\n Code  Website"
-  },
-  {
-    "objectID": "software.html#fio-author",
-    "href": "software.html#fio-author",
-    "title": "Software",
-    "section": "",
-    "text": "R package designed for input-output analysis, emphasizing usability for Excel users and performance. It includes an RStudio Addin and a suite of functions for straightforward import of input-output tables from Excel, either programmatically or directly from the clipboard.\nThe package is optimized for speed and efficiency. It leverages the R6 class for clean, memory-efficient object-oriented programming. Furthermore, all linear algebra computations are implemented in Rust to achieve highly optimized performance.\n Code  Website"
-  },
-  {
-    "objectID": "software.html#biodiversity-author",
-    "href": "software.html#biodiversity-author",
-    "title": "Software",
-    "section": "biodiversity (author) ",
-    "text": "biodiversity (author) \nDocker image containing a Shiny app for visualizing global biodiversity data. This project provides an interactive platform to explore biodiversity data from the GBIF. Users can view datasets, maps, and timelines of species observations. It showcases my skills on making beautiful landing pages even for Shiny apps. A deployed version can be found here.\n Code  Website"
-  },
-  {
-    "objectID": "software.html#rextendr-contributor",
-    "href": "software.html#rextendr-contributor",
-    "title": "Software",
-    "section": "rextendr (contributor) ",
-    "text": "rextendr (contributor) \nAn R package that helps scaffolding extendr-enabled packages or compiling Rust code dynamically.\n Code  Website"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Posts",
-    "section": "",
-    "text": "All models are wrong, but some are useless\n\n\nPart I: Pearson correlation and significancy\n\n\n\ntime-series\n\n\n\n\n\n\n\n\n\nApr 19, 2025\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nHierarchical Time Series: Theory\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nOct 25, 2022\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nThe Role Of Mathematics Education Under The Hegemony Of Capital\n\n\nPre-capitalist Education\n\n\n\neducation\n\n\n\n\n\n\n\n\n\nAug 14, 2022\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nTemplate for Theses in Quarto\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\nAug 3, 2022\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nPython from R I: package importing (and why learning new languages sucks)\n\n\n\n\n\n\npython\n\n\n\n\n\n\n\n\n\nJun 12, 2021\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nR in 2021 with VSCode\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\nJun 1, 2021\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nA Bit of Concepts: Overfitting & Resampling\n\n\n\n\n\n\nmachine learning\n\n\n\n\n\n\n\n\n\nApr 17, 2021\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to the {mlr3} Framework\n\n\n\n\n\n\nmachine learning\n\n\n\n\n\n\n\n\n\nDec 27, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nEffect Size and Gender Income Inequality in Vitória\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nNov 24, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nComparing Variances: The F Test\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nNov 20, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nGuessed or not? The one-sample t-test\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nNov 6, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nTesting differences in means: the t-test for independent samples\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nNov 2, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nGraphic quality in the RStudio panel\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\nOct 19, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nConfiguring git behind a proxy server\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\nSep 25, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nHello World\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nSep 11, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html",
-    "href": "posts/202011_introducao-ao-mlr3-framework/index.html",
-    "title": "Introduction to the {mlr3} Framework",
-    "section": "",
-    "text": "This is the first post in a series about the {mlr3} ecosystem (Lang et al. 2019). It is more complete and also much more complex than its predecessor, {mlr}, which had its initial version published on CRAN in 2013. The ecosystem provides an agnostic framework (i.e., it does not depend on the chosen algorithms), extensible and object-oriented, and currently supports various types of tasks such as classification, regression, survival analysis, forecasting, clustering, among others. {mlr3} has several advantages that make it, IMHO, the most complete machine learning framework for R (R Core Team 2020), and these will become clear throughout the next posts."
-  },
-  {
-    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html#design-characteristics",
-    "href": "posts/202011_introducao-ao-mlr3-framework/index.html#design-characteristics",
-    "title": "Introduction to the {mlr3} Framework",
-    "section": "1.1 DESIGN CHARACTERISTICS",
-    "text": "1.1 DESIGN CHARACTERISTICS\nSome general principles that guide the package’s development and greatly affect its use are:\n\nFocus on the backend. Most ecosystem packages aim to process and transform data, apply algorithms, and compute results. Visualizations are provided in external packages;\nAdoption of the R6 class (Chang 2020) for object-oriented design, modify-in-place, and reference semantics (we’ll talk a bit about these concepts below);\nUse of {data.table} (Dowle and Srinivasan 2020) for data frame manipulations. The combination of {R6} + {data.table} makes performance one of the ecosystem’s strengths.\nLow dependency. However, algorithms are not implemented in the ecosystem, as in Python’s scikit-learn. To run XGBoost (Chen et al. 2020), for example, you must have the package that implements it installed."
-  },
-  {
-    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html#out-of-scope",
-    "href": "posts/202011_introducao-ao-mlr3-framework/index.html#out-of-scope",
-    "title": "Introduction to the {mlr3} Framework",
-    "section": "1.2 OUT OF SCOPE",
-    "text": "1.2 OUT OF SCOPE\nAs this is an introduction, the steps of tuning and resampling, as well as functionalities like pipelines, will be covered in future posts. In this post, we will only cover the basic workflow concepts."
-  },
-  {
-    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html#footnotes",
-    "href": "posts/202011_introducao-ao-mlr3-framework/index.html#footnotes",
-    "title": "Introduction to the {mlr3} Framework",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nIn {mlr3} it’s called a learner.↩︎\nAlso called output feature or label.↩︎\nHere we will work with just one, but in future posts we will use several—in pipelines with different features, stacking, etc.↩︎\nRoot Mean Squared Error↩︎"
-  },
-  {
-    "objectID": "posts/202101_overfitting-resampling/index.html",
-    "href": "posts/202101_overfitting-resampling/index.html",
-    "title": "A Bit of Concepts: Overfitting & Resampling",
-    "section": "",
-    "text": "Although they are recurring terms in machine learning, resampling and overfitting are often discussed only in practice, frequently without a deep understanding. In this post1, I will try to introduce the concepts in a generic way."
-  },
-  {
-    "objectID": "posts/202101_overfitting-resampling/index.html#footnotes",
-    "href": "posts/202101_overfitting-resampling/index.html#footnotes",
-    "title": "A Bit of Concepts: Overfitting & Resampling",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nHeavily based on (Bischl B. 2012).↩︎"
-  },
-  {
-    "objectID": "posts/202010_git-proxy/index.html",
-    "href": "posts/202010_git-proxy/index.html",
-    "title": "Configuring git behind a proxy server",
-    "section": "",
-    "text": "If you are working in an organization that takes information security seriously, then you are probably behind a proxy server and having trouble using Git. To solve this, we need to go through 3 steps:"
-  },
-  {
-    "objectID": "posts/202010_git-proxy/index.html#gitconfig-without-saving-password",
-    "href": "posts/202010_git-proxy/index.html#gitconfig-without-saving-password",
-    "title": "Configuring git behind a proxy server",
-    "section": "2.1 .gitconfig without saving password",
-    "text": "2.1 .gitconfig without saving password\nI recommend using the {usethis} package to change any configuration file in R. For the first option, we would do as follows:\n\n# open the configuration file\nusethis::edit_git_config()\n\nIn the .gitconfig window that will open, add the following lines:\n[http]\n    proxy = http[s]://domain.com:port\n\n[credential]\n    helper = wincred\n\n[credential \"helperselector\"]\n    selected = manager\n\nWhere “domain.com” is the proxy address you found in the .dat file and the other settings define how you will be prompted to enter username and password, in this case through a pop-up window for each push/pull."
-  },
-  {
-    "objectID": "posts/202010_git-proxy/index.html#gitconfig-with-saved-password",
-    "href": "posts/202010_git-proxy/index.html#gitconfig-with-saved-password",
-    "title": "Configuring git behind a proxy server",
-    "section": "2.2 .gitconfig with saved password",
-    "text": "2.2 .gitconfig with saved password\nThe other alternative is to save the username and password in the .gitconfig itself. Again, if the file is on a network or if other people have access to the machine, avoid this option. To save your username and password in .gitconfig, just add them before the domain. The advantage of this method is not having to enter the information for each push/pull.\n[http]\n    proxy = http[s]://user:password@domain.com:port\n\nRemember to update the password in .gitconfig whenever it is changed!"
-  },
-  {
-    "objectID": "posts/202010_git-proxy/index.html#footnotes",
-    "href": "posts/202010_git-proxy/index.html#footnotes",
-    "title": "Configuring git behind a proxy server",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nAvoid Notepad to display line breaks correctly. I suggest Wordpad.↩︎"
-  },
-  {
-    "objectID": "posts/202010_graphics-rstudio/index.html",
-    "href": "posts/202010_graphics-rstudio/index.html",
-    "title": "Graphic quality in the RStudio panel",
-    "section": "",
-    "text": "If you’ve ever plotted a line chart in R and, when you saw the plot in the RStudio panel, thought “wow, what terrible quality!”, you’re not alone. But don’t worry, the solution is quite simple!\nFirst, let’s plot a chart using RStudio’s default settings:\n\nknitr::include_graphics(\"img/Rplot.png\")\n\n\n\n\n\n\n\nFigure 1: Plot without anti-aliasing.\n\n\n\n\n\nWow, imagine using something like that on a poster! Let’s try again, now with Cairo as the graphics device and using anti-aliasing:\n\n# Adding anti-aliasing\ntrace(grDevices::png, quote({\n  if (missing(type) && missing(antialias)) {\n    type = \"cairo-png\"\n    antialias = \"subpixel\"\n  }\n}), print = FALSE)\n\nTracing function \"png\" in package \"grDevices\"\n\n\n[1] \"png\"\n\n# Plotting again\nplot(mtcars$mpg, type = \"l\")\n\n\n\n\n\n\n\nFigure 2: Plot with anti-aliasing.\n\n\n\n\n\nHoly anti-aliasing, right? (Zoom in on both to really see the difference)\nWell, do I need to do this every time I plot a chart or start an R session? Not at all, just add these lines to your .Rprofile. I always recommend using {usethis} to edit configuration files, as you might get lost among the possible paths R will check. Using {usethis} ensures you’re creating or editing the correct file.\nusethis::edit_r_profile() will open a window with the file for editing. Then, paste the call above (removing the plot line, of course), make sure your .Rprofile ends with a blank line (because R ignores the last line), save, and restart your session. Done! Now anti-aliasing will always be applied to your R plots, regardless of the package used, whether base or {ggplot}, for example."
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html",
-    "href": "posts/202011_chutou-ou-nao/index.html",
-    "title": "Guessed or not? The one-sample t-test",
-    "section": "",
-    "text": "In the previous post, I talked about the t-test for two independent samples. Coincidentally, the next day, this question appeared on the math forum where I contribute. We can’t miss this opportunity, can we?"
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html#state-the-null-and-alternative-hypotheses",
-    "href": "posts/202011_chutou-ou-nao/index.html#state-the-null-and-alternative-hypotheses",
-    "title": "Guessed or not? The one-sample t-test",
-    "section": "3.1 State the null and alternative hypotheses",
-    "text": "3.1 State the null and alternative hypotheses\n\\[\\begin{cases}\n      H_0: \\mu = 0.25 \\\\\n      H_1: \\mu \\neq 0.25 \\\\\n    \\end{cases}\\]\nThe null hypothesis is that we cannot state that the observed mean of correct answers is significantly different from the expected mean. The alternative hypothesis is that they are significantly different."
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html#state-the-significance-level",
-    "href": "posts/202011_chutou-ou-nao/index.html#state-the-significance-level",
-    "title": "Guessed or not? The one-sample t-test",
-    "section": "3.2 State the significance level",
-    "text": "3.2 State the significance level\n\\[\\alpha = 0.02\\] The \\(\\alpha = 0.02\\) is what gives meaning to the term significantly different. It is the probability of making a type II error, that is, rejecting the null hypothesis when it should not be rejected. The lower the \\(\\alpha\\), the greater the difference between the means must be for it to be considered significant."
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html#calculate-the-test-statistic",
-    "href": "posts/202011_chutou-ou-nao/index.html#calculate-the-test-statistic",
-    "title": "Guessed or not? The one-sample t-test",
-    "section": "3.3 Calculate the test statistic",
-    "text": "3.3 Calculate the test statistic\n\\[z = \\frac{\\bar{x} - \\mu_0}{\\frac{\\sigma}{\\sqrt{n}}}\\] Note that: \\[\\lim_{n \\to \\infty}z(n) = \\infty\\] We can reject the null hypothesis if the critical \\(z\\) is greater than the tabulated \\(z\\). As \\(n\\) increases, eventually the difference will be significant, demonstrating mathematically what we verified intuitively."
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html#calculate-the-critical-value",
-    "href": "posts/202011_chutou-ou-nao/index.html#calculate-the-critical-value",
-    "title": "Guessed or not? The one-sample t-test",
-    "section": "3.4 Calculate the critical value",
-    "text": "3.4 Calculate the critical value\n\\[z = \\frac{0.3125 - 0.25}{\\frac{0.464}{\\sqrt{400}}} = 2.693\\]"
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html#decide-whether-to-reject-the-null-hypothesis",
-    "href": "posts/202011_chutou-ou-nao/index.html#decide-whether-to-reject-the-null-hypothesis",
-    "title": "Guessed or not? The one-sample t-test",
-    "section": "3.5 Decide whether to reject the null hypothesis",
-    "text": "3.5 Decide whether to reject the null hypothesis\nSince the value 2.693 exceeds the \\(z\\) value at 98% significance (2.33), we can reject the null hypothesis. The difference is significant and cannot be attributed to sampling chance."
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html#ok-but-what-about-in-r",
-    "href": "posts/202011_chutou-ou-nao/index.html#ok-but-what-about-in-r",
-    "title": "Guessed or not? The one-sample t-test",
-    "section": "3.6 Ok, but what about in R?",
-    "text": "3.6 Ok, but what about in R?\nIn R, the test couldn’t be simpler:\n\nt.test(data, mu = 0.25, conf.level = 0.98)\n\n\n    One Sample t-test\n\ndata:  data\nt = 2.6934, df = 399, p-value = 0.00737\nalternative hypothesis: true mean is not equal to 0.25\n98 percent confidence interval:\n 0.2583002 0.3666998\nsample estimates:\nmean of x \n   0.3125 \n\n\nNote that 0.25 is not in the confidence interval, so we can reject \\(H_0\\). As an illustration, so that we could not reject the null hypothesis, we would have to increase the significance level to 1 - p-value, that is, to 99.263%:\n\nt.test(data, mu = 0.25, conf.level = 0.99263)\n\n\n    One Sample t-test\n\ndata:  data\nt = 2.6934, df = 399, p-value = 0.00737\nalternative hypothesis: true mean is not equal to 0.25\n99.263 percent confidence interval:\n 0.2499995 0.3750005\nsample estimates:\nmean of x \n   0.3125 \n\n\nOr increase the mean to 25.83%:\n\nt.test(data, mu = 0.2583, conf.level = 0.98)\n\n\n    One Sample t-test\n\ndata:  data\nt = 2.3357, df = 399, p-value = 0.02\nalternative hypothesis: true mean is not equal to 0.2583\n98 percent confidence interval:\n 0.2583002 0.3666998\nsample estimates:\nmean of x \n   0.3125 \n\n\nMuch easier than doing it by hand, right?"
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html#footnotes",
-    "href": "posts/202011_chutou-ou-nao/index.html#footnotes",
-    "title": "Guessed or not? The one-sample t-test",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nOr a thousand, 10 thousand, 100 thousand… The larger \\(n\\) is, the harder it is to cause changes in the standard deviation, so the uncertainty is increasingly smaller.↩︎"
-  },
-  {
-    "objectID": "posts/202208_educacao-pre-capitalista/index.html",
-    "href": "posts/202208_educacao-pre-capitalista/index.html",
-    "title": "The Role Of Mathematics Education Under The Hegemony Of Capital",
-    "section": "",
-    "text": "Note\n\n\n\nThis post was taken from a chapter of my undergraduate thesis in Mathematics, defended in 2024.\nIn a capitalist society, education cannot be understood apart from labor relations. In addition to the techniques applied to education—including pedagogy in its philosophical and sociological dimensions—the prevailing norms and shared values of a given society are also reflected in and shape educational actions.\nIn this chapter, I seek to systematize the mechanisms of capitalism’s reproduction in education, highlighting how mathematics education, as long as it does not break with its role in reproducing social power relations, is ineffective in promoting structural changes in society.\nConsider the following thought experiment: Suppose a society in a very distant future where work as a social relation no longer exists. Robots perform all labor activities. What would school look like in this society? What remains pure in education? What would its purpose be? Before trying to infer anything about such questions, we can equip ourselves with a brief overview of the purpose of education in the history of education.\nAccording to Cubberley (1920), in Athens in the 5th century BC, before the time of the sophists, the basic curriculum consisted of reading, writing, music, and gymnastics, and was required to obtain the status of citizen. Only those holding this status were allowed to participate in the ekklesia, the main assembly of Athenian democracy. Education, which was exclusive to men, was private and fees depended on the parents’ ability to pay. Only teachers from large schools had any prestige, with the rest occupying low positions in the Athenian social hierarchy. Grammar, arithmetic, sciences, or foreign languages were not part of the curriculum—only what was necessary for the moral normalization of the Athenian individual: music, literature, their own religion, physical training, and instructions about the tasks and obligations of a citizen.\nAccording to the author, Homer’s fables filled with heroism, the Iliad and the Odyssey, were the first and greatest readings of the Greeks, so that “To appeal to the emotions and to stir the will along moral and civic lines was a fundamental purpose of the instruction”. These works included lessons in ethics, politics, social life, and, of course, what was expected of a soldier. All the desirable elements for the moral integration of the future citizen: severe but simple and honest, hardworking, obedient to the laws, who rejects comfort and vice. The very portrait of Perseus reflected in every Greek boy.\nCrossing the Ionian Sea to Rome, its first schools, around 300 BC, were more restricted than those of Athens and aimed to instruct young people for political careers, being composed of a small and select portion who had access to education. With the rise of the empire and the fall of Greece in the 2nd century BC, the great influx of educated Greeks to Rome caused the process of Hellenization of the city, so that Roman schools were, in fact, Greek schools slightly modified to adapt to Rome. In addition to grammar, composition, ethics, history, mythology, and geography, schools of rhetoric were developed to prepare professionals for law and public life in Rome. Homer remained the favorite author in Greek, but now schools also included Latin-Roman authors such as Virgil and Horace. In the sciences, a bit of geometry and astronomy were added for their practical utility. Thus, the seven liberal arts of the Middle Ages—grammar, rhetoric, dialectic, arithmetic, geometry, music, and astronomy—were already present (Cubberley 1920).\nAs in Athenian society, education was private and reserved for those who could pay for it. Teachers were either pagans or indifferent to religion; and, because of this, schools were less and less attended by Christians, who were rapidly growing in the empire’s population. By the 5th century, Roman schools went into decline, disappearing in the following century (Williams 2016).\nAccording to Williams (2016), the intense instability of Europe after the fall of Rome, combined with the spread of Christianity, had a great impact on education, characterizing the early Middle Ages as a period of dense ignorance, not only among the general population but also among the nobility and only “slightly mitigated” among most of the clergy. He lists as causes for the prevalence of ignorance: 1) the rejection by the early Christians of their pagan oppressors, including their literature, not only because of its origin but also because of the mythology it carried; 2) Except for the Bible, books were expensive and rare compared to the empire, since they were handwritten and copied by slaves; 3) These few and expensive books were written in Latin, being unintelligible to the vast majority of the population, since the various dialects that emerged in the region after the barbarian invasions were not developed or predominant enough during the early Middle Ages; 4) The very idea and tradition of formal education was culturally lost, losing its value as something necessary; 5) Finally, from the 9th century onwards, with the expansion of the feudal system, isolation and the dangers associated with travel during the period increased the cost of obtaining education and carrying out the social interactions necessary for intellectual development.\nFormal education at the beginning of the Christian church was only catechumenal, and its main concern was the moral regeneration of society through the moral regeneration of converts (Williams 2016). Furthermore, the church’s educational effort was closed in on itself, with the aim of creating its theological base, and not aimed at the intellectual formation of the society it served:\nContrary to classical schools, early Christian education had no intellectual vocation, but its appeal was moral and emotional. In fact, the Greek and Roman models were entirely rejected—after all, pagan intellectual education was the only one available and parents did not want their children to have contact with and end up admiring the deities of Olympus. It is only in the middle of the 2nd century, with the foundation of the catechetical school of Alexandria, that members of the clergy begin to receive training based on Greek education and philosophy, systematically formalizing the Christian faith and doctrine, which increasingly received influence from Greek thought and philosophy. However, such a movement would be gradually reversed until the beginning of the 5th century, when the Council of Carthage, under the influence of Saint Augustine, definitively prohibited the reading of pagan authors by the clergy (Cubberley 1920).\nIn the 6th century, with the foundation of the monastery of Monte Cassino by Saint Benedict in 529 and the promulgation of the Benedictine rule in 529, monasteries became centers of education, open not only to boys willing to take vows, but also, later (9th century), to external students with no intention of taking vows. Monastic schools offered instruction in reading and writing (in Latin), music, Christian doctrine and rules of conduct. The copying of manuscripts and preservation of ancient books was one of the main activities of the monks, and among Christians, the preservation of classical literature was largely due to their efforts (Williams 2016).\nOutside the Roman Catholic world, the conservation of classical literature in Europe was partly due to the efforts of Saracen Spain in the west and the Byzantines in the east. Among the Mohammedans—here expanding the view to caliphates such as Baghdad, Bukhara, and Damascus—education began with literacy and study of the Quran, with teachers funded by the caliphate. For wealthy families, education continued with the teaching of logic, philosophy, theology, astronomy, and medicine. Unlike the European peoples of the early Middle Ages, dependent on Latin, the Saracens had Syriac translations of Greek science and Aristotelian philosophy, including Euclid’s mathematics and Diophantus’s algebra. They were also responsible for the creation of chemistry as a science, as well as great advances in algebra (Williams 2016).\nIn the following centuries, throughout the Late Middle Ages, the medieval educational system developed by the church became more organized, based on the Trivium and Quadrivium. However, education continued to be directed inward to the church, with theology as the only profession and career to be obtained through it.\nIn this sense, medieval Christian education was, in essence, an instrument for reproducing and perpetuating the church’s own power structure. For maintaining order and social hierarchy, not for the intellectual and critical formation of individuals.\nIn 1450, the movement to rescue classical literature and Greek and Roman philosophy, known as the Renaissance, began to spread across Europe from Italy, bringing with it the rediscovery of Greek and Arab mathematics, as well as adding the study of the humanities alongside moral and physical education. This period marks the break with clerical thought and education and lays the foundations for modern education. However, in form and content, there is little difference from classical Greek and Roman education. With the support of the ruling classes, the rise of Renaissance secondary schools and universities restored the education of Cicero’s time, which brought an aristocratic education, preparing for services in the Church, the State, and big business.\nThere are several other events in history that can be analyzed from the perspective of their impact on education: the Protestant Reformation1, which, among many other developments, generates a new level of religious tolerance for knowledge that eventually paves the way for the emergence of the modern scientific method (Cubberley 1920); the success of the Counter-Reformation and Jesuit education in the colonization processes, which “promoted the control of faith and morals of the inhabitants” (Rosário and Melo 2015); Puritanism in North America, which establishes the foundations of the American educational system. However, the purpose of this work is by no means to be exhaustive, but rather to argue a point.\nReturning to the initial question: what remains pure in education when social relations of exploitation and power are removed? This student, when beginning the reading for this chapter, hypothesized and expected to find evidence that pre-capitalist education had at its core curiosity and the human spirit, with a focus on the arts. However, history shows us that the common element that appears in all societies is the moral normalization of the individual and the reproduction of prevailing social relations, through the transmission of values and social norms and the training of the children of the ruling classes to occupy certain positions in society."
-  },
-  {
-    "objectID": "posts/202208_educacao-pre-capitalista/index.html#footnotes",
-    "href": "posts/202208_educacao-pre-capitalista/index.html#footnotes",
-    "title": "The Role Of Mathematics Education Under The Hegemony Of Capital",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nCalvin writes to the Prince of Geneva, in 1541, that “the liberal arts and good education are good aids in the full knowledge of the Word”.↩︎"
-  },
-  {
-    "objectID": "posts/202504_all-models-are-wrong/index.html",
-    "href": "posts/202504_all-models-are-wrong/index.html",
-    "title": "All models are wrong, but some are useless",
-    "section": "",
-    "text": "TL;DR\n\n\n\nWhen you do use the Pearson correlation coefficient, always test for significance. But don’t use it to analyze time series. It’s a common mistake. It violates the independence of observations and ignores the relationship between lags. Instead, use cross-correlogram analysis to identify relationships between time series, including lagged relationships.\n“All models are wrong, but some are useful” is a recurring phrase among those who practice statistics. It originates from a statement by George Box, one of the great statisticians of the 20th century: “Since all models are wrong the scientist must be alert to what is importantly wrong.” (Box 1976). “All models are wrong”, means that models are instrinsically limited and will not perfectly capture reality. In other words, a model is a simplified representation of reality, used to explain or predict a phenomenon. If it were a perfect explanation of this phenomenon, it would cease to be a model and become a law.\nIn statistics, we essentially deal with random or stochastic variables, that is, variables that have a probability distribution (Gujarati and Porter 2021). Our mission as analysts is to develop and utilize methods that tell us how to formulate functions allowing us to describe and predict the relationship between these variables, while minimizing stochastic errors.\nDepending on the functional form and the chosen estimation method, there are a series of assumptions that must be met for any inference about the error, coefficients, predictors, and regressands to be valid. If these assumptions are ignored, there is no guarantee that the results found are an optimal approximation of the function one aims to estimate. Not only that, but the violation of some of these assumptions can generate misleading results, showing significant statistical relationships where none should exist, underestimating or overestimating the object of study.\nIn this post, I address some frequent methodological errors that cause some models to be useless."
-  },
-  {
-    "objectID": "posts/202504_all-models-are-wrong/index.html#footnotes",
-    "href": "posts/202504_all-models-are-wrong/index.html#footnotes",
-    "title": "All models are wrong, but some are useless",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nA summary can be found in Cambridge University (2021).↩︎"
-  },
-  {
     "objectID": "posts/202101_r-vscode/index.html",
     "href": "posts/202101_r-vscode/index.html",
     "title": "R in 2021 with VSCode",
@@ -257,90 +61,6 @@
     "title": "R in 2021 with VSCode",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nnow integrated in vscode-R extension.↩︎"
-  },
-  {
-    "objectID": "posts/202210_series-hierarquicas/index.html",
-    "href": "posts/202210_series-hierarquicas/index.html",
-    "title": "Hierarchical Time Series: Theory",
-    "section": "",
-    "text": "For almost a decade now, every year around this time I work with time series forecasting at Banestes. When it comes to setting goals and budget objectives (balances, revenues, expenses, etc.), knowing how to model and forecast is a real lifesaver.\nOf course, forecasts alone should not be adopted as final or absolute truth, since they do not use managerial information and stakeholder expectations, for example. But they are a reasonable starting point that serves as a basis for building expectations, action plans, etc."
-  },
-  {
-    "objectID": "posts/202210_series-hierarquicas/index.html#footnotes",
-    "href": "posts/202210_series-hierarquicas/index.html#footnotes",
-    "title": "Hierarchical Time Series: Theory",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nA review of this literature can be found in Athanasopoulos, Ahmed, and Hyndman (2009).↩︎"
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html",
-    "title": "Effect Size and Gender Income Inequality in Vitória",
-    "section": "",
-    "text": "There is still a lot to cover in this “Inference 101” series and, to continue our studies, I brought the 2017 RAIS (Annual Social Information Report) dataset1. With it, we will introduce the concept of effect size and, as a bonus, analyze gender inequality in our beloved capital, Vitória."
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#checking-the-normality-assumption",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#checking-the-normality-assumption",
-    "title": "Effect Size and Gender Income Inequality in Vitória",
-    "section": "2.1 CHECKING THE NORMALITY ASSUMPTION",
-    "text": "2.1 CHECKING THE NORMALITY ASSUMPTION\nWe know that the t-test is a parametric test and as discussed previously, when the data does not follow a distribution close to normal, we need to perform transformations to achieve normality.\nYou might think that with such a large sample, the Central Limit Theorem guarantees normality. However, especially with data containing many extreme outliers, the sample size required for convergence can be huge, practically invalidating the CLT assertion3. Therefore, I argue that we should still be careful with this assumption even when dealing with large samples.\nThe first analysis in this sense is visual. We can see that the distribution has a fat tail and is far from normal, both in the histogram and the Q-Q plot.\n\n# histogram\ndata %&gt;%\n  ggplot(aes(\n    x = rem_media,\n    fill = factor(sexo)\n  )) +\n  geom_histogram(binwidth = 500) +\n  coord_cartesian(xlim = c(0, 20000)) +\n  scale_y_continuous(labels = scales::number) +\n  scale_x_continuous(labels = scales::number) +\n  scale_fill_manual(\n    name = \"gender\",\n    labels = c(\"men\", \"women\"),\n    values = c(\"lightblue\", \"salmon\")\n  ) +\n  labs(\n    x = \"average income\",\n    y = \"count\",\n    title = \"DISTRIBUTION OF AVERAGE INCOME BETWEEN MEN AND WOMEN\",\n    subtitle = \"sample from the city of Vitória-ES\",\n    caption = \"source: Rais/2017\"\n  ) +\n  theme_minimal() +\n  theme(text = element_text(\n    family = \"Century Gothic\",\n    color = \"grey30\"\n  ))\n\n\n\n\n\n\n\n# qqplot\n# data will be on the line if normally distributed\npar(mfrow = c(1, 2))\n\nqqnorm(data[data$sexo == 1, ]$rem_media,\n  main = \"Q-Q PLOT: MEN\")\nqqline(data[data$sexo == 1, ]$rem_media)\n\nqqnorm(data[data$sexo == 2, ]$rem_media,\n  main = \"Q-Q PLOT: WOMEN\")\nqqline(data[data$sexo == 2, ]$rem_media)\n\n\n\n\n\n\n\n\nWe can perform an experiment to check the speed of convergence to the normal distribution. By calculating the distribution of a thousand means of 30 men each, if it shows a distribution close to normal we can assume normality and proceed. Otherwise, we will need to treat the data.\n\n# ensure reproducibility\nset.seed(1)\n\n# number of samples\nn = 1000\n\n# means\nmeans = rep(NA, n)\n\n# drawing samples and calculating means\nfor (i in 1:n) {\n  means[i] = mean(\n    sample(data[data$sexo == 1, ]$rem_media,\n      size = 30, replace = TRUE\n    )\n  )\n}\n\n# qqplot\nqqnorm(means)\nqqline(means)\n\n\n\n\n\n\n\n# visualization\nhist(means,\n    main = \"DISTRIBUTION OF SAMPLE MEANS\",\n    xlab = \"means\",\n    sub = \"seed = 1\"\n)\n\n\n\n\n\n\n\n\nPhew! The CLT held in our data and both the Q-Q plot and histogram showed a distribution close to normal, allowing us to proceed with the tests."
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#t-test",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#t-test",
-    "title": "Effect Size and Gender Income Inequality in Vitória",
-    "section": "2.2 T-TEST",
-    "text": "2.2 T-TEST\nNow that we’ve ensured the prerequisites, let’s test if the difference between means is significant. For this, we’ll use the {infer} package:\n\n# transforming `sexo` variable\ndata = data %&gt;%\n  mutate(sexo = ifelse(sexo == 1, \"man\", \"woman\"))\n\n# loading package\nlibrary(infer)\n\n# calculating t statistic\ncalculated_stat = data %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  calculate(stat = \"t\", order = c(\"man\", \"woman\"))\n\n# generating null distribution\nnull_dist = data %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  hypothesise(null = \"independence\") %&gt;%\n  generate(reps = 100, type = \"permute\") %&gt;%\n  calculate(stat = \"t\", order = c(\"man\", \"woman\"))\n\n# visualizing null distribution and test statistic\nnull_dist %&gt;%\n  visualize(method = \"both\") +\n  shade_p_value(calculated_stat, direction = \"greater\")\n\n\n\n\n\n\n\n# calculating p-value\nnull_dist %&gt;%\n  get_p_value(obs_stat = calculated_stat, direction = \"greater\")\n\n# A tibble: 1 × 1\n  p_value\n    &lt;dbl&gt;\n1       0\n\n\nWith a p-value of 0% and a calculated statistic miles away from the null distribution, it is clear that the difference is significant. However, this does not mean it is large or small. That’s where effect size indicators come in."
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#effect-size-cohens-d",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#effect-size-cohens-d",
-    "title": "Effect Size and Gender Income Inequality in Vitória",
-    "section": "2.3 EFFECT SIZE: Cohen’s D",
-    "text": "2.3 EFFECT SIZE: Cohen’s D\nIn this post I showed that sample size is crucial for the t-test and we tend to reject the null hypothesis as the sample size increases. Here, with more than 140,000 observations for each gender, it would be hard for these differences not to be significant. To complement this test, we can calculate the effect size using Cohen’s d statistic.\nWidely used in health experiments with paired t-tests, when it is necessary to define the effect of an action in a treatment group compared to a control group, Cohen’s d is an indicator of standardized differences and is particularly valuable for quantifying the effect of an intervention, whether in public policy or marketing actions in your company. This means it emphasizes the size of the difference between means, without confusing it with sample size.\nBecause it is standardized (i.e., not measured in the sample unit, here BR\\(, but in standard deviations), it can be easily compared across different experiments. Its calculation is as follows:\\)$ d = $$\nFor two fixed means, the smaller the standard deviation, the larger the d statistic. Conversely, the larger the standard deviation, the smaller the effect size.\nIn R, we’ll use the {effectsize} package:\n\n# loading package\nlibrary(effectsize)\n\n# calculating standardized difference\ncohens_d(\n  data[data$sexo == \"man\", ]$rem_media,\n  data[data$sexo == \"woman\", ]$rem_media\n)\n\nCohen's d |       95% CI\n------------------------\n0.26      | [0.25, 0.26]\n\n- Estimated using pooled SD.\n\n# interpreting d statistic\ninterpret_cohens_d(0.26, \"gignac2016\")\n\n[1] \"small\"\n(Rules: gignac2016)\n\n\nWith a statistic \\(d=0.26\\), the difference is considered small. On the Gignac & Szodorai (2016) scale:\n\nrules(\n  c(0.2, 0.41, 0.63),\n  c(\"very small\", \"small\", \"moderate\", \"large\"),\n  \"Gignac & Szodorai (2016)\"\n)\n\n# Reference Thresholds (Gignac & Szodorai (2016))\n\n         Label           \n-------------------------\n       very small &lt;=  0.2\n 0.2 &lt;   small    &lt;= 0.41\n0.41 &lt;  moderate  &lt;= 0.63\n0.63 &lt;   large           \n\n\nIn a situation of equity, 50% of women would have income below the average man, while the other half would have income above.\nAn effect of 0.26 means that 62% of women would have income below the average man in Vitória, while only 38% would earn more than the average man4.\nOf course, analyzing the aggregate means looking at the average. What about these differences among various professions?"
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#income-disparity-among-doctors",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#income-disparity-among-doctors",
-    "title": "Effect Size and Gender Income Inequality in Vitória",
-    "section": "3.1 INCOME DISPARITY AMONG DOCTORS",
-    "text": "3.1 INCOME DISPARITY AMONG DOCTORS\nFirst, let’s check the significance of the difference. As expected, it is significant.\n\n# calculating t statistic\ncalculated_stat = data %&gt;%\n  filter(str_detect(profissao, \"Médico\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  calculate(stat = \"t\", order = c(\"man\", \"woman\"))\n\n# generating null distribution\nnull_dist = data %&gt;%\n  filter(str_detect(profissao, \"Médico\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  hypothesise(null = \"independence\") %&gt;%\n  generate(reps = 100, type = \"permute\") %&gt;%\n  calculate(stat = \"t\", order = c(\"man\", \"woman\"))\n\n# calculating confidence interval\npercentile_ci = get_ci(null_dist)\n\n# visualizing null distribution and test statistic\nnull_dist %&gt;%\n  visualize(method = \"both\") +\n  shade_p_value(calculated_stat, direction = \"greater\") +\n  shade_confidence_interval(endpoints = percentile_ci)\n\n\n\n\n\n\n\n# calculating p-value\nnull_dist %&gt;%\n  get_p_value(obs_stat = calculated_stat, direction = \"greater\")\n\n# A tibble: 1 × 1\n  p_value\n    &lt;dbl&gt;\n1       0\n\n\nNext, let’s calculate the effect size.\n\n # calculating standardized difference\n cohens_d(\n   data[data$sexo == \"man\" &\n     str_detect(data$profissao, \"Médico\"), ]$rem_media,\n   data[data$sexo == \"woman\" &\n     str_detect(data$profissao, \"Médico\"), ]$rem_media\n )\n\nCohen's d |       95% CI\n------------------------\n0.12      | [0.06, 0.19]\n\n- Estimated using pooled SD.\n\n # interpreting d statistic\n interpret_cohens_d(0.12, \"gignac2016\")\n\n[1] \"very small\"\n(Rules: gignac2016)\n\n\nWith a d statistic of 0.12, we have a very small effect on the Gignac & Szodorai (2016) scale. This means that 54% of female doctors in Vitória would have income below the average male doctor in the city, while 46% would earn more than the average male doctor."
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#income-disparity-in-executive-positions",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#income-disparity-in-executive-positions",
-    "title": "Effect Size and Gender Income Inequality in Vitória",
-    "section": "3.2 INCOME DISPARITY IN EXECUTIVE POSITIONS",
-    "text": "3.2 INCOME DISPARITY IN EXECUTIVE POSITIONS\nRepeating the same procedure for people in executive positions, we see that the difference is also significant.\n\n# calculating t statistic\ncalculated_stat = data %&gt;%\n  filter(str_detect(profissao, \"Dirigentes|Diretor\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  calculate(stat = \"t\", order = c(\"man\", \"woman\"))\n\n# generating null distribution\nnull_dist &lt;- data %&gt;%\n  filter(str_detect(profissao, \"Dirigentes|Diretor\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  hypothesise(null = \"independence\") %&gt;%\n  generate(reps = 100, type = \"permute\") %&gt;%\n  calculate(stat = \"t\", order = c(\"man\", \"woman\"))\n\n# calculating confidence interval\npercentile_ci &lt;- get_ci(null_dist)\n\n# visualizing null distribution and test statistic\nnull_dist %&gt;%\n  visualize(method = \"both\") +\n  shade_p_value(calculated_stat, direction = \"greater\") +\n  shade_confidence_interval(endpoints = percentile_ci)\n\n\n\n\n\n\n\n\nAnd calculating the effect size:\n\n # calculating standardized difference\n cohens_d(\n   data[data$sexo == \"man\" &\n     str_detect(data$profissao, \"Dirigentes|Diretor\"), ]$rem_media,\n   data[data$sexo == \"woman\" &\n     str_detect(data$profissao, \"Dirigentes|Diretor\"), ]$rem_media\n )\n\nCohen's d |       95% CI\n------------------------\n0.47      | [0.30, 0.63]\n\n- Estimated using pooled SD.\n\n # interpreting d statistic\n interpret_cohens_d(0.47, \"gignac2016\")\n\n[1] \"moderate\"\n(Rules: gignac2016)\n\n\nWith a d statistic of 0.47, we have a moderate effect on the Gignac & Szodorai (2016) scale. This means that 69% of women in executive and director positions would earn less than the average man in the same position."
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#footnotes",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#footnotes",
-    "title": "Effect Size and Gender Income Inequality in Vitória",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nI chose 2017 because the most recent data is grouped with Minas Gerais and Rio de Janeiro, making it too heavy for a casual analysis.↩︎\nComprehensive R Archive Network.↩︎\nThere are several studies on this, see this example.↩︎\nThe effect size interpretation table can be found in this article.↩︎"
-  },
-  {
-    "objectID": "posts/202009_hello-world/index.html",
-    "href": "posts/202009_hello-world/index.html",
-    "title": "Hello World",
-    "section": "",
-    "text": "After a couple of posts on LinkedIn and Kaggle, it was about time for me to set up my own blog for data science, wasn’t it?\nFirst things first, what’s with the name? Datamares & Dreamscapes refers to the title of a Stephen King short story collection Nightmares & Dreamscapes and quite fittingly describes my relationship with this world. I always want to learn more, go further, conquer new horizons, but learning involves certain sacrifices and sleepless or poorly slept nights. However, when you achieve that expected result, it’s as if a portal opens to a new world.\nSo, what do I intend to talk about here? Mainly about the R projects I’m working on, machine learning, classical statistics, forecasting, frameworks… and a bit of mathematics, economics, and teaching. Basically ideas, insights, and works that I might need to revisit from time to time.\nAnd if any of these things help you in some way, I’ll be very happy :p"
-  },
-  {
-    "objectID": "posts/202208_template/index.html",
-    "href": "posts/202208_template/index.html",
-    "title": "Template for Theses in Quarto",
-    "section": "",
-    "text": "Since I’m starting to write my thesis this semester, why not kill two birds with one stone (sorry, Luisa Mell) and get to know this Quarto everyone is talking about? Well, here is a template for monograph/thesis/dissertation in Quarto1.\nTo make life easier (or not, time will tell), I parameterized the pre-textual elements — cover, title page, approval sheet, abstract, summary, etc. Here they are:\nTo use it, first the prerequisites:\nNow you can fork the project and get started! Just update the parameters in config/preamble.tex and write your work in dissertacao.qmd:"
-  },
-  {
-    "objectID": "posts/202208_template/index.html#footnotes",
-    "href": "posts/202208_template/index.html#footnotes",
-    "title": "Template for Theses in Quarto",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nThis template is an adaptation of the standard UEL model.↩︎\nFor R users, the easiest way is via tinytex::install_tinytex().↩︎"
   },
   {
     "objectID": "posts/202106_python-from-r-i-package-importing/index.html",
@@ -427,11 +147,81 @@
     "text": "Footnotes\n\n\nDeutsche Marks.↩︎"
   },
   {
+    "objectID": "posts/202210_series-hierarquicas/index.html",
+    "href": "posts/202210_series-hierarquicas/index.html",
+    "title": "Hierarchical Time Series: Theory",
+    "section": "",
+    "text": "For almost a decade now, every year around this time I work with time series forecasting at Banestes. When it comes to setting goals and budget objectives (balances, revenues, expenses, etc.), knowing how to model and forecast is a real lifesaver.\nOf course, forecasts alone should not be adopted as final or absolute truth, since they do not use managerial information and stakeholder expectations, for example. But they are a reasonable starting point that serves as a basis for building expectations, action plans, etc."
+  },
+  {
+    "objectID": "posts/202210_series-hierarquicas/index.html#footnotes",
+    "href": "posts/202210_series-hierarquicas/index.html#footnotes",
+    "title": "Hierarchical Time Series: Theory",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nA review of this literature can be found in Athanasopoulos, Ahmed, and Hyndman (2009).↩︎"
+  },
+  {
+    "objectID": "posts/202010_graphics-rstudio/index.html",
+    "href": "posts/202010_graphics-rstudio/index.html",
+    "title": "Graphic quality in the RStudio panel",
+    "section": "",
+    "text": "If you’ve ever plotted a line chart in R and, when you saw the plot in the RStudio panel, thought “wow, what terrible quality!”, you’re not alone. But don’t worry, the solution is quite simple!\nFirst, let’s plot a chart using RStudio’s default settings:\n\nknitr::include_graphics(\"img/Rplot.png\")\n\n\n\n\n\n\n\nFigure 1: Plot without anti-aliasing.\n\n\n\n\n\nWow, imagine using something like that on a poster! Let’s try again, now with Cairo as the graphics device and using anti-aliasing:\n\n# Adding anti-aliasing\ntrace(grDevices::png, quote({\n  if (missing(type) && missing(antialias)) {\n    type = \"cairo-png\"\n    antialias = \"subpixel\"\n  }\n}), print = FALSE)\n\nTracing function \"png\" in package \"grDevices\"\n\n\n[1] \"png\"\n\n# Plotting again\nplot(mtcars$mpg, type = \"l\")\n\n\n\n\n\n\n\nFigure 2: Plot with anti-aliasing.\n\n\n\n\n\nHoly anti-aliasing, right? (Zoom in on both to really see the difference)\nWell, do I need to do this every time I plot a chart or start an R session? Not at all, just add these lines to your .Rprofile. I always recommend using {usethis} to edit configuration files, as you might get lost among the possible paths R will check. Using {usethis} ensures you’re creating or editing the correct file.\nusethis::edit_r_profile() will open a window with the file for editing. Then, paste the call above (removing the plot line, of course), make sure your .Rprofile ends with a blank line (because R ignores the last line), save, and restart your session. Done! Now anti-aliasing will always be applied to your R plots, regardless of the package used, whether base or {ggplot}, for example."
+  },
+  {
+    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html",
+    "href": "posts/202011_introducao-ao-mlr3-framework/index.html",
+    "title": "Introduction to the {mlr3} Framework",
+    "section": "",
+    "text": "This is the first post in a series about the {mlr3} ecosystem (Lang et al. 2019). It is more complete and also much more complex than its predecessor, {mlr}, which had its initial version published on CRAN in 2013. The ecosystem provides an agnostic framework (i.e., it does not depend on the chosen algorithms), extensible and object-oriented, and currently supports various types of tasks such as classification, regression, survival analysis, forecasting, clustering, among others. {mlr3} has several advantages that make it, IMHO, the most complete machine learning framework for R (R Core Team 2020), and these will become clear throughout the next posts."
+  },
+  {
+    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html#design-characteristics",
+    "href": "posts/202011_introducao-ao-mlr3-framework/index.html#design-characteristics",
+    "title": "Introduction to the {mlr3} Framework",
+    "section": "1.1 DESIGN CHARACTERISTICS",
+    "text": "1.1 DESIGN CHARACTERISTICS\nSome general principles that guide the package’s development and greatly affect its use are:\n\nFocus on the backend. Most ecosystem packages aim to process and transform data, apply algorithms, and compute results. Visualizations are provided in external packages;\nAdoption of the R6 class (Chang 2020) for object-oriented design, modify-in-place, and reference semantics (we’ll talk a bit about these concepts below);\nUse of {data.table} (Dowle and Srinivasan 2020) for data frame manipulations. The combination of {R6} + {data.table} makes performance one of the ecosystem’s strengths.\nLow dependency. However, algorithms are not implemented in the ecosystem, as in Python’s scikit-learn. To run XGBoost (Chen et al. 2020), for example, you must have the package that implements it installed."
+  },
+  {
+    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html#out-of-scope",
+    "href": "posts/202011_introducao-ao-mlr3-framework/index.html#out-of-scope",
+    "title": "Introduction to the {mlr3} Framework",
+    "section": "1.2 OUT OF SCOPE",
+    "text": "1.2 OUT OF SCOPE\nAs this is an introduction, the steps of tuning and resampling, as well as functionalities like pipelines, will be covered in future posts. In this post, we will only cover the basic workflow concepts."
+  },
+  {
+    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html#footnotes",
+    "href": "posts/202011_introducao-ao-mlr3-framework/index.html#footnotes",
+    "title": "Introduction to the {mlr3} Framework",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nIn {mlr3} it’s called a learner.↩︎\nAlso called output feature or label.↩︎\nHere we will work with just one, but in future posts we will use several—in pipelines with different features, stacking, etc.↩︎\nRoot Mean Squared Error↩︎"
+  },
+  {
     "objectID": "posts/202011_t-test/index.html",
     "href": "posts/202011_t-test/index.html",
     "title": "Testing differences in means: the t-test for independent samples",
     "section": "",
-    "text": "Suppose you have two samples (e.g., the incomes of the Black and White populations in your city) and you want to prove that their means are significantly different, that is, that they are different even considering the variance and the sample size. This is possible with a Student’s t-test, one of the most popular tests in statistics.\nLet’s use one of R’s built-in datasets to apply this concept, mtcars. First, let’s take a look at our data.\n\ndata = mtcars\nknitr::kable(head(data), booktabs = TRUE, digits = 2) |&gt;\n  kableExtra::kable_styling(latex_options = c(\"striped\"))\n\n\n\nTable 1: Dataset.\n\n\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.62\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.88\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.32\n18.61\n1\n1\n4\n1\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.21\n19.44\n1\n0\n3\n1\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.44\n17.02\n0\n0\n3\n2\n\n\nValiant\n18.1\n6\n225\n105\n2.76\n3.46\n20.22\n1\n0\n3\n1\n\n\n\n\n\n\n\n\n\n\nA good way to illustrate the test is to check whether the mean fuel consumption (mpg, miles per gallon) of cars with 4, 6, and 8 cylinders (cyl) differ significantly from each other.\n\n# Sample means\naggregate(mpg ~ cyl, data = data, FUN = mean)\n\n  cyl      mpg\n1   4 26.66364\n2   6 19.74286\n3   8 15.10000\n\n\nWe see that the sample means are different. We still need to know if they are significantly different. Plotting a boxplot can help us get an intuition. We can see that, except for the 4-cylinder group which has a higher variance, the groups are quite concentrated, so we might suspect that the differences are significant.\n\n# Boxplot\nboxplot(mpg ~ cyl, data = data)\n\n\n\n\n\n\n\nFigure 1: Boxplot of fuel consumption by number of cylinders.\n\n\n\n\n\nThe t-test has several variations — one sample, two paired samples, two independent samples — and corrections to handle differences in variance. For this case, we have three independent samples and, for now, let’s assume that the variance of the 4-cylinder group differs from the others and that the variances of the 6- and 8-cylinder groups are equal — we’ll leave variance analysis for another post. This leaves us with the t-test for two independent samples.\nThe null hypothesis of the test is that the means are significantly equal. The alternative hypothesis can be formulated as the non-nullity of the difference between the means or \\(\\bar{X_1}\\) greater or less than \\(\\bar{X_2}\\). Here we will use the first option:\n\\[\nh_0: \\bar{X_1} - \\bar{X_2} = 0 \\\\\nh_1: \\bar{X_1} - \\bar{X_2} \\neq 0\n\\] The t statistic for this test is calculated as below. Note that if we take the limit of \\(t(n)\\), with \\(n \\rightarrow \\infty\\), \\(t\\rightarrow \\infty\\), causing the rejection of \\(h_0\\). Thus, ultimately, the t-test is a sample size test, that is, if your sample is large enough and the means diverge, they will also tend to be significantly different.\n\\[ t = \\frac{\\bar{X_1} - \\bar{X_2}}{s_p . \\sqrt{\\frac{1}{n_1}+\\frac{1}{n_2}}} \\]\nAs a first case, let’s compare the mean fuel consumption of vehicles with 6 and 8 cylinders. Since we are considering their variances to be equal, we must use the argument var.equal = TRUE:\n\n# t-test for 6 and 8 cylinders\nt.test(mpg ~ cyl, data = data[which(data$cyl != 4),], var.equal = TRUE)\n\n\n    Two Sample t-test\n\ndata:  mpg by cyl\nt = 4.419, df = 19, p-value = 0.0002947\nalternative hypothesis: true difference in means between group 6 and group 8 is not equal to 0\n95 percent confidence interval:\n 2.443809 6.841905\nsample estimates:\nmean in group 6 mean in group 8 \n       19.74286        15.10000 \n\n\nWith a p-value of zero, we can reject the null hypothesis and consider that the mean fuel consumption between vehicles with 6 and 8 cylinders differs.\nFor the other comparisons, let’s use the default for var.equal, which is FALSE. This means applying Welch’s correction for independent samples with different variances. As expected, we can also reject the null hypothesis and confirm the difference in mean fuel consumption between vehicles with 4 and 6 cylinders and 4 and 8 cylinders.\n\n# t-test for 4 and 8 cylinders\nt.test(mpg ~ cyl, data = data[which(data$cyl != 6),])\n\n\n    Welch Two Sample t-test\n\ndata:  mpg by cyl\nt = 7.5967, df = 14.967, p-value = 1.641e-06\nalternative hypothesis: true difference in means between group 4 and group 8 is not equal to 0\n95 percent confidence interval:\n  8.318518 14.808755\nsample estimates:\nmean in group 4 mean in group 8 \n       26.66364        15.10000 \n\n# t-test for 4 and 6 cylinders\nt.test(mpg ~ cyl, data = data[which(data$cyl != 8),])\n\n\n    Welch Two Sample t-test\n\ndata:  mpg by cyl\nt = 4.7191, df = 12.956, p-value = 0.0004048\nalternative hypothesis: true difference in means between group 4 and group 6 is not equal to 0\n95 percent confidence interval:\n  3.751376 10.090182\nsample estimates:\nmean in group 4 mean in group 6 \n       26.66364        19.74286 \n\n\nEasy peasy lemon squeezy, right?"
+    "text": "Suppose you have two samples (e.g., the incomes of the Black and White populations in your city) and you want to prove that their means are significantly different, that is, that they are different even considering the variance and the sample size. This is possible with a Student’s t-test, one of the most popular tests in statistics.\nLet’s use one of R’s built-in datasets to apply this concept, mtcars. First, let’s take a look at our data.\n\ndata = mtcars\nknitr::kable(head(data), booktabs = TRUE, digits = 2) |&gt;\n  kableExtra::kable_styling(latex_options = c(\"striped\"))\n\n\n\nTable 1: Dataset.\n\n\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.62\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.88\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.32\n18.61\n1\n1\n4\n1\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.21\n19.44\n1\n0\n3\n1\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.44\n17.02\n0\n0\n3\n2\n\n\nValiant\n18.1\n6\n225\n105\n2.76\n3.46\n20.22\n1\n0\n3\n1\n\n\n\n\n\n\n\n\nA good way to illustrate the test is to check whether the mean fuel consumption (mpg, miles per gallon) of cars with 4, 6, and 8 cylinders (cyl) differ significantly from each other.\n\n# Sample means\naggregate(mpg ~ cyl, data = data, FUN = mean)\n\n  cyl      mpg\n1   4 26.66364\n2   6 19.74286\n3   8 15.10000\n\n\nWe see that the sample means are different. We still need to know if they are significantly different. Plotting a boxplot can help us get an intuition. We can see that, except for the 4-cylinder group which has a higher variance, the groups are quite concentrated, so we might suspect that the differences are significant.\n\n# Boxplot\nboxplot(mpg ~ cyl, data = data)\n\n\n\n\n\n\n\nFigure 1: Boxplot of fuel consumption by number of cylinders.\n\n\n\n\n\nThe t-test has several variations — one sample, two paired samples, two independent samples — and corrections to handle differences in variance. For this case, we have three independent samples and, for now, let’s assume that the variance of the 4-cylinder group differs from the others and that the variances of the 6- and 8-cylinder groups are equal — we’ll leave variance analysis for another post. This leaves us with the t-test for two independent samples.\nThe null hypothesis of the test is that the means are significantly equal. The alternative hypothesis can be formulated as the non-nullity of the difference between the means or \\(\\bar{X_1}\\) greater or less than \\(\\bar{X_2}\\). Here we will use the first option:\n\\[\nh_0: \\bar{X_1} - \\bar{X_2} = 0 \\\\\nh_1: \\bar{X_1} - \\bar{X_2} \\neq 0\n\\] The t statistic for this test is calculated as below. Note that if we take the limit of \\(t(n)\\), with \\(n \\rightarrow \\infty\\), \\(t\\rightarrow \\infty\\), causing the rejection of \\(h_0\\). Thus, ultimately, the t-test is a sample size test, that is, if your sample is large enough and the means diverge, they will also tend to be significantly different.\n\\[ t = \\frac{\\bar{X_1} - \\bar{X_2}}{s_p . \\sqrt{\\frac{1}{n_1}+\\frac{1}{n_2}}} \\]\nAs a first case, let’s compare the mean fuel consumption of vehicles with 6 and 8 cylinders. Since we are considering their variances to be equal, we must use the argument var.equal = TRUE:\n\n# t-test for 6 and 8 cylinders\nt.test(mpg ~ cyl, data = data[which(data$cyl != 4),], var.equal = TRUE)\n\n\n    Two Sample t-test\n\ndata:  mpg by cyl\nt = 4.419, df = 19, p-value = 0.0002947\nalternative hypothesis: true difference in means between group 6 and group 8 is not equal to 0\n95 percent confidence interval:\n 2.443809 6.841905\nsample estimates:\nmean in group 6 mean in group 8 \n       19.74286        15.10000 \n\n\nWith a p-value of zero, we can reject the null hypothesis and consider that the mean fuel consumption between vehicles with 6 and 8 cylinders differs.\nFor the other comparisons, let’s use the default for var.equal, which is FALSE. This means applying Welch’s correction for independent samples with different variances. As expected, we can also reject the null hypothesis and confirm the difference in mean fuel consumption between vehicles with 4 and 6 cylinders and 4 and 8 cylinders.\n\n# t-test for 4 and 8 cylinders\nt.test(mpg ~ cyl, data = data[which(data$cyl != 6),])\n\n\n    Welch Two Sample t-test\n\ndata:  mpg by cyl\nt = 7.5967, df = 14.967, p-value = 1.641e-06\nalternative hypothesis: true difference in means between group 4 and group 8 is not equal to 0\n95 percent confidence interval:\n  8.318518 14.808755\nsample estimates:\nmean in group 4 mean in group 8 \n       26.66364        15.10000 \n\n# t-test for 4 and 6 cylinders\nt.test(mpg ~ cyl, data = data[which(data$cyl != 8),])\n\n\n    Welch Two Sample t-test\n\ndata:  mpg by cyl\nt = 4.7191, df = 12.956, p-value = 0.0004048\nalternative hypothesis: true difference in means between group 4 and group 6 is not equal to 0\n95 percent confidence interval:\n  3.751376 10.090182\nsample estimates:\nmean in group 4 mean in group 6 \n       26.66364        19.74286 \n\n\nEasy peasy lemon squeezy, right?"
+  },
+  {
+    "objectID": "posts/202504_all-models-are-wrong/index.html",
+    "href": "posts/202504_all-models-are-wrong/index.html",
+    "title": "All models are wrong, but some are useless",
+    "section": "",
+    "text": "TL;DR\n\n\n\nWhen you do use the Pearson correlation coefficient, always test for significance. But don’t use it to analyze time series. It’s a common mistake. It violates the independence of observations and ignores the relationship between lags. Instead, use cross-correlogram analysis to identify relationships between time series, including lagged relationships.\n“All models are wrong, but some are useful” is a recurring phrase among those who practice statistics. It originates from a statement by George Box, one of the great statisticians of the 20th century: “Since all models are wrong the scientist must be alert to what is importantly wrong.” (Box 1976). “All models are wrong”, means that models are instrinsically limited and will not perfectly capture reality. In other words, a model is a simplified representation of reality, used to explain or predict a phenomenon. If it were a perfect explanation of this phenomenon, it would cease to be a model and become a law.\nIn statistics, we essentially deal with random or stochastic variables, that is, variables that have a probability distribution (Gujarati and Porter 2021). Our mission as analysts is to develop and utilize methods that tell us how to formulate functions allowing us to describe and predict the relationship between these variables, while minimizing stochastic errors.\nDepending on the functional form and the chosen estimation method, there are a series of assumptions that must be met for any inference about the error, coefficients, predictors, and regressands to be valid. If these assumptions are ignored, there is no guarantee that the results found are an optimal approximation of the function one aims to estimate. Not only that, but the violation of some of these assumptions can generate misleading results, showing significant statistical relationships where none should exist, underestimating or overestimating the object of study.\nIn this post, I address some frequent methodological errors that cause some models to be useless."
+  },
+  {
+    "objectID": "posts/202504_all-models-are-wrong/index.html#footnotes",
+    "href": "posts/202504_all-models-are-wrong/index.html#footnotes",
+    "title": "All models are wrong, but some are useless",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nA summary can be found in Cambridge University (2021).↩︎"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "All models are wrong, but some are useless\n\n\nPart I: Pearson correlation and significancy\n\n\n\ntime-series\n\n\n\n\n\n\n\n\n\nApr 19, 2025\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nHierarchical Time Series: Theory\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nOct 25, 2022\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nThe Role Of Mathematics Education Under The Hegemony Of Capital\n\n\nPre-capitalist Education\n\n\n\neducation\n\n\n\n\n\n\n\n\n\nAug 14, 2022\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nTemplate for Theses in Quarto\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\nAug 3, 2022\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nPython from R I: package importing (and why learning new languages sucks)\n\n\n\n\n\n\npython\n\n\n\n\n\n\n\n\n\nJun 12, 2021\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nR in 2021 with VSCode\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\nJun 1, 2021\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nA Bit of Concepts: Overfitting & Resampling\n\n\n\n\n\n\nmachine learning\n\n\n\n\n\n\n\n\n\nApr 17, 2021\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to the {mlr3} Framework\n\n\n\n\n\n\nmachine learning\n\n\n\n\n\n\n\n\n\nDec 27, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nEffect Size and Gender Income Inequality in Vitória\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nNov 24, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nComparing Variances: The F Test\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nNov 20, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nGuessed or not? The one-sample t-test\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nNov 6, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nTesting differences in means: the t-test for independent samples\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nNov 2, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nGraphic quality in the RStudio panel\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\nOct 19, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nConfiguring git behind a proxy server\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\nSep 25, 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nHello World\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nSep 11, 2020\n\n\nAlberson Miranda\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -439,5 +229,222 @@
     "title": "About",
     "section": "",
     "text": "I work in credit risk modeling and data science in general at Banco do Estado do Espírito Santo (@Banestes_SA), where I have been employed since 2008. My focus is on improving information quality and reducing decision-making uncertainty through statistical methods and experimentation. I am an economist (Federal University of Espírito Santo - UFES, 2014) and mathematician (Federal Institute of Espírito Santo, 2024) by training, and I became a data scientist out of affinity.\nI am a doctoral student in the Graduate Program at the Federal University of Espírito Santo (PPGEco/UFES), where I also completed my master’s degree. My research field is time series econometrics, specifically hierarchical time series and machine learning methods for hierarchical time series forecasting.\nRegarding technologies, I am an enthusiast of FOSS (Free and Open Source Software) and primarily use R, Rust, and Python in my projects. I do not use a single OS and am always switching between macOS, Linux Ubuntu, and Linux Fedora at home, and Windows at work. I am the author of the fio package, which is a tool for input-output matrix analysis – perfectly combining my background in economics, mathematics, and computing.\nIn my free time, I enjoy surfing, playing guitar, and producing music in my home studio."
+  },
+  {
+    "objectID": "software.html",
+    "href": "software.html",
+    "title": "Software",
+    "section": "",
+    "text": "R package designed for input-output analysis, emphasizing usability for Excel users and performance. It includes an RStudio Addin and a suite of functions for straightforward import of input-output tables from Excel, either programmatically or directly from the clipboard.\nThe package is optimized for speed and efficiency. It leverages the R6 class for clean, memory-efficient object-oriented programming. Furthermore, all linear algebra computations are implemented in Rust to achieve highly optimized performance.\n Code  Website"
+  },
+  {
+    "objectID": "software.html#fio-author",
+    "href": "software.html#fio-author",
+    "title": "Software",
+    "section": "",
+    "text": "R package designed for input-output analysis, emphasizing usability for Excel users and performance. It includes an RStudio Addin and a suite of functions for straightforward import of input-output tables from Excel, either programmatically or directly from the clipboard.\nThe package is optimized for speed and efficiency. It leverages the R6 class for clean, memory-efficient object-oriented programming. Furthermore, all linear algebra computations are implemented in Rust to achieve highly optimized performance.\n Code  Website"
+  },
+  {
+    "objectID": "software.html#biodiversity-author",
+    "href": "software.html#biodiversity-author",
+    "title": "Software",
+    "section": "biodiversity (author) ",
+    "text": "biodiversity (author) \nDocker image containing a Shiny app for visualizing global biodiversity data. This project provides an interactive platform to explore biodiversity data from the GBIF. Users can view datasets, maps, and timelines of species observations. It showcases my skills on making beautiful landing pages even for Shiny apps. A deployed version can be found here.\n Code  Website"
+  },
+  {
+    "objectID": "software.html#rextendr-contributor",
+    "href": "software.html#rextendr-contributor",
+    "title": "Software",
+    "section": "rextendr (contributor) ",
+    "text": "rextendr (contributor) \nAn R package that helps scaffolding extendr-enabled packages or compiling Rust code dynamically.\n Code  Website"
+  },
+  {
+    "objectID": "software.html#r_tools_ppa-author",
+    "href": "software.html#r_tools_ppa-author",
+    "title": "Software",
+    "section": "r_tools_ppa (author)",
+    "text": "r_tools_ppa (author)\nThis is a Personal Package Archive (PPA) for distributing the latest versions of RStudio, Quarto, and Positron for Linux users. It provides .deb packages for Ubuntu and Debian-based distributions, and .rpm packages for Fedora and Red Hat-based distributions.\n Code  Website"
+  },
+  {
+    "objectID": "posts/202010_git-proxy/index.html",
+    "href": "posts/202010_git-proxy/index.html",
+    "title": "Configuring git behind a proxy server",
+    "section": "",
+    "text": "If you are working in an organization that takes information security seriously, then you are probably behind a proxy server and having trouble using Git. To solve this, we need to go through 3 steps:"
+  },
+  {
+    "objectID": "posts/202010_git-proxy/index.html#gitconfig-without-saving-password",
+    "href": "posts/202010_git-proxy/index.html#gitconfig-without-saving-password",
+    "title": "Configuring git behind a proxy server",
+    "section": "2.1 .gitconfig without saving password",
+    "text": "2.1 .gitconfig without saving password\nI recommend using the {usethis} package to change any configuration file in R. For the first option, we would do as follows:\n\n# open the configuration file\nusethis::edit_git_config()\n\nIn the .gitconfig window that will open, add the following lines:\n[http]\n    proxy = http[s]://domain.com:port\n\n[credential]\n    helper = wincred\n\n[credential \"helperselector\"]\n    selected = manager\n\nWhere “domain.com” is the proxy address you found in the .dat file and the other settings define how you will be prompted to enter username and password, in this case through a pop-up window for each push/pull."
+  },
+  {
+    "objectID": "posts/202010_git-proxy/index.html#gitconfig-with-saved-password",
+    "href": "posts/202010_git-proxy/index.html#gitconfig-with-saved-password",
+    "title": "Configuring git behind a proxy server",
+    "section": "2.2 .gitconfig with saved password",
+    "text": "2.2 .gitconfig with saved password\nThe other alternative is to save the username and password in the .gitconfig itself. Again, if the file is on a network or if other people have access to the machine, avoid this option. To save your username and password in .gitconfig, just add them before the domain. The advantage of this method is not having to enter the information for each push/pull.\n[http]\n    proxy = http[s]://user:password@domain.com:port\n\nRemember to update the password in .gitconfig whenever it is changed!"
+  },
+  {
+    "objectID": "posts/202010_git-proxy/index.html#footnotes",
+    "href": "posts/202010_git-proxy/index.html#footnotes",
+    "title": "Configuring git behind a proxy server",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAvoid Notepad to display line breaks correctly. I suggest Wordpad.↩︎"
+  },
+  {
+    "objectID": "posts/202208_educacao-pre-capitalista/index.html",
+    "href": "posts/202208_educacao-pre-capitalista/index.html",
+    "title": "The Role Of Mathematics Education Under The Hegemony Of Capital",
+    "section": "",
+    "text": "Note\n\n\n\nThis post was taken from a chapter of my undergraduate thesis in Mathematics, defended in 2024.\nIn a capitalist society, education cannot be understood apart from labor relations. In addition to the techniques applied to education—including pedagogy in its philosophical and sociological dimensions—the prevailing norms and shared values of a given society are also reflected in and shape educational actions.\nIn this chapter, I seek to systematize the mechanisms of capitalism’s reproduction in education, highlighting how mathematics education, as long as it does not break with its role in reproducing social power relations, is ineffective in promoting structural changes in society.\nConsider the following thought experiment: Suppose a society in a very distant future where work as a social relation no longer exists. Robots perform all labor activities. What would school look like in this society? What remains pure in education? What would its purpose be? Before trying to infer anything about such questions, we can equip ourselves with a brief overview of the purpose of education in the history of education.\nAccording to Cubberley (1920), in Athens in the 5th century BC, before the time of the sophists, the basic curriculum consisted of reading, writing, music, and gymnastics, and was required to obtain the status of citizen. Only those holding this status were allowed to participate in the ekklesia, the main assembly of Athenian democracy. Education, which was exclusive to men, was private and fees depended on the parents’ ability to pay. Only teachers from large schools had any prestige, with the rest occupying low positions in the Athenian social hierarchy. Grammar, arithmetic, sciences, or foreign languages were not part of the curriculum—only what was necessary for the moral normalization of the Athenian individual: music, literature, their own religion, physical training, and instructions about the tasks and obligations of a citizen.\nAccording to the author, Homer’s fables filled with heroism, the Iliad and the Odyssey, were the first and greatest readings of the Greeks, so that “To appeal to the emotions and to stir the will along moral and civic lines was a fundamental purpose of the instruction”. These works included lessons in ethics, politics, social life, and, of course, what was expected of a soldier. All the desirable elements for the moral integration of the future citizen: severe but simple and honest, hardworking, obedient to the laws, who rejects comfort and vice. The very portrait of Perseus reflected in every Greek boy.\nCrossing the Ionian Sea to Rome, its first schools, around 300 BC, were more restricted than those of Athens and aimed to instruct young people for political careers, being composed of a small and select portion who had access to education. With the rise of the empire and the fall of Greece in the 2nd century BC, the great influx of educated Greeks to Rome caused the process of Hellenization of the city, so that Roman schools were, in fact, Greek schools slightly modified to adapt to Rome. In addition to grammar, composition, ethics, history, mythology, and geography, schools of rhetoric were developed to prepare professionals for law and public life in Rome. Homer remained the favorite author in Greek, but now schools also included Latin-Roman authors such as Virgil and Horace. In the sciences, a bit of geometry and astronomy were added for their practical utility. Thus, the seven liberal arts of the Middle Ages—grammar, rhetoric, dialectic, arithmetic, geometry, music, and astronomy—were already present (Cubberley 1920).\nAs in Athenian society, education was private and reserved for those who could pay for it. Teachers were either pagans or indifferent to religion; and, because of this, schools were less and less attended by Christians, who were rapidly growing in the empire’s population. By the 5th century, Roman schools went into decline, disappearing in the following century (Williams 2016).\nAccording to Williams (2016), the intense instability of Europe after the fall of Rome, combined with the spread of Christianity, had a great impact on education, characterizing the early Middle Ages as a period of dense ignorance, not only among the general population but also among the nobility and only “slightly mitigated” among most of the clergy. He lists as causes for the prevalence of ignorance: 1) the rejection by the early Christians of their pagan oppressors, including their literature, not only because of its origin but also because of the mythology it carried; 2) Except for the Bible, books were expensive and rare compared to the empire, since they were handwritten and copied by slaves; 3) These few and expensive books were written in Latin, being unintelligible to the vast majority of the population, since the various dialects that emerged in the region after the barbarian invasions were not developed or predominant enough during the early Middle Ages; 4) The very idea and tradition of formal education was culturally lost, losing its value as something necessary; 5) Finally, from the 9th century onwards, with the expansion of the feudal system, isolation and the dangers associated with travel during the period increased the cost of obtaining education and carrying out the social interactions necessary for intellectual development.\nFormal education at the beginning of the Christian church was only catechumenal, and its main concern was the moral regeneration of society through the moral regeneration of converts (Williams 2016). Furthermore, the church’s educational effort was closed in on itself, with the aim of creating its theological base, and not aimed at the intellectual formation of the society it served:\nContrary to classical schools, early Christian education had no intellectual vocation, but its appeal was moral and emotional. In fact, the Greek and Roman models were entirely rejected—after all, pagan intellectual education was the only one available and parents did not want their children to have contact with and end up admiring the deities of Olympus. It is only in the middle of the 2nd century, with the foundation of the catechetical school of Alexandria, that members of the clergy begin to receive training based on Greek education and philosophy, systematically formalizing the Christian faith and doctrine, which increasingly received influence from Greek thought and philosophy. However, such a movement would be gradually reversed until the beginning of the 5th century, when the Council of Carthage, under the influence of Saint Augustine, definitively prohibited the reading of pagan authors by the clergy (Cubberley 1920).\nIn the 6th century, with the foundation of the monastery of Monte Cassino by Saint Benedict in 529 and the promulgation of the Benedictine rule in 529, monasteries became centers of education, open not only to boys willing to take vows, but also, later (9th century), to external students with no intention of taking vows. Monastic schools offered instruction in reading and writing (in Latin), music, Christian doctrine and rules of conduct. The copying of manuscripts and preservation of ancient books was one of the main activities of the monks, and among Christians, the preservation of classical literature was largely due to their efforts (Williams 2016).\nOutside the Roman Catholic world, the conservation of classical literature in Europe was partly due to the efforts of Saracen Spain in the west and the Byzantines in the east. Among the Mohammedans—here expanding the view to caliphates such as Baghdad, Bukhara, and Damascus—education began with literacy and study of the Quran, with teachers funded by the caliphate. For wealthy families, education continued with the teaching of logic, philosophy, theology, astronomy, and medicine. Unlike the European peoples of the early Middle Ages, dependent on Latin, the Saracens had Syriac translations of Greek science and Aristotelian philosophy, including Euclid’s mathematics and Diophantus’s algebra. They were also responsible for the creation of chemistry as a science, as well as great advances in algebra (Williams 2016).\nIn the following centuries, throughout the Late Middle Ages, the medieval educational system developed by the church became more organized, based on the Trivium and Quadrivium. However, education continued to be directed inward to the church, with theology as the only profession and career to be obtained through it.\nIn this sense, medieval Christian education was, in essence, an instrument for reproducing and perpetuating the church’s own power structure. For maintaining order and social hierarchy, not for the intellectual and critical formation of individuals.\nIn 1450, the movement to rescue classical literature and Greek and Roman philosophy, known as the Renaissance, began to spread across Europe from Italy, bringing with it the rediscovery of Greek and Arab mathematics, as well as adding the study of the humanities alongside moral and physical education. This period marks the break with clerical thought and education and lays the foundations for modern education. However, in form and content, there is little difference from classical Greek and Roman education. With the support of the ruling classes, the rise of Renaissance secondary schools and universities restored the education of Cicero’s time, which brought an aristocratic education, preparing for services in the Church, the State, and big business.\nThere are several other events in history that can be analyzed from the perspective of their impact on education: the Protestant Reformation1, which, among many other developments, generates a new level of religious tolerance for knowledge that eventually paves the way for the emergence of the modern scientific method (Cubberley 1920); the success of the Counter-Reformation and Jesuit education in the colonization processes, which “promoted the control of faith and morals of the inhabitants” (Rosário and Melo 2015); Puritanism in North America, which establishes the foundations of the American educational system. However, the purpose of this work is by no means to be exhaustive, but rather to argue a point.\nReturning to the initial question: what remains pure in education when social relations of exploitation and power are removed? This student, when beginning the reading for this chapter, hypothesized and expected to find evidence that pre-capitalist education had at its core curiosity and the human spirit, with a focus on the arts. However, history shows us that the common element that appears in all societies is the moral normalization of the individual and the reproduction of prevailing social relations, through the transmission of values and social norms and the training of the children of the ruling classes to occupy certain positions in society."
+  },
+  {
+    "objectID": "posts/202208_educacao-pre-capitalista/index.html#footnotes",
+    "href": "posts/202208_educacao-pre-capitalista/index.html#footnotes",
+    "title": "The Role Of Mathematics Education Under The Hegemony Of Capital",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nCalvin writes to the Prince of Geneva, in 1541, that “the liberal arts and good education are good aids in the full knowledge of the Word”.↩︎"
+  },
+  {
+    "objectID": "posts/202101_overfitting-resampling/index.html",
+    "href": "posts/202101_overfitting-resampling/index.html",
+    "title": "A Bit of Concepts: Overfitting & Resampling",
+    "section": "",
+    "text": "Although they are recurring terms in machine learning, resampling and overfitting are often discussed only in practice, frequently without a deep understanding. In this post1, I will try to introduce the concepts in a generic way."
+  },
+  {
+    "objectID": "posts/202101_overfitting-resampling/index.html#footnotes",
+    "href": "posts/202101_overfitting-resampling/index.html#footnotes",
+    "title": "A Bit of Concepts: Overfitting & Resampling",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nHeavily based on (Bischl B. 2012).↩︎"
+  },
+  {
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html",
+    "title": "Effect Size and Gender Income Inequality in Vitória",
+    "section": "",
+    "text": "There is still a lot to cover in this “Inference 101” series and, to continue our studies, I brought the 2017 RAIS (Annual Social Information Report) dataset1. With it, we will introduce the concept of effect size and, as a bonus, analyze gender inequality in our beloved capital, Vitória."
+  },
+  {
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#checking-the-normality-assumption",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#checking-the-normality-assumption",
+    "title": "Effect Size and Gender Income Inequality in Vitória",
+    "section": "2.1 CHECKING THE NORMALITY ASSUMPTION",
+    "text": "2.1 CHECKING THE NORMALITY ASSUMPTION\nWe know that the t-test is a parametric test and as discussed previously, when the data does not follow a distribution close to normal, we need to perform transformations to achieve normality.\nYou might think that with such a large sample, the Central Limit Theorem guarantees normality. However, especially with data containing many extreme outliers, the sample size required for convergence can be huge, practically invalidating the CLT assertion3. Therefore, I argue that we should still be careful with this assumption even when dealing with large samples.\nThe first analysis in this sense is visual. We can see that the distribution has a fat tail and is far from normal, both in the histogram and the Q-Q plot.\n\n# histogram\ndata %&gt;%\n  ggplot(aes(\n    x = rem_media,\n    fill = factor(sexo)\n  )) +\n  geom_histogram(binwidth = 500) +\n  coord_cartesian(xlim = c(0, 20000)) +\n  scale_y_continuous(labels = scales::number) +\n  scale_x_continuous(labels = scales::number) +\n  scale_fill_manual(\n    name = \"gender\",\n    labels = c(\"men\", \"women\"),\n    values = c(\"lightblue\", \"salmon\")\n  ) +\n  labs(\n    x = \"average income\",\n    y = \"count\",\n    title = \"DISTRIBUTION OF AVERAGE INCOME BETWEEN MEN AND WOMEN\",\n    subtitle = \"sample from the city of Vitória-ES\",\n    caption = \"source: Rais/2017\"\n  ) +\n  theme_minimal() +\n  theme(text = element_text(\n    family = \"Century Gothic\",\n    color = \"grey30\"\n  ))\n\n\n\n\n\n\n\n# qqplot\n# data will be on the line if normally distributed\npar(mfrow = c(1, 2))\n\nqqnorm(data[data$sexo == 1, ]$rem_media,\n  main = \"Q-Q PLOT: MEN\")\nqqline(data[data$sexo == 1, ]$rem_media)\n\nqqnorm(data[data$sexo == 2, ]$rem_media,\n  main = \"Q-Q PLOT: WOMEN\")\nqqline(data[data$sexo == 2, ]$rem_media)\n\n\n\n\n\n\n\n\nWe can perform an experiment to check the speed of convergence to the normal distribution. By calculating the distribution of a thousand means of 30 men each, if it shows a distribution close to normal we can assume normality and proceed. Otherwise, we will need to treat the data.\n\n# ensure reproducibility\nset.seed(1)\n\n# number of samples\nn = 1000\n\n# means\nmeans = rep(NA, n)\n\n# drawing samples and calculating means\nfor (i in 1:n) {\n  means[i] = mean(\n    sample(data[data$sexo == 1, ]$rem_media,\n      size = 30, replace = TRUE\n    )\n  )\n}\n\n# qqplot\nqqnorm(means)\nqqline(means)\n\n\n\n\n\n\n\n# visualization\nhist(means,\n    main = \"DISTRIBUTION OF SAMPLE MEANS\",\n    xlab = \"means\",\n    sub = \"seed = 1\"\n)\n\n\n\n\n\n\n\n\nPhew! The CLT held in our data and both the Q-Q plot and histogram showed a distribution close to normal, allowing us to proceed with the tests."
+  },
+  {
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#t-test",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#t-test",
+    "title": "Effect Size and Gender Income Inequality in Vitória",
+    "section": "2.2 T-TEST",
+    "text": "2.2 T-TEST\nNow that we’ve ensured the prerequisites, let’s test if the difference between means is significant. For this, we’ll use the {infer} package:\n\n# transforming `sexo` variable\ndata = data %&gt;%\n  mutate(sexo = ifelse(sexo == 1, \"man\", \"woman\"))\n\n# loading package\nlibrary(infer)\n\n# calculating t statistic\ncalculated_stat = data %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  calculate(stat = \"t\", order = c(\"man\", \"woman\"))\n\n# generating null distribution\nnull_dist = data %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  hypothesise(null = \"independence\") %&gt;%\n  generate(reps = 100, type = \"permute\") %&gt;%\n  calculate(stat = \"t\", order = c(\"man\", \"woman\"))\n\n# visualizing null distribution and test statistic\nnull_dist %&gt;%\n  visualize(method = \"both\") +\n  shade_p_value(calculated_stat, direction = \"greater\")\n\n\n\n\n\n\n\n# calculating p-value\nnull_dist %&gt;%\n  get_p_value(obs_stat = calculated_stat, direction = \"greater\")\n\n# A tibble: 1 × 1\n  p_value\n    &lt;dbl&gt;\n1       0\n\n\nWith a p-value of 0% and a calculated statistic miles away from the null distribution, it is clear that the difference is significant. However, this does not mean it is large or small. That’s where effect size indicators come in."
+  },
+  {
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#effect-size-cohens-d",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#effect-size-cohens-d",
+    "title": "Effect Size and Gender Income Inequality in Vitória",
+    "section": "2.3 EFFECT SIZE: Cohen’s D",
+    "text": "2.3 EFFECT SIZE: Cohen’s D\nIn this post I showed that sample size is crucial for the t-test and we tend to reject the null hypothesis as the sample size increases. Here, with more than 140,000 observations for each gender, it would be hard for these differences not to be significant. To complement this test, we can calculate the effect size using Cohen’s d statistic.\nWidely used in health experiments with paired t-tests, when it is necessary to define the effect of an action in a treatment group compared to a control group, Cohen’s d is an indicator of standardized differences and is particularly valuable for quantifying the effect of an intervention, whether in public policy or marketing actions in your company. This means it emphasizes the size of the difference between means, without confusing it with sample size.\nBecause it is standardized (i.e., not measured in the sample unit, here BR\\(, but in standard deviations), it can be easily compared across different experiments. Its calculation is as follows:\\)$ d = $$\nFor two fixed means, the smaller the standard deviation, the larger the d statistic. Conversely, the larger the standard deviation, the smaller the effect size.\nIn R, we’ll use the {effectsize} package:\n\n# loading package\nlibrary(effectsize)\n\n# calculating standardized difference\ncohens_d(\n  data[data$sexo == \"man\", ]$rem_media,\n  data[data$sexo == \"woman\", ]$rem_media\n)\n\nCohen's d |       95% CI\n------------------------\n0.26      | [0.25, 0.26]\n\n- Estimated using pooled SD.\n\n# interpreting d statistic\ninterpret_cohens_d(0.26, \"gignac2016\")\n\n[1] \"small\"\n(Rules: gignac2016)\n\n\nWith a statistic \\(d=0.26\\), the difference is considered small. On the Gignac & Szodorai (2016) scale:\n\nrules(\n  c(0.2, 0.41, 0.63),\n  c(\"very small\", \"small\", \"moderate\", \"large\"),\n  \"Gignac & Szodorai (2016)\"\n)\n\n# Reference Thresholds (Gignac & Szodorai (2016))\n\n         Label           \n-------------------------\n       very small &lt;=  0.2\n 0.2 &lt;   small    &lt;= 0.41\n0.41 &lt;  moderate  &lt;= 0.63\n0.63 &lt;   large           \n\n\nIn a situation of equity, 50% of women would have income below the average man, while the other half would have income above.\nAn effect of 0.26 means that 62% of women would have income below the average man in Vitória, while only 38% would earn more than the average man4.\nOf course, analyzing the aggregate means looking at the average. What about these differences among various professions?"
+  },
+  {
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#income-disparity-among-doctors",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#income-disparity-among-doctors",
+    "title": "Effect Size and Gender Income Inequality in Vitória",
+    "section": "3.1 INCOME DISPARITY AMONG DOCTORS",
+    "text": "3.1 INCOME DISPARITY AMONG DOCTORS\nFirst, let’s check the significance of the difference. As expected, it is significant.\n\n# calculating t statistic\ncalculated_stat = data %&gt;%\n  filter(str_detect(profissao, \"Médico\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  calculate(stat = \"t\", order = c(\"man\", \"woman\"))\n\n# generating null distribution\nnull_dist = data %&gt;%\n  filter(str_detect(profissao, \"Médico\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  hypothesise(null = \"independence\") %&gt;%\n  generate(reps = 100, type = \"permute\") %&gt;%\n  calculate(stat = \"t\", order = c(\"man\", \"woman\"))\n\n# calculating confidence interval\npercentile_ci = get_ci(null_dist)\n\n# visualizing null distribution and test statistic\nnull_dist %&gt;%\n  visualize(method = \"both\") +\n  shade_p_value(calculated_stat, direction = \"greater\") +\n  shade_confidence_interval(endpoints = percentile_ci)\n\n\n\n\n\n\n\n# calculating p-value\nnull_dist %&gt;%\n  get_p_value(obs_stat = calculated_stat, direction = \"greater\")\n\n# A tibble: 1 × 1\n  p_value\n    &lt;dbl&gt;\n1       0\n\n\nNext, let’s calculate the effect size.\n\n # calculating standardized difference\n cohens_d(\n   data[data$sexo == \"man\" &\n     str_detect(data$profissao, \"Médico\"), ]$rem_media,\n   data[data$sexo == \"woman\" &\n     str_detect(data$profissao, \"Médico\"), ]$rem_media\n )\n\nCohen's d |       95% CI\n------------------------\n0.12      | [0.06, 0.19]\n\n- Estimated using pooled SD.\n\n # interpreting d statistic\n interpret_cohens_d(0.12, \"gignac2016\")\n\n[1] \"very small\"\n(Rules: gignac2016)\n\n\nWith a d statistic of 0.12, we have a very small effect on the Gignac & Szodorai (2016) scale. This means that 54% of female doctors in Vitória would have income below the average male doctor in the city, while 46% would earn more than the average male doctor."
+  },
+  {
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#income-disparity-in-executive-positions",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#income-disparity-in-executive-positions",
+    "title": "Effect Size and Gender Income Inequality in Vitória",
+    "section": "3.2 INCOME DISPARITY IN EXECUTIVE POSITIONS",
+    "text": "3.2 INCOME DISPARITY IN EXECUTIVE POSITIONS\nRepeating the same procedure for people in executive positions, we see that the difference is also significant.\n\n# calculating t statistic\ncalculated_stat = data %&gt;%\n  filter(str_detect(profissao, \"Dirigentes|Diretor\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  calculate(stat = \"t\", order = c(\"man\", \"woman\"))\n\n# generating null distribution\nnull_dist &lt;- data %&gt;%\n  filter(str_detect(profissao, \"Dirigentes|Diretor\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  hypothesise(null = \"independence\") %&gt;%\n  generate(reps = 100, type = \"permute\") %&gt;%\n  calculate(stat = \"t\", order = c(\"man\", \"woman\"))\n\n# calculating confidence interval\npercentile_ci &lt;- get_ci(null_dist)\n\n# visualizing null distribution and test statistic\nnull_dist %&gt;%\n  visualize(method = \"both\") +\n  shade_p_value(calculated_stat, direction = \"greater\") +\n  shade_confidence_interval(endpoints = percentile_ci)\n\n\n\n\n\n\n\n\nAnd calculating the effect size:\n\n # calculating standardized difference\n cohens_d(\n   data[data$sexo == \"man\" &\n     str_detect(data$profissao, \"Dirigentes|Diretor\"), ]$rem_media,\n   data[data$sexo == \"woman\" &\n     str_detect(data$profissao, \"Dirigentes|Diretor\"), ]$rem_media\n )\n\nCohen's d |       95% CI\n------------------------\n0.47      | [0.30, 0.63]\n\n- Estimated using pooled SD.\n\n # interpreting d statistic\n interpret_cohens_d(0.47, \"gignac2016\")\n\n[1] \"moderate\"\n(Rules: gignac2016)\n\n\nWith a d statistic of 0.47, we have a moderate effect on the Gignac & Szodorai (2016) scale. This means that 69% of women in executive and director positions would earn less than the average man in the same position."
+  },
+  {
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#footnotes",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#footnotes",
+    "title": "Effect Size and Gender Income Inequality in Vitória",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nI chose 2017 because the most recent data is grouped with Minas Gerais and Rio de Janeiro, making it too heavy for a casual analysis.↩︎\nComprehensive R Archive Network.↩︎\nThere are several studies on this, see this example.↩︎\nThe effect size interpretation table can be found in this article.↩︎"
+  },
+  {
+    "objectID": "posts/202009_hello-world/index.html",
+    "href": "posts/202009_hello-world/index.html",
+    "title": "Hello World",
+    "section": "",
+    "text": "After a couple of posts on LinkedIn and Kaggle, it was about time for me to set up my own blog for data science, wasn’t it?\nFirst things first, what’s with the name? Datamares & Dreamscapes refers to the title of a Stephen King short story collection Nightmares & Dreamscapes and quite fittingly describes my relationship with this world. I always want to learn more, go further, conquer new horizons, but learning involves certain sacrifices and sleepless or poorly slept nights. However, when you achieve that expected result, it’s as if a portal opens to a new world.\nSo, what do I intend to talk about here? Mainly about the R projects I’m working on, machine learning, classical statistics, forecasting, frameworks… and a bit of mathematics, economics, and teaching. Basically ideas, insights, and works that I might need to revisit from time to time.\nAnd if any of these things help you in some way, I’ll be very happy :p"
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html",
+    "href": "posts/202011_chutou-ou-nao/index.html",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "",
+    "text": "In the previous post, I talked about the t-test for two independent samples. Coincidentally, the next day, this question appeared on the math forum where I contribute. We can’t miss this opportunity, can we?"
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#state-the-null-and-alternative-hypotheses",
+    "href": "posts/202011_chutou-ou-nao/index.html#state-the-null-and-alternative-hypotheses",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "3.1 State the null and alternative hypotheses",
+    "text": "3.1 State the null and alternative hypotheses\n\\[\\begin{cases}\n      H_0: \\mu = 0.25 \\\\\n      H_1: \\mu \\neq 0.25 \\\\\n    \\end{cases}\\]\nThe null hypothesis is that we cannot state that the observed mean of correct answers is significantly different from the expected mean. The alternative hypothesis is that they are significantly different."
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#state-the-significance-level",
+    "href": "posts/202011_chutou-ou-nao/index.html#state-the-significance-level",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "3.2 State the significance level",
+    "text": "3.2 State the significance level\n\\[\\alpha = 0.02\\] The \\(\\alpha = 0.02\\) is what gives meaning to the term significantly different. It is the probability of making a type II error, that is, rejecting the null hypothesis when it should not be rejected. The lower the \\(\\alpha\\), the greater the difference between the means must be for it to be considered significant."
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#calculate-the-test-statistic",
+    "href": "posts/202011_chutou-ou-nao/index.html#calculate-the-test-statistic",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "3.3 Calculate the test statistic",
+    "text": "3.3 Calculate the test statistic\n\\[z = \\frac{\\bar{x} - \\mu_0}{\\frac{\\sigma}{\\sqrt{n}}}\\] Note that: \\[\\lim_{n \\to \\infty}z(n) = \\infty\\] We can reject the null hypothesis if the critical \\(z\\) is greater than the tabulated \\(z\\). As \\(n\\) increases, eventually the difference will be significant, demonstrating mathematically what we verified intuitively."
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#calculate-the-critical-value",
+    "href": "posts/202011_chutou-ou-nao/index.html#calculate-the-critical-value",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "3.4 Calculate the critical value",
+    "text": "3.4 Calculate the critical value\n\\[z = \\frac{0.3125 - 0.25}{\\frac{0.464}{\\sqrt{400}}} = 2.693\\]"
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#decide-whether-to-reject-the-null-hypothesis",
+    "href": "posts/202011_chutou-ou-nao/index.html#decide-whether-to-reject-the-null-hypothesis",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "3.5 Decide whether to reject the null hypothesis",
+    "text": "3.5 Decide whether to reject the null hypothesis\nSince the value 2.693 exceeds the \\(z\\) value at 98% significance (2.33), we can reject the null hypothesis. The difference is significant and cannot be attributed to sampling chance."
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#ok-but-what-about-in-r",
+    "href": "posts/202011_chutou-ou-nao/index.html#ok-but-what-about-in-r",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "3.6 Ok, but what about in R?",
+    "text": "3.6 Ok, but what about in R?\nIn R, the test couldn’t be simpler:\n\nt.test(data, mu = 0.25, conf.level = 0.98)\n\n\n    One Sample t-test\n\ndata:  data\nt = 2.6934, df = 399, p-value = 0.00737\nalternative hypothesis: true mean is not equal to 0.25\n98 percent confidence interval:\n 0.2583002 0.3666998\nsample estimates:\nmean of x \n   0.3125 \n\n\nNote that 0.25 is not in the confidence interval, so we can reject \\(H_0\\). As an illustration, so that we could not reject the null hypothesis, we would have to increase the significance level to 1 - p-value, that is, to 99.263%:\n\nt.test(data, mu = 0.25, conf.level = 0.99263)\n\n\n    One Sample t-test\n\ndata:  data\nt = 2.6934, df = 399, p-value = 0.00737\nalternative hypothesis: true mean is not equal to 0.25\n99.263 percent confidence interval:\n 0.2499995 0.3750005\nsample estimates:\nmean of x \n   0.3125 \n\n\nOr increase the mean to 25.83%:\n\nt.test(data, mu = 0.2583, conf.level = 0.98)\n\n\n    One Sample t-test\n\ndata:  data\nt = 2.3357, df = 399, p-value = 0.02\nalternative hypothesis: true mean is not equal to 0.2583\n98 percent confidence interval:\n 0.2583002 0.3666998\nsample estimates:\nmean of x \n   0.3125 \n\n\nMuch easier than doing it by hand, right?"
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#footnotes",
+    "href": "posts/202011_chutou-ou-nao/index.html#footnotes",
+    "title": "Guessed or not? The one-sample t-test",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nOr a thousand, 10 thousand, 100 thousand… The larger \\(n\\) is, the harder it is to cause changes in the standard deviation, so the uncertainty is increasingly smaller.↩︎"
+  },
+  {
+    "objectID": "posts/202208_template/index.html",
+    "href": "posts/202208_template/index.html",
+    "title": "Template for Theses in Quarto",
+    "section": "",
+    "text": "Since I’m starting to write my thesis this semester, why not kill two birds with one stone (sorry, Luisa Mell) and get to know this Quarto everyone is talking about? Well, here is a template for monograph/thesis/dissertation in Quarto1.\nTo make life easier (or not, time will tell), I parameterized the pre-textual elements — cover, title page, approval sheet, abstract, summary, etc. Here they are:\nTo use it, first the prerequisites:\nNow you can fork the project and get started! Just update the parameters in config/preamble.tex and write your work in dissertacao.qmd:"
+  },
+  {
+    "objectID": "posts/202208_template/index.html#footnotes",
+    "href": "posts/202208_template/index.html#footnotes",
+    "title": "Template for Theses in Quarto",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis template is an adaptation of the standard UEL model.↩︎\nFor R users, the easiest way is via tinytex::install_tinytex().↩︎"
   }
 ]
