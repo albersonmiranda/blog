@@ -37,3 +37,10 @@ Um pacote R que ajuda a criar pacotes compatíveis com {extendr} ou a compilar c
 
 `r icon_link("github", "Código", "https://github.com/extendr/rextendr")`
 `r icon_link("globe", "Site", "https://extendr.github.io/rextendr/")`
+
+## `r_tools_ppa` (autor)
+
+Este é um Personal Package Archive (PPA) para distribuir as versões mais recentes do RStudio, Quarto e Positron para usuários Linux. Ele fornece pacotes .deb para distribuições baseadas em Ubuntu e Debian, e pacotes .rpm para distribuições baseadas em Fedora e Red Hat.
+
+`r icon_link("github", "Código", "https://github.com/albersonmiranda/r_tools_ppa")`
+`r icon_link("globe", "Site", "https://albersonmiranda.github.io/r_tools_ppa/")`
