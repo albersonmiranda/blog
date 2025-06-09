@@ -10,7 +10,146 @@
 <atom:link href="https://datamares.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description>Data science, statistics and programming blog by Alberson Miranda.</description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Sat, 19 Apr 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 09 Jun 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Creating a Linux Personal Package Archive (PPA)</title>
+  <dc:creator>Alberson Miranda</dc:creator>
+  <link>https://datamares.netlify.app/posts/202506_ppa/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TL;DR
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There’s a new <a href="https://github.com/albersonmiranda/r_tools_ppa">PPA</a> available for Ubuntu and Fedora users that allows you to install the latest versions of RStudio, Quarto and Positron with a single command. This PPA is maintained by me and is updated daily with the latest versions of these tools.</p>
+</div>
+</div>
+<p>As a millenial, I grew up pirating stuff from the internet. From Windows XP to Adobe CS5, nothing was safe from my teenage rebeldy. As I grew older, I’ve got tired of propietary software and decided to give a chance to open source alternatives. I fell in love with Ubuntu and short after I’ve tried Fedora and got to enjoy it even more! One of the thing that hooked me is the fact that I can install almost any software I want with a single command — and keep it updated! This is possible thanks to the Linux package management system, which allows users to install, update, and remove software packages easily. But not all software is available in the official repositories, and that’s where Personal Package Archives (PPAs) come in handy. PPAs are a way for developers to distribute their software to Ubuntu users, and they can be used to install software that is not available in the official repositories or to get the latest version of a package. In this post, I will show you how to create your own PPA and how to use it to distribute your software.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is a PPA?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A Personal Package Archive (PPA) is a software repository that allows developers to distribute their software to Ubuntu users. That’s a Debian based nomenclature, but the concept is similar in other Linux distributions and I’ll call it PPA throughout this post.</p>
+</div>
+</div>
+<section id="easy-installation-for-rstudio-quarto-and-positron" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="easy-installation-for-rstudio-quarto-and-positron"><span class="header-section-number">1</span> Easy installation for RStudio, Quarto and Positron</h2>
+<p>Right now, there are no official repositories for Rstudio, Quarto or Positron for Linux. This means that users have to download the binaries from their respective websites and install them manually. But I wanted the same experience of macOS users, who can count on Positron software distribution via Homebrew. There are some unofficial PPAs available for Rstudio, but I couldn’t find any for Quarto or Positron, So I’ve decided to make my own and share with you!</p>
+<p>What <a href="https://github.com/albersonmiranda/r_tools_ppa">this project</a> do is scraping the urls for the latest versions of Rstudio, Quarto and Positron from their respective websites or Github releases, download the files, upload them to <a href="https://sourceforge.net/projects/r-tools-ppa/files/">Sourceforge</a> and finally create a PPA that can be used to install these tools on Ubuntu, Fedora and other Linux distributions.</p>
+</section>
+<section id="support" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="support"><span class="header-section-number">2</span> Support</h2>
+<ul>
+<li>.deb packages for Ubuntu and Debian-based distributions.
+<ul>
+<li>Rstudio (amd64)</li>
+<li>Quarto (amd64 and arm64)</li>
+<li>Positron (amd64 and arm64)</li>
+</ul></li>
+<li>.rpm packages for Fedora and Red Hat-based distributions.
+<ul>
+<li>Rstudio (x86_64)</li>
+<li>Positron (x86_64 and aarch64)</li>
+<li>Quarto (x86_64)</li>
+</ul></li>
+</ul>
+</section>
+<section id="debianubuntu-installation" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="debianubuntu-installation"><span class="header-section-number">3</span> Debian/Ubuntu Installation</h2>
+<p>To enable this repository and install the latest RStudio, Quarto, or Positron:</p>
+<ol type="1">
+<li><p>Add the repository (amd64):</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"deb [trusted=yes] https://downloads.sourceforge.net/project/r-tools-ppa/deb_amd64 stable main"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> tee /etc/apt/sources.list.d/r_tools_ppa.list</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> apt update</span></code></pre></div>
+<p>Or for arm64:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"deb [trusted=yes] https://downloads.sourceforge.net/project/r-tools-ppa/deb_arm64 stable main"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> tee /etc/apt/sources.list.d/r_tools_ppa.list</span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> apt update</span></code></pre></div></li>
+<li><p>Install a package (e.g., RStudio):</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> apt install rstudio</span></code></pre></div></li>
+</ol>
+</section>
+<section id="fedorared-hat-installation" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="fedorared-hat-installation"><span class="header-section-number">4</span> Fedora/Red Hat Installation</h2>
+<p>To enable this repository and install the latest RStudio, Quarto, or Positron:</p>
+<ol type="1">
+<li><p>Download the repository file:</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> curl <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-L</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-o</span> /etc/yum.repos.d/r_tools_ppa.repo <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-2">  https://sourceforge.net/projects/r-tools-ppa/files/rpm_x86_64/repo.txt/download</span></code></pre></div>
+<p>Or for aarch64 architecture:</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> curl <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-o</span> /etc/yum.repos.d/r_tools_ppa.repo <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb5-2">  https://sourceforge.net/projects/r-tools-ppa/files/rpm_aarch64/repo.txt/download</span></code></pre></div></li>
+<li><p>Update &amp; install (e.g., RStudio):</p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> dnf update</span>
+<span id="cb6-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> dnf install rstudio</span></code></pre></div></li>
+</ol>
+
+
+</section>
+
+ ]]></description>
+  <category>tools</category>
+  <guid>https://datamares.netlify.app/posts/202506_ppa/</guid>
+  <pubDate>Mon, 09 Jun 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>All models are wrong, but some are useless</title>
   <dc:creator>Alberson Miranda</dc:creator>

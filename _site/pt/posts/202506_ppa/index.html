@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt">
 <head>
-<link rel="alternate" hreflang="en" href="https://datamares.netlify.app/software.html" />
-<link rel="alternate" hreflang="pt" href="https://datamares.netlify.app/pt/software.pt.html" />
+<link rel="alternate" hreflang="en" href="https://datamares.netlify.app/posts/202506_ppa/index.html" />
+<link rel="alternate" hreflang="pt" href="https://datamares.netlify.app/pt/posts/202506_ppa/index.pt.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.31">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="dcterms.date" content="2025-06-09">
-<title>Software – Datamares &amp; Dreamscapes</title>
+<meta name="author" content="Alberson Miranda">
+<title>Criando um Personal Package Archive (PPA) no Linux – Datamares &amp; Dreamscapes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,17 +21,52 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-<script src="site_libs/quarto-nav/quarto-nav.js"></script><script src="site_libs/quarto-nav/headroom.min.js"></script><script src="site_libs/clipboard/clipboard.min.js"></script><script src="site_libs/quarto-search/autocomplete.umd.js"></script><script src="site_libs/quarto-search/fuse.min.js"></script><script src="site_libs/quarto-search/quarto-search.js"></script><meta name="quarto:offset" content="./">
-<link href="./assets/logo/favicon-256x256.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script><script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="site_libs/quarto-html/popper.min.js"></script><script src="site_libs/quarto-html/tippy.umd.min.js"></script><script src="site_libs/quarto-html/anchor.min.js"></script><link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script><link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6a4c75c897c7090e25337f92bebeec5a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-0c23511428beaf87b29bbdf0654d5814.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-6a4c75c897c7090e25337f92bebeec5a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><meta name="quarto:offset" content="../../">
+<link href="../../assets/logo/favicon-256x256.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6a4c75c897c7090e25337f92bebeec5a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-0c23511428beaf87b29bbdf0654d5814.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6a4c75c897c7090e25337f92bebeec5a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -46,17 +81,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
   }
 }</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-B65R9LH9ES"></script><script type="text/javascript">
 
@@ -64,9 +99,9 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
-</script><link rel="stylesheet" href="styles.css">
+</script><link rel="stylesheet" href="../../styles.css">
 </head>
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 <script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -230,37 +265,37 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
       toggleColorMode(false);
     }
   </script><div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./assets/logo/logo.png" alt="" class="navbar-logo"></a>
-    <a class="navbar-brand" href="./index.html">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo/logo.png" alt="" class="navbar-logo"></a>
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Datamares &amp; Dreamscapes</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item"><div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> English</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://datamares.netlify.app/pt/software.html" id="language-link-pt">Português</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> Português</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://datamares.netlify.app/posts/202506_ppa/index.html" id="language-link-en">English</a></li></ul>
 </div></li>
 <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./software.html" aria-current="page"> 
+    <a class="nav-link" href="../../software.html"> 
 <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./assets/cv.pdf"> 
+    <a class="nav-link" href="../../assets/cv.pdf"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -279,65 +314,144 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
 </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Criando um Personal Package Archive (PPA) no Linux</h1>
+            <p class="subtitle lead">Como criei meu próprio PPA para distribuir RStudio, Quarto e Positron.</p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">ferramentas</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Autor</div>
+      <div class="quarto-title-meta-contents">
+               <p>Alberson Miranda </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Data de Publicação</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">9 de junho de 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
-<!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Software</h1>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+<li><a href="#instala%C3%A7%C3%A3o-f%C3%A1cil-para-rstudio-quarto-e-positron" id="toc-instalação-fácil-para-rstudio-quarto-e-positron" class="nav-link active" data-scroll-target="#instalação-fácil-para-rstudio-quarto-e-positron"><span class="header-section-number">1</span> Instalação fácil para RStudio, Quarto e Positron</a></li>
+  <li><a href="#suporte" id="toc-suporte" class="nav-link" data-scroll-target="#suporte"><span class="header-section-number">2</span> Suporte</a></li>
+  <li><a href="#instala%C3%A7%C3%A3o-no-debianubuntu" id="toc-instalação-no-debianubuntu" class="nav-link" data-scroll-target="#instalação-no-debianubuntu"><span class="header-section-number">3</span> Instalação no Debian/Ubuntu</a></li>
+  <li><a href="#instala%C3%A7%C3%A3o-no-fedorared-hat" id="toc-instalação-no-fedorared-hat" class="nav-link" data-scroll-target="#instalação-no-fedorared-hat"><span class="header-section-number">4</span> Instalação no Fedora/Red Hat</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/albersonmiranda/blog/issues" class="toc-action"><i class="bi bi-github"></i>Criar uma issue</a></li></ul></div></nav>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 9, 2025</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header><section id="fio-author" class="level2"><h2 class="anchored" data-anchor-id="fio-author">
-<code>fio</code> (author) <img src="https://raw.githubusercontent.com/albersonmiranda/fio/main/man/figures/leontief.jpg?raw=true" align="right" alt="" width="120">
-</h2>
-<p>R package designed for input-output analysis, emphasizing usability for Excel users and performance. It includes an RStudio Addin and a suite of functions for straightforward import of input-output tables from Excel, either programmatically or directly from the clipboard.</p>
-<p>The package is optimized for speed and efficiency. It leverages the R6 class for clean, memory-efficient object-oriented programming. Furthermore, all linear algebra computations are implemented in Rust to achieve highly optimized performance.</p>
-<p><a href="https://github.com/albersonmiranda/fio" class="icon-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a> <a href="https://albersonmiranda.github.io/fio/" class="icon-link" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Website</a></p>
-</section><section id="biodiversity-author" class="level2"><h2 class="anchored" data-anchor-id="biodiversity-author">
-<code>biodiversity</code> (author) <img src="assets/img/globalbiodiversity.png" align="right" alt="" width="120">
-</h2>
-<p>Docker image containing a Shiny app for visualizing global biodiversity data. This project provides an interactive platform to explore biodiversity data from the GBIF. Users can view datasets, maps, and timelines of species observations. It showcases my skills on making beautiful landing pages even for Shiny apps. A deployed version can be found <a href="https://albersonmiranda.shinyapps.io/Global_Biodiversity/">here</a>.</p>
-<p><a href="https://github.com/albersonmiranda/global_biodiversity" class="icon-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a> <a href="https://hub.docker.com/r/albersonmiranda/biodiversity" class="icon-link" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Website</a></p>
-</section><section id="rextendr-contributor" class="level2"><h2 class="anchored" data-anchor-id="rextendr-contributor">
-<code>rextendr</code> (contributor) <img src="https://raw.githubusercontent.com/extendr/rextendr/main/man/figures/rextendr-logo.png" align="right" alt="" width="120">
-</h2>
-<p>An R package that helps scaffolding extendr-enabled packages or compiling Rust code dynamically.</p>
-<p><a href="https://github.com/extendr/rextendr" class="icon-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a> <a href="https://extendr.github.io/rextendr/" class="icon-link" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Website</a></p>
-</section><section id="r_tools_ppa-author" class="level2"><h2 class="anchored" data-anchor-id="r_tools_ppa-author">
-<code>r_tools_ppa</code> (author)</h2>
-<p>This is a Personal Package Archive (PPA) for distributing the latest versions of RStudio, Quarto, and Positron for Linux users. It provides .deb packages for Ubuntu and Debian-based distributions, and .rpm packages for Fedora and Red Hat-based distributions.</p>
-<p><a href="https://github.com/albersonmiranda/r_tools_ppa" class="icon-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a> <a href="https://albersonmiranda.github.io/r_tools_ppa/" class="icon-link" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Website</a></p>
-
-
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content"><div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TL;DR
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Há um novo <a href="https://github.com/albersonmiranda/r_tools_ppa">PPA</a> disponível para usuários de Ubuntu e Fedora que permite instalar as versões mais recentes do RStudio, Quarto e Positron com um único comando. Este PPA é mantido por mim e é atualizado diariamente com as versões mais recentes dessas ferramentas.</p>
+</div>
+</div>
+<p>Como um millennial, cresci pirateando coisas da internet. Do Windows XP ao Adobe CS5, nada estava a salvo da minha rebeldia adolescente. Com o tempo, cansei de softwares proprietários e decidi dar uma chance às alternativas de código aberto. Me apaixonei pelo Ubuntu e logo depois experimentei o Fedora, que gostei ainda mais! Uma das coisas que me conquistou foi o fato de poder instalar praticamente qualquer software com um único comando — e mantê-lo atualizado! Isso é possível graças ao sistema de gerenciamento de pacotes do Linux, que permite instalar, atualizar e remover softwares facilmente. Mas nem todo software está disponível nos repositórios oficiais, e é aí que os Personal Package Archives (PPAs) são úteis. PPAs são uma forma de desenvolvedores distribuírem seus softwares para usuários do Ubuntu, podendo ser usados para instalar programas que não estão nos repositórios oficiais ou obter a versão mais recente de um pacote. Neste post, vou mostrar como criar seu próprio PPA e como usá-lo para distribuir seu software.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+O que é um PPA?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Um Personal Package Archive (PPA) é um repositório de software que permite aos desenvolvedores distribuir seus programas para usuários do Ubuntu. Esse é um termo do mundo Debian, mas o conceito é semelhante em outras distribuições Linux e vou chamá-lo de PPA ao longo deste post.</p>
+</div>
+</div>
+<section id="instalação-fácil-para-rstudio-quarto-e-positron" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="instalação-fácil-para-rstudio-quarto-e-positron">
+<span class="header-section-number">1</span> Instalação fácil para RStudio, Quarto e Positron</h2>
+<p>Atualmente, não há repositórios oficiais para RStudio, Quarto ou Positron no Linux. Isso significa que os usuários precisam baixar os binários dos sites oficiais e instalar manualmente. Mas eu queria a mesma experiência dos usuários de macOS, que contam com a distribuição dos softwares da Positron via Homebrew. Existem alguns PPAs não oficiais para o RStudio, mas não encontrei nenhum para o Quarto ou Positron. Então decidi criar o meu próprio e compartilhar com vocês!</p>
+<p>O que <a href="https://github.com/albersonmiranda/r_tools_ppa">este projeto</a> faz é buscar as URLs das versões mais recentes do RStudio, Quarto e Positron em seus respectivos sites ou releases do Github, baixar os arquivos, enviá-los para o <a href="https://sourceforge.net/projects/r-tools-ppa/files/">Sourceforge</a> e finalmente criar um PPA que pode ser usado para instalar essas ferramentas no Ubuntu, Fedora e outras distribuições Linux.</p>
+</section><section id="suporte" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="suporte">
+<span class="header-section-number">2</span> Suporte</h2>
+<ul>
+<li>Pacotes .deb para distribuições baseadas em Ubuntu e Debian.
+<ul>
+<li>RStudio (amd64)</li>
+<li>Quarto (amd64 e arm64)</li>
+<li>Positron (amd64 e arm64)</li>
+</ul>
+</li>
+<li>Pacotes .rpm para distribuições baseadas em Fedora e Red Hat.
+<ul>
+<li>RStudio (x86_64)</li>
+<li>Positron (x86_64 e aarch64)</li>
+<li>Quarto (x86_64)</li>
+</ul>
+</li>
+</ul></section><section id="instalação-no-debianubuntu" class="level2" data-number="3"><h2 data-number="3" class="anchored" data-anchor-id="instalação-no-debianubuntu">
+<span class="header-section-number">3</span> Instalação no Debian/Ubuntu</h2>
+<p>Para habilitar este repositório e instalar a versão mais recente do RStudio, Quarto ou Positron:</p>
+<ol type="1">
+<li>
+<p>Adicione o repositório (amd64):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"deb [trusted=yes] https://downloads.sourceforge.net/project/r-tools-ppa/deb_amd64 stable main"</span> <span class="kw">|</span> <span class="fu">sudo</span> tee /etc/apt/sources.list.d/r_tools_ppa.list</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ou para arm64:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"deb [trusted=yes] https://downloads.sourceforge.net/project/r-tools-ppa/deb_arm64 stable main"</span> <span class="kw">|</span> <span class="fu">sudo</span> tee /etc/apt/sources.list.d/r_tools_ppa.list</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</li>
+<li>
+<p>Instale um pacote (ex: RStudio):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install rstudio</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</li>
+</ol></section><section id="instalação-no-fedorared-hat" class="level2" data-number="4"><h2 data-number="4" class="anchored" data-anchor-id="instalação-no-fedorared-hat">
+<span class="header-section-number">4</span> Instalação no Fedora/Red Hat</h2>
+<p>Para habilitar este repositório e instalar a versão mais recente do RStudio, Quarto ou Positron:</p>
+<ol type="1">
+<li>
+<p>Baixe o arquivo do repositório:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> curl <span class="at">-L</span> <span class="at">-o</span> /etc/yum.repos.d/r_tools_ppa.repo <span class="dt">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  https://sourceforge.net/projects/r-tools-ppa/files/rpm_x86_64/repo.txt/download</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ou para arquitetura aarch64:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> curl <span class="at">-o</span> /etc/yum.repos.d/r_tools_ppa.repo <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  https://sourceforge.net/projects/r-tools-ppa/files/rpm_aarch64/repo.txt/download</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</li>
+<li>
+<p>Atualize e instale (ex: RStudio):</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf update</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install rstudio</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -375,12 +489,12 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copiada");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copiada");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -748,7 +862,36 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
       }
     }
   });
-  </script>
+  </script><input type="hidden" id="giscus-base-theme" value="preferred_color_scheme"><input type="hidden" id="giscus-alt-theme" value="preferred_color_scheme"><script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "albersonmiranda/blog";
+    script.dataset.repoId = "MDEwOlJlcG9zaXRvcnkyOTQ1NjA1MjM=";
+    script.dataset.category = "Announcements";
+    script.dataset.categoryId = "DIC_kwDOEY6jC84CpU2y";
+    script.dataset.mapping = "title";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "bottom";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
@@ -756,7 +899,7 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 </div>   
     <div class="nav-footer-center">
        
-    <div class="toc-actions"><ul><li><a href="https://github.com/albersonmiranda/blog/issues" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/albersonmiranda/blog/issues" class="toc-action"><i class="bi bi-github"></i>Criar uma issue</a></li></ul></div>
 </div>
     <div class="nav-footer-right">
        
