@@ -1,0 +1,102 @@
+---
+title: "Creating a Linux Personal Package Archive (PPA)"
+subtitle: "How I created my own PPA to distribute RStudio, Quarto and Positron."
+date: "2025-06-09"
+categories: [tools]
+---
+
+```{r options, include = FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  out.width = "100%",
+  warnings = FALSE,
+  message = FALSE
+)
+
+# packages
+
+```
+
+::: {.callout-tip}
+## TL;DR
+
+There's a new [PPA](https://github.com/albersonmiranda/r_tools_ppa) available for Ubuntu and Fedora users that allows you to install the latest versions of RStudio, Quarto and Positron with a single command. This PPA is maintained by me and is updated daily with the latest versions of these tools.
+
+:::
+
+As a millenial, I grew up pirating stuff from the internet. From Windows XP to Adobe CS5, nothing was safe from my teenage rebeldy. As I grew older, I've got tired of propietary software and decided to give a chance to open source alternatives. I fell in love with Ubuntu and short after I've tried Fedora and got to enjoy it even more! One of the thing that hooked me is the fact that I can install almost any software I want with a single command --- and keep it updated! This is possible thanks to the Linux package management system, which allows users to install, update, and remove software packages easily. But not all software is available in the official repositories, and that's where Personal Package Archives (PPAs) come in handy. PPAs are a way for developers to distribute their software to Ubuntu users, and they can be used to install software that is not available in the official repositories or to get the latest version of a package. In this post, I will show you how to create your own PPA and how to use it to distribute your software.
+
+::: {.callout-tip}
+## What is a PPA?
+
+A Personal Package Archive (PPA) is a software repository that allows developers to distribute their software to Ubuntu users. That's a Debian based nomenclature, but the concept is similar in other Linux distributions and I'll call it PPA throughout this post.
+
+:::
+
+## Easy installation for RStudio, Quarto and Positron
+
+Right now, there are no official repositories for Rstudio, Quarto or Positron for Linux. This means that users have to download the binaries from their respective websites and install them manually. But I wanted the same experience of macOS users, who can count on Positron software distribution via Homebrew. There are some unofficial PPAs available for Rstudio, but I couldn't find any for Quarto or Positron, So I've decided to make my own and share with you!
+
+What [this project](https://github.com/albersonmiranda/r_tools_ppa) do is scraping the urls for the latest versions of Rstudio, Quarto and Positron from their respective websites or Github releases, download the files, upload them to [Sourceforge](https://sourceforge.net/projects/r-tools-ppa/files/) and finally create a PPA that can be used to install these tools on Ubuntu, Fedora and other Linux distributions.
+
+## Support
+
+- .deb packages for Ubuntu and Debian-based distributions.
+  - Rstudio (amd64)
+  - Quarto (amd64 and arm64)
+  - Positron (amd64 and arm64)
+- .rpm packages for Fedora and Red Hat-based distributions.
+  - Rstudio (x86_64)
+  - Positron (x86_64 and aarch64)
+  - Quarto (x86_64)
+
+## Debian/Ubuntu Installation
+
+To enable this repository and install the latest RStudio, Quarto, or
+Positron:
+
+1.  Add the repository (amd64):
+
+    ``` bash
+    echo "deb [trusted=yes] https://downloads.sourceforge.net/project/r-tools-ppa/deb_amd64 stable main" | sudo tee /etc/apt/sources.list.d/r_tools_ppa.list
+    sudo apt update
+    ```
+
+    Or for arm64:
+
+    ``` bash
+    echo "deb [trusted=yes] https://downloads.sourceforge.net/project/r-tools-ppa/deb_arm64 stable main" | sudo tee /etc/apt/sources.list.d/r_tools_ppa.list
+    sudo apt update
+    ```
+
+2.  Install a package (e.g., RStudio):
+
+    ``` bash
+    sudo apt install rstudio
+    ```
+
+## Fedora/Red Hat Installation
+
+To enable this repository and install the latest RStudio, Quarto, or
+Positron:
+
+1.  Download the repository file:
+
+    ``` bash
+    sudo curl -L -o /etc/yum.repos.d/r_tools_ppa.repo \
+      https://sourceforge.net/projects/r-tools-ppa/files/rpm_x86_64/repo.txt/download
+    ```
+
+    Or for aarch64 architecture:
+
+    ``` bash
+    sudo curl -o /etc/yum.repos.d/r_tools_ppa.repo \
+      https://sourceforge.net/projects/r-tools-ppa/files/rpm_aarch64/repo.txt/download
+    ```
+
+2.  Update & install (e.g., RStudio):
+
+    ``` bash
+    sudo dnf update
+    sudo dnf install rstudio
+    ```
