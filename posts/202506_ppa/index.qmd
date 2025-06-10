@@ -20,11 +20,11 @@ knitr::opts_chunk$set(
 ::: {.callout-tip}
 ## TL;DR
 
-There's a new [PPA](https://github.com/albersonmiranda/r_tools_ppa) available for Ubuntu and Fedora users that allows you to install the latest versions of RStudio, Quarto and Positron with a single command. This PPA is maintained by me and is updated daily with the latest versions of these tools.
+A new [PPA](https://github.com/albersonmiranda/r_tools_ppa) is now available for Ubuntu and Fedora users, simplifying the installation of the latest RStudio, Quarto, and Positron versions with a single command. I maintain this PPA and update it daily with the newest releases of these tools.
 
 :::
 
-As a millenial, I grew up pirating stuff from the internet. From Windows XP to Adobe CS5, nothing was safe from my teenage rebeldy. As I grew older, I've got tired of propietary software and decided to give a chance to open source alternatives. I fell in love with Ubuntu and short after I've tried Fedora and got to enjoy it even more! One of the thing that hooked me is the fact that I can install almost any software I want with a single command --- and keep it updated! This is possible thanks to the Linux package management system, which allows users to install, update, and remove software packages easily. But not all software is available in the official repositories, and that's where Personal Package Archives (PPAs) come in handy. PPAs are a way for developers to distribute their software to Ubuntu users, and they can be used to install software that is not available in the official repositories or to get the latest version of a package. In this post, I will show you how to create your own PPA and how to use it to distribute your software.
+As a millennial, I, like many, navigated the early internet by pirating software—from Windows XP to Adobe CS5, nothing was safe from my teenage rebellion. However, as I matured, I grew tired of proprietary software and decided to explore open-source alternatives. My journey began with Ubuntu, and soon after, I discovered Fedora, which I enjoyed even more. What particularly captivated me about Linux was the power of its package management system: the ability to install, update, and remove almost any software with a single command—and keep it updated! While this system is incredibly convenient, not all software is available in official repositories. This is where Personal Package Archives (PPAs) really shine. PPAs allow developers to distribute their software directly, providing access to newer versions or tools not found in the standard channels. In this post, I'm sharing my project which you can use to create your own PPA to distribute your software.
 
 ::: {.callout-tip}
 ## What is a PPA?
@@ -38,6 +38,15 @@ A Personal Package Archive (PPA) is a software repository that allows developers
 Right now, there are no official repositories for Rstudio, Quarto or Positron for Linux. This means that users have to download the binaries from their respective websites and install them manually. But I wanted the same experience of macOS users, who can count on Positron software distribution via Homebrew. There are some unofficial PPAs available for Rstudio, but I couldn't find any for Quarto or Positron, So I've decided to make my own and share with you!
 
 What [this project](https://github.com/albersonmiranda/r_tools_ppa) do is scraping the urls for the latest versions of Rstudio, Quarto and Positron from their respective websites or Github releases, download the files, upload them to [Sourceforge](https://sourceforge.net/projects/r-tools-ppa/files/) and finally create a PPA that can be used to install these tools on Ubuntu, Fedora and other Linux distributions.
+
+[This two scripts](https://github.com/albersonmiranda/r_tools_ppa/tree/main/scripts) holds the logic to create the PPA:
+
+1. Define the latest versions of RStudio, Quarto and Positron.
+2. Download the binaries from their respective websites or Github releases.
+3. Upload the binaries to Sourceforge.
+4. Generate the metadata files required for the PPA.
+5. Create the release files for the PPA.
+6. Generate checksums for the files.s
 
 ## Support
 
