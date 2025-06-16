@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt">
+<head>
+<link rel="alternate" hreflang="en" href="https://datamares.netlify.app/posts/202506_why-economists-wrong/index.html" />
+<link rel="alternate" hreflang="pt" href="https://datamares.netlify.app/pt/posts/202506_why-economists-wrong/index.pt.html" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Alberson Miranda">
+<title>Por que os economistas estão sempre errados? – Datamares &amp; Dreamscapes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><meta name="quarto:offset" content="../../">
+<link href="../../assets/logo/favicon-256x256.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-d1029c8c0624b678ec1882d5dbfbed62.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-317fa9c8a93cbaa92631be92f51646c5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-d1029c8c0624b678ec1882d5dbfbed62.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-B65R9LH9ES"></script><script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
+</script><link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="nav-fixed quarto-light">
+<script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script><div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/logo/logo.png" alt="" class="navbar-logo"></a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Datamares &amp; Dreamscapes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item"><div class="dropdown" id="languages-links-parent">
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> Português</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://datamares.netlify.app/posts/202506_why-economists-wrong/index.html" id="language-link-en">English</a></li></ul>
+</div></li>
+<li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../software.html"> 
+<span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../assets/cv.pdf"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/albersonmiranda"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/albersonmiranda"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@albersonomiranda"> <i class="bi bi-mastodon" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Por que os economistas estão sempre errados?</h1>
+            <p class="subtitle lead">Uma crítica epistemológica ao paradigma do equilíbrio maximizador</p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">economics</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Autor</div>
+      <div class="quarto-title-meta-contents">
+               <p>Alberson Miranda </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Data de Publicação</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">15 de junho de 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+<li><a href="#a-economia-como-ci%C3%AAncia-exata" id="toc-a-economia-como-ciência-exata" class="nav-link active" data-scroll-target="#a-economia-como-ciência-exata"><span class="header-section-number">1</span> A ECONOMIA COMO CIÊNCIA EXATA</a></li>
+  <li><a href="#o-economista-programado" id="toc-o-economista-programado" class="nav-link" data-scroll-target="#o-economista-programado"><span class="header-section-number">2</span> O ECONOMISTA PROGRAMADO</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/albersonmiranda/blog/issues" class="toc-action"><i class="bi bi-github"></i>Criar uma issue</a></li></ul></div></nav>
+</div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content"><p>Neste pist, ofereço minha leitura do primeiro capítulo de <span class="citation" data-cites="feijo">Barbieri e Feijó (<a href="#ref-feijo" role="doc-biblioref">2013</a>)</span> acerca do que chamaram de paradigma do equilíbrio maximizador, doravante referido apenas como paradigma, na ciência econômica.</p>
+<section id="a-economia-como-ciência-exata" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> A ECONOMIA COMO CIÊNCIA EXATA</h1>
+<p>Ainda em sua introdução, os autores argumentam sobre a posição da ciência econômica como ciência exata ou humana:</p>
+<blockquote class="blockquote">
+<p>A primeira pergunta que surge na mente do leigo é se a economia trata-se de ciência exata ou ciência do campo das chamadas humanidades (ciências humanas). Se tivéssemos de escolher entre um enquadramento ou outro, diríamos que a economia pertence ao campo das ciências humanas. No entanto, ela ocupa uma posição especial dentre as ciências humanas: uma parte das contribuições científicas dos economistas acadêmicos utiliza-se do método das ciências exatas. Assim, pode-se afirmar seguramente que há um campo exato no âmbito das investigações feitas pelos economistas. Nem todos os estudos oferecidos pelos economistas, no entanto, afiguram-se um esforço em ciência exata. Mas uma parte importante deles, aliás, a mais expressiva, emprega os métodos matemáticos rigorosos típicos das ciências naturais exatas que têm na física o modelo central.</p>
+</blockquote>
+<p>Esses métodos exatos teriam como objeto as normas sociais, reforçadas nas leis penais, que “englobam todo tipo de comportamento regular e padronizado, igual para todos os indivíduos dentro de um grupo”. Entretanto, os próprios autores reconhecem o alcance limitado da ciência econômica no estudo dessas normas sociais:</p>
+<blockquote class="blockquote">
+<p>Para o economista, basta uns poucos tipos de instituições, vistas como tipos estilizados, como a propriedade privada (que induz os agentes a respeitarem direitos de propriedade e contratos) e o agente otimizador (que maximiza utilidade ou lucro), ou então o comunismo (que os coage a aceitarem a propriedade coletiva) e o agente cooperador. Boa parte do trabalho teórico do economista remete a uns poucos tipos de instituições sociais. Para o paradigma da economia teórica, interessa o agente otimizador.</p>
+</blockquote>
+<p>Questiono, primeiramente, se há coerência em tentar especificar um campo exato dentro de uma ciência humana como fizeram os autores. Não digo com isso que não existem, pelo menos no horizonte da experiência humana em que nos encontramos, leis no âmbito das humanidades — elas não só existem, como são estudadas por filósofos e representadas na arte<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> ao longo das eras. Da maior delas, Sêneca já tratava em suas cartas a seu sogro Paulinus:</p>
+<blockquote class="blockquote">
+<p>A maior parte dos mortais, Paulino, lamenta a maldade da Natureza, porque já nascem com a perspectiva de uma curta existência e porque os anos que lhes são dados transcorrem rápida e velozmente. De modo que, com a exceção de uns poucos, para os demais, em pleno esplendor da vida é que justamente esta os abandona. <span class="citation" data-cites="seneca">(<a href="#ref-seneca" role="doc-biblioref">Sêneca 2008</a>)</span></p>
+</blockquote>
+<p>O tempo do indivíduo é restringido aos seus sempre insuficientes anos; seu lugar no universo, confinado em um única rocha em meio à infinitude do cosmos; preso ao chão pela gravidade; cativo à superfície pelo próprio ar; refém da necessidade de consumir. Entretanto, esse consumo que menciono não se refere à ideia de economia de troca que alguns téoricos colocam como ordenação natural e espontânea que independe do espaço social, da historicidade e das especificidades de cada sociedade. Me refiro unicamente ao alimento que todo animal precisa para sobreviver. Esse é, de fato, o consumo que é lei natural. A adoção do comportamento maximizador como lei natural representa uma dentre as várias generalizações e extrapolações dessa natureza que são o centro da crítica ao paradigma, não a matematização em si.</p>
+<p>Quando os autores colocam que o objeto dos métodos exatos na economia são “todo tipo de comportamento regular e padronizado, igual para todos os indivíduos dentro de um grupo”, eles falham em enxergar que há pouquíssimos desses comportamentos regulares e padronizados. O comportamento regular é: <em>o homem busca alimento para sobreviver</em>. Já <em>o homem conhece o preço de equilíbrio do alimento e irá demandá-lo mais se ele estiver abaixo desse preço</em> não é uma lei natural. Se o mecanismo de convergência ao equilíbrio macroeconômico é todo ancorado no microfundamento do comportamento padronizado racional, a macroeconomia do paradigma já se torna frágil e qualquer desenvolvimento e conclusão obtida a partir daí, seja lá o quanto complexo e matematicamente avançado o seja, será viesada.</p>
+<p>Há de se enfatizar que o paradigma não está sozinho nessas extrapolações. Por exemplo, Keynes padroniza o comportamento humano com o <em>animal spirit</em>; Hayek supõe a invariabilidade do espírito humano e a universalidade, no espaço e no tempo, das leis que regem a economia em uma sociedade qualquer. <span class="citation" data-cites="feijo">Barbieri e Feijó (<a href="#ref-feijo" role="doc-biblioref">2013</a>)</span> vão pelo mesmo caminho ao defender a existência de uma realidade objetiva que é separada do sujeito que a investiga:</p>
+<blockquote class="blockquote">
+<p>Há algo além de um exercício puramente mental envolvido no trabalho do cientista social, pois viceja uma realidade objetiva que deve ser racionalmente estudada. Assim como nas ciências naturais, no campo da investigação social também se deve separar o conhecimento que se formula dos fatos, por um lado, da realidade externa e objetiva em si mesma, por outro. Com isso, a tradicional separação entre as ideias que se elaboram sobre a realidade e essa realidade em si mesma estende-se também para o domínio da ciência social. A separação, usual nas ciências físicas, entre sujeito e objeto, parcialmente violada apenas na mecânica quântica, também se aplica ao campo dos estudos sociais.</p>
+</blockquote>
+<p>A existência de uma única realidade objetiva é um pressuposto da abordagem positivista e instrumento do método das ciências exatas. Nelas, o pesquisador adota uma posição de neutralidade — é um mero obserador passivo. Tal realidade não existe na ciência social. Esta admite que a realidade pode ser vista a partir de várias perspectivas e o pesquisador social sabe que sua observação e suas conclusões são carregadas de valores. Por exemplo, supor a neutralidade do pensamento de Hayek, que escreve <em>O Caminho da Servidão</em> em 1944 sob a influência do totalitarismo nazi-fascistas, de um lado, e dos soviéticos do outro; ou a de Marx, que escreve <em>O Capital</em> na era das fábricas-prisões panópticas é preocupante.</p>
+<p>A roupagem de ciência exata fornece, sem sombra de dúvidas, um criativo e elegante disfarce à ciência econômica. Entretanto, à medida em que essa visão requer a adoção de hipóteses insustentáveis, não é de espantar que, após séculos de desenvolvimento de teoria econômica, as crises ainda tomem os economistas de surpresa.</p>
+<p>Foi assim em 2008. No ano seguinte ao <em>crash</em>, Paul Krugman escreveu em seu artigo ao New York Times:</p>
+<blockquote class="blockquote">
+<p>As I see it, the economics profession went astray because economists, as a group, mistook beauty, clad in impressive-looking mathematics, for truth. […] the central cause of the profession’s failure was the desire for an all-encompassing, intellectually elegant approach that also gave economists a chance to show off their mathematical prowess. Unfortunately, this romanticized and sanitized vision of the economy led most economists to ignore all the things that can go wrong. They turned a blind eye to the limitations of human rationality that often lead to bubbles and busts; to the problems of institutions that run amok; to the imperfections of markets — especially financial markets — that can cause the economy’s operating system to undergo sudden, unpredictable crashes; and to the dangers created when regulators don’t believe in regulation. <span class="citation" data-cites="krugman">(<a href="#ref-krugman" role="doc-biblioref">Krugman 2009</a>)</span></p>
+</blockquote>
+<p>Essa ilusão é tão enraizada no paradigma que os economistas, tanto na academia quanto no mercado, achavam que tinham todas as soluções<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Obviamente, não as tinham. Agora, suponha que minha argumentação até este ponto esteja completamente equivocada e exista, de fato, um núcleo exato na ciência econômica. Daí temos que a teoria do paradigma não o representa, uma vez que, como destaca Krugman, não tem sido útil para realizar previsões. Naturalmente, não limito minha crítica a uma posição instrumentalista: a teoria do paradigma falha também em explicar os fenômenos sociais. Tome a teoria do crescimento, por exemplo. Por décadas foram desenvolvidos modelos — temos a formulação seminal de Solow em 1956, ainda univariada; a otimização dinâmica com Ramsey-Cass-Koopmans na década de 60; a tantativa de explicação por capital humano com Lucas na década de 80; externalidades e depois inovação tecnológica com Romer. Apesar de toda elegância e notação digna de teses acadêmicas das exatas, nenhum desses trabalhos foram capazes de explicar as perguntas mais básicas acerca do crescimento econômico, notadamente os problemas conhecidos como <em>catching up</em>, <em>falling behind</em> e <em>forging ahead</em>. Portanto, o paradigma falha tanto a partir de um olhar instrumentalista quanto convencionalista.</p>
+<p>Acredito que a crítica de Krugman seja muito pertinente e responda bem à questão inicial levantada: se a economia é uma ciência social, ela não pode ser investigada a partir de uma suposta realidade objetiva, nem deduzida a partir de condições iniciais e leis universais. Nesse sentido, <span class="citation" data-cites="herscovici">Herscovici (<a href="#ref-herscovici" role="doc-biblioref">2002</a>)</span> destaca os limites da espitemologia popperiana na análise econômica:</p>
+<blockquote class="blockquote">
+<p>Na maior parte dos casos, <em>para tornar uma lei universal, é preciso esvaziá-la de seu conteúdo histórico</em>. O <em>formalismo</em> que resulta dessa operação caracteriza-se pelo fato de que, se uma lei científica quer explicar todos os sitemas possíveis, ela não tem condições de explicar nenhum sistema real, nas suas especificidades históricas e sociais.</p>
+</blockquote>
+<p>Essas críticas não são estranhas aos autores. Ainda na introdução da obra eles tratam de se blindar:</p>
+<blockquote class="blockquote">
+<p>Parece ingenuidade imaginar que o agente econômico seja sempre um sujeito dotado de plena racionalidade, informação perfeita, que atue em mercados completos (com mercadorias contingentes oferecidas para todos os estados possíveis da natureza), que tenha clareza de seus objetivos e que procure sempre o melhor resultado para si no curto prazo, sem se preocupar com as consequências remotas de suas escolhas e sem se importar com os demais. Inclusive, o paradigma da economia tem sido criticado pela ingenuidade de seus supostos comportamentais em sua análise. Mas, em muitos casos, a pecha de ingenuidade caracteriza melhor a situação de quem faz esse tipo de crítica do que os modelos dos economistas teóricos em si mesmos, pois as hipóteses arroladas anteriormente, a bem da verdade, são apenas simplificações de livros-textos introdutórios. A fronteira do conhecimento teórico em economia há muito aprendeu a lidar com hipóteses comportamentais bem mais arrojadas e realistas do que essas. Assim é que os economistas teóricos atuais sabem perfeitamente modelar agentes com racionalidade limitada, informação imperfeita, mercados incompletos, agentes indecisos e com objetivos múltiplos, e que levam em conta o bem-estar de outras pessoas.</p>
+</blockquote>
+<p>Ora, uma hora dizem que basta para os economistas algumas instituições, dentre elas o agente otimizador; noutra dizem que tal agente já fora superado. Pior, travar que os “economistas teóricos atuais sabem ” a indecisão me parece duplamente incoerente. Primeiro porque, por definição, não existe tal coisa como “modelo perfeito”. Em segundo, a indecisão, a incerteza, é estocástica por hipótese. Se <em>assume</em> a incerteza, não se <em>perfeitamente a modela</em>. Mas vão além:</p>
+<blockquote class="blockquote">
+<p>Pode-se também criticar os supostos do paradigma econômico por considerar apenas o modelo de concorrência perfeita. Outra crítica irrelevante, pois, variegadas (sic) estruturas de mercados, da concorrência perfeita ao monopólio, começaram a ser estudadas já no século XIX, e a partir do fim dos anos 1920 o conhecimento teórico aprofundou-se com a consideração de estruturas intermediárias como concorrência monopolística e oligopólio. Os supostos da concorrência perfeita foram questionados e repensados pela influência da crítica dos economistas da chamada escola austríaca de economia, mas não somente por ela, e substituídos pela visão do agente econômico com comportamento ativo na exploração do mercado e descoberta de oportunidades. O modelo básico de monopólio foi questionado e reexaminado, em um contexto dinâmico da economia, pelo renomado Joseph Schumpeter.</p>
+</blockquote>
+<p>Ignorando que Schumpeter era crítico do individualismo metodológico do paradigma, chamo atenção à questão da falseabilidade no campo das ciências exatas. Os autores, ao mesmo em que propõem uma visão positivista da ciência econômica, a invalidam cientificamente dentro da própria filosofia popperiana ao blindar o paradigma do princípio da falseabilidade. Segundo os autores, não se pode questionar a adoção da hipótese concorrencial, apesar de ainda se encontrar nos manuais e na produção acadêmica; A problemática conhecida como Controvérsia de Cambridge que, dentre outras coisas, crítica ao uso de funções de produção também é infundada porque a economia hoje trabalha com outras matemáticas — mas todo os manuais de microeconomia, da graduação a pós, são construindo sobre otimização lagrangeana em funções de produção. Como pode a lei ser atemporal e mudar tanto? Como pode ser universal e estar apenas na fronteira do conhecimento? A concorrência perfeita era uma lei universal antes e agora não é mais? A fronteira do conhecimento de hoje será lei universal ou terá o mesmo destino das anteriores? Ao mudar a demarcação das hipóteses para defender a teoria, o paradigma se torna não falseável e, portanto, deixa de ser uma teoria científica e se torna dogma.</p>
+<p>De maneira bem clara e um tanto quanto contraditória, os autores colocam o núcleo do paradigma do equilíbrio maximizador, alvo das críticas das demais escolas de pensamento, como verdade incontestável:</p>
+<blockquote class="blockquote">
+<p>Metodólogos tradicionais preocupam-se sobremaneira com a confrontação empírica da teoria e que o mundo real possa efetivamente funcionar como juiz de última instância na validação e eventual descrédito de teorias econômicas. O paradigma da economia adere a um método que realmente dá muita importância à avaliação empírica. Contudo, nesse tocante, cabem duas observações importantes: (1) nem tudo o que é produzido pelo paradigma deve ser testado empiricamente; (2) nem todas as teorias são criadas para serem testadas. O paradigma da economia pode, portanto, ser concebido como formado por um núcleo contendo apenas contribuições de matemática pura e um cinturão periférico de teorias que produzem conclusões testáveis empiricamente.</p>
+</blockquote>
+<p>Não se tratando de uma contradição sutil, eles tratam de tentar esquivar-se delas logo a seguir, confundindo, mais uma vez, a economia — como um fenômeno que não pode ser dissociado de suas especificidades sociais —, por abstração matemática pura:</p>
+<blockquote class="blockquote">
+<p>Metodólogos popperianos radicais iriam se revoltar quanto à ideia de teorias econômicas que nunca se confrontam com a evidência empírica. Mas, de fato, no núcleo matemático do paradigma econômico, os economistas matemáticos (ou matemáticos econômicos) trabalham como se estivessem no ambiente do matemático puro. Nenhum metodólogo, por mais estremado que seja, consideraria a matemática inócua por não se confrontar com os fatos empíricos. Da economia matemática pura também não se deve exigir que se construa alguma ponte conectando os modelos abstratos com algum procedimento de averiguação nos fatos observados.</p>
+</blockquote>
+<p>Os autores comparam frequentemente o paradigma da economia com o paradigma quântico-relativista da física moderna. Entretanto, basta um exame superficial para notar as diferenças: o que é dado como teoria foi abandonado? Pelo contrário, o corpo de conhecimento é amplamente conhecido e estudado. Não está escondido apenas “na fronteira do conhecimento”, como os autores alegam que os elementos que absolvem a teoria econômica das críticas se encontram. Os resultados encontrados por Einstein no início do séc. XX ainda são usados para encontrar corpos no cosmos, de planetas a buracos-negros, e a cada experimento eles são colocados a teste e permanecem com capacidade de explicação e previsão. A falseabilidade não trabalha com verdades absolutas. O conhecimento científico é momentâneo e não permanente. Uma teoria só pode ser qualificada como científica e significativa enquanto puder ser testada e desmentida.</p>
+<p>Mas os autores não permitem sua contestação e o entrincheiramento continua com argumentos <em>ad-hominem</em>: se um economista é crítico à economia como ciência exata, então ele não compreende matemática:</p>
+<blockquote class="blockquote">
+<p>Vejamos o problema da incompreensão da matemática. Os críticos do uso da matemática na economia, em geral, não são economistas matemáticos. Muitos deles não tiveram uma formação profissional em matemática. Enveredaram por outras áreas. Não quer dizer que não tenham sido bons estudantes de matemática. Marshall, por exemplo, um crítico da matemática na economia, cujo emprego, para ele, não deveria ser abusivo, mostrou-se, antes de concentrar-se na economia, um excelente matemático. Até mesmo Carl Menger, o pai da escola austríaca, totalmente crítico ao uso da matemática na economia, ao que consta, fora um bom estudante de matemática no ensino médio. Keynes foi um crítico da matemática, contudo, bom matemático, mesmo sem ter a mente e a experiência de um matemático profissional. Inclusive, ele graduou-se, com distinção, nessa disciplina</p>
+</blockquote>
+<p>O que obviamente é um argumento absurdo. Imagine criticar Foucault dizendo: “os críticos do estado policial, em geral, não são policiais. Muitos deles não tiveram uma formação profissional no militarismo”. E seguem invalidando as críticas ao paradigma:</p>
+<blockquote class="blockquote">
+<p>É perfeitamente compreensível a visão contrária à matemática desses expoentes clássicos da economia científica. Até porque eles estavam presos ao desenvolvimento matemático de sua época. O problema é quando, hoje em dia, os membros das escolas legadas por eles apegam-se às mesmas críticas ao uso da matemática, sustentando-as em uma visão tosca e atrasada da matemática. Criticam, por exemplo, que as variáveis econômicas não obedecem a relações funcionais. Mas quem disse que a economia matemática atual emprega funções? Os economistas do paradigma amiúde trabalham com correspondências, mapas e outras técnicas matemáticas muito mais poderosas do que as funções. Criticam o uso da matemática na economia com base no argumento de que as variáveis econômicas não descrevem uma trajetória bem comportada; de forma que não podem ser acompanhadas por curvas contínuas e suaves, isto é, diferenciáveis em todos os pontos. Quem disse que o paradigma atual tenha de lançar a hipótese de diferenciabilidade e que só emprega o cálculo diferencial e integral? Na verdade, os economistas atuais do paradigma trabalham com análise convexa, que prescinde a diferenciabilidade das funções, tomando apenas a hipótese bem mais fraca da convexidade. Não se impõe mais a existência de curvas contínuas. Trabalha-se com descrições bem mais gerais e flexíveis, como a de semicontinuidade superior (upper semicontinuos) etc. O uso do cálculo em economia matemática há muito foi substituído pela análise convexa, pela topologia e pela topologia diferencial.</p>
+</blockquote>
+<p>Pois bem, tomemos o prefácio de uma obra de economia matemática avançada:</p>
+<blockquote class="blockquote">
+<p>In recent years, the usual optimisation techniques, which have proved so useful in microeconomic theory, have been extended to incorporate more powerful topological and differential methods, and these methods have led to new insights into the qualitative behaviour of general economic systems. These developments have necessarily resulted in an increase in the degree of formalism in the publications in the academic economic theory journals; a formalism which can often deter graduate students. My hope is that the progression of ideas presented here will familiarise the student with the geometric concepts underlying these topological methods, and, as a result, make modern mathematical economics and <strong>general equilibrium theory</strong> more accessible. <span class="citation" data-cites="schofield">(<a href="#ref-schofield" role="doc-biblioref">Schofield 2018</a>)</span></p>
+</blockquote>
+<p>Não é uma questão de limitação matemática ou de uma absurda hierarquia da matemática — como se topologia foi <em>melhor</em> que cálculo, ou algo do tipo —, mas uma questão de proposições. Não importa se a teoria estuda a otimização do consumidor e da firma ou o equilíbrio geral walrasiano por topologia ou cálculo, mas é o próprio equilíbrio, o próprio comportamento maximizador que está em crítica, e não a matemática que é utilizada para demonstrá-lo.</p>
+</section><section id="o-economista-programado" class="level1" data-number="2"><h1 data-number="2">
+<span class="header-section-number">2</span> O ECONOMISTA PROGRAMADO</h1>
+<p>Então, por que os teóricos do paradigma da ciência econômica continuam se prendendo a conceitos tão problemáticos? Em <em>Sistemas de Ensino e Sistemas de Pensamento</em>, Pierre Bourdieu coloca o sistema educacional como um dos instrumentos mais eficazes de integração moral e lógica da sociedade, que tem como produto o indivíduo “programado” — homogêneo em percepção, pensamento e ação:</p>
+<blockquote class="blockquote">
+<p>Caso se admita que a cultura e, neste caso particular, a cultura erudita em sua qualidade de código comum é o que permite a todos os detentores deste código associar o mesmo sentido às mesmas obras e, de maneira recíproca, de exprimir a mesma intenção significante por intermédio das mesmas palavras, dos mesmos comportamentos e das mesmas obras, pode-se compreender por que nos termos de uma participação de um senso comum entendido como condição da comunicação. <span class="citation" data-cites="bourdieu">(<a href="#ref-bourdieu" role="doc-biblioref">Bourdieu 2015</a>)</span></p>
+</blockquote>
+<p>Talvez, lógica semelhante tenha se apropriado da produção científica. Aparentemente alheios à problemática, os autores parecem celebrar o pensamento homogêneo na ciência econômica:</p>
+<blockquote class="blockquote">
+<p>Sem explicá-lo por enquanto, é suficiente dizer que o paradigma kuhniano da economia é aquilo que os estudantes de graduação são obrigados a aprender nas disciplinas teóricas. Todo estudante de macroeconomia estuda os livros-textos escritos por autores como Blanchard, Boyes, Dornbusch, […]. Então constata-se, no Brasil e no ``mundo livre”, que os estudantes são submetidos à mesma formação, pois, em que pese as diferenças de abordagem, de estilo e de profundidade, todos esses manuais didáticos de teoria econômica assemelham-se entre si em muitos aspectos. Em todos eles, vicejam as instituições da propriedade privada, do contrato, do agente maximizador etc. como pressupostos dos modelos teóricos. Todos abordam os problemas econômicos com álgebra e gráficos, e desenvolvem modelos de equilíbrio. Essa formação homogênea dos estudantes é característica da prática científica que Kuhn denomina de ciência normal. Típica em ciências com paradigmas consolidados. O paradigma da economia submete os estudantes à mesma formação teórica básica. É claro que o treinamento assemelhado leva os profissionais formados nesse ambiente a atuarem de uma maneira padronizada no trabalho com suas teorias e no teste empírico delas. <span class="citation" data-cites="feijo">(<a href="#ref-feijo" role="doc-biblioref">Barbieri e Feijó 2013</a>)</span></p>
+</blockquote>
+<p>Se usarmos de licença poética para estendermos a teoria dos campos de Bourdieu à comunidade científica, podemos imaginar a produção acadêmica localizada no subcampo de produção erudita e os editores dos <em>journals</em> no campo do poder. Em ordem de se obter maior capital simbólico, os produtores devem publicar nos periódicos de maior prestígio. Consequentemente, a produção se submete ao pensamento padronizado desejado pelo campo do poder. Ora, os dados que nos permitem raciocinar de tal forma são fornecidos pelos próprios autores:</p>
+<blockquote class="blockquote">
+<p>[…] em uma das mais prestigiadas revistas de economia (se não a mais prestigiada do mundo), mais de metade (54%) dos artigos versavam sobre modelos matemáticos sem quaisquer dados, quase um quarto deles (24,6%) era sobre análise empírica, usando-se inferência estatística em dados publicados ou com base em simulação e experimentos artificiais. Apenas 21,4% dos artigos da <em>American Economic Review</em> dedicavam-se a outros temas, dos quais apenas 11,6% diziam respeito a modelos sem matemática e sem dados. Vejam-se as 31 revistas internacionais de economia mais prestigiadas, que receberam da CAPES a classificação A1, das tops internacionais. Vinte delas concentram-se sobremaneira em artigos com teorias matemáticas e eventuais testes econométricos; cinco dedicam-se a publicar ensaios em economia aplicada e duas estão voltadas à econometria (<em>Journal of Applied Econometrics, Journal of Econometrics</em>). Outras três distribuem-se entre história do pensamento econômico (<em>History of Political Economy</em>), estudos em metodologia da economia (<em>Journal of Economic Methodology</em>) e resenhas (<em>Journal of Economic Literature</em>). Apenas uma única revista A1 publica temas de escolas econômicas não inseridas no paradigma (<em>Journal of Post Keynesian Economics</em>). Então, das 31 revistas de economia classificadas como A1 tem-se apenas uma única dedicada a uma escola de pensamento econômico à margem do paradigma da ciência econômica, a qual prioriza trabalhos na linha do chamado pós-keynesianismo. Considera-se ainda que estudos fora desse paradigma, incluindo-se também economia marxiana, austríaca, institucional etc., podem ser aceitos para publicação em ao menos mais três revistas A1: <em>Cambridge Journal of Economics, Journal of Economic Methodology e History of Political Economy</em>.</p>
+</blockquote>
+<p>Tudo isso aponta para a tese de Bourdieu de que ``os espíritos modelados encontram-se predispostos a manter com seus pares uma relação de cumplicidade e comunicação imediatas”. É a maneira comum de se abordar problemas comuns. Se fecham em seus símbolos, signos, linguagem e pensamento comuns; se fecham para abordagens e críticas dos que não utilizam seu repertório comum. E é por esse mecanismo que os economistas continuam sendo pegos de calças curtas por crises que teimam em os encontrar desprevinidos.</p>
+
+
+
+</section><div id="quarto-appendix" class="default">
+<section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referências</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-feijo" class="csl-entry" role="listitem">
+Barbieri, Fabio, e Ricardo Luis Chaves Feijó. 2013. <em>Metodologia do Pensamento Econômico</em>. Editora Atlas.
+</div>
+<div id="ref-bourdieu" class="csl-entry" role="listitem">
+Bourdieu, Pierre. 2015. <span>«<span>Sistemas de Ensino e Sistemas de Pensamento</span>»</span>. Em <em>A Economia das Trocas Simbólicas</em>, 8.ª ed. São Paulo: Perspectiva.
+</div>
+<div id="ref-herscovici" class="csl-entry" role="listitem">
+Herscovici, Alain Pierre Claude Henri. 2002. <em>Dinâmica Macroeconômica: Uma Interpretação a Partir de Marx e de Keynes</em>. São Paulo; Vitória: EDUC; EDUFES.
+</div>
+<div id="ref-krugman" class="csl-entry" role="listitem">
+Krugman, Paul. 2009. <span>«<span>How Did Economists Get It So Wrong</span>»</span>. <a href="https://www.nytimes.com/2009/09/06/magazine/06Economic-t.html" class="uri">https://www.nytimes.com/2009/09/06/magazine/06Economic-t.html</a>.
+</div>
+<div id="ref-schofield" class="csl-entry" role="listitem">
+Schofield, Norman. 2018. <em>Mathematical Methods in Economics</em>. Londres: Routledge.
+</div>
+<div id="ref-seneca" class="csl-entry" role="listitem">
+Sêneca, Lúcio Anneo. 2008. <em>Sobre a Brevidade da Vida</em>. L&amp;PM.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas de rodapé</h2>
+
+<ol>
+<li id="fn1"><p>Impossível esquecer o monólogo clássico de Macbeth: ``E todos os nossos ontens não fizeram mais que iluminar para os tolos o caminho que leva ao pó da morte.”<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>``in a 2008 paper titled ´The State of Macro’ (that is, macroeconomics, the study of big-picture issues like recessions), Olivier Blanchard of M.I.T., now the chief economist at the International Monetary Fund, declared that ´the state of macro is good’. The battles of yesteryear, he said, were over, and there had been a ´broad convergence of vision’. And in the real world, economists believed they had things under control: the ´central problem of depression-prevention has been solved’, declared Robert Lucas of the University of Chicago in his 2003 presidential address to the American Economic Association” <span class="citation" data-cites="krugman">(<a href="#ref-krugman" role="doc-biblioref">Krugman 2009</a>)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section>
+</div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/datamares\.netlify\.app\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><input type="hidden" id="giscus-base-theme" value="preferred_color_scheme"><input type="hidden" id="giscus-alt-theme" value="preferred_color_scheme"><script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "albersonmiranda/blog";
+    script.dataset.repoId = "MDEwOlJlcG9zaXRvcnkyOTQ1NjA1MjM=";
+    script.dataset.category = "Announcements";
+    script.dataset.categoryId = "DIC_kwDOEY6jC84CpU2y";
+    script.dataset.mapping = "title";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "bottom";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="https://datamares.netlify.app"><img src="https://datamares.netlify.app/assets/logo/favicon-256x256.png" class="img-fluid" width="65"></a> Copyright Alberson Miranda © 2020. All rights reserved.</p>
+</div>   
+    <div class="nav-footer-center">
+       
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/albersonmiranda/blog/issues" class="toc-action"><i class="bi bi-github"></i>Criar uma issue</a></li></ul></div>
+</div>
+    <div class="nav-footer-right">
+       
+    </div>
+  </div>
+</footer>
+</body>
+</html>
