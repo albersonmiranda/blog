@@ -381,10 +381,10 @@ TL;DR
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>There’s a new <a href="https://github.com/albersonmiranda/r_tools_ppa">PPA</a> available for Ubuntu and Fedora users that allows you to install the latest versions of RStudio, Quarto and Positron with a single command. This PPA is maintained by me and is updated daily with the latest versions of these tools.</p>
+<p>A new <a href="https://github.com/albersonmiranda/r_tools_ppa">PPA</a> is now available for Ubuntu and Fedora users, simplifying the installation of the latest RStudio, Quarto, and Positron versions with a single command. I maintain this PPA and update it daily with the newest releases of these tools.</p>
 </div>
 </div>
-<p>As a millenial, I grew up pirating stuff from the internet. From Windows XP to Adobe CS5, nothing was safe from my teenage rebeldy. As I grew older, I’ve got tired of propietary software and decided to give a chance to open source alternatives. I fell in love with Ubuntu and short after I’ve tried Fedora and got to enjoy it even more! One of the thing that hooked me is the fact that I can install almost any software I want with a single command — and keep it updated! This is possible thanks to the Linux package management system, which allows users to install, update, and remove software packages easily. But not all software is available in the official repositories, and that’s where Personal Package Archives (PPAs) come in handy. PPAs are a way for developers to distribute their software to Ubuntu users, and they can be used to install software that is not available in the official repositories or to get the latest version of a package. In this post, I will show you how to create your own PPA and how to use it to distribute your software.</p>
+<p>As a millennial, I, like many, navigated the early internet by pirating software—from Windows XP to Adobe CS5, nothing was safe from my teenage rebellion. However, as I matured, I grew tired of proprietary software and decided to explore open-source alternatives. My journey began with Ubuntu, and soon after, I discovered Fedora, which I enjoyed even more. What particularly captivated me about Linux was the power of its package management system: the ability to install, update, and remove almost any software with a single command—and keep it updated! While this system is incredibly convenient, not all software is available in official repositories. This is where Personal Package Archives (PPAs) really shine. PPAs allow developers to distribute their software directly, providing access to newer versions or tools not found in the standard channels. In this post, I’m sharing my project which you can use to create your own PPA to distribute your software.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -402,7 +402,15 @@ What is a PPA?
 <span class="header-section-number">1</span> Easy installation for RStudio, Quarto and Positron</h2>
 <p>Right now, there are no official repositories for Rstudio, Quarto or Positron for Linux. This means that users have to download the binaries from their respective websites and install them manually. But I wanted the same experience of macOS users, who can count on Positron software distribution via Homebrew. There are some unofficial PPAs available for Rstudio, but I couldn’t find any for Quarto or Positron, So I’ve decided to make my own and share with you!</p>
 <p>What <a href="https://github.com/albersonmiranda/r_tools_ppa">this project</a> do is scraping the urls for the latest versions of Rstudio, Quarto and Positron from their respective websites or Github releases, download the files, upload them to <a href="https://sourceforge.net/projects/r-tools-ppa/files/">Sourceforge</a> and finally create a PPA that can be used to install these tools on Ubuntu, Fedora and other Linux distributions.</p>
-</section><section id="support" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="support">
+<p><a href="https://github.com/albersonmiranda/r_tools_ppa/tree/main/scripts">This two scripts</a> holds the logic to create the PPA:</p>
+<ol type="1">
+<li>Define the latest versions of RStudio, Quarto and Positron.</li>
+<li>Download the binaries from their respective websites or Github releases.</li>
+<li>Upload the binaries to Sourceforge.</li>
+<li>Generate the metadata files required for the PPA.</li>
+<li>Create the release files for the PPA.</li>
+<li>Generate checksums for the files.s</li>
+</ol></section><section id="support" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="support">
 <span class="header-section-number">2</span> Support</h2>
 <ul>
 <li>.deb packages for Ubuntu and Debian-based distributions.
