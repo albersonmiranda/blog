@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>Datamares &amp; Dreamscapes</title>
-<link>https://datamares.netlify.app/</link>
-<atom:link href="https://datamares.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://datamares.netlify.app/pt/</link>
+<atom:link href="https://datamares.netlify.app/pt/index.xml" rel="self" type="application/rss+xml"/>
 <description>Blog sobre ciência de dados, estatística e programação, de Alberson Miranda.</description>
 <generator>quarto-1.7.32</generator>
 <lastBuildDate>Sun, 15 Jun 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Por que os economistas estão sempre errados?</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202506_why-economists-wrong/</link>
+  <link>https://datamares.netlify.app/pt/posts/202506_why-economists-wrong/</link>
   <description><![CDATA[ 
 
 
@@ -134,13 +134,13 @@ Sêneca, Lúcio Anneo. 2008. <em>Sobre a Brevidade da Vida</em>. L&amp;PM.
 </ol>
 </section></div> ]]></description>
   <category>economics</category>
-  <guid>https://datamares.netlify.app/posts/202506_why-economists-wrong/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202506_why-economists-wrong/</guid>
   <pubDate>Sun, 15 Jun 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Criando um Personal Package Archive (PPA) no Linux</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202506_ppa/</link>
+  <link>https://datamares.netlify.app/pt/posts/202506_ppa/</link>
   <description><![CDATA[ 
 
 
@@ -273,13 +273,13 @@ font-style: inherit;">sudo</span> dnf install rstudio</span></code></pre></div><
 
  ]]></description>
   <category>ferramentas</category>
-  <guid>https://datamares.netlify.app/posts/202506_ppa/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202506_ppa/</guid>
   <pubDate>Mon, 09 Jun 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Todos os modelos estão errados, mas alguns são inúteis</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202504_all-models-are-wrong/</link>
+  <link>https://datamares.netlify.app/pt/posts/202504_all-models-are-wrong/</link>
   <description><![CDATA[ 
 
 
@@ -613,7 +613,7 @@ font-style: inherit;">"free_y"</span>)</span></code></pre></div>
 <div id="fig-series" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-series-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://datamares.netlify.app/posts/202504_all-models-are-wrong/index_files/figure-html/fig-series-1.png" class="img-fluid figure-img" style="width:100.0%">
+<img src="https://datamares.netlify.app/pt/posts/202504_all-models-are-wrong/index_files/figure-html/fig-series-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-series-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1: Séries temporais em nível.
@@ -854,7 +854,7 @@ font-style: inherit;">""</span></span>
 <div id="fig-ccf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ccf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://datamares.netlify.app/posts/202504_all-models-are-wrong/index_files/figure-html/fig-ccf-1.png" class="img-fluid figure-img" style="width:100.0%">
+<img src="https://datamares.netlify.app/pt/posts/202504_all-models-are-wrong/index_files/figure-html/fig-ccf-1.png" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ccf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2: Correlograma cruzado entre a taxa de desemprego e as avaliações de aprovação presidencial.
@@ -887,13 +887,13 @@ Gujarati, Damodar N., e Dawn C. Porter. 2021. <em>Econometria básica</em>. 5.ª
 </ol>
 </section></div> ]]></description>
   <category>time-series</category>
-  <guid>https://datamares.netlify.app/posts/202504_all-models-are-wrong/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202504_all-models-are-wrong/</guid>
   <pubDate>Sat, 19 Apr 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Séries Temporais Hierárquicas: teoria</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202210_series-hierarquicas/</link>
+  <link>https://datamares.netlify.app/pt/posts/202210_series-hierarquicas/</link>
   <description><![CDATA[ 
 
 
@@ -911,7 +911,7 @@ Gujarati, Damodar N., e Dawn C. Porter. 2021. <em>Econometria básica</em>. 5.ª
 <div id="fig-h" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-h-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hierarq.png" class="img-fluid figure-img" width="600">
+<img src="https://datamares.netlify.app/pt/posts/202210_series-hierarquicas/img/hierarq.png" class="img-fluid figure-img" width="600">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-h-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1: Séries Hierárquicas.
@@ -931,7 +931,7 @@ Figura&nbsp;1: Séries Hierárquicas.
 <div id="fig-agrupadas" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-agrupadas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/agrupadas.png" class="img-fluid figure-img" width="600">
+<img src="https://datamares.netlify.app/pt/posts/202210_series-hierarquicas/img/agrupadas.png" class="img-fluid figure-img" width="600">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-agrupadas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2: Séries agrupadas.
@@ -946,7 +946,7 @@ Figura&nbsp;2: Séries agrupadas.
 <div id="fig-ha1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ha1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup.png" class="img-fluid figure-img" width="600">
+<img src="https://datamares.netlify.app/pt/posts/202210_series-hierarquicas/img/hier_agrup.png" class="img-fluid figure-img" width="600">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ha1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;3: Séries Hierárquicas Agrupadas (a).
@@ -960,7 +960,7 @@ Figura&nbsp;3: Séries Hierárquicas Agrupadas (a).
 <div id="fig-ha2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ha2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup_2.png" class="img-fluid figure-img" width="600">
+<img src="https://datamares.netlify.app/pt/posts/202210_series-hierarquicas/img/hier_agrup_2.png" class="img-fluid figure-img" width="600">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ha2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;4: Séries Hierárquicas Agrupadas (b).
@@ -1040,14 +1040,14 @@ Wickramasuriya, Shanika L., George Athanasopoulos, e Rob J. Hyndman. 2019. <span
 </ol>
 </section></div> ]]></description>
   <category>statistics</category>
-  <guid>https://datamares.netlify.app/posts/202210_series-hierarquicas/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202210_series-hierarquicas/</guid>
   <pubDate>Tue, 25 Oct 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://datamares.netlify.app/posts/202210_series-hierarquicas/img/hier_agrup.png" medium="image" type="image/png" height="50" width="144"/>
+  <media:content url="https://datamares.netlify.app/pt/posts/202210_series-hierarquicas/img/hier_agrup.png" medium="image" type="image/png" height="50" width="144"/>
 </item>
 <item>
   <title>O Papel Da Educação Matemática Sob A Hegemonia Do Capital</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202208_educacao-pre-capitalista/</link>
+  <link>https://datamares.netlify.app/pt/posts/202208_educacao-pre-capitalista/</link>
   <description><![CDATA[ 
 
 
@@ -1116,13 +1116,13 @@ Williams, Samuel Gardner. 2016. <em>The History of Mediaeval Education: An Accou
 </ol>
 </section></div> ]]></description>
   <category>education</category>
-  <guid>https://datamares.netlify.app/posts/202208_educacao-pre-capitalista/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202208_educacao-pre-capitalista/</guid>
   <pubDate>Sun, 14 Aug 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Template para dissertações em Quarto</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202208_template/</link>
+  <link>https://datamares.netlify.app/pt/posts/202208_template/</link>
   <description><![CDATA[ 
 
 
@@ -1134,7 +1134,7 @@ Williams, Samuel Gardner. 2016. <em>The History of Mediaeval Education: An Accou
 <p>Para facilitar (ou não, o futuro dirá) a vida do povo, parametrizei os elementos pré-textuais — capa, folha de rosto, folha de aprovação, resumo, abstract etc. São esses aqui:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202208_template/img/preambulo.png" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202208_template/img/preambulo.png" class="img-fluid figure-img"></p>
 <figcaption>parâmetros para elementos pré-textuais</figcaption>
 </figure>
 </div>
@@ -1147,7 +1147,7 @@ Williams, Samuel Gardner. 2016. <em>The History of Mediaeval Education: An Accou
 <p>Agora você pode <em>forkar</em> o projeto e cair dentro! Basta atualizar os parâmetros em <code>config/preamble.tex</code> e escrever seu trabalho em <code>dissertacao.qmd</code>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202208_template/img/1.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202208_template/img/1.gif" class="img-fluid figure-img"></p>
 <figcaption>atualizando os parâmetros e renderizando</figcaption>
 </figure>
 </div>
@@ -1163,14 +1163,14 @@ Williams, Samuel Gardner. 2016. <em>The History of Mediaeval Education: An Accou
 </ol>
 </section></div> ]]></description>
   <category>tools</category>
-  <guid>https://datamares.netlify.app/posts/202208_template/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202208_template/</guid>
   <pubDate>Wed, 03 Aug 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://datamares.netlify.app/posts/202208_template/img/quarto.png" medium="image" type="image/png" height="53" width="144"/>
+  <media:content url="https://datamares.netlify.app/pt/posts/202208_template/img/quarto.png" medium="image" type="image/png" height="53" width="144"/>
 </item>
 <item>
   <title>Python a partir do R I: importando pacotes (e por que aprender novas linguagens é difícil)</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202106_python-from-r-i-package-importing/</link>
+  <link>https://datamares.netlify.app/pt/posts/202106_python-from-r-i-package-importing/</link>
   <description><![CDATA[ 
 
 
@@ -1876,14 +1876,14 @@ name</code></pre>
 </ol>
 </section></div> ]]></description>
   <category>python</category>
-  <guid>https://datamares.netlify.app/posts/202106_python-from-r-i-package-importing/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202106_python-from-r-i-package-importing/</guid>
   <pubDate>Sat, 12 Jun 2021 00:00:00 GMT</pubDate>
-  <media:content url="https://datamares.netlify.app/posts/202106_python-from-r-i-package-importing/img/r-python.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://datamares.netlify.app/pt/posts/202106_python-from-r-i-package-importing/img/r-python.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Um pouco de conceitos: overfitting &amp; resampling</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202101_overfitting-resampling/</link>
+  <link>https://datamares.netlify.app/pt/posts/202101_overfitting-resampling/</link>
   <description><![CDATA[ 
 
 
@@ -1931,14 +1931,14 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>«Resampling Methods for Meta-M
 </ol>
 </section></div> ]]></description>
   <category>machine learning</category>
-  <guid>https://datamares.netlify.app/posts/202101_overfitting-resampling/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202101_overfitting-resampling/</guid>
   <pubDate>Sat, 17 Apr 2021 00:00:00 GMT</pubDate>
-  <media:content url="https://datamares.netlify.app/posts/202101_overfitting-resampling/img/overfitting.png" medium="image" type="image/png" height="70" width="144"/>
+  <media:content url="https://datamares.netlify.app/pt/posts/202101_overfitting-resampling/img/overfitting.png" medium="image" type="image/png" height="70" width="144"/>
 </item>
 <item>
   <title>R em 2021 com o VSCode</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202101_r-vscode/</link>
+  <link>https://datamares.netlify.app/pt/posts/202101_r-vscode/</link>
   <description><![CDATA[ 
 
 
@@ -1957,13 +1957,13 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>«Resampling Methods for Meta-M
 <p>Esse ouro do VSCode te permite ver a documentação da função (<em>quick info</em>), ou do dataset, e de todos seus argumentos (<em>parameter info</em>) apenas passando o mouse em cima. Além disso, é a funcionalidade que adiciona <em>code completion</em> e <em>member list</em>, dentre outros.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/intellisense.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/intellisense.gif" class="img-fluid figure-img"></p>
 <figcaption>code completion, hover, quick info, parameter info</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/color.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/color.gif" class="img-fluid figure-img"></p>
 <figcaption>seleção de cores via IDE (｡◕‿◕｡)</figcaption>
 </figure>
 </div>
@@ -1973,21 +1973,21 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>«Resampling Methods for Meta-M
 <p>As extensões <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github">GitHub Pull Requests and Issues</a> e <a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">Git Lens</a> permitem uma integração profunda com o GitHub, de forma que você não precisa deixar o VSCode. Você pode abrir, comentar e fechar issues e PRs; enviar, visualizar e editar commits; realizar quaisquer comandos bash via command pallet (push, pull, checkout, prune, rebase etc), dentre outros.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/issue.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/issue.gif" class="img-fluid figure-img"></p>
 <figcaption>criando issue</figcaption>
 </figure>
 </div>
 <p>Clicando na issue, o VSCode já abre um novo branch e faz o checkout para você trabalhar nela (e ainda deixa engatilhada uma commit message personalizada!).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/branch.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/branch.gif" class="img-fluid figure-img"></p>
 <figcaption>criando um novo branch via issue</figcaption>
 </figure>
 </div>
 <p>E, ao final do trabalho, basta clicar em criar um novo PR que a própria IDE envia o branch pra origem e traz a interface do PR. Tudo sem abrir o navegador ou o terminal.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/pr.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/pr.gif" class="img-fluid figure-img"></p>
 <figcaption>criando pull request</figcaption>
 </figure>
 </div>
@@ -1997,7 +1997,7 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>«Resampling Methods for Meta-M
 <p>Enquanto seu blog ou Shiny app está renderizando e, consequentemente, ocupando um terminal, você pode simplesmente abrir outro e continuar trabalhando normalmente!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/terminais.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/terminais.gif" class="img-fluid figure-img"></p>
 <figcaption>pode-se abrir quantos terminais quiser!</figcaption>
 </figure>
 </div>
@@ -2007,13 +2007,13 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>«Resampling Methods for Meta-M
 <p>Este é um exemplo de uma das inúmeras extensões úteis que a comunidade disponibiliza no VSCode. A <a href="https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio">extensão draw.io</a> integra o <a href="https://app.diagrams.net/">diagrams.net</a> ao VSCode. Com ela, podemos fazer diagramas de forma muito rápida e sem precisar de sair da IDE!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/draw.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/draw.gif" class="img-fluid figure-img"></p>
 <figcaption>para criar um diagrama, basta criar um arquivo com a extensão .drawio</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/diagrama.png" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/diagrama.png" class="img-fluid figure-img"></p>
 <figcaption>diagrama que fiz para o <a href="https://datamares.netlify.app/post/2020-11-29-introducao-ao-mlr3-framework/">esse post</a> usando a extensão</figcaption>
 </figure>
 </div>
@@ -2023,14 +2023,14 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>«Resampling Methods for Meta-M
 <p>Já sonhou em trabalhar no mesmo script com sua galera ao vivasso? A extensão <a href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare">Live Share</a> permite isso, além de fornecer canais de chat e de áudio, o que torna desnecessário abrir uma chamada de áudio em outro app enquanto trabalha!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/me_and_the_boys.png" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/me_and_the_boys.png" class="img-fluid figure-img"></p>
 <figcaption>praticamente todo mundo agora</figcaption>
 </figure>
 </div>
 <p>Além disso, você não precisa ter o interpretador da linguagem instalado para participar da sessão. Isso significa que mesmo que você esteja em outra máquina, que não tenha o R ou Python (ou qualquer outra) instalados, você pode entrar na sessão e colaborar nos scripts de seus colegas, inclusive usando os terminais deles para executar o código!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/liveshare.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/liveshare.gif" class="img-fluid figure-img"></p>
 <figcaption>visão de duas máquinas visualizando uma a outra durante uma sessão de Live Share no VSCode</figcaption>
 </figure>
 </div>
@@ -2041,7 +2041,7 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>«Resampling Methods for Meta-M
 <p>Boa notícia: com a extensão <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl">Remote - WSL</a> sua pasta (projeto) é copiada e reaberta em um ambiente Linux, com o terminal bonitinho e pronto para o uso. Tudo isso a um clique de distância!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/wsl.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/wsl.gif" class="img-fluid figure-img"></p>
 <figcaption>iniciando uma sessão em ambiente Linux</figcaption>
 </figure>
 </div>
@@ -2051,7 +2051,7 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>«Resampling Methods for Meta-M
 <p>A extensão do R no VSCode integra o pacote {lintr} à IDE, de forma que você tem as informações de ajustes de estilo a se fazer em seu código em tempo real.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/linter.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/linter.gif" class="img-fluid figure-img"></p>
 <figcaption>verificação de estilo em tempo real</figcaption>
 </figure>
 </div>
@@ -2091,7 +2091,7 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>«Resampling Methods for Meta-M
 <p>Com o VSCode instalado, você verá a tela de boas vindas, que se parece com isso:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/welcome.png" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/welcome.png" class="img-fluid figure-img"></p>
 <figcaption>tela de boas vindas</figcaption>
 </figure>
 </div>
@@ -2099,14 +2099,14 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>«Resampling Methods for Meta-M
 <p>Na barra lateral, o <em>explorer</em> te dará a opção de abrir uma pasta (um projeto) ou clonar um repositório. Abrindo minha pasta do <strong>Advent of Code 2020</strong>, você verá meus diretórios e arquivos à esquerda. Há códigos em Python e em R. Posso abrí-los e organizá-los da forma que eu quiser. Os terminais ficam logo abaixo e também podem ser movidos para qualquer outra parte.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/organizacao.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/organizacao.gif" class="img-fluid figure-img"></p>
 <figcaption>editor totalmente flexível</figcaption>
 </figure>
 </div>
 <p>As extensões podem ser instaladas pelo menu à esquerda. O próprio VSCode irá recomendar a instalação de extensões quando você abrir algum tipo de arquivo que não tenha interpretador ou <em>formatter</em> instalado, por exemplo.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/extensoes.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/extensoes.gif" class="img-fluid figure-img"></p>
 <figcaption>extensões da comunidade</figcaption>
 </figure>
 </div>
@@ -2123,7 +2123,7 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>«Resampling Methods for Meta-M
 <p>Acessando as configurações do VSCode, podemos configurar tanto o editor quanto suas extensões:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202101_r-vscode/img/preferencias.gif" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/preferencias.gif" class="img-fluid figure-img"></p>
 <figcaption>settings.json</figcaption>
 </figure>
 </div>
@@ -2558,14 +2558,14 @@ Rupprecht, Florian. 2021. <em>httpgd: A ’HTTP’ Server Graphics Device</em>. 
 </ol>
 </section></div> ]]></description>
   <category>tools</category>
-  <guid>https://datamares.netlify.app/posts/202101_r-vscode/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202101_r-vscode/</guid>
   <pubDate>Tue, 06 Apr 2021 00:00:00 GMT</pubDate>
-  <media:content url="https://datamares.netlify.app/posts/202101_r-vscode/img/vscode.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://datamares.netlify.app/pt/posts/202101_r-vscode/img/vscode.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Introdução ao framework {mlr3}</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202011_introducao-ao-mlr3-framework/</link>
+  <link>https://datamares.netlify.app/pt/posts/202011_introducao-ao-mlr3-framework/</link>
   <description><![CDATA[ 
 
 
@@ -2585,7 +2585,7 @@ Rupprecht, Florian. 2021. <em>httpgd: A ’HTTP’ Server Graphics Device</em>. 
 <li>comparar as predições com os dados da amostra;</li>
 <li>mensurar a performance do modelo através de medidas de acurácia estabelecidas.</li>
 </ol>
-<p><img src="https://datamares.netlify.app/posts/202011_introducao-ao-mlr3-framework/img/basics.svg" class="img-fluid"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_introducao-ao-mlr3-framework/img/basics.svg" class="img-fluid"></p>
 <p>O processo de repetir esse workflow várias vezes, separando a amostra treino em várias partes diferentes e usando outras como <em>fake test samples</em> é chamado de <em>resampling</em>, um processo vital para a etapa de calibragem e para evitar o <em>overfitting</em>.</p>
 <p>Dependendo dos dados, do tipo de tarefa e algoritmo escolhido, podem ser necessários vários filtros, como normalização, <em>feature selection</em> e tratamento de <em>outliers</em> ou dados faltantes. Para esses casos, o {mlr3} tem novas soluções que se destacam com muita vantagem em relação não só ao seu predecessor {mlr} como também a outros <em>frameworks</em> de <em>machine learning</em> em R, como o {caret} e o {tidymodels}.</p>
 <section id="características-de-design" class="level2" data-number="1.1">
@@ -2848,7 +2848,7 @@ font-style: inherit;">"pairs"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_introducao-ao-mlr3-framework/index_files/figure-html/task_cont-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_introducao-ao-mlr3-framework/index_files/figure-html/task_cont-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -3160,7 +3160,7 @@ font-style: inherit;">autoplot</span>(preds)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_introducao-ao-mlr3-framework/index_files/figure-html/accuracy-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_introducao-ao-mlr3-framework/index_files/figure-html/accuracy-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -3196,7 +3196,7 @@ font-style: inherit;">importance</span>())</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_introducao-ao-mlr3-framework/index_files/figure-html/importance-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_introducao-ao-mlr3-framework/index_files/figure-html/importance-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -3234,14 +3234,14 @@ R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</
 </ol>
 </section></div> ]]></description>
   <category>machine learning</category>
-  <guid>https://datamares.netlify.app/posts/202011_introducao-ao-mlr3-framework/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202011_introducao-ao-mlr3-framework/</guid>
   <pubDate>Sun, 27 Dec 2020 00:00:00 GMT</pubDate>
-  <media:content url="https://datamares.netlify.app/posts/202011_introducao-ao-mlr3-framework/img/mlr3.png" medium="image" type="image/png" height="73" width="144"/>
+  <media:content url="https://datamares.netlify.app/pt/posts/202011_introducao-ao-mlr3-framework/img/mlr3.png" medium="image" type="image/png" height="73" width="144"/>
 </item>
 <item>
   <title>Effect Size e a desigualdade de renda entre gêneros em Vitória</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/</link>
+  <link>https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/</link>
   <description><![CDATA[ 
 
 
@@ -3697,7 +3697,7 @@ font-style: inherit;">element_blank</span>())</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/barplot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/barplot-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -3937,7 +3937,7 @@ font-style: inherit;">element_blank</span>()</span>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/boxplot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/boxplot-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -4096,7 +4096,7 @@ font-style: inherit;">"grey30"</span></span>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/qqplot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/qqplot-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -4176,7 +4176,7 @@ font-style: inherit;">$</span>rem_media)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/qqplot-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/qqplot-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -4267,7 +4267,7 @@ font-style: inherit;">qqline</span>(medias)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/simulacao-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/simulacao-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -4296,7 +4296,7 @@ font-style: inherit;">"seed = 1"</span></span>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/simulacao-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/simulacao-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -4447,7 +4447,7 @@ font-style: inherit;">"greater"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/teste t agg-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/teste t agg-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -5337,7 +5337,7 @@ font-style: inherit;">"#002538"</span>)</span>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/grafico-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/grafico-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -5490,7 +5490,7 @@ font-style: inherit;">endpoints =</span> percentile_ci)</span></code></pre></div
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/medicos-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/medicos-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -5732,7 +5732,7 @@ font-style: inherit;">endpoints =</span> percentile_ci)</span></code></pre></div
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/executivos-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/index_files/figure-html/executivos-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -5827,14 +5827,14 @@ font-style: inherit;">"gignac2016"</span>)</span></code></pre></div>
 </ol>
 </section></div> ]]></description>
   <category>statistics</category>
-  <guid>https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/</guid>
   <pubDate>Tue, 24 Nov 2020 00:00:00 GMT</pubDate>
-  <media:content url="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/img/gender.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/img/gender.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Comparando variâncias: o teste F</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202011_comparando-variancias/</link>
+  <link>https://datamares.netlify.app/pt/posts/202011_comparando-variancias/</link>
   <description><![CDATA[ 
 
 
@@ -6046,7 +6046,7 @@ font-style: inherit;">"salmon"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_comparando-variancias/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_comparando-variancias/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -6148,7 +6148,7 @@ font-style: inherit;">"salmon"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_comparando-variancias/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_comparando-variancias/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -6289,14 +6289,14 @@ ratio of variances
 </ol>
 </section></div> ]]></description>
   <category>statistics</category>
-  <guid>https://datamares.netlify.app/posts/202011_comparando-variancias/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202011_comparando-variancias/</guid>
   <pubDate>Fri, 20 Nov 2020 00:00:00 GMT</pubDate>
-  <media:content url="https://datamares.netlify.app/posts/202011_comparando-variancias/variancia.png" medium="image" type="image/png" height="72" width="144"/>
+  <media:content url="https://datamares.netlify.app/pt/posts/202011_comparando-variancias/variancia.png" medium="image" type="image/png" height="72" width="144"/>
 </item>
 <item>
   <title>Chutou ou não chutou? O test t para uma amostra</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202011_chutou-ou-nao/</link>
+  <link>https://datamares.netlify.app/pt/posts/202011_chutou-ou-nao/</link>
   <description><![CDATA[ 
 
 
@@ -6415,7 +6415,7 @@ font-style: inherit;">"salmon"</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_chutou-ou-nao/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_chutou-ou-nao/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -6599,7 +6599,7 @@ font-style: inherit;">1</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_chutou-ou-nao/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_chutou-ou-nao/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -6782,7 +6782,7 @@ font-style: inherit;">1</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_chutou-ou-nao/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_chutou-ou-nao/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -7117,7 +7117,7 @@ font-style: inherit;">7</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_chutou-ou-nao/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_chutou-ou-nao/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -7446,7 +7446,7 @@ font-style: inherit;">7</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202011_chutou-ou-nao/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202011_chutou-ou-nao/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -7579,14 +7579,14 @@ mean of x
 </ol>
 </section></div> ]]></description>
   <category>statistics</category>
-  <guid>https://datamares.netlify.app/posts/202011_chutou-ou-nao/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202011_chutou-ou-nao/</guid>
   <pubDate>Fri, 06 Nov 2020 00:00:00 GMT</pubDate>
-  <media:content url="https://datamares.netlify.app/posts/202011_chutou-ou-nao/img/statistics.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://datamares.netlify.app/pt/posts/202011_chutou-ou-nao/img/statistics.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Atestando diferenças em médias: o teste t para amostras independentes</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202011_t-test/</link>
+  <link>https://datamares.netlify.app/pt/posts/202011_t-test/</link>
   <description><![CDATA[ 
 
 
@@ -7781,7 +7781,7 @@ font-style: inherit;">data =</span> data)</span></code></pre></div>
 <div id="fig-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://datamares.netlify.app/posts/202011_t-test/index_files/figure-html/fig-boxplot-1.png" class="img-fluid figure-img" width="672">
+<img src="https://datamares.netlify.app/pt/posts/202011_t-test/index_files/figure-html/fig-boxplot-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1: Boxplot de consumo por quantidade de cilindros.
@@ -7904,14 +7904,14 @@ mean in group 4 mean in group 6
 
  ]]></description>
   <category>statistics</category>
-  <guid>https://datamares.netlify.app/posts/202011_t-test/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202011_t-test/</guid>
   <pubDate>Mon, 02 Nov 2020 00:00:00 GMT</pubDate>
-  <media:content url="https://datamares.netlify.app/posts/202011_t-test/img/statistics.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://datamares.netlify.app/pt/posts/202011_t-test/img/statistics.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Qualidade gráfica no painel do RStudio</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202010_graphics-rstudio/</link>
+  <link>https://datamares.netlify.app/pt/posts/202010_graphics-rstudio/</link>
   <description><![CDATA[ 
 
 
@@ -7933,7 +7933,7 @@ font-style: inherit;">"img/Rplot.png"</span>)</span></code></pre></div>
 <div id="fig-plot1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-plot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://datamares.netlify.app/posts/202010_graphics-rstudio/img/Rplot.png" class="img-fluid figure-img" width="411">
+<img src="https://datamares.netlify.app/pt/posts/202010_graphics-rstudio/img/Rplot.png" class="img-fluid figure-img" width="411">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1: Gráfico sem anti-aliasing.
@@ -8002,7 +8002,7 @@ font-style: inherit;">"l"</span>)</span></code></pre></div>
 <div id="fig-plot2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-plot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://datamares.netlify.app/posts/202010_graphics-rstudio/index_files/figure-html/fig-plot2-1.png" class="img-fluid figure-img" width="672">
+<img src="https://datamares.netlify.app/pt/posts/202010_graphics-rstudio/index_files/figure-html/fig-plot2-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2: Gráfico com anti-aliasing.
@@ -8019,14 +8019,14 @@ Figura&nbsp;2: Gráfico com anti-aliasing.
 
  ]]></description>
   <category>tools</category>
-  <guid>https://datamares.netlify.app/posts/202010_graphics-rstudio/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202010_graphics-rstudio/</guid>
   <pubDate>Mon, 19 Oct 2020 00:00:00 GMT</pubDate>
-  <media:content url="https://datamares.netlify.app/posts/202010_graphics-rstudio/img/rstudio.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://datamares.netlify.app/pt/posts/202010_graphics-rstudio/img/rstudio.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>Configurando git em um servidor proxy</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202010_git-proxy/</link>
+  <link>https://datamares.netlify.app/pt/posts/202010_git-proxy/</link>
   <description><![CDATA[ 
 
 
@@ -8045,7 +8045,7 @@ Figura&nbsp;2: Gráfico com anti-aliasing.
 <p>O endereço do servidor proxy fica salvo em um arquivo de configuração que pode ser obtido via navegador. Se você estiver no Windows, terá de acessar o famigerado Internet Explorer, ir em <code>Opções da Internet</code>, <code>Conexões</code> e <code>Configurações da Lan</code>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://datamares.netlify.app/posts/202010_git-proxy/img/1.png" class="img-fluid figure-img"></p>
+<p><img src="https://datamares.netlify.app/pt/posts/202010_git-proxy/img/1.png" class="img-fluid figure-img"></p>
 <figcaption>localização do arquivo de configuração</figcaption>
 </figure>
 </div>
@@ -8105,14 +8105,14 @@ font-style: inherit;">edit_git_config</span>()</span></code></pre></div>
 </ol>
 </section></div> ]]></description>
   <category>tools</category>
-  <guid>https://datamares.netlify.app/posts/202010_git-proxy/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202010_git-proxy/</guid>
   <pubDate>Fri, 25 Sep 2020 00:00:00 GMT</pubDate>
-  <media:content url="https://datamares.netlify.app/posts/202010_git-proxy/img/git.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://datamares.netlify.app/pt/posts/202010_git-proxy/img/git.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>Hello World</title>
   <dc:creator>Alberson Miranda</dc:creator>
-  <link>https://datamares.netlify.app/posts/202009_hello-world/</link>
+  <link>https://datamares.netlify.app/pt/posts/202009_hello-world/</link>
   <description><![CDATA[ 
 
 
@@ -8129,7 +8129,7 @@ font-style: inherit;">edit_git_config</span>()</span></code></pre></div>
 
  ]]></description>
   <category>news</category>
-  <guid>https://datamares.netlify.app/posts/202009_hello-world/</guid>
+  <guid>https://datamares.netlify.app/pt/posts/202009_hello-world/</guid>
   <pubDate>Fri, 11 Sep 2020 00:00:00 GMT</pubDate>
 </item>
 </channel>

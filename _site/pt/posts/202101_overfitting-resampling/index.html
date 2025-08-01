@@ -504,7 +504,7 @@ Bischl B., Trautmann H., Mersmann O. 2012. <span>«Resampling Methods for Meta-M
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/datamares\.netlify\.app\/");
+        var filterRegex = new RegExp("https:\/\/datamares\.netlify\.app\/pt");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

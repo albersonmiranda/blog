@@ -1,83 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://datamares.netlify.app/pt/posts/202101_r-vscode/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202208_educacao-pre-capitalista/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202010_graphics-rstudio/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.026Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202011_chutou-ou-nao/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.027Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202011_introducao-ao-mlr3-framework/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.029Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202011_comparando-variancias/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.027Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202101_overfitting-resampling/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.030Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202506_why-economists-wrong/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.040Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202011_t-test/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.030Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.025Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/about.html</loc>
+    <lastmod>2025-08-01T02:15:36.023Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/software.html</loc>
+    <lastmod>2025-08-01T02:15:36.045Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202009_hello-world/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.026Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202106_python-from-r-i-package-importing/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202506_ppa/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.040Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202208_template/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.040Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.029Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202010_git-proxy/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.026Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202210_series-hierarquicas/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.040Z</lastmod>
+  </url>
+  <url>
+    <loc>https://datamares.netlify.app/pt/posts/202504_all-models-are-wrong/index.html</loc>
+    <lastmod>2025-08-01T02:15:36.040Z</lastmod>
+  </url>
+  <url>
     <loc>https://datamares.netlify.app/posts/202101_r-vscode/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.551Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.158Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202208_educacao-pre-capitalista/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.551Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.158Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202010_graphics-rstudio/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.539Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.145Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202011_chutou-ou-nao/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.539Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.146Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202011_introducao-ao-mlr3-framework/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.542Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.148Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202011_comparando-variancias/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.540Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.146Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202101_overfitting-resampling/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.543Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.149Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202506_why-economists-wrong/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.553Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.160Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202011_t-test/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.542Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.149Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.538Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.145Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/about.html</loc>
-    <lastmod>2025-07-18T11:03:30.536Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.143Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/software.html</loc>
-    <lastmod>2025-07-18T11:03:30.558Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.165Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202009_hello-world/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.538Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.145Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202106_python-from-r-i-package-importing/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.551Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.158Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202506_ppa/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.553Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.160Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202208_template/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.553Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.160Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.541Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.148Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202010_git-proxy/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.539Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.145Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202210_series-hierarquicas/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.553Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.160Z</lastmod>
   </url>
   <url>
     <loc>https://datamares.netlify.app/posts/202504_all-models-are-wrong/index.html</loc>
-    <lastmod>2025-07-18T11:03:30.553Z</lastmod>
+    <lastmod>2025-08-01T02:13:14.160Z</lastmod>
   </url>
 </urlset>

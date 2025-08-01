@@ -1,1 +1,1 @@
-Sitemap: https://datamares.netlify.app/sitemap.xml
+Sitemap: https://datamares.netlify.app/pt/sitemap.xml
