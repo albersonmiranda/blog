@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.5.0",
+    "Version": "4.5.1",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -234,6 +234,7 @@
       "Version": "0.0.0.9000",
       "Source": "Repository",
       "Repository": "https://ropensci.r-universe.dev",
+      "RemoteType": "repository",
       "RemoteUrl": "https://github.com/ropensci-review-tools/babelquarto",
       "RemoteRef": "main",
       "RemoteSha": "713dbdbcccc7534b2ec707a099bfadd107568db4",
@@ -251,7 +252,7 @@
         "xml2",
         "yaml"
       ],
-      "Hash": "ec96776b29d4d5833ae43cf259f65a09"
+      "Hash": "781d87a7fe25dd833b97d22014798f98"
     },
     "backports": {
       "Package": "backports",
@@ -1578,7 +1579,7 @@
       "Package": "later",
       "Version": "1.4.2",
       "Source": "Repository",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "CRAN",
       "Requirements": [
         "Rcpp",
         "rlang"
@@ -2367,7 +2368,7 @@
     },
     "quantmod": {
       "Package": "quantmod",
-      "Version": "0.4.26",
+      "Version": "0.4.28",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -2379,13 +2380,13 @@
         "xts",
         "zoo"
       ],
-      "Hash": "59321b609790f8ccf92145810e4dd507"
+      "Hash": "998e62a5735c2fe6b4a36b0d00e68b70"
     },
     "quarto": {
       "Package": "quarto",
       "Version": "1.4.4",
       "Source": "Repository",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cli",
@@ -3138,7 +3139,7 @@
       "Package": "whoami",
       "Version": "1.3.0",
       "Source": "Repository",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "CRAN",
       "Requirements": [
         "httr",
         "jsonlite",
