@@ -10,7 +10,7 @@ image: "https://albersonmiranda.github.io/fio/reference/figures/leontief.jpg"
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  warning = FAAlSE,
+  warning = FALSE,
   message = FALSE
 )
 ```
@@ -29,15 +29,15 @@ install.packages("fio")
 
 The headline feature of version 1.0.0 is the introduction of **Multi-regional Input-Output (MIOM)** models. This allows analysts to go beyond single economies and study the interdependencies between different nations or regions.
 
-The new `miom()` function creates a multi-regional model that inherits all the performance and functionality of the single-region `iom()` class, adding specialized tools for regional analysis:
+The new `miom()` class creates a multi-regional model that inherits all the performance and functionality of the single-region `iom()` class, adding specialized tools for regional analysis:
 
 - **Bilateral Trade**: Easily extract trade flows between specific regions.
 - **Regional Multipliers**: Compute intra-regional, inter-regional, and spillover multipliers.
 - **Interdependence Measures**: Quantify how much regions rely on each other.
 
-Here is a quick look at how you can analyze global trade interdependencies using the `world_2000` dataset (now part of the [{fiodata}](https://github.com/albersonmiranda/fiodata) package):
+Here is a quick look at how you can analyze global trade interdependencies using the `world_2000` dataset (now part of the [{fiodata}](https://cran.r-project.org/web/packages/fiodata/index.html) package):
 
-```r
+```{r}
 library(fio)
 
 # Load the multi-regional world dataset
@@ -56,7 +56,7 @@ Input-output models are traditionally "open," treating households and government
 
 By moving households or the government from final demand into the intermediate transactions matrix, you can better capture the "induced" effects of economic shocks—for instance, how an increase in production leads to higher wages, which in turn fuels more consumption.
 
-```r
+```{r}
 iom_br <- fiodata::br_2020
 
 # Close the model for household consumption
@@ -64,6 +64,7 @@ iom_br$close_model("household")
 
 # Technical coefficients and multipliers now include the induced effects
 iom_br$compute_tech_coeff()
+iom_br$compute_leontief_inverse()
 iom_br$compute_multiplier_output()
 ```
 
@@ -73,17 +74,17 @@ To make it even easier to start your analysis, we've added `download_wiod()`. Th
 
 ## The {fiodata} Split
 
-As the package grew, the built-in datasets reached a size that exceeded CRAN's recommendations. To keep {fio} lightweight and fast to install, we have moved the larger datasets (`br_2020` and `world_2000`) to a separate companion package: [**{fiodata}**](https://github.com/albersonmiranda/fiodata).
-
+As the package grew, the built-in datasets reached a size that exceeded CRAN's recommendations. To keep {fio} lightweight and fast to install, we have moved the datasets (`br_2020` and `world_2000`) to a separate companion package: [**{fiodata}**](https://cran.r-project.org/web/packages/fiodata/index.html).
+  
 When you install {fio}, you might want to install {fiodata} as well to follow along with our examples:
 
 ```r
-# Install from R-Universe or GitHub
-install.packages("fiodata", repos = "https://albersonmiranda.r-universe.dev")
+# Install from CRAN
+install.packages("fiodata")
 ```
 
 ## Acknowledgements
 
-This release would not have been possible without the feedback from the community and the robust ecosystem of R and Rust packages. Special thanks to the developers of the `extendr` and `faer` projects, which provide the foundation for {fio}'s hybrid architecture.
+This release would not have been possible without the robust ecosystem of R and Rust packages. Special thanks to the developers of the `extendr` and `faer` projects, which provide the foundation for {fio}'s hybrid architecture.
 
 For a full list of changes, please check the [NEWS.md](https://github.com/albersonmiranda/fio/blob/main/NEWS.md) file. Happy analyzing!

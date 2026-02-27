@@ -39,7 +39,7 @@ Neste post, abordo alguns erros metodológicos frequentes que fazem com que algu
 
 Você já ouviu falar do conjunto de dados `presidents`? Do pacote {datasets}, ele armazena as avaliações trimestrais de aprovação dos presidentes dos EUA de 1945 a 1974. Será que existe alguma relação com o índice de preços ao consumidor (CPI), PIB real, taxa de desemprego ou taxas de juros? Vamos descobrir!
 
-```{r dados}
+```{r}
 #| label: tbl-dados
 #| tbl-cap: "Base de dados."
 

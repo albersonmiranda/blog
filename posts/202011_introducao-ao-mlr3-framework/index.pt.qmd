@@ -137,7 +137,9 @@ l_xgboost$param_set$values = list(
   # limitando profundidade da árvore
   max_depth = 5,
   # quantidade máxima de iterações
-  nrounds = 100
+  nrounds = 100,
+  # necessário com versões atuais do xgboost
+  verbose = 1
 )
 
 # verificando

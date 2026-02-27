@@ -39,7 +39,7 @@ In this post, I address some frequent methodological errors that cause some mode
 
 Have you ever heard about `presidents` dataset? From the built-in {datasets}, it stores US presidents quarterly approval ratings from 1945 to 1974. Does it hold any relationship with consumer price index (CPI), real GDP, unemployment rate or interest rates? Let's find out!
 
-```{r dados}
+```{r}
 #| label: tbl-dados
 #| tbl-cap: "Dataset"
 
