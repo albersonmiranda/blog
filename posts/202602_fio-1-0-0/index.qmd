@@ -50,6 +50,8 @@ miom_world$get_bilateral_trade("BRA", "CHN")[1:5, 1:2]
 miom_world$get_regional_interdependence() |> head()
 ```
 
+For a complete overview on `miom` class and its methods, check out the vignette: [Multi-regional Input-Output Analysis](https://albersonmiranda.github.io/fio/articles/multiregional_analysis.html).
+
 ## Closing the Model
 
 Input-output models are traditionally "open," treating households and government as external to the production system. Version 1.0.0 introduces the `close_model()` method, which allows you to "internalize" these sectors.
@@ -71,6 +73,8 @@ iom_br$compute_multiplier_output()
 ## Direct Data Access
 
 To make it even easier to start your analysis, we've added `download_wiod()`. This function allows you to download World Input-Output Database (WIOD) tables directly from their official source and load them into R. Combined with {fio}'s processing speed, this significantly reduces the time from data collection to insight.
+
+For a complete example on working with WIOD data, check out the vignette: [Working with WIOD](https://albersonmiranda.github.io/fio/articles/wiod_2014_analysis.html).
 
 ## The {fiodata} Split
 

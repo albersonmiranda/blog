@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt">
 <head>
-<link rel="alternate" hreflang="en" href="https://datamares.netlify.app/posts/202011_comparando-variancias/index.html" />
-<link rel="alternate" hreflang="pt" href="https://datamares.netlify.app/pt/posts/202011_comparando-variancias/index.pt.html" />
+<link rel="alternate" hreflang="en" href="/posts/202011_comparando-variancias/index.html" />
+<link rel="alternate" hreflang="pt" href="/pt/posts/202011_comparando-variancias/index.pt.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Alberson Miranda">
 <title>Comparando variâncias: o teste F – Datamares &amp; Dreamscapes</title>
@@ -59,14 +59,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><meta name="quarto:offset" content="../../">
 <link href="../../assets/logo/favicon-256x256.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1f1e6c05e4d9aa3145bdaa62cecd366.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-3f9a1c916a924db677bb40662d79ac4d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-c1f1e6c05e4d9aa3145bdaa62cecd366.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-24772959a0e306aba8d7698078628ce7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -116,7 +116,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -299,7 +299,7 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../assets/logo/logo.png" alt="" class="navbar-logo"></a>
+    <img src="../../assets/logo/logo.png" alt="" class="navbar-logo light-content"><img src="../../assets/logo/logo.png" alt="" class="navbar-logo dark-content"></a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Datamares &amp; Dreamscapes</span>
     </a>
@@ -311,7 +311,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item"><div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> Português</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://datamares.netlify.app/posts/202011_comparando-variancias/index.html" id="language-link-en">English</a></li></ul>
+<button class="btn btn-primary dropdown-toggle babelquarto-languages-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> Português</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/posts/202011_comparando-variancias/index.html" id="language-link-en">English</a></li></ul>
 </div></li>
 <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
@@ -411,9 +411,12 @@ window.Quarto = {
 <main class="content quarto-banner-title-block" id="quarto-document-content"><p>Antes de eu entrar no assunto <em>machine learning</em>, porque <del>é um buraco sem fundo</del> devo me demorar quando entrar, quero cobrir um pouco mais do básico em inferência.</p>
 <p><a href="https://datamares.netlify.app/post/atestando-diferencas-em-medias-o-teste-t-para-amostras-independentes/">Nesse post</a> eu disse que para realizar o teste t em duas amostras independentes deveríamos saber antes se as variâncias dessas amostras são iguais ou diferentes. Vamos ver como atestar isso agora. A base utilizada será a <a href="https://www.kaggle.com/uciml/german-credit">german credit data</a>.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importando dados</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># obs.: o -1 é para remover a primeira coluna, que é apenas o índice</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"german_credit_data.csv"</span>)[<span class="sc">-</span><span class="dv">1</span>]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"german_credit_data.csv"</span>)[<span class="sc">-</span><span class="dv">1</span>]</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stderr">
 <pre><code>New names:
 Rows: 1000 Columns: 10
@@ -425,8 +428,11 @@ Age, Job, Credit amount, Duration
 Specify the column types or set `show_col_types = FALSE` to quiet this message.
 • `` -&gt; `...1`</code></pre>
 </div>
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualizando</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,000 × 9
      Age Sex      Job Housing `Saving accounts` `Checking account`
@@ -447,16 +453,22 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 </div>
 <p>Da mesma forma que o teste t, podemos testar se a medida de uma amostra é significativamente diferente de um valor escolhido ou podemos testar em relação à outra amostra — se maior, menor ou diferente. Para este exercício, vamos testar se a variância da variável <code>Credit amount</code> (limite de crédito) é o mesmo para homens e mulheres que vivem de aluguel. Primeiro, vamos calcular os desvios-padrão populacionais:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># obtendo amostras</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>homens <span class="ot">=</span> data[data<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">"male"</span> <span class="sc">&amp;</span> data<span class="sc">$</span>Housing <span class="sc">==</span> <span class="st">"rent"</span>,]<span class="sc">$</span><span class="st">`</span><span class="at">Credit amount</span><span class="st">`</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mulheres <span class="ot">=</span> data[data<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">"female"</span> <span class="sc">&amp;</span> data<span class="sc">$</span>Housing <span class="sc">==</span> <span class="st">"rent"</span>,]<span class="sc">$</span><span class="st">`</span><span class="at">Credit amount</span><span class="st">`</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># calculando desvio padrão</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(homens)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(homens)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2846.647</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mulheres)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mulheres)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2235.225</code></pre>
 </div>
@@ -470,6 +482,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <span class="header-section-number">1.1</span> VERIFICANDO A HIPÓTESE DE NORMALIDADE</h2>
 <p>Primeiramente, vamos plotar as densidades para verificar se sua distribuição é plausível com a hipótese de normalidade:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dados de densidade</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">=</span> <span class="fu">density</span>(homens)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">=</span> <span class="fu">density</span>(mulheres)</span>
@@ -484,7 +497,9 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d2,</span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Density Plot: mulheres"</span>)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(d2, <span class="at">col =</span> <span class="st">"salmon"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(d2, <span class="at">col =</span> <span class="st">"salmon"</span>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
@@ -494,19 +509,26 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 </div>
 <p>Com esse formato, a normalidade é bastante implausível e não há necessidade de realizar quaisquer testes. Para contornar esse problema, podemos tentar realizar uma transformação logarítmica:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transformação logarítimica</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>log_homens <span class="ot">=</span> <span class="fu">log</span>(homens)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>log_mulheres <span class="ot">=</span> <span class="fu">log</span>(mulheres)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># calculando a variância após transformação</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(log_homens)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(log_homens)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5614271</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(log_mulheres)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(log_mulheres)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5229548</code></pre>
 </div>
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dados de densidade</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>d3 <span class="ot">=</span> <span class="fu">density</span>(log_homens)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>d4 <span class="ot">=</span> <span class="fu">density</span>(log_mulheres)</span>
@@ -521,7 +543,9 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d4,</span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Density Plot: log(mulheres)"</span>)</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(d4, <span class="at">col =</span> <span class="st">"salmon"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(d4, <span class="at">col =</span> <span class="st">"salmon"</span>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
@@ -531,8 +555,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 </div>
 <p>Os dados agora parecem seguir uma distribuição próxima da normal. Para verificar, pode-se realizar um teste de normalidade mas, como não é esse o tema, exploraremos o assunto em outra postagem. Por hora, vamos apenas registrar que a transformação foi exitosa e os dados agora apresentam uma distribuição próxima da normal.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># teste de normalidade</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(log_homens)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(log_homens)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -540,7 +567,10 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 data:  log_homens
 W = 0.98624, p-value = 0.5147</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(log_mulheres)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(log_mulheres)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -567,8 +597,11 @@ H_1: \sigma_1 \neq \sigma_2
 <p><span class="math display">\[ F = \frac{s^2_1}{s^2_2} \]</span></p>
 <p>Como a estatística do teste é a razão entre as variâncias amostrais, o teste é para verificar se essa razão é diferente da unidade. Para verificarmos a estatística tabelada, precisamos de saber quantos graus de liberdade temos nas amostras:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># graus de liberdade (n-1)</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data[data<span class="sc">$</span>Housing <span class="sc">==</span> <span class="st">"rent"</span>,]<span class="sc">$</span>Sex)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data[data<span class="sc">$</span>Housing <span class="sc">==</span> <span class="st">"rent"</span>,]<span class="sc">$</span>Sex)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 female   male 
@@ -577,8 +610,11 @@ female   male
 </div>
 <p>E então a estatística tabelada será:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># F-statistic para 95º percentil</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qf</span>(.<span class="dv">95</span>, <span class="dv">83</span>, <span class="dv">94</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qf</span>(.<span class="dv">95</span>, <span class="dv">83</span>, <span class="dv">94</span>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.419123</code></pre>
 </div>
@@ -586,8 +622,11 @@ female   male
 </section><section id="valor-crítico" class="level2" data-number="1.5"><h2 data-number="1.5" class="anchored" data-anchor-id="valor-crítico">
 <span class="header-section-number">1.5</span> VALOR CRÍTICO</h2>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculando valor crítico</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(log_homens) <span class="sc">/</span> <span class="fu">var</span>(log_mulheres)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(log_homens) <span class="sc">/</span> <span class="fu">var</span>(log_mulheres)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.073567</code></pre>
 </div>
@@ -685,13 +724,14 @@ ratio of variances
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -706,7 +746,7 @@ ratio of variances
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/datamares\.netlify\.app\/pt");
+        var filterRegex = new RegExp("\/pt");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

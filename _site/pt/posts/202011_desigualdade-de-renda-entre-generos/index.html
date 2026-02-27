@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt">
 <head>
-<link rel="alternate" hreflang="en" href="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/index.html" />
-<link rel="alternate" hreflang="pt" href="https://datamares.netlify.app/pt/posts/202011_desigualdade-de-renda-entre-generos/index.pt.html" />
+<link rel="alternate" hreflang="en" href="/posts/202011_desigualdade-de-renda-entre-generos/index.html" />
+<link rel="alternate" hreflang="pt" href="/pt/posts/202011_desigualdade-de-renda-entre-generos/index.pt.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Alberson Miranda">
 <title>Effect Size e a desigualdade de renda entre gêneros em Vitória – Datamares &amp; Dreamscapes</title>
@@ -59,14 +59,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><meta name="quarto:offset" content="../../">
 <link href="../../assets/logo/favicon-256x256.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1f1e6c05e4d9aa3145bdaa62cecd366.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-3f9a1c916a924db677bb40662d79ac4d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-c1f1e6c05e4d9aa3145bdaa62cecd366.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-24772959a0e306aba8d7698078628ce7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -116,7 +116,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -299,7 +299,7 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../assets/logo/logo.png" alt="" class="navbar-logo"></a>
+    <img src="../../assets/logo/logo.png" alt="" class="navbar-logo light-content"><img src="../../assets/logo/logo.png" alt="" class="navbar-logo dark-content"></a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Datamares &amp; Dreamscapes</span>
     </a>
@@ -311,7 +311,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item"><div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> Português</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://datamares.netlify.app/posts/202011_desigualdade-de-renda-entre-generos/index.html" id="language-link-en">English</a></li></ul>
+<button class="btn btn-primary dropdown-toggle babelquarto-languages-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> Português</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/posts/202011_desigualdade-de-renda-entre-generos/index.html" id="language-link-en">English</a></li></ul>
 </div></li>
 <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
@@ -423,14 +423,18 @@ window.Quarto = {
 </ol>
 <p>Escolhi o Python aqui porque não conheço um pacote no CRAN<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> que lide com compressão 7zip — se souber, por favor, indique nos comentários! Se escolher baixar e descompactar via script, podemos executar códigos Python através do R com o {reticulate}:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ativando python</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># escolhendo o ambiente</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="st">"base"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="st">"base"</span>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 </div>
 <p>Depois de ativar o ambiente Python, vamos baixar e descompactar a base de dados para uma pasta chamada <code>data</code> dentro do diretório do nosso projeto. Se você baixou manualmente, crie a pasta <code>data</code> e cole o arquivo lá.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importando módulos</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>import urllib.request as rq</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>import py7zr</span>
@@ -442,11 +446,14 @@ window.Quarto = {
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># descompactando</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>rais <span class="ot">=</span> <span class="fu">py7zr.SevenZipFile</span>(<span class="st">"data/rais.7z"</span>, <span class="at">mode=</span><span class="st">"r"</span>)</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rais.extractall</span>(<span class="at">path=</span><span class="st">"data/"</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rais.close</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rais.close</span>()</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 </div>
 <p>Vamos precisar também da tabela do Código Brasileiro de Ocupações para entendermos as profissões das pessoas analisadas. Depois de fazer o <a href="http://www.mtecbo.gov.br/cbosite/pages/downloads.jsf">download</a>, coloque na pasta <code>data</code> junto com o arquivo da Rais.</p>
 <p>Com os dados baixados, vamos importá-los, conhecê-los e começar a extrair sentido deles.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pacotes</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -483,12 +490,17 @@ window.Quarto = {
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co"># juntando ambas tabelas e filtrando apenas Vitória</span></span>
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span></span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(cbo, <span class="at">by =</span> <span class="st">"cod_profissao"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(municipio <span class="sc">==</span> <span class="dv">320530</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(municipio <span class="sc">==</span> <span class="dv">320530</span>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 </div>
 <p>Nossos dados agora têm essa cara:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualizando dataframe</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 7
   cod_profissao idade municipio cod_raca rem_media  sexo profissao              
@@ -505,6 +517,7 @@ window.Quarto = {
 <span class="header-section-number">2</span> DIFERENÇAS NO AGREGADO</h1>
 <p>Primeiramente, vamos tentar entender o que temos em mãos em termos de amostra:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quantidade de homens e mulheres</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(sexo),</span>
@@ -526,7 +539,9 @@ window.Quarto = {
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Century Gothic"</span>,</span>
 <span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                            <span class="at">color =</span> <span class="st">"grey30"</span>),</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>())</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/barplot-1.png" class="img-fluid figure-img" width="672"></p>
@@ -536,8 +551,11 @@ window.Quarto = {
 </div>
 <p>Temos praticamente a mesma quantidade de homens e mulheres em nossa amostra. Podemos, antes de realizar qualquer outra análise e aplicar quaisquer filtros, calcular a remuneração média:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remuneração média</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="at">data =</span> data, rem_media <span class="sc">~</span> sexo, <span class="at">FUN =</span> mean)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="at">data =</span> data, rem_media <span class="sc">~</span> sexo, <span class="at">FUN =</span> mean)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  sexo rem_media
 1    1  3925.187
@@ -546,6 +564,7 @@ window.Quarto = {
 </div>
 <p>No agregado, a renda média dos homens em Vitória é quase 40% maior que a das mulheres e mesmo quando consideramos a mediana ainda é quase 30% maior. Podemos verificar se essa diferença é significativa com um teste t, mas antes devemos verificar se seus pré-requisitos são atendidos.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quartis</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>boxplot_data <span class="ot">=</span> data <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sexo) <span class="sc">%&gt;%</span></span>
@@ -587,7 +606,9 @@ window.Quarto = {
 <span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">"grey30"</span></span>
 <span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    ),</span>
 <span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/boxplot-1.png" class="img-fluid figure-img" width="672"></p>
@@ -601,6 +622,7 @@ window.Quarto = {
 <p>Você pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limite garante a hipótese da normalidade. Entretanto, principalmente em dados com muitos <em>outliers</em> extremos, o tamanho da amostra necessária para convergência pode ser absurda, invalidando, na prática, a afirmação a partir da TCL.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Portanto, defendo que devemos, sim, ter cuidado com essa hipótese mesmo lidando com grandes amostras.</p>
 <p>A primeira análise nesse sentido é a visual. Podemos verificar que a distribuição apresenta <em>fat tail</em> e passa longe de uma normal, tanto pelo histograma quanto pelo <em>Q-Q plot</em>.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># histograma</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
@@ -627,13 +649,16 @@ window.Quarto = {
 <span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(</span>
 <span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="st">"Century Gothic"</span>,</span>
 <span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"grey30"</span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  ))</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/qqplot-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># qqplot</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># os dados estarão em cima da reta caso sejam distribuídos normalmente</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
@@ -644,7 +669,9 @@ window.Quarto = {
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data[data<span class="sc">$</span>sexo <span class="sc">==</span> <span class="dv">2</span>, ]<span class="sc">$</span>rem_media,</span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Q-Q PLOT: MULHERES"</span>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data[data<span class="sc">$</span>sexo <span class="sc">==</span> <span class="dv">2</span>, ]<span class="sc">$</span>rem_media)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data[data<span class="sc">$</span>sexo <span class="sc">==</span> <span class="dv">2</span>, ]<span class="sc">$</span>rem_media)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/qqplot-2.png" class="img-fluid figure-img" width="672"></p>
@@ -654,6 +681,7 @@ window.Quarto = {
 </div>
 <p>Podemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos tratar a base.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># garantir reprodutibilidade</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -674,19 +702,24 @@ window.Quarto = {
 <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># qqplot</span></span>
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(medias)</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(medias)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(medias)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/simulacao-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualização</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(medias,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"DISTRIBUIÇÃO DAS MÉDIAS AMOSTRAIS"</span>,</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"médias"</span>,</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sub =</span> <span class="st">"seed = 1"</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/simulacao-2.png" class="img-fluid figure-img" width="672"></p>
@@ -699,6 +732,7 @@ window.Quarto = {
 <span class="header-section-number">2.2</span> TESTE T</h2>
 <p>Agora que garantimos os pré-requisitos, vamos testar se a diferença entre as médias é significativa. Para isso, vamos usar o pacote {infer}:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transformando variável `sexo`</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> data <span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sexo =</span> <span class="fu">ifelse</span>(sexo <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"homem"</span>, <span class="st">"mulher"</span>))</span>
@@ -721,16 +755,21 @@ window.Quarto = {
 <span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co"># visualizando distribuição nula e estatística do teste</span></span>
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>distr_nula <span class="sc">%&gt;%</span></span>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visualize</span>(<span class="at">method =</span> <span class="st">"both"</span>) <span class="sc">+</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(estatistica_calculada, <span class="at">direction =</span> <span class="st">"greater"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(estatistica_calculada, <span class="at">direction =</span> <span class="st">"greater"</span>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/teste%20t%20agg-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculando p-valor</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>distr_nula <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_p_value</span>(<span class="at">obs_stat =</span> estatistica_calculada, <span class="at">direction =</span> <span class="st">"greater"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_p_value</span>(<span class="at">obs_stat =</span> estatistica_calculada, <span class="at">direction =</span> <span class="st">"greater"</span>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   p_value
@@ -748,6 +787,7 @@ window.Quarto = {
 <p>Para duas médias fixadas, quanto menor for o desvio padrão, maior será a estatística <em>d</em>. Por outro lado, quanto maior for o desvio padrão, menor será o tamanho do efeito.</p>
 <p>No R, vamos utilizar o pacote {effectsize}:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carregando pacote</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effectsize)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -755,7 +795,9 @@ window.Quarto = {
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cohens_d</span>(</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  data[data<span class="sc">$</span>sexo <span class="sc">==</span> <span class="st">"homem"</span>, ]<span class="sc">$</span>rem_media,</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  data[data<span class="sc">$</span>sexo <span class="sc">==</span> <span class="st">"mulher"</span>, ]<span class="sc">$</span>rem_media</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cohen's d |       95% CI
 ------------------------
@@ -763,8 +805,11 @@ window.Quarto = {
 
 - Estimated using pooled SD.</code></pre>
 </div>
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># interpretando a estatística d</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">interpret_cohens_d</span>(<span class="fl">0.26</span>, <span class="st">"gignac2016"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">interpret_cohens_d</span>(<span class="fl">0.26</span>, <span class="st">"gignac2016"</span>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "small"
 (Rules: gignac2016)</code></pre>
@@ -772,11 +817,14 @@ window.Quarto = {
 </div>
 <p>Com uma estatística <span class="math inline">\(d=0.26\)</span>, a diferença é considerada pequena. Na escala de Gignac &amp; Szodorai (2016):</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rules</span>(</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.41</span>, <span class="fl">0.63</span>),</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"muito pequeno"</span>, <span class="st">"pequeno"</span>, <span class="st">"moderado"</span>, <span class="st">"grande"</span>),</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Gignac &amp; Szodorai (2016)"</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Reference Thresholds (Gignac &amp; Szodorai (2016))
 
@@ -795,6 +843,7 @@ window.Quarto = {
 <span class="header-section-number">3</span> DIFERENÇAS ENTRE PROFISSÕES</h1>
 <p>Podemos estender nossa análise verificando em quais profissões há maior e menor divergência na remuneração.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># criando dataframe de diferenças na remuneração</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># profissões selecionadas</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>diferencas <span class="ot">=</span> data <span class="sc">%&gt;%</span></span>
@@ -823,7 +872,9 @@ window.Quarto = {
 <span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(dif))</span>
 <span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="co"># visualizando tabela</span></span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>diferencas</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>diferencas</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 11 × 6
    profissao             renda_homem renda_mulher n_homem n_mulher   dif
@@ -843,6 +894,7 @@ window.Quarto = {
 </div>
 <p>Dentre as profissões selecionadas, apenas a de enfermagem tem remuneração média maior para as mulheres. Os homens levam vantagem em todos os demais. Colocando em gráfico:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gráfico</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>diferenca_media <span class="ot">=</span> <span class="fl">3925.18</span> <span class="sc">-</span> <span class="fl">2846.727</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>setas <span class="ot">=</span> <span class="fu">tibble</span>(</span>
@@ -918,7 +970,9 @@ window.Quarto = {
 <span id="cb25-73"><a href="#cb25-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"grey85"</span>, <span class="at">fill =</span> <span class="cn">NA</span>),</span>
 <span id="cb25-74"><a href="#cb25-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002538"</span>),</span>
 <span id="cb25-75"><a href="#cb25-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.key =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002538"</span>)</span>
-<span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/grafico-1.png" class="img-fluid figure-img" width="1152"></p>
@@ -931,6 +985,7 @@ window.Quarto = {
 <span class="header-section-number">3.1</span> DISPARIDADE SALARIAL ENTRE MÉDICOS</h2>
 <p>Primeiramente, vamos verificar a significância da diferença. Como esperado, ela é significativa.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculando estatística t</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>estatistica_calculada <span class="ot">=</span> data <span class="sc">%&gt;%</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(profissao, <span class="st">"Médico"</span>)) <span class="sc">%&gt;%</span></span>
@@ -952,16 +1007,21 @@ window.Quarto = {
 <span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>distr_nula <span class="sc">%&gt;%</span></span>
 <span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visualize</span>(<span class="at">method =</span> <span class="st">"both"</span>) <span class="sc">+</span></span>
 <span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(estatistica_calculada, <span class="at">direction =</span> <span class="st">"greater"</span>) <span class="sc">+</span></span>
-<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_confidence_interval</span>(<span class="at">endpoints =</span> percentile_ci)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_confidence_interval</span>(<span class="at">endpoints =</span> percentile_ci)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/medicos-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculando p-valor</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>distr_nula <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_p_value</span>(<span class="at">obs_stat =</span> estatistica_calculada, <span class="at">direction =</span> <span class="st">"greater"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_p_value</span>(<span class="at">obs_stat =</span> estatistica_calculada, <span class="at">direction =</span> <span class="st">"greater"</span>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   p_value
@@ -971,13 +1031,16 @@ window.Quarto = {
 </div>
 <p>Em seguida, vamos calcular o tamanho do efeito.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># calculando a diferença padronizada</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">cohens_d</span>(</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>   data[data<span class="sc">$</span>sexo <span class="sc">==</span> <span class="st">"homem"</span> <span class="sc">&amp;</span></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">str_detect</span>(data<span class="sc">$</span>profissao, <span class="st">"Médico"</span>), ]<span class="sc">$</span>rem_media,</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>   data[data<span class="sc">$</span>sexo <span class="sc">==</span> <span class="st">"mulher"</span> <span class="sc">&amp;</span></span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">str_detect</span>(data<span class="sc">$</span>profissao, <span class="st">"Médico"</span>), ]<span class="sc">$</span>rem_media</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cohen's d |       95% CI
 ------------------------
@@ -985,8 +1048,11 @@ window.Quarto = {
 
 - Estimated using pooled SD.</code></pre>
 </div>
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># interpretando a estatística d</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">interpret_cohens_d</span>(<span class="fl">0.12</span>, <span class="st">"gignac2016"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">interpret_cohens_d</span>(<span class="fl">0.12</span>, <span class="st">"gignac2016"</span>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "very small"
 (Rules: gignac2016)</code></pre>
@@ -997,6 +1063,7 @@ window.Quarto = {
 <span class="header-section-number">3.2</span> DISPARIDADE SALARIAL EM CARGOS EXECUTIVOS</h2>
 <p>Repetindo o mesmo procedimento para as pessoas em cargos executivos, vemos que a diferença também é significativa.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculando estatística t</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>estatistica_calculada <span class="ot">=</span> data <span class="sc">%&gt;%</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(profissao, <span class="st">"Dirigentes|Diretor"</span>)) <span class="sc">%&gt;%</span></span>
@@ -1018,7 +1085,9 @@ window.Quarto = {
 <span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>distr_nula <span class="sc">%&gt;%</span></span>
 <span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visualize</span>(<span class="at">method =</span> <span class="st">"both"</span>) <span class="sc">+</span></span>
 <span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(estatistica_calculada, <span class="at">direction =</span> <span class="st">"greater"</span>) <span class="sc">+</span></span>
-<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_confidence_interval</span>(<span class="at">endpoints =</span> percentile_ci)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_confidence_interval</span>(<span class="at">endpoints =</span> percentile_ci)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/executivos-1.png" class="img-fluid figure-img" width="672"></p>
@@ -1028,13 +1097,16 @@ window.Quarto = {
 </div>
 <p>E calculando o tamanho do efeito:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># calculando a diferença padronizada</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">cohens_d</span>(</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>   data[data<span class="sc">$</span>sexo <span class="sc">==</span> <span class="st">"homem"</span> <span class="sc">&amp;</span></span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">str_detect</span>(data<span class="sc">$</span>profissao, <span class="st">"Dirigentes|Diretor"</span>), ]<span class="sc">$</span>rem_media,</span>
 <span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>   data[data<span class="sc">$</span>sexo <span class="sc">==</span> <span class="st">"mulher"</span> <span class="sc">&amp;</span></span>
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">str_detect</span>(data<span class="sc">$</span>profissao, <span class="st">"Dirigentes|Diretor"</span>), ]<span class="sc">$</span>rem_media</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cohen's d |       95% CI
 ------------------------
@@ -1042,8 +1114,11 @@ window.Quarto = {
 
 - Estimated using pooled SD.</code></pre>
 </div>
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># interpretando a estatística d</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">interpret_cohens_d</span>(<span class="fl">0.47</span>, <span class="st">"gignac2016"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">interpret_cohens_d</span>(<span class="fl">0.47</span>, <span class="st">"gignac2016"</span>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "moderate"
 (Rules: gignac2016)</code></pre>
@@ -1128,13 +1203,14 @@ window.Quarto = {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1149,7 +1225,7 @@ window.Quarto = {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/datamares\.netlify\.app\/pt");
+        var filterRegex = new RegExp("\/pt");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

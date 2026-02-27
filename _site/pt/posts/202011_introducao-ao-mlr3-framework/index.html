@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt">
 <head>
-<link rel="alternate" hreflang="en" href="https://datamares.netlify.app/posts/202011_introducao-ao-mlr3-framework/index.html" />
-<link rel="alternate" hreflang="pt" href="https://datamares.netlify.app/pt/posts/202011_introducao-ao-mlr3-framework/index.pt.html" />
+<link rel="alternate" hreflang="en" href="/posts/202011_introducao-ao-mlr3-framework/index.html" />
+<link rel="alternate" hreflang="pt" href="/pt/posts/202011_introducao-ao-mlr3-framework/index.pt.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Alberson Miranda">
 <title>Introdução ao framework {mlr3} – Datamares &amp; Dreamscapes</title>
@@ -79,14 +79,14 @@ div.csl-indent {
 }</style>
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><meta name="quarto:offset" content="../../">
 <link href="../../assets/logo/favicon-256x256.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1f1e6c05e4d9aa3145bdaa62cecd366.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-3f9a1c916a924db677bb40662d79ac4d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-c1f1e6c05e4d9aa3145bdaa62cecd366.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-24772959a0e306aba8d7698078628ce7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -294,7 +294,7 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../assets/logo/logo.png" alt="" class="navbar-logo"></a>
+    <img src="../../assets/logo/logo.png" alt="" class="navbar-logo light-content"><img src="../../assets/logo/logo.png" alt="" class="navbar-logo dark-content"></a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Datamares &amp; Dreamscapes</span>
     </a>
@@ -306,7 +306,7 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item"><div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> Português</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://datamares.netlify.app/posts/202011_introducao-ao-mlr3-framework/index.html" id="language-link-en">English</a></li></ul>
+<button class="btn btn-primary dropdown-toggle babelquarto-languages-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> Português</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/posts/202011_introducao-ao-mlr3-framework/index.html" id="language-link-en">English</a></li></ul>
 </div></li>
 <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
@@ -431,11 +431,14 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 <span class="header-section-number">2</span> DIRETO AO PONTO</h1>
 <p>Para conhecer as funcionalidades básicas do pacote, usaremos um dos <em>datasets</em> inclusos no R, o <code>swiss</code>. Esse <em>dataset</em> consiste na medição padronizada da fertilidade e indicadores socioeconômicos de 47 províncias da Suíça em 1888.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># criando dataframe</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> swiss</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># overview</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(data)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(data)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
@@ -600,6 +603,7 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 </ul>
 <p>O <em>workflow</em> começa pela criação da <code>task</code>, que é um objeto que contém os dados e informações sobre a tarefa a ser executada, como a variável de resposta<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> e as demais <em>features</em>, além de seus tipos. Como queremos realizar predições para uma variável numérica contínua, é uma tarefa de regressão.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importando pacote</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlr3verse)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -608,7 +612,9 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"swiss"</span>,</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">backend =</span> data,</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">target =</span> <span class="st">"Infant.Mortality"</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 </div>
 <p>Notou algo estranho? Como o {mlr3} trabalha com a classe R6, seu manuseio é mais parecido com outras linguagens orientadas a objeto, como o Python. Essa classe tem duas propriedades especiais:</p>
 <ul>
@@ -618,21 +624,28 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 <p>O efeito colateral é que isso não é muito familiar para pessoas que não conhecem outras linguagens de programação além do R e no início pode parecer pouco natural e confuso.</p>
 <p>Criado o objeto, podemos acessá-lo para verificar e visualizar as informações ali contidas:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># verificando</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>task_swiss</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;TaskRegr:swiss&gt; (47 x 6)
-* Target: Infant.Mortality
-* Properties: -
-* Features (5):
-  - dbl (3): Agriculture, Catholic, Fertility
-  - int (2): Education, Examination</code></pre>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>task_swiss</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+── &lt;TaskRegr&gt; (47x6) ───────────────────────────────────────────────────────────
+• Target: Infant.Mortality
+• Properties: -
+• Features (5):
+  • dbl (3): Agriculture, Catholic, Fertility
+  • int (2): Education, Examination</code></pre>
+</div>
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualizando</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(task_swiss, <span class="at">type =</span> <span class="st">"pairs"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(task_swiss, <span class="at">type =</span> <span class="st">"pairs"</span>)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="index_files/figure-html/task_cont-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index.pt_files/figure-html/task_cont-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -640,21 +653,27 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 <p>Podemos ver que apenas a fertilidade é linearmente correlacionada com a mortalidade infantil — quanto maior a fertilidade, maior a mortalidade —, e podemos esperar que tenha maior peso nas predições. As demais variáveis não apresentam correlação linear significativa com a variável de resposta. Entretanto, apresentam correlação moderada ou forte entre si, mas não a ponto de apresentar colinearidade, o que demandaria tratamento.</p>
 <p>Agora selecionamos o algoritmo<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> que será usado para treinar o modelo. Escolhi aqui o <em>XGBoost</em>. A lista completa pode ser acessada <a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html">por essa lista estática</a>, <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">por essa lista dinâmica</a> ou pela função <code>mlr3extralearners::list_mlr3learners()</code>. Como mencionado anteriormente, os algoritmos não são implementados pelo ecossistema do {mlr3} e nas listas citadas constam os pacotes onde os algoritmos foram implementados e que devem ser baixados para o seu uso.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># definindo o learner</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>l_xgboost <span class="ot">=</span> <span class="fu">lrn</span>(<span class="st">"regr.xgboost"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># checando</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>l_xgboost</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>l_xgboost</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;LearnerRegrXgboost:regr.xgboost&gt;: Extreme Gradient Boosting
-* Model: -
-* Parameters: nrounds=1, nthread=1, verbose=0
-* Validate: NULL
-* Packages: mlr3, mlr3learners, xgboost
-* Predict Types:  [response]
-* Feature Types: logical, integer, numeric
-* Properties: hotstart_forward, importance, internal_tuning, missings,
-  validation, weights</code></pre>
+<pre><code>
+── &lt;LearnerRegrXgboost&gt; (regr.xgboost): Extreme Gradient Boosting ──────────────
+• Model: -
+• Parameters: nrounds=1000, nthread=1, verbose=0, verbosity=0
+• Validate: NULL
+• Packages: mlr3, mlr3learners, and xgboost
+• Predict Types: [response]
+• Feature Types: logical, integer, and numeric
+• Encapsulation: none (fallback: -)
+• Properties: hotstart_forward, importance, internal_tuning, missings, offset,
+validation, and weights
+• Other settings: use_weights = 'use'</code></pre>
 </div>
 </div>
 <p>Vamos entender o que o objeto <code>l_xgboost</code> nos diz.</p>
@@ -674,8 +693,11 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 </ol>
 <p>Como pode ver em <em>parameters</em>, não há nenhum hiperparâmetro configurado. Podemos acessá-los da seguinte maneira:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># acessando hiperparâmetros</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.table</span>(l_xgboost<span class="sc">$</span>param_set))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.table</span>(l_xgboost<span class="sc">$</span>param_set))</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                  id    class lower upper               levels nlevels
               &lt;char&gt;   &lt;char&gt; &lt;num&gt; &lt;num&gt;               &lt;list&gt;   &lt;num&gt;
@@ -697,6 +719,7 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 </div>
 <p>Como o <em>tunning</em> de hiperparâmetros não é o assunto, vamos apenas configurar algumas coisas básicas para demonstrar como essas informações são acessadas e modificadas. O método para isso é o <code>param_set$values</code>:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hiperparâmetros</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>l_xgboost<span class="sc">$</span>param_set<span class="sc">$</span>values <span class="ot">=</span> <span class="fu">list</span>(</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mandando o algoritmo treinar mais lentamente</span></span>
@@ -704,29 +727,39 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># limitando profundidade da árvore</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">max_depth =</span> <span class="dv">5</span>,</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># quantidade máxima de iterações</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrounds =</span> <span class="dv">100</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># verificando</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>l_xgboost</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrounds =</span> <span class="dv">100</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># necessário com versões atuais do xgboost</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="dv">1</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># verificando</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>l_xgboost</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;LearnerRegrXgboost:regr.xgboost&gt;: Extreme Gradient Boosting
-* Model: -
-* Parameters: eta=0.1, max_depth=5, nrounds=100
-* Validate: NULL
-* Packages: mlr3, mlr3learners, xgboost
-* Predict Types:  [response]
-* Feature Types: logical, integer, numeric
-* Properties: hotstart_forward, importance, internal_tuning, missings,
-  validation, weights</code></pre>
+<pre><code>
+── &lt;LearnerRegrXgboost&gt; (regr.xgboost): Extreme Gradient Boosting ──────────────
+• Model: -
+• Parameters: eta=0.1, max_depth=5, nrounds=100, verbose=1
+• Validate: NULL
+• Packages: mlr3, mlr3learners, and xgboost
+• Predict Types: [response]
+• Feature Types: logical, integer, and numeric
+• Encapsulation: none (fallback: -)
+• Properties: hotstart_forward, importance, internal_tuning, missings, offset,
+validation, and weights
+• Other settings: use_weights = 'use'</code></pre>
 </div>
 </div>
 </section><section id="treino-e-predição" class="level1" data-number="3"><h1 data-number="3">
 <span class="header-section-number">3</span> TREINO E PREDIÇÃO</h1>
 <p>As próximas etapas são o treino e a predição — trataremos de <em>tunning</em> e <em>resampling</em> nos próximos posts. Primeiramente, o <em>split</em> do dataset em treino e teste. Para isso, usaremos a função <code>sample()</code> em dois métodos do objeto <code>task_swiss</code>, o <code>row_ids</code> e <code>nrow</code>. O primeiro enumera os índices de cada linha:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># método row_ids</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>task_swiss<span class="sc">$</span>row_ids</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>task_swiss<span class="sc">$</span>row_ids</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
 [26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47</code></pre>
@@ -734,14 +767,18 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 </div>
 <p>Enquanto o segundo retorna a quantidade de linhas do dataset:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># método row_ids</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>task_swiss<span class="sc">$</span>nrow</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>task_swiss<span class="sc">$</span>nrow</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 47</code></pre>
 </div>
 </div>
 <p>Assim, podemos selecionar os índice do dataset em duas amostras aleatórias:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># garantindo reprodutibilidade</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -752,71 +789,82 @@ gtag('config', 'G-B65R9LH9ES', { 'anonymize_ip': true});
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>test_set <span class="ot">=</span> <span class="fu">setdiff</span>(task_swiss<span class="sc">$</span>row_ids, train_set)</span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># verificando</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(train_set)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(train_set)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  4 39  1 34 23 14</code></pre>
 </div>
 </div>
 <p>Com os índices selecionados, podemos realizar nosso treino apenas nos 70% escolhidos aleatoriamente da amostra, sem copiar os dados e alocar memória desnecessariamente:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># treino</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>l_xgboost<span class="sc">$</span><span class="fu">train</span>(task_swiss, <span class="at">row_ids =</span> train_set)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># verificando</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>l_xgboost<span class="sc">$</span>model</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>l_xgboost<span class="sc">$</span>model</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##### xgb.Booster
-raw: 143.3 Kb 
 call:
-  xgboost::xgb.train(data = data, nrounds = 100L, eta = 0.1, max_depth = 5L, 
-    objective = "reg:squarederror")
-params (as set within xgb.train):
-  eta = "0.1", max_depth = "5", objective = "reg:squarederror", validate_parameters = "TRUE"
-xgb.attributes:
-  niter
-callbacks:
-  cb.print.evaluation(period = print_every_n)
+  xgboost::xgb.train(params = pv[names(pv) %in% formalArgs(xgboost::xgb.params)], 
+    data = xgb_data, nrounds = pv$nrounds, evals = pv$evals, 
+    custom_metric = pv$custom_metric, verbose = pv$verbose, print_every_n = pv$print_every_n, 
+    early_stopping_rounds = pv$early_stopping_rounds, maximize = pv$maximize, 
+    save_period = pv$save_period, save_name = pv$save_name, callbacks = pv$callbacks %??% 
+        list())
 # of features: 5 
-niter: 100
-nfeatures : 5 </code></pre>
+# of rounds:  100 </code></pre>
 </div>
 </div>
 <p>Como podemos ver, na primeira iteração o modelo obteve <em>rmse</em><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. de 17.7, o que é alto considerando a escala [1-100] da mortalidade infantil. Ao longo do treino, o erro foi reduzido até 0.03, o que não significa que sua performance permaneça nesse nível quando extrapolado para a amostra teste ou novos dados, mas é um bom sinal. O esperado é que a performance real do modelo, após ser aplicado à amostra teste, fique entre a iteração inicial e final. Se ficar <em>melhor</em> do que a performance do teste, alguma coisa certamente está errada.</p>
 <p>Vamos verificar qual a performance real após realizarmos as predições na amostra teste. Primeiro, passamos os índices de teste ao objeto do <em>learner</em> com o modelo e chamamos o método <code>predict()</code> para obter as predições.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># predições</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>preds <span class="ot">=</span> l_xgboost<span class="sc">$</span><span class="fu">predict</span>(task_swiss, <span class="at">row_ids =</span> test_set)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># verificando</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>preds</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>preds</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;PredictionRegr&gt; for 15 observations:
+<pre><code>
+── &lt;PredictionRegr&gt; for 15 observations: ───────────────────────────────────────
  row_ids truth response
-       8  24.9 20.69299
-      11  24.5 20.65381
-      13  19.1 15.63718
+       8  24.9 19.90614
+      11  24.5 19.05639
+      13  19.1 18.36767
      ---   ---      ---
-      40  20.5 19.55373
-      43  20.0 21.27585
-      47  19.3 21.82050</code></pre>
+      40  20.5 20.66445
+      43  20.0 21.60975
+      47  19.3 19.03525</code></pre>
 </div>
 </div>
 <p>No objeto com as predições, são armazenados tanto os valores preditos pelo modelo <code>response</code> quanto os valores da amostra <code>truth</code>. Esses valores então podem ser comparados para calcular a acurácia do modelo através do método <code>score()</code>:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># acurácia</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>preds<span class="sc">$</span><span class="fu">score</span>(<span class="fu">list</span>(</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">msr</span>(<span class="st">"regr.rmse"</span>),</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">msr</span>(<span class="st">"regr.mae"</span>)</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>regr.rmse  regr.mae 
- 2.587082  2.214177 </code></pre>
+ 2.419703  1.889676 </code></pre>
 </div>
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualizando</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(preds)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(preds)</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="index_files/figure-html/accuracy-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index.pt_files/figure-html/accuracy-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -826,17 +874,23 @@ nfeatures : 5 </code></pre>
 <span class="header-section-number">4</span> INTERPRETAÇÃO</h1>
 <p>Como o XGBoost possui a propriedade de <em>feature importance</em>, podemos extraí-la com o método <code>importance()</code>:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># feature importance</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>l_xgboost<span class="sc">$</span><span class="fu">importance</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Catholic Agriculture   Fertility Examination   Education 
- 0.39696755  0.24723210  0.20219315  0.10340263  0.05020457 </code></pre>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>l_xgboost<span class="sc">$</span><span class="fu">importance</span>()</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Fertility    Catholic Agriculture Examination   Education 
+ 0.43614832  0.37091549  0.09587702  0.07577311  0.02128606 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualizando</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(l_xgboost<span class="sc">$</span><span class="fu">importance</span>())</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(l_xgboost<span class="sc">$</span><span class="fu">importance</span>())</span></code></pre></div>
+<button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="index_files/figure-html/importance-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index.pt_files/figure-html/importance-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -935,13 +989,14 @@ R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -956,7 +1011,7 @@ R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/datamares\.netlify\.app\/pt");
+        var filterRegex = new RegExp("\/pt");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

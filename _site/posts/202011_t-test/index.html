@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<link rel="alternate" hreflang="en" href="https://datamares.netlify.app/posts/202011_t-test/index.html" />
-<link rel="alternate" hreflang="pt" href="https://datamares.netlify.app/pt/posts/202011_t-test/index.pt.html" />
+<link rel="alternate" hreflang="en" href="/posts/202011_t-test/index.html" />
+<link rel="alternate" hreflang="pt" href="/pt/posts/202011_t-test/index.pt.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Alberson Miranda">
 <meta name="dcterms.date" content="2020-11-02">
@@ -60,14 +60,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><meta name="quarto:offset" content="../../">
 <link href="../../assets/logo/favicon-256x256.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script><script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script><script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1f1e6c05e4d9aa3145bdaa62cecd366.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-3f9a1c916a924db677bb40662d79ac4d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-c1f1e6c05e4d9aa3145bdaa62cecd366.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-24772959a0e306aba8d7698078628ce7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -118,7 +118,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -301,7 +301,7 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../assets/logo/logo.png" alt="" class="navbar-logo"></a>
+    <img src="../../assets/logo/logo.png" alt="" class="navbar-logo light-content"><img src="../../assets/logo/logo.png" alt="" class="navbar-logo dark-content"></a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Datamares &amp; Dreamscapes</span>
     </a>
@@ -313,7 +313,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item"><div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> English</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://datamares.netlify.app/pt/posts/202011_t-test/index.html" id="language-link-pt">Português</a></li></ul>
+<button class="btn btn-primary dropdown-toggle babelquarto-languages-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> English</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/pt/posts/202011_t-test/index.html" id="language-link-pt">Português</a></li></ul>
 </div></li>
 <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
@@ -397,15 +397,18 @@ window.Quarto = {
 <main class="content quarto-banner-title-block" id="quarto-document-content"><p>Suppose you have two samples (e.g., the incomes of the Black and White populations in your city) and you want to prove that their means are <em>significantly</em> different, that is, that they are different even considering the variance and the sample size. This is possible with a Student’s t-test, one of the most popular tests in statistics.</p>
 <p>Let’s use one of R’s built-in datasets to apply this concept, <code>mtcars</code>. First, let’s take a look at our data.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> mtcars</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(data), <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>))</span></code></pre></div>
+<button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div id="tbl-dados" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-dados-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table 1: Dataset.
 </figcaption><div aria-describedby="tbl-dados-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">mpg</th>
@@ -514,8 +517,11 @@ Table 1: Dataset.
 </div>
 <p>A good way to illustrate the test is to check whether the mean fuel consumption (<code>mpg</code>, miles per gallon) of cars with 4, 6, and 8 cylinders (<code>cyl</code>) differ significantly from each other.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample means</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(mpg <span class="sc">~</span> cyl, <span class="at">data =</span> data, <span class="at">FUN =</span> mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(mpg <span class="sc">~</span> cyl, <span class="at">data =</span> data, <span class="at">FUN =</span> mean)</span></code></pre></div>
+<button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  cyl      mpg
 1   4 26.66364
@@ -525,8 +531,11 @@ Table 1: Dataset.
 </div>
 <p>We see that the sample means are different. We still need to know if they are <em>significantly</em> different. Plotting a boxplot can help us get an intuition. We can see that, except for the 4-cylinder group which has a higher variance, the groups are quite concentrated, so we might suspect that the differences are significant.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg <span class="sc">~</span> cyl, <span class="at">data =</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg <span class="sc">~</span> cyl, <span class="at">data =</span> data)</span></code></pre></div>
+<button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output-display">
 <div id="fig-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -547,8 +556,11 @@ h_1: \bar{X_1} - \bar{X_2} \neq 0
 <p><span class="math display">\[ t = \frac{\bar{X_1} - \bar{X_2}}{s_p . \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}} \]</span></p>
 <p>As a first case, let’s compare the mean fuel consumption of vehicles with 6 and 8 cylinders. Since we are considering their variances to be equal, we must use the argument <code>var.equal = TRUE</code>:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t-test for 6 and 8 cylinders</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(mpg <span class="sc">~</span> cyl, <span class="at">data =</span> data[<span class="fu">which</span>(data<span class="sc">$</span>cyl <span class="sc">!=</span> <span class="dv">4</span>),], <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(mpg <span class="sc">~</span> cyl, <span class="at">data =</span> data[<span class="fu">which</span>(data<span class="sc">$</span>cyl <span class="sc">!=</span> <span class="dv">4</span>),], <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Two Sample t-test
@@ -566,8 +578,11 @@ mean in group 6 mean in group 8
 <p>With a p-value of zero, we can reject the null hypothesis and consider that the mean fuel consumption between vehicles with 6 and 8 cylinders differs.</p>
 <p>For the other comparisons, let’s use the default for <code>var.equal</code>, which is <code>FALSE</code>. This means applying Welch’s correction for independent samples with different variances. As expected, we can also reject the null hypothesis and confirm the difference in mean fuel consumption between vehicles with 4 and 6 cylinders and 4 and 8 cylinders.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t-test for 4 and 8 cylinders</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(mpg <span class="sc">~</span> cyl, <span class="at">data =</span> data[<span class="fu">which</span>(data<span class="sc">$</span>cyl <span class="sc">!=</span> <span class="dv">6</span>),])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(mpg <span class="sc">~</span> cyl, <span class="at">data =</span> data[<span class="fu">which</span>(data<span class="sc">$</span>cyl <span class="sc">!=</span> <span class="dv">6</span>),])</span></code></pre></div>
+<button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -581,8 +596,11 @@ sample estimates:
 mean in group 4 mean in group 8 
        26.66364        15.10000 </code></pre>
 </div>
+<div class="code-copy-outer-scaffold">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t-test for 4 and 6 cylinders</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(mpg <span class="sc">~</span> cyl, <span class="at">data =</span> data[<span class="fu">which</span>(data<span class="sc">$</span>cyl <span class="sc">!=</span> <span class="dv">8</span>),])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(mpg <span class="sc">~</span> cyl, <span class="at">data =</span> data[<span class="fu">which</span>(data<span class="sc">$</span>cyl <span class="sc">!=</span> <span class="dv">8</span>),])</span></code></pre></div>
+<button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -665,13 +683,14 @@ mean in group 4 mean in group 6
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

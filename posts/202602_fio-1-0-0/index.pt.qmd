@@ -50,6 +50,8 @@ miom_world$get_bilateral_trade("BRA", "CHN")[1:5, 1:2]
 miom_world$get_regional_interdependence() |> head()
 ```
 
+Para uma visão completa sobre a classe `miom` e seus métodos, confira a vignette: [Análise Multirregional de Insumo-Produto](https://albersonmiranda.github.io/fio/articles/multiregional_analysis.html).
+
 ## Fechando o Modelo
 
 Modelos de insumo-produto são tradicionalmente "abertos", tratando as famílias e o governo como externos ao sistema de produção. A versão 1.0.0 introduz o método `close_model()`, que permite "internalizar" esses setores.
@@ -71,6 +73,8 @@ iom_br$compute_multiplier_output()
 ## Acesso Direto a Dados
 
 Para facilitar ainda mais o início de sua análise, adicionamos `download_wiod()`. Esta função permite baixar tabelas da World Input-Output Database (WIOD) diretamente de sua fonte oficial e carregá-las no R. Combinado com a velocidade de processamento do {fio}, isso reduz significativamente o tempo entre a coleta de dados e a obtenção de insights.
+
+Para um exemplo completo sobre como trabalhar com dados do WIOD, confira a vignette: [Trabalhando com WIOD](https://albersonmiranda.github.io/fio/articles/wiod_2014_analysis.html).
 
 ## {fiodata}
 

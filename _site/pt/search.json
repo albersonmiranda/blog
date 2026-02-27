@@ -1,45 +1,17 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Posts",
+    "objectID": "posts/202009_hello-world/index.html",
+    "href": "posts/202009_hello-world/index.html",
+    "title": "Hello World",
     "section": "",
-    "text": "Por que os economistas estão sempre errados?\n\n\nUma crítica epistemológica ao paradigma do equilíbrio maximizador\n\n\n\neconomics\n\n\n\n\n\n\n\n\n\n15 de jun. de 2025\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nCriando um Personal Package Archive (PPA) no Linux\n\n\nComo criei meu próprio PPA para distribuir RStudio, Quarto e Positron.\n\n\n\nferramentas\n\n\n\n\n\n\n\n\n\n9 de jun. de 2025\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nTodos os modelos estão errados, mas alguns são inúteis\n\n\nParte I: Correlação de Pearson e significância\n\n\n\ntime-series\n\n\n\n\n\n\n\n\n\n19 de abr. de 2025\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nSéries Temporais Hierárquicas: teoria\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\n25 de out. de 2022\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nO Papel Da Educação Matemática Sob A Hegemonia Do Capital\n\n\n\n\n\n\neducation\n\n\n\n\n\n\n\n\n\n14 de ago. de 2022\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nTemplate para dissertações em Quarto\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\n3 de ago. de 2022\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nPython a partir do R I: importando pacotes (e por que aprender novas linguagens é difícil)\n\n\n\n\n\n\npython\n\n\n\n\n\n\n\n\n\n12 de jun. de 2021\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nUm pouco de conceitos: overfitting & resampling\n\n\n\n\n\n\nmachine learning\n\n\n\n\n\n\n\n\n\n17 de abr. de 2021\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nR em 2021 com o VSCode\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\n6 de abr. de 2021\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nIntrodução ao framework {mlr3}\n\n\n\n\n\n\nmachine learning\n\n\n\n\n\n\n\n\n\n27 de dez. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nEffect Size e a desigualdade de renda entre gêneros em Vitória\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\n24 de nov. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nComparando variâncias: o teste F\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\n20 de nov. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nChutou ou não chutou? O test t para uma amostra\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\n6 de nov. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nAtestando diferenças em médias: o teste t para amostras independentes\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\n2 de nov. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nQualidade gráfica no painel do RStudio\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\n19 de out. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nConfigurando git em um servidor proxy\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\n25 de set. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nHello World\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n11 de set. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\nNenhum item correspondente"
+    "text": "Depois de uma ou outra postagem no LinkedIn e Kaggle, já era hora de eu montar meu próprio blog para ciência de dados, não é mesmo?\nFirst things first, que nome é esse? Datamares & Dreamscapes faz referência ao título de uma coletânea de contos do Stephen King Nightmares & Dreamscapes (Pesadelos e Paisagens Noturnas, no Brasil) e faz bastante jus à minha relação com esse mundo. Eu smepre quero aprender mais, ir mais longe, conquistar novos horiontes, mas o aprendizado envolve certos sacrifícios e noites perdidas ou mal dormidas. Entretanto, quando você consegue aquele resultado esperado é como se um portal se abrisse para um novo mundo.\nEntão, sobre o que pretendo falar por aqui? Principalmente acerca dos projetos em R nos quais estiver trabalhando, machine learning, estatística clássica, forecasting, frameworks… e um pouco de matemática, economia e ensino. Basicamente ideias, insights e trabalhos que devo consultar vez ou outra.\nE se alguma dessas coisas te ajudar de alguma forma, eu vou ficar bastante feliz :p"
   },
   {
-    "objectID": "software.html",
-    "href": "software.html",
-    "title": "Software",
+    "objectID": "posts/202010_graphics-rstudio/index.html",
+    "href": "posts/202010_graphics-rstudio/index.html",
+    "title": "Qualidade gráfica no painel do RStudio",
     "section": "",
-    "text": "Pacote R projetado para análise de insumo-produto, enfatizando a usabilidade para usuários de Excel e desempenho. Inclui um Addin para RStudio e um conjunto de funções para importação simplificada de tabelas de insumo-produto do Excel, seja programaticamente ou diretamente da área de transferência.\nO pacote é otimizado para velocidade e eficiência. Ele utiliza a classe R6 para programação orientada a objetos limpa e eficiente em termos de memória. Além disso, todos os cálculos de álgebra linear são implementados em Rust para alcançar um desempenho altamente otimizado.\n Código  Site"
-  },
-  {
-    "objectID": "software.html#fio-autor",
-    "href": "software.html#fio-autor",
-    "title": "Software",
-    "section": "",
-    "text": "Pacote R projetado para análise de insumo-produto, enfatizando a usabilidade para usuários de Excel e desempenho. Inclui um Addin para RStudio e um conjunto de funções para importação simplificada de tabelas de insumo-produto do Excel, seja programaticamente ou diretamente da área de transferência.\nO pacote é otimizado para velocidade e eficiência. Ele utiliza a classe R6 para programação orientada a objetos limpa e eficiente em termos de memória. Além disso, todos os cálculos de álgebra linear são implementados em Rust para alcançar um desempenho altamente otimizado.\n Código  Site"
-  },
-  {
-    "objectID": "software.html#biodiversity-autor",
-    "href": "software.html#biodiversity-autor",
-    "title": "Software",
-    "section": "biodiversity (autor) ",
-    "text": "biodiversity (autor) \nImagem Docker contendo um aplicativo Shiny para visualizar dados globais de biodiversidade. Este projeto fornece uma plataforma interativa para explorar dados de biodiversidade do GBIF. Os usuários podem visualizar conjuntos de dados, mapas e linhas do tempo de observações de espécies. Ele demonstra minhas habilidades em criar páginas de destino atraentes, mesmo para aplicativos Shiny. Uma versão implantada pode ser encontrada aqui.\n Código  Site"
-  },
-  {
-    "objectID": "software.html#rextendr-contribuidor",
-    "href": "software.html#rextendr-contribuidor",
-    "title": "Software",
-    "section": "rextendr (contribuidor) ",
-    "text": "rextendr (contribuidor) \nUm pacote R que ajuda a criar pacotes compatíveis com {extendr} ou a compilar código Rust dinamicamente.\n Código  Site"
-  },
-  {
-    "objectID": "software.html#r_tools_ppa-autor",
-    "href": "software.html#r_tools_ppa-autor",
-    "title": "Software",
-    "section": "r_tools_ppa (autor)",
-    "text": "r_tools_ppa (autor)\nEste é um Personal Package Archive (PPA) para distribuir as versões mais recentes do RStudio, Quarto e Positron para usuários Linux. Ele fornece pacotes .deb para distribuições baseadas em Ubuntu e Debian, e pacotes .rpm para distribuições baseadas em Fedora e Red Hat.\n Código  Site"
+    "text": "Se você já plotou um gráfico de linhas no R e, quando viu o plot no painel do RStudio pensou “uau, que qualidade terrível!”, você não está só. Mas não se preocupe, a solução é bem simples!\nPrimeiramente, vamos plotar um gráfico na configuração padrão do RStudio:\n\nknitr::include_graphics(\"img/Rplot.png\")\n\n\n\n\n\n\n\nFigura 1: Gráfico sem anti-aliasing.\n\n\n\n\n\nWow, imagine usando algo assim em um banner! Vamos tentar de novo, agora com o Cairo como dispositivo gráfico e usando anti-aliasing:\n\n# Adicionando anti-aliasing\ntrace(grDevices::png, quote({\n  if (missing(type) && missing(antialias)) {\n    type = \"cairo-png\"\n    antialias = \"subpixel\"\n  }\n}), print = FALSE)\n\nTracing function \"png\" in package \"grDevices\"\n\n\n[1] \"png\"\n\n# Plotando novamente\nplot(mtcars$mpg, type = \"l\")\n\n\n\n\n\n\n\nFigura 2: Gráfico com anti-aliasing.\n\n\n\n\n\nSanto anti-aliasing, não é? (Dê zoom nos dois para ver bem a diferença)\nBom, preciso fazer isso toda vez que for plotar um gráfico ou iniciar uma sessão no R? De forma alguma, basta adicionar essas linhas ao seu .Rprofile. Eu recomendo sempre usar o {usethis} para alterar os arquivos de configuração, pois você pode acabar se perdendo dentre os caminhos possíveis onde o R irá consultar. Usando o {usethis} você garante que estará criando ou editando o arquivo correto.\nusethis::edit_r_profile() irá abrir uma janela com o arquivo para edição. Então, cole a chamada acima (retirando a linha do plot, claro), certifique-se que o .Rprofile acabe com uma linha vazia (porque o R ignora a última linha), salve e reinicie a sessão. Pronto! Agora o anti-aliasing sempre será aplicado aos seus plots no R, independente do pacote utilizado, seja o base ou o {ggplot}, por exemplo."
   },
   {
     "objectID": "posts/202011_comparando-variancias/index.html",
@@ -98,25 +70,67 @@
     "text": "Notas de rodapé\n\n\nMarcos alemães.↩︎"
   },
   {
+    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html",
+    "href": "posts/202011_introducao-ao-mlr3-framework/index.html",
+    "title": "Introdução ao framework {mlr3}",
+    "section": "",
+    "text": "Esse é o primeiro post de uma série que irá tratar sobre o ecossistema {mlr3} (Lang et al. 2019). Ele é mais completo e também muito mais complexo do que seu predecessor, o {mlr}, que teve sua versão inicial publicada no CRAN em 2013. O ecossistema permite um framework agnóstico (i.e. não depende dos algoritmos escolhidos), extensível e orientado a objeto, e, atualmente, permite vários tipos de tarefas, como classificação, regressão, análise de sobrevivência, forecasting, clustering, dentre outros. O {mlr3} tem diversas vantagens que o faz, IMHO, o framework mais completo para se trabalhar machine learning em R (R Core Team 2020) e elas ficarão claras ao longo dos próximos posts."
+  },
+  {
+    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html#características-de-design",
+    "href": "posts/202011_introducao-ao-mlr3-framework/index.html#características-de-design",
+    "title": "Introdução ao framework {mlr3}",
+    "section": "1.1 CARACTERÍSTICAS DE DESIGN",
+    "text": "1.1 CARACTERÍSTICAS DE DESIGN\nAlguns princípios gerais que norteiam o desenvolvimento do pacote e afetam muito seu uso são:\n\nFoco no backend. A maioria dos pacotes do ecossistema tem objetivo de processar e transformar dados, aplicar algoritmos e computar resultados. Visualizações são providenciadas em pacotes externos;\nAdoção da classe R6 (Chang 2020) para design orientado a objeto, modify-in-place e semântica de referência (falaremos um pouco sobre esses conceitos adiante);\nAdoção do {data.table} (Dowle e Srinivasan 2020) para manipulações de data frames. A combinação {R6} + {data.table} torna a performance um dos pontos fortes do ecossistema.\nBaixa dependência. Entretanto, os algortimos não são implementados no ecossistema, como no scikit-learn em Python. Para executar o XGBoost (Chen et al. 2020), por exemplo, deve-se ter instalado o pacote que o implementa."
+  },
+  {
+    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html#fora-do-escopo",
+    "href": "posts/202011_introducao-ao-mlr3-framework/index.html#fora-do-escopo",
+    "title": "Introdução ao framework {mlr3}",
+    "section": "1.2 FORA DO ESCOPO",
+    "text": "1.2 FORA DO ESCOPO\nComo se trata de uma introdução, as etapas de tunning e resampling, assim como funcionalidades como os pipelines, serão abordadas em postagens futuras. Neste post trataremos apenas os conceitos básicos do workflow."
+  },
+  {
+    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html#footnotes",
+    "href": "posts/202011_introducao-ao-mlr3-framework/index.html#footnotes",
+    "title": "Introdução ao framework {mlr3}",
+    "section": "Notas de rodapé",
+    "text": "Notas de rodapé\n\n\nNo {mlr3} é chamado de learner.↩︎\nTambém chamada de output feature ou label.↩︎\nAqui trabalharemos apenas com um, mas em posts futuros utilizaremos de diversas formas — pipelines com diferentes features, stacking etc.↩︎\nRaiz do Erro Médio Quadrático↩︎"
+  },
+  {
+    "objectID": "posts/202101_overfitting-resampling/index.html",
+    "href": "posts/202101_overfitting-resampling/index.html",
+    "title": "Um pouco de conceitos: overfitting & resampling",
+    "section": "",
+    "text": "Apesar de serem termos recorrentes em machine learning, resampling e overfitting são frequentemente discutidos apenas na prática, muitas vezes sem a sua compreensão. Neste post1, tentarei introduzir os conceitos de forma genérica."
+  },
+  {
+    "objectID": "posts/202101_overfitting-resampling/index.html#footnotes",
+    "href": "posts/202101_overfitting-resampling/index.html#footnotes",
+    "title": "Um pouco de conceitos: overfitting & resampling",
+    "section": "Notas de rodapé",
+    "text": "Notas de rodapé\n\n\nTotalmente apoiado em (Bischl B. 2012).↩︎"
+  },
+  {
     "objectID": "posts/202106_python-from-r-i-package-importing/index.html",
     "href": "posts/202106_python-from-r-i-package-importing/index.html",
     "title": "Python a partir do R I: importando pacotes (e por que aprender novas linguagens é difícil)",
     "section": "",
-    "text": "Resumo\n\n\n\nAo aprender uma nova linguagem de programação, simplesmente buscar código equivalente para as práticas que você já tem pode ser enganoso. Aqui vemos que um equivalente à chamada library() do R é, na verdade, considerada uma má prática em Python e, se você fizer isso em uma entrevista de emprego, não espere ser chamado de volta."
+    "text": "DicaResumo\n\n\n\nAo aprender uma nova linguagem de programação, simplesmente buscar código equivalente para as práticas que você já tem pode ser enganoso. Aqui vemos que um equivalente à chamada library() do R é, na verdade, considerada uma má prática em Python e, se você fizer isso em uma entrevista de emprego, não espere ser chamado de volta."
   },
   {
     "objectID": "posts/202106_python-from-r-i-package-importing/index.html#experiência-em-r",
     "href": "posts/202106_python-from-r-i-package-importing/index.html#experiência-em-r",
     "title": "Python a partir do R I: importando pacotes (e por que aprender novas linguagens é difícil)",
     "section": "2.1 Experiência Em R",
-    "text": "2.1 Experiência Em R\nNo R, todo pacote instalado nas árvores de bibliotecas é listado sempre que um terminal é aberto. Esses pacotes listados estão disponíveis para os usuários o tempo todo e podem ser chamados explicitamente. Por exemplo:\n\n2.1.1 Caso 1: Chamada Explícita\n\n# procurar por medidas de machine learning que contenham \"AUC\" no pacote {mlr3}\nmlr3::mlr_measures$keys(\"auc\")\n\n[1] \"classif.auc\"       \"classif.mauc_au1p\" \"classif.mauc_au1u\"\n[4] \"classif.mauc_aunp\" \"classif.mauc_aunu\" \"classif.mauc_mu\"  \n[7] \"classif.prauc\"    \n\n\nMas esse modo de chamar funções geralmente só é usado se aquele pacote não será necessário com frequência. Caso contrário, é cultural para usuários de R carregar e anexar todo o namespace do pacote ao search path1 com uma chamada library().\n\n\n2.1.2 Caso 2: Anexando\n\n# cansado: chamada explícita do {ggplot2}\nt1 = mtcars |&gt;\n  dplyr::mutate(hp_by_cyl = hp / cyl)\n\n# animado: anexando o namespace do {ggplot2}\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nt2 = mtcars |&gt;\n  mutate(hp_by_cyl = hp / cyl)\n\n# são equivalentes?\nall.equal(t1, t2)\n\n[1] TRUE\n\n\nO problema aparece quando há conflitos de namespace. Você notou o aviso sobre objetos sendo mascarados de {stats} e {base}? Normalmente, os usuários simplesmente ignoram avisos de inicialização 😨 e isso pode eventualmente levar a resultados inconsistentes ou erros difíceis de depurar.\nIsso pode ser evitado anexando apenas as funções específicas que você realmente vai usar:\n\n\n2.1.3 Caso 3: Anexando Funções Específicas\n\n# desanexando dplyr\ndetach(\"package:dplyr\")\n\n# anexando apenas mutate():\nlibrary(dplyr, include.only = \"mutate\")\n\nE nenhum aviso de conflito será disparado. Infelizmente, não ouço muito falar do argumento include.only na comunidade R 🤷‍♂. Pelo contrário, meta pacotes como o {tidyverse}, que carregam e anexam MUITAS coisas ao namespace — muitas vezes desnecessárias para o que você vai fazer —, são bastante comuns."
+    "text": "2.1 Experiência Em R\nNo R, todo pacote instalado nas árvores de bibliotecas é listado sempre que um terminal é aberto. Esses pacotes listados estão disponíveis para os usuários o tempo todo e podem ser chamados explicitamente. Por exemplo:\n\n2.1.1 Caso 1: Chamada Explícita\n\n# procurar por medidas de machine learning que contenham \"AUC\" no pacote {mlr3}\nmlr3::mlr_measures$keys(\"auc\")\n\n[1] \"classif.auc\"       \"classif.mauc_au1p\" \"classif.mauc_au1u\"\n[4] \"classif.mauc_aunp\" \"classif.mauc_aunu\" \"classif.mauc_mu\"  \n[7] \"classif.prauc\"    \n\n\nMas esse modo de chamar funções geralmente só é usado se aquele pacote não será necessário com frequência. Caso contrário, é cultural para usuários de R carregar e anexar todo o namespace do pacote ao search path1 com uma chamada library().\n\n\n2.1.2 Caso 2: Anexando\n\n# cansado: chamada explícita do {ggplot2}\nt1 = mtcars |&gt;\n  dplyr::mutate(hp_by_cyl = hp / cyl)\n\n# animado: anexando o namespace do {ggplot2}\nlibrary(dplyr)\n\n\nAnexando pacote: 'dplyr'\n\n\nOs seguintes objetos são mascarados por 'package:stats':\n\n    filter, lag\n\n\nOs seguintes objetos são mascarados por 'package:base':\n\n    intersect, setdiff, setequal, union\n\nt2 = mtcars |&gt;\n  mutate(hp_by_cyl = hp / cyl)\n\n# são equivalentes?\nall.equal(t1, t2)\n\n[1] TRUE\n\n\nO problema aparece quando há conflitos de namespace. Você notou o aviso sobre objetos sendo mascarados de {stats} e {base}? Normalmente, os usuários simplesmente ignoram avisos de inicialização 😨 e isso pode eventualmente levar a resultados inconsistentes ou erros difíceis de depurar.\nIsso pode ser evitado anexando apenas as funções específicas que você realmente vai usar:\n\n\n2.1.3 Caso 3: Anexando Funções Específicas\n\n# desanexando dplyr\ndetach(\"package:dplyr\")\n\n# anexando apenas mutate():\nlibrary(dplyr, include.only = \"mutate\")\n\nE nenhum aviso de conflito será disparado. Infelizmente, não ouço muito falar do argumento include.only na comunidade R 🤷‍♂. Pelo contrário, meta pacotes como o {tidyverse}, que carregam e anexam MUITAS coisas ao namespace — muitas vezes desnecessárias para o que você vai fazer —, são bastante comuns."
   },
   {
     "objectID": "posts/202106_python-from-r-i-package-importing/index.html#experiência-em-python",
     "href": "posts/202106_python-from-r-i-package-importing/index.html#experiência-em-python",
     "title": "Python a partir do R I: importando pacotes (e por que aprender novas linguagens é difícil)",
     "section": "2.2 Experiência Em Python",
-    "text": "2.2 Experiência Em Python\nTodos os 3 casos citados antes são possíveis em Python, mas os padrões da comunidade são bem diferentes. Especialmente em relação à consciência do que está carregado no namespace — ou symbol table, como é chamado em Python2.\nPrimeiro, pacotes instalados não ficam imediatamente disponíveis. Então, se eu tentar, por exemplo, listar funções/métodos/atributos do {pandas}, resultará em erro:\n\n# inspecionando módulos em {pandas}\nimport pandas\ndir(pandas)\n\n['ArrowDtype', 'BooleanDtype', 'Categorical', 'CategoricalDtype', 'CategoricalIndex', 'DataFrame', 'DateOffset', 'DatetimeIndex', 'DatetimeTZDtype', 'ExcelFile', 'ExcelWriter', 'Flags', 'Float32Dtype', 'Float64Dtype', 'Grouper', 'HDFStore', 'Index', 'IndexSlice', 'Int16Dtype', 'Int32Dtype', 'Int64Dtype', 'Int8Dtype', 'Interval', 'IntervalDtype', 'IntervalIndex', 'MultiIndex', 'NA', 'NaT', 'NamedAgg', 'Period', 'PeriodDtype', 'PeriodIndex', 'RangeIndex', 'Series', 'SparseDtype', 'StringDtype', 'Timedelta', 'TimedeltaIndex', 'Timestamp', 'UInt16Dtype', 'UInt32Dtype', 'UInt64Dtype', 'UInt8Dtype', '__all__', '__builtins__', '__cached__', '__doc__', '__docformat__', '__file__', '__git_version__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__version__', '_built_with_meson', '_config', '_is_numpy_dev', '_libs', '_pandas_datetime_CAPI', '_pandas_parser_CAPI', '_testing', '_typing', '_version_meson', 'annotations', 'api', 'array', 'arrays', 'bdate_range', 'compat', 'concat', 'core', 'crosstab', 'cut', 'date_range', 'describe_option', 'errors', 'eval', 'factorize', 'from_dummies', 'get_dummies', 'get_option', 'infer_freq', 'interval_range', 'io', 'isna', 'isnull', 'json_normalize', 'lreshape', 'melt', 'merge', 'merge_asof', 'merge_ordered', 'notna', 'notnull', 'offsets', 'option_context', 'options', 'pandas', 'period_range', 'pivot', 'pivot_table', 'plotting', 'qcut', 'read_clipboard', 'read_csv', 'read_excel', 'read_feather', 'read_fwf', 'read_gbq', 'read_hdf', 'read_html', 'read_json', 'read_orc', 'read_parquet', 'read_pickle', 'read_sas', 'read_spss', 'read_sql', 'read_sql_query', 'read_sql_table', 'read_stata', 'read_table', 'read_xml', 'reset_option', 'set_eng_float_format', 'set_option', 'show_versions', 'test', 'testing', 'timedelta_range', 'to_datetime', 'to_numeric', 'to_pickle', 'to_timedelta', 'tseries', 'unique', 'util', 'value_counts', 'wide_to_long']\n\n\nVocê pode checar a symbol table com o seguinte comando.\n\n# o que está anexado à symbol table?\nprint(*globals(), sep = \"\\n\")\n\n__name__\n__doc__\n__package__\n__loader__\n__spec__\n__annotations__\n__builtins__\nr\npandas\n\n\nDependendo do sistema/ferramentas que você está usando, o interpretador Python vai carregar alguns módulos ou não. Se você iniciar um REPL — um terminal interativo Python —, nenhum módulo será carregado. Se iniciar um Jupyter notebook, alguns módulos necessários para ele rodar serão carregados. Neste caso, como estou rodando Python a partir do R via {reticulate}, alguns módulos foram carregados:\n\nsys: para acesso a variáveis e funções usadas pelo interpretador\nos: para rotinas do sistema operacional NT ou Posix\n\nEntão, se quero trabalhar com {pandas}, preciso anexá-lo à symbol table com um equivalente ao library() do R. E assim como sua função prima, o import do Python também tem diferentes formas.\nPrimeiro, import pandas torna o pacote disponível para chamadas explícitas.\n\n# importar pandas\nimport pandas\n\n# o que está anexado à symbol table?\nprint(*globals(), sep = \"\\n\")\n\n__name__\n__doc__\n__package__\n__loader__\n__spec__\n__annotations__\n__builtins__\nr\npandas\n\n\nNote que apenas {pandas} está anexado à symbol table, não suas funções/métodos/atributos. Portanto, essa instrução não é equivalente ao library(). Para criar um dataframe simples com {pandas}:\n\n2.2.1 Caso 1: Chamada Explícita\n\n# isso resultará em NameError: name 'DataFrame' is not defined\nDataFrame(\n  {\n    \"capital\": [\"Vitoria\", \"São Paulo\", \"Rio de Janeiro\"],\n    \"state\": [\"Espírito Santo\", \"São Paulo\", \"Rio de Janeiro\"]\n  }\n)\n\nNameError: name 'DataFrame' is not defined\n\n# isso funciona\npandas.DataFrame(\n  {\n    \"capital\": [\"Vitoria\", \"São Paulo\", \"Rio de Janeiro\"],\n    \"state\": [\"Espírito Santo\", \"São Paulo\", \"Rio de Janeiro\"]\n  }\n)\n\n          capital           state\n0         Vitoria  Espírito Santo\n1       São Paulo       São Paulo\n2  Rio de Janeiro  Rio de Janeiro\n\n\nSe quisermos replicar o comportamento do library() (ou seja, carregar e anexar todas as funções/métodos/atributos do {pandas} à symbol table), então:\n\n\n2.2.2 Caso 2: Anexando\n\n# importando todo o {pandas} para a symbol table\nfrom pandas import *\n\n# symbol table atualizada\nprint(*globals(), sep = \"\\n\")\n\n__name__\n__doc__\n__package__\n__loader__\n__spec__\n__annotations__\n__builtins__\nr\npandas\nArrowDtype\nBooleanDtype\nCategorical\nCategoricalDtype\nCategoricalIndex\nDataFrame\nDateOffset\nDatetimeIndex\nDatetimeTZDtype\nExcelFile\nExcelWriter\nFlags\nFloat32Dtype\nFloat64Dtype\nGrouper\nHDFStore\nIndex\nIndexSlice\nInt16Dtype\nInt32Dtype\nInt64Dtype\nInt8Dtype\nInterval\nIntervalDtype\nIntervalIndex\nMultiIndex\nNA\nNaT\nNamedAgg\nPeriod\nPeriodDtype\nPeriodIndex\nRangeIndex\nSeries\nSparseDtype\nStringDtype\nTimedelta\nTimedeltaIndex\nTimestamp\nUInt16Dtype\nUInt32Dtype\nUInt64Dtype\nUInt8Dtype\napi\narray\narrays\nbdate_range\nconcat\ncrosstab\ncut\ndate_range\ndescribe_option\nerrors\neval\nfactorize\nget_dummies\nfrom_dummies\nget_option\ninfer_freq\ninterval_range\nio\nisna\nisnull\njson_normalize\nlreshape\nmelt\nmerge\nmerge_asof\nmerge_ordered\nnotna\nnotnull\noffsets\noption_context\noptions\nperiod_range\npivot\npivot_table\nplotting\nqcut\nread_clipboard\nread_csv\nread_excel\nread_feather\nread_fwf\nread_gbq\nread_hdf\nread_html\nread_json\nread_orc\nread_parquet\nread_pickle\nread_sas\nread_spss\nread_sql\nread_sql_query\nread_sql_table\nread_stata\nread_table\nread_xml\nreset_option\nset_eng_float_format\nset_option\nshow_versions\ntest\ntesting\ntimedelta_range\nto_datetime\nto_numeric\nto_pickle\nto_timedelta\ntseries\nunique\nvalue_counts\nwide_to_long\n\n# agora isso funciona\nDataFrame(\n  {\n    \"capital\": [\"Vitoria\", \"São Paulo\", \"Rio de Janeiro\"],\n    \"state\": [\"Espírito Santo\", \"São Paulo\", \"Rio de Janeiro\"]\n  }\n)\n\n          capital           state\n0         Vitoria  Espírito Santo\n1       São Paulo       São Paulo\n2  Rio de Janeiro  Rio de Janeiro\n\n\nMas você não verá nenhum usuário experiente de Python fazendo isso, pois eles se preocupam em carregar muitos nomes na symbol table e os possíveis conflitos que isso pode causar. Uma abordagem aceitável seria anexar apenas alguns nomes frequentes, como em:\n\n\n2.2.3 Caso 3: Anexando Funções Específicas\n\n# desanexando {pandas}\nfor name in vars(pandas):\n    if not name.startswith('_'):\n        del globals()[name]\n\nKeyError: 'annotations'\n\n# anexando apenas DataFrame()\nfrom pandas import DataFrame\n\n# symbol table atualizada\nprint(*globals(), sep = \"\\n\")\n\n__name__\n__doc__\n__package__\n__loader__\n__spec__\n__annotations__\n__builtins__\nr\npandas\nArrowDtype\nBooleanDtype\nCategorical\nCategoricalDtype\nCategoricalIndex\nDataFrame\nDateOffset\nDatetimeIndex\nDatetimeTZDtype\nExcelFile\nExcelWriter\nFlags\nFloat32Dtype\nFloat64Dtype\nGrouper\nHDFStore\nIndex\nIndexSlice\nInt16Dtype\nInt32Dtype\nInt64Dtype\nInt8Dtype\nInterval\nIntervalDtype\nIntervalIndex\nMultiIndex\nNA\nNaT\nNamedAgg\nPeriod\nPeriodDtype\nPeriodIndex\nRangeIndex\nSeries\nSparseDtype\nStringDtype\nTimedelta\nTimedeltaIndex\nTimestamp\nUInt16Dtype\nUInt32Dtype\nUInt64Dtype\nUInt8Dtype\napi\narray\narrays\nbdate_range\nconcat\ncrosstab\ncut\ndate_range\ndescribe_option\nerrors\neval\nfactorize\nget_dummies\nfrom_dummies\nget_option\ninfer_freq\ninterval_range\nio\nisna\nisnull\njson_normalize\nlreshape\nmelt\nmerge\nmerge_asof\nmerge_ordered\nnotna\nnotnull\noffsets\noption_context\noptions\nperiod_range\npivot\npivot_table\nplotting\nqcut\nread_clipboard\nread_csv\nread_excel\nread_feather\nread_fwf\nread_gbq\nread_hdf\nread_html\nread_json\nread_orc\nread_parquet\nread_pickle\nread_sas\nread_spss\nread_sql\nread_sql_query\nread_sql_table\nread_stata\nread_table\nread_xml\nreset_option\nset_eng_float_format\nset_option\nshow_versions\ntest\ntesting\ntimedelta_range\nto_datetime\nto_numeric\nto_pickle\nto_timedelta\ntseries\nunique\nvalue_counts\nwide_to_long\nname\n\n\nSegundo o The Hitchhiker’s Guide to Python [@pythonguide], caso 2 é o pior cenário possível e geralmente é considerado má prática, pois “torna o código mais difícil de ler e as dependências menos compartimentalizadas”. Essa afirmação é endossada pela documentação oficial do Python [@pythontutorial]:\n\nEmbora certos módulos sejam projetados para exportar apenas nomes que seguem certos padrões quando você usa import *, ainda é considerado má prática em código de produção.\n\nNa opinião dos autores do guia, caso 3 seria uma opção melhor porque destaca nomes específicos3, enquanto caso 1 seria a melhor prática, pois “Ser capaz de dizer imediatamente de onde uma classe ou função vem melhora muito a legibilidade e compreensão do código, exceto nos projetos mais simples de arquivo único.”"
+    "text": "2.2 Experiência Em Python\nTodos os 3 casos citados antes são possíveis em Python, mas os padrões da comunidade são bem diferentes. Especialmente em relação à consciência do que está carregado no namespace — ou symbol table, como é chamado em Python2.\nPrimeiro, pacotes instalados não ficam imediatamente disponíveis. Então, se eu tentar, por exemplo, listar funções/métodos/atributos do {pandas}, resultará em erro:\n\n# inspecionando módulos em {pandas}\nimport pandas\ndir(pandas)\n\n['ArrowDtype', 'BooleanDtype', 'Categorical', 'CategoricalDtype', 'CategoricalIndex', 'DataFrame', 'DateOffset', 'DatetimeIndex', 'DatetimeTZDtype', 'ExcelFile', 'ExcelWriter', 'Flags', 'Float32Dtype', 'Float64Dtype', 'Grouper', 'HDFStore', 'Index', 'IndexSlice', 'Int16Dtype', 'Int32Dtype', 'Int64Dtype', 'Int8Dtype', 'Interval', 'IntervalDtype', 'IntervalIndex', 'MultiIndex', 'NA', 'NaT', 'NamedAgg', 'Period', 'PeriodDtype', 'PeriodIndex', 'RangeIndex', 'Series', 'SparseDtype', 'StringDtype', 'Timedelta', 'TimedeltaIndex', 'Timestamp', 'UInt16Dtype', 'UInt32Dtype', 'UInt64Dtype', 'UInt8Dtype', '__all__', '__builtins__', '__cached__', '__doc__', '__docformat__', '__file__', '__git_version__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__version__', '_built_with_meson', '_config', '_is_numpy_dev', '_libs', '_pandas_datetime_CAPI', '_pandas_parser_CAPI', '_testing', '_typing', '_version_meson', 'annotations', 'api', 'array', 'arrays', 'bdate_range', 'col', 'compat', 'concat', 'core', 'crosstab', 'cut', 'date_range', 'describe_option', 'errors', 'eval', 'factorize', 'from_dummies', 'get_dummies', 'get_option', 'infer_freq', 'interval_range', 'io', 'isna', 'isnull', 'json_normalize', 'lreshape', 'melt', 'merge', 'merge_asof', 'merge_ordered', 'notna', 'notnull', 'offsets', 'option_context', 'options', 'pandas', 'period_range', 'pivot', 'pivot_table', 'plotting', 'qcut', 'read_clipboard', 'read_csv', 'read_excel', 'read_feather', 'read_fwf', 'read_hdf', 'read_html', 'read_iceberg', 'read_json', 'read_orc', 'read_parquet', 'read_pickle', 'read_sas', 'read_spss', 'read_sql', 'read_sql_query', 'read_sql_table', 'read_stata', 'read_table', 'read_xml', 'reset_option', 'set_eng_float_format', 'set_option', 'show_versions', 'test', 'testing', 'timedelta_range', 'to_datetime', 'to_numeric', 'to_pickle', 'to_timedelta', 'tseries', 'unique', 'util', 'wide_to_long']\n\n\nVocê pode checar a symbol table com o seguinte comando.\n\n# o que está anexado à symbol table?\nprint(*globals(), sep = \"\\n\")\n\n__name__\n__doc__\n__package__\n__loader__\n__spec__\n__builtins__\nr\npandas\n\n\nDependendo do sistema/ferramentas que você está usando, o interpretador Python vai carregar alguns módulos ou não. Se você iniciar um REPL — um terminal interativo Python —, nenhum módulo será carregado. Se iniciar um Jupyter notebook, alguns módulos necessários para ele rodar serão carregados. Neste caso, como estou rodando Python a partir do R via {reticulate}, alguns módulos foram carregados:\n\nsys: para acesso a variáveis e funções usadas pelo interpretador\nos: para rotinas do sistema operacional NT ou Posix\n\nEntão, se quero trabalhar com {pandas}, preciso anexá-lo à symbol table com um equivalente ao library() do R. E assim como sua função prima, o import do Python também tem diferentes formas.\nPrimeiro, import pandas torna o pacote disponível para chamadas explícitas.\n\n# importar pandas\nimport pandas\n\n# o que está anexado à symbol table?\nprint(*globals(), sep = \"\\n\")\n\n__name__\n__doc__\n__package__\n__loader__\n__spec__\n__builtins__\nr\npandas\n\n\nNote que apenas {pandas} está anexado à symbol table, não suas funções/métodos/atributos. Portanto, essa instrução não é equivalente ao library(). Para criar um dataframe simples com {pandas}:\n\n2.2.1 Caso 1: Chamada Explícita\n\n# isso resultará em NameError: name 'DataFrame' is not defined\nDataFrame(\n  {\n    \"capital\": [\"Vitoria\", \"São Paulo\", \"Rio de Janeiro\"],\n    \"state\": [\"Espírito Santo\", \"São Paulo\", \"Rio de Janeiro\"]\n  }\n)\n\nNameError: name 'DataFrame' is not defined\n\n# isso funciona\npandas.DataFrame(\n  {\n    \"capital\": [\"Vitoria\", \"São Paulo\", \"Rio de Janeiro\"],\n    \"state\": [\"Espírito Santo\", \"São Paulo\", \"Rio de Janeiro\"]\n  }\n)\n\n          capital           state\n0         Vitoria  Espírito Santo\n1       São Paulo       São Paulo\n2  Rio de Janeiro  Rio de Janeiro\n\n\nSe quisermos replicar o comportamento do library() (ou seja, carregar e anexar todas as funções/métodos/atributos do {pandas} à symbol table), então:\n\n\n2.2.2 Caso 2: Anexando\n\n# importando todo o {pandas} para a symbol table\nfrom pandas import *\n\n# symbol table atualizada\nprint(*globals(), sep = \"\\n\")\n\n__name__\n__doc__\n__package__\n__loader__\n__spec__\n__builtins__\nr\npandas\nNA\nArrowDtype\nBooleanDtype\nCategorical\nCategoricalDtype\nCategoricalIndex\nDataFrame\nDateOffset\nDatetimeIndex\nDatetimeTZDtype\nExcelFile\nExcelWriter\nFlags\nFloat32Dtype\nFloat64Dtype\nGrouper\nHDFStore\nIndex\nIndexSlice\nInt8Dtype\nInt16Dtype\nInt32Dtype\nInt64Dtype\nInterval\nIntervalDtype\nIntervalIndex\nMultiIndex\nNaT\nNamedAgg\nPeriod\nPeriodDtype\nPeriodIndex\nRangeIndex\nSeries\nSparseDtype\nStringDtype\nTimedelta\nTimedeltaIndex\nTimestamp\nUInt8Dtype\nUInt16Dtype\nUInt32Dtype\nUInt64Dtype\napi\narray\narrays\nbdate_range\ncol\nconcat\ncrosstab\ncut\ndate_range\ndescribe_option\nerrors\neval\nfactorize\nfrom_dummies\nget_dummies\nget_option\ninfer_freq\ninterval_range\nio\nisna\nisnull\njson_normalize\nlreshape\nmelt\nmerge\nmerge_asof\nmerge_ordered\nnotna\nnotnull\noffsets\noption_context\noptions\nperiod_range\npivot\npivot_table\nplotting\nqcut\nread_clipboard\nread_csv\nread_excel\nread_feather\nread_fwf\nread_hdf\nread_html\nread_iceberg\nread_json\nread_orc\nread_parquet\nread_pickle\nread_sas\nread_spss\nread_sql\nread_sql_query\nread_sql_table\nread_stata\nread_table\nread_xml\nreset_option\nset_eng_float_format\nset_option\nshow_versions\ntest\ntesting\ntimedelta_range\nto_datetime\nto_numeric\nto_pickle\nto_timedelta\ntseries\nunique\nwide_to_long\n\n# agora isso funciona\nDataFrame(\n  {\n    \"capital\": [\"Vitoria\", \"São Paulo\", \"Rio de Janeiro\"],\n    \"state\": [\"Espírito Santo\", \"São Paulo\", \"Rio de Janeiro\"]\n  }\n)\n\n          capital           state\n0         Vitoria  Espírito Santo\n1       São Paulo       São Paulo\n2  Rio de Janeiro  Rio de Janeiro\n\n\nMas você não verá nenhum usuário experiente de Python fazendo isso, pois eles se preocupam em carregar muitos nomes na symbol table e os possíveis conflitos que isso pode causar. Uma abordagem aceitável seria anexar apenas alguns nomes frequentes, como em:\n\n\n2.2.3 Caso 3: Anexando Funções Específicas\n\n# desanexando {pandas}\nfor name in vars(pandas):\n    if not name.startswith('_'):\n        del globals()[name]\n\nKeyError: 'annotations'\n\n# anexando apenas DataFrame()\nfrom pandas import DataFrame\n\n# symbol table atualizada\nprint(*globals(), sep = \"\\n\")\n\n__name__\n__doc__\n__package__\n__loader__\n__spec__\n__builtins__\nr\npandas\nNA\nArrowDtype\nBooleanDtype\nCategorical\nCategoricalDtype\nCategoricalIndex\nDataFrame\nDateOffset\nDatetimeIndex\nDatetimeTZDtype\nExcelFile\nExcelWriter\nFlags\nFloat32Dtype\nFloat64Dtype\nGrouper\nHDFStore\nIndex\nIndexSlice\nInt8Dtype\nInt16Dtype\nInt32Dtype\nInt64Dtype\nInterval\nIntervalDtype\nIntervalIndex\nMultiIndex\nNaT\nNamedAgg\nPeriod\nPeriodDtype\nPeriodIndex\nRangeIndex\nSeries\nSparseDtype\nStringDtype\nTimedelta\nTimedeltaIndex\nTimestamp\nUInt8Dtype\nUInt16Dtype\nUInt32Dtype\nUInt64Dtype\napi\narray\narrays\nbdate_range\ncol\nconcat\ncrosstab\ncut\ndate_range\ndescribe_option\nerrors\neval\nfactorize\nfrom_dummies\nget_dummies\nget_option\ninfer_freq\ninterval_range\nio\nisna\nisnull\njson_normalize\nlreshape\nmelt\nmerge\nmerge_asof\nmerge_ordered\nnotna\nnotnull\noffsets\noption_context\noptions\nperiod_range\npivot\npivot_table\nplotting\nqcut\nread_clipboard\nread_csv\nread_excel\nread_feather\nread_fwf\nread_hdf\nread_html\nread_iceberg\nread_json\nread_orc\nread_parquet\nread_pickle\nread_sas\nread_spss\nread_sql\nread_sql_query\nread_sql_table\nread_stata\nread_table\nread_xml\nreset_option\nset_eng_float_format\nset_option\nshow_versions\ntest\ntesting\ntimedelta_range\nto_datetime\nto_numeric\nto_pickle\nto_timedelta\ntseries\nunique\nwide_to_long\nname\n\n\nSegundo o The Hitchhiker’s Guide to Python [@pythonguide], caso 2 é o pior cenário possível e geralmente é considerado má prática, pois “torna o código mais difícil de ler e as dependências menos compartimentalizadas”. Essa afirmação é endossada pela documentação oficial do Python [@pythontutorial]:\n\nEmbora certos módulos sejam projetados para exportar apenas nomes que seguem certos padrões quando você usa import *, ainda é considerado má prática em código de produção.\n\nNa opinião dos autores do guia, caso 3 seria uma opção melhor porque destaca nomes específicos3, enquanto caso 1 seria a melhor prática, pois “Ser capaz de dizer imediatamente de onde uma classe ou função vem melhora muito a legibilidade e compreensão do código, exceto nos projetos mais simples de arquivo único.”"
   },
   {
     "objectID": "posts/202106_python-from-r-i-package-importing/index.html#footnotes",
@@ -126,11 +140,144 @@
     "text": "Notas de rodapé\n\n\nUma lista ordenada onde o R procura por uma função. Pode ser acessada com search().↩︎\nAcho? Não sei, ainda estou aprendendo lol 😂↩︎\nPython Foundation diz “Não há nada de errado em usar from package import specific_submodule! Na verdade, essa é a notação recomendada, a menos que o módulo importador precise usar submódulos com o mesmo nome de pacotes diferentes.”↩︎"
   },
   {
+    "objectID": "posts/202208_template/index.html",
+    "href": "posts/202208_template/index.html",
+    "title": "Template para dissertações em Quarto",
+    "section": "",
+    "text": "Aproveitando que começo a escrever minha dissertação este semestre, porque não matar dois coelhos com uma cajadada só (Luisa Mell me perdoa) e conhecer esse tal de Quarto que está na boca do povo? Pois bem, aqui está um template para monografia/dissertação/tese em Quarto1.\nPara facilitar (ou não, o futuro dirá) a vida do povo, parametrizei os elementos pré-textuais — capa, folha de rosto, folha de aprovação, resumo, abstract etc. São esses aqui:\nPara usar, primeiramente os pré-requisitos:\nAgora você pode forkar o projeto e cair dentro! Basta atualizar os parâmetros em config/preamble.tex e escrever seu trabalho em dissertacao.qmd:"
+  },
+  {
+    "objectID": "posts/202208_template/index.html#footnotes",
+    "href": "posts/202208_template/index.html#footnotes",
+    "title": "Template para dissertações em Quarto",
+    "section": "Notas de rodapé",
+    "text": "Notas de rodapé\n\n\nEsse template é uma adaptação do modelo padrão da UEL.↩︎\nPara usuários de R, o mais fácil é via tinytex::install_tinytex().↩︎"
+  },
+  {
+    "objectID": "posts/202504_all-models-are-wrong/index.html",
+    "href": "posts/202504_all-models-are-wrong/index.html",
+    "title": "Todos os modelos estão errados, mas alguns são inúteis",
+    "section": "",
+    "text": "DicaTL;DR\n\n\n\nQuando usar o coeficiente de correlação de Pearson, sempre teste a significância. Mas não o utilize para analisar séries temporais. É um erro comum. Isso viola a independência das observações e ignora o relacionamento entre defasagens. Em vez disso, use a análise de cross-correlograma para identificar relações entre séries temporais, incluindo relações defasadas.\n“Todos os modelos estão errados, mas alguns são úteis” é uma frase recorrente entre aqueles que praticam estatística. Ela se origina de uma afirmação de George Box, um dos grandes estatísticos do século XX: “Since all models are wrong the scientist must be alert to what is importantly wrong.” (Box 1976). “Todos os modelos estão errados” significa que os modelos são intrinsecamente limitados e não capturam perfeitamente a realidade. Em outras palavras, um modelo é uma representação simplificada da realidade, usada para explicar ou prever um fenômeno. Se fosse uma explicação perfeita desse fenômeno, deixaria de ser um modelo e se tornaria uma lei.\nNa estatística, lidamos essencialmente com variáveis aleatórias ou estocásticas, ou seja, variáveis que possuem uma distribuição de probabilidade (Gujarati e Porter 2021). Nossa missão como analistas é desenvolver e utilizar métodos que nos digam como formular funções que nos permitam descrever e prever o relacionamento entre essas variáveis, minimizando os erros estocásticos.\nDependendo da forma funcional e do método de estimação escolhido, há uma série de pressupostos que devem ser atendidos para que qualquer inferência sobre o erro, coeficientes, preditores e regressandos seja válida. Se esses pressupostos forem ignorados, não há garantia de que os resultados encontrados sejam uma aproximação ótima da função que se deseja estimar. Mais do que isso, a violação de alguns desses pressupostos pode gerar resultados enganosos, mostrando relações estatísticas significativas onde não deveria haver, subestimando ou superestimando o objeto de estudo.\nNeste post, abordo alguns erros metodológicos frequentes que fazem com que alguns modelos sejam inúteis."
+  },
+  {
+    "objectID": "posts/202504_all-models-are-wrong/index.html#footnotes",
+    "href": "posts/202504_all-models-are-wrong/index.html#footnotes",
+    "title": "Todos os modelos estão errados, mas alguns são inúteis",
+    "section": "Notas de rodapé",
+    "text": "Notas de rodapé\n\n\nUm resumo pode ser encontrado em Cambridge University (2021).↩︎"
+  },
+  {
+    "objectID": "posts/202506_why-economists-wrong/index.html",
+    "href": "posts/202506_why-economists-wrong/index.html",
+    "title": "Por que os economistas estão sempre errados?",
+    "section": "",
+    "text": "Neste pist, ofereço minha leitura do primeiro capítulo de Barbieri e Feijó (2013) acerca do que chamaram de paradigma do equilíbrio maximizador, doravante referido apenas como paradigma, na ciência econômica."
+  },
+  {
+    "objectID": "posts/202506_why-economists-wrong/index.html#footnotes",
+    "href": "posts/202506_why-economists-wrong/index.html#footnotes",
+    "title": "Por que os economistas estão sempre errados?",
+    "section": "Notas de rodapé",
+    "text": "Notas de rodapé\n\n\nImpossível esquecer o monólogo clássico de Macbeth: ``E todos os nossos ontens não fizeram mais que iluminar para os tolos o caminho que leva ao pó da morte.”↩︎\n``in a 2008 paper titled ´The State of Macro’ (that is, macroeconomics, the study of big-picture issues like recessions), Olivier Blanchard of M.I.T., now the chief economist at the International Monetary Fund, declared that ´the state of macro is good’. The battles of yesteryear, he said, were over, and there had been a ´broad convergence of vision’. And in the real world, economists believed they had things under control: the ´central problem of depression-prevention has been solved’, declared Robert Lucas of the University of Chicago in his 2003 presidential address to the American Economic Association” (Krugman 2009).↩︎"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Sobre",
+    "section": "",
+    "text": "Atuo na modelagem de risco de crédito e ciências de dados em geral no Banco do Estado do Espírito Santo (@Banestes_SA), onde sou concursado desde 2008. Meu foco está em aumentar a qualidade da informação e reduzir a incerteza da tomada de decisão através de métodos estatísticos e experimentação. Sou economista (Universidade Federal do Espírito Santo - UFES, 2014) e matemático (Instituto Federal do Espírito Santo, 2024) de formação, e me tornei cientista de dados por afinidade.\nSou discente de doutorado no Programa de Pós-Graduação da Universidade Federal do Espírito Santo (PPGEco/UFES), onde também cursei meu mestrado. Meu campo de pesquisa é econometria de séries temporais, especificamente séries temporais hierárquicas e métodos de aprendizado de máquina para previsão de séries temporais hierárquicas.\nEm relação à tecnologias, eu sou um entusiasta de FOSS (Free and Open Source Software) e utilizo principalmente R, Rust e Python em meus projetos. Não uso um único OS e estou sempre variando entre macOS, Linux Ubuntu e Linux Fedora em casa, e Windows no trabalho. Sou autor do pacote fio, que é uma ferramenta para análise de matrizes insumo-produto – que combina perfeitamente meu background em economia, matemática e computação.\nEm meu tempo livre eu gosto de surfar, tocar guitarra e produzir músicas em meu home studio."
+  },
+  {
+    "objectID": "software.html",
+    "href": "software.html",
+    "title": "Software",
+    "section": "",
+    "text": "Pacote R projetado para análise de insumo-produto, enfatizando a usabilidade para usuários de Excel e desempenho. Inclui um Addin para RStudio e um conjunto de funções para importação simplificada de tabelas de insumo-produto do Excel, seja programaticamente ou diretamente da área de transferência.\nO pacote é otimizado para velocidade e eficiência. Ele utiliza a classe R6 para programação orientada a objetos limpa e eficiente em termos de memória. Além disso, todos os cálculos de álgebra linear são implementados em Rust para alcançar um desempenho altamente otimizado.\n Código  Site"
+  },
+  {
+    "objectID": "software.html#fio-autor",
+    "href": "software.html#fio-autor",
+    "title": "Software",
+    "section": "",
+    "text": "Pacote R projetado para análise de insumo-produto, enfatizando a usabilidade para usuários de Excel e desempenho. Inclui um Addin para RStudio e um conjunto de funções para importação simplificada de tabelas de insumo-produto do Excel, seja programaticamente ou diretamente da área de transferência.\nO pacote é otimizado para velocidade e eficiência. Ele utiliza a classe R6 para programação orientada a objetos limpa e eficiente em termos de memória. Além disso, todos os cálculos de álgebra linear são implementados em Rust para alcançar um desempenho altamente otimizado.\n Código  Site"
+  },
+  {
+    "objectID": "software.html#biodiversity-autor",
+    "href": "software.html#biodiversity-autor",
+    "title": "Software",
+    "section": "biodiversity (autor) ",
+    "text": "biodiversity (autor) \nImagem Docker contendo um aplicativo Shiny para visualizar dados globais de biodiversidade. Este projeto fornece uma plataforma interativa para explorar dados de biodiversidade do GBIF. Os usuários podem visualizar conjuntos de dados, mapas e linhas do tempo de observações de espécies. Ele demonstra minhas habilidades em criar páginas de destino atraentes, mesmo para aplicativos Shiny. Uma versão implantada pode ser encontrada aqui.\n Código  Site"
+  },
+  {
+    "objectID": "software.html#rextendr-contribuidor",
+    "href": "software.html#rextendr-contribuidor",
+    "title": "Software",
+    "section": "rextendr (contribuidor) ",
+    "text": "rextendr (contribuidor) \nUm pacote R que ajuda a criar pacotes compatíveis com {extendr} ou a compilar código Rust dinamicamente.\n Código  Site"
+  },
+  {
+    "objectID": "software.html#r_tools_ppa-autor",
+    "href": "software.html#r_tools_ppa-autor",
+    "title": "Software",
+    "section": "r_tools_ppa (autor)",
+    "text": "r_tools_ppa (autor)\nEste é um Personal Package Archive (PPA) para distribuir as versões mais recentes do RStudio, Quarto e Positron para usuários Linux. Ele fornece pacotes .deb para distribuições baseadas em Ubuntu e Debian, e pacotes .rpm para distribuições baseadas em Fedora e Red Hat.\n Código  Site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "fio 1.0.0: Análise Multirregional e outras novidades\n\n\nA ponte entre a facilidade do R e a velocidade do Rust alcança novo marco no CRAN\n\n\n\nR\n\nEconomia\n\nfio\n\nRust\n\n\n\n\n\n\n\n\n\n27 de fev. de 2026\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nPor que os economistas estão sempre errados?\n\n\nUma crítica epistemológica ao paradigma do equilíbrio maximizador\n\n\n\neconomics\n\n\n\n\n\n\n\n\n\n15 de jun. de 2025\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nCriando um Personal Package Archive (PPA) no Linux\n\n\nComo criei meu próprio PPA para distribuir RStudio, Quarto e Positron.\n\n\n\nferramentas\n\n\n\n\n\n\n\n\n\n9 de jun. de 2025\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nTodos os modelos estão errados, mas alguns são inúteis\n\n\nParte I: Correlação de Pearson e significância\n\n\n\ntime-series\n\n\n\n\n\n\n\n\n\n19 de abr. de 2025\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nSéries Temporais Hierárquicas: teoria\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\n25 de out. de 2022\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nO Papel Da Educação Matemática Sob A Hegemonia Do Capital\n\n\n\n\n\n\neducation\n\n\n\n\n\n\n\n\n\n14 de ago. de 2022\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nTemplate para dissertações em Quarto\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\n3 de ago. de 2022\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nPython a partir do R I: importando pacotes (e por que aprender novas linguagens é difícil)\n\n\n\n\n\n\npython\n\n\n\n\n\n\n\n\n\n12 de jun. de 2021\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nUm pouco de conceitos: overfitting & resampling\n\n\n\n\n\n\nmachine learning\n\n\n\n\n\n\n\n\n\n17 de abr. de 2021\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nR em 2021 com o VSCode\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\n6 de abr. de 2021\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nIntrodução ao framework {mlr3}\n\n\n\n\n\n\nmachine learning\n\n\n\n\n\n\n\n\n\n27 de dez. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nEffect Size e a desigualdade de renda entre gêneros em Vitória\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\n24 de nov. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nComparando variâncias: o teste F\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\n20 de nov. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nChutou ou não chutou? O test t para uma amostra\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\n6 de nov. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nAtestando diferenças em médias: o teste t para amostras independentes\n\n\n\n\n\n\nstatistics\n\n\n\n\n\n\n\n\n\n2 de nov. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nQualidade gráfica no painel do RStudio\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\n19 de out. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nConfigurando git em um servidor proxy\n\n\n\n\n\n\ntools\n\n\n\n\n\n\n\n\n\n25 de set. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\n\n\n\n\n\n\n\nHello World\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n11 de set. de 2020\n\n\nAlberson Miranda\n\n\n\n\n\nNenhum item correspondente"
+  },
+  {
+    "objectID": "posts/202602_fio-1-0-0/index.html",
+    "href": "posts/202602_fio-1-0-0/index.html",
+    "title": "fio 1.0.0: Análise Multirregional e outras novidades",
+    "section": "",
+    "text": "{fio} 1.0.0 já está disponível no CRAN! Este lançamento representa um marco significativo no desenvolvimento do pacote, introduzindo poderosas capacidades multirregionais, suporte para modelos fechados e uma estratégia de gerenciamento de dados mais eficiente.\nO {fio} (Friendly & Fast Input-Output) foi construído com um objetivo claro: fornecer aos usuários de R uma interface rápida e intuitiva para análise de insumo-produto. Ao aproveitar a performance do Rust e as classes R6, o {fio} permite que você lide com cálculos complexos de álgebra linear com facilidade e rapidez.\nVocê pode instalá-lo do CRAN com:"
+  },
+  {
+    "objectID": "posts/202602_fio-1-0-0/index.html#análise-de-insumo-produto-multirregional-miom",
+    "href": "posts/202602_fio-1-0-0/index.html#análise-de-insumo-produto-multirregional-miom",
+    "title": "fio 1.0.0: Análise Multirregional e outras novidades",
+    "section": "1 Análise de Insumo-Produto Multirregional (MIOM)",
+    "text": "1 Análise de Insumo-Produto Multirregional (MIOM)\nA principal novidade da versão 1.0.0 é a introdução dos modelos de Insumo-Produto Multirregional (MIOM). Isso permite que analistas vão além das economias individuais e estudem as interdependências entre diferentes nações ou regiões.\nA nova classe miom() cria um modelo multirregional que herda toda a performance e funcionalidade da classe iom() de região única, adicionando ferramentas especializadas para análise regional:\n\nComércio Bilateral: Extraia facilmente fluxos comerciais entre regiões específicas.\nMultiplicadores Regionais: Calcule multiplicadores intra-regionais, inter-regionais e de transbordamento (spillover).\nMedidas de Interdependência: Quantifique o quanto as regiões dependem umas das outras.\n\nVeja abaixo como você pode analisar as interdependências do comércio global usando o conjunto de dados world_2000 (que agora faz parte do pacote complementar {fiodata}):\n\nlibrary(fio)\n\n# Carrega o conjunto de dados mundial multirregional\nmiom_world &lt;- fiodata::world_2000\n\n# Obtém o comércio bilateral do Brasil para a China\nmiom_world$get_bilateral_trade(\"BRA\", \"CHN\")[1:5, 1:2]\n#&gt;                                                BRA_Agriculture, Hunting, Forestry and Fishing\n#&gt; CHN_Agriculture, Hunting, Forestry and Fishing                                    0.868486382\n#&gt; CHN_Mining and Quarrying                                                          0.677175460\n#&gt; CHN_Food, Beverages and Tobacco                                                   0.784219678\n#&gt; CHN_Textiles, leather and footwear                                                0.137408834\n#&gt; CHN_Pulp, paper, printing and publishing                                          0.003052195\n#&gt;                                                BRA_Mining and Quarrying\n#&gt; CHN_Agriculture, Hunting, Forestry and Fishing              0.001110208\n#&gt; CHN_Mining and Quarrying                                    1.703217354\n#&gt; CHN_Food, Beverages and Tobacco                             0.005707213\n#&gt; CHN_Textiles, leather and footwear                          0.129627291\n#&gt; CHN_Pulp, paper, printing and publishing                    0.015560710\n\n# Calcula a interdependência regional\nmiom_world$get_regional_interdependence() |&gt; head()\n#&gt;   country self_reliance total_spillover_out total_spillover_in\n#&gt; 1     AUS      1.968515           0.3168527        0.006511634\n#&gt; 2     AUT      1.614535           0.4900724        0.004048698\n#&gt; 3     BEL      1.649908           0.7652207        0.011148228\n#&gt; 4     BRA      1.918948           0.2328115        0.004065824\n#&gt; 5     CAN      1.650380           0.4280919        0.007634451\n#&gt; 6     CHN      2.342241           0.2867934        0.016735715\n#&gt;   interdependence_index\n#&gt; 1             0.1609602\n#&gt; 2             0.3035377\n#&gt; 3             0.4637960\n#&gt; 4             0.1213225\n#&gt; 5             0.2593898\n#&gt; 6             0.1224440\n\nPara uma visão completa sobre a classe miom e seus métodos, confira a vignette: Análise Multirregional de Insumo-Produto."
+  },
+  {
+    "objectID": "posts/202602_fio-1-0-0/index.html#fechando-o-modelo",
+    "href": "posts/202602_fio-1-0-0/index.html#fechando-o-modelo",
+    "title": "fio 1.0.0: Análise Multirregional e outras novidades",
+    "section": "2 Fechando o Modelo",
+    "text": "2 Fechando o Modelo\nModelos de insumo-produto são tradicionalmente “abertos”, tratando as famílias e o governo como externos ao sistema de produção. A versão 1.0.0 introduz o método close_model(), que permite “internalizar” esses setores.\nAo mover o consumo das famílias ou do governo da demanda final para a matriz de transações intermediárias, você pode capturar melhor os efeitos “induzidos” de choques econômicos — por exemplo, como um aumento na produção leva a salários mais altos, que por sua vez estimulam mais consumo.\n\niom_br &lt;- fiodata::br_2020\n\n# Fecha o modelo para o consumo das famílias\niom_br$close_model(\"household\")\n\n# Os coeficientes técnicos e multiplicadores agora incluem os efeitos induzidos\niom_br$compute_tech_coeff()\niom_br$compute_leontief_inverse()\niom_br$compute_multiplier_output()"
+  },
+  {
+    "objectID": "posts/202602_fio-1-0-0/index.html#acesso-direto-a-dados",
+    "href": "posts/202602_fio-1-0-0/index.html#acesso-direto-a-dados",
+    "title": "fio 1.0.0: Análise Multirregional e outras novidades",
+    "section": "3 Acesso Direto a Dados",
+    "text": "3 Acesso Direto a Dados\nPara facilitar ainda mais o início de sua análise, adicionamos download_wiod(). Esta função permite baixar tabelas da World Input-Output Database (WIOD) diretamente de sua fonte oficial e carregá-las no R. Combinado com a velocidade de processamento do {fio}, isso reduz significativamente o tempo entre a coleta de dados e a obtenção de insights.\nPara um exemplo completo sobre como trabalhar com dados do WIOD, confira a vignette: Trabalhando com WIOD."
+  },
+  {
+    "objectID": "posts/202602_fio-1-0-0/index.html#fiodata",
+    "href": "posts/202602_fio-1-0-0/index.html#fiodata",
+    "title": "fio 1.0.0: Análise Multirregional e outras novidades",
+    "section": "4 {fiodata}",
+    "text": "4 {fiodata}\nÀ medida que o pacote cresceu, os conjuntos de dados integrados atingiram um tamanho que excedeu as recomendações do CRAN. Para manter o {fio} leve e rápido de instalar, movemos os conjuntos de dados (br_2020 e world_2000) para um pacote complementar separado: {fiodata}.\nAo instalar o {fio}, instale também o {fiodata} para acompanhar nossos exemplos e acessar os conjuntos de dados:\ninstall.packages(\"fiodata\")"
+  },
+  {
+    "objectID": "posts/202602_fio-1-0-0/index.html#agradecimentos",
+    "href": "posts/202602_fio-1-0-0/index.html#agradecimentos",
+    "title": "fio 1.0.0: Análise Multirregional e outras novidades",
+    "section": "5 Agradecimentos",
+    "text": "5 Agradecimentos\nEste lançamento não seria possível sem o robusto ecossistema de pacotes R e Rust. Agradecimentos especiais aos desenvolvedores dos projetos extendr e faer, que fornecem a base para a arquitetura híbrida do {fio}.\nPara uma lista completa de mudanças, consulte o arquivo NEWS.md. Bons estudos!"
+  },
+  {
     "objectID": "posts/202506_ppa/index.html",
     "href": "posts/202506_ppa/index.html",
     "title": "Criando um Personal Package Archive (PPA) no Linux",
     "section": "",
-    "text": "TL;DR\n\n\n\nHá um novo PPA disponível para usuários de Ubuntu e Fedora que permite instalar as versões mais recentes do RStudio, Quarto e Positron com um único comando. Este PPA é mantido por mim e é atualizado diariamente com as versões mais recentes dessas ferramentas.\nComo um millennial, cresci pirateando coisas da internet. Do Windows XP ao Adobe CS5, nada estava a salvo da minha rebeldia adolescente. Com o tempo, cansei de softwares proprietários e decidi dar uma chance às alternativas de código aberto. Me apaixonei pelo Ubuntu e logo depois experimentei o Fedora, que gostei ainda mais! Uma das coisas que me conquistou foi o fato de poder instalar praticamente qualquer software com um único comando — e mantê-lo atualizado! Isso é possível graças ao sistema de gerenciamento de pacotes do Linux, que permite instalar, atualizar e remover softwares facilmente. Mas nem todo software está disponível nos repositórios oficiais, e é aí que os Personal Package Archives (PPAs) são úteis. PPAs são uma forma de desenvolvedores distribuírem seus softwares para usuários do Ubuntu, podendo ser usados para instalar programas que não estão nos repositórios oficiais ou obter a versão mais recente de um pacote. Neste post, vou mostrar como criar seu próprio PPA e como usá-lo para distribuir seu software."
+    "text": "DicaTL;DR\n\n\n\nHá um novo PPA disponível para usuários de Ubuntu e Fedora que permite instalar as versões mais recentes do RStudio, Quarto e Positron com um único comando. Este PPA é mantido por mim e é atualizado diariamente com as versões mais recentes dessas ferramentas.\nComo um millennial, cresci pirateando coisas da internet. Do Windows XP ao Adobe CS5, nada estava a salvo da minha rebeldia adolescente. Com o tempo, cansei de softwares proprietários e decidi dar uma chance às alternativas de código aberto. Me apaixonei pelo Ubuntu e logo depois experimentei o Fedora, que gostei ainda mais! Uma das coisas que me conquistou foi o fato de poder instalar praticamente qualquer software com um único comando — e mantê-lo atualizado! Isso é possível graças ao sistema de gerenciamento de pacotes do Linux, que permite instalar, atualizar e remover softwares facilmente. Mas nem todo software está disponível nos repositórios oficiais, e é aí que os Personal Package Archives (PPAs) são úteis. PPAs são uma forma de desenvolvedores distribuírem seus softwares para usuários do Ubuntu, podendo ser usados para instalar programas que não estão nos repositórios oficiais ou obter a versão mais recente de um pacote. Neste post, vou mostrar como criar seu próprio PPA e como usá-lo para distribuir seu software."
   },
   {
     "objectID": "posts/202506_ppa/index.html#instalação-fácil-para-rstudio-quarto-e-positron",
@@ -159,13 +306,6 @@
     "title": "Criando um Personal Package Archive (PPA) no Linux",
     "section": "4 Instalação no Fedora/Red Hat",
     "text": "4 Instalação no Fedora/Red Hat\nPara habilitar este repositório e instalar a versão mais recente do RStudio, Quarto ou Positron:\n\nBaixe o arquivo do repositório:\nsudo curl -L -o /etc/yum.repos.d/r_tools_ppa.repo \\\n  https://sourceforge.net/projects/r-tools-ppa/files/rpm_x86_64/repo.txt/download\nOu para arquitetura aarch64:\nsudo curl -o /etc/yum.repos.d/r_tools_ppa.repo \\\n  https://sourceforge.net/projects/r-tools-ppa/files/rpm_aarch64/repo.txt/download\nAtualize e instale (ex: RStudio):\nsudo dnf update\nsudo dnf install rstudio"
-  },
-  {
-    "objectID": "posts/202009_hello-world/index.html",
-    "href": "posts/202009_hello-world/index.html",
-    "title": "Hello World",
-    "section": "",
-    "text": "Depois de uma ou outra postagem no LinkedIn e Kaggle, já era hora de eu montar meu próprio blog para ciência de dados, não é mesmo?\nFirst things first, que nome é esse? Datamares & Dreamscapes faz referência ao título de uma coletânea de contos do Stephen King Nightmares & Dreamscapes (Pesadelos e Paisagens Noturnas, no Brasil) e faz bastante jus à minha relação com esse mundo. Eu smepre quero aprender mais, ir mais longe, conquistar novos horiontes, mas o aprendizado envolve certos sacrifícios e noites perdidas ou mal dormidas. Entretanto, quando você consegue aquele resultado esperado é como se um portal se abrisse para um novo mundo.\nEntão, sobre o que pretendo falar por aqui? Principalmente acerca dos projetos em R nos quais estiver trabalhando, machine learning, estatística clássica, forecasting, frameworks… e um pouco de matemática, economia e ensino. Basicamente ideias, insights e trabalhos que devo consultar vez ou outra.\nE se alguma dessas coisas te ajudar de alguma forma, eu vou ficar bastante feliz :p"
   },
   {
     "objectID": "posts/202210_series-hierarquicas/index.html",
@@ -203,125 +343,6 @@
     "text": "Notas de rodapé\n\n\nUma revisão dessa literatura pode ser encontrada em Athanasopoulos, Ahmed, e Hyndman (2009).↩︎"
   },
   {
-    "objectID": "posts/202010_git-proxy/index.html",
-    "href": "posts/202010_git-proxy/index.html",
-    "title": "Configurando git em um servidor proxy",
-    "section": "",
-    "text": "Se você estiver trabalhando em uma organização que leva a sério a segurança da informação, então, provavelmente, você está atrás de um servidor proxy e com dificuldades para usar o Git. Para resolvermos isso, precisaremos de passar por 3 etapas:"
-  },
-  {
-    "objectID": "posts/202010_git-proxy/index.html#gitconfig-sem-salvar-senha",
-    "href": "posts/202010_git-proxy/index.html#gitconfig-sem-salvar-senha",
-    "title": "Configurando git em um servidor proxy",
-    "section": "2.1 .gitconfig sem salvar senha",
-    "text": "2.1 .gitconfig sem salvar senha\nRecomendo usar o pacote {usethis} para alterar qualquer arquivo de configuração no R. Para a primeira opção, faríamos da seguinte maneira:\n\n# abrir o arquivo de configuração\nusethis::edit_git_config()\n\nNa janela do .gitconfig que será aberta, adicione as seguintes linhas:\n[http]\n    proxy = http[s]://dominio.com:porta\n\n[credential]\n    helper = wincred\n\n[credential \"helperselector\"]\n    selected = manager\n\nEm que “domínio.com” é o endereço proxy que você achou no arquivo .dat e as demais configurações definem a forma como você será solicitado a incluir usuário e senha, nesse caso através de uma janela pop up a cada push/pull."
-  },
-  {
-    "objectID": "posts/202010_git-proxy/index.html#gitconfig-com-senha-gravada",
-    "href": "posts/202010_git-proxy/index.html#gitconfig-com-senha-gravada",
-    "title": "Configurando git em um servidor proxy",
-    "section": "2.2 .gitconfig com senha gravada",
-    "text": "2.2 .gitconfig com senha gravada\nA outra alternativa é gravar o usuário e senha no próprio .gitconfig. Novamente, se o arquivo ficar em rede ou se outras pessoas tiverem acesso à máquina, evite essa opção. Para deixar seu usuário e senha salvas no .gitconfig, basta adicioná-los antes do domínio. A vantagem desse método a não ter de inserir as informações a cada push/pull.\n[http]\n    proxy = http[s]://usuario:senha@dominio.com:porta\n\nLembre-se de atualizar a senha no .gitconfig sempre que ela for alterada!"
-  },
-  {
-    "objectID": "posts/202010_git-proxy/index.html#footnotes",
-    "href": "posts/202010_git-proxy/index.html#footnotes",
-    "title": "Configurando git em um servidor proxy",
-    "section": "Notas de rodapé",
-    "text": "Notas de rodapé\n\n\nEvite o bloco de notas para exibir corretamente as quebras de linha. Sugiro o Wordpad.↩︎"
-  },
-  {
-    "objectID": "posts/202208_template/index.html",
-    "href": "posts/202208_template/index.html",
-    "title": "Template para dissertações em Quarto",
-    "section": "",
-    "text": "Aproveitando que começo a escrever minha dissertação este semestre, porque não matar dois coelhos com uma cajadada só (Luisa Mell me perdoa) e conhecer esse tal de Quarto que está na boca do povo? Pois bem, aqui está um template para monografia/dissertação/tese em Quarto1.\nPara facilitar (ou não, o futuro dirá) a vida do povo, parametrizei os elementos pré-textuais — capa, folha de rosto, folha de aprovação, resumo, abstract etc. São esses aqui:\nPara usar, primeiramente os pré-requisitos:\nAgora você pode forkar o projeto e cair dentro! Basta atualizar os parâmetros em config/preamble.tex e escrever seu trabalho em dissertacao.qmd:"
-  },
-  {
-    "objectID": "posts/202208_template/index.html#footnotes",
-    "href": "posts/202208_template/index.html#footnotes",
-    "title": "Template para dissertações em Quarto",
-    "section": "Notas de rodapé",
-    "text": "Notas de rodapé\n\n\nEsse template é uma adaptação do modelo padrão da UEL.↩︎\nPara usuários de R, o mais fácil é via tinytex::install_tinytex().↩︎"
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html",
-    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
-    "section": "",
-    "text": "Ainda há um bocado de coisas para cobrir nessa série de “inferência 101” e, para continuar os estudos, trouxe a base da RAIS (Relação Anual de Informações Sociais) de 20171. Com ela, vamos introduzir o conceito de effect size e de quebra analisar a desigualdade de gênero em nossa querida capital Vitória."
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#verificando-a-hipótese-da-normalidade",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#verificando-a-hipótese-da-normalidade",
-    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
-    "section": "2.1 VERIFICANDO A HIPÓTESE DA NORMALIDADE",
-    "text": "2.1 VERIFICANDO A HIPÓTESE DA NORMALIDADE\nSabemos que o teste t é um teste paramétrico e já discutimos anteriormente que, quando os dados não seguem uma distribuição próxima da normal, precisamos realizar transformações para alcançar a normalidade.\nVocê pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limite garante a hipótese da normalidade. Entretanto, principalmente em dados com muitos outliers extremos, o tamanho da amostra necessária para convergência pode ser absurda, invalidando, na prática, a afirmação a partir da TCL.3. Portanto, defendo que devemos, sim, ter cuidado com essa hipótese mesmo lidando com grandes amostras.\nA primeira análise nesse sentido é a visual. Podemos verificar que a distribuição apresenta fat tail e passa longe de uma normal, tanto pelo histograma quanto pelo Q-Q plot.\n\n# histograma\ndata %&gt;%\n  ggplot(aes(\n    x = rem_media,\n    fill = factor(sexo)\n  )) +\n  geom_histogram(binwidth = 500) +\n  coord_cartesian(xlim = c(0, 20000)) +\n  scale_y_continuous(labels = scales::number) +\n  scale_x_continuous(labels = scales::number) +\n  scale_fill_manual(\n    name = \"sexo\",\n    labels = c(\"homens\", \"mulheres\"),\n    values = c(\"lightblue\", \"salmon\")\n  ) +\n  labs(\n    x = \"remuneração média\",\n    y = \"quantidade\",\n    title = \"DISTRIBUIÇÃO DA REMUNERAÇÃO MÉDIA ENTRE HOMENS E MULHERES\",\n    subtitle = \"amostra da cidade de Vitória-ES\",\n    caption = \"fonte: Rais/2017\"\n  ) +\n  theme_minimal() +\n  theme(text = element_text(\n    family = \"Century Gothic\",\n    color = \"grey30\"\n  ))\n\n\n\n\n\n\n\n# qqplot\n# os dados estarão em cima da reta caso sejam distribuídos normalmente\npar(mfrow = c(1, 2))\n\nqqnorm(data[data$sexo == 1, ]$rem_media,\n  main = \"Q-Q PLOT: HOMENS\")\nqqline(data[data$sexo == 1, ]$rem_media)\n\nqqnorm(data[data$sexo == 2, ]$rem_media,\n  main = \"Q-Q PLOT: MULHERES\")\nqqline(data[data$sexo == 2, ]$rem_media)\n\n\n\n\n\n\n\n\nPodemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos tratar a base.\n\n# garantir reprodutibilidade\nset.seed(1)\n\n# quantidade de amostras\nn = 1000\n\n# médias\nmedias = rep(NA, n)\n\n# tirando amostras e calculando as médias\nfor (i in 1:n) {\n  medias[i] = mean(\n    sample(data[data$sexo == 1, ]$rem_media,\n      size = 30, replace = TRUE\n    )\n  )\n}\n\n# qqplot\nqqnorm(medias)\nqqline(medias)\n\n\n\n\n\n\n\n# visualização\nhist(medias,\n    main = \"DISTRIBUIÇÃO DAS MÉDIAS AMOSTRAIS\",\n    xlab = \"médias\",\n    sub = \"seed = 1\"\n)\n\n\n\n\n\n\n\n\nUfa! O TCL se manteve em nossos dados e tanto o Q-Q plot quanto o histograma demonstraram distribuição próxima da normal, nos habilitando a prosseguir com os testes."
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#teste-t",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#teste-t",
-    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
-    "section": "2.2 TESTE T",
-    "text": "2.2 TESTE T\nAgora que garantimos os pré-requisitos, vamos testar se a diferença entre as médias é significativa. Para isso, vamos usar o pacote {infer}:\n\n# transformando variável `sexo`\ndata = data %&gt;%\n  mutate(sexo = ifelse(sexo == 1, \"homem\", \"mulher\"))\n\n# carregando pacote\nlibrary(infer)\n\n# calculando estatística t\nestatistica_calculada = data %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  calculate(stat = \"t\", order = c(\"homem\", \"mulher\"))\n\n# gerando distribuição nula\ndistr_nula = data %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  hypothesise(null = \"independence\") %&gt;%\n  generate(reps = 100, type = \"permute\") %&gt;%\n  calculate(stat = \"t\", order = c(\"homem\", \"mulher\"))\n\n# visualizando distribuição nula e estatística do teste\ndistr_nula %&gt;%\n  visualize(method = \"both\") +\n  shade_p_value(estatistica_calculada, direction = \"greater\")\n\n\n\n\n\n\n\n# calculando p-valor\ndistr_nula %&gt;%\n  get_p_value(obs_stat = estatistica_calculada, direction = \"greater\")\n\n# A tibble: 1 × 1\n  p_value\n    &lt;dbl&gt;\n1       0\n\n\nCom p-valor de 0% e uma estatística calculada a quilômetros da distribuição nula, fica bem claro que a diferença é significativa. Entretanto, isso não quer dizer que ela seja grande ou pequena. É aí que entram os indicadores de tamanho de efeito."
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#tamanho-do-efeito-cohens-d",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#tamanho-do-efeito-cohens-d",
-    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
-    "section": "2.3 TAMANHO DO EFEITO: Cohen’s D",
-    "text": "2.3 TAMANHO DO EFEITO: Cohen’s D\nNesse post eu mostrei que o tamanho da amostra é determinante para o teste t e tenderemos a rejeitar a hipótese nula quanto maior for a amostra. Aqui, se tratando de mais de 140 mil observações para cada sexo, dificilmente essas diferenças não seriam significativas. Para complementar esse teste, podemos calcular o tamanho do efeito com a estatística d de Cohen.\nMuito usada no campo da saúde em experimentos com testes t pareados, quando é preciso definir o efeito de uma ação em um grupo de tratamento em relação ao grupo de controle, a estatística d de Cohen é um indicador de diferenças padronizadas e é particularmente valiosa para quantificar o efeito de uma intervenção, seja em políticas públicas ou em ações de marketing na sua empresa. Isso quer dizer que ele enfatiza o tamanho da diferença entre as médias, sem confundir com a questão do tamanho da amostra.\nPor ser padronizado (i.e. não é medido na unidade da amostra, aqui em Reais, mas sim em desvios-padrões) pode ser facilmente comparado à diferentes experimentos. Sua forma de cálculo é a seguinte: \\[ d = \\frac{\\text{média do grupo experimental} - \\text{média do grupo de controle}}{\\text{desvio padrão agrupado}} \\]\nPara duas médias fixadas, quanto menor for o desvio padrão, maior será a estatística d. Por outro lado, quanto maior for o desvio padrão, menor será o tamanho do efeito.\nNo R, vamos utilizar o pacote {effectsize}:\n\n# carregando pacote\nlibrary(effectsize)\n\n# calculando a diferença padronizada\ncohens_d(\n  data[data$sexo == \"homem\", ]$rem_media,\n  data[data$sexo == \"mulher\", ]$rem_media\n)\n\nCohen's d |       95% CI\n------------------------\n0.26      | [0.25, 0.26]\n\n- Estimated using pooled SD.\n\n# interpretando a estatística d\ninterpret_cohens_d(0.26, \"gignac2016\")\n\n[1] \"small\"\n(Rules: gignac2016)\n\n\nCom uma estatística \\(d=0.26\\), a diferença é considerada pequena. Na escala de Gignac & Szodorai (2016):\n\nrules(\n  c(0.2, 0.41, 0.63),\n  c(\"muito pequeno\", \"pequeno\", \"moderado\", \"grande\"),\n  \"Gignac & Szodorai (2016)\"\n)\n\n# Reference Thresholds (Gignac & Szodorai (2016))\n\n           Label            \n----------------------------\n       muito pequeno &lt;=  0.2\n 0.2 &lt;    pequeno    &lt;= 0.41\n0.41 &lt;   moderado    &lt;= 0.63\n0.63 &lt;    grande            \n\n\nEm uma situação de equidade, 50% das mulheres teriam remuneração abaixo do que o homem médio, enquanto a outra metade teria remuneração superior.\nUm efeito de 0.26, equivale a dizer que 62% das mulheres teriam remuneração abaixo da remuneração do homem médio em Vitória, enquanto apenas 38% receberiam mais do que o homem médio4.\nClaro que analisar o agregado significa olhar para a média. Como serão essas diferenças dentre as diversas profissões?"
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#disparidade-salarial-entre-médicos",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#disparidade-salarial-entre-médicos",
-    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
-    "section": "3.1 DISPARIDADE SALARIAL ENTRE MÉDICOS",
-    "text": "3.1 DISPARIDADE SALARIAL ENTRE MÉDICOS\nPrimeiramente, vamos verificar a significância da diferença. Como esperado, ela é significativa.\n\n# calculando estatística t\nestatistica_calculada = data %&gt;%\n  filter(str_detect(profissao, \"Médico\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  calculate(stat = \"t\", order = c(\"homem\", \"mulher\"))\n\n# gerando distribuição nula\ndistr_nula = data %&gt;%\n  filter(str_detect(profissao, \"Médico\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  hypothesise(null = \"independence\") %&gt;%\n  generate(reps = 100, type = \"permute\") %&gt;%\n  calculate(stat = \"t\", order = c(\"homem\", \"mulher\"))\n\n# calculando intervalo de confiança\npercentile_ci = get_ci(distr_nula)\n\n# visualizando distribuição nula e estatística do teste\ndistr_nula %&gt;%\n  visualize(method = \"both\") +\n  shade_p_value(estatistica_calculada, direction = \"greater\") +\n  shade_confidence_interval(endpoints = percentile_ci)\n\n\n\n\n\n\n\n# calculando p-valor\ndistr_nula %&gt;%\n  get_p_value(obs_stat = estatistica_calculada, direction = \"greater\")\n\n# A tibble: 1 × 1\n  p_value\n    &lt;dbl&gt;\n1       0\n\n\nEm seguida, vamos calcular o tamanho do efeito.\n\n # calculando a diferença padronizada\n cohens_d(\n   data[data$sexo == \"homem\" &\n     str_detect(data$profissao, \"Médico\"), ]$rem_media,\n   data[data$sexo == \"mulher\" &\n     str_detect(data$profissao, \"Médico\"), ]$rem_media\n )\n\nCohen's d |       95% CI\n------------------------\n0.12      | [0.06, 0.19]\n\n- Estimated using pooled SD.\n\n # interpretando a estatística d\n interpret_cohens_d(0.12, \"gignac2016\")\n\n[1] \"very small\"\n(Rules: gignac2016)\n\n\nCom uma estatística d de 0.12, temos um efeito muito pequeno na escala de Gignac & Szodorai (2016). Isso significa que 54% das médicas da cidade de Vitória teriam remuneração abaixo do que o médico médio do município, enqaunto 46% receberiam mais que o médico médio."
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#disparidade-salarial-em-cargos-executivos",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#disparidade-salarial-em-cargos-executivos",
-    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
-    "section": "3.2 DISPARIDADE SALARIAL EM CARGOS EXECUTIVOS",
-    "text": "3.2 DISPARIDADE SALARIAL EM CARGOS EXECUTIVOS\nRepetindo o mesmo procedimento para as pessoas em cargos executivos, vemos que a diferença também é significativa.\n\n# calculando estatística t\nestatistica_calculada = data %&gt;%\n  filter(str_detect(profissao, \"Dirigentes|Diretor\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  calculate(stat = \"t\", order = c(\"homem\", \"mulher\"))\n\n# gerando distribuição nula\ndistr_nula &lt;- data %&gt;%\n  filter(str_detect(profissao, \"Dirigentes|Diretor\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  hypothesise(null = \"independence\") %&gt;%\n  generate(reps = 100, type = \"permute\") %&gt;%\n  calculate(stat = \"t\", order = c(\"homem\", \"mulher\"))\n\n# calculando intervalo de confiança\npercentile_ci &lt;- get_ci(distr_nula)\n\n# visualizando distribuição nula e estatística do teste\ndistr_nula %&gt;%\n  visualize(method = \"both\") +\n  shade_p_value(estatistica_calculada, direction = \"greater\") +\n  shade_confidence_interval(endpoints = percentile_ci)\n\n\n\n\n\n\n\n\nE calculando o tamanho do efeito:\n\n # calculando a diferença padronizada\n cohens_d(\n   data[data$sexo == \"homem\" &\n     str_detect(data$profissao, \"Dirigentes|Diretor\"), ]$rem_media,\n   data[data$sexo == \"mulher\" &\n     str_detect(data$profissao, \"Dirigentes|Diretor\"), ]$rem_media\n )\n\nCohen's d |       95% CI\n------------------------\n0.47      | [0.30, 0.63]\n\n- Estimated using pooled SD.\n\n # interpretando a estatística d\n interpret_cohens_d(0.47, \"gignac2016\")\n\n[1] \"moderate\"\n(Rules: gignac2016)\n\n\nCom uma estatística d de 0.47, temos um efeito moderado na escala de Gignac & Szodorai (2016). Isso significa dizer que 69% das mulheres em posição de dirigentes e diretoras receberiam menos do que o homem médio na mesma posição."
-  },
-  {
-    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#footnotes",
-    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#footnotes",
-    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
-    "section": "Notas de rodapé",
-    "text": "Notas de rodapé\n\n\nEscolhi 2017 porque os dados mais atuais estão agrupados com Minas Gerais e Rio de Janeiro, ficando muito pesado para uma análise casual.↩︎\nCompreehensive R Archive Network.↩︎\nHá vários estudos que tratam disso, vide este exemplo.↩︎\nA tabela de interpretação de effect sizes pode ser consultada neste artigo.↩︎"
-  },
-  {
-    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html",
-    "href": "posts/202011_introducao-ao-mlr3-framework/index.html",
-    "title": "Introdução ao framework {mlr3}",
-    "section": "",
-    "text": "Esse é o primeiro post de uma série que irá tratar sobre o ecossistema {mlr3} (Lang et al. 2019). Ele é mais completo e também muito mais complexo do que seu predecessor, o {mlr}, que teve sua versão inicial publicada no CRAN em 2013. O ecossistema permite um framework agnóstico (i.e. não depende dos algoritmos escolhidos), extensível e orientado a objeto, e, atualmente, permite vários tipos de tarefas, como classificação, regressão, análise de sobrevivência, forecasting, clustering, dentre outros. O {mlr3} tem diversas vantagens que o faz, IMHO, o framework mais completo para se trabalhar machine learning em R (R Core Team 2020) e elas ficarão claras ao longo dos próximos posts."
-  },
-  {
-    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html#características-de-design",
-    "href": "posts/202011_introducao-ao-mlr3-framework/index.html#características-de-design",
-    "title": "Introdução ao framework {mlr3}",
-    "section": "1.1 CARACTERÍSTICAS DE DESIGN",
-    "text": "1.1 CARACTERÍSTICAS DE DESIGN\nAlguns princípios gerais que norteiam o desenvolvimento do pacote e afetam muito seu uso são:\n\nFoco no backend. A maioria dos pacotes do ecossistema tem objetivo de processar e transformar dados, aplicar algoritmos e computar resultados. Visualizações são providenciadas em pacotes externos;\nAdoção da classe R6 (Chang 2020) para design orientado a objeto, modify-in-place e semântica de referência (falaremos um pouco sobre esses conceitos adiante);\nAdoção do {data.table} (Dowle e Srinivasan 2020) para manipulações de data frames. A combinação {R6} + {data.table} torna a performance um dos pontos fortes do ecossistema.\nBaixa dependência. Entretanto, os algortimos não são implementados no ecossistema, como no scikit-learn em Python. Para executar o XGBoost (Chen et al. 2020), por exemplo, deve-se ter instalado o pacote que o implementa."
-  },
-  {
-    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html#fora-do-escopo",
-    "href": "posts/202011_introducao-ao-mlr3-framework/index.html#fora-do-escopo",
-    "title": "Introdução ao framework {mlr3}",
-    "section": "1.2 FORA DO ESCOPO",
-    "text": "1.2 FORA DO ESCOPO\nComo se trata de uma introdução, as etapas de tunning e resampling, assim como funcionalidades como os pipelines, serão abordadas em postagens futuras. Neste post trataremos apenas os conceitos básicos do workflow."
-  },
-  {
-    "objectID": "posts/202011_introducao-ao-mlr3-framework/index.html#footnotes",
-    "href": "posts/202011_introducao-ao-mlr3-framework/index.html#footnotes",
-    "title": "Introdução ao framework {mlr3}",
-    "section": "Notas de rodapé",
-    "text": "Notas de rodapé\n\n\nNo {mlr3} é chamado de learner.↩︎\nTambém chamada de output feature ou label.↩︎\nAqui trabalharemos apenas com um, mas em posts futuros utilizaremos de diversas formas — pipelines com diferentes features, stacking etc.↩︎\nRaiz do Erro Médio Quadrático↩︎"
-  },
-  {
     "objectID": "posts/202208_educacao-pre-capitalista/index.html",
     "href": "posts/202208_educacao-pre-capitalista/index.html",
     "title": "O Papel Da Educação Matemática Sob A Hegemonia Do Capital",
@@ -334,69 +355,6 @@
     "title": "O Papel Da Educação Matemática Sob A Hegemonia Do Capital",
     "section": "Notas de rodapé",
     "text": "Notas de rodapé\n\n\nCalvino escreve para o Príncipe de Genebra, em 1541, que “as artes liberais e a boa educação são bons auxiliares no pleno conhecimento da Palavra”.↩︎"
-  },
-  {
-    "objectID": "posts/202101_overfitting-resampling/index.html",
-    "href": "posts/202101_overfitting-resampling/index.html",
-    "title": "Um pouco de conceitos: overfitting & resampling",
-    "section": "",
-    "text": "Apesar de serem termos recorrentes em machine learning, resampling e overfitting são frequentemente discutidos apenas na prática, muitas vezes sem a sua compreensão. Neste post1, tentarei introduzir os conceitos de forma genérica."
-  },
-  {
-    "objectID": "posts/202101_overfitting-resampling/index.html#footnotes",
-    "href": "posts/202101_overfitting-resampling/index.html#footnotes",
-    "title": "Um pouco de conceitos: overfitting & resampling",
-    "section": "Notas de rodapé",
-    "text": "Notas de rodapé\n\n\nTotalmente apoiado em (Bischl B. 2012).↩︎"
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html",
-    "href": "posts/202011_chutou-ou-nao/index.html",
-    "title": "Chutou ou não chutou? O test t para uma amostra",
-    "section": "",
-    "text": "No post anterior, falei sobre o teste t para duas amostras independentes. Coincidentemente, no dia seguinte apareceu essa dúvida no fórum de matemática do qual sou contribuidor. Não podemos perder essa oportunidade, não é mesmo?"
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html#declarar-as-hipóteses-nula-e-alternativa",
-    "href": "posts/202011_chutou-ou-nao/index.html#declarar-as-hipóteses-nula-e-alternativa",
-    "title": "Chutou ou não chutou? O test t para uma amostra",
-    "section": "3.1 Declarar as hipóteses nula e alternativa",
-    "text": "3.1 Declarar as hipóteses nula e alternativa\n\\[\\begin{cases}\n      H_0: \\mu = 0.25 \\\\\n      H_1: \\mu \\neq 0.25 \\\\\n    \\end{cases}\\]\nA hipótese nula é que não se pode afirmar que a média de acerto observada é significativamente diferente da média esperada. Já a hipótese alternativa é que elas são significativamente distintas."
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html#declarar-o-nível-de-significância",
-    "href": "posts/202011_chutou-ou-nao/index.html#declarar-o-nível-de-significância",
-    "title": "Chutou ou não chutou? O test t para uma amostra",
-    "section": "3.2 Declarar o nível de significância",
-    "text": "3.2 Declarar o nível de significância\n\\[\\alpha = 0.02\\] O \\(\\alpha = 0.02\\) é o que dá sentido ao termo significantemente diferente. É a probabilidade de se cometer o erro do tipo II, ou seja, rejeitar a hipótese nula quando não deveria ser rejeitada. Quanto menor o \\(\\alpha\\), maior deverá ser a diferença entre as médias para que ela seja considerada significante."
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html#calcular-a-estatística-do-teste",
-    "href": "posts/202011_chutou-ou-nao/index.html#calcular-a-estatística-do-teste",
-    "title": "Chutou ou não chutou? O test t para uma amostra",
-    "section": "3.3 Calcular a estatística do teste",
-    "text": "3.3 Calcular a estatística do teste\n\\[z = \\frac{\\bar{x} - \\mu_0}{\\frac{\\sigma}{\\sqrt{n}}}\\] Note que: \\[\\lim_{n \\to \\infty}z(n) = \\infty\\] Podemos rejeitar a hipótese nula se \\(z\\) crítico for maior que o \\(z\\) tabelado. Conforme \\(n\\) aumenta, eventualmente a diferença será significativa, demonstrando matematicamente o que verificamos intuitivamente."
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html#calcular-o-valor-crítico",
-    "href": "posts/202011_chutou-ou-nao/index.html#calcular-o-valor-crítico",
-    "title": "Chutou ou não chutou? O test t para uma amostra",
-    "section": "3.4 Calcular o valor crítico",
-    "text": "3.4 Calcular o valor crítico\n\\[z = \\frac{0.3125 - 0.25}{\\frac{0.464}{\\sqrt{400}}} = 2.693\\]"
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html#decidir-se-rejeitamos-a-hipótese-nula",
-    "href": "posts/202011_chutou-ou-nao/index.html#decidir-se-rejeitamos-a-hipótese-nula",
-    "title": "Chutou ou não chutou? O test t para uma amostra",
-    "section": "3.5 Decidir se rejeitamos a hipótese nula",
-    "text": "3.5 Decidir se rejeitamos a hipótese nula\nComo o valor de 2.693 excede o valor de \\(z\\) a 98% de significância (2.33), pode-se rejeitar a hipótese nula. A diferença é significativa e não pode ser atribuída ao acaso de amostragem."
-  },
-  {
-    "objectID": "posts/202011_chutou-ou-nao/index.html#footnotes",
-    "href": "posts/202011_chutou-ou-nao/index.html#footnotes",
-    "title": "Chutou ou não chutou? O test t para uma amostra",
-    "section": "Notas de rodapé",
-    "text": "Notas de rodapé\n\n\nOu mil, 10 mil, 100 mil… Quanto maior for \\(n\\), mais difícil será causar mudanças no desvio padrão, de forma que a incerteza é cada vez menor.↩︎"
   },
   {
     "objectID": "posts/202101_r-vscode/index.html",
@@ -462,34 +420,6 @@
     "text": "Notas de rodapé\n\n\nagora integrado na extensão vscode-R.↩︎"
   },
   {
-    "objectID": "posts/202504_all-models-are-wrong/index.html",
-    "href": "posts/202504_all-models-are-wrong/index.html",
-    "title": "Todos os modelos estão errados, mas alguns são inúteis",
-    "section": "",
-    "text": "TL;DR\n\n\n\nQuando usar o coeficiente de correlação de Pearson, sempre teste a significância. Mas não o utilize para analisar séries temporais. É um erro comum. Isso viola a independência das observações e ignora o relacionamento entre defasagens. Em vez disso, use a análise de cross-correlograma para identificar relações entre séries temporais, incluindo relações defasadas.\n“Todos os modelos estão errados, mas alguns são úteis” é uma frase recorrente entre aqueles que praticam estatística. Ela se origina de uma afirmação de George Box, um dos grandes estatísticos do século XX: “Since all models are wrong the scientist must be alert to what is importantly wrong.” (Box 1976). “Todos os modelos estão errados” significa que os modelos são intrinsecamente limitados e não capturam perfeitamente a realidade. Em outras palavras, um modelo é uma representação simplificada da realidade, usada para explicar ou prever um fenômeno. Se fosse uma explicação perfeita desse fenômeno, deixaria de ser um modelo e se tornaria uma lei.\nNa estatística, lidamos essencialmente com variáveis aleatórias ou estocásticas, ou seja, variáveis que possuem uma distribuição de probabilidade (Gujarati e Porter 2021). Nossa missão como analistas é desenvolver e utilizar métodos que nos digam como formular funções que nos permitam descrever e prever o relacionamento entre essas variáveis, minimizando os erros estocásticos.\nDependendo da forma funcional e do método de estimação escolhido, há uma série de pressupostos que devem ser atendidos para que qualquer inferência sobre o erro, coeficientes, preditores e regressandos seja válida. Se esses pressupostos forem ignorados, não há garantia de que os resultados encontrados sejam uma aproximação ótima da função que se deseja estimar. Mais do que isso, a violação de alguns desses pressupostos pode gerar resultados enganosos, mostrando relações estatísticas significativas onde não deveria haver, subestimando ou superestimando o objeto de estudo.\nNeste post, abordo alguns erros metodológicos frequentes que fazem com que alguns modelos sejam inúteis."
-  },
-  {
-    "objectID": "posts/202504_all-models-are-wrong/index.html#footnotes",
-    "href": "posts/202504_all-models-are-wrong/index.html#footnotes",
-    "title": "Todos os modelos estão errados, mas alguns são inúteis",
-    "section": "Notas de rodapé",
-    "text": "Notas de rodapé\n\n\nUm resumo pode ser encontrado em Cambridge University (2021).↩︎"
-  },
-  {
-    "objectID": "posts/202506_why-economists-wrong/index.html",
-    "href": "posts/202506_why-economists-wrong/index.html",
-    "title": "Por que os economistas estão sempre errados?",
-    "section": "",
-    "text": "Neste pist, ofereço minha leitura do primeiro capítulo de Barbieri e Feijó (2013) acerca do que chamaram de paradigma do equilíbrio maximizador, doravante referido apenas como paradigma, na ciência econômica."
-  },
-  {
-    "objectID": "posts/202506_why-economists-wrong/index.html#footnotes",
-    "href": "posts/202506_why-economists-wrong/index.html#footnotes",
-    "title": "Por que os economistas estão sempre errados?",
-    "section": "Notas de rodapé",
-    "text": "Notas de rodapé\n\n\nImpossível esquecer o monólogo clássico de Macbeth: ``E todos os nossos ontens não fizeram mais que iluminar para os tolos o caminho que leva ao pó da morte.”↩︎\n``in a 2008 paper titled ´The State of Macro’ (that is, macroeconomics, the study of big-picture issues like recessions), Olivier Blanchard of M.I.T., now the chief economist at the International Monetary Fund, declared that ´the state of macro is good’. The battles of yesteryear, he said, were over, and there had been a ´broad convergence of vision’. And in the real world, economists believed they had things under control: the ´central problem of depression-prevention has been solved’, declared Robert Lucas of the University of Chicago in his 2003 presidential address to the American Economic Association” (Krugman 2009).↩︎"
-  },
-  {
     "objectID": "posts/202011_t-test/index.html",
     "href": "posts/202011_t-test/index.html",
     "title": "Atestando diferenças em médias: o teste t para amostras independentes",
@@ -497,17 +427,129 @@
     "text": "Suponha que você tenha duas amostras (i.e. as rendas da população negra e branca de sua cidade) e você queira comprovar que suas médias sejam significantemente diferentes, ou seja, que sejam diferentes mesmo considerando a variância e o tamanho das amostras. Isso é possível com um teste t de Student, um dos mais populares testes na estatística.\nVamos utilizar um dos datasets nativos do R para aplicar esse conceito, o mtcars. Primeiramente, vamos dar uma olhada em nossos dados.\n\ndata = mtcars\nknitr::kable(head(data), booktabs = TRUE, digits = 2) |&gt;\n  kableExtra::kable_styling(latex_options = c(\"striped\"))\n\n\n\nTabela 1: Base de dados.\n\n\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.62\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.88\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.32\n18.61\n1\n1\n4\n1\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.21\n19.44\n1\n0\n3\n1\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.44\n17.02\n0\n0\n3\n2\n\n\nValiant\n18.1\n6\n225\n105\n2.76\n3.46\n20.22\n1\n0\n3\n1\n\n\n\n\n\n\n\n\nUma boa forma de ilustrar o teste é verificar se as médias de consumo dos carros (mpg, miles per gallon) com 4, 6 e 8 cilindros (cyl) diferem significantemente entre si.\n\n# Médias amostrais\naggregate(mpg ~ cyl, data = data, FUN = mean)\n\n  cyl      mpg\n1   4 26.66364\n2   6 19.74286\n3   8 15.10000\n\n\nVerificamos que as médias amostrais são diferentes. Resta saber se são significantemente diferentes. Plotar um boxplot pode nos ajudar a ter uma intuição. Podemos ver que, exceto pelo grupo de 4 cilindros que possui uma variância maior, os grupos são bem concentrados, de forma que podemos suspeitar que as diferenças sejam significantes.\n\n# Boxplot\nboxplot(mpg ~ cyl, data = data)\n\n\n\n\n\n\n\nFigura 1: Boxplot de consumo por quantidade de cilindros.\n\n\n\n\n\nO teste t possui diversas variações — uma amostra, duas amostras pareadas, duas amostras independentes —, e correções para tratar diferenças na variância. Para este caso, temos três amostras independentes e, por hora, vamos supor que as variâncias do grupo 4 difere das demais e que a dos grupos 6 e 8 são iguais — deixaremos a análise de variâncias para outra postagem. Isso nos deixa com o teste t para duas amostras independentes.\nA hipótese nula do teste é que as médias são significativamente iguais. Já a hipótese alternativa pode ser formulada como a não nulidade da diferença entre as médias ou \\(\\bar{X_1}\\) maior ou menor que \\(\\bar{X_2}\\). Aqui vamos usar a primeira opção:\n\\[\nh_0: \\bar{X_1} - \\bar{X_2} = 0 \\\\\nh_1: \\bar{X_1} - \\bar{X_2} \\neq 0\n\\] A estatística t para esse teste é calculada da maneira abaixo. Note que se tomarmos o limite de \\(t(n)\\), com \\(n \\rightarrow \\infty\\), \\(t\\rightarrow \\infty\\), causando a rejeição de \\(h_0\\). Dessa forma, em último caso, o teste t é um teste de tamanho de amostra, ou seja, se sua amostra for suficientemente grande e as médias divergirem, elas tenderão a ser também significantemente diferentes.\n\\[ t = \\frac{\\bar{X_1} - \\bar{X_2}}{s_p . \\sqrt{\\frac{1}{n_1}+\\frac{1}{n_2}}} \\]\nComo primeiro caso, vamos comparar as médias de consumo dos veículos com 6 e 8 cilindros. Como estamos considerando que suas variâncias são iguais, temos de usar o argumento var.equal = TRUE:\n\n# teste t para 6 e 8 cilindros\nt.test(mpg ~ cyl, data = data[which(data$cyl != 4),], var.equal = TRUE)\n\n\n    Two Sample t-test\n\ndata:  mpg by cyl\nt = 4.419, df = 19, p-value = 0.0002947\nalternative hypothesis: true difference in means between group 6 and group 8 is not equal to 0\n95 percent confidence interval:\n 2.443809 6.841905\nsample estimates:\nmean in group 6 mean in group 8 \n       19.74286        15.10000 \n\n\nCom p-valor de zero, podemos rejeitar a hipótese nula e considerar que as médias de consumo entre os veículos de 6 e 8 cilindros diferem.\nPara as demais comparações, vamos usar o default para var.equal que é FALSE. Isso significa aplicar a correção de Welch para amostras independentes e de variância diferentes. Como esperado, também podemos rejeitar a hipótese nula e confirmar a diferença nas médias de consumo entre os veículos de 4 e 6 cilindros e 4 e 8 cilindros.\n\n# teste t para 4 e 8 cilindros\nt.test(mpg ~ cyl, data = data[which(data$cyl != 6),])\n\n\n    Welch Two Sample t-test\n\ndata:  mpg by cyl\nt = 7.5967, df = 14.967, p-value = 1.641e-06\nalternative hypothesis: true difference in means between group 4 and group 8 is not equal to 0\n95 percent confidence interval:\n  8.318518 14.808755\nsample estimates:\nmean in group 4 mean in group 8 \n       26.66364        15.10000 \n\n# teste t para 4 e 6 cilindros\nt.test(mpg ~ cyl, data = data[which(data$cyl != 8),])\n\n\n    Welch Two Sample t-test\n\ndata:  mpg by cyl\nt = 4.7191, df = 12.956, p-value = 0.0004048\nalternative hypothesis: true difference in means between group 4 and group 6 is not equal to 0\n95 percent confidence interval:\n  3.751376 10.090182\nsample estimates:\nmean in group 4 mean in group 6 \n       26.66364        19.74286 \n\n\nEasy peasy lemon squeezy, não é?"
   },
   {
-    "objectID": "posts/202010_graphics-rstudio/index.html",
-    "href": "posts/202010_graphics-rstudio/index.html",
-    "title": "Qualidade gráfica no painel do RStudio",
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html",
+    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
     "section": "",
-    "text": "Se você já plotou um gráfico de linhas no R e, quando viu o plot no painel do RStudio pensou “uau, que qualidade terrível!”, você não está só. Mas não se preocupe, a solução é bem simples!\nPrimeiramente, vamos plotar um gráfico na configuração padrão do RStudio:\n\nknitr::include_graphics(\"img/Rplot.png\")\n\n\n\n\n\n\n\nFigura 1: Gráfico sem anti-aliasing.\n\n\n\n\n\nWow, imagine usando algo assim em um banner! Vamos tentar de novo, agora com o Cairo como dispositivo gráfico e usando anti-aliasing:\n\n# Adicionando anti-aliasing\ntrace(grDevices::png, quote({\n  if (missing(type) && missing(antialias)) {\n    type = \"cairo-png\"\n    antialias = \"subpixel\"\n  }\n}), print = FALSE)\n\nTracing function \"png\" in package \"grDevices\"\n\n\n[1] \"png\"\n\n# Plotando novamente\nplot(mtcars$mpg, type = \"l\")\n\n\n\n\n\n\n\nFigura 2: Gráfico com anti-aliasing.\n\n\n\n\n\nSanto anti-aliasing, não é? (Dê zoom nos dois para ver bem a diferença)\nBom, preciso fazer isso toda vez que for plotar um gráfico ou iniciar uma sessão no R? De forma alguma, basta adicionar essas linhas ao seu .Rprofile. Eu recomendo sempre usar o {usethis} para alterar os arquivos de configuração, pois você pode acabar se perdendo dentre os caminhos possíveis onde o R irá consultar. Usando o {usethis} você garante que estará criando ou editando o arquivo correto.\nusethis::edit_r_profile() irá abrir uma janela com o arquivo para edição. Então, cole a chamada acima (retirando a linha do plot, claro), certifique-se que o .Rprofile acabe com uma linha vazia (porque o R ignora a última linha), salve e reinicie a sessão. Pronto! Agora o anti-aliasing sempre será aplicado aos seus plots no R, independente do pacote utilizado, seja o base ou o {ggplot}, por exemplo."
+    "text": "Ainda há um bocado de coisas para cobrir nessa série de “inferência 101” e, para continuar os estudos, trouxe a base da RAIS (Relação Anual de Informações Sociais) de 20171. Com ela, vamos introduzir o conceito de effect size e de quebra analisar a desigualdade de gênero em nossa querida capital Vitória."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Sobre",
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#verificando-a-hipótese-da-normalidade",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#verificando-a-hipótese-da-normalidade",
+    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
+    "section": "2.1 VERIFICANDO A HIPÓTESE DA NORMALIDADE",
+    "text": "2.1 VERIFICANDO A HIPÓTESE DA NORMALIDADE\nSabemos que o teste t é um teste paramétrico e já discutimos anteriormente que, quando os dados não seguem uma distribuição próxima da normal, precisamos realizar transformações para alcançar a normalidade.\nVocê pode pensar que, com uma amostra desse tamanho, o Teorema Central do Limite garante a hipótese da normalidade. Entretanto, principalmente em dados com muitos outliers extremos, o tamanho da amostra necessária para convergência pode ser absurda, invalidando, na prática, a afirmação a partir da TCL.3. Portanto, defendo que devemos, sim, ter cuidado com essa hipótese mesmo lidando com grandes amostras.\nA primeira análise nesse sentido é a visual. Podemos verificar que a distribuição apresenta fat tail e passa longe de uma normal, tanto pelo histograma quanto pelo Q-Q plot.\n\n# histograma\ndata %&gt;%\n  ggplot(aes(\n    x = rem_media,\n    fill = factor(sexo)\n  )) +\n  geom_histogram(binwidth = 500) +\n  coord_cartesian(xlim = c(0, 20000)) +\n  scale_y_continuous(labels = scales::number) +\n  scale_x_continuous(labels = scales::number) +\n  scale_fill_manual(\n    name = \"sexo\",\n    labels = c(\"homens\", \"mulheres\"),\n    values = c(\"lightblue\", \"salmon\")\n  ) +\n  labs(\n    x = \"remuneração média\",\n    y = \"quantidade\",\n    title = \"DISTRIBUIÇÃO DA REMUNERAÇÃO MÉDIA ENTRE HOMENS E MULHERES\",\n    subtitle = \"amostra da cidade de Vitória-ES\",\n    caption = \"fonte: Rais/2017\"\n  ) +\n  theme_minimal() +\n  theme(text = element_text(\n    family = \"Century Gothic\",\n    color = \"grey30\"\n  ))\n\n\n\n\n\n\n\n# qqplot\n# os dados estarão em cima da reta caso sejam distribuídos normalmente\npar(mfrow = c(1, 2))\n\nqqnorm(data[data$sexo == 1, ]$rem_media,\n  main = \"Q-Q PLOT: HOMENS\")\nqqline(data[data$sexo == 1, ]$rem_media)\n\nqqnorm(data[data$sexo == 2, ]$rem_media,\n  main = \"Q-Q PLOT: MULHERES\")\nqqline(data[data$sexo == 2, ]$rem_media)\n\n\n\n\n\n\n\n\nPodemos realizar um experimento para verificar a velocidade de convergência para a distribuição normal. Calculando a distribuição de mil médias de 30 homens cada, se ela apresentar distribuição próxima da normal poderemos assumir a normalidade e prosseguir com o trabalho. Caso contrário, precisaremos tratar a base.\n\n# garantir reprodutibilidade\nset.seed(1)\n\n# quantidade de amostras\nn = 1000\n\n# médias\nmedias = rep(NA, n)\n\n# tirando amostras e calculando as médias\nfor (i in 1:n) {\n  medias[i] = mean(\n    sample(data[data$sexo == 1, ]$rem_media,\n      size = 30, replace = TRUE\n    )\n  )\n}\n\n# qqplot\nqqnorm(medias)\nqqline(medias)\n\n\n\n\n\n\n\n# visualização\nhist(medias,\n    main = \"DISTRIBUIÇÃO DAS MÉDIAS AMOSTRAIS\",\n    xlab = \"médias\",\n    sub = \"seed = 1\"\n)\n\n\n\n\n\n\n\n\nUfa! O TCL se manteve em nossos dados e tanto o Q-Q plot quanto o histograma demonstraram distribuição próxima da normal, nos habilitando a prosseguir com os testes."
+  },
+  {
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#teste-t",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#teste-t",
+    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
+    "section": "2.2 TESTE T",
+    "text": "2.2 TESTE T\nAgora que garantimos os pré-requisitos, vamos testar se a diferença entre as médias é significativa. Para isso, vamos usar o pacote {infer}:\n\n# transformando variável `sexo`\ndata = data %&gt;%\n  mutate(sexo = ifelse(sexo == 1, \"homem\", \"mulher\"))\n\n# carregando pacote\nlibrary(infer)\n\n# calculando estatística t\nestatistica_calculada = data %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  calculate(stat = \"t\", order = c(\"homem\", \"mulher\"))\n\n# gerando distribuição nula\ndistr_nula = data %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  hypothesise(null = \"independence\") %&gt;%\n  generate(reps = 100, type = \"permute\") %&gt;%\n  calculate(stat = \"t\", order = c(\"homem\", \"mulher\"))\n\n# visualizando distribuição nula e estatística do teste\ndistr_nula %&gt;%\n  visualize(method = \"both\") +\n  shade_p_value(estatistica_calculada, direction = \"greater\")\n\n\n\n\n\n\n\n# calculando p-valor\ndistr_nula %&gt;%\n  get_p_value(obs_stat = estatistica_calculada, direction = \"greater\")\n\n# A tibble: 1 × 1\n  p_value\n    &lt;dbl&gt;\n1       0\n\n\nCom p-valor de 0% e uma estatística calculada a quilômetros da distribuição nula, fica bem claro que a diferença é significativa. Entretanto, isso não quer dizer que ela seja grande ou pequena. É aí que entram os indicadores de tamanho de efeito."
+  },
+  {
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#tamanho-do-efeito-cohens-d",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#tamanho-do-efeito-cohens-d",
+    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
+    "section": "2.3 TAMANHO DO EFEITO: Cohen’s D",
+    "text": "2.3 TAMANHO DO EFEITO: Cohen’s D\nNesse post eu mostrei que o tamanho da amostra é determinante para o teste t e tenderemos a rejeitar a hipótese nula quanto maior for a amostra. Aqui, se tratando de mais de 140 mil observações para cada sexo, dificilmente essas diferenças não seriam significativas. Para complementar esse teste, podemos calcular o tamanho do efeito com a estatística d de Cohen.\nMuito usada no campo da saúde em experimentos com testes t pareados, quando é preciso definir o efeito de uma ação em um grupo de tratamento em relação ao grupo de controle, a estatística d de Cohen é um indicador de diferenças padronizadas e é particularmente valiosa para quantificar o efeito de uma intervenção, seja em políticas públicas ou em ações de marketing na sua empresa. Isso quer dizer que ele enfatiza o tamanho da diferença entre as médias, sem confundir com a questão do tamanho da amostra.\nPor ser padronizado (i.e. não é medido na unidade da amostra, aqui em Reais, mas sim em desvios-padrões) pode ser facilmente comparado à diferentes experimentos. Sua forma de cálculo é a seguinte: \\[ d = \\frac{\\text{média do grupo experimental} - \\text{média do grupo de controle}}{\\text{desvio padrão agrupado}} \\]\nPara duas médias fixadas, quanto menor for o desvio padrão, maior será a estatística d. Por outro lado, quanto maior for o desvio padrão, menor será o tamanho do efeito.\nNo R, vamos utilizar o pacote {effectsize}:\n\n# carregando pacote\nlibrary(effectsize)\n\n# calculando a diferença padronizada\ncohens_d(\n  data[data$sexo == \"homem\", ]$rem_media,\n  data[data$sexo == \"mulher\", ]$rem_media\n)\n\nCohen's d |       95% CI\n------------------------\n0.26      | [0.25, 0.26]\n\n- Estimated using pooled SD.\n\n# interpretando a estatística d\ninterpret_cohens_d(0.26, \"gignac2016\")\n\n[1] \"small\"\n(Rules: gignac2016)\n\n\nCom uma estatística \\(d=0.26\\), a diferença é considerada pequena. Na escala de Gignac & Szodorai (2016):\n\nrules(\n  c(0.2, 0.41, 0.63),\n  c(\"muito pequeno\", \"pequeno\", \"moderado\", \"grande\"),\n  \"Gignac & Szodorai (2016)\"\n)\n\n# Reference Thresholds (Gignac & Szodorai (2016))\n\n           Label            \n----------------------------\n       muito pequeno &lt;=  0.2\n 0.2 &lt;    pequeno    &lt;= 0.41\n0.41 &lt;   moderado    &lt;= 0.63\n0.63 &lt;    grande            \n\n\nEm uma situação de equidade, 50% das mulheres teriam remuneração abaixo do que o homem médio, enquanto a outra metade teria remuneração superior.\nUm efeito de 0.26, equivale a dizer que 62% das mulheres teriam remuneração abaixo da remuneração do homem médio em Vitória, enquanto apenas 38% receberiam mais do que o homem médio4.\nClaro que analisar o agregado significa olhar para a média. Como serão essas diferenças dentre as diversas profissões?"
+  },
+  {
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#disparidade-salarial-entre-médicos",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#disparidade-salarial-entre-médicos",
+    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
+    "section": "3.1 DISPARIDADE SALARIAL ENTRE MÉDICOS",
+    "text": "3.1 DISPARIDADE SALARIAL ENTRE MÉDICOS\nPrimeiramente, vamos verificar a significância da diferença. Como esperado, ela é significativa.\n\n# calculando estatística t\nestatistica_calculada = data %&gt;%\n  filter(str_detect(profissao, \"Médico\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  calculate(stat = \"t\", order = c(\"homem\", \"mulher\"))\n\n# gerando distribuição nula\ndistr_nula = data %&gt;%\n  filter(str_detect(profissao, \"Médico\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  hypothesise(null = \"independence\") %&gt;%\n  generate(reps = 100, type = \"permute\") %&gt;%\n  calculate(stat = \"t\", order = c(\"homem\", \"mulher\"))\n\n# calculando intervalo de confiança\npercentile_ci = get_ci(distr_nula)\n\n# visualizando distribuição nula e estatística do teste\ndistr_nula %&gt;%\n  visualize(method = \"both\") +\n  shade_p_value(estatistica_calculada, direction = \"greater\") +\n  shade_confidence_interval(endpoints = percentile_ci)\n\n\n\n\n\n\n\n# calculando p-valor\ndistr_nula %&gt;%\n  get_p_value(obs_stat = estatistica_calculada, direction = \"greater\")\n\n# A tibble: 1 × 1\n  p_value\n    &lt;dbl&gt;\n1       0\n\n\nEm seguida, vamos calcular o tamanho do efeito.\n\n # calculando a diferença padronizada\n cohens_d(\n   data[data$sexo == \"homem\" &\n     str_detect(data$profissao, \"Médico\"), ]$rem_media,\n   data[data$sexo == \"mulher\" &\n     str_detect(data$profissao, \"Médico\"), ]$rem_media\n )\n\nCohen's d |       95% CI\n------------------------\n0.12      | [0.06, 0.19]\n\n- Estimated using pooled SD.\n\n # interpretando a estatística d\n interpret_cohens_d(0.12, \"gignac2016\")\n\n[1] \"very small\"\n(Rules: gignac2016)\n\n\nCom uma estatística d de 0.12, temos um efeito muito pequeno na escala de Gignac & Szodorai (2016). Isso significa que 54% das médicas da cidade de Vitória teriam remuneração abaixo do que o médico médio do município, enqaunto 46% receberiam mais que o médico médio."
+  },
+  {
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#disparidade-salarial-em-cargos-executivos",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#disparidade-salarial-em-cargos-executivos",
+    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
+    "section": "3.2 DISPARIDADE SALARIAL EM CARGOS EXECUTIVOS",
+    "text": "3.2 DISPARIDADE SALARIAL EM CARGOS EXECUTIVOS\nRepetindo o mesmo procedimento para as pessoas em cargos executivos, vemos que a diferença também é significativa.\n\n# calculando estatística t\nestatistica_calculada = data %&gt;%\n  filter(str_detect(profissao, \"Dirigentes|Diretor\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  calculate(stat = \"t\", order = c(\"homem\", \"mulher\"))\n\n# gerando distribuição nula\ndistr_nula &lt;- data %&gt;%\n  filter(str_detect(profissao, \"Dirigentes|Diretor\")) %&gt;%\n  specify(rem_media ~ sexo) %&gt;%\n  hypothesise(null = \"independence\") %&gt;%\n  generate(reps = 100, type = \"permute\") %&gt;%\n  calculate(stat = \"t\", order = c(\"homem\", \"mulher\"))\n\n# calculando intervalo de confiança\npercentile_ci &lt;- get_ci(distr_nula)\n\n# visualizando distribuição nula e estatística do teste\ndistr_nula %&gt;%\n  visualize(method = \"both\") +\n  shade_p_value(estatistica_calculada, direction = \"greater\") +\n  shade_confidence_interval(endpoints = percentile_ci)\n\n\n\n\n\n\n\n\nE calculando o tamanho do efeito:\n\n # calculando a diferença padronizada\n cohens_d(\n   data[data$sexo == \"homem\" &\n     str_detect(data$profissao, \"Dirigentes|Diretor\"), ]$rem_media,\n   data[data$sexo == \"mulher\" &\n     str_detect(data$profissao, \"Dirigentes|Diretor\"), ]$rem_media\n )\n\nCohen's d |       95% CI\n------------------------\n0.47      | [0.30, 0.63]\n\n- Estimated using pooled SD.\n\n # interpretando a estatística d\n interpret_cohens_d(0.47, \"gignac2016\")\n\n[1] \"moderate\"\n(Rules: gignac2016)\n\n\nCom uma estatística d de 0.47, temos um efeito moderado na escala de Gignac & Szodorai (2016). Isso significa dizer que 69% das mulheres em posição de dirigentes e diretoras receberiam menos do que o homem médio na mesma posição."
+  },
+  {
+    "objectID": "posts/202011_desigualdade-de-renda-entre-generos/index.html#footnotes",
+    "href": "posts/202011_desigualdade-de-renda-entre-generos/index.html#footnotes",
+    "title": "Effect Size e a desigualdade de renda entre gêneros em Vitória",
+    "section": "Notas de rodapé",
+    "text": "Notas de rodapé\n\n\nEscolhi 2017 porque os dados mais atuais estão agrupados com Minas Gerais e Rio de Janeiro, ficando muito pesado para uma análise casual.↩︎\nCompreehensive R Archive Network.↩︎\nHá vários estudos que tratam disso, vide este exemplo.↩︎\nA tabela de interpretação de effect sizes pode ser consultada neste artigo.↩︎"
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html",
+    "href": "posts/202011_chutou-ou-nao/index.html",
+    "title": "Chutou ou não chutou? O test t para uma amostra",
     "section": "",
-    "text": "Atuo na modelagem de risco de crédito e ciências de dados em geral no Banco do Estado do Espírito Santo (@Banestes_SA), onde sou concursado desde 2008. Meu foco está em aumentar a qualidade da informação e reduzir a incerteza da tomada de decisão através de métodos estatísticos e experimentação. Sou economista (Universidade Federal do Espírito Santo - UFES, 2014) e matemático (Instituto Federal do Espírito Santo, 2024) de formação, e me tornei cientista de dados por afinidade.\nSou discente de doutorado no Programa de Pós-Graduação da Universidade Federal do Espírito Santo (PPGEco/UFES), onde também cursei meu mestrado. Meu campo de pesquisa é econometria de séries temporais, especificamente séries temporais hierárquicas e métodos de aprendizado de máquina para previsão de séries temporais hierárquicas.\nEm relação à tecnologias, eu sou um entusiasta de FOSS (Free and Open Source Software) e utilizo principalmente R, Rust e Python em meus projetos. Não uso um único OS e estou sempre variando entre macOS, Linux Ubuntu e Linux Fedora em casa, e Windows no trabalho. Sou autor do pacote fio, que é uma ferramenta para análise de matrizes insumo-produto – que combina perfeitamente meu background em economia, matemática e computação.\nEm meu tempo livre eu gosto de surfar, tocar guitarra e produzir músicas em meu home studio."
+    "text": "No post anterior, falei sobre o teste t para duas amostras independentes. Coincidentemente, no dia seguinte apareceu essa dúvida no fórum de matemática do qual sou contribuidor. Não podemos perder essa oportunidade, não é mesmo?"
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#declarar-as-hipóteses-nula-e-alternativa",
+    "href": "posts/202011_chutou-ou-nao/index.html#declarar-as-hipóteses-nula-e-alternativa",
+    "title": "Chutou ou não chutou? O test t para uma amostra",
+    "section": "3.1 Declarar as hipóteses nula e alternativa",
+    "text": "3.1 Declarar as hipóteses nula e alternativa\n\\[\\begin{cases}\n      H_0: \\mu = 0.25 \\\\\n      H_1: \\mu \\neq 0.25 \\\\\n    \\end{cases}\\]\nA hipótese nula é que não se pode afirmar que a média de acerto observada é significativamente diferente da média esperada. Já a hipótese alternativa é que elas são significativamente distintas."
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#declarar-o-nível-de-significância",
+    "href": "posts/202011_chutou-ou-nao/index.html#declarar-o-nível-de-significância",
+    "title": "Chutou ou não chutou? O test t para uma amostra",
+    "section": "3.2 Declarar o nível de significância",
+    "text": "3.2 Declarar o nível de significância\n\\[\\alpha = 0.02\\] O \\(\\alpha = 0.02\\) é o que dá sentido ao termo significantemente diferente. É a probabilidade de se cometer o erro do tipo II, ou seja, rejeitar a hipótese nula quando não deveria ser rejeitada. Quanto menor o \\(\\alpha\\), maior deverá ser a diferença entre as médias para que ela seja considerada significante."
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#calcular-a-estatística-do-teste",
+    "href": "posts/202011_chutou-ou-nao/index.html#calcular-a-estatística-do-teste",
+    "title": "Chutou ou não chutou? O test t para uma amostra",
+    "section": "3.3 Calcular a estatística do teste",
+    "text": "3.3 Calcular a estatística do teste\n\\[z = \\frac{\\bar{x} - \\mu_0}{\\frac{\\sigma}{\\sqrt{n}}}\\] Note que: \\[\\lim_{n \\to \\infty}z(n) = \\infty\\] Podemos rejeitar a hipótese nula se \\(z\\) crítico for maior que o \\(z\\) tabelado. Conforme \\(n\\) aumenta, eventualmente a diferença será significativa, demonstrando matematicamente o que verificamos intuitivamente."
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#calcular-o-valor-crítico",
+    "href": "posts/202011_chutou-ou-nao/index.html#calcular-o-valor-crítico",
+    "title": "Chutou ou não chutou? O test t para uma amostra",
+    "section": "3.4 Calcular o valor crítico",
+    "text": "3.4 Calcular o valor crítico\n\\[z = \\frac{0.3125 - 0.25}{\\frac{0.464}{\\sqrt{400}}} = 2.693\\]"
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#decidir-se-rejeitamos-a-hipótese-nula",
+    "href": "posts/202011_chutou-ou-nao/index.html#decidir-se-rejeitamos-a-hipótese-nula",
+    "title": "Chutou ou não chutou? O test t para uma amostra",
+    "section": "3.5 Decidir se rejeitamos a hipótese nula",
+    "text": "3.5 Decidir se rejeitamos a hipótese nula\nComo o valor de 2.693 excede o valor de \\(z\\) a 98% de significância (2.33), pode-se rejeitar a hipótese nula. A diferença é significativa e não pode ser atribuída ao acaso de amostragem."
+  },
+  {
+    "objectID": "posts/202011_chutou-ou-nao/index.html#footnotes",
+    "href": "posts/202011_chutou-ou-nao/index.html#footnotes",
+    "title": "Chutou ou não chutou? O test t para uma amostra",
+    "section": "Notas de rodapé",
+    "text": "Notas de rodapé\n\n\nOu mil, 10 mil, 100 mil… Quanto maior for \\(n\\), mais difícil será causar mudanças no desvio padrão, de forma que a incerteza é cada vez menor.↩︎"
+  },
+  {
+    "objectID": "posts/202010_git-proxy/index.html",
+    "href": "posts/202010_git-proxy/index.html",
+    "title": "Configurando git em um servidor proxy",
+    "section": "",
+    "text": "Se você estiver trabalhando em uma organização que leva a sério a segurança da informação, então, provavelmente, você está atrás de um servidor proxy e com dificuldades para usar o Git. Para resolvermos isso, precisaremos de passar por 3 etapas:"
+  },
+  {
+    "objectID": "posts/202010_git-proxy/index.html#gitconfig-sem-salvar-senha",
+    "href": "posts/202010_git-proxy/index.html#gitconfig-sem-salvar-senha",
+    "title": "Configurando git em um servidor proxy",
+    "section": "2.1 .gitconfig sem salvar senha",
+    "text": "2.1 .gitconfig sem salvar senha\nRecomendo usar o pacote {usethis} para alterar qualquer arquivo de configuração no R. Para a primeira opção, faríamos da seguinte maneira:\n\n# abrir o arquivo de configuração\nusethis::edit_git_config()\n\nNa janela do .gitconfig que será aberta, adicione as seguintes linhas:\n[http]\n    proxy = http[s]://dominio.com:porta\n\n[credential]\n    helper = wincred\n\n[credential \"helperselector\"]\n    selected = manager\n\nEm que “domínio.com” é o endereço proxy que você achou no arquivo .dat e as demais configurações definem a forma como você será solicitado a incluir usuário e senha, nesse caso através de uma janela pop up a cada push/pull."
+  },
+  {
+    "objectID": "posts/202010_git-proxy/index.html#gitconfig-com-senha-gravada",
+    "href": "posts/202010_git-proxy/index.html#gitconfig-com-senha-gravada",
+    "title": "Configurando git em um servidor proxy",
+    "section": "2.2 .gitconfig com senha gravada",
+    "text": "2.2 .gitconfig com senha gravada\nA outra alternativa é gravar o usuário e senha no próprio .gitconfig. Novamente, se o arquivo ficar em rede ou se outras pessoas tiverem acesso à máquina, evite essa opção. Para deixar seu usuário e senha salvas no .gitconfig, basta adicioná-los antes do domínio. A vantagem desse método a não ter de inserir as informações a cada push/pull.\n[http]\n    proxy = http[s]://usuario:senha@dominio.com:porta\n\nLembre-se de atualizar a senha no .gitconfig sempre que ela for alterada!"
+  },
+  {
+    "objectID": "posts/202010_git-proxy/index.html#footnotes",
+    "href": "posts/202010_git-proxy/index.html#footnotes",
+    "title": "Configurando git em um servidor proxy",
+    "section": "Notas de rodapé",
+    "text": "Notas de rodapé\n\n\nEvite o bloco de notas para exibir corretamente as quebras de linha. Sugiro o Wordpad.↩︎"
   }
 ]
