@@ -1,0 +1,89 @@
+---
+title: "fio 1.0.0: Análise Multirregional e Muito Mais"
+subtitle: "A ponte entre a facilidade do R e a velocidade do Rust chega a um marco importante no CRAN"
+date: "2026-02-27"
+categories: [R, Economia, fio, Rust]
+image: "https://albersonmiranda.github.io/fio/reference/figures/leontief.jpg"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FAAlSE,
+  message = FALSE
+)
+```
+
+**{fio} 1.0.0** já está disponível no [CRAN](https://CRAN.R-project.org/package=fio)! Este lançamento representa um marco significativo no desenvolvimento do pacote, introduzindo poderosas capacidades multirregionais, suporte para modelos fechados e uma estratégia de gerenciamento de dados mais eficiente.
+
+O {fio} (*Friendly Input-Output*) foi construído com um objetivo claro: fornecer aos usuários de R uma interface rápida e intuitiva para análise de insumo-produto. Ao aproveitar a performance do [Rust](https://www.rust-lang.org/) e as classes [R6](https://r6.r-lib.org/), o {fio} permite que você lide com cálculos complexos de álgebra linear com facilidade e rapidez.
+
+Você pode instalá-lo do CRAN com:
+
+```r
+install.packages("fio")
+```
+
+## Análise de Insumo-Produto Multirregional (MIOM)
+
+A principal novidade da versão 1.0.0 é a introdução dos modelos de **Insumo-Produto Multirregional (MIOM)**. Isso permite que analistas vão além das economias individuais e estudem as interdependências entre diferentes nações ou regiões.
+
+A nova função `miom()` cria um modelo multirregional que herda toda a performance e funcionalidade da classe `iom()` de região única, adicionando ferramentas especializadas para análise regional:
+
+- **Comércio Bilateral**: Extraia facilmente fluxos comerciais entre regiões específicas.
+- **Multiplicadores Regionais**: Calcule multiplicadores intra-regionais, inter-regionais e de transbordamento (*spillover*).
+- **Medidas de Interdependência**: Quantifique o quanto as regiões dependem umas das outras.
+
+Veja abaixo como você pode analisar as interdependências do comércio global usando o conjunto de dados `world_2000` (que agora faz parte do pacote complementar [{fiodata}](https://github.com/albersonmiranda/fiodata)):
+
+```r
+library(fio)
+
+# Carrega o conjunto de dados mundial multirregional
+miom_world <- fiodata::world_2000
+
+# Obtém o comércio bilateral do Brasil para a China
+miom_world$get_bilateral_trade("BRA", "CHN")[1:5, 1:2]
+
+# Calcula a interdependência regional
+miom_world$get_regional_interdependence() |> head()
+```
+
+## Fechando o Modelo
+
+Modelos de insumo-produto são tradicionalmente "abertos", tratando as famílias e o governo como externos ao sistema de produção. A versão 1.0.0 introduz o método `close_model()`, que permite "internalizar" esses setores.
+
+Ao mover as famílias ou o governo da demanda final para a matriz de transações intermediárias, você pode capturar melhor os efeitos "induzidos" de choques econômicos — por exemplo, como um aumento na produção leva a salários mais altos, que por sua vez estimulam mais consumo.
+
+```r
+iom_br <- fiodata::br_2020
+
+# Fecha o modelo para o consumo das famílias
+iom_br$close_model("household")
+
+# Os coeficientes técnicos e multiplicadores agora incluem os efeitos induzidos
+iom_br$compute_tech_coeff()
+iom_br$compute_multiplier_output()
+```
+
+## Acesso Direto a Dados
+
+Para facilitar ainda mais o início de sua análise, adicionamos `download_wiod()`. Esta função permite baixar tabelas da World Input-Output Database (WIOD) diretamente de sua fonte oficial e carregá-las no R. Combinado com a velocidade de processamento do {fio}, isso reduz significativamente o tempo entre a coleta de dados e a obtenção de insights.
+
+## A Divisão do {fiodata}
+
+À medida que o pacote cresceu, os conjuntos de dados integrados atingiram um tamanho que excedeu as recomendações do CRAN. Para manter o {fio} leve e rápido de instalar, movemos os conjuntos de dados maiores (`br_2020` e `world_2000`) para um pacote complementar separado: [**{fiodata}**](https://github.com/albersonmiranda/fiodata).
+
+Ao instalar o {fio}, você pode querer instalar o {fiodata} também para acompanhar nossos exemplos:
+
+```r
+# Instala via R-Universe ou GitHub
+install.packages("fiodata", repos = "https://albersonmiranda.r-universe.dev")
+```
+
+## Agradecimentos
+
+Este lançamento não seria possível sem o feedback da comunidade e o robusto ecossistema de pacotes R e Rust. Agradecimentos especiais aos desenvolvedores dos projetos `extendr` e `faer`, que fornecem a base para a arquitetura híbrida do {fio}.
+
+Para uma lista completa de mudanças, consulte o arquivo [NEWS.md](https://github.com/albersonmiranda/fio/blob/main/NEWS.md). Bons estudos!

@@ -1,0 +1,89 @@
+---
+title: "fio 1.0.0: Multi-regional Analysis and More"
+subtitle: "The bridge between R's friendliness and Rust's speed reaches a major milestone on CRAN"
+date: "2026-02-27"
+categories: [R, Economics, fio, Rust]
+image: "https://albersonmiranda.github.io/fio/reference/figures/leontief.jpg"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FAAlSE,
+  message = FALSE
+)
+```
+
+We are thrilled to announce that **{fio} 1.0.0** is now available on [CRAN](https://CRAN.R-project.org/package=fio)! This release marks a significant milestone in the package's development, introducing powerful multi-regional capabilities, support for closed models, and a more streamlined data management strategy.
+
+{fio} (*Friendly Input-Output*) was built with a clear goal: to provide R users with a fast and intuitive interface for input-output analysis. By leveraging [Rust's](https://www.rust-lang.org/) performance and [R6](https://r6.r-lib.org/) classes, {fio} allows you to handle complex linear algebra computations with ease and speed.
+
+You can install it from CRAN with:
+
+```r
+install.packages("fio")
+```
+
+## Multi-regional Input-Output (MIOM)
+
+The headline feature of version 1.0.0 is the introduction of **Multi-regional Input-Output (MIOM)** models. This allows analysts to go beyond single economies and study the interdependencies between different nations or regions.
+
+The new `miom()` function creates a multi-regional model that inherits all the performance and functionality of the single-region `iom()` class, adding specialized tools for regional analysis:
+
+- **Bilateral Trade**: Easily extract trade flows between specific regions.
+- **Regional Multipliers**: Compute intra-regional, inter-regional, and spillover multipliers.
+- **Interdependence Measures**: Quantify how much regions rely on each other.
+
+Here is a quick look at how you can analyze global trade interdependencies using the `world_2000` dataset (now part of the [{fiodata}](https://github.com/albersonmiranda/fiodata) package):
+
+```r
+library(fio)
+
+# Load the multi-regional world dataset
+miom_world <- fiodata::world_2000
+
+# Get bilateral trade from Brazil to China
+miom_world$get_bilateral_trade("BRA", "CHN")[1:5, 1:2]
+
+# Compute regional interdependence
+miom_world$get_regional_interdependence() |> head()
+```
+
+## Closing the Model
+
+Input-output models are traditionally "open," treating households and government as external to the production system. Version 1.0.0 introduces the `close_model()` method, which allows you to "internalize" these sectors.
+
+By moving households or the government from final demand into the intermediate transactions matrix, you can better capture the "induced" effects of economic shocks—for instance, how an increase in production leads to higher wages, which in turn fuels more consumption.
+
+```r
+iom_br <- fiodata::br_2020
+
+# Close the model for household consumption
+iom_br$close_model("household")
+
+# Technical coefficients and multipliers now include the induced effects
+iom_br$compute_tech_coeff()
+iom_br$compute_multiplier_output()
+```
+
+## Direct Data Access
+
+To make it even easier to start your analysis, we've added `download_wiod()`. This function allows you to download World Input-Output Database (WIOD) tables directly from their official source and load them into R. Combined with {fio}'s processing speed, this significantly reduces the time from data collection to insight.
+
+## The {fiodata} Split
+
+As the package grew, the built-in datasets reached a size that exceeded CRAN's recommendations. To keep {fio} lightweight and fast to install, we have moved the larger datasets (`br_2020` and `world_2000`) to a separate companion package: [**{fiodata}**](https://github.com/albersonmiranda/fiodata).
+
+When you install {fio}, you might want to install {fiodata} as well to follow along with our examples:
+
+```r
+# Install from R-Universe or GitHub
+install.packages("fiodata", repos = "https://albersonmiranda.r-universe.dev")
+```
+
+## Acknowledgements
+
+This release would not have been possible without the feedback from the community and the robust ecosystem of R and Rust packages. Special thanks to the developers of the `extendr` and `faer` projects, which provide the foundation for {fio}'s hybrid architecture.
+
+For a full list of changes, please check the [NEWS.md](https://github.com/albersonmiranda/fio/blob/main/NEWS.md) file. Happy analyzing!
