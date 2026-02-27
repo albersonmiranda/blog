@@ -2518,22 +2518,19 @@
     },
     "fio": {
       "Package": "fio",
-      "Version": "0.1.6.9005",
-      "Source": "unknown",
+      "Version": "1.0.0",
+      "Source": "Repository",
       "Title": "Friendly Input-Output Analysis",
       "Authors@R": "c( person( given = \"Alberson\", family = \"da Silva Miranda\", email = \"albersonmiranda@hotmail.com\", role = c(\"aut\", \"cre\", \"cph\"), comment = c(ORCID = \"0000-0001-9252-4175\") ), person( given = \"Celso\", family = \"Bissoli Sessa\", email = \"celso.sessa@ufes.br\", role = c(\"dtc\"), comment = c(ORCID = \"0000-0001-7616-0244\") ) )",
-      "Description": "Simplifies the process of importing and managing input-output matrices from 'Microsoft Excel' into R, and provides a suite of functions for analysis. It leverages the 'R6' class for clean, memory-efficient object-oriented programming. Furthermore, all linear algebra computations are implemented in 'Rust' to achieve highly optimized performance.",
+      "Description": "Simplifies the process of economic input-output analysis by combining user-friendly interfaces with high-performance computation. It provides tools for analyzing both single-region and multi-regional economic systems through a hybrid architecture that pairs R's accessibility with Rust's computational efficiency.",
       "URL": "https://albersonmiranda.github.io/fio/, https://github.com/albersonmiranda/fio",
       "BugReports": "https://github.com/albersonmiranda/fio/issues",
       "Encoding": "UTF-8",
-      "Roxygen": "list(markdown = TRUE, r6 = TRUE)",
       "RoxygenNote": "7.3.3",
       "Depends": [
         "R (>= 4.2)"
       ],
       "SystemRequirements": "Cargo (Rust's package manager), rustc >= 1.84, xz",
-      "LazyData": "true",
-      "LazyDataCompression": "bzip2",
       "Imports": [
         "cli",
         "clipr",
@@ -2557,7 +2554,8 @@
         "ggplot2",
         "writexl",
         "callr",
-        "testthat (>= 3.0.0)"
+        "testthat (>= 3.0.0)",
+        "fiodata"
       ],
       "VignetteBuilder": "knitr",
       "Language": "en-US",
@@ -2565,11 +2563,12 @@
       "RdMacros": "Rdpack",
       "NeedsCompilation": "yes",
       "Author": "Alberson da Silva Miranda [aut, cre, cph] (ORCID: <https://orcid.org/0000-0001-9252-4175>), Celso Bissoli Sessa [dtc] (ORCID: <https://orcid.org/0000-0001-7616-0244>)",
-      "Maintainer": "Alberson da Silva Miranda <albersonmiranda@hotmail.com>"
+      "Maintainer": "Alberson da Silva Miranda <albersonmiranda@hotmail.com>",
+      "Repository": "CRAN"
     },
     "fiodata": {
       "Package": "fiodata",
-      "Version": "0.0.0.9000",
+      "Version": "0.0.1",
       "Source": "Repository",
       "Title": "Regional and Multi-Regional Input-Output Data",
       "Authors@R": "c( person( given = \"Alberson\", family = \"da Silva Miranda\", email = \"albersonmiranda@hotmail.com\", role = c(\"aut\", \"cre\", \"cph\"), comment = c(ORCID = \"0000-0001-9252-4175\") ), person( given = \"Celso\", family = \"Bissoli Sessa\", email = \"celso.sessa@ufes.br\", role = c(\"aut\", \"dtc\"), comment = c(ORCID = \"0000-0001-7616-0244\") ) )",
@@ -2578,7 +2577,6 @@
       "URL": "https://github.com/albersonmiranda/fiodata",
       "BugReports": "https://github.com/albersonmiranda/fiodata/issues",
       "Encoding": "UTF-8",
-      "Roxygen": "list(markdown = TRUE)",
       "RoxygenNote": "7.3.3",
       "LazyData": "true",
       "LazyDataCompression": "xz",
